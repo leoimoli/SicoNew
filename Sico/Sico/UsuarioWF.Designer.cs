@@ -35,8 +35,15 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblDniOApellidoNombre = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnHabilitarBuscar = new System.Windows.Forms.Button();
+            this.btnNuevoUsuario = new System.Windows.Forms.Button();
+            this.btnHistorial = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,13 +58,6 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtDni = new System.Windows.Forms.TextBox();
-            this.btnHabilitarBuscar = new System.Windows.Forms.Button();
-            this.btnNuevoUsuario = new System.Windows.Forms.Button();
-            this.btnHistorial = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -116,6 +116,7 @@
             // 
             // txtBuscar
             // 
+            this.txtBuscar.Enabled = false;
             this.txtBuscar.Location = new System.Drawing.Point(227, 48);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(491, 20);
@@ -144,6 +145,74 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tareas";
+            // 
+            // btnHabilitarBuscar
+            // 
+            this.btnHabilitarBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
+            this.btnHabilitarBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnHabilitarBuscar.Location = new System.Drawing.Point(45, 98);
+            this.btnHabilitarBuscar.Name = "btnHabilitarBuscar";
+            this.btnHabilitarBuscar.Size = new System.Drawing.Size(90, 61);
+            this.btnHabilitarBuscar.TabIndex = 7;
+            this.btnHabilitarBuscar.Text = "Buscar";
+            this.btnHabilitarBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHabilitarBuscar.UseVisualStyleBackColor = true;
+            this.btnHabilitarBuscar.Click += new System.EventHandler(this.btnHabilitarBuscar_Click);
+            // 
+            // btnNuevoUsuario
+            // 
+            this.btnNuevoUsuario.Image = global::Sico.Properties.Resources.agregar_usuario_nuevo;
+            this.btnNuevoUsuario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNuevoUsuario.Location = new System.Drawing.Point(45, 19);
+            this.btnNuevoUsuario.Name = "btnNuevoUsuario";
+            this.btnNuevoUsuario.Size = new System.Drawing.Size(90, 61);
+            this.btnNuevoUsuario.TabIndex = 1;
+            this.btnNuevoUsuario.Text = "Nuevo usuario";
+            this.btnNuevoUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNuevoUsuario.UseVisualStyleBackColor = true;
+            this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
+            // 
+            // btnHistorial
+            // 
+            this.btnHistorial.Image = global::Sico.Properties.Resources.diagnostico;
+            this.btnHistorial.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnHistorial.Location = new System.Drawing.Point(45, 348);
+            this.btnHistorial.Name = "btnHistorial";
+            this.btnHistorial.Size = new System.Drawing.Size(90, 61);
+            this.btnHistorial.TabIndex = 6;
+            this.btnHistorial.Text = "Historial";
+            this.btnHistorial.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHistorial.UseVisualStyleBackColor = true;
+            this.btnHistorial.Visible = false;
+            this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Image = global::Sico.Properties.Resources.borrar_usuario;
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEliminar.Location = new System.Drawing.Point(45, 255);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(90, 61);
+            this.btnEliminar.TabIndex = 5;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Visible = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Image = global::Sico.Properties.Resources.usuario;
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEditar.Location = new System.Drawing.Point(45, 175);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(90, 61);
+            this.btnEditar.TabIndex = 4;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Visible = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // groupBox1
             // 
@@ -181,6 +250,34 @@
             this.progressBar1.TabIndex = 19;
             this.progressBar1.Value = 50;
             this.progressBar1.Visible = false;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Image = global::Sico.Properties.Resources.cancelar;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelar.Location = new System.Drawing.Point(340, 360);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(80, 51);
+            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Image = global::Sico.Properties.Resources.copia_de_seguridad;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGuardar.Location = new System.Drawing.Point(461, 360);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(80, 51);
+            this.btnGuardar.TabIndex = 7;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // label7
             // 
@@ -307,97 +404,6 @@
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(211, 23);
             this.txtDni.TabIndex = 0;
-            // 
-            // btnHabilitarBuscar
-            // 
-            this.btnHabilitarBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
-            this.btnHabilitarBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHabilitarBuscar.Location = new System.Drawing.Point(45, 98);
-            this.btnHabilitarBuscar.Name = "btnHabilitarBuscar";
-            this.btnHabilitarBuscar.Size = new System.Drawing.Size(90, 61);
-            this.btnHabilitarBuscar.TabIndex = 7;
-            this.btnHabilitarBuscar.Text = "Buscar";
-            this.btnHabilitarBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnHabilitarBuscar.UseVisualStyleBackColor = true;
-            this.btnHabilitarBuscar.Click += new System.EventHandler(this.btnHabilitarBuscar_Click);
-            // 
-            // btnNuevoUsuario
-            // 
-            this.btnNuevoUsuario.Image = global::Sico.Properties.Resources.agregar_usuario_nuevo;
-            this.btnNuevoUsuario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevoUsuario.Location = new System.Drawing.Point(45, 19);
-            this.btnNuevoUsuario.Name = "btnNuevoUsuario";
-            this.btnNuevoUsuario.Size = new System.Drawing.Size(90, 61);
-            this.btnNuevoUsuario.TabIndex = 1;
-            this.btnNuevoUsuario.Text = "Nuevo usuario";
-            this.btnNuevoUsuario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNuevoUsuario.UseVisualStyleBackColor = true;
-            this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
-            // 
-            // btnHistorial
-            // 
-            this.btnHistorial.Image = global::Sico.Properties.Resources.diagnostico;
-            this.btnHistorial.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHistorial.Location = new System.Drawing.Point(45, 348);
-            this.btnHistorial.Name = "btnHistorial";
-            this.btnHistorial.Size = new System.Drawing.Size(90, 61);
-            this.btnHistorial.TabIndex = 6;
-            this.btnHistorial.Text = "Historial";
-            this.btnHistorial.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnHistorial.UseVisualStyleBackColor = true;
-            this.btnHistorial.Visible = false;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Image = global::Sico.Properties.Resources.borrar_usuario;
-            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEliminar.Location = new System.Drawing.Point(45, 255);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(90, 61);
-            this.btnEliminar.TabIndex = 5;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Visible = false;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Image = global::Sico.Properties.Resources.usuario;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(45, 175);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(90, 61);
-            this.btnEditar.TabIndex = 4;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Visible = false;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Image = global::Sico.Properties.Resources.cancelar;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(340, 360);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(80, 51);
-            this.btnCancelar.TabIndex = 8;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Image = global::Sico.Properties.Resources.copia_de_seguridad;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGuardar.Location = new System.Drawing.Point(461, 360);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(80, 51);
-            this.btnGuardar.TabIndex = 7;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnGuardar.UseVisualStyleBackColor = true;
             // 
             // UsuarioWF
             // 

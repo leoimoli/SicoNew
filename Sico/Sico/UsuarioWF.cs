@@ -20,7 +20,10 @@ namespace Sico
         }
         private void UsuarioWF_Load(object sender, EventArgs e)
         {
-            try { CargarCombo(); }
+            try
+            {
+                CargarCombo();
+            }
             catch (Exception ex)
             {
                 const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
@@ -276,6 +279,9 @@ namespace Sico
         }
         private void FuncionesBotonNuevoUsuario()
         {
+            chcPorApellido.Checked = false;
+            chcPorDni.Checked = false;
+            txtBuscar.Clear();
             groupBox3.Visible = false;
             LimpiarCamposBotonNuevoUsuario();
             groupBox1.Enabled = true;
@@ -371,16 +377,20 @@ namespace Sico
         {
             if (chcPorDni.Checked == true)
             {
+                txtBuscar.Enabled = true;
                 chcPorApellido.Checked = false;
                 lblDniOApellidoNombre.Text = "Buscar Por Dni(*):";
                 txtBuscar.Focus();
             }
         }
-
         private void chcPorApellido_CheckedChanged(object sender, EventArgs e)
         {
             if (chcPorApellido.Checked == true)
             {
+                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleClass.Autocomplete();
+                txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtBuscar.Enabled = true;
                 chcPorDni.Checked = false;
                 lblDniOApellidoNombre.Text = "Buscar Por Apellido(*):";
                 txtBuscar.Focus();

@@ -30,6 +30,13 @@ namespace Sico.Clases_Maestras
                 return new string[] { "SELECCIONE", "EFECTIVO", "CHEQUE" };
             }
         }
+        public static string[] CondicionAntiAfip
+        {
+            get
+            {
+                return new string[] { "Seleccione", "Monotributo", "Responsable inscripto", "Exento", "Consumidor final" };
+            }
+        }
 
     }
 }
