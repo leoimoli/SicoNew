@@ -152,7 +152,6 @@ namespace Sico.Negocio
                 throw new Exception();
             }
         }
-
         public static List<Usuario> BuscarUsuarioPorApellido(string apellido)
         {
             List<Usuario> _listaUsuarios = new List<Usuario>();
@@ -171,7 +170,6 @@ namespace Sico.Negocio
             }
             return _listaUsuarios;
         }
-
         public static bool EditarUsuario(Usuario _usuario)
         {
             bool exito = false;

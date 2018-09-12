@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtCuitBuscar = new System.Windows.Forms.MaskedTextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.chcPorDni = new System.Windows.Forms.CheckBox();
-            this.chcPorApellido = new System.Windows.Forms.CheckBox();
+            this.chcPorCuit = new System.Windows.Forms.CheckBox();
+            this.chcPorNombreRazonSocial = new System.Windows.Forms.CheckBox();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblDniOApellidoNombre = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -79,9 +80,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtCuitBuscar);
             this.groupBox3.Controls.Add(this.btnBuscar);
-            this.groupBox3.Controls.Add(this.chcPorDni);
-            this.groupBox3.Controls.Add(this.chcPorApellido);
+            this.groupBox3.Controls.Add(this.chcPorCuit);
+            this.groupBox3.Controls.Add(this.chcPorNombreRazonSocial);
             this.groupBox3.Controls.Add(this.txtBuscar);
             this.groupBox3.Controls.Add(this.lblDniOApellidoNombre);
             this.groupBox3.Location = new System.Drawing.Point(35, 63);
@@ -92,6 +94,15 @@
             this.groupBox3.Text = "Buscar Cliente";
             this.groupBox3.Visible = false;
             // 
+            // txtCuitBuscar
+            // 
+            this.txtCuitBuscar.Location = new System.Drawing.Point(186, 48);
+            this.txtCuitBuscar.Mask = "00-00000000-0";
+            this.txtCuitBuscar.Name = "txtCuitBuscar";
+            this.txtCuitBuscar.Size = new System.Drawing.Size(84, 20);
+            this.txtCuitBuscar.TabIndex = 4;
+            this.txtCuitBuscar.Visible = false;
+            // 
             // btnBuscar
             // 
             this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
@@ -99,39 +110,43 @@
             this.btnBuscar.Location = new System.Drawing.Point(738, 29);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(49, 39);
-            this.btnBuscar.TabIndex = 10;
+            this.btnBuscar.TabIndex = 3;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // chcPorDni
+            // chcPorCuit
             // 
-            this.chcPorDni.AutoSize = true;
-            this.chcPorDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chcPorDni.Location = new System.Drawing.Point(108, 19);
-            this.chcPorDni.Name = "chcPorDni";
-            this.chcPorDni.Size = new System.Drawing.Size(74, 21);
-            this.chcPorDni.TabIndex = 8;
-            this.chcPorDni.Text = "Por Dni";
-            this.chcPorDni.UseVisualStyleBackColor = true;
+            this.chcPorCuit.AutoSize = true;
+            this.chcPorCuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcPorCuit.Location = new System.Drawing.Point(108, 19);
+            this.chcPorCuit.Name = "chcPorCuit";
+            this.chcPorCuit.Size = new System.Drawing.Size(77, 21);
+            this.chcPorCuit.TabIndex = 0;
+            this.chcPorCuit.Text = "Por Cuit";
+            this.chcPorCuit.UseVisualStyleBackColor = true;
+            this.chcPorCuit.CheckedChanged += new System.EventHandler(this.chcPorCuit_CheckedChanged);
             // 
-            // chcPorApellido
+            // chcPorNombreRazonSocial
             // 
-            this.chcPorApellido.AutoSize = true;
-            this.chcPorApellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chcPorApellido.Location = new System.Drawing.Point(238, 19);
-            this.chcPorApellido.Name = "chcPorApellido";
-            this.chcPorApellido.Size = new System.Drawing.Size(103, 21);
-            this.chcPorApellido.TabIndex = 9;
-            this.chcPorApellido.Text = "Por Apellido";
-            this.chcPorApellido.UseVisualStyleBackColor = true;
+            this.chcPorNombreRazonSocial.AutoSize = true;
+            this.chcPorNombreRazonSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcPorNombreRazonSocial.Location = new System.Drawing.Point(238, 19);
+            this.chcPorNombreRazonSocial.Name = "chcPorNombreRazonSocial";
+            this.chcPorNombreRazonSocial.Size = new System.Drawing.Size(202, 21);
+            this.chcPorNombreRazonSocial.TabIndex = 1;
+            this.chcPorNombreRazonSocial.Text = "Por Nombre o Razon Social";
+            this.chcPorNombreRazonSocial.UseVisualStyleBackColor = true;
+            this.chcPorNombreRazonSocial.CheckedChanged += new System.EventHandler(this.chcPorNombreRazonSocial_CheckedChanged);
             // 
             // txtBuscar
             // 
             this.txtBuscar.Enabled = false;
-            this.txtBuscar.Location = new System.Drawing.Point(227, 48);
+            this.txtBuscar.Location = new System.Drawing.Point(317, 48);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(491, 20);
-            this.txtBuscar.TabIndex = 4;
+            this.txtBuscar.Size = new System.Drawing.Size(401, 20);
+            this.txtBuscar.TabIndex = 2;
+            this.txtBuscar.Visible = false;
             // 
             // lblDniOApellidoNombre
             // 
@@ -164,10 +179,11 @@
             this.btnHabilitarBuscar.Location = new System.Drawing.Point(45, 98);
             this.btnHabilitarBuscar.Name = "btnHabilitarBuscar";
             this.btnHabilitarBuscar.Size = new System.Drawing.Size(90, 61);
-            this.btnHabilitarBuscar.TabIndex = 7;
+            this.btnHabilitarBuscar.TabIndex = 1;
             this.btnHabilitarBuscar.Text = "Buscar";
             this.btnHabilitarBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHabilitarBuscar.UseVisualStyleBackColor = true;
+            this.btnHabilitarBuscar.Click += new System.EventHandler(this.btnHabilitarBuscar_Click);
             // 
             // btnNuevoCliente
             // 
@@ -176,7 +192,7 @@
             this.btnNuevoCliente.Location = new System.Drawing.Point(45, 19);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
             this.btnNuevoCliente.Size = new System.Drawing.Size(90, 61);
-            this.btnNuevoCliente.TabIndex = 1;
+            this.btnNuevoCliente.TabIndex = 0;
             this.btnNuevoCliente.Text = "Nuevo cliente";
             this.btnNuevoCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevoCliente.UseVisualStyleBackColor = true;
@@ -189,7 +205,7 @@
             this.btnHistorial.Location = new System.Drawing.Point(45, 348);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.Size = new System.Drawing.Size(90, 61);
-            this.btnHistorial.TabIndex = 6;
+            this.btnHistorial.TabIndex = 4;
             this.btnHistorial.Text = "Historial";
             this.btnHistorial.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHistorial.UseVisualStyleBackColor = true;
@@ -202,7 +218,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(45, 255);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(90, 61);
-            this.btnEliminar.TabIndex = 5;
+            this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -215,11 +231,12 @@
             this.btnEditar.Location = new System.Drawing.Point(45, 175);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(90, 61);
-            this.btnEditar.TabIndex = 4;
+            this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Visible = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // groupBox1
             // 
@@ -257,7 +274,7 @@
             this.dtFechaInscripcion.Location = new System.Drawing.Point(626, 114);
             this.dtFechaInscripcion.Name = "dtFechaInscripcion";
             this.dtFechaInscripcion.Size = new System.Drawing.Size(211, 23);
-            this.dtFechaInscripcion.TabIndex = 24;
+            this.dtFechaInscripcion.TabIndex = 3;
             // 
             // groupBox4
             // 
@@ -283,9 +300,8 @@
             this.txtCodigoPostal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigoPostal.Location = new System.Drawing.Point(652, 66);
             this.txtCodigoPostal.Name = "txtCodigoPostal";
-            this.txtCodigoPostal.PasswordChar = '*';
             this.txtCodigoPostal.Size = new System.Drawing.Size(211, 23);
-            this.txtCodigoPostal.TabIndex = 23;
+            this.txtCodigoPostal.TabIndex = 4;
             // 
             // label13
             // 
@@ -302,26 +318,25 @@
             this.txtAltura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAltura.Location = new System.Drawing.Point(331, 69);
             this.txtAltura.Name = "txtAltura";
-            this.txtAltura.PasswordChar = '*';
             this.txtAltura.Size = new System.Drawing.Size(211, 23);
-            this.txtAltura.TabIndex = 20;
+            this.txtAltura.TabIndex = 3;
             // 
             // txtCalle
             // 
             this.txtCalle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCalle.Location = new System.Drawing.Point(56, 69);
             this.txtCalle.Name = "txtCalle";
-            this.txtCalle.PasswordChar = '*';
             this.txtCalle.Size = new System.Drawing.Size(211, 23);
-            this.txtCalle.TabIndex = 19;
+            this.txtCalle.TabIndex = 2;
             // 
             // cmbLocalidad
             // 
+            this.cmbLocalidad.Enabled = false;
             this.cmbLocalidad.FormattingEnabled = true;
             this.cmbLocalidad.Location = new System.Drawing.Point(623, 19);
             this.cmbLocalidad.Name = "cmbLocalidad";
             this.cmbLocalidad.Size = new System.Drawing.Size(211, 24);
-            this.cmbLocalidad.TabIndex = 18;
+            this.cmbLocalidad.TabIndex = 1;
             // 
             // cmbProvincia
             // 
@@ -329,7 +344,8 @@
             this.cmbProvincia.Location = new System.Drawing.Point(206, 19);
             this.cmbProvincia.Name = "cmbProvincia";
             this.cmbProvincia.Size = new System.Drawing.Size(211, 24);
-            this.cmbProvincia.TabIndex = 17;
+            this.cmbProvincia.TabIndex = 0;
+            this.cmbProvincia.SelectedIndexChanged += new System.EventHandler(this.cmbProvincia_Click);
             // 
             // label12
             // 
@@ -386,9 +402,8 @@
             this.txtTelefono.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtTelefono.Location = new System.Drawing.Point(714, 192);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.PasswordChar = '*';
             this.txtTelefono.Size = new System.Drawing.Size(123, 23);
-            this.txtTelefono.TabIndex = 21;
+            this.txtTelefono.TabIndex = 6;
             // 
             // btnGuardar
             // 
@@ -398,10 +413,11 @@
             this.btnGuardar.Location = new System.Drawing.Point(425, 426);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(80, 51);
-            this.btnGuardar.TabIndex = 7;
+            this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -419,9 +435,10 @@
             // txtCuit
             // 
             this.txtCuit.Location = new System.Drawing.Point(626, 39);
+            this.txtCuit.Mask = "00-00000000-0";
             this.txtCuit.Name = "txtCuit";
             this.txtCuit.Size = new System.Drawing.Size(211, 23);
-            this.txtCuit.TabIndex = 20;
+            this.txtCuit.TabIndex = 1;
             // 
             // label7
             // 
@@ -448,7 +465,7 @@
             this.cmbCondicionAntiAfip.Location = new System.Drawing.Point(209, 189);
             this.cmbCondicionAntiAfip.Name = "cmbCondicionAntiAfip";
             this.cmbCondicionAntiAfip.Size = new System.Drawing.Size(211, 24);
-            this.cmbCondicionAntiAfip.TabIndex = 6;
+            this.cmbCondicionAntiAfip.TabIndex = 4;
             // 
             // label6
             // 
@@ -515,7 +532,6 @@
             this.txtCodArea.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodArea.Location = new System.Drawing.Point(626, 192);
             this.txtCodArea.Name = "txtCodArea";
-            this.txtCodArea.PasswordChar = '*';
             this.txtCodArea.Size = new System.Drawing.Size(63, 23);
             this.txtCodArea.TabIndex = 5;
             // 
@@ -524,9 +540,8 @@
             this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEmail.Location = new System.Drawing.Point(209, 257);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.PasswordChar = '*';
             this.txtEmail.Size = new System.Drawing.Size(211, 23);
-            this.txtEmail.TabIndex = 4;
+            this.txtEmail.TabIndex = 7;
             // 
             // txtActividad
             // 
@@ -534,10 +549,11 @@
             this.txtActividad.Location = new System.Drawing.Point(209, 116);
             this.txtActividad.Name = "txtActividad";
             this.txtActividad.Size = new System.Drawing.Size(211, 23);
-            this.txtActividad.TabIndex = 1;
+            this.txtActividad.TabIndex = 2;
             // 
             // txtNombreRazonSocial
             // 
+            this.txtNombreRazonSocial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombreRazonSocial.Location = new System.Drawing.Point(209, 39);
             this.txtNombreRazonSocial.Name = "txtNombreRazonSocial";
             this.txtNombreRazonSocial.Size = new System.Drawing.Size(211, 23);
@@ -553,7 +569,7 @@
             this.Controls.Add(this.groupBox1);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ClienteWF";
-            this.Text = "Cliente";
+            this.Text = "";
             this.Load += new System.EventHandler(this.ClienteWF_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
@@ -574,8 +590,8 @@
 
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.CheckBox chcPorDni;
-        private System.Windows.Forms.CheckBox chcPorApellido;
+        private System.Windows.Forms.CheckBox chcPorCuit;
+        private System.Windows.Forms.CheckBox chcPorNombreRazonSocial;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lblDniOApellidoNombre;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -615,5 +631,6 @@
         private System.Windows.Forms.TextBox txtCodigoPostal;
         private System.Windows.Forms.DateTimePicker dtFechaInscripcion;
         private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.MaskedTextBox txtCuitBuscar;
     }
 }

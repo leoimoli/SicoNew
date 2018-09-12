@@ -151,7 +151,6 @@ namespace Sico.Dao
             connection.Close();
             return Existe;
         }
-
         public static List<Usuario> BuscarUsuarioPorApellido(string apellido)
         {
             connection.Close();
@@ -188,7 +187,6 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
-
         public static bool EditarUsuario(Usuario _usuario)
         {
             bool exito = false;

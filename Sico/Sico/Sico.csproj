@@ -58,7 +58,9 @@
     <Compile Include="ClienteWF.Designer.cs">
       <DependentUpon>ClienteWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dao\ClienteDao.cs" />
     <Compile Include="Dao\UsuarioDao.cs" />
+    <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -78,6 +80,7 @@
     <Compile Include="MasterWF.Designer.cs">
       <DependentUpon>MasterWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\ClienteNeg.cs" />
     <Compile Include="Negocio\UsuarioNeg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

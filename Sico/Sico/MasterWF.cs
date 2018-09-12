@@ -16,5 +16,12 @@ namespace Sico
         {
             InitializeComponent();
         }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClienteWF _cliente = new ClienteWF();
+            _cliente.Show();
+            Hide();
+        }
     }
 }
