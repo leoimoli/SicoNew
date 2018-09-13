@@ -37,6 +37,47 @@ namespace Sico.Dao
             return _listaProvincia;
         }
 
+        public static List<SubCliente> BuscarTodasFacturasSubCliente(string cuit)
+        {
+            List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
+            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
+            id = BuscarClientePorCuit(cuit);
+            int idCliente = id[0].IdCliente;
+            if (idCliente > 0)
+            {
+                connection.Close();
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                                      new MySqlParameter("idCliente_in", idCliente)};
+                string proceso = "BuscarTodasFacturasSubCliente";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        SubCliente listaSubCliente = new SubCliente();
+                        listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                        listaSubCliente.NroFactura = item["NroFactura"].ToString();
+                        listaSubCliente.Fecha = item["Fecha"].ToString();
+                        listaSubCliente.ApellidoNombre = item["Apellido-Nombre"].ToString();
+                        listaSubCliente.Dni = item["Dni"].ToString();
+                        listaSubCliente.Direccion = item["Direccion"].ToString();
+                        listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
+                        listaSubCliente.idCliente = idCliente;
+                        lista.Add(listaSubCliente);
+                    }
+                }
+                connection.Close();
+            }
+            return lista;
+        }
         public static List<string> CargarComboLocalidadesPorIdProvincia(int idProvinciaSeleccionada)
         {
             connection.Close();

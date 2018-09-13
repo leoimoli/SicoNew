@@ -134,7 +134,7 @@ namespace Sico
                 txtCuitBuscar.Clear();
                 txtCuitBuscar.Visible = false;
                 txtBuscar.Visible = true;
-                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleClass.Autocomplete();
+                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteRazonSocial.Autocomplete();
                 txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 txtBuscar.Enabled = true;
@@ -245,6 +245,9 @@ namespace Sico
         }
         #endregion
         #region Botones
+
+        public static string RazonSocial;
+        public static string Cuit;
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
@@ -339,10 +342,12 @@ namespace Sico
                     List<Cliente> _cliente = new List<Cliente>();
                     var cuit = txtCuitBuscar.Text;
                     _cliente = ClienteNeg.BuscarClientePorCuit(cuit);
+
                     if (_cliente.Count > 0)
                     {
                         var cliente = _cliente.First();
-
+                        RazonSocial = cliente.NombreRazonSocial;
+                        Cuit = cliente.Cuit;
                         txtNombreRazonSocial.Text = cliente.NombreRazonSocial;
                         txtCuit.Text = cliente.Cuit;
                         txtActividad.Text = cliente.Actividad;
@@ -385,6 +390,8 @@ namespace Sico
                     if (_cliente.Count > 0)
                     {
                         var cliente = _cliente.First();
+                        RazonSocial = cliente.NombreRazonSocial;
+                        Cuit = cliente.Cuit;
                         txtNombreRazonSocial.Text = cliente.NombreRazonSocial;
                         txtCuit.Text = cliente.Cuit;
                         txtActividad.Text = cliente.Actividad;
@@ -446,6 +453,14 @@ namespace Sico
         {
 
         }
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
+            _tarea.Show();
+            Hide();
+        }
         #endregion
+
+
     }
 }

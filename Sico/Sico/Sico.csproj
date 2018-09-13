@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases_Maestras\AutoCompleClass.cs" />
+    <Compile Include="Clases_Maestras\AutoCompleteRazonSocial.cs" />
     <Compile Include="Clases_Maestras\Sesion.cs" />
     <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
     <Compile Include="ClienteWF.cs">
@@ -61,6 +62,7 @@
     <Compile Include="Dao\ClienteDao.cs" />
     <Compile Include="Dao\UsuarioDao.cs" />
     <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\SubCliente.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -84,6 +86,12 @@
     <Compile Include="Negocio\UsuarioNeg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TareaClienteWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TareaClienteWF.Designer.cs">
+      <DependentUpon>TareaClienteWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +117,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TareaClienteWF.resx">
+      <DependentUpon>TareaClienteWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsuarioWF.resx">
       <DependentUpon>UsuarioWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +156,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\copia-de-seguridad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comprador.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comprador %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comprador %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario-hombre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diagnostico1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diario-abierto.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

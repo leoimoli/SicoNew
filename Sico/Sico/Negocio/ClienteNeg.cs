@@ -30,6 +30,25 @@ namespace Sico.Negocio
             return lista;
         }
 
+        public static List<SubCliente> BuscarTodasFacturasSubCliente(string cuit)
+        {
+            List<SubCliente> _listaFacturasSubCliente = new List<SubCliente>();
+            try
+            {
+                _listaFacturasSubCliente = ClienteDao.BuscarTodasFacturasSubCliente(cuit);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaFacturasSubCliente;
+        }
+
         public static bool GurdarCliente(Cliente _cliente)
         {
             bool exito = false;
