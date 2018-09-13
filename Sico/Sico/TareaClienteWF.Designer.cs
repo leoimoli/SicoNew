@@ -41,6 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -172,9 +173,9 @@
             // txtBuscar
             // 
             this.txtBuscar.Enabled = false;
-            this.txtBuscar.Location = new System.Drawing.Point(515, 233);
+            this.txtBuscar.Location = new System.Drawing.Point(468, 233);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(401, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(336, 20);
             this.txtBuscar.TabIndex = 20;
             this.txtBuscar.Visible = false;
             // 
@@ -182,18 +183,32 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(308, 234);
+            this.label4.Location = new System.Drawing.Point(261, 234);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(201, 15);
             this.label4.TabIndex = 21;
             this.label4.Text = "Buscar Por Nombre o Razón Social";
             this.label4.Visible = false;
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBuscar.Location = new System.Drawing.Point(819, 218);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
+            this.btnBuscar.TabIndex = 22;
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Visible = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // TareaClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1474, 657);
+            this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label2);
@@ -210,6 +225,7 @@
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.txtBuscar, 0);
             this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.btnBuscar, 0);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).EndInit();
@@ -234,5 +250,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

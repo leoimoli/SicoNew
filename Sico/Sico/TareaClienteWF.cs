@@ -1,4 +1,5 @@
-﻿using Sico.Negocio;
+﻿using Sico.Entidades;
+using Sico.Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,9 @@ namespace Sico
             try
             {
                 ListaFacturas = ClienteNeg.BuscarTodasFacturasSubCliente(cuit);
+                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteRazonSocial.Autocomplete();
+                txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
             }
             catch (Exception ex) { }
         }
@@ -45,6 +49,7 @@ namespace Sico
             {
                 if (value.Count > 0)
                 {
+                    btnBuscar.Visible = true;
                     label2.Visible = true;
                     label4.Visible = true;
                     txtBuscar.Visible = true;
@@ -110,5 +115,19 @@ namespace Sico
             }
         }
         #endregion
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<SubCliente> _cliente = new List<SubCliente>();
+                var ApellidoNombre = txtBuscar.Text;
+                ListaFacturas = ClienteNeg.BuscarSubClientePorApellidoNombre(ApellidoNombre, cuit);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

@@ -109,6 +109,7 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label3);
             this.Name = "LoginWF";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginWF";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

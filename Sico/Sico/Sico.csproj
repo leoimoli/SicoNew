@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Clases_Maestras\AutoCompleClass.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteRazonSocial.cs" />
+    <Compile Include="Clases_Maestras\AutoCompleteSubCliente.cs" />
     <Compile Include="Clases_Maestras\Sesion.cs" />
     <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
     <Compile Include="ClienteWF.cs">

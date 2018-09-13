@@ -167,6 +167,25 @@ namespace Sico.Negocio
             return _listaClientes;
         }
 
+        public static List<SubCliente> BuscarSubClientePorApellidoNombre(string apellidoNombre, string cuit)
+        {
+            List<SubCliente> _listaSubClientes = new List<SubCliente>();
+            try
+            {
+                _listaSubClientes = ClienteDao.BuscarSubClientePorApellidoNombreCuit(apellidoNombre,cuit);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaSubClientes;
+        }
+
         public static List<Cliente> BuscarClientePorNombreRazonSocial(string nombreRazonSocial)
         {
             List<Cliente> _listaClientes = new List<Cliente>();
