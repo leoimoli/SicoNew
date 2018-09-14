@@ -66,7 +66,7 @@ namespace Sico.Dao
                         listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
                         listaSubCliente.NroFactura = item["NroFactura"].ToString();
                         listaSubCliente.Fecha = item["Fecha"].ToString();
-                        listaSubCliente.ApellidoNombre = item["Apellido-Nombre"].ToString();
+                        listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
                         listaSubCliente.Dni = item["Dni"].ToString();
                         listaSubCliente.Direccion = item["Direccion"].ToString();
                         listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
@@ -77,6 +77,79 @@ namespace Sico.Dao
                 connection.Close();
             }
             return lista;
+        }
+        public static string BuscarNuevoNroFactura(string persona)
+        {
+            string Factura = "";
+
+            connection.Close();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("Persona_in", persona) };
+            string proceso = "BuscarNuevoNroFactura";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    string id = item["id"].ToString();
+                    string FacturaVieja = item["NroFactura"].ToString();
+
+                    ///// Primera parte del numero
+                    var split1 = FacturaVieja.Split('-')[0];
+                    split1 = split1.Trim();
+                    ///// Segunda parte del numero
+                    var split2 = FacturaVieja.Split('-')[1];
+                    split2 = split2.Trim();
+                    string prueba = string.Concat(split1, split2);
+                    int Numero = Convert.ToInt32(prueba);
+                    int Fac = Numero + 1;
+                   string prueba2 = Convert.ToString( Fac);
+                    Factura = string.Concat("000", prueba2);
+
+                }
+            }
+
+            connection.Close();
+            return Factura;
+        }
+
+        public static List<string> CargarComboPersonas(string cuit)
+        {
+            List<string> _listaPerosnas = new List<string>();
+            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
+            id = BuscarClientePorCuit(cuit);
+            int idCliente = id[0].IdCliente;
+            if (idCliente > 0)
+            {
+                connection.Close();
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idCliente) };
+                string proceso = "CargarComboPersonasSubCliente";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        _listaPerosnas.Add(item["ApellidoNombre"].ToString());
+                    }
+                }
+            }
+            connection.Close();
+            return _listaPerosnas;
         }
         public static List<string> CargarComboLocalidadesPorIdProvincia(int idProvinciaSeleccionada)
         {
@@ -102,7 +175,6 @@ namespace Sico.Dao
             connection.Close();
             return _listaProvincia;
         }
-
         public static bool ValidarClienteExistente(string nombreRazonSocial, string cuit)
         {
             connection.Close();
@@ -129,7 +201,6 @@ namespace Sico.Dao
             connection.Close();
             return Existe;
         }
-
         public static bool InsertCliente(Cliente _cliente)
         {
             bool exito = false;
@@ -156,8 +227,7 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-
-        public static List<SubCliente> BuscarSubClientePorApellidoNombreCuit(string cuit, string ApellidoNombre)
+        public static List<SubCliente> BuscarSubClientePorApellidoNombreCuit(string ApellidoNombre, string cuit)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
@@ -187,7 +257,7 @@ namespace Sico.Dao
                         listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
                         listaSubCliente.NroFactura = item["NroFactura"].ToString();
                         listaSubCliente.Fecha = item["Fecha"].ToString();
-                        listaSubCliente.ApellidoNombre = item["Apellido-Nombre"].ToString();
+                        listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
                         listaSubCliente.Dni = item["Dni"].ToString();
                         listaSubCliente.Direccion = item["Direccion"].ToString();
                         listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());

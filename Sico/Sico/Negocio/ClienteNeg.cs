@@ -49,6 +49,20 @@ namespace Sico.Negocio
             return _listaFacturasSubCliente;
         }
 
+        public static string BuscarNuevoNroFactura(string persona)
+        {
+            string Factura;
+            Factura = Dao.ClienteDao.BuscarNuevoNroFactura(persona);
+            return Factura;
+        }
+
+        public static List<string> CargarComboPersonas(string cuit)
+        {
+            List<string> lista = new List<string>();
+            lista = Dao.ClienteDao.CargarComboPersonas(cuit);
+            return lista;
+        }
+
         public static bool GurdarCliente(Cliente _cliente)
         {
             bool exito = false;
@@ -76,13 +90,11 @@ namespace Sico.Negocio
             }
             return exito;
         }
-
         private static bool ValidarUsuarioExistente(string nombreRazonSocial, string cuit)
         {
             bool existe = ClienteDao.ValidarClienteExistente(nombreRazonSocial, cuit);
             return existe;
         }
-
         private static void ValidarDatos(Cliente _cliente)
         {
             if (String.IsNullOrEmpty(_cliente.NombreRazonSocial))
@@ -132,7 +144,6 @@ namespace Sico.Negocio
                 throw new Exception();
             }
         }
-
         public static bool EditarCliente(Cliente _cliente)
         {
             bool exito = false;
@@ -147,7 +158,6 @@ namespace Sico.Negocio
             }
             return exito;
         }
-
         public static List<Cliente> BuscarClientePorCuit(string cuit)
         {
             List<Cliente> _listaClientes = new List<Cliente>();
@@ -166,7 +176,6 @@ namespace Sico.Negocio
             }
             return _listaClientes;
         }
-
         public static List<SubCliente> BuscarSubClientePorApellidoNombre(string apellidoNombre, string cuit)
         {
             List<SubCliente> _listaSubClientes = new List<SubCliente>();
@@ -185,7 +194,6 @@ namespace Sico.Negocio
             }
             return _listaSubClientes;
         }
-
         public static List<Cliente> BuscarClientePorNombreRazonSocial(string nombreRazonSocial)
         {
             List<Cliente> _listaClientes = new List<Cliente>();

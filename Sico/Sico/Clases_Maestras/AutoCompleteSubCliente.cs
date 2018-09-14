@@ -17,7 +17,7 @@ namespace Sico.Clases_Maestras
             DataTable dt = new DataTable();
             MySqlConnection conexion = new MySqlConnection(Properties.Settings.Default.db);
             conexion.Open();
-            string consulta = "Select Apellido-Nombre from subcliente";
+            string consulta = "Select ApellidoNombre from subcliente";
             MySqlCommand cmd = new MySqlCommand(consulta, conexion);
             MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
             adap.Fill(dt);
@@ -31,7 +31,7 @@ namespace Sico.Clases_Maestras
             AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
             foreach (DataRow row in DT.Rows)
             {
-                coleccion.Add(Convert.ToString(row["Apellido-Nombre"]));
+                coleccion.Add(Convert.ToString(row["ApellidoNombre"]));
             }
             return coleccion;
         }

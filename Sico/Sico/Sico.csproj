@@ -65,6 +65,12 @@
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\SubCliente.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="FacturacionSubClientesWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturacionSubClientesWF.Designer.cs">
+      <DependentUpon>FacturacionSubClientesWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </Compile>
     <EmbeddedResource Include="ClienteWF.resx">
       <DependentUpon>ClienteWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturacionSubClientesWF.resx">
+      <DependentUpon>FacturacionSubClientesWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginWF.resx">
       <DependentUpon>LoginWF.cs</DependentUpon>
@@ -175,6 +184,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\diario-abierto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\factura.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

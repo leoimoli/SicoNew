@@ -35,7 +35,7 @@ namespace Sico
             try
             {
                 ListaFacturas = ClienteNeg.BuscarTodasFacturasSubCliente(cuit);
-                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteRazonSocial.Autocomplete();
+                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete();
                 txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
             }
@@ -49,6 +49,9 @@ namespace Sico
             {
                 if (value.Count > 0)
                 {
+                    lblCantidad.Visible = true;
+                    lblCantidadEdit.Visible = true;
+                    lblCantidadEdit.Text = Convert.ToString(value.Count);
                     btnBuscar.Visible = true;
                     label2.Visible = true;
                     label4.Visible = true;
@@ -61,7 +64,7 @@ namespace Sico
                     dgvSubClientes.DataSource = value;
 
                     dgvSubClientes.Columns[0].HeaderText = "Id Movimiento";
-                    dgvSubClientes.Columns[0].Width = 70;
+                    dgvSubClientes.Columns[0].Width = 130;
                     dgvSubClientes.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvSubClientes.Columns[0].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvSubClientes.Columns[0].HeaderCell.Style.ForeColor = Color.White;
@@ -128,6 +131,12 @@ namespace Sico
             {
 
             }
+        }
+
+        private void btnNuevaFactura_Click(object sender, EventArgs e)
+        {
+            FacturacionSubClientesWF _facturacion = new FacturacionSubClientesWF(razonSocial, cuit);
+            _facturacion.Show();
         }
     }
 }
