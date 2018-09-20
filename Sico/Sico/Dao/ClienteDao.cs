@@ -78,6 +78,35 @@ namespace Sico.Dao
             }
             return lista;
         }
+
+        public static bool GuardarNuevoSubCliente(SubCliente _subCliente, string cuit)
+        {
+            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
+            id = BuscarClientePorCuit(cuit);
+            int idCliente = id[0].IdCliente;
+            ///// creo valores ficticios para campos no null.
+            _subCliente.Monto = 0000;
+            _subCliente.NroFactura = "0000-00000000";
+
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "GuardarNuevoSubCliente";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
+            cmd.Parameters.AddWithValue("ApellidoNombre_in", _subCliente.ApellidoNombre);
+            cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
+            cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
+            cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static string BuscarNuevoNroFactura(string persona)
         {
             string Factura = "";
@@ -110,7 +139,7 @@ namespace Sico.Dao
                     string prueba = string.Concat(split1, split2);
                     int Numero = Convert.ToInt32(prueba);
                     int Fac = Numero + 1;
-                   string prueba2 = Convert.ToString( Fac);
+                    string prueba2 = Convert.ToString(Fac);
                     Factura = string.Concat("000", prueba2);
 
                 }
@@ -201,6 +230,67 @@ namespace Sico.Dao
             connection.Close();
             return Existe;
         }
+        public static bool GuardarFacturaSubCliente(SubCliente _subCliente, string cuit)
+        {
+            int idUltimaFacturaSubCliente = 0;
+            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
+            id = BuscarClientePorCuit(cuit);
+            int idCliente = id[0].IdCliente;
+
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "GuardarFacturaSubCliente";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("ApellidoNombre_in", _subCliente.ApellidoNombre);
+            cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
+            cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
+            cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
+            cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
+            MySqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                idUltimaFacturaSubCliente = Convert.ToInt32(r["ID"].ToString());
+            }
+            if (idUltimaFacturaSubCliente > 0)
+            {
+                exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente);
+            }
+            connection.Close();
+            return exito;
+        }
+
+        private static bool RegistrarDetalleFacturaSubCliente(SubCliente _subCliente, int idCliente, int idUltimaFacturaSubCliente)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "RegistrarDetalleFacturaSubCliente";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("Total1_in", _subCliente.Total1);
+            cmd.Parameters.AddWithValue("Total2_in", _subCliente.Total2);
+            cmd.Parameters.AddWithValue("Total3_in", _subCliente.Total3);
+            cmd.Parameters.AddWithValue("Neto1_in", _subCliente.Neto1);
+            cmd.Parameters.AddWithValue("Neto2_in", _subCliente.Neto2);
+            cmd.Parameters.AddWithValue("Neto3_in", _subCliente.Neto3);
+            cmd.Parameters.AddWithValue("Alicuota1_in", _subCliente.Alicuota1);
+            cmd.Parameters.AddWithValue("Alicuota2_in", _subCliente.Alicuota2);
+            cmd.Parameters.AddWithValue("Alicuota3_in", _subCliente.Alicuota3);
+            cmd.Parameters.AddWithValue("Iva1_in", _subCliente.Iva1);
+            cmd.Parameters.AddWithValue("Iva2_in", _subCliente.Iva2);
+            cmd.Parameters.AddWithValue("Iva3_in", _subCliente.Iva3);
+            cmd.Parameters.AddWithValue("idSubCliente_in", idUltimaFacturaSubCliente);
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static bool InsertCliente(Cliente _cliente)
         {
             bool exito = false;

@@ -23,6 +23,53 @@ namespace Sico.Negocio
             lista = Dao.ClienteDao.CargarComboLocalidades();
             return lista;
         }
+        public static bool GuardarNuevoSubCliente(SubCliente _subCliente, string cuit)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatosSubCliente(_subCliente);
+                exito = ClienteDao.GuardarNuevoSubCliente(_subCliente, cuit);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
+
+        private static void ValidarDatosSubCliente(SubCliente _subCliente)
+        {
+            if (String.IsNullOrEmpty(_subCliente.Dni))
+            {
+                const string message = "El campo Dni es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+            if (String.IsNullOrEmpty(_subCliente.ApellidoNombre))
+            {
+                const string message = "El campo Persona es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+
+            if (String.IsNullOrEmpty(_subCliente.Direccion))
+            {
+                const string message = "El campo dirección es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+        }
+
         public static List<string> CargarComboLocalidadesPorIdProvincia(int idProvinciaSeleccionada)
         {
             List<string> lista = new List<string>();
@@ -181,7 +228,7 @@ namespace Sico.Negocio
             List<SubCliente> _listaSubClientes = new List<SubCliente>();
             try
             {
-                _listaSubClientes = ClienteDao.BuscarSubClientePorApellidoNombreCuit(apellidoNombre,cuit);
+                _listaSubClientes = ClienteDao.BuscarSubClientePorApellidoNombreCuit(apellidoNombre, cuit);
             }
             catch (Exception ex)
             {
@@ -194,6 +241,35 @@ namespace Sico.Negocio
             }
             return _listaSubClientes;
         }
+
+        public static bool GuardarFacturaSubCliente(SubCliente _subCliente, string cuit)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatosFactura(_subCliente);
+                exito = ClienteDao.GuardarFacturaSubCliente(_subCliente, cuit);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
+
+        private static void ValidarDatosFactura(SubCliente _subCliente)
+        {
+            if (String.IsNullOrEmpty(_subCliente.ApellidoNombre) || _subCliente.ApellidoNombre == "Seleccione")
+            {
+                const string message = "El campo Persona es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+        }
+
         public static List<Cliente> BuscarClientePorNombreRazonSocial(string nombreRazonSocial)
         {
             List<Cliente> _listaClientes = new List<Cliente>();

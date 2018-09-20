@@ -83,16 +83,17 @@ namespace Sico
                     dgvSubClientes.Columns[2].HeaderCell.Style.ForeColor = Color.White;
 
                     dgvSubClientes.Columns[3].HeaderText = "Persona";
-                    dgvSubClientes.Columns[3].Width = 250;
+                    dgvSubClientes.Columns[3].Width = 200;
                     dgvSubClientes.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvSubClientes.Columns[3].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvSubClientes.Columns[3].HeaderCell.Style.ForeColor = Color.White;
 
                     dgvSubClientes.Columns[4].HeaderText = "Dni";
-                    dgvSubClientes.Columns[4].Width = 100;
+                    dgvSubClientes.Columns[4].Width = 80;
                     dgvSubClientes.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvSubClientes.Columns[4].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvSubClientes.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+                    dgvSubClientes.Columns[4].Visible = false;
 
                     dgvSubClientes.Columns[5].HeaderText = "Dirección";
                     dgvSubClientes.Columns[5].Width = 250;
@@ -102,11 +103,11 @@ namespace Sico
                     dgvSubClientes.Columns[5].Visible = false;
 
                     dgvSubClientes.Columns[6].HeaderText = "Monto";
-                    dgvSubClientes.Columns[6].Width = 250;
+                    dgvSubClientes.Columns[6].Width = 150;
                     dgvSubClientes.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvSubClientes.Columns[6].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvSubClientes.Columns[6].HeaderCell.Style.ForeColor = Color.White;
-                    dgvSubClientes.Columns[6].Visible = false;
+                    dgvSubClientes.Columns[6].Visible = true;
 
                     dgvSubClientes.Columns[7].HeaderText = "Cliente";
                     dgvSubClientes.Columns[7].Width = 95;
@@ -114,11 +115,46 @@ namespace Sico
                     dgvSubClientes.Columns[7].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvSubClientes.Columns[7].HeaderCell.Style.ForeColor = Color.White;
                     dgvSubClientes.Columns[7].Visible = false;
+
+                    dgvSubClientes.Columns[8].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[8].Visible = false;
+
+                    dgvSubClientes.Columns[9].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[9].Visible = false;
+
+                    dgvSubClientes.Columns[10].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[10].Visible = false;
+
+                    dgvSubClientes.Columns[11].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[11].Visible = false;
+
+                    dgvSubClientes.Columns[12].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[12].Visible = false;
+
+                    dgvSubClientes.Columns[13].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[13].Visible = false;
+
+                    dgvSubClientes.Columns[14].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[14].Visible = false;
+
+                    dgvSubClientes.Columns[15].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[15].Visible = false;
+
+                    dgvSubClientes.Columns[16].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[16].Visible = false;
+
+                    dgvSubClientes.Columns[17].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[17].Visible = false;
+
+                    dgvSubClientes.Columns[18].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[18].Visible = false;
+
+                    dgvSubClientes.Columns[19].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[19].Visible = false;
                 }
             }
         }
         #endregion
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -132,11 +168,17 @@ namespace Sico
 
             }
         }
-
         private void btnNuevaFactura_Click(object sender, EventArgs e)
         {
             FacturacionSubClientesWF _facturacion = new FacturacionSubClientesWF(razonSocial, cuit);
             _facturacion.Show();
+        }
+
+        private void btnNuevoSubCliente_Click(object sender, EventArgs e)
+        {
+            SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
+            _sub.Show();
+            Hide();
         }
     }
 }
