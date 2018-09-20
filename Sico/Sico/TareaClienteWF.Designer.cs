@@ -175,6 +175,7 @@
             this.btnNuevoSubCliente.Text = "Sub-Cliente";
             this.btnNuevoSubCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevoSubCliente.UseVisualStyleBackColor = true;
+            this.btnNuevoSubCliente.Click += new System.EventHandler(this.btnNuevoSubCliente_Click_1);
             // 
             // label2
             // 

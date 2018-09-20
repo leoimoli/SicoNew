@@ -37,7 +37,7 @@ namespace Sico
                 else
                 {
                     Sesion.UsuarioLogueado = usuarios.First();
-                    UsuarioWF _usuario = new UsuarioWF();
+                    ClienteWF _usuario = new ClienteWF();
                     _usuario.Show();
                     Hide();
                 }

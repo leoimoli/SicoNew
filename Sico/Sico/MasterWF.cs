@@ -23,5 +23,12 @@ namespace Sico
             _cliente.Show();
             Hide();
         }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsuarioWF _usuario = new UsuarioWF();
+            _usuario.Show();
+            Hide();
+        }
     }
 }

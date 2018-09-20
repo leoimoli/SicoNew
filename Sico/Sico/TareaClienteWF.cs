@@ -180,5 +180,12 @@ namespace Sico
             _sub.Show();
             Hide();
         }
+
+        private void btnNuevoSubCliente_Click_1(object sender, EventArgs e)
+        {
+            SubClienteWF _sub = new SubClienteWF(razonSocial,cuit);
+            _sub.Show();
+            Hide();
+        }
     }
 }
