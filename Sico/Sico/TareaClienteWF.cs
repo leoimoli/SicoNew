@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -103,7 +104,7 @@ namespace Sico
                     dgvSubClientes.Columns[5].Visible = false;
 
                     dgvSubClientes.Columns[6].HeaderText = "Monto";
-                    dgvSubClientes.Columns[6].Width = 150;
+                    dgvSubClientes.Columns[6].Width = 135;
                     dgvSubClientes.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvSubClientes.Columns[6].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvSubClientes.Columns[6].HeaderCell.Style.ForeColor = Color.White;
@@ -151,7 +152,44 @@ namespace Sico
 
                     dgvSubClientes.Columns[19].HeaderText = "Cliente";
                     dgvSubClientes.Columns[19].Visible = false;
+
+                    DataGridViewButtonColumn BotonVer = new DataGridViewButtonColumn();
+                    BotonVer.Name = "Ver";
+                    BotonVer.HeaderText = "Ver";
+                    this.dgvSubClientes.Columns.Add(BotonVer);
+                    dgvSubClientes.Columns[20].Width = 40;
+                    dgvSubClientes.Columns[20].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvSubClientes.Columns[20].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvSubClientes.Columns[20].HeaderCell.Style.ForeColor = Color.White;
                 }
+            }
+        }
+
+        private void dgvSubClientes_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && this.dgvSubClientes.Columns[e.ColumnIndex].Name == "Ver" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell celBoton = this.dgvSubClientes.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
+                //string reemplazarDebug = "bin\\Debug\\";
+                //string reemplazarRelease = "bin\\Release\\";
+                // string path = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\ImagenesBotones" + "\\" + "Seleccionar.ico";
+                //path = path.Replace(reemplazarDebug, string.Empty);
+                //path = path.Replace(reemplazarRelease, string.Empty);
+                //Icon icoAtomico = new Icon(path);
+                //e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 25, e.CellBounds.Top + 3);
+                //this.dgvSubClientes.Rows[e.RowIndex].Height = icoAtomico.Height + 5;
+                e.Handled = true;
+            }
+        }
+        private void ClickBoton(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvSubClientes.CurrentCell.ColumnIndex == 20)
+            {
+                var idsubCliente = Convert.ToString(this.dgvSubClientes.CurrentRow.Cells[0].Value);
+                VistaFacturacionSubClienteWF _vista = new VistaFacturacionSubClienteWF(idsubCliente, cuit, razonSocial);
+                _vista.Show();
+                Hide();
             }
         }
         #endregion
@@ -183,7 +221,7 @@ namespace Sico
 
         private void btnNuevoSubCliente_Click_1(object sender, EventArgs e)
         {
-            SubClienteWF _sub = new SubClienteWF(razonSocial,cuit);
+            SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
             _sub.Show();
             Hide();
         }

@@ -38,6 +38,25 @@ namespace Sico.Negocio
             return exito;
         }
 
+        public static List<SubCliente> BuscarDetalleFacturaSubCliente(string idsubCliente)
+        {
+            List<SubCliente> _listaSubClientes = new List<SubCliente>();
+            try
+            {
+                _listaSubClientes = ClienteDao.BuscarDetalleFacturaSubCliente(idsubCliente);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaSubClientes;
+        }
+
         private static void ValidarDatosSubCliente(SubCliente _subCliente)
         {
             if (String.IsNullOrEmpty(_subCliente.Dni))
