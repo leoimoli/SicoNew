@@ -83,7 +83,8 @@ namespace Sico
         private void btnPdf_Click(object sender, EventArgs e)
         {
             Document documentoPDF = new Document();
-            PdfWriter.GetInstance(documentoPDF, new System.IO.FileStream(groupBox2.Text, FileMode.Create));
+            var prueba =
+            PdfWriter.GetInstance(documentoPDF, new FileStream("C:/'" + groupBox2.Text + "'.pdf", FileMode.Create));
             documentoPDF.Open();
             documentoPDF.Add(new Paragraph(groupBox2.Text, FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL)));
             // documentoPDF.AddAuthor(groupBox2.Text);
@@ -95,9 +96,9 @@ namespace Sico
             documentoPDF.AddCreationDate();
             //'Cerramos el objeto documento, guardamos y creamos el PDF
             documentoPDF.Close();
-            System.Diagnostics.Process.Start(lblNombreEdit.Text);
+            //System.Diagnostics.Process.Start(lblNombreEdit.Text);
         }
-       
+
     }
 }
 
