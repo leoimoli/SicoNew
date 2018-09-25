@@ -388,7 +388,7 @@
             this.btnPdf.Text = "Exportar PDF";
             this.btnPdf.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnPdf.UseVisualStyleBackColor = true;
-            //this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
+            this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
             // 
             // VistaFacturacionSubClienteWF
             // 
