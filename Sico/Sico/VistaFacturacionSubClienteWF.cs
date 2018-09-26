@@ -72,7 +72,7 @@ namespace Sico
             txtTotal1.Enabled = false;
             txtTotal2.Enabled = false;
             txtTotal3.Enabled = false;
-            txtNeto1.Enabled = false;
+            //txtNeto1.Enabled = false;
             txtNeto2.Enabled = false;
             txtNeto3.Enabled = false;
             txtIva1.Enabled = false;
@@ -84,9 +84,31 @@ namespace Sico
         {
             Document documentoPDF = new Document();
             var prueba =
-            PdfWriter.GetInstance(documentoPDF, new FileStream("C:/'" + groupBox2.Text + "'.pdf", FileMode.Create));
+            PdfWriter.GetInstance(documentoPDF, new FileStream("C:/'" + lblsubCliente.Text + " Nro.Factura " + txtFactura.Text + "'.pdf", FileMode.Create));
             documentoPDF.Open();
-            documentoPDF.Add(new Paragraph(groupBox2.Text, FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL)));
+            Paragraph p1 = new Paragraph("RAZON SOCIAL:" + lblNombreEdit.Text + "" + "                                                                       " + " CUIT: " + lblCuitEdit.Text + "", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
+            Paragraph p1a = new Paragraph("" + System.Environment.NewLine + "");
+            Paragraph p2 = new Paragraph("APELLIDO Y NOMBRE:" + lblsubCliente.Text + "", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
+            Paragraph p2a = new Paragraph("" + System.Environment.NewLine + "");
+            Paragraph p3 = new Paragraph("FECHA:" + dtFecha.Text + "" + "                                            " + " NRO:BOLETA: " + txtFactura.Text + "", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
+            Paragraph p3a = new Paragraph("" + System.Environment.NewLine + "");
+            Paragraph p4 = new Paragraph("                  " + "Total: " + txtTotal1.Text + "          " + "Neto:" + txtNeto1.Text + "          " + "Alicuota: " + lbl105.Text + "         " + "Iva:" + txtIva1.Text + "", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
+            Paragraph p5 = new Paragraph("                  " + "Total: " + txtTotal2.Text + "          " + "Neto:" + txtNeto2.Text + "          " + "Alicuota: " + lbl21.Text + "         " + "Iva:" + txtIva2.Text + "", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
+            Paragraph p6 = new Paragraph("                  " + "Total: " + txtTotal3.Text + "          " + "Neto:" + txtNeto3.Text + "          " + "Alicuota: " + lbl27.Text + "         " + "Iva:" + txtIva3.Text + "", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
+            Paragraph p6a = new Paragraph("" + System.Environment.NewLine + "");
+            Paragraph p7 = new Paragraph("                  " + "          " + "                        " + "Importe Total: " + lblTotalEdit.Text + "         ", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
+            documentoPDF.Add(p1);
+            documentoPDF.Add(p1a);
+            documentoPDF.Add(p2);
+            documentoPDF.Add(p2a);
+            documentoPDF.Add(p3);
+            documentoPDF.Add(p3a);
+            documentoPDF.Add(p4);
+            documentoPDF.Add(p5);
+            documentoPDF.Add(p6);
+            documentoPDF.Add(p6a);
+            documentoPDF.Add(p7);
+            // documentoPDF.Add(new Paragraph(lblNombreEdit.Text +" "+ lblCuitEdit.Text, FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL)));
             // documentoPDF.AddAuthor(groupBox2.Text);
             documentoPDF.AddAuthor(lblNombreEdit.Text);
             documentoPDF.AddCreator("AjpdSoft Convertir texto a PDF - www.ajpdsoft.com");
@@ -99,6 +121,12 @@ namespace Sico
             //System.Diagnostics.Process.Start(lblNombreEdit.Text);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            _tarea.Show();
+            Hide();
+        }
     }
 }
 

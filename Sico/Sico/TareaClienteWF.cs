@@ -197,7 +197,8 @@ namespace Sico
         {
             try
             {
-                List<SubCliente> _cliente = new List<SubCliente>();
+                //List<SubCliente> _cliente = new List<SubCliente>();
+                List<SubCliente> ListaFacturas = new List<SubCliente>();
                 var ApellidoNombre = txtBuscar.Text;
                 ListaFacturas = ClienteNeg.BuscarSubClientePorApellidoNombre(ApellidoNombre, cuit);
             }
