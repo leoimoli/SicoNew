@@ -50,12 +50,17 @@ namespace Sico
             {
                 if (value.Count > 0)
                 {
+                    if (value != dgvSubClientes.DataSource && dgvSubClientes.DataSource != null)
+                    {
+                        dgvSubClientes.Columns.Clear();
+                        dgvSubClientes.Refresh();
+                    }
                     lblCantidad.Visible = true;
                     lblCantidadEdit.Visible = true;
                     lblCantidadEdit.Text = Convert.ToString(value.Count);
                     btnBuscar.Visible = true;
                     label2.Visible = true;
-                    label4.Visible = true;
+                    lblSeleccionar.Visible = true;
                     txtBuscar.Visible = true;
                     txtBuscar.Enabled = true;
                     txtBuscar.Focus();
@@ -192,13 +197,14 @@ namespace Sico
                 Hide();
             }
         }
+
         #endregion
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
                 //List<SubCliente> _cliente = new List<SubCliente>();
-                List<SubCliente> ListaFacturas = new List<SubCliente>();
+                //List<SubCliente> ListaFacturas = new List<SubCliente>();
                 var ApellidoNombre = txtBuscar.Text;
                 ListaFacturas = ClienteNeg.BuscarSubClientePorApellidoNombre(ApellidoNombre, cuit);
             }
@@ -224,6 +230,13 @@ namespace Sico
         {
             SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
             _sub.Show();
+            Hide();
+        }
+
+        private void btnConsultarTotales_Click(object sender, EventArgs e)
+        {
+            VistaConsultaFacturacionMensualWF _consulta = new VistaConsultaFacturacionMensualWF(razonSocial, cuit);
+            _consulta.Show();
             Hide();
         }
     }

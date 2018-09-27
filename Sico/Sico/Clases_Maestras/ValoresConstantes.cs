@@ -38,5 +38,21 @@ namespace Sico.Clases_Maestras
             }
         }
 
+        public static string[] Meses
+        {
+            get
+            {
+                return new string[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre","Noviembre", "Diciembre" };
+            }
+        }
+
+        public static string[] Años
+        {
+            get
+            {
+                return new string[] { "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021" };
+            }
+        }
+
     }
 }

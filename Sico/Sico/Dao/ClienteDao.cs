@@ -91,6 +91,59 @@ namespace Sico.Dao
             return lista;
         }
 
+        public static List<SubCliente> BuscarFacturacionTotal(string cuit, int mes, string año)
+        {
+            List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
+            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
+            id = BuscarClientePorCuit(cuit);
+            int idCliente = id[0].IdCliente;
+            if (idCliente > 0)
+            {
+                string fecha = mes + "/" + año;
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                            new MySqlParameter("fecha_in", fecha),
+                                      new MySqlParameter("idCliente_in", idCliente)};
+                string proceso = "BuscarFacturacionTotal";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        SubCliente listaSubCliente = new SubCliente();
+                        listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                        listaSubCliente.NroFactura = item["NroFactura"].ToString();
+                        listaSubCliente.Fecha = item["Fecha"].ToString();
+                        //listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
+                        listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
+                        listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                        //// Detalle de la factura
+                        listaSubCliente.Total1 = Convert.ToDecimal(item["Total1"].ToString());
+                        listaSubCliente.Total2 = Convert.ToDecimal(item["Total2"].ToString());
+                        listaSubCliente.Total3 = Convert.ToDecimal(item["Total3"].ToString());
+                        listaSubCliente.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
+                        listaSubCliente.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
+                        listaSubCliente.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
+                        listaSubCliente.Alicuota1 = item["Alicuota1"].ToString();
+                        listaSubCliente.Alicuota2 = item["Alicuota2"].ToString();
+                        listaSubCliente.Alicuota3 = item["Alicuota3"].ToString();
+                        listaSubCliente.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
+                        listaSubCliente.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
+                        listaSubCliente.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+                        lista.Add(listaSubCliente);
+                    }
+                }
+            }
+            connection.Close();
+            return lista;
+        }
         public static List<SubCliente> BuscarTodasFacturasSubCliente(string cuit)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();

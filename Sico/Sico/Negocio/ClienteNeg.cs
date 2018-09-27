@@ -89,6 +89,25 @@ namespace Sico.Negocio
             }
         }
 
+        public static List<SubCliente> BuscarFacturacionTotal(string cuit, int mes, string año)
+        {
+            List<SubCliente> _listaFacturasSubCliente = new List<SubCliente>();
+            try
+            {
+                _listaFacturasSubCliente = ClienteDao.BuscarFacturacionTotal(cuit,mes, año);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaFacturasSubCliente;
+        }
+
         public static List<string> CargarComboLocalidadesPorIdProvincia(int idProvinciaSeleccionada)
         {
             List<string> lista = new List<string>();

@@ -60,6 +60,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPdf = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -119,6 +120,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.progressBar1);
             this.groupBox2.Controls.Add(this.lblsubCliente);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.lblTotalEdit);
@@ -391,6 +393,15 @@
             this.btnPdf.UseVisualStyleBackColor = true;
             this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(144, 161);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(330, 23);
+            this.progressBar1.TabIndex = 42;
+            this.progressBar1.Value = 50;
+            this.progressBar1.Visible = false;
+            // 
             // VistaFacturacionSubClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,5 +457,6 @@
         private System.Windows.Forms.Label lblsubCliente;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnPdf;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

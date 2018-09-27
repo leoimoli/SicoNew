@@ -183,6 +183,16 @@ namespace Sico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap factura__1_ {
+            get {
+                object obj = ResourceManager.GetObject("factura (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap flecha_curva_hacia_atras_a_la_izquierda {
             get {
                 object obj = ResourceManager.GetObject("flecha-curva-hacia-atras-a-la-izquierda", resourceCulture);

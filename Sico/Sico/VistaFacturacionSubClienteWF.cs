@@ -35,6 +35,13 @@ namespace Sico
             {
                 List<SubCliente> _Factura = new List<SubCliente>();
                 _Factura = ClienteNeg.BuscarDetalleFacturaSubCliente(idsubCliente);
+                if (_Factura.Count <= 0)
+                {
+                    MessageBox.Show("La factura seleccionada no tiene un detalle cargado.");
+                    TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+                    _tarea.Show();
+                    Close();
+                }
                 HabilitarCamposConDatos(_Factura);
             }
             catch (Exception ex) { }
@@ -79,9 +86,9 @@ namespace Sico
             txtIva2.Enabled = false;
             txtIva3.Enabled = false;
         }
-
         private void btnPdf_Click(object sender, EventArgs e)
         {
+            ProgressBar();
             Document documentoPDF = new Document();
             var prueba =
             PdfWriter.GetInstance(documentoPDF, new FileStream("C:/'" + lblsubCliente.Text + " Nro.Factura " + txtFactura.Text + "'.pdf", FileMode.Create));
@@ -119,13 +126,34 @@ namespace Sico
             //'Cerramos el objeto documento, guardamos y creamos el PDF
             documentoPDF.Close();
             //System.Diagnostics.Process.Start(lblNombreEdit.Text);
+            LimpiarCampos();
         }
-
+        private void LimpiarCampos()
+        {
+            progressBar1.Value = Convert.ToInt32(null);
+            progressBar1.Visible = false;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
             _tarea.Show();
             Hide();
+        }
+        private void ProgressBar()
+        {
+            progressBar1.Visible = true;
+            progressBar1.Maximum = 100000;
+            progressBar1.Step = 1;
+
+            for (int j = 0; j < 100000; j++)
+            {
+                Caluculate(j);
+                progressBar1.PerformStep();
+            }
+        }
+        private void Caluculate(int i)
+        {
+            double pow = Math.Pow(i, i);
         }
     }
 }
