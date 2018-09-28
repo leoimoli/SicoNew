@@ -65,13 +65,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodArea = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtActividad = new System.Windows.Forms.TextBox();
             this.txtNombreRazonSocial = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -255,8 +255,6 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtCodArea);
             this.groupBox1.Controls.Add(this.txtEmail);
@@ -270,6 +268,24 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Controls.SetChildIndex(this.txtNombreRazonSocial, 0);
+            this.groupBox1.Controls.SetChildIndex(this.txtActividad, 0);
+            this.groupBox1.Controls.SetChildIndex(this.txtEmail, 0);
+            this.groupBox1.Controls.SetChildIndex(this.txtCodArea, 0);
+            this.groupBox1.Controls.SetChildIndex(this.label1, 0);
+            this.groupBox1.Controls.SetChildIndex(this.label4, 0);
+            this.groupBox1.Controls.SetChildIndex(this.label5, 0);
+            this.groupBox1.Controls.SetChildIndex(this.label6, 0);
+            this.groupBox1.Controls.SetChildIndex(this.cmbCondicionAntiAfip, 0);
+            this.groupBox1.Controls.SetChildIndex(this.progressBar1, 0);
+            this.groupBox1.Controls.SetChildIndex(this.label7, 0);
+            this.groupBox1.Controls.SetChildIndex(this.txtCuit, 0);
+            this.groupBox1.Controls.SetChildIndex(this.btnCancelar, 0);
+            this.groupBox1.Controls.SetChildIndex(this.btnGuardar, 0);
+            this.groupBox1.Controls.SetChildIndex(this.txtTelefono, 0);
+            this.groupBox1.Controls.SetChildIndex(this.label8, 0);
+            this.groupBox1.Controls.SetChildIndex(this.groupBox4, 0);
+            this.groupBox1.Controls.SetChildIndex(this.dtFechaInscripcion, 0);
             // 
             // dtFechaInscripcion
             // 
@@ -500,26 +516,6 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Cuit(*):";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(446, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(174, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Fecha de inscripción(*):";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(115, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Actividad(*):";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -562,11 +558,31 @@
             this.txtNombreRazonSocial.Size = new System.Drawing.Size(211, 23);
             this.txtNombreRazonSocial.TabIndex = 0;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(446, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(174, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Fecha de inscripción(*):";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(115, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Actividad(*):";
+            // 
             // ClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.ClientSize = new System.Drawing.Size(1370, 731);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

@@ -30,12 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnFacturar = new System.Windows.Forms.Button();
+            this.btnLibroDiario = new System.Windows.Forms.Button();
             this.lblCuitEdit = new System.Windows.Forms.Label();
             this.lblNombreEdit = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvSubClientes = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnNuevaFactura = new System.Windows.Forms.Button();
+            this.btnNuevoSubCliente = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblSeleccionar = new System.Windows.Forms.Label();
@@ -44,10 +48,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnConsultarTotales = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnNuevaFactura = new System.Windows.Forms.Button();
-            this.btnNuevoSubCliente = new System.Windows.Forms.Button();
-            this.btnFacturar = new System.Windows.Forms.Button();
-            this.btnLibroDiario = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -55,18 +56,44 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.btnFacturar);
             this.groupBox3.Controls.Add(this.btnLibroDiario);
             this.groupBox3.Controls.Add(this.lblCuitEdit);
             this.groupBox3.Controls.Add(this.lblNombreEdit);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Location = new System.Drawing.Point(38, 86);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(878, 121);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tareas";
+            // 
+            // btnFacturar
+            // 
+            this.btnFacturar.Image = global::Sico.Properties.Resources.diagnostico1;
+            this.btnFacturar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnFacturar.Location = new System.Drawing.Point(55, 54);
+            this.btnFacturar.Name = "btnFacturar";
+            this.btnFacturar.Size = new System.Drawing.Size(90, 61);
+            this.btnFacturar.TabIndex = 15;
+            this.btnFacturar.Text = "Facturar";
+            this.btnFacturar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
+            // 
+            // btnLibroDiario
+            // 
+            this.btnLibroDiario.Image = global::Sico.Properties.Resources.diario_abierto;
+            this.btnLibroDiario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLibroDiario.Location = new System.Drawing.Point(174, 54);
+            this.btnLibroDiario.Name = "btnLibroDiario";
+            this.btnLibroDiario.Size = new System.Drawing.Size(90, 61);
+            this.btnLibroDiario.TabIndex = 16;
+            this.btnLibroDiario.Text = "Libro Diario";
+            this.btnLibroDiario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLibroDiario.UseVisualStyleBackColor = true;
+            this.btnLibroDiario.Visible = false;
             // 
             // lblCuitEdit
             // 
@@ -129,6 +156,32 @@
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
+            // 
+            // btnNuevaFactura
+            // 
+            this.btnNuevaFactura.Image = global::Sico.Properties.Resources.factura;
+            this.btnNuevaFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNuevaFactura.Location = new System.Drawing.Point(45, 105);
+            this.btnNuevaFactura.Name = "btnNuevaFactura";
+            this.btnNuevaFactura.Size = new System.Drawing.Size(90, 61);
+            this.btnNuevaFactura.TabIndex = 1;
+            this.btnNuevaFactura.Text = "Factura B";
+            this.btnNuevaFactura.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNuevaFactura.UseVisualStyleBackColor = true;
+            this.btnNuevaFactura.Click += new System.EventHandler(this.btnNuevaFactura_Click);
+            // 
+            // btnNuevoSubCliente
+            // 
+            this.btnNuevoSubCliente.Image = global::Sico.Properties.Resources.agregar_usuario_nuevo;
+            this.btnNuevoSubCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnNuevoSubCliente.Location = new System.Drawing.Point(45, 19);
+            this.btnNuevoSubCliente.Name = "btnNuevoSubCliente";
+            this.btnNuevoSubCliente.Size = new System.Drawing.Size(90, 61);
+            this.btnNuevoSubCliente.TabIndex = 0;
+            this.btnNuevoSubCliente.Text = "Sub-Cliente";
+            this.btnNuevoSubCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnNuevoSubCliente.UseVisualStyleBackColor = true;
+            this.btnNuevoSubCliente.Click += new System.EventHandler(this.btnNuevoSubCliente_Click_1);
             // 
             // label2
             // 
@@ -195,6 +248,7 @@
             this.btnConsultarTotales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnConsultarTotales, "Facturación Mensual");
             this.btnConsultarTotales.UseVisualStyleBackColor = true;
+            this.btnConsultarTotales.Visible = false;
             this.btnConsultarTotales.Click += new System.EventHandler(this.btnConsultarTotales_Click);
             // 
             // btnBuscar
@@ -211,57 +265,15 @@
             this.btnBuscar.Visible = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // btnNuevaFactura
+            // label4
             // 
-            this.btnNuevaFactura.Image = global::Sico.Properties.Resources.factura;
-            this.btnNuevaFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevaFactura.Location = new System.Drawing.Point(45, 105);
-            this.btnNuevaFactura.Name = "btnNuevaFactura";
-            this.btnNuevaFactura.Size = new System.Drawing.Size(90, 61);
-            this.btnNuevaFactura.TabIndex = 1;
-            this.btnNuevaFactura.Text = "Factura B";
-            this.btnNuevaFactura.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNuevaFactura.UseVisualStyleBackColor = true;
-            this.btnNuevaFactura.Click += new System.EventHandler(this.btnNuevaFactura_Click);
-            // 
-            // btnNuevoSubCliente
-            // 
-            this.btnNuevoSubCliente.Image = global::Sico.Properties.Resources.agregar_usuario_nuevo;
-            this.btnNuevoSubCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevoSubCliente.Location = new System.Drawing.Point(45, 19);
-            this.btnNuevoSubCliente.Name = "btnNuevoSubCliente";
-            this.btnNuevoSubCliente.Size = new System.Drawing.Size(90, 61);
-            this.btnNuevoSubCliente.TabIndex = 0;
-            this.btnNuevoSubCliente.Text = "Sub-Cliente";
-            this.btnNuevoSubCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnNuevoSubCliente.UseVisualStyleBackColor = true;
-            this.btnNuevoSubCliente.Click += new System.EventHandler(this.btnNuevoSubCliente_Click_1);
-            // 
-            // btnFacturar
-            // 
-            this.btnFacturar.Image = global::Sico.Properties.Resources.diagnostico1;
-            this.btnFacturar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFacturar.Location = new System.Drawing.Point(55, 54);
-            this.btnFacturar.Name = "btnFacturar";
-            this.btnFacturar.Size = new System.Drawing.Size(90, 61);
-            this.btnFacturar.TabIndex = 15;
-            this.btnFacturar.Text = "Facturar";
-            this.btnFacturar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFacturar.UseVisualStyleBackColor = true;
-            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
-            // 
-            // btnLibroDiario
-            // 
-            this.btnLibroDiario.Image = global::Sico.Properties.Resources.diario_abierto;
-            this.btnLibroDiario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLibroDiario.Location = new System.Drawing.Point(174, 54);
-            this.btnLibroDiario.Name = "btnLibroDiario";
-            this.btnLibroDiario.Size = new System.Drawing.Size(90, 61);
-            this.btnLibroDiario.TabIndex = 16;
-            this.btnLibroDiario.Text = "Libro Diario";
-            this.btnLibroDiario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnLibroDiario.UseVisualStyleBackColor = true;
-            this.btnLibroDiario.Visible = false;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(20, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(167, 20);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Nombre/Razón Social:";
             // 
             // TareaClienteWF
             // 
@@ -280,7 +292,7 @@
             this.Controls.Add(this.groupBox3);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "TareaClienteWF";
-            this.Text = "TareaClienteWF";
+            this.Text = "Tarea Cliente";
             this.Load += new System.EventHandler(this.TareaClienteWF_Load);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.dgvSubClientes, 0);
@@ -322,5 +334,6 @@
         private System.Windows.Forms.Button btnNuevaFactura;
         private System.Windows.Forms.Button btnConsultarTotales;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -36,6 +36,11 @@
     <Reference Include="itextsharp">
       <HintPath>..\..\..\..\..\Desktop\Stock V1.0\Aplicacion\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Desktop\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.3.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Desktop\MySql.Data.DLL</HintPath>
@@ -80,6 +85,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InicioWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioWF.Designer.cs">
+      <DependentUpon>InicioWF.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginWF.cs">
       <SubType>Form</SubType>
@@ -132,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FacturacionSubClientesWF.resx">
       <DependentUpon>FacturacionSubClientesWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InicioWF.resx">
+      <DependentUpon>InicioWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginWF.resx">
       <DependentUpon>LoginWF.cs</DependentUpon>
@@ -227,6 +241,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\factura %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comprador %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usuario-hombre %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Imagen_Sico.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

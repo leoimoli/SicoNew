@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sico.Entidades;
 
 namespace Sico
 {
@@ -103,7 +104,39 @@ namespace Sico
                     dataGridView1.Visible = true;
                     dataGridView1.ReadOnly = true;
                     dataGridView1.RowHeadersVisible = false;
+
+
+
+                    double TotalMonto = CalcularTotalMonto(value);
+                    double TotalImporte1 = CalcularTotalImporte1(value);
+                    double TotalImporte2 = CalcularTotalImporte2(value);
+                    double TotalImporte3 = CalcularTotalImporte3(value);
+
+                    double TotalNeto10 = CalcularTotalNeto10(value);
+                    double TotalNeto21 = CalcularTotalNeto21(value);
+                    double TotalNeto27 = CalcularTotalNeto27(value);
+
+                    double TotalIva10 = CalcularTotalIva10(value);
+                    double TotalIva21 = CalcularTotalIva21(value);
+                    double TotalIva27 = CalcularTotalIva27(value);
+
+                    SubCliente ultimo = new SubCliente();
+                    ultimo.NroFactura = "TOTAL";
+                    ultimo.Total1 = Convert.ToDecimal(TotalImporte1);
+                    ultimo.Total2 = Convert.ToDecimal(TotalImporte2);
+                    ultimo.Total3 = Convert.ToDecimal(TotalImporte3);
+
+                    ultimo.Neto1 = Convert.ToDecimal(TotalNeto10);
+                    ultimo.Neto2 = Convert.ToDecimal(TotalNeto21);
+                    ultimo.Neto3 = Convert.ToDecimal(TotalNeto27);
+
+                    ultimo.Iva1 = Convert.ToDecimal(TotalIva10);
+                    ultimo.Iva2 = Convert.ToDecimal(TotalIva21);
+                    ultimo.Iva3 = Convert.ToDecimal(TotalIva27);
+                    ultimo.Monto = Convert.ToDecimal(TotalMonto);
+                    value.Add(ultimo);
                     dataGridView1.DataSource = value;
+
 
                     dataGridView1.Columns[0].HeaderText = "Id Movimiento";
                     dataGridView1.Columns[0].Width = 130;
@@ -212,23 +245,158 @@ namespace Sico
                     dataGridView1.Columns[19].Width = 80;
                     dataGridView1.Columns[19].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dataGridView1.Columns[19].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Red;
+
+                }
+                else
+                {
+                    dataGridView1.Visible = false;
+                    MessageBox.Show("No se encontraron datos con los parametros ingresados.");
                 }
             }
         }
+        #region Calculos totales
+        private double CalcularTotalIva27(List<SubCliente> value)
+        {
+            decimal totaliva27 = 0;
+            foreach (var item in value)
+            {
+                totaliva27 += item.Iva3;
+            }
+            double valor = Convert.ToDouble(totaliva27);
+            return valor;
+        }
+        private double CalcularTotalIva21(List<SubCliente> value)
+        {
+            decimal totaliva21 = 0;
+            foreach (var item in value)
+            {
+                totaliva21 += item.Iva2;
+            }
+            double valor = Convert.ToDouble(totaliva21);
+            return valor;
+        }
+        private double CalcularTotalIva10(List<SubCliente> value)
+        {
+            decimal totaliva10 = 0;
+            foreach (var item in value)
+            {
+                totaliva10 += item.Iva3;
+            }
+            double valor = Convert.ToDouble(totaliva10);
+            return valor;
+        }
+        private double CalcularTotalNeto27(List<SubCliente> value)
+        {
+            decimal totalNeto27 = 0;
+            foreach (var item in value)
+            {
+                totalNeto27 += item.Neto3;
+            }
+            double valor = Convert.ToDouble(totalNeto27);
+            return valor;
+        }
+        private double CalcularTotalNeto21(List<SubCliente> value)
+        {
+            decimal totalNeto21 = 0;
+            foreach (var item in value)
+            {
+                totalNeto21 += item.Neto2;
+            }
+            double valor = Convert.ToDouble(totalNeto21);
+            return valor;
+        }
+        private double CalcularTotalNeto10(List<SubCliente> value)
+        {
+            decimal totalNeto10 = 0;
+            foreach (var item in value)
+            {
+                totalNeto10 += item.Neto1;
+            }
+            double valor = Convert.ToDouble(totalNeto10);
+            return valor;
+        }
+        private double CalcularTotalImporte3(List<SubCliente> value)
+        {
+            decimal totalImporte3 = 0;
+            foreach (var item in value)
+            {
+                totalImporte3 += item.Total3;
+            }
+            double valor = Convert.ToDouble(totalImporte3);
+            return valor;
+        }
+        private double CalcularTotalImporte2(List<SubCliente> value)
+        {
+            decimal totalImporte2 = 0;
+            foreach (var item in value)
+            {
+                totalImporte2 += item.Total2;
+            }
+            double valor = Convert.ToDouble(totalImporte2);
+            return valor;
+        }
+        private double CalcularTotalImporte1(List<SubCliente> value)
+        {
+            decimal totalImporte1 = 0;
+            foreach (var item in value)
+            {
+                totalImporte1 += item.Total1;
+            }
+            double valor = Convert.ToDouble(totalImporte1);
+            return valor;
+        }
+        private double CalcularTotalMonto(List<SubCliente> value)
+        {
+            decimal totalMonto = 0;
+            foreach (var item in value)
+            {
+                totalMonto += item.Monto;
+            }
+            double valor = Convert.ToDouble(totalMonto);
+            return valor;
+        }
+        #endregion
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
+
                 string año = cmbAño.Text;
                 string MesSeleccionado = cmbMes.Text;
                 int mes = ValidarMesSeleccionado(MesSeleccionado);
                 ListaTotalFacturacion = ClienteNeg.BuscarFacturacionTotal(cuit, mes, año);
-                //if (ListaTotalFacturacion.ToString() == "")
-                //{ MessageBox.Show("No se encontro facturación cargada con el mes y año seleccionado."); }
-
             }
             catch (Exception ex)
             { }
+        }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            _tarea.Show();
+            Close();
+        }
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridView1.MultiSelect = true;
+            dataGridView1.SelectAll();
+            DataObject dataObj = dataGridView1.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+            //Open an excel instance and paste the copied data
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Microsoft.Office.Interop.Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
+            CR.Select();
+            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
     }
 }

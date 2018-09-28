@@ -24,7 +24,6 @@ namespace Sico
             this.razonSocial = razonSocial;
             this.cuit = cuit;
         }
-
         private void TareaClienteWF_Load(object sender, EventArgs e)
         {
             lblNombreEdit.Text = razonSocial;
@@ -41,6 +40,43 @@ namespace Sico
                 txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
             }
             catch (Exception ex) { }
+        }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //List<SubCliente> _cliente = new List<SubCliente>();
+                //List<SubCliente> ListaFacturas = new List<SubCliente>();
+                var ApellidoNombre = txtBuscar.Text;
+                ListaFacturas = ClienteNeg.BuscarSubClientePorApellidoNombre(ApellidoNombre, cuit);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void btnNuevaFactura_Click(object sender, EventArgs e)
+        {
+            FacturacionSubClientesWF _facturacion = new FacturacionSubClientesWF(razonSocial, cuit);
+            _facturacion.Show();
+        }
+        private void btnNuevoSubCliente_Click(object sender, EventArgs e)
+        {
+            SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
+            _sub.Show();
+            Hide();
+        }
+        private void btnNuevoSubCliente_Click_1(object sender, EventArgs e)
+        {
+            SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
+            _sub.Show();
+            Hide();
+        }
+        private void btnConsultarTotales_Click(object sender, EventArgs e)
+        {
+            VistaConsultaFacturacionMensualWF _consulta = new VistaConsultaFacturacionMensualWF(razonSocial, cuit);
+            _consulta.Show();
+            Hide();
         }
         #endregion
         #region Funciones
@@ -59,6 +95,7 @@ namespace Sico
                     lblCantidadEdit.Visible = true;
                     lblCantidadEdit.Text = Convert.ToString(value.Count);
                     btnBuscar.Visible = true;
+                    btnConsultarTotales.Visible = true;
                     label2.Visible = true;
                     lblSeleccionar.Visible = true;
                     txtBuscar.Visible = true;
@@ -167,6 +204,8 @@ namespace Sico
                     dgvSubClientes.Columns[20].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
                     dgvSubClientes.Columns[20].HeaderCell.Style.ForeColor = Color.White;
                 }
+
+                else { MessageBox.Show("No se encontraron resultados para la persona seleccionada."); }
             }
         }
 
@@ -176,14 +215,6 @@ namespace Sico
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
                 DataGridViewButtonCell celBoton = this.dgvSubClientes.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
-                //string reemplazarDebug = "bin\\Debug\\";
-                //string reemplazarRelease = "bin\\Release\\";
-                // string path = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\ImagenesBotones" + "\\" + "Seleccionar.ico";
-                //path = path.Replace(reemplazarDebug, string.Empty);
-                //path = path.Replace(reemplazarRelease, string.Empty);
-                //Icon icoAtomico = new Icon(path);
-                //e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 25, e.CellBounds.Top + 3);
-                //this.dgvSubClientes.Rows[e.RowIndex].Height = icoAtomico.Height + 5;
                 e.Handled = true;
             }
         }
@@ -198,46 +229,6 @@ namespace Sico
             }
         }
 
-        #endregion
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //List<SubCliente> _cliente = new List<SubCliente>();
-                //List<SubCliente> ListaFacturas = new List<SubCliente>();
-                var ApellidoNombre = txtBuscar.Text;
-                ListaFacturas = ClienteNeg.BuscarSubClientePorApellidoNombre(ApellidoNombre, cuit);
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-        private void btnNuevaFactura_Click(object sender, EventArgs e)
-        {
-            FacturacionSubClientesWF _facturacion = new FacturacionSubClientesWF(razonSocial, cuit);
-            _facturacion.Show();
-        }
-
-        private void btnNuevoSubCliente_Click(object sender, EventArgs e)
-        {
-            SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
-            _sub.Show();
-            Hide();
-        }
-
-        private void btnNuevoSubCliente_Click_1(object sender, EventArgs e)
-        {
-            SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
-            _sub.Show();
-            Hide();
-        }
-
-        private void btnConsultarTotales_Click(object sender, EventArgs e)
-        {
-            VistaConsultaFacturacionMensualWF _consulta = new VistaConsultaFacturacionMensualWF(razonSocial, cuit);
-            _consulta.Show();
-            Hide();
-        }
+        #endregion     
     }
 }
