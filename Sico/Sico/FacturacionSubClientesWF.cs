@@ -225,10 +225,39 @@ namespace Sico
                 string NuevoNroFactura = ClienteNeg.BuscarNuevoNroFactura(persona);
                 txtFactura.Text = NuevoNroFactura;
                 dtFecha.Enabled = true;
+                string apellidoNombre = cmbPersonas.Text;
+                List<SubCliente> DatosPersonales = ClienteNeg.BuscarDatosSubClientePorApellidoNombre(apellidoNombre, cuit);
+                if (DatosPersonales.Count > 0)
+                {
+                    HabilitarLabels();
+                    var datos = DatosPersonales.First();
+                    if (String.IsNullOrEmpty(datos.Dni))
+                    { lblDniEdit.Text = "No informa"; }
+                    else { lblDniEdit.Text = datos.Dni; }
+
+                    if (String.IsNullOrEmpty(datos.Direccion))
+                    { lblDireccionEdit.Text = "No informa"; }
+                    else { lblDireccionEdit.Text = datos.Direccion; }
+
+                    if (String.IsNullOrEmpty(datos.Observacion))
+                    { lblObservacionsEdit.Text = "No informa"; }
+                    else { lblObservacionsEdit.Text = datos.Observacion; }
+                }
             }
             catch (Exception ex)
             { }
         }
+
+        private void HabilitarLabels()
+        {
+            lblDni.Visible = true;
+            lblDniEdit.Visible = true;
+            lblObservaciones.Visible = true;
+            lblObservacionsEdit.Visible = true;
+            lblDireccion.Visible = true;
+            lblDireccionEdit.Visible = true;
+        }
+
         private SubCliente CargarEntidad()
         {
             SubCliente _subCliente = new SubCliente();
@@ -295,6 +324,15 @@ namespace Sico
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             lblTotalEdit.Text = "-";
+            Total = 0;
+            lblDireccionEdit.Clear();
+            lblDniEdit.Clear();
+            lblObservacionsEdit.Text = "";
+            lblDni.Visible = false;
+            lblDireccion.Visible = false;
+            lblObservaciones.Visible = false;
+            lblDireccionEdit.Visible = false;
+            lblDniEdit.Visible = false;
         }
         private void FuncionesBotonCancelar()
         {
@@ -314,6 +352,14 @@ namespace Sico
             progressBar1.Visible = false;
             lblTotalEdit.Text = "-";
             Total = 0;
+            lblDireccionEdit.Clear();
+            lblDniEdit.Clear();
+            lblObservacionsEdit.Text = "";
+            lblDni.Visible = false;
+            lblDireccion.Visible = false;
+            lblObservaciones.Visible = false;
+            lblDireccionEdit.Visible = false;
+            lblDniEdit.Visible = false;
         }
         #endregion
 

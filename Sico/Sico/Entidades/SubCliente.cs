@@ -28,5 +28,6 @@ namespace Sico.Entidades
         public decimal Iva1 { get; set; }
         public decimal Iva2 { get; set; }
         public decimal Iva3 { get; set; }
+        public string Observacion { get; set; }
     }
 }

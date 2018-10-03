@@ -57,6 +57,21 @@ namespace Sico.Negocio
             return _listaSubClientes;
         }
 
+        public static bool EditarSubCliente(SubCliente _subCliente, string cuit)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatosSubCliente(_subCliente);
+                exito = ClienteDao.EditarSubCliente(_subCliente, cuit);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
+
         private static void ValidarDatosSubCliente(SubCliente _subCliente)
         {
             if (String.IsNullOrEmpty(_subCliente.Dni))
@@ -229,6 +244,26 @@ namespace Sico.Negocio
                 throw new Exception();
             }
         }
+
+        public static List<SubCliente> BuscarDatosSubClientePorApellidoNombre(string apellidoNombre, string cuit)
+        {
+            List<SubCliente> _listaSubClientes = new List<SubCliente>();
+            try
+            {
+                _listaSubClientes = ClienteDao.BuscarDatosSubClientePorApellidoNombre(apellidoNombre, cuit);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaSubClientes;
+        }
+
         public static bool EditarCliente(Cliente _cliente)
         {
             bool exito = false;
