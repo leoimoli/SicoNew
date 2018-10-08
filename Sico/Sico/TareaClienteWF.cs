@@ -195,14 +195,17 @@ namespace Sico
                     dgvSubClientes.Columns[19].HeaderText = "Cliente";
                     dgvSubClientes.Columns[19].Visible = false;
 
+                    dgvSubClientes.Columns[20].HeaderText = "Observacion";
+                    dgvSubClientes.Columns[20].Visible = false;
+
                     DataGridViewButtonColumn BotonVer = new DataGridViewButtonColumn();
                     BotonVer.Name = "Ver";
                     BotonVer.HeaderText = "Ver";
                     this.dgvSubClientes.Columns.Add(BotonVer);
-                    dgvSubClientes.Columns[20].Width = 40;
-                    dgvSubClientes.Columns[20].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dgvSubClientes.Columns[20].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                    dgvSubClientes.Columns[20].HeaderCell.Style.ForeColor = Color.White;
+                    dgvSubClientes.Columns[21].Width = 40;
+                    dgvSubClientes.Columns[21].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvSubClientes.Columns[21].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvSubClientes.Columns[21].HeaderCell.Style.ForeColor = Color.White;
                 }
 
                 else { MessageBox.Show("No se encontraron resultados para la persona seleccionada."); }

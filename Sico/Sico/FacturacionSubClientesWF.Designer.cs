@@ -35,6 +35,9 @@
             this.lblNombreEdit = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblDireccionEdit = new System.Windows.Forms.TextBox();
+            this.lblDniEdit = new System.Windows.Forms.TextBox();
+            this.lblObservacionsEdit = new System.Windows.Forms.Label();
             this.lblObservaciones = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.lblDni = new System.Windows.Forms.Label();
@@ -67,9 +70,6 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblObservacionsEdit = new System.Windows.Forms.Label();
-            this.lblDniEdit = new System.Windows.Forms.TextBox();
-            this.lblDireccionEdit = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -167,6 +167,33 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Factura sub-cliente";
+            // 
+            // lblDireccionEdit
+            // 
+            this.lblDireccionEdit.Location = new System.Drawing.Point(490, 54);
+            this.lblDireccionEdit.Name = "lblDireccionEdit";
+            this.lblDireccionEdit.Size = new System.Drawing.Size(120, 20);
+            this.lblDireccionEdit.TabIndex = 49;
+            this.lblDireccionEdit.Visible = false;
+            // 
+            // lblDniEdit
+            // 
+            this.lblDniEdit.Location = new System.Drawing.Point(110, 54);
+            this.lblDniEdit.Name = "lblDniEdit";
+            this.lblDniEdit.Size = new System.Drawing.Size(140, 20);
+            this.lblDniEdit.TabIndex = 48;
+            this.lblDniEdit.Visible = false;
+            // 
+            // lblObservacionsEdit
+            // 
+            this.lblObservacionsEdit.AutoSize = true;
+            this.lblObservacionsEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblObservacionsEdit.Location = new System.Drawing.Point(119, 90);
+            this.lblObservacionsEdit.Name = "lblObservacionsEdit";
+            this.lblObservacionsEdit.Size = new System.Drawing.Size(91, 15);
+            this.lblObservacionsEdit.TabIndex = 47;
+            this.lblObservacionsEdit.Text = "Observaciones:";
+            this.lblObservacionsEdit.Visible = false;
             // 
             // lblObservaciones
             // 
@@ -464,33 +491,6 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // lblObservacionsEdit
-            // 
-            this.lblObservacionsEdit.AutoSize = true;
-            this.lblObservacionsEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObservacionsEdit.Location = new System.Drawing.Point(119, 90);
-            this.lblObservacionsEdit.Name = "lblObservacionsEdit";
-            this.lblObservacionsEdit.Size = new System.Drawing.Size(91, 15);
-            this.lblObservacionsEdit.TabIndex = 47;
-            this.lblObservacionsEdit.Text = "Observaciones:";
-            this.lblObservacionsEdit.Visible = false;
-            // 
-            // lblDniEdit
-            // 
-            this.lblDniEdit.Location = new System.Drawing.Point(110, 54);
-            this.lblDniEdit.Name = "lblDniEdit";
-            this.lblDniEdit.Size = new System.Drawing.Size(140, 20);
-            this.lblDniEdit.TabIndex = 48;
-            this.lblDniEdit.Visible = false;
-            // 
-            // lblDireccionEdit
-            // 
-            this.lblDireccionEdit.Location = new System.Drawing.Point(490, 54);
-            this.lblDireccionEdit.Name = "lblDireccionEdit";
-            this.lblDireccionEdit.Size = new System.Drawing.Size(120, 20);
-            this.lblDireccionEdit.TabIndex = 49;
-            this.lblDireccionEdit.Visible = false;
             // 
             // FacturacionSubClientesWF
             // 

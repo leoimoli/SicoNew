@@ -162,7 +162,7 @@ namespace Sico
                     dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dataGridView1.Columns[3].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
                     dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
-                    dataGridView1.Columns[3].Visible = false;
+                    dataGridView1.Columns[3].Visible = true;
 
                     dataGridView1.Columns[4].HeaderText = "Dni";
                     dataGridView1.Columns[4].Width = 80;
@@ -245,6 +245,9 @@ namespace Sico
                     dataGridView1.Columns[19].Width = 80;
                     dataGridView1.Columns[19].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dataGridView1.Columns[19].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[20].HeaderText = "Observacion";
+                    dataGridView1.Columns[20].Visible = false;
 
                     dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Red;
 

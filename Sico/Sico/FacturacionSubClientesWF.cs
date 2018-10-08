@@ -29,7 +29,7 @@ namespace Sico
                 lblNombreEdit.Text = razonSocial;
                 lblCuitEdit.Text = cuit;
                 CargarComboPersonas();
-
+                Total = 0;
             }
             catch (Exception ex)
             { }
@@ -98,9 +98,10 @@ namespace Sico
                 }
                 else
                 {
-                    decimal TotalCargado = Convert.ToDecimal(Total1);
-                    decimal TotalMostrar = Total + TotalCargado;
-                    Total = TotalMostrar;
+                    RecalcularTotal1();
+                    //decimal TotalCargado = Convert.ToDecimal(Total1);
+                    //decimal TotalMostrar = Total + TotalCargado;
+                    //Total = TotalMostrar;
                     lblTotalEdit.Text = Convert.ToString(Total);
                 }
                 txtTotal2.Focus();
@@ -128,10 +129,12 @@ namespace Sico
                 }
                 else
                 {
-                    decimal TotalCargado = Convert.ToDecimal(Total2);
-                    decimal TotalMostrar = Total + TotalCargado;
-                    Total = TotalMostrar;
-                    lblTotalEdit.Text = Convert.ToString(TotalMostrar);
+                    RecalcularTotal2();
+                    lblTotalEdit.Text = Convert.ToString(Total);
+                    //decimal TotalCargado = Convert.ToDecimal(Total2);
+                    //decimal TotalMostrar = Total + TotalCargado;
+                    //Total = TotalMostrar;
+                    //lblTotalEdit.Text = Convert.ToString(TotalMostrar);
                 }
                 txtTotal3.Focus();
             }
@@ -158,10 +161,12 @@ namespace Sico
                 }
                 else
                 {
-                    decimal TotalCargado = Convert.ToDecimal(Total3);
-                    decimal TotalMostrar = Total + TotalCargado;
-                    Total = TotalMostrar;
-                    lblTotalEdit.Text = Convert.ToString(TotalMostrar);
+                    RecalcularTotal3();
+                    //lblTotalEdit.Text = Convert.ToString(Total);
+                    //decimal TotalCargado = Convert.ToDecimal(Total3);
+                    //decimal TotalMostrar = Total + TotalCargado;
+                    //Total = TotalMostrar;
+                    lblTotalEdit.Text = Convert.ToString(Total);
                 }
             }
         }
@@ -247,7 +252,6 @@ namespace Sico
             catch (Exception ex)
             { }
         }
-
         private void HabilitarLabels()
         {
             lblDni.Visible = true;
@@ -362,12 +366,44 @@ namespace Sico
             lblDniEdit.Visible = false;
         }
         #endregion
-
         private void btnNuevoSubCliente_Click(object sender, EventArgs e)
         {
             SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
             _sub.Show();
             Hide();
+        }
+        public void RecalcularTotal1()
+        {
+            decimal Valor2 = 0;
+            decimal Valor3 = 0;
+            decimal NuevoValor = Convert.ToDecimal(txtTotal1.Text);
+
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+
+            Total = NuevoValor + Valor2 + Valor3;
+        }
+        public void RecalcularTotal2()
+        {
+            decimal Valor1 = 0;
+            decimal Valor3 = 0;
+            decimal NuevoValor2 = Convert.ToDecimal(txtTotal2.Text);
+
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+
+            Total = NuevoValor2 + Valor1 + Valor3;
+        }
+        public void RecalcularTotal3()
+        {
+            decimal Valor2 = 0;
+            decimal Valor1 = 0;
+            decimal NuevoValor3 = Convert.ToDecimal(txtTotal3.Text);
+
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+
+            Total = NuevoValor3 + Valor2 + Valor1;
         }
     }
 }

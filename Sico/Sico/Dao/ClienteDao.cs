@@ -134,7 +134,7 @@ namespace Sico.Dao
                         listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
                         listaSubCliente.NroFactura = item["NroFactura"].ToString();
                         listaSubCliente.Fecha = item["Fecha"].ToString();
-                        //listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
+                        listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
                         listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
                         listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
                         //// Detalle de la factura
