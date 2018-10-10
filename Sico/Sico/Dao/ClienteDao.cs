@@ -86,6 +86,41 @@ namespace Sico.Dao
             //}
             return lista;
         }
+
+        public static bool GuardarNotaDeCredito(SubCliente _subCliente, string cuit)
+        {
+            int idUltimaFacturaSubCliente = 0;
+            int idNotaCredito = 0;
+            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
+            id = BuscarClientePorCuit(cuit);
+            int idCliente = id[0].IdCliente;
+
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "GuardarNotaDeCredito";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("ApellidoNombre_in", _subCliente.ApellidoNombre);
+            cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
+            cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
+            cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
+            cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
+            MySqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                idNotaCredito = Convert.ToInt32(r["ID"].ToString());
+            }
+            if (idNotaCredito > 0)
+            {
+                exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
+            }
+            connection.Close();
+            return exito;
+        }
+
         public static bool EditarSubCliente(SubCliente _subCliente, string cuit)
         {
             bool exito = false;
@@ -104,6 +139,49 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
+
+        public static string BuscarNuevoNroFacturaNotaDeCredito(string persona)
+        {
+            string Factura = "";
+
+            connection.Close();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("Persona_in", persona) };
+            string proceso = "BuscarNuevoNroFacturaNotaDeCredito";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    string id = item["id"].ToString();
+                    string FacturaVieja = item["NroFactura"].ToString();
+
+                    ///// Primera parte del numero
+                    var split1 = FacturaVieja.Split('-')[0];
+                    split1 = split1.Trim();
+                    ///// Segunda parte del numero
+                    var split2 = FacturaVieja.Split('-')[1];
+                    split2 = split2.Trim();
+                    string prueba = string.Concat(split1, split2);
+                    int Numero = Convert.ToInt32(prueba);
+                    int Fac = Numero + 1;
+                    string prueba2 = Convert.ToString(Fac);
+                    Factura = string.Concat("000", prueba2);
+
+                }
+            }
+
+            connection.Close();
+            return Factura;
+        }
+
         public static List<SubCliente> BuscarFacturacionTotal(string cuit, int mes, string año)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
@@ -150,6 +228,10 @@ namespace Sico.Dao
                         listaSubCliente.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
                         listaSubCliente.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
                         listaSubCliente.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+                        //// Detalle Tipo Facturacion
+                        listaSubCliente.idTipoFactura = Convert.ToInt32(item["idTipoFacturacion"].ToString());
+                        listaSubCliente.idNotaDeCredito = Convert.ToInt32(item["idNotaDeCredito"].ToString());
+
                         lista.Add(listaSubCliente);
                     }
                 }
@@ -397,6 +479,7 @@ namespace Sico.Dao
         }
         public static bool GuardarFacturaSubCliente(SubCliente _subCliente, string cuit)
         {
+            int idNotaCredito = 0;
             int idUltimaFacturaSubCliente = 0;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
             id = BuscarClientePorCuit(cuit);
@@ -422,13 +505,13 @@ namespace Sico.Dao
             }
             if (idUltimaFacturaSubCliente > 0)
             {
-                exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente);
+                exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
             }
             connection.Close();
             return exito;
         }
 
-        private static bool RegistrarDetalleFacturaSubCliente(SubCliente _subCliente, int idCliente, int idUltimaFacturaSubCliente)
+        private static bool RegistrarDetalleFacturaSubCliente(SubCliente _subCliente, int idCliente, int idUltimaFacturaSubCliente, int idNotaCredito)
         {
             bool exito = false;
             connection.Close();
@@ -450,6 +533,8 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Iva3_in", _subCliente.Iva3);
             cmd.Parameters.AddWithValue("idSubCliente_in", idUltimaFacturaSubCliente);
             cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("idTipoFacturacion_in", _subCliente.idTipoFactura);
+            cmd.Parameters.AddWithValue("idNotaDeCredito_in", idNotaCredito);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();

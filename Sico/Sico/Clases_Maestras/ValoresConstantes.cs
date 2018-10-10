@@ -42,7 +42,7 @@ namespace Sico.Clases_Maestras
         {
             get
             {
-                return new string[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre","Noviembre", "Diciembre" };
+                return new string[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
             }
         }
 
@@ -51,6 +51,14 @@ namespace Sico.Clases_Maestras
             get
             {
                 return new string[] { "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021" };
+            }
+        }
+
+        public static string[] TipoFactura
+        {
+            get
+            {
+                return new string[] { "Factura A", "Factura B", "Factura C", "Cuenta Corriente" };
             }
         }
 

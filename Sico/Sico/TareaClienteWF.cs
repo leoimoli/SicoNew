@@ -30,6 +30,11 @@ namespace Sico
             lblCuitEdit.Text = cuit;
         }
         #region Botones
+        private void btnCuentaCorriente_Click(object sender, EventArgs e)
+        {
+            NotaDeCreditoWF _ctaCorriente = new NotaDeCreditoWF(razonSocial, cuit);
+            _ctaCorriente.Show();
+        }
         private void btnFacturar_Click(object sender, EventArgs e)
         {
             try
@@ -232,6 +237,8 @@ namespace Sico
             }
         }
 
-        #endregion     
+        #endregion
+
+       
     }
 }

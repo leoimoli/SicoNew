@@ -57,6 +57,20 @@ namespace Sico.Negocio
             return _listaSubClientes;
         }
 
+        public static bool GuardarNotaDeCredito(SubCliente _subCliente, string cuit)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatosFactura(_subCliente);
+                exito = ClienteDao.GuardarNotaDeCredito(_subCliente, cuit);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
         public static bool EditarSubCliente(SubCliente _subCliente, string cuit)
         {
             bool exito = false;
@@ -149,6 +163,16 @@ namespace Sico.Negocio
             return _listaFacturasSubCliente;
         }
 
+        public static string BuscarNuevoNroFacturaNotaDeCredito(string persona)
+        {
+            string Factura;
+            Factura = Dao.ClienteDao.BuscarNuevoNroFacturaNotaDeCredito(persona);
+            if(Factura == "0" || Factura == "")
+            {
+                Factura = "0003-00000001";
+            }
+            return Factura;
+        }
         public static string BuscarNuevoNroFactura(string persona)
         {
             string Factura;

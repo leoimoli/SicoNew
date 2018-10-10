@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgvSubClientes = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnCuentaCorriente = new System.Windows.Forms.Button();
+            this.btnFacturaC = new System.Windows.Forms.Button();
             this.btnFacturaA = new System.Windows.Forms.Button();
             this.btnNuevaFactura = new System.Windows.Forms.Button();
             this.btnNuevoSubCliente = new System.Windows.Forms.Button();
@@ -173,6 +175,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnCuentaCorriente);
+            this.groupBox2.Controls.Add(this.btnFacturaC);
             this.groupBox2.Controls.Add(this.btnFacturaA);
             this.groupBox2.Controls.Add(this.btnNuevaFactura);
             this.groupBox2.Controls.Add(this.btnNuevoSubCliente);
@@ -183,11 +187,36 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
             // 
+            // btnCuentaCorriente
+            // 
+            this.btnCuentaCorriente.Image = global::Sico.Properties.Resources.factura;
+            this.btnCuentaCorriente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCuentaCorriente.Location = new System.Drawing.Point(45, 365);
+            this.btnCuentaCorriente.Name = "btnCuentaCorriente";
+            this.btnCuentaCorriente.Size = new System.Drawing.Size(90, 61);
+            this.btnCuentaCorriente.TabIndex = 4;
+            this.btnCuentaCorriente.Text = "Nota de crédito";
+            this.btnCuentaCorriente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCuentaCorriente.UseVisualStyleBackColor = true;
+            this.btnCuentaCorriente.Click += new System.EventHandler(this.btnCuentaCorriente_Click);
+            // 
+            // btnFacturaC
+            // 
+            this.btnFacturaC.Image = global::Sico.Properties.Resources.factura;
+            this.btnFacturaC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnFacturaC.Location = new System.Drawing.Point(45, 275);
+            this.btnFacturaC.Name = "btnFacturaC";
+            this.btnFacturaC.Size = new System.Drawing.Size(90, 61);
+            this.btnFacturaC.TabIndex = 3;
+            this.btnFacturaC.Text = "Factura C";
+            this.btnFacturaC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnFacturaC.UseVisualStyleBackColor = true;
+            // 
             // btnFacturaA
             // 
             this.btnFacturaA.Image = global::Sico.Properties.Resources.factura;
             this.btnFacturaA.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFacturaA.Location = new System.Drawing.Point(45, 97);
+            this.btnFacturaA.Location = new System.Drawing.Point(45, 112);
             this.btnFacturaA.Name = "btnFacturaA";
             this.btnFacturaA.Size = new System.Drawing.Size(90, 61);
             this.btnFacturaA.TabIndex = 2;
@@ -199,7 +228,7 @@
             // 
             this.btnNuevaFactura.Image = global::Sico.Properties.Resources.factura;
             this.btnNuevaFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevaFactura.Location = new System.Drawing.Point(45, 177);
+            this.btnNuevaFactura.Location = new System.Drawing.Point(45, 192);
             this.btnNuevaFactura.Name = "btnNuevaFactura";
             this.btnNuevaFactura.Size = new System.Drawing.Size(90, 61);
             this.btnNuevaFactura.TabIndex = 1;
@@ -212,7 +241,7 @@
             // 
             this.btnNuevoSubCliente.Image = global::Sico.Properties.Resources.agregar_usuario_nuevo;
             this.btnNuevoSubCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevoSubCliente.Location = new System.Drawing.Point(45, 19);
+            this.btnNuevoSubCliente.Location = new System.Drawing.Point(45, 34);
             this.btnNuevoSubCliente.Name = "btnNuevoSubCliente";
             this.btnNuevoSubCliente.Size = new System.Drawing.Size(90, 61);
             this.btnNuevoSubCliente.TabIndex = 0;
@@ -365,5 +394,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnFacturaA;
         private System.Windows.Forms.Button btnFacturarle;
+        private System.Windows.Forms.Button btnCuentaCorriente;
+        private System.Windows.Forms.Button btnFacturaC;
     }
 }
