@@ -153,10 +153,10 @@
             // lblObservacionsEdit
             // 
             this.lblObservacionsEdit.AutoSize = true;
-            this.lblObservacionsEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblObservacionsEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblObservacionsEdit.Location = new System.Drawing.Point(119, 113);
             this.lblObservacionsEdit.Name = "lblObservacionsEdit";
-            this.lblObservacionsEdit.Size = new System.Drawing.Size(91, 15);
+            this.lblObservacionsEdit.Size = new System.Drawing.Size(58, 9);
             this.lblObservacionsEdit.TabIndex = 47;
             this.lblObservacionsEdit.Text = "Observaciones:";
             this.lblObservacionsEdit.Visible = false;

@@ -90,7 +90,7 @@ namespace Sico.Dao
         public static bool GuardarNotaDeCredito(SubCliente _subCliente, string cuit)
         {
             int idUltimaFacturaSubCliente = 0;
-            int idNotaCredito = 0;
+            int idsubcliente = 0;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
             id = BuscarClientePorCuit(cuit);
             int idCliente = id[0].IdCliente;
@@ -102,7 +102,7 @@ namespace Sico.Dao
             MySqlCommand cmd = new MySqlCommand(proceso, connection);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("ApellidoNombre_in", _subCliente.ApellidoNombre);
-            cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
+            cmd.Parameters.AddWithValue("NroFacturaNotaDeCredito_in", _subCliente.NroFactura);
             cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
             cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
             cmd.Parameters.AddWithValue("idCliente_in", idCliente);
@@ -111,11 +111,11 @@ namespace Sico.Dao
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
-                idNotaCredito = Convert.ToInt32(r["ID"].ToString());
+                idsubcliente = Convert.ToInt32(r["ID"].ToString());
             }
-            if (idNotaCredito > 0)
+            if (idsubcliente > 0)
             {
-                exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
+                exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente, idsubcliente);
             }
             connection.Close();
             return exito;
@@ -161,7 +161,7 @@ namespace Sico.Dao
                 foreach (DataRow item in Tabla.Rows)
                 {
                     string id = item["id"].ToString();
-                    string FacturaVieja = item["NroFactura"].ToString();
+                    string FacturaVieja = item["NroFacturaNotaDeCredtio"].ToString();
 
                     ///// Primera parte del numero
                     var split1 = FacturaVieja.Split('-')[0];
@@ -215,6 +215,7 @@ namespace Sico.Dao
                         listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
                         listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
                         listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                        listaSubCliente.NroFacturaNotaDeCredtio = item["NroFacturaNotaDeCredtio"].ToString();
                         //// Detalle de la factura
                         listaSubCliente.Total1 = Convert.ToDecimal(item["Total1"].ToString());
                         listaSubCliente.Total2 = Convert.ToDecimal(item["Total2"].ToString());
@@ -228,9 +229,9 @@ namespace Sico.Dao
                         listaSubCliente.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
                         listaSubCliente.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
                         listaSubCliente.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
-                        //// Detalle Tipo Facturacion
-                        listaSubCliente.idTipoFactura = Convert.ToInt32(item["idTipoFacturacion"].ToString());
-                        listaSubCliente.idNotaDeCredito = Convert.ToInt32(item["idNotaDeCredito"].ToString());
+                        ////// Detalle Tipo Facturacion
+                        //listaSubCliente.idTipoFactura = Convert.ToInt32(item["idTipoFacturacion"].ToString());
+                        //listaSubCliente.idNotaDeCredito = Convert.ToInt32(item["idNotaDeCredito"].ToString());
 
                         lista.Add(listaSubCliente);
                     }
@@ -511,7 +512,7 @@ namespace Sico.Dao
             return exito;
         }
 
-        private static bool RegistrarDetalleFacturaSubCliente(SubCliente _subCliente, int idCliente, int idUltimaFacturaSubCliente, int idNotaCredito)
+        private static bool RegistrarDetalleFacturaSubCliente(SubCliente _subCliente, int idCliente, int idUltimaFacturaSubCliente, int idsubcliente)
         {
             bool exito = false;
             connection.Close();
@@ -531,10 +532,8 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Iva1_in", _subCliente.Iva1);
             cmd.Parameters.AddWithValue("Iva2_in", _subCliente.Iva2);
             cmd.Parameters.AddWithValue("Iva3_in", _subCliente.Iva3);
-            cmd.Parameters.AddWithValue("idSubCliente_in", idUltimaFacturaSubCliente);
+            cmd.Parameters.AddWithValue("idSubCliente_in", idsubcliente);
             cmd.Parameters.AddWithValue("idCliente_in", idCliente);
-            cmd.Parameters.AddWithValue("idTipoFacturacion_in", _subCliente.idTipoFactura);
-            cmd.Parameters.AddWithValue("idNotaDeCredito_in", idNotaCredito);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();

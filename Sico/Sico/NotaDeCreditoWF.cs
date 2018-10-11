@@ -44,7 +44,7 @@ namespace Sico
                 if (Exito == true)
                 {
                     ProgressBar();
-                    const string message2 = "Se registro la factura exitosamente.";
+                    const string message2 = "Se registro la nota de credito exitosamente.";
                     const string caption2 = "Éxito";
                     var result2 = MessageBox.Show(message2, caption2,
                                                  MessageBoxButtons.OK,
@@ -331,7 +331,7 @@ namespace Sico
             if (!String.IsNullOrEmpty(txtIva3.Text))
                 _subCliente.Iva3 = Convert.ToDecimal(txtIva3.Text);
             _subCliente.Monto = Convert.ToDecimal(lblTotalEdit.Text);
-            _subCliente.idTipoFactura = idTipoFactura;
+            
             return _subCliente;
         }
         private void ProgressBar()

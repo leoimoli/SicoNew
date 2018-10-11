@@ -110,7 +110,7 @@
             this.Controls.Add(this.label3);
             this.Name = "LoginWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoginWF";
+            this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

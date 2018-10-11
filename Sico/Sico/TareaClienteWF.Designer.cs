@@ -189,7 +189,7 @@
             // 
             // btnCuentaCorriente
             // 
-            this.btnCuentaCorriente.Image = global::Sico.Properties.Resources.factura;
+            this.btnCuentaCorriente.Image = global::Sico.Properties.Resources.dinero;
             this.btnCuentaCorriente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCuentaCorriente.Location = new System.Drawing.Point(45, 365);
             this.btnCuentaCorriente.Name = "btnCuentaCorriente";

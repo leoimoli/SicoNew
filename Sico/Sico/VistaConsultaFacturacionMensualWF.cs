@@ -249,6 +249,12 @@ namespace Sico
                     dataGridView1.Columns[20].HeaderText = "Observacion";
                     dataGridView1.Columns[20].Visible = false;
 
+                    dataGridView1.Columns[21].HeaderText = "Nota De Credito";
+                    dataGridView1.Columns[21].Visible = true;
+                    dataGridView1.Columns[18].Width = 80;
+                    dataGridView1.Columns[18].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[18].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
                     dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Red;
 
                 }
@@ -263,101 +269,161 @@ namespace Sico
         private double CalcularTotalIva27(List<SubCliente> value)
         {
             decimal totaliva27 = 0;
+            decimal MontoNegativoiva27 = 0;
             foreach (var item in value)
             {
-                totaliva27 += item.Iva3;
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativoiva27 += item.Iva3;
+                }
+                else { totaliva27 += item.Iva3; }
+
             }
-            double valor = Convert.ToDouble(totaliva27);
+            double valor = Convert.ToDouble(totaliva27 - MontoNegativoiva27);
             return valor;
         }
         private double CalcularTotalIva21(List<SubCliente> value)
         {
             decimal totaliva21 = 0;
+            decimal MontoNegativoiva21 = 0;
             foreach (var item in value)
             {
-                totaliva21 += item.Iva2;
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativoiva21 += item.Iva2;
+                }
+                else { totaliva21 += item.Iva2; }
+
             }
-            double valor = Convert.ToDouble(totaliva21);
+            double valor = Convert.ToDouble(totaliva21 - MontoNegativoiva21);
             return valor;
         }
         private double CalcularTotalIva10(List<SubCliente> value)
         {
             decimal totaliva10 = 0;
+            decimal MontoNegativoiva10 = 0;
             foreach (var item in value)
             {
-                totaliva10 += item.Iva3;
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativoiva10 += item.Iva1;
+                }
+                else { totaliva10 += item.Iva1; }
+
             }
-            double valor = Convert.ToDouble(totaliva10);
+            double valor = Convert.ToDouble(totaliva10 - MontoNegativoiva10);
             return valor;
         }
         private double CalcularTotalNeto27(List<SubCliente> value)
         {
             decimal totalNeto27 = 0;
+            decimal MontoNegativo27 = 0;
             foreach (var item in value)
             {
-                totalNeto27 += item.Neto3;
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativo27 += item.Neto3;
+                }
+                else { totalNeto27 += item.Neto3; }
+
             }
-            double valor = Convert.ToDouble(totalNeto27);
+            double valor = Convert.ToDouble(totalNeto27 - MontoNegativo27);
             return valor;
         }
         private double CalcularTotalNeto21(List<SubCliente> value)
         {
             decimal totalNeto21 = 0;
+            decimal MontoNegativo21 = 0;
             foreach (var item in value)
             {
-                totalNeto21 += item.Neto2;
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativo21 += item.Neto2;
+                }
+                else { totalNeto21 += item.Neto2; }
+
             }
-            double valor = Convert.ToDouble(totalNeto21);
+            double valor = Convert.ToDouble(totalNeto21 - MontoNegativo21);
             return valor;
         }
         private double CalcularTotalNeto10(List<SubCliente> value)
         {
             decimal totalNeto10 = 0;
+            decimal MontoNegativo10 = 0;
             foreach (var item in value)
             {
-                totalNeto10 += item.Neto1;
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativo10 += item.Neto1;
+                }
+                else { totalNeto10 += item.Neto1; }
+
             }
-            double valor = Convert.ToDouble(totalNeto10);
+            double valor = Convert.ToDouble(totalNeto10 - MontoNegativo10);
             return valor;
         }
         private double CalcularTotalImporte3(List<SubCliente> value)
         {
             decimal totalImporte3 = 0;
+            decimal MontoNegativo3 = 0;
             foreach (var item in value)
             {
-                totalImporte3 += item.Total3;
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativo3 += item.Total3;
+                }
+                else { totalImporte3 += item.Total3; }
+
             }
-            double valor = Convert.ToDouble(totalImporte3);
+            double valor = Convert.ToDouble(totalImporte3 - MontoNegativo3);
             return valor;
         }
         private double CalcularTotalImporte2(List<SubCliente> value)
         {
             decimal totalImporte2 = 0;
+            decimal MontoNegativo2 = 0;
             foreach (var item in value)
             {
-                totalImporte2 += item.Total2;
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativo2 += item.Total2;
+                }
+                else { totalImporte2 += item.Total2; }
+
             }
-            double valor = Convert.ToDouble(totalImporte2);
+            double valor = Convert.ToDouble(totalImporte2 - MontoNegativo2);
             return valor;
         }
         private double CalcularTotalImporte1(List<SubCliente> value)
         {
             decimal totalImporte1 = 0;
+            decimal MontoNegativo1 = 0;
             foreach (var item in value)
             {
-                totalImporte1 += item.Total1;
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativo1 += item.Total1;
+                }
+                else { totalImporte1 += item.Total1; }
+
             }
-            double valor = Convert.ToDouble(totalImporte1);
+            double valor = Convert.ToDouble(totalImporte1 - MontoNegativo1);
             return valor;
         }
         private double CalcularTotalMonto(List<SubCliente> value)
         {
             decimal totalMonto = 0;
+            decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                totalMonto += item.Monto;
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativo += item.Monto;
+                }
+                else { totalMonto += item.Monto; }
+
             }
-            double valor = Convert.ToDouble(totalMonto);
+            double valor = Convert.ToDouble(totalMonto - MontoNegativo);
             return valor;
         }
         #endregion
