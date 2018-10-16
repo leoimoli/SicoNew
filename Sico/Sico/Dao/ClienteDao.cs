@@ -111,9 +111,9 @@ namespace Sico.Dao
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
-                idsubcliente = Convert.ToInt32(r["ID"].ToString());
+                idUltimaFacturaSubCliente = Convert.ToInt32(r["ID"].ToString());
             }
-            if (idsubcliente > 0)
+            if (idUltimaFacturaSubCliente > 0)
             {
                 exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente, idsubcliente);
             }
@@ -532,7 +532,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Iva1_in", _subCliente.Iva1);
             cmd.Parameters.AddWithValue("Iva2_in", _subCliente.Iva2);
             cmd.Parameters.AddWithValue("Iva3_in", _subCliente.Iva3);
-            cmd.Parameters.AddWithValue("idSubCliente_in", idsubcliente);
+            cmd.Parameters.AddWithValue("idSubCliente_in", idUltimaFacturaSubCliente);
             cmd.Parameters.AddWithValue("idCliente_in", idCliente);
             cmd.ExecuteNonQuery();
             exito = true;
