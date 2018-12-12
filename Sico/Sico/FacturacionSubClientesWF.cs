@@ -261,7 +261,6 @@ namespace Sico
             lblDireccion.Visible = true;
             lblDireccionEdit.Visible = true;
         }
-
         private SubCliente CargarEntidad()
         {
             SubCliente _subCliente = new SubCliente();

@@ -353,7 +353,20 @@ namespace Sico.Negocio
             }
             return exito;
         }
+        public static bool GuardarEdicionFacturaSubCliente(SubCliente _subCliente, string cuit, string id)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatosFactura(_subCliente);
+                exito = ClienteDao.GuardarEdicionFacturaSubCliente(_subCliente, cuit, id);
+            }
+            catch (Exception ex)
+            {
 
+            }
+            return exito;
+        }
         private static void ValidarDatosFactura(SubCliente _subCliente)
         {
             if (String.IsNullOrEmpty(_subCliente.ApellidoNombre) || _subCliente.ApellidoNombre == "Seleccione")

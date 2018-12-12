@@ -34,6 +34,7 @@
             this.lblNombreEdit = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblsubCliente = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTotalEdit = new System.Windows.Forms.Label();
@@ -60,7 +61,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnPdf = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +152,15 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Factura sub-cliente";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(144, 161);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(330, 23);
+            this.progressBar1.TabIndex = 42;
+            this.progressBar1.Value = 50;
+            this.progressBar1.Visible = false;
             // 
             // lblsubCliente
             // 
@@ -272,6 +282,7 @@
             this.txtTotal3.Name = "txtTotal3";
             this.txtTotal3.Size = new System.Drawing.Size(149, 20);
             this.txtTotal3.TabIndex = 28;
+            this.txtTotal3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotal3_KeyDown);
             // 
             // txtTotal2
             // 
@@ -279,6 +290,7 @@
             this.txtTotal2.Name = "txtTotal2";
             this.txtTotal2.Size = new System.Drawing.Size(149, 20);
             this.txtTotal2.TabIndex = 27;
+            this.txtTotal2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotal2_KeyDown);
             // 
             // txtTotal1
             // 
@@ -286,6 +298,7 @@
             this.txtTotal1.Name = "txtTotal1";
             this.txtTotal1.Size = new System.Drawing.Size(149, 20);
             this.txtTotal1.TabIndex = 26;
+            this.txtTotal1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotal1_KeyDown);
             // 
             // label9
             // 
@@ -393,20 +406,27 @@
             this.btnPdf.UseVisualStyleBackColor = true;
             this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
             // 
-            // progressBar1
+            // btnGuardar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(144, 161);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(330, 23);
-            this.progressBar1.TabIndex = 42;
-            this.progressBar1.Value = 50;
-            this.progressBar1.Visible = false;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Image = global::Sico.Properties.Resources.copia_de_seguridad;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGuardar.Location = new System.Drawing.Point(328, 414);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(80, 51);
+            this.btnGuardar.TabIndex = 47;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Visible = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // VistaFacturacionSubClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 477);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnPdf);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
@@ -458,5 +478,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnPdf;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }

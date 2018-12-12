@@ -512,6 +512,51 @@ namespace Sico.Dao
             return exito;
         }
 
+        public static bool GuardarEdicionFacturaSubCliente(SubCliente _subCliente, string cuit, string id)
+        {
+            int Idsub = Convert.ToInt32(id);
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "EditarFacturaSubCliente";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
+            cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
+            cmd.Parameters.AddWithValue("Idsub_in", Idsub);
+            cmd.ExecuteNonQuery();
+            exito = EditarDetalleFacturaSubCliente(_subCliente, Idsub);
+
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+        private static bool EditarDetalleFacturaSubCliente(SubCliente _subCliente, int Idsub)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "EditarDetalleFacturaSubCliente";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("Total1_in", _subCliente.Total1);
+            cmd.Parameters.AddWithValue("Total2_in", _subCliente.Total2);
+            cmd.Parameters.AddWithValue("Total3_in", _subCliente.Total3);
+            cmd.Parameters.AddWithValue("Neto1_in", _subCliente.Neto1);
+            cmd.Parameters.AddWithValue("Neto2_in", _subCliente.Neto2);
+            cmd.Parameters.AddWithValue("Neto3_in", _subCliente.Neto3);
+            cmd.Parameters.AddWithValue("Alicuota1_in", _subCliente.Alicuota1);
+            cmd.Parameters.AddWithValue("Alicuota2_in", _subCliente.Alicuota2);
+            cmd.Parameters.AddWithValue("Alicuota3_in", _subCliente.Alicuota3);
+            cmd.Parameters.AddWithValue("Iva1_in", _subCliente.Iva1);
+            cmd.Parameters.AddWithValue("Iva2_in", _subCliente.Iva2);
+            cmd.Parameters.AddWithValue("Iva3_in", _subCliente.Iva3);
+            cmd.Parameters.AddWithValue("Idsub_in", Idsub);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
         private static bool RegistrarDetalleFacturaSubCliente(SubCliente _subCliente, int idCliente, int idUltimaFacturaSubCliente, int idsubcliente)
         {
             bool exito = false;

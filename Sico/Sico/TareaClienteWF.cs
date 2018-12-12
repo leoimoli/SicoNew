@@ -17,7 +17,8 @@ namespace Sico
     {
         private string cuit;
         private string razonSocial;
-
+        private bool EsEditar;
+    
         public TareaClienteWF(string razonSocial, string cuit)
         {
             InitializeComponent();
@@ -131,7 +132,7 @@ namespace Sico
                     dgvSubClientes.Columns[2].HeaderCell.Style.ForeColor = Color.White;
 
                     dgvSubClientes.Columns[3].HeaderText = "Persona";
-                    dgvSubClientes.Columns[3].Width = 200;
+                    dgvSubClientes.Columns[3].Width = 160;
                     dgvSubClientes.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvSubClientes.Columns[3].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvSubClientes.Columns[3].HeaderCell.Style.ForeColor = Color.White;
@@ -203,14 +204,26 @@ namespace Sico
                     dgvSubClientes.Columns[20].HeaderText = "Observacion";
                     dgvSubClientes.Columns[20].Visible = false;
 
+                    dgvSubClientes.Columns[21].HeaderText = "Observacion";
+                    dgvSubClientes.Columns[21].Visible = false;
+
                     DataGridViewButtonColumn BotonVer = new DataGridViewButtonColumn();
                     BotonVer.Name = "Ver";
                     BotonVer.HeaderText = "Ver";
                     this.dgvSubClientes.Columns.Add(BotonVer);
-                    dgvSubClientes.Columns[21].Width = 40;
-                    dgvSubClientes.Columns[21].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dgvSubClientes.Columns[21].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                    dgvSubClientes.Columns[21].HeaderCell.Style.ForeColor = Color.White;
+                    dgvSubClientes.Columns[22].Width = 40;
+                    dgvSubClientes.Columns[22].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvSubClientes.Columns[22].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvSubClientes.Columns[22].HeaderCell.Style.ForeColor = Color.White;
+
+                    DataGridViewButtonColumn BotonEditar = new DataGridViewButtonColumn();
+                    BotonEditar.Name = "Editar";
+                    BotonEditar.HeaderText = "Editar";
+                    this.dgvSubClientes.Columns.Add(BotonEditar);
+                    dgvSubClientes.Columns[23].Width = 44;
+                    dgvSubClientes.Columns[23].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvSubClientes.Columns[23].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvSubClientes.Columns[23].HeaderCell.Style.ForeColor = Color.White;
                 }
 
                 else { MessageBox.Show("No se encontraron resultados para la persona seleccionada."); }
@@ -225,13 +238,30 @@ namespace Sico
                 DataGridViewButtonCell celBoton = this.dgvSubClientes.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
                 e.Handled = true;
             }
+
+            if (e.ColumnIndex >= 0 && this.dgvSubClientes.Columns[e.ColumnIndex].Name == "Editar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell celBoton = this.dgvSubClientes.Rows[e.RowIndex].Cells["Editar"] as DataGridViewButtonCell;
+                e.Handled = true;
+            }
         }
         private void ClickBoton(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvSubClientes.CurrentCell.ColumnIndex == 20)
+            if (dgvSubClientes.CurrentCell.ColumnIndex == 22)
             {
+                EsEditar = false;
                 var idsubCliente = Convert.ToString(this.dgvSubClientes.CurrentRow.Cells[0].Value);
-                VistaFacturacionSubClienteWF _vista = new VistaFacturacionSubClienteWF(idsubCliente, cuit, razonSocial);
+                VistaFacturacionSubClienteWF _vista = new VistaFacturacionSubClienteWF(idsubCliente, cuit, razonSocial, EsEditar);
+                _vista.Show();
+                Hide();
+            }
+
+            if (dgvSubClientes.CurrentCell.ColumnIndex == 23)
+            {
+                EsEditar = true;
+                var idsubCliente = Convert.ToString(this.dgvSubClientes.CurrentRow.Cells[0].Value);
+                VistaFacturacionSubClienteWF _vista = new VistaFacturacionSubClienteWF(idsubCliente, cuit, razonSocial, EsEditar);
                 _vista.Show();
                 Hide();
             }
@@ -239,6 +269,6 @@ namespace Sico
 
         #endregion
 
-       
+
     }
 }
