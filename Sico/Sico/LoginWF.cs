@@ -38,8 +38,13 @@ namespace Sico
                 {
                     Sesion.UsuarioLogueado = usuarios.First();
                     InicioWF _usuario = new InicioWF();
-                    _usuario.Show();
-                    Hide();
+                    bool Exito = Dao.UsuarioDao.LevantarBackup();
+                    if (Exito == true)
+                    {
+                        _usuario.Show();
+                        Hide();
+                    }
+                    else { MessageBox.Show("ATENCIÓN no se pudo importar el backup de base de datos"); }
                 }
             }
             catch (Exception ex)

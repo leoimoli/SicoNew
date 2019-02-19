@@ -86,7 +86,6 @@ namespace Sico.Dao
             //}
             return lista;
         }
-
         public static bool GuardarNotaDeCredito(SubCliente _subCliente, string cuit)
         {
             int idUltimaFacturaSubCliente = 0;
@@ -120,7 +119,6 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-
         public static bool EditarSubCliente(SubCliente _subCliente, string cuit)
         {
             bool exito = false;
@@ -139,9 +137,7 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-
-        public static string BuscarNuevoNroFacturaNotaDeCredito(string persona)
-        {
+        public static string BuscarNuevoNroFacturaNotaDeCredito(string persona)       {
             string Factura = "";
 
             connection.Close();
@@ -181,7 +177,6 @@ namespace Sico.Dao
             connection.Close();
             return Factura;
         }
-
         public static List<SubCliente> BuscarFacturacionTotal(string cuit, int mes, string año)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();

@@ -41,9 +41,12 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\..\..\..\Desktop\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.3.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data, Version=6.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Desktop\MySql.Data.DLL</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Mysql_Backup\MySql.Data.DLL</HintPath>
+    </Reference>
+    <Reference Include="mysqlbackup">
+      <HintPath>..\..\..\..\..\Desktop\Mysql_Backup\Nueva carpeta\mysqlbackup.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

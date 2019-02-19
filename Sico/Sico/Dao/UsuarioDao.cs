@@ -25,7 +25,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Apellido_in", _usuario.Apellido);
             cmd.Parameters.AddWithValue("Nombre_in", _usuario.Nombre);
             cmd.Parameters.AddWithValue("FechaDeNacimiento_in", _usuario.FechaDeNacimiento);
-            cmd.Parameters.AddWithValue("Contraseña_in", _usuario.Contraseña);
+            cmd.Parameters.AddWithValue("Contrasenia_in", _usuario.Contraseña);
             cmd.Parameters.AddWithValue("FechaDeAlta_in", _usuario.FechaDeAlta);
             cmd.Parameters.AddWithValue("FechaUltimaConexion_in", _usuario.FechaUltimaConexion);
             cmd.Parameters.AddWithValue("Perfil_in", _usuario.Perfil);
@@ -35,6 +35,33 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
+
+        public static bool LevantarBackup()
+        {
+            bool exito = false;
+            connection.Close();
+            string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_prod;Persist Security Info=True;";
+
+            // Important Additional Connection Options
+            constring += "charset=utf8;convertzerodatetime=true;";
+            string file = "F:\\backup.sql";
+            using (MySqlConnection conn = new MySqlConnection(constring))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ImportFromFile(file);
+                        conn.Close();
+                        exito = true;
+                    }
+                }
+            }
+            return exito;
+        }
+
         public static List<Usuario> LoginUsuario(string usuario, string contraseña)
         {
             connection.Close();
@@ -46,7 +73,7 @@ namespace Sico.Dao
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
                                       new MySqlParameter("Dni_in", usuario),
-                                       new MySqlParameter("Contraseña_in", contraseña),
+                                       new MySqlParameter("Contrasenia_in", contraseña),
              new MySqlParameter("Estado_in", estado)};
             string proceso = "LoginUsuario";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
@@ -72,6 +99,30 @@ namespace Sico.Dao
             }
             connection.Close();
             return lista;
+        }
+        public static bool GenerarBackup()
+        {
+            bool exito = false;
+            connection.Close();
+            string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_prod;Persist Security Info=True;";
+            constring += "charset=utf8;convertzerodatetime=true;";
+            string file = "F:\\backup.sql";
+            using (MySqlConnection conn = new MySqlConnection(constring))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ExportToFile(file);
+                        conn.Close();
+                        exito = true;
+                    }
+                }
+            }
+            return exito;
+
         }
         public static bool BajaUsuario(string dni)
         {
@@ -199,7 +250,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Apellido_in", _usuario.Apellido);
             cmd.Parameters.AddWithValue("Nombre_in", _usuario.Nombre);
             cmd.Parameters.AddWithValue("FechaDeNacimiento_in", _usuario.FechaDeNacimiento);
-            cmd.Parameters.AddWithValue("Contraseña_in", _usuario.Contraseña);
+            cmd.Parameters.AddWithValue("Contrasenia_in", _usuario.Contraseña);
             cmd.Parameters.AddWithValue("Perfil_in", _usuario.Perfil);
             cmd.Parameters.AddWithValue("Estado_in", _usuario.Estado);
             cmd.Parameters.AddWithValue("Dni_in", _usuario.Dni);
