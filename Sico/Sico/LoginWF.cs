@@ -38,6 +38,8 @@ namespace Sico
                 {
                     Sesion.UsuarioLogueado = usuarios.First();
                     InicioWF _usuario = new InicioWF();
+                    //Usb oUsb = new Usb();
+                    //List<USBInfo> lstUSBD = oUsb.GetUSBDevices();
                     bool Exito = Dao.UsuarioDao.LevantarBackup();
                     if (Exito == true)
                     {

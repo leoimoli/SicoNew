@@ -7,6 +7,7 @@ using Sico.Entidades;
 using MySql.Data.MySqlClient;
 using System.Data;
 using Sico.Entidades;
+using System.IO;
 
 namespace Sico.Dao
 {
@@ -38,13 +39,33 @@ namespace Sico.Dao
 
         public static bool LevantarBackup()
         {
+            string rutaPen = "";
+            DriveInfo[] mydrives = DriveInfo.GetDrives();
+            foreach (DriveInfo mydrive in mydrives)
+            {
+                //Check for removable devices like USB's
+                if (mydrive.DriveType == DriveType.Removable)
+                {
+                    //Check for that specific USB
+                    if (mydrive.IsReady == true)
+                    {
+                        if (mydrive.VolumeLabel.Equals("KINGSTON"))
+                        {
+                            DirectoryInfo path = mydrive.RootDirectory;
+                            Path.GetFullPath(path.ToString());
+                            rutaPen = Path.GetFullPath(path.ToString());
+                        }
+                    }
+                }
+            }
             bool exito = false;
             connection.Close();
             string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_prod;Persist Security Info=True;";
 
             // Important Additional Connection Options
             constring += "charset=utf8;convertzerodatetime=true;";
-            string file = "F:\\backup.sql";
+            string file = ""+rutaPen+"backup.sql";
+            //string file = "F:\\backup.sql";
             using (MySqlConnection conn = new MySqlConnection(constring))
             {
                 using (MySqlCommand cmd = new MySqlCommand())
@@ -102,11 +123,30 @@ namespace Sico.Dao
         }
         public static bool GenerarBackup()
         {
+            string rutaPen = "";
+            DriveInfo[] mydrives = DriveInfo.GetDrives();
+            foreach (DriveInfo mydrive in mydrives)
+            {
+                //Check for removable devices like USB's
+                if (mydrive.DriveType == DriveType.Removable)
+                {
+                    //Check for that specific USB
+                    if (mydrive.IsReady == true)
+                    {
+                        if (mydrive.VolumeLabel.Equals("KINGSTON"))
+                        {
+                            DirectoryInfo path = mydrive.RootDirectory;
+                            Path.GetFullPath(path.ToString());
+                            rutaPen = Path.GetFullPath(path.ToString());
+                        }
+                    }
+                }
+            }
             bool exito = false;
             connection.Close();
             string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_prod;Persist Security Info=True;";
             constring += "charset=utf8;convertzerodatetime=true;";
-            string file = "F:\\backup.sql";
+            string file = "" + rutaPen + "backup.sql";
             using (MySqlConnection conn = new MySqlConnection(constring))
             {
                 using (MySqlCommand cmd = new MySqlCommand())
