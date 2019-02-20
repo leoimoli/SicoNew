@@ -32,5 +32,11 @@ namespace Sico
             _cliente.Show();
             Hide();
         }
+        private void btnPericias_Click(object sender, EventArgs e)
+        {
+            PericiasWF _pericia = new PericiasWF();
+            _pericia.Show();
+            Hide();
+        }
     }
 }

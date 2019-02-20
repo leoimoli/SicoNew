@@ -60,7 +60,7 @@ namespace Sico.Dao
             }
             bool exito = false;
             connection.Close();
-            string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_prod;Persist Security Info=True;";
+            string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_desarrollo;Persist Security Info=True;";
 
             // Important Additional Connection Options
             constring += "convertzerodatetime=true;";
@@ -144,7 +144,7 @@ namespace Sico.Dao
             }
             bool exito = false;
             connection.Close();
-            string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_prod;Persist Security Info=True;";
+            string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_desarrollo;Persist Security Info=True;";
             constring += "convertzerodatetime=true;";
             string file = "" + rutaPen + "backup.sql";
             using (MySqlConnection conn = new MySqlConnection(constring))

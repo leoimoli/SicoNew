@@ -62,5 +62,13 @@ namespace Sico.Clases_Maestras
             }
         }
 
+        public static string[] Tribunal
+        {
+            get
+            {
+                return new string[] { "Tribunal de trabajo N°1", "Tribunal de trabajo N°2", "Tribunal de trabajo N°3", "Tribunal de trabajo N°4", "Tribunal de trabajo N°5" };
+            }
+        }
+
     }
 }

@@ -42,6 +42,8 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.dtFechaInscripcion = new System.Windows.Forms.DateTimePicker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtCodigoPostal = new System.Windows.Forms.TextBox();
@@ -72,8 +74,6 @@
             this.txtNombreRazonSocial = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -272,6 +272,26 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(131, 116);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(77, 20);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "Actividad:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(562, 116);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(58, 20);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "Fecha:";
             // 
             // dtFechaInscripcion
             // 
@@ -563,26 +583,6 @@
             this.label2.Size = new System.Drawing.Size(93, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "Actividad(*):";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(562, 116);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(58, 20);
-            this.label14.TabIndex = 23;
-            this.label14.Text = "Fecha:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(131, 116);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(77, 20);
-            this.label15.TabIndex = 24;
-            this.label15.Text = "Actividad:";
             // 
             // ClienteWF
             // 

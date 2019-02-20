@@ -40,13 +40,13 @@ namespace Sico
                     InicioWF _usuario = new InicioWF();
                     //Usb oUsb = new Usb();
                     //List<USBInfo> lstUSBD = oUsb.GetUSBDevices();
-                    bool Exito = Dao.UsuarioDao.LevantarBackup();
-                    if (Exito == true)
-                    {
-                        _usuario.Show();
-                        Hide();
-                    }
-                    else { MessageBox.Show("ATENCIÓN no se pudo importar el backup de base de datos"); }
+                    //bool Exito = Dao.UsuarioDao.LevantarBackup();
+                    //if (Exito == true)
+                    //{
+                    _usuario.Show();
+                    Hide();
+                    //}
+                    //else { MessageBox.Show("ATENCIÓN no se pudo importar el backup de base de datos"); }
                 }
             }
             catch (Exception ex)

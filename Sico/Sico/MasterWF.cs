@@ -56,9 +56,9 @@ namespace Sico
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bool Exito = Dao.UsuarioDao.GenerarBackup();
-            if (Exito != true)
-                MessageBox.Show("Error al cerrar el sistema.");
+            //bool Exito = Dao.UsuarioDao.GenerarBackup();
+            //if (Exito != true)
+            //    MessageBox.Show("Error al cerrar el sistema.");
             Close();
         }
     }

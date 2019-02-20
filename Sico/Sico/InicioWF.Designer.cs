@@ -61,6 +61,7 @@
             this.btnPericias.TabIndex = 5;
             this.toolTip1.SetToolTip(this.btnPericias, "Pericias");
             this.btnPericias.UseVisualStyleBackColor = true;
+            this.btnPericias.Click += new System.EventHandler(this.btnPericias_Click);
             // 
             // button1
             // 
