@@ -119,8 +119,8 @@ namespace Sico
             _pericia.NroCausa = txtNroCausa.Text;
             _pericia.Causa = txtCausa.Text;
             _pericia.Archivo1 = txtArchivo1.Text;
-            _pericia.Archivo2 = txtArchivo1.Text;
-            _pericia.Archivo3 = txtArchivo1.Text;
+            _pericia.Archivo2 = txtArchivo2.Text;
+            _pericia.Archivo3 = txtArchivo3.Text;
             _pericia.Email = txtEmail.Text;
             if (chcCompartirPericia.Checked == true)
             { _pericia.Compartido = 1; }
@@ -166,7 +166,7 @@ namespace Sico
                 System.IO.StreamReader sr = new
                    System.IO.StreamReader(openFileDialog2.FileName);
                 path2 = openFileDialog2.FileName;
-                txtArchivo1.Text = path2;
+                txtArchivo2.Text = path2;
                 sr.Close();
             }
         }
@@ -178,7 +178,7 @@ namespace Sico
                 System.IO.StreamReader sr = new
                    System.IO.StreamReader(openFileDialog3.FileName);
                 path3 = openFileDialog3.FileName;
-                txtArchivo1.Text = path3;
+                txtArchivo3.Text = path3;
                 sr.Close();
             }
         }
