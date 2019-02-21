@@ -102,13 +102,21 @@ namespace Sico.Dao
             //clienteSmtp.Port = 25;
             //clienteSmtp.EnableSsl = true;
             //clienteSmtp.UseDefaultCredentials = true;
-            var client = new SmtpClient("smtp.gmail.com", 587)
-            {
-                Credentials = new NetworkCredential(emisor, pwd),
-                EnableSsl = true
-            };
-            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
-            System.Net.Mail.SmtpClient SmtpServer = new System.Net.Mail.SmtpClient();
+            //var client = new SmtpClient("smtp.gmail.com", 587)
+            //{
+            //    Credentials = new NetworkCredential(emisor, pwd),
+            //    EnableSsl = true
+            //};
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 2525;
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential(emisor, pwd);
+
+            //System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+            //System.Net.Mail.SmtpClient SmtpServer = new System.Net.Mail.SmtpClient();
             //SmtpServer.Credentials = new System.Net.NetworkCredential(emisor, pwd);
             //SmtpServer.Port = 587;
             //SmtpServer.Host = "smtp.gmail.com";
@@ -119,7 +127,7 @@ namespace Sico.Dao
             //clienteSmtp.EnableSsl = true;
             try
             {
-                client.Send(emisor, emisor, "test", "testbody");
+                smtp.Send(msg);
                 exito = true;
                 //MessageBox.Show("Correo enviado");
             }
