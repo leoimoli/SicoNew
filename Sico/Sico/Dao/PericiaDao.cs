@@ -1,8 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
+using Sico.Clases_Maestras;
 using Sico.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -69,21 +71,31 @@ namespace Sico.Dao
                 connection.Close();
                 if (exito == true & _pericia.Compartido == 1)
                 { bool EmailConExito = EnviarEmail(_pericia); }
-
             }
             return exito;
         }
-
         private static bool EnviarEmail(Pericias _pericia)
         {
+            Variables _variables = new Variables();
             bool exito = false;
-            string emisor = "leoimoli@gmail.com";
-            string pwd = "Leo33244793";
-            string correo = "Estimada/o, le informamos se recibio una nueva pericia con Número de causa " + _pericia.NroCausa + " y referente a la causa " + _pericia.Causa + "  abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + " sin mas, les dejo mi saludo. Romina Arbizu.";
+            string emisor = _variables.emisorEmail;
+            string pwd = _variables.ClaveEmail;
+            string correo = "Estimada/o, le informamos que se inicio una nueva pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br /> abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Sin mas le dejo mi saludo.<br /> Romina Arbizu.";
+            List<string> adjuntos = new List<string>();
             string adjunto1 = Adj1;
+            if (adjunto1 != null)
+                adjuntos.Add(adjunto1);
             string adjunto2 = Adj2;
+            if (adjunto2 != null)
+                adjuntos.Add(adjunto2);
             string adjunto3 = Adj3;
-            string archivoAdjunto = adjunto1 + adjunto2 + adjunto3;
+            if (adjunto3 != null)
+                adjuntos.Add(adjunto3);
+            //foreach (var item in adjuntos)
+            //{
+            //    adjuntos.Add(item);
+            //}
+            //string archivoAdjunto = adjunto1 + adjunto2 + adjunto3;
             MailMessage msg = new MailMessage();
             //Quien escribe al correo
             msg.From = new MailAddress(emisor);
@@ -93,43 +105,24 @@ namespace Sico.Dao
             msg.Subject = _pericia.NroCausa + _pericia.Causa;
             //Contenido del correo
             msg.Body = correo;
+            msg.IsBodyHtml = true;
             //Adjuntamos archivo
-            if (adjunto1 != "")
-                msg.Attachments.Add(new Attachment(archivoAdjunto, System.Net.Mime.MediaTypeNames.Application.Pdf));
-            //Servidor smtp de hotmail
-            //SmtpClient clienteSmtp = new SmtpClient();
-            //clienteSmtp.Host = "smtp.live.com";
-            //clienteSmtp.Port = 25;
-            //clienteSmtp.EnableSsl = true;
-            //clienteSmtp.UseDefaultCredentials = true;
-            //var client = new SmtpClient("smtp.gmail.com", 587)
-            //{
-            //    Credentials = new NetworkCredential(emisor, pwd),
-            //    EnableSsl = true
-            //};
+            //string tempFileName = Oid.ToString();
 
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 2525;
-            smtp.EnableSsl = true;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential(emisor, pwd);
-
-            //System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
-            //System.Net.Mail.SmtpClient SmtpServer = new System.Net.Mail.SmtpClient();
-            //SmtpServer.Credentials = new System.Net.NetworkCredential(emisor, pwd);
-            //SmtpServer.Port = 587;
-            //SmtpServer.Host = "smtp.gmail.com";
-            //SmtpServer.EnableSsl = true;
-            //SmtpServer.UseDefaultCredentials = true;
-            //Se envia el correo
-            //clienteSmtp.Credentials = new NetworkCredential(emisor, pwd);
-            //clienteSmtp.EnableSsl = true;
+            foreach (string attach in adjuntos)
+            {
+                Attachment attached = new Attachment(attach, System.Net.Mime.MediaTypeNames.Application.Octet);
+                msg.Attachments.Add(attached);
+            }
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential(emisor, pwd);
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true; //Esto es para que vaya a través de SSL que es obligatorio con GMail
             try
             {
-                smtp.Send(msg);
+                client.Send(msg);
                 exito = true;
-                //MessageBox.Show("Correo enviado");
             }
             catch (Exception ex)
             {
