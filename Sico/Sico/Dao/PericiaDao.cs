@@ -129,6 +129,83 @@ namespace Sico.Dao
 
             }            return exito;
         }
+
+        public static List<Pericias> BuscarPericiasPorCausa(string causa)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Pericias> lista = new List<Entidades.Pericias>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Causa_in", causa)};
+            string proceso = "BuscarPericiasPorCausa";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Pericias listaUsuario = new Pericias();
+                    listaUsuario.idPericia = Convert.ToInt32(item["idPericia"].ToString());
+                    listaUsuario.Tribunal = item["Tribunal"].ToString();
+                    listaUsuario.Fecha = Convert.ToDateTime(item["Fecha"].ToString());
+                    listaUsuario.NroCausa = item["NroCausa"].ToString();
+                    listaUsuario.Causa = item["Causa"].ToString();
+                    listaUsuario.Archivo1 = item["Archivo1"].ToString();
+                    listaUsuario.Archivo2 = item["Archivo2"].ToString();
+                    listaUsuario.Archivo3 = item["Archivo3"].ToString();
+                    listaUsuario.Compartido = Convert.ToInt32(item["Compartir"].ToString());
+                    listaUsuario.Email = item["Email"].ToString();
+                    listaUsuario.Estado = item["Estado"].ToString();
+                    lista.Add(listaUsuario);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<Pericias> BuscarPericiasPorTribunal(string tribunal)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Pericias> lista = new List<Entidades.Pericias>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Tribunal_in", tribunal)};
+            string proceso = "BuscarPericiasPorTribunal";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Pericias listaUsuario = new Pericias();
+                    listaUsuario.idPericia = Convert.ToInt32(item["idPericia"].ToString());
+                    listaUsuario.Tribunal = item["Tribunal"].ToString();
+                    listaUsuario.Fecha = Convert.ToDateTime(item["Fecha"].ToString());
+                    listaUsuario.NroCausa = item["NroCausa"].ToString();
+                    listaUsuario.Causa = item["Causa"].ToString();
+                    listaUsuario.Archivo1 = item["Archivo1"].ToString();
+                    listaUsuario.Archivo2 = item["Archivo2"].ToString();
+                    listaUsuario.Archivo3 = item["Archivo3"].ToString();
+                    listaUsuario.Compartido = Convert.ToInt32(item["Compartir"].ToString());
+                    listaUsuario.Email = item["Email"].ToString();
+                    listaUsuario.Estado = item["Estado"].ToString();
+                    lista.Add(listaUsuario);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static string Adj1;
         public static string Adj2;
         public static string Adj3;

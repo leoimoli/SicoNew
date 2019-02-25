@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases_Maestras\AutoCompleClass.cs" />
+    <Compile Include="Clases_Maestras\AutoCompleteCausa.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteRazonSocial.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteSubCliente.cs" />
     <Compile Include="Clases_Maestras\Sesion.cs" />

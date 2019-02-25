@@ -42,6 +42,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvPericias = new System.Windows.Forms.DataGridView();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -71,6 +72,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -107,6 +109,7 @@
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // chcPorTribunal
             // 
@@ -118,6 +121,7 @@
             this.chcPorTribunal.TabIndex = 0;
             this.chcPorTribunal.Text = "Por Tribunal";
             this.chcPorTribunal.UseVisualStyleBackColor = true;
+            this.chcPorTribunal.CheckedChanged += new System.EventHandler(this.chcPorTribunal_CheckedChanged);
             // 
             // chcPorCausa
             // 
@@ -129,6 +133,7 @@
             this.chcPorCausa.TabIndex = 1;
             this.chcPorCausa.Text = "Por Causa";
             this.chcPorCausa.UseVisualStyleBackColor = true;
+            this.chcPorCausa.CheckedChanged += new System.EventHandler(this.chcPorCausa_CheckedChanged);
             // 
             // txtCausaBuscar
             // 
@@ -175,6 +180,7 @@
             this.btnHabilitarBuscar.Text = "Buscar";
             this.btnHabilitarBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHabilitarBuscar.UseVisualStyleBackColor = true;
+            this.btnHabilitarBuscar.Click += new System.EventHandler(this.btnHabilitarBuscar_Click);
             // 
             // btnNuevaPericia
             // 
@@ -230,6 +236,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dgvPericias);
             this.groupBox1.Controls.Add(this.progressBar1);
             this.groupBox1.Controls.Add(this.lblEmail);
             this.groupBox1.Controls.Add(this.txtEmail);
@@ -261,6 +268,14 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // dgvPericias
+            // 
+            this.dgvPericias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPericias.Location = new System.Drawing.Point(6, 37);
+            this.dgvPericias.Name = "dgvPericias";
+            this.dgvPericias.Size = new System.Drawing.Size(830, 358);
+            this.dgvPericias.TabIndex = 14;
             // 
             // progressBar1
             // 
@@ -516,6 +531,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -563,5 +579,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.OpenFileDialog openFileDialog3;
+        private System.Windows.Forms.DataGridView dgvPericias;
     }
 }

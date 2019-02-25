@@ -88,5 +88,42 @@ namespace Sico.Negocio
             }
 
         }
+        public static List<Pericias> BuscarPericiasPorTribunal(string tribunal)
+        {
+            List<Pericias> _listaPericias = new List<Pericias>();
+            try
+            {
+                _listaPericias = PericiaDao.BuscarPericiasPorTribunal(tribunal);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaPericias;
+        }
+
+        public static List<Pericias> BuscarPericiasPorCausa(string causa)
+        {
+            List<Pericias> _listaPericias = new List<Pericias>();
+            try
+            {
+                _listaPericias = PericiaDao.BuscarPericiasPorCausa(causa);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaPericias;
+        }
     }
 }

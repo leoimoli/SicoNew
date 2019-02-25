@@ -127,6 +127,156 @@ namespace Sico
             else { _pericia.Compartido = 0; }
             return _pericia;
         }
+        private void btnHabilitarBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FuncionesBotonHabilitarBuscar();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void FuncionesBotonHabilitarBuscar()
+        {
+            chcPorTribunal.Checked = true;
+            btnHabilitarBuscar.Visible = false;
+            groupBox3.Visible = true;
+            cmbTribunalBuscar.Focus();
+            CargarComboTribunal();
+        }
+        private void chcPorTribunal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcPorTribunal.Checked == true)
+            {
+                txtCausaBuscar.Clear();
+                txtCausaBuscar.Visible = false;
+                cmbTribunalBuscar.Visible = true;
+                chcPorCausa.Checked = false;
+                lblDniOApellidoNombre.Text = "Buscar Por Tribunal(*):";
+                cmbTribunalBuscar.Focus();
+            }
+        }
+        private void chcPorCausa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcPorCausa.Checked == true)
+            {
+                txtCausaBuscar.Clear();
+                txtCausa.Enabled = true;
+                txtCausaBuscar.Focus();
+                txtCausaBuscar.Visible = true;
+                cmbTribunalBuscar.Visible = false;
+                chcPorTribunal.Checked = false;
+                lblDniOApellidoNombre.Text = "Buscar Por Causa(*):";
+                txtCausaBuscar.Focus();
+                txtCausaBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteRazonSocial.Autocomplete();
+                txtCausaBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtCausaBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            }
+        }
+        public List<Entidades.Pericias> ListaPericias
+        {
+            set
+            {
+                if (value.Count > 0)
+                {
+                    if (value != dgvPericias.DataSource && dgvPericias.DataSource != null)
+                    {
+                        dgvPericias.Columns.Clear();
+                        dgvPericias.Refresh();
+                    }
+                    //lblCantidad.Visible = true;
+                    //lblCantidadEdit.Visible = true;
+                    //lblCantidadEdit.Text = Convert.ToString(value.Count);
+                    btnBuscar.Visible = true;
+                    //btnConsultarTotales.Visible = true;
+                    //label2.Visible = true;
+                    //lblSeleccionar.Visible = true;
+                    //txtBuscar.Visible = true;
+                    //txtBuscar.Enabled = true;
+                    //txtBuscar.Focus();
+                    dgvPericias.Visible = true;
+                    dgvPericias.ReadOnly = true;
+                    dgvPericias.RowHeadersVisible = false;
+                    groupBox1.Enabled = true;
+                    dgvPericias.DataSource = value;
+
+                    dgvPericias.Columns[0].HeaderText = "Id Pericia";
+                    dgvPericias.Columns[0].Width = 130;
+                    dgvPericias.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[0].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[0].HeaderCell.Style.ForeColor = Color.White;
+
+                    dgvPericias.Columns[1].HeaderText = "Tribunal";
+                    dgvPericias.Columns[1].Width = 170;
+                    dgvPericias.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[1].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[1].HeaderCell.Style.ForeColor = Color.White;
+
+                    dgvPericias.Columns[2].HeaderText = "Fecha";
+                    dgvPericias.Columns[2].Width = 100;
+                    dgvPericias.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[2].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[2].HeaderCell.Style.ForeColor = Color.White;
+
+                    dgvPericias.Columns[3].HeaderText = "Nro.Causa";
+                    dgvPericias.Columns[3].Width = 110;
+                    dgvPericias.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[3].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[3].HeaderCell.Style.ForeColor = Color.White;
+
+                    dgvPericias.Columns[4].HeaderText = "Causa";
+                    dgvPericias.Columns[4].Width = 150;
+                    dgvPericias.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[4].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+
+
+                    dgvPericias.Columns[5].HeaderText = "Archivo1";
+                    dgvPericias.Columns[5].Width = 250;
+                    dgvPericias.Columns[5].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[5].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[5].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[5].Visible = false;
+
+                    dgvPericias.Columns[6].HeaderText = "Archivo2";
+                    dgvPericias.Columns[6].Width = 135;
+                    dgvPericias.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[6].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[6].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[6].Visible = false;
+
+                    dgvPericias.Columns[7].HeaderText = "Archivo3";
+                    dgvPericias.Columns[7].Width = 95;
+                    dgvPericias.Columns[7].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[7].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[7].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[7].Visible = false;
+
+                    dgvPericias.Columns[8].HeaderText = "Compartir";
+                    dgvPericias.Columns[8].Width = 50;
+                    dgvPericias.Columns[8].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[8].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[8].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[8].Visible = false;
+
+                    dgvPericias.Columns[9].HeaderText = "Email";
+                    dgvPericias.Columns[9].Width = 95;
+                    dgvPericias.Columns[9].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[9].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[9].HeaderCell.Style.ForeColor = Color.White;
+
+                    dgvPericias.Columns[10].HeaderText = "Estado";
+                    dgvPericias.Columns[10].Width = 95;
+                    dgvPericias.Columns[10].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[10].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[10].HeaderCell.Style.ForeColor = Color.White;
+                }
+                else { MessageBox.Show("No se encontraron resultados para los filtros seleccionados."); }
+            }
+        }
+
         #endregion
         #region Botones
         private void btnNuevaPericia_Click(object sender, EventArgs e)
@@ -205,7 +355,28 @@ namespace Sico
             }
             catch { }
         }
-        #endregion
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
 
+                if (chcPorTribunal.Checked == true)
+                {
+                    var tribunal = cmbTribunalBuscar.Text;
+                    ListaPericias = PericiaNeg.BuscarPericiasPorTribunal(tribunal);
+                }
+                else
+                {
+                    var Causa = txtCausaBuscar.Text;
+                    ListaPericias = PericiaNeg.BuscarPericiasPorCausa(Causa);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        #endregion      
     }
 }
