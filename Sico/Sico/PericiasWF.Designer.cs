@@ -272,10 +272,12 @@
             // dgvPericias
             // 
             this.dgvPericias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPericias.Location = new System.Drawing.Point(6, 37);
+            this.dgvPericias.Location = new System.Drawing.Point(26, 36);
             this.dgvPericias.Name = "dgvPericias";
             this.dgvPericias.Size = new System.Drawing.Size(830, 358);
             this.dgvPericias.TabIndex = 14;
+            this.dgvPericias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickBoton);
+            this.dgvPericias.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvPericias_CellPainting);
             // 
             // progressBar1
             // 

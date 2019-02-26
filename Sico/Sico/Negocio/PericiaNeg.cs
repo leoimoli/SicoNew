@@ -40,6 +40,27 @@ namespace Sico.Negocio
             }
             return exito;
         }
+
+        public static List<Pericias> BuscarHistorialPericia(object idPericia)
+        {
+            int idPer = Convert.ToInt32(idPericia);
+            List<Pericias> _listaPericias = new List<Pericias>();
+            try
+            {
+                _listaPericias = PericiaDao.BuscarHistorialPericia(idPer);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaPericias;
+        }
+
         private static bool ValidarPericiaExistente(string tribunal, string causa)
         {
             bool existe = PericiaDao.ValidarPericiaExistente(tribunal, causa);

@@ -123,6 +123,12 @@
     </Compile>
     <Compile Include="Negocio\ClienteNeg.cs" />
     <Compile Include="Negocio\UsuarioNeg.cs" />
+    <Compile Include="PericiaHistoriaWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PericiaHistoriaWF.Designer.cs">
+      <DependentUpon>PericiaHistoriaWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="PericiasWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MasterWF.resx">
       <DependentUpon>MasterWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PericiaHistoriaWF.resx">
+      <DependentUpon>PericiaHistoriaWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PericiasWF.resx">
       <DependentUpon>PericiasWF.cs</DependentUpon>

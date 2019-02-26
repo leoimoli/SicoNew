@@ -49,8 +49,9 @@ namespace Sico.Dao
             {
                 exitoGuardarImagenes = GuardarImagenesEnCarpeta(_pericia);
             }
-            if (exitoGuardarImagenes == true)
+            if (exitoGuardarImagenes == false & _pericia.Archivo1 == "" || _pericia.Archivo2 == "" || _pericia.Archivo3 == "")
             {
+                int idUltimaPericia = 0;
                 connection.Close();
                 connection.Open();
                 string proceso = "AltaPericia";
@@ -60,20 +61,97 @@ namespace Sico.Dao
                 cmd.Parameters.AddWithValue("Fecha_in", _pericia.Fecha);
                 cmd.Parameters.AddWithValue("NroCausa_in", _pericia.NroCausa);
                 cmd.Parameters.AddWithValue("Causa_in", _pericia.Causa);
-                cmd.Parameters.AddWithValue("Archivo1_in", _pericia.Archivo1);
-                cmd.Parameters.AddWithValue("Archivo2_in", _pericia.Archivo2);
-                cmd.Parameters.AddWithValue("Archivo3_in", _pericia.Archivo3);
                 cmd.Parameters.AddWithValue("Compartido_in", _pericia.Compartido);
                 cmd.Parameters.AddWithValue("Email_in", _pericia.Email);
                 cmd.Parameters.AddWithValue("Estado_in", _pericia.Estado);
-                cmd.ExecuteNonQuery();
-                exito = true;
-                connection.Close();
-                if (exito == true & _pericia.Compartido == 1)
-                { bool EmailConExito = EnviarEmail(_pericia); }
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    idUltimaPericia = Convert.ToInt32(r["ID"].ToString());
+                }
+                if (idUltimaPericia > 0)
+                {
+                    connection.Close();
+                    connection.Open();
+                    string proceso2 = "AltaHistorialPericia";
+                    MySqlCommand cmd2 = new MySqlCommand(proceso2, connection);
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Parameters.AddWithValue("Descripcion_in", "Inicio de Pericia");
+                    cmd2.Parameters.AddWithValue("Estado_in", _pericia.Estado);
+                    cmd2.Parameters.AddWithValue("Fecha_in", _pericia.Fecha);
+                    cmd2.Parameters.AddWithValue("idPericia_in", idUltimaPericia);
+                    cmd2.ExecuteNonQuery();
+                    exito = true;
+                    connection.Close();
+
+                    if (exito == true)
+                    {
+                        List<string> ListaArchivos = new List<string>();
+                        if (_pericia.Archivo1 != "")
+                            ListaArchivos.Add(_pericia.Archivo1);
+                        if (_pericia.Archivo2 != "")
+                            ListaArchivos.Add(_pericia.Archivo2);
+                        if (_pericia.Archivo3 != "")
+                            ListaArchivos.Add(_pericia.Archivo3);
+
+                        foreach (var item in ListaArchivos)
+                        {
+                            connection.Close();
+                            connection.Open();
+                            string proceso3 = "AltaArchivosPericia";
+                            MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
+                            cmd3.CommandType = CommandType.StoredProcedure;
+                            cmd3.Parameters.AddWithValue("Archivo_in", item);
+                            cmd3.Parameters.AddWithValue("idPericia_in", idUltimaPericia);
+                            cmd3.ExecuteNonQuery();
+                            exito = true;
+                            connection.Close();
+                        }
+                    }
+                    if (exito == true & _pericia.Compartido == 1)
+                    { bool EmailConExito = EnviarEmail(_pericia); }
+                }
             }
             return exito;
         }
+
+        public static List<Pericias> BuscarHistorialPericia(int idPer)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Pericias> lista = new List<Entidades.Pericias>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idPericia_in", idPer)};
+            string proceso = "BuscarHistorialPericia";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Pericias listaUsuario = new Pericias();
+                    listaUsuario.idPericia = Convert.ToInt32(item["idPericia"].ToString());
+                    listaUsuario.Tribunal = item["Tribunal"].ToString();
+                    listaUsuario.NroCausa = item["NroCausa"].ToString();
+                    listaUsuario.Causa = item["Causa"].ToString();
+                    listaUsuario.Compartido = Convert.ToInt32(item["Compartir"].ToString());
+                    listaUsuario.Email = item["Email"].ToString();
+                    listaUsuario.Descripcion = item["Descrip"].ToString();
+                    listaUsuario.Estado = item["Est"].ToString();
+                    listaUsuario.Fecha = Convert.ToDateTime(item["Fec"].ToString());
+                    listaUsuario.totalArchivos = Convert.ToInt32(item["count(*)"].ToString());
+                    lista.Add(listaUsuario);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         private static bool EnviarEmail(Pericias _pericia)
         {
             Variables _variables = new Variables();

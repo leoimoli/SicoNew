@@ -33,6 +33,7 @@ namespace Sico
             txtArchivo1.Clear();
             txtArchivo2.Clear();
             txtArchivo3.Clear();
+            dgvPericias.Visible = false;
         }
         private void LimpiarCamposBotonNuevaPericia()
         {
@@ -203,7 +204,7 @@ namespace Sico
                     dgvPericias.DataSource = value;
 
                     dgvPericias.Columns[0].HeaderText = "Id Pericia";
-                    dgvPericias.Columns[0].Width = 130;
+                    dgvPericias.Columns[0].Width = 60;
                     dgvPericias.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvPericias.Columns[0].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[0].HeaderCell.Style.ForeColor = Color.White;
@@ -272,11 +273,53 @@ namespace Sico
                     dgvPericias.Columns[10].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvPericias.Columns[10].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[10].HeaderCell.Style.ForeColor = Color.White;
+
+                    dgvPericias.Columns[11].HeaderText = "Descripcion";
+                    dgvPericias.Columns[11].Width = 95;
+                    dgvPericias.Columns[11].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[11].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[11].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[11].Visible = false;
+
+                    dgvPericias.Columns[12].HeaderText = "TotalPericias";
+                    dgvPericias.Columns[12].Width = 95;
+                    dgvPericias.Columns[12].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[12].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[12].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[12].Visible = false;
+
+                    DataGridViewButtonColumn BotonVer = new DataGridViewButtonColumn();
+                    BotonVer.Name = "Ver";
+                    BotonVer.HeaderText = "Ver";
+                    this.dgvPericias.Columns.Add(BotonVer);
+                    dgvPericias.Columns[13].Width = 35;
+                    dgvPericias.Columns[13].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[13].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[13].HeaderCell.Style.ForeColor = Color.White;
+
                 }
                 else { MessageBox.Show("No se encontraron resultados para los filtros seleccionados."); }
             }
         }
-
+        private void dgvPericias_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && this.dgvPericias.Columns[e.ColumnIndex].Name == "Ver" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell celBoton = this.dgvPericias.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
+                e.Handled = true;
+            }
+        }
+        private void ClickBoton(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPericias.CurrentCell.ColumnIndex == 13)
+            {
+                var idPericia = Convert.ToString(this.dgvPericias.CurrentRow.Cells[0].Value);
+                PericiaHistoriaWF _vista = new PericiaHistoriaWF(idPericia);
+                _vista.Show();
+                Hide();
+            }
+        }
         #endregion
         #region Botones
         private void btnNuevaPericia_Click(object sender, EventArgs e)
@@ -377,6 +420,8 @@ namespace Sico
 
             }
         }
-        #endregion      
+        #endregion
+
+     
     }
 }

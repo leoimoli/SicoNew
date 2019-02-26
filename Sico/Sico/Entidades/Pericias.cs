@@ -19,6 +19,8 @@ namespace Sico.Entidades
         public int Compartido { get; set; }
         public string Email { get; set; }
         public string Estado { get; set; }
+        public string Descripcion { get; set; }
+        public int totalArchivos { get; set; }
 
     }
 }
