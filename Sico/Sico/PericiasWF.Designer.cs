@@ -38,9 +38,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnHabilitarBuscar = new System.Windows.Forms.Button();
             this.btnNuevaPericia = new System.Windows.Forms.Button();
-            this.btnHistorial = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvPericias = new System.Windows.Forms.DataGridView();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -94,7 +91,7 @@
             // cmbTribunalBuscar
             // 
             this.cmbTribunalBuscar.FormattingEnabled = true;
-            this.cmbTribunalBuscar.Location = new System.Drawing.Point(118, 45);
+            this.cmbTribunalBuscar.Location = new System.Drawing.Point(225, 45);
             this.cmbTribunalBuscar.Name = "cmbTribunalBuscar";
             this.cmbTribunalBuscar.Size = new System.Drawing.Size(180, 21);
             this.cmbTribunalBuscar.TabIndex = 4;
@@ -159,9 +156,6 @@
             // 
             this.groupBox2.Controls.Add(this.btnHabilitarBuscar);
             this.groupBox2.Controls.Add(this.btnNuevaPericia);
-            this.groupBox2.Controls.Add(this.btnHistorial);
-            this.groupBox2.Controls.Add(this.btnEliminar);
-            this.groupBox2.Controls.Add(this.btnEditar);
             this.groupBox2.Location = new System.Drawing.Point(948, 162);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(186, 452);
@@ -173,7 +167,7 @@
             // 
             this.btnHabilitarBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
             this.btnHabilitarBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHabilitarBuscar.Location = new System.Drawing.Point(45, 98);
+            this.btnHabilitarBuscar.Location = new System.Drawing.Point(44, 116);
             this.btnHabilitarBuscar.Name = "btnHabilitarBuscar";
             this.btnHabilitarBuscar.Size = new System.Drawing.Size(90, 61);
             this.btnHabilitarBuscar.TabIndex = 1;
@@ -184,9 +178,9 @@
             // 
             // btnNuevaPericia
             // 
-            this.btnNuevaPericia.Image = global::Sico.Properties.Resources.agregar_usuario_nuevo;
+            this.btnNuevaPericia.Image = global::Sico.Properties.Resources.nueva_pagina;
             this.btnNuevaPericia.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevaPericia.Location = new System.Drawing.Point(45, 19);
+            this.btnNuevaPericia.Location = new System.Drawing.Point(44, 37);
             this.btnNuevaPericia.Name = "btnNuevaPericia";
             this.btnNuevaPericia.Size = new System.Drawing.Size(90, 61);
             this.btnNuevaPericia.TabIndex = 0;
@@ -194,45 +188,6 @@
             this.btnNuevaPericia.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevaPericia.UseVisualStyleBackColor = true;
             this.btnNuevaPericia.Click += new System.EventHandler(this.btnNuevaPericia_Click);
-            // 
-            // btnHistorial
-            // 
-            this.btnHistorial.Image = global::Sico.Properties.Resources.diagnostico;
-            this.btnHistorial.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHistorial.Location = new System.Drawing.Point(45, 348);
-            this.btnHistorial.Name = "btnHistorial";
-            this.btnHistorial.Size = new System.Drawing.Size(90, 61);
-            this.btnHistorial.TabIndex = 4;
-            this.btnHistorial.Text = "Tareas";
-            this.btnHistorial.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnHistorial.UseVisualStyleBackColor = true;
-            this.btnHistorial.Visible = false;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Image = global::Sico.Properties.Resources.borrar_usuario;
-            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEliminar.Location = new System.Drawing.Point(45, 255);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(90, 61);
-            this.btnEliminar.TabIndex = 3;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Visible = false;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Image = global::Sico.Properties.Resources.usuario;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(45, 175);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(90, 61);
-            this.btnEditar.TabIndex = 2;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Visible = false;
             // 
             // groupBox1
             // 
@@ -272,7 +227,7 @@
             // dgvPericias
             // 
             this.dgvPericias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPericias.Location = new System.Drawing.Point(26, 36);
+            this.dgvPericias.Location = new System.Drawing.Point(48, 36);
             this.dgvPericias.Name = "dgvPericias";
             this.dgvPericias.Size = new System.Drawing.Size(830, 358);
             this.dgvPericias.TabIndex = 14;
@@ -550,9 +505,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnHabilitarBuscar;
         private System.Windows.Forms.Button btnNuevaPericia;
-        private System.Windows.Forms.Button btnHistorial;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker dtFechaPericia;

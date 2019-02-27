@@ -146,5 +146,41 @@ namespace Sico.Negocio
             }
             return _listaPericias;
         }
+        public static bool GurdarHistorialPericia(Pericias _pericia)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatosHistorialPericia(_pericia);
+                exito = PericiaDao.InsertHistorialPericia(_pericia);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
+
+        private static void ValidarDatosHistorialPericia(Pericias _pericia)
+        {
+            if (_pericia.Estado == "Seleccione")
+            {
+                const string message = "El campo Estado es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+            if (_pericia.Fecha > DateTime.Now)
+            {
+                const string message = "La fecha no puede ser mayor a la fecha actual.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+        }
     }
 }

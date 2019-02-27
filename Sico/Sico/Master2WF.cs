@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 
+
 namespace Sico
 {
-    public partial class MasterWF : Form
+    public partial class Master2WF : Form
     {
-        public MasterWF()
+        public Master2WF()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
@@ -60,13 +61,6 @@ namespace Sico
             //if (Exito != true)
             //    MessageBox.Show("Error al cerrar el sistema.");
             Close();
-        }
-
-        private void periciasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PericiasWF _pericia = new PericiasWF();
-            _pericia.Show();
-            Hide();
         }
     }
 }

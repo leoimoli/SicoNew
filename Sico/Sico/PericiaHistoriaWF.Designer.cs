@@ -30,12 +30,12 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnNuevaHistoria = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.dgvPericias = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblMensaje = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGuardarHistorial = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
@@ -51,6 +51,10 @@
             this.txtArchivo3 = new System.Windows.Forms.TextBox();
             this.txtArchivo2 = new System.Windows.Forms.TextBox();
             this.txtArchivo1 = new System.Windows.Forms.TextBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
+            this.chcEmail = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -59,7 +63,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnNuevaHistoria);
-            this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.dgvPericias);
             this.groupBox1.Location = new System.Drawing.Point(25, 72);
             this.groupBox1.Name = "groupBox1";
@@ -71,7 +74,7 @@
             // btnNuevaHistoria
             // 
             this.btnNuevaHistoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevaHistoria.Image = global::Sico.Properties.Resources.copia_de_seguridad;
+            this.btnNuevaHistoria.Image = global::Sico.Properties.Resources.historial_medico__1_;
             this.btnNuevaHistoria.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnNuevaHistoria.Location = new System.Drawing.Point(775, 241);
             this.btnNuevaHistoria.Name = "btnNuevaHistoria";
@@ -81,19 +84,6 @@
             this.btnNuevaHistoria.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevaHistoria.UseVisualStyleBackColor = true;
             this.btnNuevaHistoria.Click += new System.EventHandler(this.btnNuevaHistoria_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Image = global::Sico.Properties.Resources.cancelar;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(677, 240);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(80, 51);
-            this.btnCancelar.TabIndex = 16;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // dgvPericias
             // 
@@ -105,9 +95,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chcEmail);
+            this.groupBox2.Controls.Add(this.progressBar1);
             this.groupBox2.Controls.Add(this.lblMensaje);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.btnGuardarHistorial);
+            this.groupBox2.Controls.Add(this.btnLimpiar);
             this.groupBox2.Controls.Add(this.cmbEstado);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtDescripcion);
@@ -123,13 +115,22 @@
             this.groupBox2.Controls.Add(this.txtArchivo3);
             this.groupBox2.Controls.Add(this.txtArchivo2);
             this.groupBox2.Controls.Add(this.txtArchivo1);
-            this.groupBox2.Location = new System.Drawing.Point(25, 378);
+            this.groupBox2.Location = new System.Drawing.Point(25, 376);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(880, 250);
+            this.groupBox2.Size = new System.Drawing.Size(880, 265);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nuevo Historial";
             this.groupBox2.Visible = false;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(264, 116);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(330, 23);
+            this.progressBar1.TabIndex = 86;
+            this.progressBar1.Value = 50;
+            this.progressBar1.Visible = false;
             // 
             // lblMensaje
             // 
@@ -142,31 +143,33 @@
             this.lblMensaje.Text = "label5";
             this.lblMensaje.Visible = false;
             // 
-            // button1
+            // btnGuardarHistorial
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::Sico.Properties.Resources.copia_de_seguridad;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(785, 192);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 51);
-            this.button1.TabIndex = 85;
-            this.button1.Text = "Nuevo";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGuardarHistorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarHistorial.Image = global::Sico.Properties.Resources.copia_de_seguridad;
+            this.btnGuardarHistorial.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGuardarHistorial.Location = new System.Drawing.Point(785, 192);
+            this.btnGuardarHistorial.Name = "btnGuardarHistorial";
+            this.btnGuardarHistorial.Size = new System.Drawing.Size(80, 51);
+            this.btnGuardarHistorial.TabIndex = 85;
+            this.btnGuardarHistorial.Text = "Guardar";
+            this.btnGuardarHistorial.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGuardarHistorial.UseVisualStyleBackColor = true;
+            this.btnGuardarHistorial.Click += new System.EventHandler(this.btnGuardarHistorial_Click);
             // 
-            // button2
+            // btnLimpiar
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::Sico.Properties.Resources.cancelar;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(687, 191);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(80, 51);
-            this.button2.TabIndex = 84;
-            this.button2.Text = "Cancelar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Image = global::Sico.Properties.Resources.cancelar;
+            this.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLimpiar.Location = new System.Drawing.Point(687, 191);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(80, 51);
+            this.btnLimpiar.TabIndex = 84;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // cmbEstado
             // 
@@ -188,7 +191,7 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(487, 19);
+            this.txtDescripcion.Location = new System.Drawing.Point(505, 19);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(350, 100);
@@ -198,11 +201,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(423, 62);
+            this.label1.Location = new System.Drawing.Point(413, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 20);
+            this.label1.Size = new System.Drawing.Size(96, 20);
             this.label1.TabIndex = 49;
-            this.label1.Text = "Fecha:";
+            this.label1.Text = "Descripción:";
             // 
             // label14
             // 
@@ -231,6 +234,7 @@
             this.btnCargarArchivo3.TabIndex = 45;
             this.btnCargarArchivo3.UseVisualStyleBackColor = false;
             this.btnCargarArchivo3.Visible = false;
+            this.btnCargarArchivo3.Click += new System.EventHandler(this.btnCargarArchivo3_Click);
             // 
             // btnCargarArchivo2
             // 
@@ -242,6 +246,7 @@
             this.btnCargarArchivo2.TabIndex = 44;
             this.btnCargarArchivo2.UseVisualStyleBackColor = false;
             this.btnCargarArchivo2.Visible = false;
+            this.btnCargarArchivo2.Click += new System.EventHandler(this.btnCargarArchivo2_Click);
             // 
             // btnCargarArchivo1
             // 
@@ -253,6 +258,7 @@
             this.btnCargarArchivo1.TabIndex = 43;
             this.btnCargarArchivo1.UseVisualStyleBackColor = false;
             this.btnCargarArchivo1.Visible = false;
+            this.btnCargarArchivo1.Click += new System.EventHandler(this.btnCargarArchivo1_Click);
             // 
             // lblArchivo3
             // 
@@ -311,6 +317,29 @@
             this.txtArchivo1.TabIndex = 37;
             this.txtArchivo1.Visible = false;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            // 
+            // openFileDialog3
+            // 
+            this.openFileDialog3.FileName = "openFileDialog3";
+            // 
+            // chcEmail
+            // 
+            this.chcEmail.AutoSize = true;
+            this.chcEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcEmail.Location = new System.Drawing.Point(328, 238);
+            this.chcEmail.Name = "chcEmail";
+            this.chcEmail.Size = new System.Drawing.Size(105, 21);
+            this.chcEmail.TabIndex = 87;
+            this.chcEmail.Text = "Enviar Email";
+            this.chcEmail.UseVisualStyleBackColor = true;
+            // 
             // PericiaHistoriaWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,7 +367,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvPericias;
         private System.Windows.Forms.Button btnNuevaHistoria;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnCargarArchivo3;
         private System.Windows.Forms.Button btnCargarArchivo2;
@@ -355,8 +383,13 @@
         private System.Windows.Forms.DateTimePicker dtFechaPericia;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGuardarHistorial;
+        private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Label lblMensaje;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog3;
+        private System.Windows.Forms.CheckBox chcEmail;
     }
 }

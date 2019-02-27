@@ -41,6 +41,7 @@
             this.lblMaster_FechaHora = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.periciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -52,6 +53,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inicioToolStripMenuItem,
             this.clientesToolStripMenuItem,
+            this.periciasToolStripMenuItem,
             this.usuariosToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -168,6 +170,14 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Sico(contable) V1.0.1";
             // 
+            // periciasToolStripMenuItem
+            // 
+            this.periciasToolStripMenuItem.Image = global::Sico.Properties.Resources.juicio;
+            this.periciasToolStripMenuItem.Name = "periciasToolStripMenuItem";
+            this.periciasToolStripMenuItem.Size = new System.Drawing.Size(91, 25);
+            this.periciasToolStripMenuItem.Text = "Pericias";
+            this.periciasToolStripMenuItem.Click += new System.EventHandler(this.periciasToolStripMenuItem_Click);
+            // 
             // MasterWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,5 +217,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem periciasToolStripMenuItem;
     }
 }

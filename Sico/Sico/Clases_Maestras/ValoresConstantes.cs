@@ -69,6 +69,12 @@ namespace Sico.Clases_Maestras
                 return new string[] { "Tribunal de trabajo N°1", "Tribunal de trabajo N°2", "Tribunal de trabajo N°3", "Tribunal de trabajo N°4", "Tribunal de trabajo N°5" };
             }
         }
-
+        public static string[] EstadosPericia
+        {
+            get
+            {
+                return new string[] { "Iniciada", "Presentada", "Presentada firme", "Concluida" };
+            }
+        }
     }
 }

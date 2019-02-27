@@ -15,7 +15,6 @@ namespace Sico
     public partial class PericiaHistoriaWF : MasterWF
     {
         private string idPericiaSeleccionada;
-
         public PericiaHistoriaWF(string idPericia)
         {
             InitializeComponent();
@@ -24,12 +23,45 @@ namespace Sico
         private void PericiaHistoriaWF_Load(object sender, EventArgs e)
         {
             ListaPericias = PericiaNeg.BuscarHistorialPericia(idPericiaSeleccionada);
-
         }
         #region Funciones
         public static int totalArchivos;
-        public static string archivo2;
-        public static string archivo3;
+        public static int idPericia;
+        public static int Compartir;
+        public static string Email;
+        private void ProgressBar()
+        {
+            progressBar1.Visible = true;
+            progressBar1.Maximum = 100000;
+            progressBar1.Step = 1;
+
+            for (int j = 0; j < 100000; j++)
+            {
+                Caluculate(j);
+                progressBar1.PerformStep();
+            }
+        }
+        private void Caluculate(int i)
+        {
+            double pow = Math.Pow(i, i);
+        }
+        private Pericias CargarEntidad()
+        {
+            Pericias _pericia = new Pericias();
+            _pericia.idPericia = Convert.ToInt32(idPericiaSeleccionada);
+            _pericia.Fecha = dtFechaPericia.Value;
+            _pericia.Estado = cmbEstado.Text;
+            _pericia.Descripcion = txtDescripcion.Text;
+            _pericia.Archivo1 = txtArchivo1.Text;
+            _pericia.Archivo2 = txtArchivo2.Text;
+            _pericia.Archivo3 = txtArchivo3.Text;
+            if (Compartir == 1 & chcEmail.Checked == true)
+                _pericia.Email = Email;
+            _pericia.Compartido = Compartir;
+            if (Compartir == 0 & chcEmail.Checked == true)
+                MessageBox.Show("La nunca fue enviada por email a ningun destinatario.");
+            return _pericia;
+        }
         public List<Entidades.Pericias> ListaPericias
         {
             set
@@ -48,6 +80,9 @@ namespace Sico
                     dgvPericias.DataSource = value;
 
                     totalArchivos = value[0].totalArchivos;
+                    idPericia = value[0].idPericia;
+                    Compartir = value[0].Compartido;
+                    Email = value[0].Email;
 
                     dgvPericias.Columns[0].HeaderText = "Id Pericia";
                     dgvPericias.Columns[0].Width = 60;
@@ -138,29 +173,21 @@ namespace Sico
 
             }
         }
-        #endregion
-        #region Botones
-        private void btnNuevaHistoria_Click(object sender, EventArgs e)
+        private void LimpiarCampos()
         {
-            try
-            {
-                FuncionesBotonNuevaHistoria();
-            }
-            catch (Exception ex)
-            { }
+            txtDescripcion.Clear();
+            CargarComboEstado();
+            dtFechaPericia.Value = DateTime.Now;
+            txtArchivo1.Clear();
+            txtArchivo2.Clear();
+            txtArchivo3.Clear();
+            progressBar1.Value = Convert.ToInt32(null);
+            progressBar1.Visible = false;
         }
-
-        private void FuncionesBotonNuevaHistoria()
-        {
-            groupBox2.Visible = true;
-            dtFechaPericia.Focus();
-            ValidarCantidadArchivos();
-        }
-
         private void ValidarCantidadArchivos()
         {
             int cantidadAdjuntos = 0;
-          
+
             if (totalArchivos == 0)
             {
                 lblArchivo1.Visible = true;
@@ -194,7 +221,102 @@ namespace Sico
                 lblMensaje.Text = "Ya posee adjunto el total de archivos que el sistema permite.";
             }
         }
+        private void btnCargarArchivo1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog1.FileName);
+                path = openFileDialog1.FileName;
+                txtArchivo1.Text = path;
+                sr.Close();
+            }
+        }
+        private void btnCargarArchivo2_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog2.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path2 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog2.FileName);
+                path2 = openFileDialog2.FileName;
+                txtArchivo2.Text = path2;
+                sr.Close();
+            }
+        }
+        private void btnCargarArchivo3_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog3.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path3 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog3.FileName);
+                path3 = openFileDialog3.FileName;
+                txtArchivo3.Text = path3;
+                sr.Close();
+            }
+        }
+        #endregion
+        #region Botones
+        private void btnGuardarHistorial_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entidades.Pericias _pericia = CargarEntidad();
+                bool Exito = PericiaNeg.GurdarHistorialPericia(_pericia);
+                if (Exito == true)
+                {
+                    ProgressBar();
+                    const string message2 = "Se registro el nuevo estadio exitosamente.";
+                    const string caption2 = "Éxito";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Asterisk);
+                    LimpiarCampos();
+                    ListaPericias = PericiaNeg.BuscarHistorialPericia(idPericiaSeleccionada);
+                    groupBox2.Visible = false;
+                }
+                else
+                {
 
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void btnNuevaHistoria_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FuncionesBotonNuevaHistoria();
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void FuncionesBotonNuevaHistoria()
+        {
+            groupBox2.Visible = true;
+            dtFechaPericia.Focus();
+            ValidarCantidadArchivos();
+            CargarComboEstado();
+            btnNuevaHistoria.Visible = false;
+        }
+        private void CargarComboEstado()
+        {
+            string[] Estado = Clases_Maestras.ValoresConstantes.EstadosPericia;
+            cmbEstado.Items.Add("Seleccione");
+            cmbEstado.Items.Clear();
+            foreach (string item in Estado)
+            {
+                cmbEstado.Text = "Seleccione";
+                cmbEstado.Items.Add(item);
+            }
+        }
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
         #endregion
     }
 }

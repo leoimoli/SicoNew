@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnPericias = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -52,9 +52,18 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Sico.Properties.Resources.Imagen_Sico;
+            this.pictureBox1.Location = new System.Drawing.Point(253, 282);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(370, 240);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnPericias
             // 
-            this.btnPericias.Image = global::Sico.Properties.Resources.usuario_hombre__1_;
+            this.btnPericias.Image = global::Sico.Properties.Resources.juicio__1_;
             this.btnPericias.Location = new System.Drawing.Point(197, 14);
             this.btnPericias.Name = "btnPericias";
             this.btnPericias.Size = new System.Drawing.Size(100, 80);
@@ -94,15 +103,6 @@
             this.toolTip1.SetToolTip(this.btnClientes, "Clientes");
             this.btnClientes.UseVisualStyleBackColor = true;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Sico.Properties.Resources.Imagen_Sico;
-            this.pictureBox1.Location = new System.Drawing.Point(253, 282);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(370, 240);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // InicioWF
             // 

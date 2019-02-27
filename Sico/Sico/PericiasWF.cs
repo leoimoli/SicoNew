@@ -34,6 +34,9 @@ namespace Sico
             txtArchivo2.Clear();
             txtArchivo3.Clear();
             dgvPericias.Visible = false;
+            txtCausaBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassEmailPericia.Autocomplete();
+            txtCausaBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtCausaBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
         private void LimpiarCamposBotonNuevaPericia()
         {
@@ -164,14 +167,13 @@ namespace Sico
             if (chcPorCausa.Checked == true)
             {
                 txtCausaBuscar.Clear();
-                txtCausa.Enabled = true;
+                txtCausaBuscar.Enabled = true;
                 txtCausaBuscar.Focus();
                 txtCausaBuscar.Visible = true;
                 cmbTribunalBuscar.Visible = false;
                 chcPorTribunal.Checked = false;
                 lblDniOApellidoNombre.Text = "Buscar Por Causa(*):";
-                txtCausaBuscar.Focus();
-                txtCausaBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteRazonSocial.Autocomplete();
+                txtCausaBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteCausa.Autocomplete();
                 txtCausaBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtCausaBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
             }
@@ -422,6 +424,6 @@ namespace Sico
         }
         #endregion
 
-     
+
     }
 }

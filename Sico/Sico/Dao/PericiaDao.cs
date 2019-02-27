@@ -152,13 +152,90 @@ namespace Sico.Dao
             return lista;
         }
 
+        public static bool InsertHistorialPericia(Pericias _pericia)
+        {
+            bool exito = false;
+            bool exitoGuardarImagenes = false;
+            if (_pericia.Archivo1 != "" || _pericia.Archivo2 != "" || _pericia.Archivo3 != "")
+            {
+                exitoGuardarImagenes = GuardarImagenesEnCarpeta(_pericia);
+            }
+            if (exitoGuardarImagenes == false & _pericia.Archivo1 == "" || _pericia.Archivo2 == "" || _pericia.Archivo3 == "")
+            {
+                connection.Close();
+                connection.Open();
+                string proceso2 = "AltaHistorialPericia";
+                MySqlCommand cmd2 = new MySqlCommand(proceso2, connection);
+                cmd2.CommandType = CommandType.StoredProcedure;
+                cmd2.Parameters.AddWithValue("Descripcion_in", _pericia.Descripcion);
+                cmd2.Parameters.AddWithValue("Estado_in", _pericia.Estado);
+                cmd2.Parameters.AddWithValue("Fecha_in", _pericia.Fecha);
+                cmd2.Parameters.AddWithValue("idPericia_in", _pericia.idPericia);
+                cmd2.ExecuteNonQuery();
+                exito = true;
+                connection.Close();
+                if (exito == true)
+                {
+                    List<string> ListaArchivos = new List<string>();
+                    if (_pericia.Archivo1 != "")
+                        ListaArchivos.Add(_pericia.Archivo1);
+                    if (_pericia.Archivo2 != "")
+                        ListaArchivos.Add(_pericia.Archivo2);
+                    if (_pericia.Archivo3 != "")
+                        ListaArchivos.Add(_pericia.Archivo3);
+
+                    foreach (var item in ListaArchivos)
+                    {
+                        connection.Close();
+                        connection.Open();
+                        string proceso3 = "AltaArchivosPericia";
+                        MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
+                        cmd3.CommandType = CommandType.StoredProcedure;
+                        cmd3.Parameters.AddWithValue("Archivo_in", item);
+                        cmd3.Parameters.AddWithValue("idPericia_in", _pericia.idPericia);
+                        cmd3.ExecuteNonQuery();
+                        exito = true;
+                        connection.Close();
+                    }
+
+                    exito = ActualizarEstadoPericia(_pericia);
+                }
+                if (exito == true & _pericia.Compartido == 1)
+                { bool EmailConExito = EnviarEmail(_pericia); }
+
+            }
+            return exito;
+        }
+
+        private static bool ActualizarEstadoPericia(Pericias _pericia)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "ActualizarEstadoPericia";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idPericia_in", _pericia.idPericia);
+            cmd.Parameters.AddWithValue("Estado_in", _pericia.Estado);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         private static bool EnviarEmail(Pericias _pericia)
         {
             Variables _variables = new Variables();
             bool exito = false;
             string emisor = _variables.emisorEmail;
             string pwd = _variables.ClaveEmail;
-            string correo = "Estimada/o, le informamos que se inicio una nueva pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br /> abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Sin mas le dejo mi saludo.<br /> Romina Arbizu.";
+            string correo = "";
+            if (_pericia.Fecha <= DateTime.Now)
+            {
+                correo = "Estimada/o, le informamos que se creo un nuevo moviento en la pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br />abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Se informa que lo siguiente respecto a la pericia: "+_pericia.Descripcion+ "<br /> Sin mas le dejo mi saludo.<br /> Romina Arbizu.";
+                
+            }
+            else { correo = "Estimada/o, le informamos que se inicio una nueva pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br /> abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Sin mas le dejo mi saludo.<br /> Romina Arbizu."; }
             List<string> adjuntos = new List<string>();
             string adjunto1 = Adj1;
             if (adjunto1 != null)
@@ -205,9 +282,9 @@ namespace Sico.Dao
             catch (Exception ex)
             {
 
-            }            return exito;
+            }
+            return exito;
         }
-
         public static List<Pericias> BuscarPericiasPorCausa(string causa)
         {
             connection.Close();
@@ -245,7 +322,6 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
-
         public static List<Pericias> BuscarPericiasPorTribunal(string tribunal)
         {
             connection.Close();
