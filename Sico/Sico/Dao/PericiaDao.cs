@@ -148,6 +148,40 @@ namespace Sico.Dao
                     lista.Add(listaUsuario);
                 }
             }
+            if (lista[0].totalArchivos > 0)
+            {
+                connection.Close();
+                connection.Open();
+                List<Entidades.Pericias> listaArchivos = new List<Entidades.Pericias>();
+                MySqlCommand cmd2 = new MySqlCommand();
+                cmd2.Connection = connection;
+                DataTable Tabla2 = new DataTable();
+                MySqlParameter[] oParam2 = {
+                                      new MySqlParameter("idPericia_in", idPer)};
+                string proceso2 = "BuscarArchivosPericia";
+                MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+                dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt2.SelectCommand.Parameters.AddRange(oParam2);
+                dt2.Fill(Tabla2);
+                if (Tabla2.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla2.Rows)
+                    {
+                        //int cantidadArchivos = lista[0].totalArchivos;
+                        Pericias listaUsuario = new Pericias();
+                        listaUsuario.Archivo1 = item["Archivos"].ToString();
+                        if (listaUsuario.Archivo1 != null)
+                        {
+                            listaUsuario.Archivo2 = item["Archivos"].ToString();
+                        }
+                        if (listaUsuario.Archivo2 != null)
+                        {
+                            listaUsuario.Archivo3 = item["Archivos"].ToString();
+                        }
+                        lista.Add(listaUsuario);
+                    }
+                }
+            }
             connection.Close();
             return lista;
         }
@@ -230,10 +264,10 @@ namespace Sico.Dao
             string emisor = _variables.emisorEmail;
             string pwd = _variables.ClaveEmail;
             string correo = "";
-            if (_pericia.Fecha <= DateTime.Now)
+            if (_pericia.TotalEstados > 1)
             {
-                correo = "Estimada/o, le informamos que se creo un nuevo moviento en la pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br />abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Se informa que lo siguiente respecto a la pericia: "+_pericia.Descripcion+ "<br /> Sin mas le dejo mi saludo.<br /> Romina Arbizu.";
-                
+                correo = "Estimada/o, le informamos que se creo un nuevo movimiento en la pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br />abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Se informa que lo siguiente respecto a la pericia: " + _pericia.Descripcion + "<br /> Sin mas le dejo mi saludo.<br /> Romina Arbizu.";
+
             }
             else { correo = "Estimada/o, le informamos que se inicio una nueva pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br /> abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Sin mas le dejo mi saludo.<br /> Romina Arbizu."; }
             List<string> adjuntos = new List<string>();
@@ -257,7 +291,7 @@ namespace Sico.Dao
             //A quien va dirigido
             msg.To.Add(new MailAddress(_pericia.Email));
             //Asunto
-            msg.Subject = _pericia.NroCausa + _pericia.Causa;
+            msg.Subject = "Pericia " + _pericia.NroCausa + " por la causa " + _pericia.Causa + "";
             //Contenido del correo
             msg.Body = correo;
             msg.IsBodyHtml = true;

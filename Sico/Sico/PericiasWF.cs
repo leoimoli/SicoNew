@@ -290,14 +290,21 @@ namespace Sico
                     dgvPericias.Columns[12].HeaderCell.Style.ForeColor = Color.White;
                     dgvPericias.Columns[12].Visible = false;
 
+                    dgvPericias.Columns[13].HeaderText = "Total Estados";
+                    dgvPericias.Columns[13].Width = 120;
+                    dgvPericias.Columns[13].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[13].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[13].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[13].Visible = false;
+
                     DataGridViewButtonColumn BotonVer = new DataGridViewButtonColumn();
                     BotonVer.Name = "Ver";
                     BotonVer.HeaderText = "Ver";
                     this.dgvPericias.Columns.Add(BotonVer);
-                    dgvPericias.Columns[13].Width = 35;
-                    dgvPericias.Columns[13].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dgvPericias.Columns[13].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                    dgvPericias.Columns[13].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[14].Width = 35;
+                    dgvPericias.Columns[14].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[14].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[14].HeaderCell.Style.ForeColor = Color.White;
 
                 }
                 else { MessageBox.Show("No se encontraron resultados para los filtros seleccionados."); }
@@ -314,7 +321,7 @@ namespace Sico
         }
         private void ClickBoton(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvPericias.CurrentCell.ColumnIndex == 13)
+            if (dgvPericias.CurrentCell.ColumnIndex == 14)
             {
                 var idPericia = Convert.ToString(this.dgvPericias.CurrentRow.Cells[0].Value);
                 PericiaHistoriaWF _vista = new PericiaHistoriaWF(idPericia);

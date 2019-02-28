@@ -21,6 +21,6 @@ namespace Sico.Entidades
         public string Estado { get; set; }
         public string Descripcion { get; set; }
         public int totalArchivos { get; set; }
-
+        public int TotalEstados { get; set; }
     }
 }

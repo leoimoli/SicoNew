@@ -32,6 +32,10 @@ namespace Sico
         public static string Causa;
         public static string NroCausa;
         public static string Tribunal;
+        public static int TotalHistorial;
+        //public static string Archivo1;
+        //public static string Archivo2;
+        //public static string Archivo3;
         private void ProgressBar()
         {
             progressBar1.Visible = true;
@@ -63,9 +67,10 @@ namespace Sico
             _pericia.Compartido = Compartir;
             if (Compartir == 0 & chcEmail.Checked == true)
                 MessageBox.Show("La nunca fue enviada por email a ningun destinatario.");
-            _pericia.NroCausa = NroCausa;
             _pericia.Causa = Causa;
+            _pericia.NroCausa = NroCausa;
             _pericia.Tribunal = Tribunal;
+            _pericia.TotalEstados = TotalHistorial;
             return _pericia;
         }
         public List<Entidades.Pericias> ListaPericias
@@ -92,6 +97,13 @@ namespace Sico
                     Causa = value[0].Causa;
                     NroCausa = value[0].NroCausa;
                     Tribunal = value[0].Tribunal;
+                    TotalHistorial = value.Count;
+                    txtAdjunto1.Text = value[0].Archivo1;
+                    txtAdjunto2.Text = value[0].Archivo2;
+                    txtAdjunto3.Text = value[0].Archivo3;
+
+                    if (txtAdjunto1.Text != "" || txtAdjunto1.Text != null || txtAdjunto2.Text != "" || txtAdjunto2.Text != null || txtAdjunto3.Text != "" || txtAdjunto3.Text != null)
+                        groupBox3.Visible = true;
 
                     dgvPericias.Columns[0].HeaderText = "Id Pericia";
                     dgvPericias.Columns[0].Width = 60;
@@ -177,6 +189,13 @@ namespace Sico
                     dgvPericias.Columns[12].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[12].HeaderCell.Style.ForeColor = Color.White;
                     dgvPericias.Columns[12].Visible = false;
+
+                    dgvPericias.Columns[13].HeaderText = "Total Estados";
+                    dgvPericias.Columns[13].Width = 120;
+                    dgvPericias.Columns[13].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[13].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[13].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[13].Visible = false;
                 }
                 else { MessageBox.Show("No se encontraron resultados para los filtros seleccionados."); }
 
@@ -285,6 +304,8 @@ namespace Sico
                     LimpiarCampos();
                     ListaPericias = PericiaNeg.BuscarHistorialPericia(idPericiaSeleccionada);
                     groupBox2.Visible = false;
+                    btnNuevaHistoria.Visible = true;
+                    btnVolver.Visible = true;
                 }
                 else
                 {
@@ -310,6 +331,7 @@ namespace Sico
             ValidarCantidadArchivos();
             CargarComboEstado();
             btnNuevaHistoria.Visible = false;
+            btnVolver.Visible = false;
         }
         private void CargarComboEstado()
         {
@@ -326,6 +348,14 @@ namespace Sico
         {
             LimpiarCampos();
         }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Close();
+            PericiasWF _pericia = new PericiasWF();
+            _pericia.Show();
+        }
         #endregion
+
+
     }
 }

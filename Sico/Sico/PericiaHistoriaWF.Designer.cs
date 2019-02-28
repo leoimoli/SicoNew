@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.btnNuevaHistoria = new System.Windows.Forms.Button();
             this.dgvPericias = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chcEmail = new System.Windows.Forms.CheckBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.btnGuardarHistorial = new System.Windows.Forms.Button();
@@ -54,14 +56,28 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
-            this.chcEmail = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtAdjunto1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnAbrir1 = new System.Windows.Forms.Button();
+            this.btnAbrir2 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtAdjunto2 = new System.Windows.Forms.TextBox();
+            this.btnAbrir3 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtAdjunto3 = new System.Windows.Forms.TextBox();
+            this.btnAbrir4 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtAdjunto4 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnVolver);
             this.groupBox1.Controls.Add(this.btnNuevaHistoria);
             this.groupBox1.Controls.Add(this.dgvPericias);
             this.groupBox1.Location = new System.Drawing.Point(25, 72);
@@ -70,6 +86,20 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Historial Pericia";
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
+            this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVolver.Location = new System.Drawing.Point(676, 241);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(80, 51);
+            this.btnVolver.TabIndex = 18;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnNuevaHistoria
             // 
@@ -122,6 +152,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nuevo Historial";
             this.groupBox2.Visible = false;
+            // 
+            // chcEmail
+            // 
+            this.chcEmail.AutoSize = true;
+            this.chcEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcEmail.Location = new System.Drawing.Point(328, 238);
+            this.chcEmail.Name = "chcEmail";
+            this.chcEmail.Size = new System.Drawing.Size(105, 21);
+            this.chcEmail.TabIndex = 87;
+            this.chcEmail.Text = "Enviar Email";
+            this.chcEmail.UseVisualStyleBackColor = true;
             // 
             // progressBar1
             // 
@@ -185,9 +226,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(45, 87);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 20);
+            this.label4.Size = new System.Drawing.Size(64, 20);
             this.label4.TabIndex = 82;
-            this.label4.Text = "Fecha:";
+            this.label4.Text = "Estado:";
             // 
             // txtDescripcion
             // 
@@ -329,22 +370,154 @@
             // 
             this.openFileDialog3.FileName = "openFileDialog3";
             // 
-            // chcEmail
+            // groupBox3
             // 
-            this.chcEmail.AutoSize = true;
-            this.chcEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chcEmail.Location = new System.Drawing.Point(328, 238);
-            this.chcEmail.Name = "chcEmail";
-            this.chcEmail.Size = new System.Drawing.Size(105, 21);
-            this.chcEmail.TabIndex = 87;
-            this.chcEmail.Text = "Enviar Email";
-            this.chcEmail.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.btnAbrir4);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.txtAdjunto4);
+            this.groupBox3.Controls.Add(this.btnAbrir3);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.txtAdjunto3);
+            this.groupBox3.Controls.Add(this.btnAbrir2);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.txtAdjunto2);
+            this.groupBox3.Controls.Add(this.btnAbrir1);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.txtAdjunto1);
+            this.groupBox3.Location = new System.Drawing.Point(945, 72);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(400, 300);
+            this.groupBox3.TabIndex = 88;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Archivos Adjuntos";
+            this.groupBox3.Visible = false;
+            // 
+            // txtAdjunto1
+            // 
+            this.txtAdjunto1.Location = new System.Drawing.Point(15, 56);
+            this.txtAdjunto1.Name = "txtAdjunto1";
+            this.txtAdjunto1.Size = new System.Drawing.Size(280, 20);
+            this.txtAdjunto1.TabIndex = 39;
+            this.txtAdjunto1.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(11, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(120, 20);
+            this.label5.TabIndex = 41;
+            this.label5.Text = "Archivo Adjunto";
+            this.label5.Visible = false;
+            // 
+            // btnAbrir1
+            // 
+            this.btnAbrir1.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrir1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrir1.Location = new System.Drawing.Point(317, 48);
+            this.btnAbrir1.Name = "btnAbrir1";
+            this.btnAbrir1.Size = new System.Drawing.Size(45, 35);
+            this.btnAbrir1.TabIndex = 45;
+            this.btnAbrir1.UseVisualStyleBackColor = false;
+            this.btnAbrir1.Visible = false;
+            // 
+            // btnAbrir2
+            // 
+            this.btnAbrir2.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrir2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrir2.Location = new System.Drawing.Point(317, 108);
+            this.btnAbrir2.Name = "btnAbrir2";
+            this.btnAbrir2.Size = new System.Drawing.Size(45, 35);
+            this.btnAbrir2.TabIndex = 48;
+            this.btnAbrir2.UseVisualStyleBackColor = false;
+            this.btnAbrir2.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(11, 93);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(120, 20);
+            this.label6.TabIndex = 47;
+            this.label6.Text = "Archivo Adjunto";
+            this.label6.Visible = false;
+            // 
+            // txtAdjunto2
+            // 
+            this.txtAdjunto2.Location = new System.Drawing.Point(15, 116);
+            this.txtAdjunto2.Name = "txtAdjunto2";
+            this.txtAdjunto2.Size = new System.Drawing.Size(280, 20);
+            this.txtAdjunto2.TabIndex = 46;
+            this.txtAdjunto2.Visible = false;
+            // 
+            // btnAbrir3
+            // 
+            this.btnAbrir3.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrir3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrir3.Location = new System.Drawing.Point(317, 175);
+            this.btnAbrir3.Name = "btnAbrir3";
+            this.btnAbrir3.Size = new System.Drawing.Size(45, 35);
+            this.btnAbrir3.TabIndex = 51;
+            this.btnAbrir3.UseVisualStyleBackColor = false;
+            this.btnAbrir3.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(11, 160);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 20);
+            this.label7.TabIndex = 50;
+            this.label7.Text = "Archivo Adjunto";
+            this.label7.Visible = false;
+            // 
+            // txtAdjunto3
+            // 
+            this.txtAdjunto3.Location = new System.Drawing.Point(15, 183);
+            this.txtAdjunto3.Name = "txtAdjunto3";
+            this.txtAdjunto3.Size = new System.Drawing.Size(280, 20);
+            this.txtAdjunto3.TabIndex = 49;
+            this.txtAdjunto3.Visible = false;
+            // 
+            // btnAbrir4
+            // 
+            this.btnAbrir4.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbrir4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbrir4.Location = new System.Drawing.Point(317, 243);
+            this.btnAbrir4.Name = "btnAbrir4";
+            this.btnAbrir4.Size = new System.Drawing.Size(45, 35);
+            this.btnAbrir4.TabIndex = 54;
+            this.btnAbrir4.UseVisualStyleBackColor = false;
+            this.btnAbrir4.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(11, 228);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(120, 20);
+            this.label8.TabIndex = 53;
+            this.label8.Text = "Archivo Adjunto";
+            this.label8.Visible = false;
+            // 
+            // txtAdjunto4
+            // 
+            this.txtAdjunto4.Location = new System.Drawing.Point(15, 251);
+            this.txtAdjunto4.Name = "txtAdjunto4";
+            this.txtAdjunto4.Size = new System.Drawing.Size(280, 20);
+            this.txtAdjunto4.TabIndex = 52;
+            this.txtAdjunto4.Visible = false;
             // 
             // PericiaHistoriaWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 743);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Location = new System.Drawing.Point(0, 0);
@@ -353,10 +526,13 @@
             this.Load += new System.EventHandler(this.PericiaHistoriaWF_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.groupBox3, 0);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,5 +567,19 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.OpenFileDialog openFileDialog3;
         private System.Windows.Forms.CheckBox chcEmail;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtAdjunto1;
+        private System.Windows.Forms.Button btnAbrir1;
+        private System.Windows.Forms.Button btnAbrir4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtAdjunto4;
+        private System.Windows.Forms.Button btnAbrir3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtAdjunto3;
+        private System.Windows.Forms.Button btnAbrir2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtAdjunto2;
     }
 }
