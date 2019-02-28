@@ -29,6 +29,9 @@ namespace Sico
         public static int idPericia;
         public static int Compartir;
         public static string Email;
+        public static string Causa;
+        public static string NroCausa;
+        public static string Tribunal;
         private void ProgressBar()
         {
             progressBar1.Visible = true;
@@ -60,6 +63,9 @@ namespace Sico
             _pericia.Compartido = Compartir;
             if (Compartir == 0 & chcEmail.Checked == true)
                 MessageBox.Show("La nunca fue enviada por email a ningun destinatario.");
+            _pericia.NroCausa = NroCausa;
+            _pericia.Causa = Causa;
+            _pericia.Tribunal = Tribunal;
             return _pericia;
         }
         public List<Entidades.Pericias> ListaPericias
@@ -83,6 +89,9 @@ namespace Sico
                     idPericia = value[0].idPericia;
                     Compartir = value[0].Compartido;
                     Email = value[0].Email;
+                    Causa = value[0].Causa;
+                    NroCausa = value[0].NroCausa;
+                    Tribunal = value[0].Tribunal;
 
                     dgvPericias.Columns[0].HeaderText = "Id Pericia";
                     dgvPericias.Columns[0].Width = 60;
