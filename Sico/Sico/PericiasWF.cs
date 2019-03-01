@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sico.Entidades;
 using Sico.Negocio;
+using System.IO;
 
 namespace Sico
 {
@@ -26,6 +27,7 @@ namespace Sico
             txtCausaBuscar.Clear();
             groupBox3.Visible = false;
             LimpiarCamposBotonNuevaPericia();
+            groupBox1.Visible = true;
             groupBox1.Enabled = true;
             cmbTribunal.Focus();
             groupBox1.Text = "Nueva Pericia";
@@ -34,6 +36,7 @@ namespace Sico
             txtArchivo2.Clear();
             txtArchivo3.Clear();
             dgvPericias.Visible = false;
+            btnCargarArchivo10.Visible = true;
             txtCausaBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassEmailPericia.Autocomplete();
             txtCausaBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtCausaBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -108,6 +111,13 @@ namespace Sico
             txtArchivo1.Clear();
             txtArchivo2.Clear();
             txtArchivo3.Clear();
+            txtArchivo4.Clear();
+            txtArchivo5.Clear();
+            txtArchivo6.Clear();
+            txtArchivo7.Clear();
+            txtArchivo8.Clear();
+            txtArchivo9.Clear();
+            txtArchivo10.Clear();
             chcCompartirPericia.Checked = false;
             txtEmail.Visible = false;
             dtFechaPericia.Value = DateTime.Now;
@@ -125,6 +135,13 @@ namespace Sico
             _pericia.Archivo1 = txtArchivo1.Text;
             _pericia.Archivo2 = txtArchivo2.Text;
             _pericia.Archivo3 = txtArchivo3.Text;
+            _pericia.Archivo4 = txtArchivo4.Text;
+            _pericia.Archivo5 = txtArchivo5.Text;
+            _pericia.Archivo6 = txtArchivo6.Text;
+            _pericia.Archivo7 = txtArchivo7.Text;
+            _pericia.Archivo8 = txtArchivo8.Text;
+            _pericia.Archivo9 = txtArchivo9.Text;
+            _pericia.Archivo10 = txtArchivo10.Text;
             _pericia.Email = txtEmail.Text;
             if (chcCompartirPericia.Checked == true)
             { _pericia.Compartido = 1; }
@@ -149,6 +166,7 @@ namespace Sico
             groupBox3.Visible = true;
             cmbTribunalBuscar.Focus();
             CargarComboTribunal();
+            groupBox1.Visible = false;
         }
         private void chcPorTribunal_CheckedChanged(object sender, EventArgs e)
         {
@@ -180,6 +198,7 @@ namespace Sico
         }
         public List<Entidades.Pericias> ListaPericias
         {
+
             set
             {
                 if (value.Count > 0)
@@ -189,20 +208,13 @@ namespace Sico
                         dgvPericias.Columns.Clear();
                         dgvPericias.Refresh();
                     }
-                    //lblCantidad.Visible = true;
-                    //lblCantidadEdit.Visible = true;
-                    //lblCantidadEdit.Text = Convert.ToString(value.Count);
+                    btnCargarArchivo10.Visible = false;
                     btnBuscar.Visible = true;
-                    //btnConsultarTotales.Visible = true;
-                    //label2.Visible = true;
-                    //lblSeleccionar.Visible = true;
-                    //txtBuscar.Visible = true;
-                    //txtBuscar.Enabled = true;
-                    //txtBuscar.Focus();
+                    groupBox1.Visible = true;
+                    groupBox1.Enabled = true;
                     dgvPericias.Visible = true;
                     dgvPericias.ReadOnly = true;
                     dgvPericias.RowHeadersVisible = false;
-                    groupBox1.Enabled = true;
                     dgvPericias.DataSource = value;
 
                     dgvPericias.Columns[0].HeaderText = "Id Pericia";
@@ -348,6 +360,7 @@ namespace Sico
                 throw new Exception();
             }
         }
+        public static double PesoTotalArchivos;
         private void btnCargarArchivo1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -358,6 +371,15 @@ namespace Sico
                 path = openFileDialog1.FileName;
                 txtArchivo1.Text = path;
                 sr.Close();
+                FileInfo file = new FileInfo(path);
+                var Peso = file.Length;
+                double PesoArchivos = ((double)Peso / (1024 * 1024));
+                PesoTotalArchivos = PesoArchivos;
+                if (PesoArchivos > 2.3841857910156)
+                {
+                    MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
+                    txtArchivo1.Clear();
+                }
             }
         }
         private void btnCargarArchivo2_Click(object sender, EventArgs e)
@@ -370,6 +392,15 @@ namespace Sico
                 path2 = openFileDialog2.FileName;
                 txtArchivo2.Text = path2;
                 sr.Close();
+                FileInfo file = new FileInfo(path2);
+                var Peso = file.Length;
+                double PesoArchivos = ((double)Peso / (1024 * 1024));
+                PesoTotalArchivos = PesoArchivos;
+                if (PesoArchivos > 2.3841857910156)
+                {
+                    MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
+                    txtArchivo2.Clear();
+                }
             }
         }
         private void btnCargarArchivo3_Click(object sender, EventArgs e)
@@ -382,12 +413,177 @@ namespace Sico
                 path3 = openFileDialog3.FileName;
                 txtArchivo3.Text = path3;
                 sr.Close();
+                FileInfo file = new FileInfo(path3);
+                var Peso = file.Length;
+                double PesoArchivos = ((double)Peso / (1024 * 1024));
+                PesoTotalArchivos = PesoArchivos;
+                if (PesoArchivos > 2.3841857910156)
+                {
+                    MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
+                    txtArchivo3.Clear();
+                }
+            }
+        }
+        private void btnCargarArchivo4_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog4.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path4 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog4.FileName);
+                path4 = openFileDialog4.FileName;
+                txtArchivo4.Text = path4;
+                sr.Close();
+                FileInfo file = new FileInfo(path4);
+                var Peso = file.Length;
+                double PesoArchivos = ((double)Peso / (1024 * 1024));
+                PesoTotalArchivos = PesoArchivos;
+                if (PesoArchivos > 2.3841857910156)
+                {
+                    MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
+                    txtArchivo4.Clear();
+                }
+            }
+        }
+        private void btnCargarArchivo5_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog5.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path5 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog5.FileName);
+                path5 = openFileDialog5.FileName;
+                txtArchivo5.Text = path5;
+                sr.Close();
+                FileInfo file = new FileInfo(path5);
+                var Peso = file.Length;
+                double PesoArchivos = ((double)Peso / (1024 * 1024));
+                PesoTotalArchivos = PesoArchivos;
+                if (PesoArchivos > 2.3841857910156)
+                {
+                    MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
+                    txtArchivo5.Clear();
+                }
+            }
+        }
+        private void btnCargarArchivo6_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog6.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path6 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog6.FileName);
+                path6 = openFileDialog6.FileName;
+                txtArchivo6.Text = path6;
+                sr.Close();
+                FileInfo file = new FileInfo(path6);
+                var Peso = file.Length;
+                double PesoArchivos = ((double)Peso / (1024 * 1024));
+                PesoTotalArchivos = PesoArchivos;
+                if (PesoArchivos > 2.3841857910156)
+                {
+                    MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
+                    txtArchivo6.Clear();
+                }
+            }
+        }
+        private void btnCargarArchivo7_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog7.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path7 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog7.FileName);
+                path7 = openFileDialog7.FileName;
+                txtArchivo7.Text = path7;
+                sr.Close();
+                FileInfo file = new FileInfo(path7);
+                var Peso = file.Length;
+                double PesoArchivos = ((double)Peso / (1024 * 1024));
+                PesoTotalArchivos = PesoArchivos;
+                if (PesoArchivos > 2.3841857910156)
+                {
+                    MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
+                    txtArchivo7.Clear();
+                }
+            }
+        }
+        private void btnCargarArchivo8_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog8.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path8 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog8.FileName);
+                path8 = openFileDialog8.FileName;
+                txtArchivo8.Text = path8;
+                sr.Close();
+                FileInfo file = new FileInfo(path8);
+                var Peso = file.Length;
+                double PesoArchivos = ((double)Peso / (1024 * 1024));
+                PesoTotalArchivos = PesoArchivos;
+                if (PesoArchivos > 2.3841857910156)
+                {
+                    MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
+                    txtArchivo8.Clear();
+                }
+            }
+        }
+        private void btnCargarArchivo9_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog9.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path9 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog9.FileName);
+                path9 = openFileDialog9.FileName;
+                txtArchivo9.Text = path9;
+                sr.Close();
+                FileInfo file = new FileInfo(path9);
+                var Peso = file.Length;
+                double PesoArchivos = ((double)Peso / (1024 * 1024));
+                PesoTotalArchivos = PesoArchivos;
+                if (PesoArchivos > 2.3841857910156)
+                {
+                    MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
+                    txtArchivo9.Clear();
+                }
+            }
+        }
+        private void btnCargarArchivo10_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog10.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path10 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog10.FileName);
+                path10 = openFileDialog3.FileName;
+                txtArchivo10.Text = path10;
+                sr.Close();
+                FileInfo file = new FileInfo(path10);
+                var Peso = file.Length;
+                double PesoArchivos = ((double)Peso / (1024 * 1024));
+                PesoTotalArchivos = PesoArchivos;
+                if (PesoArchivos > 2.3841857910156)
+                {
+                    MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
+                    txtArchivo10.Clear();
+                }
             }
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
+                if (PesoTotalArchivos > 2.3841857910156)
+                {
+                    const string message = "Atención el peso de los archivos supera el maximo permitido.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
                 Entidades.Pericias _pericia = CargarEntidad();
                 bool Exito = PericiaNeg.GurdarPericia(_pericia);
                 if (Exito == true)
@@ -430,7 +626,6 @@ namespace Sico
             }
         }
         #endregion
-
 
     }
 }

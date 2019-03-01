@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PericiasWF));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cmbTribunalBuscar = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -39,8 +41,29 @@
             this.btnHabilitarBuscar = new System.Windows.Forms.Button();
             this.btnNuevaPericia = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvPericias = new System.Windows.Forms.DataGridView();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnCargarArchivo10 = new System.Windows.Forms.Button();
+            this.dgvPericias = new System.Windows.Forms.DataGridView();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtArchivo10 = new System.Windows.Forms.TextBox();
+            this.btnCargarArchivo9 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtArchivo9 = new System.Windows.Forms.TextBox();
+            this.btnCargarArchivo8 = new System.Windows.Forms.Button();
+            this.btnCargarArchivo7 = new System.Windows.Forms.Button();
+            this.btnCargarArchivo6 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtArchivo8 = new System.Windows.Forms.TextBox();
+            this.txtArchivo7 = new System.Windows.Forms.TextBox();
+            this.txtArchivo6 = new System.Windows.Forms.TextBox();
+            this.btnCargarArchivo5 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtArchivo5 = new System.Windows.Forms.TextBox();
+            this.btnCargarArchivo4 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtArchivo4 = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.chcCompartirPericia = new System.Windows.Forms.CheckBox();
@@ -66,6 +89,14 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog5 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog6 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog7 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog8 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog9 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog10 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -105,6 +136,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(49, 39);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnBuscar, "Buscar");
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -158,7 +190,7 @@
             this.groupBox2.Controls.Add(this.btnNuevaPericia);
             this.groupBox2.Location = new System.Drawing.Point(948, 162);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(186, 452);
+            this.groupBox2.Size = new System.Drawing.Size(186, 470);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
@@ -191,8 +223,29 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgvPericias);
             this.groupBox1.Controls.Add(this.progressBar1);
+            this.groupBox1.Controls.Add(this.btnCargarArchivo10);
+            this.groupBox1.Controls.Add(this.dgvPericias);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.txtArchivo10);
+            this.groupBox1.Controls.Add(this.btnCargarArchivo9);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.txtArchivo9);
+            this.groupBox1.Controls.Add(this.btnCargarArchivo8);
+            this.groupBox1.Controls.Add(this.btnCargarArchivo7);
+            this.groupBox1.Controls.Add(this.btnCargarArchivo6);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.txtArchivo8);
+            this.groupBox1.Controls.Add(this.txtArchivo7);
+            this.groupBox1.Controls.Add(this.txtArchivo6);
+            this.groupBox1.Controls.Add(this.btnCargarArchivo5);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtArchivo5);
+            this.groupBox1.Controls.Add(this.btnCargarArchivo4);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.txtArchivo4);
             this.groupBox1.Controls.Add(this.lblEmail);
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.chcCompartirPericia);
@@ -219,35 +272,246 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(54, 160);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(878, 400);
+            this.groupBox1.Size = new System.Drawing.Size(878, 470);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // dgvPericias
-            // 
-            this.dgvPericias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPericias.Location = new System.Drawing.Point(48, 36);
-            this.dgvPericias.Name = "dgvPericias";
-            this.dgvPericias.Size = new System.Drawing.Size(830, 358);
-            this.dgvPericias.TabIndex = 14;
-            this.dgvPericias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickBoton);
-            this.dgvPericias.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvPericias_CellPainting);
+            this.groupBox1.Text = "v";
+            this.groupBox1.Visible = false;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(264, 319);
+            this.progressBar1.Location = new System.Drawing.Point(261, 351);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 19;
             this.progressBar1.Value = 50;
             this.progressBar1.Visible = false;
             // 
+            // btnCargarArchivo10
+            // 
+            this.btnCargarArchivo10.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarArchivo10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarArchivo10.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarArchivo10.Image")));
+            this.btnCargarArchivo10.Location = new System.Drawing.Point(826, 320);
+            this.btnCargarArchivo10.Name = "btnCargarArchivo10";
+            this.btnCargarArchivo10.Size = new System.Drawing.Size(45, 35);
+            this.btnCargarArchivo10.TabIndex = 60;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo10, "Adjuntar Archivo");
+            this.btnCargarArchivo10.UseVisualStyleBackColor = false;
+            this.btnCargarArchivo10.Click += new System.EventHandler(this.btnCargarArchivo10_Click);
+            // 
+            // dgvPericias
+            // 
+            this.dgvPericias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPericias.Location = new System.Drawing.Point(6, 24);
+            this.dgvPericias.Name = "dgvPericias";
+            this.dgvPericias.Size = new System.Drawing.Size(870, 440);
+            this.dgvPericias.TabIndex = 14;
+            this.dgvPericias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickBoton);
+            this.dgvPericias.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvPericias_CellPainting);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(445, 328);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(129, 20);
+            this.label11.TabIndex = 59;
+            this.label11.Text = "Adjuntar Archivo:";
+            // 
+            // txtArchivo10
+            // 
+            this.txtArchivo10.Location = new System.Drawing.Point(572, 328);
+            this.txtArchivo10.Name = "txtArchivo10";
+            this.txtArchivo10.Size = new System.Drawing.Size(250, 23);
+            this.txtArchivo10.TabIndex = 58;
+            // 
+            // btnCargarArchivo9
+            // 
+            this.btnCargarArchivo9.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarArchivo9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarArchivo9.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarArchivo9.Image")));
+            this.btnCargarArchivo9.Location = new System.Drawing.Point(826, 279);
+            this.btnCargarArchivo9.Name = "btnCargarArchivo9";
+            this.btnCargarArchivo9.Size = new System.Drawing.Size(45, 35);
+            this.btnCargarArchivo9.TabIndex = 57;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo9, "Adjuntar Archivo");
+            this.btnCargarArchivo9.UseVisualStyleBackColor = false;
+            this.btnCargarArchivo9.Click += new System.EventHandler(this.btnCargarArchivo9_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(445, 287);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(129, 20);
+            this.label12.TabIndex = 56;
+            this.label12.Text = "Adjuntar Archivo:";
+            // 
+            // txtArchivo9
+            // 
+            this.txtArchivo9.Location = new System.Drawing.Point(572, 287);
+            this.txtArchivo9.Name = "txtArchivo9";
+            this.txtArchivo9.Size = new System.Drawing.Size(250, 23);
+            this.txtArchivo9.TabIndex = 55;
+            // 
+            // btnCargarArchivo8
+            // 
+            this.btnCargarArchivo8.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarArchivo8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarArchivo8.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarArchivo8.Image")));
+            this.btnCargarArchivo8.Location = new System.Drawing.Point(826, 238);
+            this.btnCargarArchivo8.Name = "btnCargarArchivo8";
+            this.btnCargarArchivo8.Size = new System.Drawing.Size(45, 35);
+            this.btnCargarArchivo8.TabIndex = 54;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo8, "Adjuntar Archivo");
+            this.btnCargarArchivo8.UseVisualStyleBackColor = false;
+            this.btnCargarArchivo8.Click += new System.EventHandler(this.btnCargarArchivo8_Click);
+            // 
+            // btnCargarArchivo7
+            // 
+            this.btnCargarArchivo7.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarArchivo7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarArchivo7.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarArchivo7.Image")));
+            this.btnCargarArchivo7.Location = new System.Drawing.Point(826, 197);
+            this.btnCargarArchivo7.Name = "btnCargarArchivo7";
+            this.btnCargarArchivo7.Size = new System.Drawing.Size(45, 35);
+            this.btnCargarArchivo7.TabIndex = 53;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo7, "Adjuntar Archivo");
+            this.btnCargarArchivo7.UseVisualStyleBackColor = false;
+            this.btnCargarArchivo7.Click += new System.EventHandler(this.btnCargarArchivo7_Click);
+            // 
+            // btnCargarArchivo6
+            // 
+            this.btnCargarArchivo6.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarArchivo6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarArchivo6.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarArchivo6.Image")));
+            this.btnCargarArchivo6.Location = new System.Drawing.Point(826, 158);
+            this.btnCargarArchivo6.Name = "btnCargarArchivo6";
+            this.btnCargarArchivo6.Size = new System.Drawing.Size(45, 35);
+            this.btnCargarArchivo6.TabIndex = 52;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo6, "Adjuntar Archivo");
+            this.btnCargarArchivo6.UseVisualStyleBackColor = false;
+            this.btnCargarArchivo6.Click += new System.EventHandler(this.btnCargarArchivo6_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(445, 246);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(129, 20);
+            this.label13.TabIndex = 51;
+            this.label13.Text = "Adjuntar Archivo:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(445, 205);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(129, 20);
+            this.label15.TabIndex = 50;
+            this.label15.Text = "Adjuntar Archivo:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(445, 166);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(129, 20);
+            this.label16.TabIndex = 49;
+            this.label16.Text = "Adjuntar Archivo:";
+            // 
+            // txtArchivo8
+            // 
+            this.txtArchivo8.Location = new System.Drawing.Point(572, 246);
+            this.txtArchivo8.Name = "txtArchivo8";
+            this.txtArchivo8.Size = new System.Drawing.Size(250, 23);
+            this.txtArchivo8.TabIndex = 48;
+            // 
+            // txtArchivo7
+            // 
+            this.txtArchivo7.Location = new System.Drawing.Point(572, 205);
+            this.txtArchivo7.Name = "txtArchivo7";
+            this.txtArchivo7.Size = new System.Drawing.Size(250, 23);
+            this.txtArchivo7.TabIndex = 47;
+            // 
+            // txtArchivo6
+            // 
+            this.txtArchivo6.Location = new System.Drawing.Point(572, 166);
+            this.txtArchivo6.Name = "txtArchivo6";
+            this.txtArchivo6.Size = new System.Drawing.Size(250, 23);
+            this.txtArchivo6.TabIndex = 46;
+            // 
+            // btnCargarArchivo5
+            // 
+            this.btnCargarArchivo5.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarArchivo5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarArchivo5.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarArchivo5.Image")));
+            this.btnCargarArchivo5.Location = new System.Drawing.Point(387, 322);
+            this.btnCargarArchivo5.Name = "btnCargarArchivo5";
+            this.btnCargarArchivo5.Size = new System.Drawing.Size(45, 35);
+            this.btnCargarArchivo5.TabIndex = 45;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo5, "Adjuntar Archivo");
+            this.btnCargarArchivo5.UseVisualStyleBackColor = false;
+            this.btnCargarArchivo5.Click += new System.EventHandler(this.btnCargarArchivo5_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 330);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(129, 20);
+            this.label10.TabIndex = 44;
+            this.label10.Text = "Adjuntar Archivo:";
+            // 
+            // txtArchivo5
+            // 
+            this.txtArchivo5.Location = new System.Drawing.Point(133, 330);
+            this.txtArchivo5.Name = "txtArchivo5";
+            this.txtArchivo5.Size = new System.Drawing.Size(250, 23);
+            this.txtArchivo5.TabIndex = 43;
+            // 
+            // btnCargarArchivo4
+            // 
+            this.btnCargarArchivo4.BackColor = System.Drawing.Color.Transparent;
+            this.btnCargarArchivo4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCargarArchivo4.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarArchivo4.Image")));
+            this.btnCargarArchivo4.Location = new System.Drawing.Point(387, 281);
+            this.btnCargarArchivo4.Name = "btnCargarArchivo4";
+            this.btnCargarArchivo4.Size = new System.Drawing.Size(45, 35);
+            this.btnCargarArchivo4.TabIndex = 42;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo4, "Adjuntar Archivo");
+            this.btnCargarArchivo4.UseVisualStyleBackColor = false;
+            this.btnCargarArchivo4.Click += new System.EventHandler(this.btnCargarArchivo4_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(6, 289);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(129, 20);
+            this.label9.TabIndex = 41;
+            this.label9.Text = "Adjuntar Archivo:";
+            // 
+            // txtArchivo4
+            // 
+            this.txtArchivo4.Location = new System.Drawing.Point(133, 289);
+            this.txtArchivo4.Name = "txtArchivo4";
+            this.txtArchivo4.Size = new System.Drawing.Size(250, 23);
+            this.txtArchivo4.TabIndex = 40;
+            // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(334, 296);
+            this.lblEmail.Location = new System.Drawing.Point(382, 371);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(127, 20);
             this.lblEmail.TabIndex = 39;
@@ -257,7 +521,7 @@
             // txtEmail
             // 
             this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEmail.Location = new System.Drawing.Point(457, 296);
+            this.txtEmail.Location = new System.Drawing.Point(505, 371);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(250, 23);
             this.txtEmail.TabIndex = 38;
@@ -267,7 +531,7 @@
             // 
             this.chcCompartirPericia.AutoSize = true;
             this.chcCompartirPericia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chcCompartirPericia.Location = new System.Drawing.Point(186, 298);
+            this.chcCompartirPericia.Location = new System.Drawing.Point(234, 373);
             this.chcCompartirPericia.Name = "chcCompartirPericia";
             this.chcCompartirPericia.Size = new System.Drawing.Size(114, 21);
             this.chcCompartirPericia.TabIndex = 37;
@@ -279,10 +543,12 @@
             // 
             this.btnCargarArchivo3.BackColor = System.Drawing.Color.Transparent;
             this.btnCargarArchivo3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCargarArchivo3.Location = new System.Drawing.Point(594, 249);
+            this.btnCargarArchivo3.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarArchivo3.Image")));
+            this.btnCargarArchivo3.Location = new System.Drawing.Point(387, 240);
             this.btnCargarArchivo3.Name = "btnCargarArchivo3";
             this.btnCargarArchivo3.Size = new System.Drawing.Size(45, 35);
             this.btnCargarArchivo3.TabIndex = 36;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo3, "Adjuntar Archivo");
             this.btnCargarArchivo3.UseVisualStyleBackColor = false;
             this.btnCargarArchivo3.Click += new System.EventHandler(this.btnCargarArchivo3_Click);
             // 
@@ -290,10 +556,12 @@
             // 
             this.btnCargarArchivo2.BackColor = System.Drawing.Color.Transparent;
             this.btnCargarArchivo2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCargarArchivo2.Location = new System.Drawing.Point(594, 208);
+            this.btnCargarArchivo2.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarArchivo2.Image")));
+            this.btnCargarArchivo2.Location = new System.Drawing.Point(387, 199);
             this.btnCargarArchivo2.Name = "btnCargarArchivo2";
             this.btnCargarArchivo2.Size = new System.Drawing.Size(45, 35);
             this.btnCargarArchivo2.TabIndex = 35;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo2, "Adjuntar Archivo");
             this.btnCargarArchivo2.UseVisualStyleBackColor = false;
             this.btnCargarArchivo2.Click += new System.EventHandler(this.btnCargarArchivo2_Click);
             // 
@@ -301,10 +569,12 @@
             // 
             this.btnCargarArchivo1.BackColor = System.Drawing.Color.Transparent;
             this.btnCargarArchivo1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCargarArchivo1.Location = new System.Drawing.Point(594, 169);
+            this.btnCargarArchivo1.Image = ((System.Drawing.Image)(resources.GetObject("btnCargarArchivo1.Image")));
+            this.btnCargarArchivo1.Location = new System.Drawing.Point(387, 160);
             this.btnCargarArchivo1.Name = "btnCargarArchivo1";
             this.btnCargarArchivo1.Size = new System.Drawing.Size(45, 35);
             this.btnCargarArchivo1.TabIndex = 34;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo1, "Adjuntar Archivo");
             this.btnCargarArchivo1.UseVisualStyleBackColor = false;
             this.btnCargarArchivo1.Click += new System.EventHandler(this.btnCargarArchivo1_Click);
             // 
@@ -312,7 +582,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(182, 257);
+            this.label8.Location = new System.Drawing.Point(6, 248);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(129, 20);
             this.label8.TabIndex = 33;
@@ -322,7 +592,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(182, 216);
+            this.label7.Location = new System.Drawing.Point(6, 207);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(129, 20);
             this.label7.TabIndex = 32;
@@ -332,7 +602,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(182, 177);
+            this.label6.Location = new System.Drawing.Point(6, 168);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 20);
             this.label6.TabIndex = 31;
@@ -340,21 +610,21 @@
             // 
             // txtArchivo3
             // 
-            this.txtArchivo3.Location = new System.Drawing.Point(317, 257);
+            this.txtArchivo3.Location = new System.Drawing.Point(133, 248);
             this.txtArchivo3.Name = "txtArchivo3";
             this.txtArchivo3.Size = new System.Drawing.Size(250, 23);
             this.txtArchivo3.TabIndex = 30;
             // 
             // txtArchivo2
             // 
-            this.txtArchivo2.Location = new System.Drawing.Point(317, 216);
+            this.txtArchivo2.Location = new System.Drawing.Point(133, 207);
             this.txtArchivo2.Name = "txtArchivo2";
             this.txtArchivo2.Size = new System.Drawing.Size(250, 23);
             this.txtArchivo2.TabIndex = 29;
             // 
             // txtArchivo1
             // 
-            this.txtArchivo1.Location = new System.Drawing.Point(317, 177);
+            this.txtArchivo1.Location = new System.Drawing.Point(133, 168);
             this.txtArchivo1.Name = "txtArchivo1";
             this.txtArchivo1.Size = new System.Drawing.Size(250, 23);
             this.txtArchivo1.TabIndex = 28;
@@ -407,12 +677,13 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = global::Sico.Properties.Resources.copia_de_seguridad;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGuardar.Location = new System.Drawing.Point(421, 343);
+            this.btnGuardar.Location = new System.Drawing.Point(409, 413);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(80, 51);
             this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar Pericia");
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -421,12 +692,13 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = global::Sico.Properties.Resources.cancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(323, 343);
+            this.btnCancelar.Location = new System.Drawing.Point(311, 413);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 51);
             this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // cmbTribunal
@@ -468,6 +740,34 @@
             // openFileDialog3
             // 
             this.openFileDialog3.FileName = "openFileDialog3";
+            // 
+            // openFileDialog4
+            // 
+            this.openFileDialog4.FileName = "openFileDialog4";
+            // 
+            // openFileDialog5
+            // 
+            this.openFileDialog5.FileName = "openFileDialog5";
+            // 
+            // openFileDialog6
+            // 
+            this.openFileDialog6.FileName = "openFileDialog6";
+            // 
+            // openFileDialog7
+            // 
+            this.openFileDialog7.FileName = "openFileDialog7";
+            // 
+            // openFileDialog8
+            // 
+            this.openFileDialog8.FileName = "openFileDialog8";
+            // 
+            // openFileDialog9
+            // 
+            this.openFileDialog9.FileName = "openFileDialog9";
+            // 
+            // openFileDialog10
+            // 
+            this.openFileDialog10.FileName = "openFileDialog10";
             // 
             // PericiasWF
             // 
@@ -534,5 +834,34 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.OpenFileDialog openFileDialog3;
         private System.Windows.Forms.DataGridView dgvPericias;
+        private System.Windows.Forms.Button btnCargarArchivo5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtArchivo5;
+        private System.Windows.Forms.Button btnCargarArchivo4;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtArchivo4;
+        private System.Windows.Forms.Button btnCargarArchivo10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtArchivo10;
+        private System.Windows.Forms.Button btnCargarArchivo9;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtArchivo9;
+        private System.Windows.Forms.Button btnCargarArchivo8;
+        private System.Windows.Forms.Button btnCargarArchivo7;
+        private System.Windows.Forms.Button btnCargarArchivo6;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtArchivo8;
+        private System.Windows.Forms.TextBox txtArchivo7;
+        private System.Windows.Forms.TextBox txtArchivo6;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog4;
+        private System.Windows.Forms.OpenFileDialog openFileDialog5;
+        private System.Windows.Forms.OpenFileDialog openFileDialog6;
+        private System.Windows.Forms.OpenFileDialog openFileDialog7;
+        private System.Windows.Forms.OpenFileDialog openFileDialog8;
+        private System.Windows.Forms.OpenFileDialog openFileDialog9;
+        private System.Windows.Forms.OpenFileDialog openFileDialog10;
     }
 }

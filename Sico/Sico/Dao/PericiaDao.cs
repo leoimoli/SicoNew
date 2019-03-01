@@ -41,73 +41,117 @@ namespace Sico.Dao
             connection.Close();
             return Existe;
         }
+
+        public static List<string> CargarArchivos(string idPericiaSeleccionada)
+        {
+            List<string> listarArchivos = new List<string>();
+            connection.Close();
+            connection.Open();
+            List<Entidades.Pericias> listaArchivos = new List<Entidades.Pericias>();
+            MySqlCommand cmd2 = new MySqlCommand();
+            cmd2.Connection = connection;
+            DataTable Tabla2 = new DataTable();
+            MySqlParameter[] oParam2 = {
+                                      new MySqlParameter("idPericia_in", idPericiaSeleccionada)};
+            string proceso2 = "BuscarArchivosPericia";
+            MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+            dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt2.SelectCommand.Parameters.AddRange(oParam2);
+            dt2.Fill(Tabla2);
+            if (Tabla2.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla2.Rows)
+                {
+                    //int cantidadArchivos = lista[0].totalArchivos;
+                    listarArchivos.Add(item["Archivos"].ToString());
+                }
+            }
+
+            connection.Close();
+            return listarArchivos;
+        }
+
         public static bool InsertPericia(Pericias _pericia)
         {
             bool exito = false;
             bool exitoGuardarImagenes = false;
-            if (_pericia.Archivo1 != "" || _pericia.Archivo2 != "" || _pericia.Archivo3 != "")
+            if (_pericia.Archivo1 != "" || _pericia.Archivo2 != "" || _pericia.Archivo3 != "" || _pericia.Archivo4 != "" || _pericia.Archivo5 != "" || _pericia.Archivo6 != "" || _pericia.Archivo7 != "" || _pericia.Archivo8 != "" || _pericia.Archivo9 != "" || _pericia.Archivo10 != "")
             {
                 exitoGuardarImagenes = GuardarImagenesEnCarpeta(_pericia);
             }
-            if (exitoGuardarImagenes == false & _pericia.Archivo1 == "" || _pericia.Archivo2 == "" || _pericia.Archivo3 == "")
+            //if (exitoGuardarImagenes != false & _pericia.Archivo1 == "" || _pericia.Archivo2 == "" || _pericia.Archivo3 == "" || _pericia.Archivo4 == "" || _pericia.Archivo5 == "" || _pericia.Archivo6 == "" || _pericia.Archivo7 == "" || _pericia.Archivo8 == "" || _pericia.Archivo9 == "" || _pericia.Archivo10 == "")
+            //{
+            int idUltimaPericia = 0;
+            connection.Close();
+            connection.Open();
+            string proceso = "AltaPericia";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("Tribunal_in", _pericia.Tribunal);
+            cmd.Parameters.AddWithValue("Fecha_in", _pericia.Fecha);
+            cmd.Parameters.AddWithValue("NroCausa_in", _pericia.NroCausa);
+            cmd.Parameters.AddWithValue("Causa_in", _pericia.Causa);
+            cmd.Parameters.AddWithValue("Compartido_in", _pericia.Compartido);
+            cmd.Parameters.AddWithValue("Email_in", _pericia.Email);
+            cmd.Parameters.AddWithValue("Estado_in", _pericia.Estado);
+            MySqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
             {
-                int idUltimaPericia = 0;
+                idUltimaPericia = Convert.ToInt32(r["ID"].ToString());
+            }
+            if (idUltimaPericia > 0)
+            {
                 connection.Close();
                 connection.Open();
-                string proceso = "AltaPericia";
-                MySqlCommand cmd = new MySqlCommand(proceso, connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("Tribunal_in", _pericia.Tribunal);
-                cmd.Parameters.AddWithValue("Fecha_in", _pericia.Fecha);
-                cmd.Parameters.AddWithValue("NroCausa_in", _pericia.NroCausa);
-                cmd.Parameters.AddWithValue("Causa_in", _pericia.Causa);
-                cmd.Parameters.AddWithValue("Compartido_in", _pericia.Compartido);
-                cmd.Parameters.AddWithValue("Email_in", _pericia.Email);
-                cmd.Parameters.AddWithValue("Estado_in", _pericia.Estado);
-                MySqlDataReader r = cmd.ExecuteReader();
-                while (r.Read())
-                {
-                    idUltimaPericia = Convert.ToInt32(r["ID"].ToString());
-                }
-                if (idUltimaPericia > 0)
-                {
-                    connection.Close();
-                    connection.Open();
-                    string proceso2 = "AltaHistorialPericia";
-                    MySqlCommand cmd2 = new MySqlCommand(proceso2, connection);
-                    cmd2.CommandType = CommandType.StoredProcedure;
-                    cmd2.Parameters.AddWithValue("Descripcion_in", "Inicio de Pericia");
-                    cmd2.Parameters.AddWithValue("Estado_in", _pericia.Estado);
-                    cmd2.Parameters.AddWithValue("Fecha_in", _pericia.Fecha);
-                    cmd2.Parameters.AddWithValue("idPericia_in", idUltimaPericia);
-                    cmd2.ExecuteNonQuery();
-                    exito = true;
-                    connection.Close();
+                string proceso2 = "AltaHistorialPericia";
+                MySqlCommand cmd2 = new MySqlCommand(proceso2, connection);
+                cmd2.CommandType = CommandType.StoredProcedure;
+                cmd2.Parameters.AddWithValue("Descripcion_in", "Inicio de Pericia");
+                cmd2.Parameters.AddWithValue("Estado_in", _pericia.Estado);
+                cmd2.Parameters.AddWithValue("Fecha_in", _pericia.Fecha);
+                cmd2.Parameters.AddWithValue("idPericia_in", idUltimaPericia);
+                cmd2.ExecuteNonQuery();
+                exito = true;
+                connection.Close();
 
-                    if (exito == true)
+                if (exito == true)
+                {
+                    List<string> ListaArchivos = new List<string>();
+                    if (_pericia.Archivo1 != "")
+                        ListaArchivos.Add(_pericia.Archivo1);
+                    if (_pericia.Archivo2 != "")
+                        ListaArchivos.Add(_pericia.Archivo2);
+                    if (_pericia.Archivo3 != "")
+                        ListaArchivos.Add(_pericia.Archivo3);
+                    if (_pericia.Archivo4 != "")
+                        ListaArchivos.Add(_pericia.Archivo4);
+                    if (_pericia.Archivo5 != "")
+                        ListaArchivos.Add(_pericia.Archivo5);
+                    if (_pericia.Archivo6 != "")
+                        ListaArchivos.Add(_pericia.Archivo6);
+                    if (_pericia.Archivo7 != "")
+                        ListaArchivos.Add(_pericia.Archivo7);
+                    if (_pericia.Archivo8 != "")
+                        ListaArchivos.Add(_pericia.Archivo8);
+                    if (_pericia.Archivo9 != "")
+                        ListaArchivos.Add(_pericia.Archivo9);
+                    if (_pericia.Archivo10 != "")
+                        ListaArchivos.Add(_pericia.Archivo10);
+
+                    foreach (var item in ListaArchivos)
                     {
-                        List<string> ListaArchivos = new List<string>();
-                        if (_pericia.Archivo1 != "")
-                            ListaArchivos.Add(_pericia.Archivo1);
-                        if (_pericia.Archivo2 != "")
-                            ListaArchivos.Add(_pericia.Archivo2);
-                        if (_pericia.Archivo3 != "")
-                            ListaArchivos.Add(_pericia.Archivo3);
-
-                        foreach (var item in ListaArchivos)
-                        {
-                            connection.Close();
-                            connection.Open();
-                            string proceso3 = "AltaArchivosPericia";
-                            MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
-                            cmd3.CommandType = CommandType.StoredProcedure;
-                            cmd3.Parameters.AddWithValue("Archivo_in", item);
-                            cmd3.Parameters.AddWithValue("idPericia_in", idUltimaPericia);
-                            cmd3.ExecuteNonQuery();
-                            exito = true;
-                            connection.Close();
-                        }
+                        connection.Close();
+                        connection.Open();
+                        string proceso3 = "AltaArchivosPericia";
+                        MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
+                        cmd3.CommandType = CommandType.StoredProcedure;
+                        cmd3.Parameters.AddWithValue("Archivo_in", item);
+                        cmd3.Parameters.AddWithValue("idPericia_in", idUltimaPericia);
+                        cmd3.ExecuteNonQuery();
+                        exito = true;
+                        connection.Close();
                     }
+                    //}
                     if (exito == true & _pericia.Compartido == 1)
                     { bool EmailConExito = EnviarEmail(_pericia); }
                 }
@@ -148,42 +192,9 @@ namespace Sico.Dao
                     lista.Add(listaUsuario);
                 }
             }
-            if (lista[0].totalArchivos > 0)
-            {
-                connection.Close();
-                connection.Open();
-                List<Entidades.Pericias> listaArchivos = new List<Entidades.Pericias>();
-                MySqlCommand cmd2 = new MySqlCommand();
-                cmd2.Connection = connection;
-                DataTable Tabla2 = new DataTable();
-                MySqlParameter[] oParam2 = {
-                                      new MySqlParameter("idPericia_in", idPer)};
-                string proceso2 = "BuscarArchivosPericia";
-                MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
-                dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt2.SelectCommand.Parameters.AddRange(oParam2);
-                dt2.Fill(Tabla2);
-                if (Tabla2.Rows.Count > 0)
-                {
-                    foreach (DataRow item in Tabla2.Rows)
-                    {
-                        //int cantidadArchivos = lista[0].totalArchivos;
-                        Pericias listaUsuario = new Pericias();
-                        listaUsuario.Archivo1 = item["Archivos"].ToString();
-                        if (listaUsuario.Archivo1 != null)
-                        {
-                            listaUsuario.Archivo2 = item["Archivos"].ToString();
-                        }
-                        if (listaUsuario.Archivo2 != null)
-                        {
-                            listaUsuario.Archivo3 = item["Archivos"].ToString();
-                        }
-                        lista.Add(listaUsuario);
-                    }
-                }
-            }
             connection.Close();
             return lista;
+
         }
 
         public static bool InsertHistorialPericia(Pericias _pericia)
@@ -280,11 +291,28 @@ namespace Sico.Dao
             string adjunto3 = Adj3;
             if (adjunto3 != null)
                 adjuntos.Add(adjunto3);
-            //foreach (var item in adjuntos)
-            //{
-            //    adjuntos.Add(item);
-            //}
-            //string archivoAdjunto = adjunto1 + adjunto2 + adjunto3;
+            string adjunto4 = Adj4;
+            if (adjunto4 != null)
+                adjuntos.Add(adjunto4);
+            string adjunto5 = Adj5;
+            if (adjunto5 != null)
+                adjuntos.Add(adjunto5);
+            string adjunto6 = Adj6;
+            if (adjunto6 != null)
+                adjuntos.Add(adjunto6);
+            string adjunto7 = Adj7;
+            if (adjunto7 != null)
+                adjuntos.Add(adjunto7);
+            string adjunto8 = Adj8;
+            if (adjunto8 != null)
+                adjuntos.Add(adjunto8);
+            string adjunto9 = Adj9;
+            if (adjunto9 != null)
+                adjuntos.Add(adjunto9);
+            string adjunto10 = Adj10;
+            if (adjunto10 != null)
+                adjuntos.Add(adjunto10);
+
             MailMessage msg = new MailMessage();
             //Quien escribe al correo
             msg.From = new MailAddress(emisor);
@@ -397,12 +425,26 @@ namespace Sico.Dao
         public static string Adj1;
         public static string Adj2;
         public static string Adj3;
+        public static string Adj4;
+        public static string Adj5;
+        public static string Adj6;
+        public static string Adj7;
+        public static string Adj8;
+        public static string Adj9;
+        public static string Adj10;
         private static bool GuardarImagenesEnCarpeta(Pericias _pericia)
         {
             bool exito = false;
             bool exito1 = false;
             bool exito2 = false;
             bool exito3 = false;
+            bool exito4 = false;
+            bool exito5 = false;
+            bool exito6 = false;
+            bool exito7 = false;
+            bool exito8 = false;
+            bool exito9 = false;
+            bool exito10 = false;
             if (_pericia.Archivo1 != "")
             {
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo1);
@@ -530,7 +572,266 @@ namespace Sico.Dao
 
                 }
             }
-            if (exito1 == true || exito2 == true || exito3 == true)
+            if (_pericia.Archivo4 != "")
+            {
+                exito3 = false;
+                string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo4);
+                string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo4);
+                Adj4 = _pericia.Archivo4;
+                string targetPath = @"C:\Sico\Archivos";
+                string sourceFile = System.IO.Path.Combine(sourcePath);
+                string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
+                }
+                if (System.IO.Directory.Exists(sourcePath))
+                {
+                    string[] files = System.IO.Directory.GetFiles(sourcePath);
+                    foreach (string s in files)
+                    {
+                        string fileName = System.IO.Path.GetFileName(s);
+                        if (fileName == NombreArchivo)
+                        {
+                            destFile = System.IO.Path.Combine(targetPath, fileName);
+                            System.IO.File.Copy(s, destFile, true);
+                            _pericia.Archivo4 = destFile;
+                            exito4 = true;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            if (_pericia.Archivo5 != "")
+            {
+                exito3 = false;
+                string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo5);
+                string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo5);
+                Adj5 = _pericia.Archivo5;
+                string targetPath = @"C:\Sico\Archivos";
+                string sourceFile = System.IO.Path.Combine(sourcePath);
+                string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
+                }
+                if (System.IO.Directory.Exists(sourcePath))
+                {
+                    string[] files = System.IO.Directory.GetFiles(sourcePath);
+                    foreach (string s in files)
+                    {
+                        string fileName = System.IO.Path.GetFileName(s);
+                        if (fileName == NombreArchivo)
+                        {
+                            destFile = System.IO.Path.Combine(targetPath, fileName);
+                            System.IO.File.Copy(s, destFile, true);
+                            _pericia.Archivo5 = destFile;
+                            exito5 = true;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            if (_pericia.Archivo6 != "")
+            {
+                exito3 = false;
+                string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo6);
+                string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo6);
+                Adj6 = _pericia.Archivo6;
+                string targetPath = @"C:\Sico\Archivos";
+                string sourceFile = System.IO.Path.Combine(sourcePath);
+                string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
+                }
+                if (System.IO.Directory.Exists(sourcePath))
+                {
+                    string[] files = System.IO.Directory.GetFiles(sourcePath);
+                    foreach (string s in files)
+                    {
+                        string fileName = System.IO.Path.GetFileName(s);
+                        if (fileName == NombreArchivo)
+                        {
+                            destFile = System.IO.Path.Combine(targetPath, fileName);
+                            System.IO.File.Copy(s, destFile, true);
+                            _pericia.Archivo6 = destFile;
+                            exito6 = true;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            if (_pericia.Archivo7 != "")
+            {
+                exito3 = false;
+                string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo7);
+                string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo7);
+                Adj7 = _pericia.Archivo7;
+                string targetPath = @"C:\Sico\Archivos";
+                string sourceFile = System.IO.Path.Combine(sourcePath);
+                string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
+                }
+                if (System.IO.Directory.Exists(sourcePath))
+                {
+                    string[] files = System.IO.Directory.GetFiles(sourcePath);
+                    foreach (string s in files)
+                    {
+                        string fileName = System.IO.Path.GetFileName(s);
+                        if (fileName == NombreArchivo)
+                        {
+                            destFile = System.IO.Path.Combine(targetPath, fileName);
+                            System.IO.File.Copy(s, destFile, true);
+                            _pericia.Archivo7 = destFile;
+                            exito7 = true;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            if (_pericia.Archivo8 != "")
+            {
+                exito3 = false;
+                string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo8);
+                string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo8);
+                Adj8 = _pericia.Archivo8;
+                string targetPath = @"C:\Sico\Archivos";
+                string sourceFile = System.IO.Path.Combine(sourcePath);
+                string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
+                }
+                if (System.IO.Directory.Exists(sourcePath))
+                {
+                    string[] files = System.IO.Directory.GetFiles(sourcePath);
+                    foreach (string s in files)
+                    {
+                        string fileName = System.IO.Path.GetFileName(s);
+                        if (fileName == NombreArchivo)
+                        {
+                            destFile = System.IO.Path.Combine(targetPath, fileName);
+                            System.IO.File.Copy(s, destFile, true);
+                            _pericia.Archivo8 = destFile;
+                            exito8 = true;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            if (_pericia.Archivo9 != "")
+            {
+                exito9 = false;
+                string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo9);
+                string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo9);
+                Adj9 = _pericia.Archivo9;
+                string targetPath = @"C:\Sico\Archivos";
+                string sourceFile = System.IO.Path.Combine(sourcePath);
+                string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
+                }
+                if (System.IO.Directory.Exists(sourcePath))
+                {
+                    string[] files = System.IO.Directory.GetFiles(sourcePath);
+                    foreach (string s in files)
+                    {
+                        string fileName = System.IO.Path.GetFileName(s);
+                        if (fileName == NombreArchivo)
+                        {
+                            destFile = System.IO.Path.Combine(targetPath, fileName);
+                            System.IO.File.Copy(s, destFile, true);
+                            _pericia.Archivo9 = destFile;
+                            exito9 = true;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            if (_pericia.Archivo10 != "")
+            {
+                exito10 = false;
+                string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo10);
+                string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo10);
+                Adj10 = _pericia.Archivo10;
+                string targetPath = @"C:\Sico\Archivos";
+                string sourceFile = System.IO.Path.Combine(sourcePath);
+                string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
+                }
+                if (System.IO.Directory.Exists(sourcePath))
+                {
+                    string[] files = System.IO.Directory.GetFiles(sourcePath);
+                    foreach (string s in files)
+                    {
+                        string fileName = System.IO.Path.GetFileName(s);
+                        if (fileName == NombreArchivo)
+                        {
+                            destFile = System.IO.Path.Combine(targetPath, fileName);
+                            System.IO.File.Copy(s, destFile, true);
+                            _pericia.Archivo10 = destFile;
+                            exito10 = true;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            if (exito1 == true || exito2 == true || exito3 == true || exito4 == true || exito5 == true || exito6 == true || exito7 == true || exito8 == true || exito9 == true || exito10 == true)
                 exito = true;
             return exito;
         }

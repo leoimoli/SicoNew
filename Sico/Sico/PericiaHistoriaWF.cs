@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,73 @@ namespace Sico
         private void PericiaHistoriaWF_Load(object sender, EventArgs e)
         {
             ListaPericias = PericiaNeg.BuscarHistorialPericia(idPericiaSeleccionada);
+            List<string> listaArchivos = new List<string>();
+            listaArchivos = Dao.PericiaDao.CargarArchivos(idPericiaSeleccionada);
+            int contador = 0;
+            if (listaArchivos.Count > 0)
+            {
+                if (listaArchivos.Count > contador)
+                {
+                    txtAdjunto1.Text = listaArchivos[0].ToString();
+                    txtAdjunto1.Visible = true; btnAbrir1.Visible = true; lblAdjunto1.Visible = true; contador = 1;
+                }
+
+                if (listaArchivos.Count > contador)
+                {
+                    txtAdjunto2.Text = listaArchivos[1].ToString();
+                    txtAdjunto2.Visible = true; btnAbrir2.Visible = true; lblAdjunto2.Visible = true; contador = 2;
+                }
+
+                if (listaArchivos.Count > contador)
+                {
+                    txtAdjunto3.Text = listaArchivos[2].ToString();
+                    txtAdjunto3.Visible = true; btnAbrir3.Visible = true; lblAdjunto3.Visible = true; contador = 3;
+                }
+
+                if (listaArchivos.Count > contador)
+                {
+                    txtAdjunto4.Text = listaArchivos[3].ToString();
+                    txtAdjunto4.Visible = true; btnAbrir4.Visible = true; lblAdjunto4.Visible = true; contador = 4;
+                }
+
+                if (listaArchivos.Count > contador)
+                {
+                    txtAdjunto5.Text = listaArchivos[4].ToString();
+                    txtAdjunto5.Visible = true; btnAbrir5.Visible = true; lblAdjunto5.Visible = true; contador = 5;
+                }
+
+                if (listaArchivos.Count > contador)
+                {
+                    txtAdjunto6.Text = listaArchivos[5].ToString();
+                    txtAdjunto6.Visible = true; btnAbrir6.Visible = true; lblAdjunto6.Visible = true; contador = 6;
+                }
+
+                if (listaArchivos.Count > contador)
+                {
+                    txtAdjunto7.Text = listaArchivos[6].ToString();
+                    txtAdjunto7.Visible = true; btnAbrir7.Visible = true; lblAdjunto7.Visible = true; contador = 7;
+                }
+
+                if (listaArchivos.Count > contador)
+                {
+                    txtAdjunto8.Text = listaArchivos[7].ToString();
+                    txtAdjunto8.Visible = true; btnAbrir8.Visible = true; lblAdjunto8.Visible = true; contador = 8;
+                }
+
+                if (listaArchivos.Count > contador)
+                {
+                    txtAdjunto9.Text = listaArchivos[8].ToString();
+                    txtAdjunto9.Visible = true; btnAbrir9.Visible = true; lblAdjunto9.Visible = true; contador = 9;
+                }
+
+                if (listaArchivos.Count > contador)
+                {
+                    txtAdjunto10.Text = listaArchivos[9].ToString();
+                    txtAdjunto10.Visible = true; btnAbrir10.Visible = true; lblAdjunto10.Visible = true; contador = 10;
+                }
+
+                groupBox3.Visible = true;
+            }
         }
         #region Funciones
         public static int totalArchivos;
@@ -33,9 +101,9 @@ namespace Sico
         public static string NroCausa;
         public static string Tribunal;
         public static int TotalHistorial;
-        //public static string Archivo1;
-        //public static string Archivo2;
-        //public static string Archivo3;
+        public static List<string> listaArchivos;
+
+
         private void ProgressBar()
         {
             progressBar1.Visible = true;
@@ -84,6 +152,7 @@ namespace Sico
                         dgvPericias.Columns.Clear();
                         dgvPericias.Refresh();
                     }
+
                     dgvPericias.Visible = true;
                     dgvPericias.ReadOnly = true;
                     dgvPericias.RowHeadersVisible = false;
@@ -98,9 +167,6 @@ namespace Sico
                     NroCausa = value[0].NroCausa;
                     Tribunal = value[0].Tribunal;
                     TotalHistorial = value.Count;
-                    txtAdjunto1.Text = value[0].Archivo1;
-                    txtAdjunto2.Text = value[0].Archivo2;
-                    txtAdjunto3.Text = value[0].Archivo3;
 
                     if (txtAdjunto1.Text != "" || txtAdjunto1.Text != null || txtAdjunto2.Text != "" || txtAdjunto2.Text != null || txtAdjunto3.Text != "" || txtAdjunto3.Text != null)
                         groupBox3.Visible = true;
@@ -353,6 +419,46 @@ namespace Sico
             Close();
             PericiasWF _pericia = new PericiasWF();
             _pericia.Show();
+        }
+        private void btnAbrir1_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto1.Text);
+        }
+        private void btnAbrir2_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto2.Text);
+        }
+        private void btnAbrir3_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto3.Text);
+        }
+        private void btnAbrir4_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto4.Text);
+        }
+        private void btnAbrir5_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto5.Text);
+        }
+        private void btnAbrir6_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto6.Text);
+        }
+        private void btnAbrir7_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto7.Text);
+        }
+        private void btnAbrir8_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto8.Text);
+        }
+        private void btnAbrir9_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto9.Text);
+        }
+        private void btnAbrir10_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto10.Text);
         }
         #endregion
 

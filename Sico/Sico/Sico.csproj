@@ -316,6 +316,9 @@
     <None Include="Resources\juicio.png" />
     <None Include="Resources\juicio %281%29.png" />
     <None Include="Resources\nueva-pagina.png" />
+    <None Include="Resources\clip-sujetapapeles.png" />
+    <None Include="Resources\clip-sujetapapeles %281%29.png" />
+    <None Include="Resources\carpeta %281%29.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -103,6 +103,36 @@ namespace Sico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap carpeta__1_ {
+            get {
+                object obj = ResourceManager.GetObject("carpeta (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap clip_sujetapapeles {
+            get {
+                object obj = ResourceManager.GetObject("clip-sujetapapeles", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap clip_sujetapapeles__1_ {
+            get {
+                object obj = ResourceManager.GetObject("clip-sujetapapeles (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap comprador {
             get {
                 object obj = ResourceManager.GetObject("comprador", resourceCulture);
