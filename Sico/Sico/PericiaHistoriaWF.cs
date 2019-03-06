@@ -262,6 +262,56 @@ namespace Sico
                     dgvPericias.Columns[13].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[13].HeaderCell.Style.ForeColor = Color.White;
                     dgvPericias.Columns[13].Visible = false;
+
+                    dgvPericias.Columns[14].HeaderText = "Archivos 4";
+                    dgvPericias.Columns[14].Width = 120;
+                    dgvPericias.Columns[14].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[14].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[14].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[14].Visible = false;
+
+                    dgvPericias.Columns[15].HeaderText = "Total Estados";
+                    dgvPericias.Columns[15].Width = 120;
+                    dgvPericias.Columns[15].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[15].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[15].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[15].Visible = false;
+
+                    dgvPericias.Columns[16].HeaderText = "Total Estados";
+                    dgvPericias.Columns[16].Width = 120;
+                    dgvPericias.Columns[16].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[16].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[16].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[16].Visible = false;
+
+                    dgvPericias.Columns[17].HeaderText = "Total Estados";
+                    dgvPericias.Columns[17].Width = 120;
+                    dgvPericias.Columns[17].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[17].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[17].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[17].Visible = false;
+
+                    dgvPericias.Columns[18].HeaderText = "Total Estados";
+                    dgvPericias.Columns[18].Width = 120;
+                    dgvPericias.Columns[18].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[18].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[18].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[18].Visible = false;
+
+                    dgvPericias.Columns[19].HeaderText = "Total Estados";
+                    dgvPericias.Columns[19].Width = 120;
+                    dgvPericias.Columns[19].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[19].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[19].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[19].Visible = false;
+
+
+                    dgvPericias.Columns[20].HeaderText = "Total Estados";
+                    dgvPericias.Columns[20].Width = 120;
+                    dgvPericias.Columns[20].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[20].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[20].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[20].Visible = false;
                 }
                 else { MessageBox.Show("No se encontraron resultados para los filtros seleccionados."); }
 
