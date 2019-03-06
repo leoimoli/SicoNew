@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Sico.Entidades;
 using Sico.Negocio;
 using System.IO;
+using System.IO.Compression;
 
 namespace Sico
 {
@@ -361,6 +362,7 @@ namespace Sico
             }
         }
         public static double PesoTotalArchivos;
+        public int contadorArchivos;
         private void btnCargarArchivo1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -374,12 +376,16 @@ namespace Sico
                 FileInfo file = new FileInfo(path);
                 var Peso = file.Length;
                 double PesoArchivos = ((double)Peso / (1024 * 1024));
-                PesoTotalArchivos = PesoArchivos;
-                if (PesoArchivos > 2.3841857910156)
+                if (PesoArchivos > 23.84186)
                 {
                     MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
                     txtArchivo1.Clear();
                 }
+                else
+                {
+                    PesoTotalArchivos = PesoTotalArchivos + PesoArchivos;
+                }
+                contadorArchivos = contadorArchivos + 1;
             }
         }
         private void btnCargarArchivo2_Click(object sender, EventArgs e)
@@ -396,11 +402,16 @@ namespace Sico
                 var Peso = file.Length;
                 double PesoArchivos = ((double)Peso / (1024 * 1024));
                 PesoTotalArchivos = PesoArchivos;
-                if (PesoArchivos > 2.3841857910156)
+                if (PesoArchivos > 23.84186)
                 {
                     MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
                     txtArchivo2.Clear();
                 }
+                else
+                {
+                    PesoTotalArchivos = PesoTotalArchivos + PesoArchivos;
+                }
+                contadorArchivos = contadorArchivos + 1;
             }
         }
         private void btnCargarArchivo3_Click(object sender, EventArgs e)
@@ -417,11 +428,16 @@ namespace Sico
                 var Peso = file.Length;
                 double PesoArchivos = ((double)Peso / (1024 * 1024));
                 PesoTotalArchivos = PesoArchivos;
-                if (PesoArchivos > 2.3841857910156)
+                if (PesoArchivos > 23.84186)
                 {
                     MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
                     txtArchivo3.Clear();
                 }
+                else
+                {
+                    PesoTotalArchivos = PesoTotalArchivos + PesoArchivos;
+                }
+                contadorArchivos = contadorArchivos + 1;
             }
         }
         private void btnCargarArchivo4_Click(object sender, EventArgs e)
@@ -438,11 +454,16 @@ namespace Sico
                 var Peso = file.Length;
                 double PesoArchivos = ((double)Peso / (1024 * 1024));
                 PesoTotalArchivos = PesoArchivos;
-                if (PesoArchivos > 2.3841857910156)
+                if (PesoArchivos > 23.84186)
                 {
                     MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
                     txtArchivo4.Clear();
                 }
+                else
+                {
+                    PesoTotalArchivos = PesoTotalArchivos + PesoArchivos;
+                }
+                contadorArchivos = contadorArchivos + 1;
             }
         }
         private void btnCargarArchivo5_Click(object sender, EventArgs e)
@@ -459,11 +480,16 @@ namespace Sico
                 var Peso = file.Length;
                 double PesoArchivos = ((double)Peso / (1024 * 1024));
                 PesoTotalArchivos = PesoArchivos;
-                if (PesoArchivos > 2.3841857910156)
+                if (PesoArchivos > 23.84186)
                 {
                     MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
                     txtArchivo5.Clear();
                 }
+                else
+                {
+                    PesoTotalArchivos = PesoTotalArchivos + PesoArchivos;
+                }
+                contadorArchivos = contadorArchivos + 1;
             }
         }
         private void btnCargarArchivo6_Click(object sender, EventArgs e)
@@ -480,12 +506,17 @@ namespace Sico
                 var Peso = file.Length;
                 double PesoArchivos = ((double)Peso / (1024 * 1024));
                 PesoTotalArchivos = PesoArchivos;
-                if (PesoArchivos > 2.3841857910156)
+                if (PesoArchivos > 23.84186)
                 {
                     MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
                     txtArchivo6.Clear();
                 }
+                else
+                {
+                    PesoTotalArchivos = PesoTotalArchivos + PesoArchivos;
+                }
             }
+            contadorArchivos = contadorArchivos + 1;
         }
         private void btnCargarArchivo7_Click(object sender, EventArgs e)
         {
@@ -501,11 +532,16 @@ namespace Sico
                 var Peso = file.Length;
                 double PesoArchivos = ((double)Peso / (1024 * 1024));
                 PesoTotalArchivos = PesoArchivos;
-                if (PesoArchivos > 2.3841857910156)
+                if (PesoArchivos > 23.84186)
                 {
                     MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
                     txtArchivo7.Clear();
                 }
+                else
+                {
+                    PesoTotalArchivos = PesoTotalArchivos + PesoArchivos;
+                }
+                contadorArchivos = contadorArchivos + 1;
             }
         }
         private void btnCargarArchivo8_Click(object sender, EventArgs e)
@@ -522,11 +558,16 @@ namespace Sico
                 var Peso = file.Length;
                 double PesoArchivos = ((double)Peso / (1024 * 1024));
                 PesoTotalArchivos = PesoArchivos;
-                if (PesoArchivos > 2.3841857910156)
+                if (PesoArchivos > 23.84186)
                 {
                     MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
                     txtArchivo8.Clear();
                 }
+                else
+                {
+                    PesoTotalArchivos = PesoTotalArchivos + PesoArchivos;
+                }
+                contadorArchivos = contadorArchivos + 1;
             }
         }
         private void btnCargarArchivo9_Click(object sender, EventArgs e)
@@ -543,11 +584,16 @@ namespace Sico
                 var Peso = file.Length;
                 double PesoArchivos = ((double)Peso / (1024 * 1024));
                 PesoTotalArchivos = PesoArchivos;
-                if (PesoArchivos > 2.3841857910156)
+                if (PesoArchivos > 23.84186)
                 {
                     MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
                     txtArchivo9.Clear();
                 }
+                else
+                {
+                    PesoTotalArchivos = PesoTotalArchivos + PesoArchivos;
+                }
+                contadorArchivos = contadorArchivos + 1;
             }
         }
         private void btnCargarArchivo10_Click(object sender, EventArgs e)
@@ -564,18 +610,23 @@ namespace Sico
                 var Peso = file.Length;
                 double PesoArchivos = ((double)Peso / (1024 * 1024));
                 PesoTotalArchivos = PesoArchivos;
-                if (PesoArchivos > 2.3841857910156)
+                if (PesoArchivos > 23.84186)
                 {
                     MessageBox.Show("Atención con este adjunto se supera el tamaño limite permitido.");
                     txtArchivo10.Clear();
                 }
+                else
+                {
+                    PesoTotalArchivos = PesoTotalArchivos + PesoArchivos;
+                }
+                contadorArchivos = contadorArchivos + 1;
             }
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (PesoTotalArchivos > 2.3841857910156)
+                if (PesoTotalArchivos > 23.84186)
                 {
                     const string message = "Atención el peso de los archivos supera el maximo permitido.";
                     const string caption = "Error";
@@ -584,6 +635,7 @@ namespace Sico
                                                MessageBoxIcon.Exclamation);
                     throw new Exception();
                 }
+
                 Entidades.Pericias _pericia = CargarEntidad();
                 bool Exito = PericiaNeg.GurdarPericia(_pericia);
                 if (Exito == true)
@@ -601,7 +653,7 @@ namespace Sico
 
                 }
             }
-            catch { }
+            catch (Exception ex) { }
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {

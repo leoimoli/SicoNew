@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO.Compression;
 
 namespace Sico.Dao
 {
@@ -313,6 +314,9 @@ namespace Sico.Dao
             if (adjunto10 != null)
                 adjuntos.Add(adjunto10);
 
+            //if (adjuntos.Count > 1)
+            //{ ComprimirArchivos(adjuntos); }
+
             MailMessage msg = new MailMessage();
             //Quien escribe al correo
             msg.From = new MailAddress(emisor);
@@ -325,6 +329,9 @@ namespace Sico.Dao
             msg.IsBodyHtml = true;
             //Adjuntamos archivo
             //string tempFileName = Oid.ToString();
+
+
+
 
             foreach (string attach in adjuntos)
             {
@@ -347,6 +354,24 @@ namespace Sico.Dao
             }
             return exito;
         }
+
+        //private static void ComprimirArchivos(List<string> adjuntos)
+        //{
+        //    List<string> lista = new List<string>();
+        //    foreach (var item in adjuntos)
+        //    {
+        //        string nombre = System.IO.Path.GetFileName(item);
+        //        string archivoOriginal = @"C:\Sico\Archivos\" + nombre + "";
+        //        string directotorioDestino = @"C:\Sico\Archivos\Comprimidos\" + nombre + "";
+        //        ZipFile.CreateFromDirectory(archivoOriginal, directotorioDestino);
+        //    }
+
+        //    //string archivoOriginal = @"C:\Sico\Archivos" + Adj1 + "";
+           
+        //}
+
+
+
         public static List<Pericias> BuscarPericiasPorCausa(string causa)
         {
             connection.Close();
@@ -454,23 +479,11 @@ namespace Sico.Dao
                 // Use Path class to manipulate file and directory paths.
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
-
-                // To copy a folder's contents to a new location:
-                // Create a new target folder, if necessary.
                 if (!System.IO.Directory.Exists(targetPath))
                 {
                     System.IO.Directory.CreateDirectory(targetPath);
                 }
-                // To copy a file to another location and 
-                // overwrite the destination file if it already exists.
-                // System.IO.File.Copy(sourceFile, destFile, true);
 
-                // To copy all the files in one directory to another directory.
-                // Get the files in the source folder. (To recursively iterate through
-                // all subfolders under the current directory, see
-                // "How to: Iterate Through a Directory Tree.")
-                // Note: Check for target path was performed previously
-                //       in this code example.
                 if (System.IO.Directory.Exists(sourcePath))
                 {
                     string[] files = System.IO.Directory.GetFiles(sourcePath);
