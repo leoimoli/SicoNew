@@ -16,6 +16,12 @@ namespace Sico.Entidades
         public string Archivo1 { get; set; }
         public string Archivo2 { get; set; }
         public string Archivo3 { get; set; }
+        public int Compartido { get; set; }
+        public string Email { get; set; }
+        public string Estado { get; set; }
+        public string Descripcion { get; set; }
+        public int totalArchivos { get; set; }
+        public int TotalEstados { get; set; }
         public string Archivo4 { get; set; }
         public string Archivo5 { get; set; }
         public string Archivo6 { get; set; }
@@ -23,11 +29,5 @@ namespace Sico.Entidades
         public string Archivo8 { get; set; }
         public string Archivo9 { get; set; }
         public string Archivo10 { get; set; }
-        public int Compartido { get; set; }
-        public string Email { get; set; }
-        public string Estado { get; set; }
-        public string Descripcion { get; set; }
-        public int totalArchivos { get; set; }
-        public int TotalEstados { get; set; }
     }
 }
