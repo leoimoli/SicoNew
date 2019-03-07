@@ -36,53 +36,51 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
+        //public static bool LevantarBackup()
+        //{
+        //    string rutaPen = "";
+        //    DriveInfo[] mydrives = DriveInfo.GetDrives();
+        //    foreach (DriveInfo mydrive in mydrives)
+        //    {
+        //        //Check for removable devices like USB's
+        //        if (mydrive.DriveType == DriveType.Removable)
+        //        {
+        //            //Check for that specific USB
+        //            if (mydrive.IsReady == true)
+        //            {
+        //                if (mydrive.VolumeLabel.Equals("KINGSTON"))
+        //                {
+        //                    DirectoryInfo path = mydrive.RootDirectory;
+        //                    Path.GetFullPath(path.ToString());
+        //                    rutaPen = Path.GetFullPath(path.ToString());
+        //                }
+        //            }
+        //        }
+        //    }
+        //    bool exito = false;
+        //    connection.Close();
+        //    string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_desarrollo;Persist Security Info=True;";
 
-        public static bool LevantarBackup()
-        {
-            string rutaPen = "";
-            DriveInfo[] mydrives = DriveInfo.GetDrives();
-            foreach (DriveInfo mydrive in mydrives)
-            {
-                //Check for removable devices like USB's
-                if (mydrive.DriveType == DriveType.Removable)
-                {
-                    //Check for that specific USB
-                    if (mydrive.IsReady == true)
-                    {
-                        if (mydrive.VolumeLabel.Equals("KINGSTON"))
-                        {
-                            DirectoryInfo path = mydrive.RootDirectory;
-                            Path.GetFullPath(path.ToString());
-                            rutaPen = Path.GetFullPath(path.ToString());
-                        }
-                    }
-                }
-            }
-            bool exito = false;
-            connection.Close();
-            string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_desarrollo;Persist Security Info=True;";
-
-            // Important Additional Connection Options
-            constring += "convertzerodatetime=true;";
-            string file = ""+rutaPen+"backup.sql";
-            //string file = "F:\\backup.sql";
-            using (MySqlConnection conn = new MySqlConnection(constring))
-            {
-                using (MySqlCommand cmd = new MySqlCommand())
-                {
-                    using (MySqlBackup mb = new MySqlBackup(cmd))
-                    {
-                        cmd.Connection = conn;
-                        conn.Open();
-                        mb.ImportFromFile(file);
-                        conn.Close();
-                        exito = true;
-                    }
-                }
-            }
-            return exito;
-        }
-
+        //    // Important Additional Connection Options
+        //    constring += "convertzerodatetime=true;";
+        //    string file = ""+rutaPen+"backup.sql";
+        //    //string file = "F:\\backup.sql";
+        //    using (MySqlConnection conn = new MySqlConnection(constring))
+        //    {
+        //        using (MySqlCommand cmd = new MySqlCommand())
+        //        {
+        //            using (MySqlBackup mb = new MySqlBackup(cmd))
+        //            {
+        //                cmd.Connection = conn;
+        //                conn.Open();
+        //                mb.ImportFromFile(file);
+        //                conn.Close();
+        //                exito = true;
+        //            }
+        //        }
+        //    }
+        //    return exito;
+        //}
         public static List<Usuario> LoginUsuario(string usuario, string contraseña)
         {
             connection.Close();
@@ -121,49 +119,49 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
-        public static bool GenerarBackup()
-        {
-            string rutaPen = "";
-            DriveInfo[] mydrives = DriveInfo.GetDrives();
-            foreach (DriveInfo mydrive in mydrives)
-            {
-                //Check for removable devices like USB's
-                if (mydrive.DriveType == DriveType.Removable)
-                {
-                    //Check for that specific USB
-                    if (mydrive.IsReady == true)
-                    {
-                        if (mydrive.VolumeLabel.Equals("KINGSTON"))
-                        {
-                            DirectoryInfo path = mydrive.RootDirectory;
-                            Path.GetFullPath(path.ToString());
-                            rutaPen = Path.GetFullPath(path.ToString());
-                        }
-                    }
-                }
-            }
-            bool exito = false;
-            connection.Close();
-            string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_desarrollo;Persist Security Info=True;";
-            constring += "convertzerodatetime=true;";
-            string file = "" + rutaPen + "backup.sql";
-            using (MySqlConnection conn = new MySqlConnection(constring))
-            {
-                using (MySqlCommand cmd = new MySqlCommand())
-                {
-                    using (MySqlBackup mb = new MySqlBackup(cmd))
-                    {
-                        cmd.Connection = conn;
-                        conn.Open();
-                        mb.ExportToFile(file);
-                        conn.Close();
-                        exito = true;
-                    }
-                }
-            }
-            return exito;
+        //public static bool GenerarBackup()
+        //{
+        //    string rutaPen = "";
+        //    DriveInfo[] mydrives = DriveInfo.GetDrives();
+        //    foreach (DriveInfo mydrive in mydrives)
+        //    {
+        //        //Check for removable devices like USB's
+        //        if (mydrive.DriveType == DriveType.Removable)
+        //        {
+        //            //Check for that specific USB
+        //            if (mydrive.IsReady == true)
+        //            {
+        //                if (mydrive.VolumeLabel.Equals("KINGSTON"))
+        //                {
+        //                    DirectoryInfo path = mydrive.RootDirectory;
+        //                    Path.GetFullPath(path.ToString());
+        //                    rutaPen = Path.GetFullPath(path.ToString());
+        //                }
+        //            }
+        //        }
+        //    }
+        //    bool exito = false;
+        //    connection.Close();
+        //    string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_desarrollo;Persist Security Info=True;";
+        //    constring += "convertzerodatetime=true;";
+        //    string file = "" + rutaPen + "backup.sql";
+        //    using (MySqlConnection conn = new MySqlConnection(constring))
+        //    {
+        //        using (MySqlCommand cmd = new MySqlCommand())
+        //        {
+        //            using (MySqlBackup mb = new MySqlBackup(cmd))
+        //            {
+        //                cmd.Connection = conn;
+        //                conn.Open();
+        //                mb.ExportToFile(file);
+        //                conn.Close();
+        //                exito = true;
+        //            }
+        //        }
+        //    }
+        //    return exito;
 
-        }
+        //}
         public static bool BajaUsuario(string dni)
         {
             bool exito = false;

@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\Desktop\Leo\Cosas de Leo\Leo\Repositorio Fuentes\Windows Form\Sico(Contable)\Fuentes\SICO\SICO\bin\Debug\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Stock V1.0\Aplicacion\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -45,10 +45,10 @@
       <HintPath>..\..\..\..\..\Desktop\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\..\Desktop\Lo Nuevo de Sico\Mysql_Backup\MySql.Data.DLL</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Leo\MySql.Data.DLL</HintPath>
     </Reference>
     <Reference Include="mysqlbackup">
-      <HintPath>..\..\..\..\..\Desktop\Lo Nuevo de Sico\Mysql_Backup\Nueva carpeta\mysqlbackup.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Mysql_Backup\Nueva carpeta\mysqlbackup.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -102,8 +102,6 @@ namespace Sico
         public static string Tribunal;
         public static int TotalHistorial;
         public static List<string> listaArchivos;
-
-
         private void ProgressBar()
         {
             progressBar1.Visible = true;
@@ -130,6 +128,13 @@ namespace Sico
             _pericia.Archivo1 = txtArchivo1.Text;
             _pericia.Archivo2 = txtArchivo2.Text;
             _pericia.Archivo3 = txtArchivo3.Text;
+            _pericia.Archivo4 = txtArchivo4.Text;
+            _pericia.Archivo5 = txtArchivo5.Text;
+            _pericia.Archivo6 = txtArchivo6.Text;
+            _pericia.Archivo7 = txtArchivo7.Text;
+            _pericia.Archivo8 = txtArchivo8.Text;
+            _pericia.Archivo9 = txtArchivo9.Text;
+            _pericia.Archivo10 = txtArchivo10.Text;
             if (Compartir == 1 & chcEmail.Checked == true)
                 _pericia.Email = Email;
             _pericia.Compartido = Compartir;
@@ -325,6 +330,13 @@ namespace Sico
             txtArchivo1.Clear();
             txtArchivo2.Clear();
             txtArchivo3.Clear();
+            txtArchivo4.Clear();
+            txtArchivo5.Clear();
+            txtArchivo6.Clear();
+            txtArchivo7.Clear();
+            txtArchivo8.Clear();
+            txtArchivo9.Clear();
+            txtArchivo10.Clear();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
         }
@@ -337,14 +349,199 @@ namespace Sico
                 lblArchivo1.Visible = true;
                 lbl2Archivo2.Visible = true;
                 lblArchivo3.Visible = true;
+                lblArchivo4.Visible = true;
+                lblArchivo5.Visible = true;
+                lblArchivo6.Visible = true;
+                lblArchivo7.Visible = true;
+                lblArchivo8.Visible = true;
+                lblArchivo9.Visible = true;
+                lblArchivo10.Visible = true;
+
                 txtArchivo1.Visible = true;
                 txtArchivo2.Visible = true;
                 txtArchivo3.Visible = true;
+                txtArchivo4.Visible = true;
+                txtArchivo5.Visible = true;
+                txtArchivo6.Visible = true;
+                txtArchivo7.Visible = true;
+                txtArchivo8.Visible = true;
+                txtArchivo9.Visible = true;
+                txtArchivo10.Visible = true;
+
+                btnCargarArchivo1.Visible = true;
+                btnCargarArchivo2.Visible = true;
+                btnCargarArchivo3.Visible = true;
+                btnCargarArchivo4.Visible = true;
+                btnCargarArchivo5.Visible = true;
+                btnCargarArchivo6.Visible = true;
+                btnCargarArchivo7.Visible = true;
+                btnCargarArchivo8.Visible = true;
+                btnCargarArchivo9.Visible = true;
+                btnCargarArchivo10.Visible = true;
+            }
+            if (totalArchivos == 1)
+            {
+                lblArchivo1.Visible = true;
+                lbl2Archivo2.Visible = true;
+                lblArchivo3.Visible = true;
+                lblArchivo4.Visible = true;
+                lblArchivo5.Visible = true;
+                lblArchivo6.Visible = true;
+                lblArchivo7.Visible = true;
+                lblArchivo8.Visible = true;
+                lblArchivo9.Visible = true;
+
+                txtArchivo1.Visible = true;
+                txtArchivo2.Visible = true;
+                txtArchivo3.Visible = true;
+                txtArchivo4.Visible = true;
+                txtArchivo5.Visible = true;
+                txtArchivo6.Visible = true;
+                txtArchivo7.Visible = true;
+                txtArchivo8.Visible = true;
+                txtArchivo9.Visible = true;
+
+                btnCargarArchivo1.Visible = true;
+                btnCargarArchivo2.Visible = true;
+                btnCargarArchivo3.Visible = true;
+                btnCargarArchivo4.Visible = true;
+                btnCargarArchivo5.Visible = true;
+                btnCargarArchivo6.Visible = true;
+                btnCargarArchivo7.Visible = true;
+                btnCargarArchivo8.Visible = true;
+                btnCargarArchivo9.Visible = true;
+
+            }
+            if (totalArchivos == 2)
+            {
+                lblArchivo1.Visible = true;
+                lbl2Archivo2.Visible = true;
+                lblArchivo3.Visible = true;
+                lblArchivo4.Visible = true;
+                lblArchivo5.Visible = true;
+                lblArchivo6.Visible = true;
+                lblArchivo7.Visible = true;
+                lblArchivo8.Visible = true;
+                txtArchivo1.Visible = true;
+                txtArchivo2.Visible = true;
+                txtArchivo3.Visible = true;
+                txtArchivo4.Visible = true;
+                txtArchivo5.Visible = true;
+                txtArchivo6.Visible = true;
+                txtArchivo7.Visible = true;
+                txtArchivo8.Visible = true;
+                btnCargarArchivo1.Visible = true;
+                btnCargarArchivo2.Visible = true;
+                btnCargarArchivo3.Visible = true;
+                btnCargarArchivo4.Visible = true;
+                btnCargarArchivo5.Visible = true;
+                btnCargarArchivo6.Visible = true;
+                btnCargarArchivo7.Visible = true;
+                btnCargarArchivo8.Visible = true;
+            }
+            if (totalArchivos == 3)
+            {
+                lblArchivo1.Visible = true;
+                lbl2Archivo2.Visible = true;
+                lblArchivo3.Visible = true;
+                lblArchivo4.Visible = true;
+                lblArchivo5.Visible = true;
+                lblArchivo6.Visible = true;
+                lblArchivo7.Visible = true;
+
+                txtArchivo1.Visible = true;
+                txtArchivo2.Visible = true;
+                txtArchivo3.Visible = true;
+                txtArchivo4.Visible = true;
+                txtArchivo5.Visible = true;
+                txtArchivo6.Visible = true;
+                txtArchivo7.Visible = true;
+
+                btnCargarArchivo1.Visible = true;
+                btnCargarArchivo2.Visible = true;
+                btnCargarArchivo3.Visible = true;
+                btnCargarArchivo4.Visible = true;
+                btnCargarArchivo5.Visible = true;
+                btnCargarArchivo6.Visible = true;
+                btnCargarArchivo7.Visible = true;
+
+            }
+            if (totalArchivos == 4)
+            {
+                lblArchivo1.Visible = true;
+                lbl2Archivo2.Visible = true;
+                lblArchivo3.Visible = true;
+                lblArchivo4.Visible = true;
+                lblArchivo5.Visible = true;
+                lblArchivo6.Visible = true;
+
+                txtArchivo1.Visible = true;
+                txtArchivo2.Visible = true;
+                txtArchivo3.Visible = true;
+                txtArchivo4.Visible = true;
+                txtArchivo5.Visible = true;
+                txtArchivo6.Visible = true;
+
+                btnCargarArchivo1.Visible = true;
+                btnCargarArchivo2.Visible = true;
+                btnCargarArchivo3.Visible = true;
+                btnCargarArchivo4.Visible = true;
+                btnCargarArchivo5.Visible = true;
+                btnCargarArchivo6.Visible = true;
+            }
+            if (totalArchivos == 5)
+            {
+                lblArchivo1.Visible = true;
+                lbl2Archivo2.Visible = true;
+                lblArchivo3.Visible = true;
+                lblArchivo4.Visible = true;
+                lblArchivo5.Visible = true;
+
+                txtArchivo1.Visible = true;
+                txtArchivo2.Visible = true;
+                txtArchivo3.Visible = true;
+                txtArchivo4.Visible = true;
+                txtArchivo5.Visible = true;
+
+                btnCargarArchivo1.Visible = true;
+                btnCargarArchivo2.Visible = true;
+                btnCargarArchivo3.Visible = true;
+                btnCargarArchivo4.Visible = true;
+                btnCargarArchivo5.Visible = true;
+            }
+            if (totalArchivos == 6)
+            {
+                lblArchivo1.Visible = true;
+                lbl2Archivo2.Visible = true;
+                lblArchivo3.Visible = true;
+                lblArchivo4.Visible = true;
+
+                txtArchivo1.Visible = true;
+                txtArchivo2.Visible = true;
+                txtArchivo3.Visible = true;
+                txtArchivo4.Visible = true;
+
+                btnCargarArchivo1.Visible = true;
+                btnCargarArchivo2.Visible = true;
+                btnCargarArchivo3.Visible = true;
+                btnCargarArchivo4.Visible = true;
+            }
+            if (totalArchivos == 7)
+            {
+                lblArchivo1.Visible = true;
+                lbl2Archivo2.Visible = true;
+                lblArchivo3.Visible = true;
+
+                txtArchivo1.Visible = true;
+                txtArchivo2.Visible = true;
+                txtArchivo3.Visible = true;
+
                 btnCargarArchivo1.Visible = true;
                 btnCargarArchivo2.Visible = true;
                 btnCargarArchivo3.Visible = true;
             }
-            if (totalArchivos == 1)
+
+            if (totalArchivos == 8)
             {
                 lblArchivo1.Visible = true;
                 lbl2Archivo2.Visible = true;
@@ -354,14 +551,15 @@ namespace Sico
                 btnCargarArchivo2.Visible = true;
 
             }
-            if (totalArchivos == 2)
+            if (totalArchivos == 9)
             {
                 lblArchivo1.Visible = true;
                 txtArchivo1.Visible = true;
                 btnCargarArchivo1.Visible = true;
             }
-            if (totalArchivos == 3)
+            if (totalArchivos == 10)
             {
+                chcEmail.Visible = false;
                 lblMensaje.Text = "Ya posee adjunto el total de archivos que el sistema permite.";
             }
         }
@@ -398,6 +596,90 @@ namespace Sico
                    System.IO.StreamReader(openFileDialog3.FileName);
                 path3 = openFileDialog3.FileName;
                 txtArchivo3.Text = path3;
+                sr.Close();
+            }
+        }
+        private void btnCargarArchivo4_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog4.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path4 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog4.FileName);
+                path4 = openFileDialog4.FileName;
+                txtArchivo4.Text = path4;
+                sr.Close();
+            }
+        }
+        private void btnCargarArchivo5_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog5.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path5 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog5.FileName);
+                path5 = openFileDialog3.FileName;
+                txtArchivo5.Text = path5;
+                sr.Close();
+            }
+        }
+        private void btnCargarArchivo6_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog6.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path6 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog6.FileName);
+                path6 = openFileDialog6.FileName;
+                txtArchivo6.Text = path6;
+                sr.Close();
+            }
+        }
+        private void btnCargarArchivo7_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog7.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path7 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog7.FileName);
+                path7 = openFileDialog7.FileName;
+                txtArchivo7.Text = path7;
+                sr.Close();
+            }
+        }
+        private void btnCargarArchivo8_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog8.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path8 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog8.FileName);
+                path8 = openFileDialog8.FileName;
+                txtArchivo8.Text = path8;
+                sr.Close();
+            }
+        }
+        private void btnCargarArchivo9_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog9.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path9 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog9.FileName);
+                path9 = openFileDialog3.FileName;
+                txtArchivo9.Text = path9;
+                sr.Close();
+            }
+        }
+        private void btnCargarArchivo10_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog10.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path10 = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog10.FileName);
+                path10 = openFileDialog10.FileName;
+                txtArchivo10.Text = path10;
                 sr.Close();
             }
         }
@@ -511,7 +793,5 @@ namespace Sico
             Process.Start("explorer.exe", txtAdjunto10.Text);
         }
         #endregion
-
-
     }
 }

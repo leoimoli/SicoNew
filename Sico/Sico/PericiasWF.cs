@@ -38,7 +38,7 @@ namespace Sico
             txtArchivo3.Clear();
             dgvPericias.Visible = false;
             btnCargarArchivo10.Visible = true;
-            txtCausaBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassEmailPericia.Autocomplete();
+            txtCausaBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteCausa.Autocomplete();
             txtCausaBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtCausaBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
@@ -78,8 +78,12 @@ namespace Sico
         {
             if (chcCompartirPericia.Checked == true)
             {
+                txtEmail.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassEmailPericia.Autocomplete();
+                txtEmail.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtEmail.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 txtEmail.Visible = true;
                 txtEmail.Focus();
+
             }
             else
             {
@@ -687,6 +691,9 @@ namespace Sico
                 }
 
                 Entidades.Pericias _pericia = CargarEntidad();
+                groupBox1.Enabled = false;
+                groupBox2.Enabled = false;
+                groupBox3.Enabled = false;
                 bool Exito = PericiaNeg.GurdarPericia(_pericia);
                 if (Exito == true)
                 {
@@ -696,11 +703,17 @@ namespace Sico
                     var result2 = MessageBox.Show(message2, caption2,
                                                  MessageBoxButtons.OK,
                                                  MessageBoxIcon.Asterisk);
+                    groupBox1.Enabled = true;
+                    groupBox2.Enabled = true;
+                    groupBox3.Enabled = true;
                     LimpiarCampos();
                 }
                 else
                 {
-
+                    groupBox1.Enabled = true;
+                    groupBox2.Enabled = true;
+                    groupBox3.Enabled = true;
+                    LimpiarCampos();
                 }
             }
             catch (Exception ex) { }

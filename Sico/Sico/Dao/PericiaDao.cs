@@ -11,6 +11,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO.Compression;
+using System.Windows.Forms;
 
 namespace Sico.Dao
 {
@@ -229,7 +230,20 @@ namespace Sico.Dao
                         ListaArchivos.Add(_pericia.Archivo2);
                     if (_pericia.Archivo3 != "")
                         ListaArchivos.Add(_pericia.Archivo3);
-
+                    if (_pericia.Archivo4 != "")
+                        ListaArchivos.Add(_pericia.Archivo4);
+                    if (_pericia.Archivo5 != "")
+                        ListaArchivos.Add(_pericia.Archivo5);
+                    if (_pericia.Archivo6 != "")
+                        ListaArchivos.Add(_pericia.Archivo6);
+                    if (_pericia.Archivo7 != "")
+                        ListaArchivos.Add(_pericia.Archivo7);
+                    if (_pericia.Archivo8 != "")
+                        ListaArchivos.Add(_pericia.Archivo8);
+                    if (_pericia.Archivo9 != "")
+                        ListaArchivos.Add(_pericia.Archivo9);
+                    if (_pericia.Archivo10 != "")
+                        ListaArchivos.Add(_pericia.Archivo10);
                     foreach (var item in ListaArchivos)
                     {
                         connection.Close();
@@ -350,28 +364,10 @@ namespace Sico.Dao
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("Atención si bien la pericia se guardo correctamente, Fallo el envio de email.");
             }
             return exito;
         }
-
-        //private static void ComprimirArchivos(List<string> adjuntos)
-        //{
-        //    List<string> lista = new List<string>();
-        //    foreach (var item in adjuntos)
-        //    {
-        //        string nombre = System.IO.Path.GetFileName(item);
-        //        string archivoOriginal = @"C:\Sico\Archivos\" + nombre + "";
-        //        string directotorioDestino = @"C:\Sico\Archivos\Comprimidos\" + nombre + "";
-        //        ZipFile.CreateFromDirectory(archivoOriginal, directotorioDestino);
-        //    }
-
-        //    //string archivoOriginal = @"C:\Sico\Archivos" + Adj1 + "";
-           
-        //}
-
-
-
         public static List<Pericias> BuscarPericiasPorCausa(string causa)
         {
             connection.Close();
@@ -457,6 +453,17 @@ namespace Sico.Dao
         public static string Adj8;
         public static string Adj9;
         public static string Adj10;
+
+        //private void UploadFile(string bucketName, string localPath, string objectName = null)
+        //{
+        //    var storage = StorageClient.Create();
+        //    using (var f = File.OpenRead(localPath))
+        //    {
+        //        objectName = objectName ?? Path.GetFileName(localPath);
+        //        storage.UploadObject(bucketName, objectName, null, f);
+        //        Console.WriteLine($"Uploaded {objectName}.");
+        //    }
+        //}
         private static bool GuardarImagenesEnCarpeta(Pericias _pericia)
         {
             bool exito = false;
@@ -476,6 +483,7 @@ namespace Sico.Dao
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo1);
                 Adj1 = _pericia.Archivo1;
                 string targetPath = @"C:\Sico\Archivos";
+                //string targetPath = "https://console.cloud.google.com/storage/browser/sico-archivos";
                 // Use Path class to manipulate file and directory paths.
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);

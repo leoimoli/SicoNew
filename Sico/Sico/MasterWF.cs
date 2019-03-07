@@ -64,10 +64,10 @@ namespace Sico
 
         private void periciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Estoy trabajando en esta funcionalidad.");
-            //PericiasWF _pericia = new PericiasWF();
-            //_pericia.Show();
-            //Hide();
+            //MessageBox.Show("Estoy trabajando en esta funcionalidad.");
+            PericiasWF _pericia = new PericiasWF();
+            _pericia.Show();
+            Hide();
         }
     }
 }
