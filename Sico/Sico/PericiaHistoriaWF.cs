@@ -29,6 +29,8 @@ namespace Sico
             List<Pericias> SortedList = objListOrder.OrderByDescending(o => o.Fecha).ToList();
             ListaPericias = SortedList;
 
+            var lista = SortedList.First();
+            cmbEstado.Text = lista.Estado;
 
 
             List<string> listaArchivos = new List<string>();
@@ -745,7 +747,7 @@ namespace Sico
             groupBox2.Visible = true;
             dtFechaPericia.Focus();
             ValidarCantidadArchivos();
-            CargarComboEstado();
+            //CargarComboEstado();
             //cmbEstado.Text = EstadoCombo;
             btnNuevaHistoria.Visible = false;
             btnVolver.Visible = false;
@@ -812,5 +814,10 @@ namespace Sico
             Process.Start("explorer.exe", txtAdjunto10.Text);
         }
         #endregion
+
+        private void cmbEstado_Click(object sender, EventArgs e)
+        {
+            CargarComboEstado();
+        }
     }
 }

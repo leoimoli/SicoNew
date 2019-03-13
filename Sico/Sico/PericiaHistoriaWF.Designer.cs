@@ -524,6 +524,7 @@
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(250, 21);
             this.cmbEstado.TabIndex = 83;
+            this.cmbEstado.Click += new System.EventHandler(this.cmbEstado_Click);
             // 
             // label4
             // 
