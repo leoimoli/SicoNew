@@ -11,6 +11,9 @@ using Sico.Entidades;
 using Sico.Negocio;
 using System.IO;
 using System.IO.Compression;
+using System.Threading;
+using Sico.Dao;
+
 
 namespace Sico
 {
@@ -78,12 +81,31 @@ namespace Sico
         {
             if (chcCompartirPericia.Checked == true)
             {
+                List<CuentaEmailPorUsuario> cuenta = new List<CuentaEmailPorUsuario>();
+                cuenta = UsuarioDao.BuscarCuentaEmailPorUsuario(Sesion.UsuarioLogueado.IdUsuario);
+                if (cuenta.Count <= 0)
+                {
+                    const string message = "Desea agregar una cuenta de email relacionada al usuario login nuevo producto ?";
+                    const string caption = "Cuenta de Email inexistente";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
+                    {
+                        if (result == DialogResult.Yes)
+                        {
+                            CuentaEmailWF _cuenta = new CuentaEmailWF();
+                            _cuenta.Show();
+                        }
+                        else
+                        { }
+
+                    }
+                }
                 txtEmail.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassEmailPericia.Autocomplete();
                 txtEmail.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtEmail.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 txtEmail.Visible = true;
                 txtEmail.Focus();
-
             }
             else
             {
@@ -148,6 +170,7 @@ namespace Sico
             _pericia.Archivo9 = txtArchivo9.Text;
             _pericia.Archivo10 = txtArchivo10.Text;
             _pericia.Email = txtEmail.Text;
+            _pericia.UsuarioLogin = Sesion.UsuarioLogueado.IdUsuario;
             if (chcCompartirPericia.Checked == true)
             { _pericia.Compartido = 1; }
             else { _pericia.Compartido = 0; }
@@ -247,7 +270,7 @@ namespace Sico
                     dgvPericias.Columns[3].HeaderCell.Style.ForeColor = Color.White;
 
                     dgvPericias.Columns[4].HeaderText = "Causa";
-                    dgvPericias.Columns[4].Width = 150;
+                    dgvPericias.Columns[4].Width = 170;
                     dgvPericias.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvPericias.Columns[4].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[4].HeaderCell.Style.ForeColor = Color.White;
@@ -281,14 +304,14 @@ namespace Sico
                     dgvPericias.Columns[8].HeaderCell.Style.ForeColor = Color.White;
                     dgvPericias.Columns[8].Visible = false;
 
-                    dgvPericias.Columns[9].HeaderText = "Email";
-                    dgvPericias.Columns[9].Width = 95;
+                    dgvPericias.Columns[9].HeaderText = "Email compartido";
+                    dgvPericias.Columns[9].Width = 120;
                     dgvPericias.Columns[9].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvPericias.Columns[9].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[9].HeaderCell.Style.ForeColor = Color.White;
 
                     dgvPericias.Columns[10].HeaderText = "Estado";
-                    dgvPericias.Columns[10].Width = 95;
+                    dgvPericias.Columns[10].Width = 100;
                     dgvPericias.Columns[10].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvPericias.Columns[10].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[10].HeaderCell.Style.ForeColor = Color.White;
@@ -364,14 +387,21 @@ namespace Sico
                     dgvPericias.Columns[20].HeaderCell.Style.ForeColor = Color.White;
                     dgvPericias.Columns[20].Visible = false;
 
+                    dgvPericias.Columns[21].HeaderText = "idUsuario";
+                    dgvPericias.Columns[21].Width = 120;
+                    dgvPericias.Columns[21].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[21].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[21].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[21].Visible = false;
+
                     DataGridViewButtonColumn BotonVer = new DataGridViewButtonColumn();
                     BotonVer.Name = "Ver";
                     BotonVer.HeaderText = "Ver";
                     this.dgvPericias.Columns.Add(BotonVer);
-                    dgvPericias.Columns[21].Width = 35;
-                    dgvPericias.Columns[21].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dgvPericias.Columns[21].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                    dgvPericias.Columns[21].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[22].Width = 35;
+                    dgvPericias.Columns[22].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[22].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[22].HeaderCell.Style.ForeColor = Color.White;
 
                 }
                 else { MessageBox.Show("No se encontraron resultados para los filtros seleccionados."); }
@@ -388,7 +418,7 @@ namespace Sico
         }
         private void ClickBoton(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvPericias.CurrentCell.ColumnIndex == 21)
+            if (dgvPericias.CurrentCell.ColumnIndex == 22)
             {
                 var idPericia = Convert.ToString(this.dgvPericias.CurrentRow.Cells[0].Value);
                 PericiaHistoriaWF _vista = new PericiaHistoriaWF(idPericia);
@@ -694,6 +724,7 @@ namespace Sico
                 groupBox1.Enabled = false;
                 groupBox2.Enabled = false;
                 groupBox3.Enabled = false;
+                //UploadFile();
                 bool Exito = PericiaNeg.GurdarPericia(_pericia);
                 if (Exito == true)
                 {
@@ -718,6 +749,7 @@ namespace Sico
             }
             catch (Exception ex) { }
         }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -742,5 +774,9 @@ namespace Sico
         }
         #endregion
 
+        private void PericiasWF_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

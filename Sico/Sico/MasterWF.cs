@@ -69,5 +69,11 @@ namespace Sico
             _pericia.Show();
             Hide();
         }
+
+        private void cargarFirmaEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CuentaEmailWF _cuenta = new CuentaEmailWF();
+            _cuenta.Show();
+        }
     }
 }

@@ -32,7 +32,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.periciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargarFirmaEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMaster_UsuarioLogin = new System.Windows.Forms.Label();
@@ -41,7 +43,6 @@
             this.lblMaster_FechaHora = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.periciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -78,13 +79,30 @@
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
+            // periciasToolStripMenuItem
+            // 
+            this.periciasToolStripMenuItem.Image = global::Sico.Properties.Resources.juicio;
+            this.periciasToolStripMenuItem.Name = "periciasToolStripMenuItem";
+            this.periciasToolStripMenuItem.Size = new System.Drawing.Size(91, 25);
+            this.periciasToolStripMenuItem.Text = "Pericias";
+            this.periciasToolStripMenuItem.Click += new System.EventHandler(this.periciasToolStripMenuItem_Click);
+            // 
             // usuariosToolStripMenuItem
             // 
+            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cargarFirmaEmailToolStripMenuItem});
             this.usuariosToolStripMenuItem.Image = global::Sico.Properties.Resources.usuario_hombre;
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(99, 25);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            // 
+            // cargarFirmaEmailToolStripMenuItem
+            // 
+            this.cargarFirmaEmailToolStripMenuItem.Name = "cargarFirmaEmailToolStripMenuItem";
+            this.cargarFirmaEmailToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.cargarFirmaEmailToolStripMenuItem.Text = "Cargar firma Email";
+            this.cargarFirmaEmailToolStripMenuItem.Click += new System.EventHandler(this.cargarFirmaEmailToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -168,15 +186,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(144, 17);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Sico(contable) V1.0.1";
-            // 
-            // periciasToolStripMenuItem
-            // 
-            this.periciasToolStripMenuItem.Image = global::Sico.Properties.Resources.juicio;
-            this.periciasToolStripMenuItem.Name = "periciasToolStripMenuItem";
-            this.periciasToolStripMenuItem.Size = new System.Drawing.Size(91, 25);
-            this.periciasToolStripMenuItem.Text = "Pericias";
-            this.periciasToolStripMenuItem.Click += new System.EventHandler(this.periciasToolStripMenuItem_Click);
+            this.label3.Text = "Sico(contable) V1.1.0";
             // 
             // MasterWF
             // 
@@ -218,5 +228,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem periciasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cargarFirmaEmailToolStripMenuItem;
     }
 }

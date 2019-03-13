@@ -780,6 +780,7 @@
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "PericiasWF";
             this.Text = "PericiasWF";
+            this.Load += new System.EventHandler(this.PericiasWF_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);

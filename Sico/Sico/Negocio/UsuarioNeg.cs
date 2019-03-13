@@ -31,6 +31,26 @@ namespace Sico.Negocio
             }
             return _listaUsuarios;
         }
+
+        public static List<CuentaEmailPorUsuario> BuscarCuentaEmailPorUsuario(int idusuarioLogueado)
+        {
+            List<CuentaEmailPorUsuario> _listaCuenta = new List<CuentaEmailPorUsuario>();
+            try
+            {
+                _listaCuenta = UsuarioDao.BuscarCuentaEmailPorUsuario(idusuarioLogueado);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaCuenta;
+        }
+
         public static List<Usuario> LoginUsuario(string usuario, string contraseña)
         {
             List<Entidades.Usuario> lista = new List<Entidades.Usuario>();
@@ -40,6 +60,43 @@ namespace Sico.Negocio
                 int idUsuario = Convert.ToInt32(lista[0].IdUsuario.ToString());
             }
             return lista;
+        }
+
+        public static bool GuardarCuentaEmail(CuentaEmailPorUsuario _cuenta)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatosCuentaEmail(_cuenta);
+                exito = UsuarioDao.InsertCuentaEmail(_cuenta);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
+
+        private static void ValidarDatosCuentaEmail(CuentaEmailPorUsuario _cuenta)
+        {
+            if (String.IsNullOrEmpty(_cuenta.CuentaEmail))
+            {
+                const string message = "El cuenta email es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+            if (String.IsNullOrEmpty(_cuenta.ClaveEmail))
+            {
+                const string message = "El campo clave es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
         }
         public static bool EliminarUsuario(string dni)
         {

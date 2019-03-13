@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO.Compression;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Google.Cloud.Storage.V1;
 
 namespace Sico.Dao
 {
@@ -43,7 +45,6 @@ namespace Sico.Dao
             connection.Close();
             return Existe;
         }
-
         public static List<string> CargarArchivos(string idPericiaSeleccionada)
         {
             List<string> listarArchivos = new List<string>();
@@ -72,9 +73,9 @@ namespace Sico.Dao
             connection.Close();
             return listarArchivos;
         }
-
         public static bool InsertPericia(Pericias _pericia)
         {
+
             bool exito = false;
             bool exitoGuardarImagenes = false;
             if (_pericia.Archivo1 != "" || _pericia.Archivo2 != "" || _pericia.Archivo3 != "" || _pericia.Archivo4 != "" || _pericia.Archivo5 != "" || _pericia.Archivo6 != "" || _pericia.Archivo7 != "" || _pericia.Archivo8 != "" || _pericia.Archivo9 != "" || _pericia.Archivo10 != "")
@@ -160,7 +161,6 @@ namespace Sico.Dao
             }
             return exito;
         }
-
         public static List<Pericias> BuscarHistorialPericia(int idPer)
         {
             connection.Close();
@@ -198,7 +198,6 @@ namespace Sico.Dao
             return lista;
 
         }
-
         public static bool InsertHistorialPericia(Pericias _pericia)
         {
             bool exito = false;
@@ -266,7 +265,6 @@ namespace Sico.Dao
             }
             return exito;
         }
-
         private static bool ActualizarEstadoPericia(Pericias _pericia)
         {
             bool exito = false;
@@ -282,20 +280,22 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-
         private static bool EnviarEmail(Pericias _pericia)
         {
+            List<CuentaEmailPorUsuario> cuenta = new List<CuentaEmailPorUsuario>();
+            cuenta = UsuarioDao.BuscarCuentaEmailPorUsuario(_pericia.UsuarioLogin);
+            var Cuenta = cuenta.First();
             Variables _variables = new Variables();
             bool exito = false;
-            string emisor = _variables.emisorEmail;
-            string pwd = _variables.ClaveEmail;
+            string emisor = Cuenta.CuentaEmail;
+            string pwd = Cuenta.ClaveEmail;
             string correo = "";
             if (_pericia.TotalEstados > 1)
             {
-                correo = "Estimada/o, le informamos que se creo un nuevo movimiento en la pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br />abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Se informa que lo siguiente respecto a la pericia: " + _pericia.Descripcion + "<br /> Sin mas le dejo mi saludo.<br /> Romina Arbizu.";
+                correo = "Estimada/o, le informamos que se creo un nuevo movimiento en la pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br />abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Se informa que lo siguiente respecto a la pericia: " + _pericia.Descripcion + "<br />" + Cuenta.FirmaEmail + "<br />.";
 
             }
-            else { correo = "Estimada/o, le informamos que se inicio una nueva pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br /> abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Sin mas le dejo mi saludo.<br /> Romina Arbizu."; }
+            else { correo = "Estimada/o, le informamos que se inicio una nueva pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br /> abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> " + Cuenta.FirmaEmail + "."; }
             List<string> adjuntos = new List<string>();
             string adjunto1 = Adj1;
             if (adjunto1 != null)
@@ -343,9 +343,6 @@ namespace Sico.Dao
             msg.IsBodyHtml = true;
             //Adjuntamos archivo
             //string tempFileName = Oid.ToString();
-
-
-
 
             foreach (string attach in adjuntos)
             {
@@ -442,7 +439,6 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
-
         public static string Adj1;
         public static string Adj2;
         public static string Adj3;
@@ -453,19 +449,9 @@ namespace Sico.Dao
         public static string Adj8;
         public static string Adj9;
         public static string Adj10;
-
-        //private void UploadFile(string bucketName, string localPath, string objectName = null)
-        //{
-        //    var storage = StorageClient.Create();
-        //    using (var f = File.OpenRead(localPath))
-        //    {
-        //        objectName = objectName ?? Path.GetFileName(localPath);
-        //        storage.UploadObject(bucketName, objectName, null, f);
-        //        Console.WriteLine($"Uploaded {objectName}.");
-        //    }
-        //}
         private static bool GuardarImagenesEnCarpeta(Pericias _pericia)
         {
+
             bool exito = false;
             bool exito1 = false;
             bool exito2 = false;
@@ -482,9 +468,9 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo1);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo1);
                 Adj1 = _pericia.Archivo1;
-                string targetPath = @"C:\Sico\Archivos";
-                //string targetPath = "https://console.cloud.google.com/storage/browser/sico-archivos";
-                // Use Path class to manipulate file and directory paths.
+
+                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                //string targetPath = @"C:\Sico\Archivos";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -525,7 +511,7 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo2);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo2);
                 Adj2 = _pericia.Archivo2;
-                string targetPath = @"C:\Sico\Archivos";
+                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -562,7 +548,7 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo3);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo3);
                 Adj3 = _pericia.Archivo3;
-                string targetPath = @"C:\Sico\Archivos";
+                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -599,7 +585,7 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo4);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo4);
                 Adj4 = _pericia.Archivo4;
-                string targetPath = @"C:\Sico\Archivos";
+                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -636,7 +622,7 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo5);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo5);
                 Adj5 = _pericia.Archivo5;
-                string targetPath = @"C:\Sico\Archivos";
+                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -673,7 +659,7 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo6);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo6);
                 Adj6 = _pericia.Archivo6;
-                string targetPath = @"C:\Sico\Archivos";
+                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -710,7 +696,7 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo7);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo7);
                 Adj7 = _pericia.Archivo7;
-                string targetPath = @"C:\Sico\Archivos";
+                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -747,7 +733,7 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo8);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo8);
                 Adj8 = _pericia.Archivo8;
-                string targetPath = @"C:\Sico\Archivos";
+                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -784,7 +770,7 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo9);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo9);
                 Adj9 = _pericia.Archivo9;
-                string targetPath = @"C:\Sico\Archivos";
+                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -821,7 +807,7 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo10);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo10);
                 Adj10 = _pericia.Archivo10;
-                string targetPath = @"C:\Sico\Archivos";
+                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))

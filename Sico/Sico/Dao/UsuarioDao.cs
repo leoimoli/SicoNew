@@ -36,6 +36,54 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
+
+        public static List<CuentaEmailPorUsuario> BuscarCuentaEmailPorUsuario(int idusuarioLogueado)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.CuentaEmailPorUsuario> listaCuenta = new List<Entidades.CuentaEmailPorUsuario>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idUsuario_in", idusuarioLogueado)};
+            string proceso = "BuscarCuentaEmailPorUsuario";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    CuentaEmailPorUsuario lista = new CuentaEmailPorUsuario();
+                    lista.IdUsuario = Convert.ToInt32(item["idUsuario"].ToString());
+                    lista.CuentaEmail = item["CuentaEmail"].ToString();
+                    lista.ClaveEmail = item["ClaveEmail"].ToString();
+                    lista.FirmaEmail = item["FirmaEmail"].ToString();
+                    listaCuenta.Add(lista);
+                }
+            }
+            connection.Close();
+            return listaCuenta;
+        }
+        public static bool InsertCuentaEmail(CuentaEmailPorUsuario _cuenta)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "InsertCuentaEmail";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("CuentaEmail_in", _cuenta.CuentaEmail);
+            cmd.Parameters.AddWithValue("ClaveEmail_in", _cuenta.ClaveEmail);
+            cmd.Parameters.AddWithValue("FirmaEmail_in", _cuenta.FirmaEmail);
+            cmd.Parameters.AddWithValue("IdUsuario_in", _cuenta.IdUsuario);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
         //public static bool LevantarBackup()
         //{
         //    string rutaPen = "";

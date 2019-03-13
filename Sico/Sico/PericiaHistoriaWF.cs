@@ -21,9 +21,16 @@ namespace Sico
             InitializeComponent();
             this.idPericiaSeleccionada = idPericia;
         }
+        public static string EstadoCombo;
         private void PericiaHistoriaWF_Load(object sender, EventArgs e)
         {
-            ListaPericias = PericiaNeg.BuscarHistorialPericia(idPericiaSeleccionada);
+            List<Pericias> objListOrder = new List<Pericias>();
+            objListOrder = PericiaNeg.BuscarHistorialPericia(idPericiaSeleccionada);
+            List<Pericias> SortedList = objListOrder.OrderByDescending(o => o.Fecha).ToList();
+            ListaPericias = SortedList;
+
+
+
             List<string> listaArchivos = new List<string>();
             listaArchivos = Dao.PericiaDao.CargarArchivos(idPericiaSeleccionada);
             int contador = 0;
@@ -162,6 +169,8 @@ namespace Sico
                     dgvPericias.ReadOnly = true;
                     dgvPericias.RowHeadersVisible = false;
                     groupBox1.Enabled = true;
+
+
                     dgvPericias.DataSource = value;
 
                     totalArchivos = value[0].totalArchivos;
@@ -175,6 +184,8 @@ namespace Sico
 
                     if (txtAdjunto1.Text != "" || txtAdjunto1.Text != null || txtAdjunto2.Text != "" || txtAdjunto2.Text != null || txtAdjunto3.Text != "" || txtAdjunto3.Text != null)
                         groupBox3.Visible = true;
+
+
 
                     dgvPericias.Columns[0].HeaderText = "Id Pericia";
                     dgvPericias.Columns[0].Width = 60;
@@ -201,7 +212,7 @@ namespace Sico
                     dgvPericias.Columns[3].HeaderCell.Style.ForeColor = Color.White;
 
                     dgvPericias.Columns[4].HeaderText = "Causa";
-                    dgvPericias.Columns[4].Width = 150;
+                    dgvPericias.Columns[4].Width = 170;
                     dgvPericias.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvPericias.Columns[4].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[4].HeaderCell.Style.ForeColor = Color.White;
@@ -243,7 +254,7 @@ namespace Sico
                     dgvPericias.Columns[9].Visible = false;
 
                     dgvPericias.Columns[10].HeaderText = "Estado";
-                    dgvPericias.Columns[10].Width = 80;
+                    dgvPericias.Columns[10].Width = 100;
                     dgvPericias.Columns[10].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvPericias.Columns[10].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[10].HeaderCell.Style.ForeColor = Color.White;
@@ -317,6 +328,13 @@ namespace Sico
                     dgvPericias.Columns[20].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[20].HeaderCell.Style.ForeColor = Color.White;
                     dgvPericias.Columns[20].Visible = false;
+
+                    dgvPericias.Columns[21].HeaderText = "idUsuario";
+                    dgvPericias.Columns[21].Width = 120;
+                    dgvPericias.Columns[21].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvPericias.Columns[21].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvPericias.Columns[21].HeaderCell.Style.ForeColor = Color.White;
+                    dgvPericias.Columns[21].Visible = false;
                 }
                 else { MessageBox.Show("No se encontraron resultados para los filtros seleccionados."); }
 
@@ -728,6 +746,7 @@ namespace Sico
             dtFechaPericia.Focus();
             ValidarCantidadArchivos();
             CargarComboEstado();
+            //cmbEstado.Text = EstadoCombo;
             btnNuevaHistoria.Visible = false;
             btnVolver.Visible = false;
         }

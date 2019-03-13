@@ -29,5 +29,6 @@ namespace Sico.Entidades
         public string Archivo8 { get; set; }
         public string Archivo9 { get; set; }
         public string Archivo10 { get; set; }
+        public int UsuarioLogin { get; set; }
     }
 }
