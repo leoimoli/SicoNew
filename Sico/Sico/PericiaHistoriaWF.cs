@@ -148,11 +148,14 @@ namespace Sico
                 _pericia.Email = Email;
             _pericia.Compartido = Compartir;
             if (Compartir == 0 & chcEmail.Checked == true)
-                MessageBox.Show("La nunca fue enviada por email a ningun destinatario.");
-            _pericia.Causa = Causa;
+                MessageBox.Show("La pericia nunca fue enviada por email a ningun destinatario.");
+            if (Compartir == 1 & chcEmail.Checked == false)
+                Compartir = 0;
+                _pericia.Causa = Causa;
             _pericia.NroCausa = NroCausa;
             _pericia.Tribunal = Tribunal;
             _pericia.TotalEstados = TotalHistorial;
+            _pericia.UsuarioLogin = Sesion.UsuarioLogueado.IdUsuario;
             return _pericia;
         }
         public List<Entidades.Pericias> ListaPericias
@@ -262,7 +265,7 @@ namespace Sico
                     dgvPericias.Columns[10].HeaderCell.Style.ForeColor = Color.White;
 
                     dgvPericias.Columns[11].HeaderText = "Descripción";
-                    dgvPericias.Columns[11].Width = 120;
+                    dgvPericias.Columns[11].Width = 135;
                     dgvPericias.Columns[11].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvPericias.Columns[11].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[11].HeaderCell.Style.ForeColor = Color.White;
@@ -709,6 +712,10 @@ namespace Sico
         {
             try
             {
+                string aaa = "";
+                PericiaHistoriaWF periciaForm = new PericiaHistoriaWF(aaa);
+                periciaForm.Enabled = false;
+
                 Entidades.Pericias _pericia = CargarEntidad();
                 bool Exito = PericiaNeg.GurdarHistorialPericia(_pericia);
                 if (Exito == true)
@@ -724,6 +731,7 @@ namespace Sico
                     groupBox2.Visible = false;
                     btnNuevaHistoria.Visible = true;
                     btnVolver.Visible = true;
+                    periciaForm.Enabled = true;
                 }
                 else
                 {

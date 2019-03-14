@@ -207,23 +207,29 @@ namespace Sico
                     dgvSubClientes.Columns[21].HeaderText = "Observacion";
                     dgvSubClientes.Columns[21].Visible = false;
 
+                    dgvSubClientes.Columns[22].HeaderText = "Adjunto";
+                    dgvSubClientes.Columns[22].Visible = false;
+
                     DataGridViewButtonColumn BotonVer = new DataGridViewButtonColumn();
                     BotonVer.Name = "Ver";
                     BotonVer.HeaderText = "Ver";
                     this.dgvSubClientes.Columns.Add(BotonVer);
-                    dgvSubClientes.Columns[22].Width = 40;
-                    dgvSubClientes.Columns[22].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dgvSubClientes.Columns[22].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                    dgvSubClientes.Columns[22].HeaderCell.Style.ForeColor = Color.White;
+                    dgvSubClientes.Columns[23].Width = 40;
+                    dgvSubClientes.Columns[23].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvSubClientes.Columns[23].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvSubClientes.Columns[23].HeaderCell.Style.ForeColor = Color.White;
 
                     DataGridViewButtonColumn BotonEditar = new DataGridViewButtonColumn();
                     BotonEditar.Name = "Editar";
                     BotonEditar.HeaderText = "Editar";
                     this.dgvSubClientes.Columns.Add(BotonEditar);
-                    dgvSubClientes.Columns[23].Width = 44;
-                    dgvSubClientes.Columns[23].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dgvSubClientes.Columns[23].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                    dgvSubClientes.Columns[23].HeaderCell.Style.ForeColor = Color.White;
+                    dgvSubClientes.Columns[24].Width = 45;
+                    dgvSubClientes.Columns[24].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvSubClientes.Columns[24].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvSubClientes.Columns[24].HeaderCell.Style.ForeColor = Color.White;
+
+
+                   
                 }
 
                 else { MessageBox.Show("No se encontraron resultados para la persona seleccionada."); }
@@ -234,21 +240,31 @@ namespace Sico
         {
             if (e.ColumnIndex >= 0 && this.dgvSubClientes.Columns[e.ColumnIndex].Name == "Ver" && e.RowIndex >= 0)
             {
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
                 DataGridViewButtonCell celBoton = this.dgvSubClientes.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"buscar-con-herramienta-en-esquema.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
+
+                this.dgvSubClientes.Rows[e.RowIndex].Height = icoAtomico.Height + 6;
+                this.dgvSubClientes.Columns[e.ColumnIndex].Width = icoAtomico.Width + 6;
+
                 e.Handled = true;
             }
 
             if (e.ColumnIndex >= 0 && this.dgvSubClientes.Columns[e.ColumnIndex].Name == "Editar" && e.RowIndex >= 0)
             {
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
                 DataGridViewButtonCell celBoton = this.dgvSubClientes.Rows[e.RowIndex].Cells["Editar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"editar.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
+
+                this.dgvSubClientes.Rows[e.RowIndex].Height = icoAtomico.Height + 6;
+                this.dgvSubClientes.Columns[e.ColumnIndex].Width = icoAtomico.Width + 6;
+
                 e.Handled = true;
             }
         }
         private void ClickBoton(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvSubClientes.CurrentCell.ColumnIndex == 22)
+            if (dgvSubClientes.CurrentCell.ColumnIndex == 23)
             {
                 EsEditar = false;
                 var idsubCliente = Convert.ToString(this.dgvSubClientes.CurrentRow.Cells[0].Value);
@@ -257,7 +273,7 @@ namespace Sico
                 Hide();
             }
 
-            if (dgvSubClientes.CurrentCell.ColumnIndex == 23)
+            if (dgvSubClientes.CurrentCell.ColumnIndex == 24)
             {
                 EsEditar = true;
                 var idsubCliente = Convert.ToString(this.dgvSubClientes.CurrentRow.Cells[0].Value);
@@ -267,8 +283,27 @@ namespace Sico
             }
         }
 
+
         #endregion
 
+        private void btnFacturaA_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Estamos trabajando en esta funcionalidad.");
+        }
 
+        private void btnFacturaC_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Estamos trabajando en esta funcionalidad.");
+        }
+
+        private void btnLibroDiario_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Estamos trabajando en esta funcionalidad.");
+        }
+
+        private void btnFacturarle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

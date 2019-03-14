@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sico.Entidades;
+using System.Diagnostics;
 
 namespace Sico
 {
@@ -72,6 +73,36 @@ namespace Sico
                                              MessageBoxButtons.OK,
                                            MessageBoxIcon.Warning);
                 throw new Exception();
+            }
+        }
+        private void btnCargarArchivo1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog1.FileName);
+                path = openFileDialog1.FileName;
+                txtAdjunto.Text = path;
+                sr.Close();
+            }
+        }
+        private void btnNuevoSubCliente_Click(object sender, EventArgs e)
+        {
+            SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
+            _sub.Show();
+            Hide();
+        }
+        private void btnAdjuntarFacturaElectronica_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog1.FileName);
+                path = openFileDialog1.FileName;
+                txtAdjunto.Text = path;
+                sr.Close();
             }
         }
         #region Funciones
@@ -292,6 +323,7 @@ namespace Sico
             _subCliente.Monto = Convert.ToDecimal(lblTotalEdit.Text);
             //int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
             //_subCliente.idUsuario = idusuarioLogueado;
+            _subCliente.Adjunto = txtAdjunto.Text;
             return _subCliente;
         }
         private void ProgressBar()
@@ -336,6 +368,7 @@ namespace Sico
             lblObservaciones.Visible = false;
             lblDireccionEdit.Visible = false;
             lblDniEdit.Visible = false;
+            txtAdjunto.Clear();
         }
         private void FuncionesBotonCancelar()
         {
@@ -363,13 +396,6 @@ namespace Sico
             lblObservaciones.Visible = false;
             lblDireccionEdit.Visible = false;
             lblDniEdit.Visible = false;
-        }
-        #endregion
-        private void btnNuevoSubCliente_Click(object sender, EventArgs e)
-        {
-            SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
-            _sub.Show();
-            Hide();
         }
         public void RecalcularTotal1()
         {
@@ -404,5 +430,11 @@ namespace Sico
 
             Total = NuevoValor3 + Valor2 + Valor1;
         }
+
+
+
+        #endregion
+
+
     }
 }

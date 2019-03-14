@@ -102,7 +102,7 @@
             this.cargarFirmaEmailToolStripMenuItem.Name = "cargarFirmaEmailToolStripMenuItem";
             this.cargarFirmaEmailToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.cargarFirmaEmailToolStripMenuItem.Text = "Cargar firma Email";
-            this.cargarFirmaEmailToolStripMenuItem.Click += new System.EventHandler(this.cargarFirmaEmailToolStripMenuItem_Click);
+            //this.cargarFirmaEmailToolStripMenuItem.Click += new System.EventHandler(this.cargarFirmaEmailToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 

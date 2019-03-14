@@ -252,7 +252,10 @@ namespace Sico
         private void btnHistorial_Click(object sender, EventArgs e)
         {
             try
-            { }
+            {
+                CuentaEmailWF _cuenta = new CuentaEmailWF();
+                _cuenta.Show();
+            }
             catch { }
         }
         #endregion

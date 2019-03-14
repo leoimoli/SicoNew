@@ -64,28 +64,29 @@ namespace Sico
                 txtDni.Enabled = false;
                 var subcliente = SubCliente.First();
                 txtDni.Text = subcliente.Dni;
+                txtApellidoNombre.Text = subcliente.ApellidoNombre;
 
-                string per = subcliente.ApellidoNombre;
-                var split1 = per.Split(' ')[0];
+                //string per = subcliente.ApellidoNombre;
+                //var split1 = per.Split(' ')[0];
 
-                split1 = split1.Trim();
-                string per2 = subcliente.ApellidoNombre;
-                int cantidad1 = per2.Split().Count();
-                string valor1 = "";
-                string valorFinal1 = "";
-                for (int i = 0; i < cantidad1; i++)
-                {
-                    var split4 = per2.Split(' ')[i];
-                    string split = split4.Trim();
-                    valorFinal1 = valor1 + " " + split4;
-                    valor1 = split;
-                }
-                var split2 = per.Split(' ')[1];
-                split2 = split2.Trim();
+                //split1 = split1.Trim();
+                //string per2 = subcliente.ApellidoNombre;
+                //int cantidad1 = per2.Split().Count();
+                //string valor1 = "";
+                //string valorFinal1 = "";
+                //for (int i = 0; i < cantidad1; i++)
+                //{
+                //    var split4 = per2.Split(' ')[i];
+                //    string split = split4.Trim();
+                //    valorFinal1 = valor1 + " " + split4;
+                //    valor1 = split;
+                //}
+                //var split2 = per.Split(' ')[1];
+                //split2 = split2.Trim();
 
 
-                txtApellido.Text = split1;
-                txtNombre.Text = valorFinal1;
+                //txtApellido.Text = split1;
+                //txtNombre.Text = split2;
 
 
                 string dir = subcliente.Direccion;
@@ -165,8 +166,8 @@ namespace Sico
         private void LimpiarCampos()
         {
             txtDni.Clear();
-            txtApellido.Clear();
-            txtNombre.Clear();
+            txtApellidoNombre.Clear();
+            txtApellidoNombre.Clear();
             txtCalle.Clear();
             txtAltura.Clear();
             txtObservacion.Clear();
@@ -177,8 +178,9 @@ namespace Sico
         {
             SubCliente _subCliente = new SubCliente();
             _subCliente.Dni = txtDni.Text;
-            _subCliente.ApellidoNombre = txtApellido.Text + " " + txtNombre.Text;
-            _subCliente.Direccion = txtCalle.Text + " " + "N°" + txtAltura.Text;
+            _subCliente.ApellidoNombre = txtApellidoNombre.Text;
+            //_subCliente.ApellidoNombre = txtApellidoNombre.Text + " " + txtNombre.Text;
+            _subCliente.Direccion = txtCalle.Text + " " + txtAltura.Text;
             _subCliente.Observacion = txtObservacion.Text;
             return _subCliente;
         }

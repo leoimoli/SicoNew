@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -39,6 +40,19 @@ namespace Sico
                 {
                     List<SubCliente> _Factura = new List<SubCliente>();
                     _Factura = ClienteNeg.BuscarDetalleFacturaSubCliente(idsubCliente);
+
+                    List<string> listaArchivos = new List<string>();
+                    listaArchivos = Dao.ClienteDao.CargarArchivos(idsubCliente);
+                    int contador = 0;
+                    if (listaArchivos.Count > 0)
+                    {
+                        if (listaArchivos.Count > contador)
+                        {
+                            txtAdjunto1.Text = listaArchivos[0].ToString();
+                            txtAdjunto1.Visible = true; btnAbrir1.Visible = true; lblAdjunto1.Visible = true; contador = 1;
+                        }
+                    }
+
                     if (_Factura.Count <= 0)
                     {
                         MessageBox.Show("La factura seleccionada no tiene un detalle cargado.");
@@ -56,6 +70,17 @@ namespace Sico
                 {
                     List<SubCliente> _Factura = new List<SubCliente>();
                     _Factura = ClienteNeg.BuscarDetalleFacturaSubCliente(idsubCliente);
+                    List<string> listaArchivos = new List<string>();
+                    listaArchivos = Dao.ClienteDao.CargarArchivos(idsubCliente);
+                    int contador = 0;
+                    if (listaArchivos.Count > 0)
+                    {
+                        if (listaArchivos.Count > contador)
+                        {
+                            txtAdjunto1.Text = listaArchivos[0].ToString();
+                            txtAdjunto1.Visible = true; btnAbrir1.Visible = true; lblAdjunto1.Visible = true; contador = 1;
+                        }
+                    }
                     if (_Factura.Count <= 0)
                     {
                         MessageBox.Show("La factura seleccionada no tiene un detalle cargado.");
@@ -98,6 +123,7 @@ namespace Sico
             btnGuardar.Visible = true;
             btnPdf.Visible = false;
             dtFecha.Enabled = true;
+            txtAdjunto1.Enabled = false;
         }
         private void HabilitarCamposConDatos(List<SubCliente> _Factura)
         {
@@ -106,24 +132,30 @@ namespace Sico
             txtFactura.Text = Factura.NroFactura;
             dtFecha.Value = Convert.ToDateTime(Factura.Fecha);
             lblTotalEdit.Text = Convert.ToString(Factura.Monto);
+
             if (Factura.Total1 > 0)
                 txtTotal1.Text = Convert.ToString(Factura.Total1);
             if (Factura.Total2 > 0)
                 txtTotal2.Text = Convert.ToString(Factura.Total2);
             if (Factura.Total3 > 0)
                 txtTotal3.Text = Convert.ToString(Factura.Total3);
+
             if (Factura.Neto1 > 0)
                 txtNeto1.Text = Convert.ToString(Factura.Neto1);
             if (Factura.Neto2 > 0)
                 txtNeto2.Text = Convert.ToString(Factura.Neto2);
             if (Factura.Neto3 > 0)
                 txtNeto3.Text = Convert.ToString(Factura.Neto3);
+
             if (Factura.Iva1 > 0)
                 txtIva1.Text = Convert.ToString(Factura.Iva1);
             if (Factura.Iva2 > 0)
                 txtIva2.Text = Convert.ToString(Factura.Iva2);
             if (Factura.Iva3 > 0)
                 txtIva3.Text = Convert.ToString(Factura.Iva3);
+
+            txtAdjunto1.Visible = true; btnAbrir1.Visible = true; lblAdjunto1.Visible = true;
+
             InhabilitarCampos();
         }
         private void InhabilitarCampos()
@@ -132,12 +164,13 @@ namespace Sico
             txtTotal1.Enabled = false;
             txtTotal2.Enabled = false;
             txtTotal3.Enabled = false;
-            //txtNeto1.Enabled = false;
+            txtNeto1.Enabled = false;
             txtNeto2.Enabled = false;
             txtNeto3.Enabled = false;
             txtIva1.Enabled = false;
             txtIva2.Enabled = false;
             txtIva3.Enabled = false;
+            txtAdjunto1.Enabled = false;
         }
         private void btnPdf_Click(object sender, EventArgs e)
         {
@@ -433,6 +466,11 @@ namespace Sico
             Total = NuevoValor3 + Valor2 + Valor1;
         }
         #endregion
+        private void btnAbrir1_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto1.Text);
+        }
     }
 }
+
 

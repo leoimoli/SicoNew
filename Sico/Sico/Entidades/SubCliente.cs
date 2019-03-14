@@ -30,5 +30,6 @@ namespace Sico.Entidades
         public decimal Iva3 { get; set; }
         public string Observacion { get; set; }
         public string NroFacturaNotaDeCredtio { get; set; }
+        public string Adjunto { get; set; }
     }
 }

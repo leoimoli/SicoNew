@@ -85,6 +85,7 @@
             this.btnFacturarle.Text = "Facturar";
             this.btnFacturarle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFacturarle.UseVisualStyleBackColor = true;
+            this.btnFacturarle.Click += new System.EventHandler(this.btnFacturarle_Click);
             // 
             // label4
             // 
@@ -121,6 +122,7 @@
             this.btnLibroDiario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLibroDiario.UseVisualStyleBackColor = true;
             this.btnLibroDiario.Visible = false;
+            this.btnLibroDiario.Click += new System.EventHandler(this.btnLibroDiario_Click);
             // 
             // lblCuitEdit
             // 
@@ -211,6 +213,7 @@
             this.btnFacturaC.Text = "Factura C";
             this.btnFacturaC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFacturaC.UseVisualStyleBackColor = true;
+            this.btnFacturaC.Click += new System.EventHandler(this.btnFacturaC_Click);
             // 
             // btnFacturaA
             // 
@@ -223,6 +226,7 @@
             this.btnFacturaA.Text = "Factura A";
             this.btnFacturaA.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFacturaA.UseVisualStyleBackColor = true;
+            this.btnFacturaA.Click += new System.EventHandler(this.btnFacturaA_Click);
             // 
             // btnNuevaFactura
             // 

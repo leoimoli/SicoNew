@@ -174,13 +174,13 @@
             // 
             // btnHistorial
             // 
-            this.btnHistorial.Image = global::Sico.Properties.Resources.diagnostico;
+            this.btnHistorial.Image = global::Sico.Properties.Resources.email;
             this.btnHistorial.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnHistorial.Location = new System.Drawing.Point(45, 348);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.Size = new System.Drawing.Size(90, 61);
             this.btnHistorial.TabIndex = 6;
-            this.btnHistorial.Text = "Historial";
+            this.btnHistorial.Text = "Mi Cuenta Email";
             this.btnHistorial.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHistorial.UseVisualStyleBackColor = true;
             this.btnHistorial.Visible = false;
@@ -239,21 +239,6 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
-            this.groupBox1.Controls.SetChildIndex(this.txtDni, 0);
-            this.groupBox1.Controls.SetChildIndex(this.txtNombre, 0);
-            this.groupBox1.Controls.SetChildIndex(this.txtApellido, 0);
-            this.groupBox1.Controls.SetChildIndex(this.txtContraseña, 0);
-            this.groupBox1.Controls.SetChildIndex(this.dtFechaNac, 0);
-            this.groupBox1.Controls.SetChildIndex(this.txtRepiteContraseña, 0);
-            this.groupBox1.Controls.SetChildIndex(this.label1, 0);
-            this.groupBox1.Controls.SetChildIndex(this.label4, 0);
-            this.groupBox1.Controls.SetChildIndex(this.label5, 0);
-            this.groupBox1.Controls.SetChildIndex(this.label6, 0);
-            this.groupBox1.Controls.SetChildIndex(this.cmbPerfil, 0);
-            this.groupBox1.Controls.SetChildIndex(this.label7, 0);
-            this.groupBox1.Controls.SetChildIndex(this.btnGuardar, 0);
-            this.groupBox1.Controls.SetChildIndex(this.btnCancelar, 0);
-            this.groupBox1.Controls.SetChildIndex(this.progressBar1, 0);
             // 
             // progressBar1
             // 

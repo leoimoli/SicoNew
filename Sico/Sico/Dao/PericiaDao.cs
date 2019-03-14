@@ -140,19 +140,21 @@ namespace Sico.Dao
                         ListaArchivos.Add(_pericia.Archivo9);
                     if (_pericia.Archivo10 != "")
                         ListaArchivos.Add(_pericia.Archivo10);
-
-                    foreach (var item in ListaArchivos)
+                    if (ListaArchivos.Count > 0)
                     {
-                        connection.Close();
-                        connection.Open();
-                        string proceso3 = "AltaArchivosPericia";
-                        MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
-                        cmd3.CommandType = CommandType.StoredProcedure;
-                        cmd3.Parameters.AddWithValue("Archivo_in", item);
-                        cmd3.Parameters.AddWithValue("idPericia_in", idUltimaPericia);
-                        cmd3.ExecuteNonQuery();
-                        exito = true;
-                        connection.Close();
+                        foreach (var item in ListaArchivos)
+                        {
+                            connection.Close();
+                            connection.Open();
+                            string proceso3 = "AltaArchivosPericia";
+                            MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
+                            cmd3.CommandType = CommandType.StoredProcedure;
+                            cmd3.Parameters.AddWithValue("Archivo_in", item);
+                            cmd3.Parameters.AddWithValue("idPericia_in", idUltimaPericia);
+                            cmd3.ExecuteNonQuery();
+                            exito = true;
+                            connection.Close();
+                        }
                     }
                     //}
                     if (exito == true & _pericia.Compartido == 1)
@@ -202,67 +204,67 @@ namespace Sico.Dao
         {
             bool exito = false;
             bool exitoGuardarImagenes = false;
-            if (_pericia.Archivo1 != "" || _pericia.Archivo2 != "" || _pericia.Archivo3 != "")
+            if (_pericia.Archivo1 != "" || _pericia.Archivo2 != "" || _pericia.Archivo3 != "" || _pericia.Archivo4 != "" || _pericia.Archivo5 != "" || _pericia.Archivo6 != "" || _pericia.Archivo7 != "" || _pericia.Archivo8 != "" || _pericia.Archivo9 != "" || _pericia.Archivo10 != "")
             {
                 exitoGuardarImagenes = GuardarImagenesEnCarpeta(_pericia);
             }
-            if (exitoGuardarImagenes == false & _pericia.Archivo1 == "" || _pericia.Archivo2 == "" || _pericia.Archivo3 == "")
+            //if (exitoGuardarImagenes == false & _pericia.Archivo1 == "" || _pericia.Archivo2 == "" || _pericia.Archivo3 == "")
+            //{
+            connection.Close();
+            connection.Open();
+            string proceso2 = "AltaHistorialPericia";
+            MySqlCommand cmd2 = new MySqlCommand(proceso2, connection);
+            cmd2.CommandType = CommandType.StoredProcedure;
+            cmd2.Parameters.AddWithValue("Descripcion_in", _pericia.Descripcion);
+            cmd2.Parameters.AddWithValue("Estado_in", _pericia.Estado);
+            cmd2.Parameters.AddWithValue("Fecha_in", _pericia.Fecha);
+            cmd2.Parameters.AddWithValue("idPericia_in", _pericia.idPericia);
+            cmd2.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            if (exito == true)
             {
-                connection.Close();
-                connection.Open();
-                string proceso2 = "AltaHistorialPericia";
-                MySqlCommand cmd2 = new MySqlCommand(proceso2, connection);
-                cmd2.CommandType = CommandType.StoredProcedure;
-                cmd2.Parameters.AddWithValue("Descripcion_in", _pericia.Descripcion);
-                cmd2.Parameters.AddWithValue("Estado_in", _pericia.Estado);
-                cmd2.Parameters.AddWithValue("Fecha_in", _pericia.Fecha);
-                cmd2.Parameters.AddWithValue("idPericia_in", _pericia.idPericia);
-                cmd2.ExecuteNonQuery();
-                exito = true;
-                connection.Close();
-                if (exito == true)
+                List<string> ListaArchivos = new List<string>();
+                if (_pericia.Archivo1 != "")
+                    ListaArchivos.Add(_pericia.Archivo1);
+                if (_pericia.Archivo2 != "")
+                    ListaArchivos.Add(_pericia.Archivo2);
+                if (_pericia.Archivo3 != "")
+                    ListaArchivos.Add(_pericia.Archivo3);
+                if (_pericia.Archivo4 != "")
+                    ListaArchivos.Add(_pericia.Archivo4);
+                if (_pericia.Archivo5 != "")
+                    ListaArchivos.Add(_pericia.Archivo5);
+                if (_pericia.Archivo6 != "")
+                    ListaArchivos.Add(_pericia.Archivo6);
+                if (_pericia.Archivo7 != "")
+                    ListaArchivos.Add(_pericia.Archivo7);
+                if (_pericia.Archivo8 != "")
+                    ListaArchivos.Add(_pericia.Archivo8);
+                if (_pericia.Archivo9 != "")
+                    ListaArchivos.Add(_pericia.Archivo9);
+                if (_pericia.Archivo10 != "")
+                    ListaArchivos.Add(_pericia.Archivo10);
+                foreach (var item in ListaArchivos)
                 {
-                    List<string> ListaArchivos = new List<string>();
-                    if (_pericia.Archivo1 != "")
-                        ListaArchivos.Add(_pericia.Archivo1);
-                    if (_pericia.Archivo2 != "")
-                        ListaArchivos.Add(_pericia.Archivo2);
-                    if (_pericia.Archivo3 != "")
-                        ListaArchivos.Add(_pericia.Archivo3);
-                    if (_pericia.Archivo4 != "")
-                        ListaArchivos.Add(_pericia.Archivo4);
-                    if (_pericia.Archivo5 != "")
-                        ListaArchivos.Add(_pericia.Archivo5);
-                    if (_pericia.Archivo6 != "")
-                        ListaArchivos.Add(_pericia.Archivo6);
-                    if (_pericia.Archivo7 != "")
-                        ListaArchivos.Add(_pericia.Archivo7);
-                    if (_pericia.Archivo8 != "")
-                        ListaArchivos.Add(_pericia.Archivo8);
-                    if (_pericia.Archivo9 != "")
-                        ListaArchivos.Add(_pericia.Archivo9);
-                    if (_pericia.Archivo10 != "")
-                        ListaArchivos.Add(_pericia.Archivo10);
-                    foreach (var item in ListaArchivos)
-                    {
-                        connection.Close();
-                        connection.Open();
-                        string proceso3 = "AltaArchivosPericia";
-                        MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
-                        cmd3.CommandType = CommandType.StoredProcedure;
-                        cmd3.Parameters.AddWithValue("Archivo_in", item);
-                        cmd3.Parameters.AddWithValue("idPericia_in", _pericia.idPericia);
-                        cmd3.ExecuteNonQuery();
-                        exito = true;
-                        connection.Close();
-                    }
-
-                    exito = ActualizarEstadoPericia(_pericia);
+                    connection.Close();
+                    connection.Open();
+                    string proceso3 = "AltaArchivosPericia";
+                    MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
+                    cmd3.CommandType = CommandType.StoredProcedure;
+                    cmd3.Parameters.AddWithValue("Archivo_in", item);
+                    cmd3.Parameters.AddWithValue("idPericia_in", _pericia.idPericia);
+                    cmd3.ExecuteNonQuery();
+                    exito = true;
+                    connection.Close();
                 }
-                if (exito == true & _pericia.Compartido == 1)
-                { bool EmailConExito = EnviarEmail(_pericia); }
 
+                exito = ActualizarEstadoPericia(_pericia);
             }
+            if (exito == true & _pericia.Compartido == 1)
+            { bool EmailConExito = EnviarEmail(_pericia); }
+
+
             return exito;
         }
         private static bool ActualizarEstadoPericia(Pericias _pericia)
@@ -292,10 +294,10 @@ namespace Sico.Dao
             string correo = "";
             if (_pericia.TotalEstados > 1)
             {
-                correo = "Estimada/o, le informamos que se creo un nuevo movimiento en la pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br />abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Se informa que lo siguiente respecto a la pericia: " + _pericia.Descripcion + "<br />" + Cuenta.FirmaEmail + "<br />.";
+                correo = "Estimada/o, le informamos que se creo un nuevo movimiento en la pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br />abierta en el " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Se informa que lo siguiente respecto a la pericia: " + _pericia.Descripcion + "<br />" + Cuenta.FirmaEmail + "<br />.";
 
             }
-            else { correo = "Estimada/o, le informamos que se inicio una nueva pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br /> abierta en el tribunal " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> " + Cuenta.FirmaEmail + "."; }
+            else { correo = "Estimada/o, le informamos que se inicio una nueva pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br /> abierta en el " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> " + Cuenta.FirmaEmail + "."; }
             List<string> adjuntos = new List<string>();
             string adjunto1 = Adj1;
             if (adjunto1 != null)
@@ -468,8 +470,8 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo1);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo1);
                 Adj1 = _pericia.Archivo1;
-
-                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                CarpetaDestino carpeta = new CarpetaDestino();
+                string targetPath = carpeta.Carpeta;
                 //string targetPath = @"C:\Sico\Archivos";
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
@@ -511,7 +513,8 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo2);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo2);
                 Adj2 = _pericia.Archivo2;
-                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                CarpetaDestino carpeta = new CarpetaDestino();
+                string targetPath = carpeta.Carpeta;
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -548,7 +551,8 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo3);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo3);
                 Adj3 = _pericia.Archivo3;
-                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                CarpetaDestino carpeta = new CarpetaDestino();
+                string targetPath = carpeta.Carpeta;
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -585,7 +589,8 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo4);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo4);
                 Adj4 = _pericia.Archivo4;
-                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                CarpetaDestino carpeta = new CarpetaDestino();
+                string targetPath = carpeta.Carpeta;
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -622,7 +627,8 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo5);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo5);
                 Adj5 = _pericia.Archivo5;
-                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                CarpetaDestino carpeta = new CarpetaDestino();
+                string targetPath = carpeta.Carpeta;
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -659,7 +665,8 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo6);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo6);
                 Adj6 = _pericia.Archivo6;
-                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                CarpetaDestino carpeta = new CarpetaDestino();
+                string targetPath = carpeta.Carpeta;
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -696,7 +703,8 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo7);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo7);
                 Adj7 = _pericia.Archivo7;
-                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                CarpetaDestino carpeta = new CarpetaDestino();
+                string targetPath = carpeta.Carpeta;
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -733,7 +741,8 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo8);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo8);
                 Adj8 = _pericia.Archivo8;
-                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                CarpetaDestino carpeta = new CarpetaDestino();
+                string targetPath = carpeta.Carpeta;
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -770,7 +779,8 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo9);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo9);
                 Adj9 = _pericia.Archivo9;
-                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                CarpetaDestino carpeta = new CarpetaDestino();
+                string targetPath = carpeta.Carpeta;
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))
@@ -807,7 +817,8 @@ namespace Sico.Dao
                 string NombreArchivo = System.IO.Path.GetFileName(_pericia.Archivo10);
                 string sourcePath = System.IO.Path.GetDirectoryName(_pericia.Archivo10);
                 Adj10 = _pericia.Archivo10;
-                string targetPath = @"C:\Users\limoli\Dropbox\Archivos-Pericia";
+                CarpetaDestino carpeta = new CarpetaDestino();
+                string targetPath = carpeta.Carpeta;
                 string sourceFile = System.IO.Path.Combine(sourcePath);
                 string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
                 if (!System.IO.Directory.Exists(targetPath))

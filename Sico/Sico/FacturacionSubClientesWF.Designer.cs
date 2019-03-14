@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacturacionSubClientesWF));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblCuitEdit = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblNombreEdit = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAdjuntarFacturaElectronica = new System.Windows.Forms.Button();
+            this.lblArchivo1 = new System.Windows.Forms.Label();
+            this.txtAdjunto = new System.Windows.Forms.TextBox();
             this.lblDireccionEdit = new System.Windows.Forms.TextBox();
             this.lblDniEdit = new System.Windows.Forms.TextBox();
             this.lblObservacionsEdit = new System.Windows.Forms.Label();
@@ -70,6 +74,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -129,6 +134,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnAdjuntarFacturaElectronica);
+            this.groupBox2.Controls.Add(this.lblArchivo1);
+            this.groupBox2.Controls.Add(this.txtAdjunto);
             this.groupBox2.Controls.Add(this.lblDireccionEdit);
             this.groupBox2.Controls.Add(this.lblDniEdit);
             this.groupBox2.Controls.Add(this.lblObservacionsEdit);
@@ -167,6 +175,35 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Factura sub-cliente";
+            // 
+            // btnAdjuntarFacturaElectronica
+            // 
+            this.btnAdjuntarFacturaElectronica.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdjuntarFacturaElectronica.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdjuntarFacturaElectronica.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjuntarFacturaElectronica.Image")));
+            this.btnAdjuntarFacturaElectronica.Location = new System.Drawing.Point(501, 318);
+            this.btnAdjuntarFacturaElectronica.Name = "btnAdjuntarFacturaElectronica";
+            this.btnAdjuntarFacturaElectronica.Size = new System.Drawing.Size(45, 35);
+            this.btnAdjuntarFacturaElectronica.TabIndex = 52;
+            this.btnAdjuntarFacturaElectronica.UseVisualStyleBackColor = false;
+            this.btnAdjuntarFacturaElectronica.Click += new System.EventHandler(this.btnAdjuntarFacturaElectronica_Click);
+            // 
+            // lblArchivo1
+            // 
+            this.lblArchivo1.AutoSize = true;
+            this.lblArchivo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArchivo1.Location = new System.Drawing.Point(17, 324);
+            this.lblArchivo1.Name = "lblArchivo1";
+            this.lblArchivo1.Size = new System.Drawing.Size(215, 20);
+            this.lblArchivo1.TabIndex = 51;
+            this.lblArchivo1.Text = "Adjuntar Factura Eléctronica:";
+            // 
+            // txtAdjunto
+            // 
+            this.txtAdjunto.Location = new System.Drawing.Point(242, 326);
+            this.txtAdjunto.Name = "txtAdjunto";
+            this.txtAdjunto.Size = new System.Drawing.Size(250, 20);
+            this.txtAdjunto.TabIndex = 50;
             // 
             // lblDireccionEdit
             // 
@@ -244,7 +281,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(155, 336);
+            this.progressBar1.Location = new System.Drawing.Point(142, 237);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 40;
@@ -255,7 +292,7 @@
             // 
             this.lblTotalEdit.AutoSize = true;
             this.lblTotalEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalEdit.Location = new System.Drawing.Point(52, 332);
+            this.lblTotalEdit.Location = new System.Drawing.Point(52, 288);
             this.lblTotalEdit.Name = "lblTotalEdit";
             this.lblTotalEdit.Size = new System.Drawing.Size(13, 17);
             this.lblTotalEdit.TabIndex = 39;
@@ -265,7 +302,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(6, 332);
+            this.label13.Location = new System.Drawing.Point(6, 288);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(40, 17);
             this.label13.TabIndex = 38;
@@ -275,7 +312,7 @@
             // 
             this.lbl105.AutoSize = true;
             this.lbl105.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl105.Location = new System.Drawing.Point(373, 211);
+            this.lbl105.Location = new System.Drawing.Point(373, 175);
             this.lbl105.Name = "lbl105";
             this.lbl105.Size = new System.Drawing.Size(48, 17);
             this.lbl105.TabIndex = 37;
@@ -285,7 +322,7 @@
             // 
             this.lbl21.AutoSize = true;
             this.lbl21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl21.Location = new System.Drawing.Point(385, 253);
+            this.lbl21.Location = new System.Drawing.Point(385, 217);
             this.lbl21.Name = "lbl21";
             this.lbl21.Size = new System.Drawing.Size(36, 17);
             this.lbl21.TabIndex = 36;
@@ -295,7 +332,7 @@
             // 
             this.lbl27.AutoSize = true;
             this.lbl27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl27.Location = new System.Drawing.Point(385, 298);
+            this.lbl27.Location = new System.Drawing.Point(385, 262);
             this.lbl27.Name = "lbl27";
             this.lbl27.Size = new System.Drawing.Size(36, 17);
             this.lbl27.TabIndex = 35;
@@ -303,49 +340,49 @@
             // 
             // txtIva3
             // 
-            this.txtIva3.Location = new System.Drawing.Point(461, 297);
+            this.txtIva3.Location = new System.Drawing.Point(461, 261);
             this.txtIva3.Name = "txtIva3";
             this.txtIva3.Size = new System.Drawing.Size(149, 20);
             this.txtIva3.TabIndex = 34;
             // 
             // txtIva2
             // 
-            this.txtIva2.Location = new System.Drawing.Point(461, 252);
+            this.txtIva2.Location = new System.Drawing.Point(461, 216);
             this.txtIva2.Name = "txtIva2";
             this.txtIva2.Size = new System.Drawing.Size(149, 20);
             this.txtIva2.TabIndex = 33;
             // 
             // txtIva1
             // 
-            this.txtIva1.Location = new System.Drawing.Point(461, 210);
+            this.txtIva1.Location = new System.Drawing.Point(461, 174);
             this.txtIva1.Name = "txtIva1";
             this.txtIva1.Size = new System.Drawing.Size(149, 20);
             this.txtIva1.TabIndex = 32;
             // 
             // txtNeto3
             // 
-            this.txtNeto3.Location = new System.Drawing.Point(191, 297);
+            this.txtNeto3.Location = new System.Drawing.Point(191, 261);
             this.txtNeto3.Name = "txtNeto3";
             this.txtNeto3.Size = new System.Drawing.Size(149, 20);
             this.txtNeto3.TabIndex = 31;
             // 
             // txtNeto2
             // 
-            this.txtNeto2.Location = new System.Drawing.Point(191, 252);
+            this.txtNeto2.Location = new System.Drawing.Point(191, 216);
             this.txtNeto2.Name = "txtNeto2";
             this.txtNeto2.Size = new System.Drawing.Size(149, 20);
             this.txtNeto2.TabIndex = 30;
             // 
             // txtNeto1
             // 
-            this.txtNeto1.Location = new System.Drawing.Point(191, 210);
+            this.txtNeto1.Location = new System.Drawing.Point(191, 174);
             this.txtNeto1.Name = "txtNeto1";
             this.txtNeto1.Size = new System.Drawing.Size(149, 20);
             this.txtNeto1.TabIndex = 29;
             // 
             // txtTotal3
             // 
-            this.txtTotal3.Location = new System.Drawing.Point(6, 297);
+            this.txtTotal3.Location = new System.Drawing.Point(6, 261);
             this.txtTotal3.Name = "txtTotal3";
             this.txtTotal3.Size = new System.Drawing.Size(149, 20);
             this.txtTotal3.TabIndex = 28;
@@ -353,7 +390,7 @@
             // 
             // txtTotal2
             // 
-            this.txtTotal2.Location = new System.Drawing.Point(6, 252);
+            this.txtTotal2.Location = new System.Drawing.Point(6, 216);
             this.txtTotal2.Name = "txtTotal2";
             this.txtTotal2.Size = new System.Drawing.Size(149, 20);
             this.txtTotal2.TabIndex = 27;
@@ -361,7 +398,7 @@
             // 
             // txtTotal1
             // 
-            this.txtTotal1.Location = new System.Drawing.Point(6, 210);
+            this.txtTotal1.Location = new System.Drawing.Point(6, 174);
             this.txtTotal1.Name = "txtTotal1";
             this.txtTotal1.Size = new System.Drawing.Size(149, 20);
             this.txtTotal1.TabIndex = 26;
@@ -371,7 +408,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(214, 181);
+            this.label9.Location = new System.Drawing.Point(214, 145);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 17);
             this.label9.TabIndex = 25;
@@ -381,7 +418,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(520, 181);
+            this.label8.Location = new System.Drawing.Point(520, 145);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(26, 17);
             this.label8.TabIndex = 24;
@@ -391,7 +428,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(373, 181);
+            this.label7.Location = new System.Drawing.Point(373, 145);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 17);
             this.label7.TabIndex = 23;
@@ -401,7 +438,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(50, 181);
+            this.label6.Location = new System.Drawing.Point(50, 145);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 17);
             this.label6.TabIndex = 22;
@@ -418,7 +455,7 @@
             // dtFecha
             // 
             this.dtFecha.Enabled = false;
-            this.dtFecha.Location = new System.Drawing.Point(110, 126);
+            this.dtFecha.Location = new System.Drawing.Point(110, 112);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Size = new System.Drawing.Size(211, 20);
             this.dtFecha.TabIndex = 20;
@@ -428,7 +465,7 @@
             this.label5.AutoSize = true;
             this.label5.Enabled = false;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(43, 130);
+            this.label5.Location = new System.Drawing.Point(43, 116);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 17);
             this.label5.TabIndex = 19;
@@ -491,6 +528,10 @@
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FacturacionSubClientesWF
             // 
@@ -556,5 +597,9 @@
         private System.Windows.Forms.TextBox lblDireccionEdit;
         private System.Windows.Forms.TextBox lblDniEdit;
         private System.Windows.Forms.Label lblObservacionsEdit;
+        private System.Windows.Forms.Button btnAdjuntarFacturaElectronica;
+        private System.Windows.Forms.Label lblArchivo1;
+        private System.Windows.Forms.TextBox txtAdjunto;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

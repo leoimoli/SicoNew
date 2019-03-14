@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sico.Entidades;
+using Sico.Clases_Maestras;
 
 namespace Sico.Dao
 {
@@ -86,6 +87,35 @@ namespace Sico.Dao
             //}
             return lista;
         }
+        public static List<string> CargarArchivos(string idsubCliente)
+        {
+            List<string> listarArchivos = new List<string>();
+            connection.Close();
+            connection.Open();
+            List<Entidades.SubCliente> listaArchivos = new List<Entidades.SubCliente>();
+            MySqlCommand cmd2 = new MySqlCommand();
+            cmd2.Connection = connection;
+            DataTable Tabla2 = new DataTable();
+            MySqlParameter[] oParam2 = {
+                                      new MySqlParameter("idsubCliente_in", idsubCliente)};
+            string proceso2 = "BuscarArchivosFactura";
+            MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+            dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt2.SelectCommand.Parameters.AddRange(oParam2);
+            dt2.Fill(Tabla2);
+            if (Tabla2.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla2.Rows)
+                {
+                    //int cantidadArchivos = lista[0].totalArchivos;
+                    listarArchivos.Add(item["Archivos"].ToString());
+                }
+            }
+
+            connection.Close();
+            return listarArchivos;
+        }
+
         public static bool GuardarNotaDeCredito(SubCliente _subCliente, string cuit)
         {
             int idUltimaFacturaSubCliente = 0;
@@ -137,7 +167,8 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-        public static string BuscarNuevoNroFacturaNotaDeCredito(string persona)       {
+        public static string BuscarNuevoNroFacturaNotaDeCredito(string persona)
+        {
             string Factura = "";
 
             connection.Close();
@@ -320,7 +351,6 @@ namespace Sico.Dao
             }
             return lista;
         }
-
         public static bool GuardarNuevoSubCliente(SubCliente _subCliente, string cuit)
         {
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
@@ -349,7 +379,6 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-
         public static string BuscarNuevoNroFactura(string persona)
         {
             string Factura = "";
@@ -391,7 +420,6 @@ namespace Sico.Dao
             connection.Close();
             return Factura;
         }
-
         public static List<string> CargarComboPersonas(string cuit)
         {
             List<string> _listaPerosnas = new List<string>();
@@ -475,6 +503,12 @@ namespace Sico.Dao
         }
         public static bool GuardarFacturaSubCliente(SubCliente _subCliente, string cuit)
         {
+            bool exitoGuardarImagenes = false;
+            if (_subCliente.Adjunto != "")
+            {
+                exitoGuardarImagenes = GuardarImagenesEnCarpeta(_subCliente);
+            }
+
             int idNotaCredito = 0;
             int idUltimaFacturaSubCliente = 0;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
@@ -503,7 +537,81 @@ namespace Sico.Dao
             {
                 exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
             }
+            if (exito == true)
+            {
+                List<string> ListaArchivos = new List<string>();
+                if (_subCliente.Adjunto != "")
+                    ListaArchivos.Add(_subCliente.Adjunto);
+                if (ListaArchivos.Count > 0)
+                {
+                    foreach (var item in ListaArchivos)
+                    {
+                        connection.Close();
+                        connection.Open();
+                        string proceso3 = "AltaArchivosFactura";
+                        MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
+                        cmd3.CommandType = CommandType.StoredProcedure;
+                        cmd3.Parameters.AddWithValue("Archivo_in", item);
+                        cmd3.Parameters.AddWithValue("idFacturaSubCliente_in", idUltimaFacturaSubCliente);
+                        cmd3.ExecuteNonQuery();
+                        exito = true;
+                        connection.Close();
+                    }
+                }
+            }
             connection.Close();
+            return exito;
+        }
+        public static string Adj1;
+        private static bool GuardarImagenesEnCarpeta(SubCliente _subCliente)
+        {
+            bool exito = false;
+            bool exito1 = false;
+            if (_subCliente.Adjunto != "")
+            {
+                string NombreArchivo = System.IO.Path.GetFileName(_subCliente.Adjunto);
+                string sourcePath = System.IO.Path.GetDirectoryName(_subCliente.Adjunto);
+                Adj1 = _subCliente.Adjunto;
+                ////// Guardo el adjunto en la carpeta indicada.
+                FacturaBCarpetaDestino carpeta = new FacturaBCarpetaDestino();
+                string targetPath = carpeta.Carpeta;
+
+                string sourceFile = System.IO.Path.Combine(sourcePath);
+                string destFile = System.IO.Path.Combine(targetPath, NombreArchivo);
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
+                }
+
+                if (System.IO.Directory.Exists(sourcePath))
+                {
+                    string[] files = System.IO.Directory.GetFiles(sourcePath);
+
+                    // Copy the files and overwrite destination files if they already exist.
+                    foreach (string s in files)
+                    {
+                        // Use static Path methods to extract only the file name from the path.
+                        string fileName = System.IO.Path.GetFileName(s);
+                        if (fileName == NombreArchivo)
+                        {
+                            destFile = System.IO.Path.Combine(targetPath, fileName);
+                            System.IO.File.Copy(s, destFile, true);
+                            _subCliente.Adjunto = destFile;
+                            exito1 = true;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                else
+                {
+                    // MessageBox.Show("Error");
+                }
+            }
+            if (exito1 == true)
+                exito = true;
             return exito;
         }
 
@@ -579,7 +687,6 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-
         public static bool InsertCliente(Cliente _cliente)
         {
             bool exito = false;
@@ -649,7 +756,6 @@ namespace Sico.Dao
             }
             return lista;
         }
-
         public static bool EditarCliente(Cliente _cliente)
         {
             bool exito = false;

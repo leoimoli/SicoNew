@@ -131,7 +131,7 @@
             // 
             this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscar.Location = new System.Drawing.Point(738, 29);
+            this.btnBuscar.Location = new System.Drawing.Point(755, 29);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(49, 39);
             this.btnBuscar.TabIndex = 3;

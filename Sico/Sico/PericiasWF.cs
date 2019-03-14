@@ -412,7 +412,14 @@ namespace Sico
             if (e.ColumnIndex >= 0 && this.dgvPericias.Columns[e.ColumnIndex].Name == "Ver" && e.RowIndex >= 0)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
                 DataGridViewButtonCell celBoton = this.dgvPericias.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"buscar-con-herramienta-en-esquema.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
+
+                this.dgvPericias.Rows[e.RowIndex].Height = icoAtomico.Height + 6;
+                this.dgvPericias.Columns[e.ColumnIndex].Width = icoAtomico.Width + 6;
+
                 e.Handled = true;
             }
         }
