@@ -398,7 +398,7 @@ namespace Sico
                     BotonVer.Name = "Ver";
                     BotonVer.HeaderText = "Ver";
                     this.dgvPericias.Columns.Add(BotonVer);
-                    dgvPericias.Columns[22].Width = 35;
+                    dgvPericias.Columns[22].Width = 55;
                     dgvPericias.Columns[22].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvPericias.Columns[22].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
                     dgvPericias.Columns[22].HeaderCell.Style.ForeColor = Color.White;
@@ -414,7 +414,7 @@ namespace Sico
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
                 DataGridViewButtonCell celBoton = this.dgvPericias.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
-                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"buscar-con-herramienta-en-esquema.ico");
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"lupa.ico");
                 e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 3, e.CellBounds.Top + 3);
 
                 this.dgvPericias.Rows[e.RowIndex].Height = icoAtomico.Height + 6;
@@ -780,7 +780,6 @@ namespace Sico
             }
         }
         #endregion
-
         private void PericiasWF_Load(object sender, EventArgs e)
         {
 

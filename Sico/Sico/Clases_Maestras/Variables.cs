@@ -14,11 +14,11 @@ namespace Sico.Clases_Maestras
 
     public class CarpetaDestino
     {
-        public string Carpeta = @"C:\Sico-Test\Dropbox\Archivos-Pericia";
+        public string Carpeta = @"C:\Sico-Archivos-Prod\Dropbox\Archivos-Pericia";
     }
 
     public class FacturaBCarpetaDestino
     {
-        public string Carpeta = @"C:\Sico-Test\Dropbox\Archivos-FacturaB";
+        public string Carpeta = @"C:\Sico-Archivos-Prod\Dropbox\Archivos-FacturaB";
     }
 }

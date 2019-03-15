@@ -43,6 +43,7 @@
             this.lblMaster_FechaHora = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.crearUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -90,6 +91,7 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crearUsuarioToolStripMenuItem,
             this.cargarFirmaEmailToolStripMenuItem});
             this.usuariosToolStripMenuItem.Image = global::Sico.Properties.Resources.usuario_hombre;
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
@@ -99,10 +101,11 @@
             // 
             // cargarFirmaEmailToolStripMenuItem
             // 
+            this.cargarFirmaEmailToolStripMenuItem.Image = global::Sico.Properties.Resources.e_mail_sobre_abierto;
             this.cargarFirmaEmailToolStripMenuItem.Name = "cargarFirmaEmailToolStripMenuItem";
-            this.cargarFirmaEmailToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
-            this.cargarFirmaEmailToolStripMenuItem.Text = "Cargar firma Email";
-            //this.cargarFirmaEmailToolStripMenuItem.Click += new System.EventHandler(this.cargarFirmaEmailToolStripMenuItem_Click);
+            this.cargarFirmaEmailToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.cargarFirmaEmailToolStripMenuItem.Text = "Cargar Datos Email";
+            this.cargarFirmaEmailToolStripMenuItem.Click += new System.EventHandler(this.cargarFirmaEmailToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -188,6 +191,14 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Sico(contable) V1.1.0";
             // 
+            // crearUsuarioToolStripMenuItem
+            // 
+            this.crearUsuarioToolStripMenuItem.Image = global::Sico.Properties.Resources.usuario_hombre;
+            this.crearUsuarioToolStripMenuItem.Name = "crearUsuarioToolStripMenuItem";
+            this.crearUsuarioToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.crearUsuarioToolStripMenuItem.Text = "Crear Usuario";
+            this.crearUsuarioToolStripMenuItem.Click += new System.EventHandler(this.crearUsuarioToolStripMenuItem_Click);
+            // 
             // MasterWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,5 +240,6 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem periciasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargarFirmaEmailToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crearUsuarioToolStripMenuItem;
     }
 }

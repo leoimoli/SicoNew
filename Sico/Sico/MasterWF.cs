@@ -29,9 +29,7 @@ namespace Sico
         }
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UsuarioWF _usuario = new UsuarioWF();
-            _usuario.Show();
-            Hide();
+
         }
         private void MasterWF_Load(object sender, EventArgs e)
         {
@@ -46,14 +44,12 @@ namespace Sico
             CheckForIllegalCrossThreadCalls = false;
             lblFechaHora_Edit.Text = DateTime.Now.ToString();
         }
-
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InicioWF _inicio = new InicioWF();
             _inicio.Show();
             Hide();
         }
-
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //bool Exito = Dao.UsuarioDao.GenerarBackup();
@@ -61,7 +57,6 @@ namespace Sico
             //    MessageBox.Show("Error al cerrar el sistema.");
             Close();
         }
-
         private void periciasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Estoy trabajando en esta funcionalidad.");
@@ -69,10 +64,16 @@ namespace Sico
             _pericia.Show();
             Hide();
         }
-
-        //private void cargarFirmaEmailToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-           
-        //}
+        private void crearUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsuarioWF _usuario = new UsuarioWF();
+            _usuario.Show();
+            Hide();
+        }
+        private void cargarFirmaEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CuentaEmailWF _cuenta = new CuentaEmailWF();
+            _cuenta.Show();
+        }
     }
 }

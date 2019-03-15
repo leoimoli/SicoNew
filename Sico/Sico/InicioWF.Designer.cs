@@ -33,7 +33,6 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnPericias = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -43,28 +42,27 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnPericias);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnUsuarios);
             this.groupBox1.Controls.Add(this.btnClientes);
-            this.groupBox1.Location = new System.Drawing.Point(108, 103);
+            this.groupBox1.Location = new System.Drawing.Point(108, 78);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(700, 100);
+            this.groupBox1.Size = new System.Drawing.Size(550, 100);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Sico.Properties.Resources.Imagen_Sico;
-            this.pictureBox1.Location = new System.Drawing.Point(253, 282);
+            this.pictureBox1.Image = global::Sico.Properties.Resources.SistemaContable;
+            this.pictureBox1.Location = new System.Drawing.Point(108, 184);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(370, 240);
+            this.pictureBox1.Size = new System.Drawing.Size(550, 450);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
             // btnPericias
             // 
             this.btnPericias.Image = global::Sico.Properties.Resources.juicio__1_;
-            this.btnPericias.Location = new System.Drawing.Point(197, 14);
+            this.btnPericias.Location = new System.Drawing.Point(218, 14);
             this.btnPericias.Name = "btnPericias";
             this.btnPericias.Size = new System.Drawing.Size(100, 80);
             this.btnPericias.TabIndex = 5;
@@ -72,20 +70,10 @@
             this.btnPericias.UseVisualStyleBackColor = true;
             this.btnPericias.Click += new System.EventHandler(this.btnPericias_Click);
             // 
-            // button1
-            // 
-            this.button1.Image = global::Sico.Properties.Resources.usuario_hombre__1_;
-            this.button1.Location = new System.Drawing.Point(367, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 80);
-            this.button1.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.button1, "Usuarios");
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // btnUsuarios
             // 
             this.btnUsuarios.Image = global::Sico.Properties.Resources.usuario_hombre__1_;
-            this.btnUsuarios.Location = new System.Drawing.Point(540, 14);
+            this.btnUsuarios.Location = new System.Drawing.Point(415, 14);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(100, 80);
             this.btnUsuarios.TabIndex = 4;
@@ -96,7 +84,7 @@
             // btnClientes
             // 
             this.btnClientes.Image = global::Sico.Properties.Resources.comprador__1_1;
-            this.btnClientes.Location = new System.Drawing.Point(41, 14);
+            this.btnClientes.Location = new System.Drawing.Point(43, 14);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(100, 80);
             this.btnClientes.TabIndex = 3;
@@ -132,6 +120,5 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnPericias;
-        private System.Windows.Forms.Button button1;
     }
 }

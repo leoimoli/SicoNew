@@ -253,8 +253,7 @@ namespace Sico
         {
             try
             {
-                CuentaEmailWF _cuenta = new CuentaEmailWF();
-                _cuenta.Show();
+              
             }
             catch { }
         }

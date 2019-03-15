@@ -223,6 +223,16 @@ namespace Sico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap e_mail_sobre_abierto {
+            get {
+                object obj = ResourceManager.GetObject("e-mail-sobre-abierto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap email {
             get {
                 object obj = ResourceManager.GetObject("email", resourceCulture);
@@ -346,6 +356,16 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap pdf {
             get {
                 object obj = ResourceManager.GetObject("pdf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SistemaContable {
+            get {
+                object obj = ResourceManager.GetObject("SistemaContable", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

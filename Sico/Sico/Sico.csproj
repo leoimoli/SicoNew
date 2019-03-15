@@ -433,6 +433,8 @@
     <None Include="Resources\clip-sujetapapeles %281%29.png" />
     <None Include="Resources\carpeta %281%29.png" />
     <None Include="Resources\email.png" />
+    <None Include="Resources\e-mail-sobre-abierto.png" />
+    <None Include="Resources\SistemaContable.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
