@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -31,11 +32,29 @@ namespace Sico
             lblCuitEdit.Text = cuit;
         }
         #region Botones
+
+        private void btnFacturaA_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Estamos trabajando en esta funcionalidad.");
+        }
+        private void btnFacturaC_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Estamos trabajando en esta funcionalidad.");
+        }
+        private void btnLibroDiario_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Estamos trabajando en esta funcionalidad.");
+        }
+        private void btnFacturarle_Click(object sender, EventArgs e)
+        {
+
+        }
         private void btnCuentaCorriente_Click(object sender, EventArgs e)
         {
             NotaDeCreditoWF _ctaCorriente = new NotaDeCreditoWF(razonSocial, cuit);
             _ctaCorriente.Show();
         }
+        public static List<SubCliente> Lista;
         private void btnFacturar_Click(object sender, EventArgs e)
         {
             try
@@ -44,6 +63,8 @@ namespace Sico
                 txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete();
                 txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+
             }
             catch (Exception ex) { }
         }
@@ -92,6 +113,7 @@ namespace Sico
             {
                 if (value.Count > 0)
                 {
+                    Lista = value;
                     if (value != dgvSubClientes.DataSource && dgvSubClientes.DataSource != null)
                     {
                         dgvSubClientes.Columns.Clear();
@@ -281,21 +303,36 @@ namespace Sico
             }
         }
         #endregion
-        private void btnFacturaA_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Estamos trabajando en esta funcionalidad.");
-        }
-        private void btnFacturaC_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Estamos trabajando en esta funcionalidad.");
-        }
-        private void btnLibroDiario_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Estamos trabajando en esta funcionalidad.");
-        }
-        private void btnFacturarle_Click(object sender, EventArgs e)
-        {
 
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int contadorFila = 1;
+            Microsoft.Office.Interop.Excel.Application ExApp;
+            ExApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook oWBook;
+            Microsoft.Office.Interop.Excel._Worksheet oSheet;
+            oWBook = ExApp.Workbooks.Open("C:\\Users\\limoli\\Desktop\\Prueba.xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            oSheet = (Microsoft.Office.Interop.Excel._Worksheet)oWBook.ActiveSheet;
+
+            foreach (var item in Lista)
+            {
+                oSheet.Cells[contadorFila, 2] = item.ApellidoNombre;
+                oSheet.Cells[contadorFila, 2] = item.Monto;
+                oSheet.Cells[contadorFila, 3] = item.Neto1;
+                oSheet.Cells[contadorFila, 4] = item.Neto2;
+                oSheet.Cells[contadorFila, 5] = item.Neto3;
+                oSheet.Cells[contadorFila, 6] = item.Total1;
+                contadorFila = contadorFila + 1;
+            }
+            ExApp.Visible = false;
+            ExApp.UserControl = true;
+            oWBook.Save();
+            ExApp.ActiveWorkbook.Close(true, oWBook, Type.Missing);
+            ExApp.Quit();
+            ExApp = null;
+            ////int[] data = new int[] { 12, 123, 3, 7 };
+            //string[] data = new string[] { "Leo S.A" };
         }
     }
 }

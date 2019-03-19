@@ -392,9 +392,9 @@ namespace Sico.Dao
                     listaUsuario.Fecha = Convert.ToDateTime(item["Fecha"].ToString());
                     listaUsuario.NroCausa = item["NroCausa"].ToString();
                     listaUsuario.Causa = item["Causa"].ToString();
-                    listaUsuario.Archivo1 = item["Archivo1"].ToString();
-                    listaUsuario.Archivo2 = item["Archivo2"].ToString();
-                    listaUsuario.Archivo3 = item["Archivo3"].ToString();
+                    //listaUsuario.Archivo1 = item["Archivo1"].ToString();
+                    //listaUsuario.Archivo2 = item["Archivo2"].ToString();
+                    //listaUsuario.Archivo3 = item["Archivo3"].ToString();
                     listaUsuario.Compartido = Convert.ToInt32(item["Compartir"].ToString());
                     listaUsuario.Email = item["Email"].ToString();
                     listaUsuario.Estado = item["Estado"].ToString();
@@ -429,9 +429,9 @@ namespace Sico.Dao
                     listaUsuario.Fecha = Convert.ToDateTime(item["Fecha"].ToString());
                     listaUsuario.NroCausa = item["NroCausa"].ToString();
                     listaUsuario.Causa = item["Causa"].ToString();
-                    listaUsuario.Archivo1 = item["Archivo1"].ToString();
-                    listaUsuario.Archivo2 = item["Archivo2"].ToString();
-                    listaUsuario.Archivo3 = item["Archivo3"].ToString();
+                    //listaUsuario.Archivo1 = item["Archivo1"].ToString();
+                    //listaUsuario.Archivo2 = item["Archivo2"].ToString();
+                    //listaUsuario.Archivo3 = item["Archivo3"].ToString();
                     listaUsuario.Compartido = Convert.ToInt32(item["Compartir"].ToString());
                     listaUsuario.Email = item["Email"].ToString();
                     listaUsuario.Estado = item["Estado"].ToString();

@@ -53,6 +53,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnConsultarTotales = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -336,11 +337,25 @@
             this.btnBuscar.Visible = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // button1
+            // 
+            this.button1.Image = global::Sico.Properties.Resources.factura__1_;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(838, 576);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(49, 39);
+            this.button1.TabIndex = 26;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.button1, "Facturación Mensual");
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // TareaClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnConsultarTotales);
             this.Controls.Add(this.lblCantidadEdit);
             this.Controls.Add(this.lblCantidad);
@@ -365,6 +380,7 @@
             this.Controls.SetChildIndex(this.lblCantidad, 0);
             this.Controls.SetChildIndex(this.lblCantidadEdit, 0);
             this.Controls.SetChildIndex(this.btnConsultarTotales, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).EndInit();
@@ -400,5 +416,6 @@
         private System.Windows.Forms.Button btnFacturarle;
         private System.Windows.Forms.Button btnCuentaCorriente;
         private System.Windows.Forms.Button btnFacturaC;
+        private System.Windows.Forms.Button button1;
     }
 }
