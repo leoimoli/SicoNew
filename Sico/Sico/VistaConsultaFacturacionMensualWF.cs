@@ -96,6 +96,8 @@ namespace Sico
             {
                 if (value.Count > 0)
                 {
+
+                    Lista = value;
                     if (value != dataGridView1.DataSource && dataGridView1.DataSource != null)
                     {
                         dataGridView1.Columns.Clear();
@@ -427,6 +429,7 @@ namespace Sico
             return valor;
         }
         #endregion
+        public static List<SubCliente> Lista;
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -466,6 +469,128 @@ namespace Sico
             Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+        }
+
+        private void btnCitiVentas_Click(object sender, EventArgs e)
+        {
+            int contadorFila = 5;
+            Microsoft.Office.Interop.Excel.Application ExApp;
+            ExApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook oWBook;
+            Microsoft.Office.Interop.Excel._Worksheet oSheet;
+            oWBook = ExApp.Workbooks.Open("C:\\Users\\Leo-Romi\\Desktop\\Citi-Ventas.xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            oSheet = (Microsoft.Office.Interop.Excel._Worksheet)oWBook.ActiveSheet;
+
+            int totalElementos = Lista.Count - 1;
+            int contadorDeLista = 0;
+            foreach (var item in Lista)
+            {
+                if (totalElementos != contadorDeLista)
+                {
+                    oSheet.Cells[contadorFila, 2] = item.Fecha;
+                    oSheet.Cells[contadorFila, 3] = "006";
+
+                    string var = item.NroFactura;
+                    var split1 = var.Split('-')[0];
+                    split1 = split1.Trim();
+                    oSheet.Cells[contadorFila, 4] = split1;
+
+                    string Factura = item.NroFactura;
+                    var FacturaSegundaParte = var.Split('-')[1];
+                    FacturaSegundaParte = FacturaSegundaParte.Trim();
+                    oSheet.Cells[contadorFila, 5] = FacturaSegundaParte;
+
+                    oSheet.Cells[contadorFila, 6] = FacturaSegundaParte;
+                    oSheet.Cells[contadorFila, 7] = "96";
+                    oSheet.Cells[contadorFila, 8] = item.Dni;
+                    oSheet.Cells[contadorFila, 9] = item.ApellidoNombre;
+                    oSheet.Cells[contadorFila, 10] = item.Monto;
+                    oSheet.Cells[contadorFila, 11] = "0";
+                    oSheet.Cells[contadorFila, 12] = "0";
+                    oSheet.Cells[contadorFila, 13] = "0";
+                    oSheet.Cells[contadorFila, 14] = "0";
+                    oSheet.Cells[contadorFila, 15] = "0";
+                    oSheet.Cells[contadorFila, 16] = "0";
+                    oSheet.Cells[contadorFila, 17] = "PES";
+                    oSheet.Cells[contadorFila, 18] = "1";
+
+                    int cantidadAlicuotas = 0;
+                    if (item.Neto1 > 0)
+                    {
+                        cantidadAlicuotas = cantidadAlicuotas + 1;
+                    }
+                    if (item.Neto2 > 0)
+                    {
+                        cantidadAlicuotas = cantidadAlicuotas + 1;
+                    }
+                    if (item.Neto3 > 0)
+                    {
+                        cantidadAlicuotas = cantidadAlicuotas + 1;
+                    }
+
+                    oSheet.Cells[contadorFila, 19] = cantidadAlicuotas;
+                    oSheet.Cells[contadorFila, 20] = "0";
+                    oSheet.Cells[contadorFila, 21] = "0";
+                    oSheet.Cells[contadorFila, 22] = item.Fecha;
+
+                    decimal Neto = 0;
+                    if (item.Neto1 > 0)
+                    {
+                        Neto = item.Neto1;
+                    }
+                    if (item.Neto2 > 0)
+                    {
+                        Neto = item.Neto2;
+                    }
+                    if (item.Neto3 > 0)
+                    {
+                        Neto = item.Neto3;
+                    }
+
+                    oSheet.Cells[contadorFila, 23] = Neto;
+
+                    int CodigoIva = 0;
+                    if (item.Iva1 > 0)
+                    {
+                        CodigoIva = 4;
+                    }
+                    if (item.Iva2 > 0)
+                    {
+                        CodigoIva = 5;
+                    }
+                    if (item.Iva3 > 0)
+                    {
+                        CodigoIva = 6;
+                    }
+                    oSheet.Cells[contadorFila, 24] = CodigoIva;
+
+                    decimal Iva = 0;
+                    if (item.Iva1 > 0)
+                    {
+                        Iva = item.Iva1;
+                    }
+                    if (item.Iva2 > 0)
+                    {
+                        Iva = item.Iva2;
+                    }
+                    if (item.Iva3 > 0)
+                    {
+                        Iva = item.Iva3;
+                    }
+                    oSheet.Cells[contadorFila, 25] = CodigoIva;
+                    contadorFila = contadorFila + 1;
+                    contadorDeLista++;
+                    
+                }
+            }
+            ExApp.Visible = false;
+            ExApp.UserControl = true;
+            oWBook.Save();
+            ExApp.ActiveWorkbook.Close(true, oWBook, Type.Missing);
+            ExApp.Quit();
+            ExApp = null;
+            ////int[] data = new int[] { 12, 123, 3, 7 };
+            //string[] data = new string[] { "Leo S.A" };
         }
     }
 }

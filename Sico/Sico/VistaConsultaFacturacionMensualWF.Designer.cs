@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.cmbAño = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -43,8 +44,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCitiVentas = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -128,6 +129,18 @@
             this.progressBar1.Value = 50;
             this.progressBar1.Visible = false;
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBuscar.Location = new System.Drawing.Point(543, 19);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
+            this.btnBuscar.TabIndex = 45;
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // cmbAño
             // 
             this.cmbAño.FormattingEnabled = true;
@@ -204,27 +217,31 @@
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
-            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscar.Location = new System.Drawing.Point(543, 19);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
-            this.btnBuscar.TabIndex = 45;
-            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // toolTip1
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
+            // btnCitiVentas
+            // 
+            this.btnCitiVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCitiVentas.Image = global::Sico.Properties.Resources.icon;
+            this.btnCitiVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCitiVentas.Location = new System.Drawing.Point(469, 414);
+            this.btnCitiVentas.Name = "btnCitiVentas";
+            this.btnCitiVentas.Size = new System.Drawing.Size(80, 51);
+            this.btnCitiVentas.TabIndex = 49;
+            this.btnCitiVentas.Text = "CITI Ventas";
+            this.btnCitiVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnCitiVentas, "Citi Ventas");
+            this.btnCitiVentas.UseVisualStyleBackColor = true;
+            this.btnCitiVentas.Click += new System.EventHandler(this.btnCitiVentas_Click);
             // 
             // VistaConsultaFacturacionMensualWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 477);
+            this.Controls.Add(this.btnCitiVentas);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.groupBox2);
@@ -260,5 +277,6 @@
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnCitiVentas;
     }
 }
