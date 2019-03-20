@@ -242,6 +242,7 @@ namespace Sico.Dao
                         listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
                         listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
                         listaSubCliente.NroFacturaNotaDeCredtio = item["NroFacturaNotaDeCredtio"].ToString();
+
                         //// Detalle de la factura
                         listaSubCliente.Total1 = Convert.ToDecimal(item["Total1"].ToString());
                         listaSubCliente.Total2 = Convert.ToDecimal(item["Total2"].ToString());
@@ -255,6 +256,8 @@ namespace Sico.Dao
                         listaSubCliente.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
                         listaSubCliente.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
                         listaSubCliente.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+                        string dni = BuscarDniSubCliente(listaSubCliente.ApellidoNombre);
+                        listaSubCliente.Dni = dni;
                         ////// Detalle Tipo Facturacion
                         //listaSubCliente.idTipoFactura = Convert.ToInt32(item["idTipoFacturacion"].ToString());
                         //listaSubCliente.idNotaDeCredito = Convert.ToInt32(item["idNotaDeCredito"].ToString());
@@ -265,6 +268,33 @@ namespace Sico.Dao
             }
             connection.Close();
             return lista;
+        }
+
+        private static string BuscarDniSubCliente(string ApellidoNombre)
+        {
+            string DNI = "";
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("ApellidoNombre_in", ApellidoNombre)};
+            string proceso = "BuscarDniSubCliente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item2 in Tabla.Rows)
+                {
+                    SubCliente listaSubCliente = new SubCliente();
+                    listaSubCliente.Dni = item2["Dni"].ToString();
+                    DNI = listaSubCliente.Dni;
+                }
+            }
+            return DNI;
         }
         public static List<SubCliente> BuscarTodasFacturasSubCliente(string cuit)
         {

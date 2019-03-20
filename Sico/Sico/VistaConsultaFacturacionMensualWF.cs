@@ -478,41 +478,60 @@ namespace Sico
             ExApp = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel._Workbook oWBook;
             Microsoft.Office.Interop.Excel._Worksheet oSheet;
-            oWBook = ExApp.Workbooks.Open("C:\\Users\\Leo-Romi\\Desktop\\Citi-Ventas.xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            oWBook = ExApp.Workbooks.Open("C:\\Users\\limoli\\Desktop\\Prueba2.xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
             oSheet = (Microsoft.Office.Interop.Excel._Worksheet)oWBook.ActiveSheet;
 
+         
             int totalElementos = Lista.Count - 1;
             int contadorDeLista = 0;
             foreach (var item in Lista)
             {
-                if (totalElementos != contadorDeLista)
+                if (item.Fecha != null)
                 {
+                    //////Fecha
                     oSheet.Cells[contadorFila, 2] = item.Fecha;
+                    //////Tipo Comprobante
                     oSheet.Cells[contadorFila, 3] = "006";
 
                     string var = item.NroFactura;
                     var split1 = var.Split('-')[0];
                     split1 = split1.Trim();
+                    //////Punto de Venta
                     oSheet.Cells[contadorFila, 4] = split1;
 
                     string Factura = item.NroFactura;
                     var FacturaSegundaParte = var.Split('-')[1];
                     FacturaSegundaParte = FacturaSegundaParte.Trim();
+                    //////"Número de Comprobante"
                     oSheet.Cells[contadorFila, 5] = FacturaSegundaParte;
-
+                    //////"Número de Comprobante Hasta"
                     oSheet.Cells[contadorFila, 6] = FacturaSegundaParte;
+                    //////""Código de Documento del comprador
                     oSheet.Cells[contadorFila, 7] = "96";
+                    //////""Número de Identificación del comprador"
                     oSheet.Cells[contadorFila, 8] = item.Dni;
+                    //////"Apellido y Nombre"
                     oSheet.Cells[contadorFila, 9] = item.ApellidoNombre;
+                    //////"Importe total de la de la operacion"
                     oSheet.Cells[contadorFila, 10] = item.Monto;
+                    //////"importe total de concepto que no integran"
                     oSheet.Cells[contadorFila, 11] = "0";
+                    ////// Percepcion a no categorizados
                     oSheet.Cells[contadorFila, 12] = "0";
+                    ////// Importe de operaciones exentas.
                     oSheet.Cells[contadorFila, 13] = "0";
+                    ////// Importe percepciones o pagos a cuenta de impuestos 
                     oSheet.Cells[contadorFila, 14] = "0";
+                    ////// Importe percepciones ingresos bruto
                     oSheet.Cells[contadorFila, 15] = "0";
+                    ////// Importe percepciones de impuesto municipales
                     oSheet.Cells[contadorFila, 16] = "0";
-                    oSheet.Cells[contadorFila, 17] = "PES";
-                    oSheet.Cells[contadorFila, 18] = "1";
+                    ////// Importe  de impuesto internos
+                    oSheet.Cells[contadorFila, 17] = "0";
+                    ////// Codigo de moneda
+                    oSheet.Cells[contadorFila, 18] = "PES";
+                    ////// Tipo de Cambio
+                    oSheet.Cells[contadorFila, 19] = "1";
 
                     int cantidadAlicuotas = 0;
                     if (item.Neto1 > 0)
@@ -527,11 +546,15 @@ namespace Sico
                     {
                         cantidadAlicuotas = cantidadAlicuotas + 1;
                     }
-
-                    oSheet.Cells[contadorFila, 19] = cantidadAlicuotas;
-                    oSheet.Cells[contadorFila, 20] = "0";
+                    //////Cantida Alicuotas
+                    oSheet.Cells[contadorFila, 20] = cantidadAlicuotas;
+                    //////Código Operación
                     oSheet.Cells[contadorFila, 21] = "0";
-                    oSheet.Cells[contadorFila, 22] = item.Fecha;
+                    //////Otro Tributo
+                    oSheet.Cells[contadorFila, 22] = "0";
+                    ////// Fecha de vencimiento
+                    oSheet.Cells[contadorFila, 23] = item.Fecha;
+                   
 
                     decimal Neto = 0;
                     if (item.Neto1 > 0)
@@ -546,24 +569,28 @@ namespace Sico
                     {
                         Neto = item.Neto3;
                     }
+                    ////// Importe Neto  gravado
+                    oSheet.Cells[contadorFila, 24] = Neto;
 
-                    oSheet.Cells[contadorFila, 23] = Neto;
 
-                    int CodigoIva = 0;
+                    ///// Alicuota de Iva
+                    string CodigoIva = "0";
                     if (item.Iva1 > 0)
                     {
-                        CodigoIva = 4;
+                        CodigoIva = "10,50%";
                     }
                     if (item.Iva2 > 0)
                     {
-                        CodigoIva = 5;
+                        CodigoIva = "21%";
                     }
                     if (item.Iva3 > 0)
                     {
-                        CodigoIva = 6;
+                        CodigoIva = "27%";
                     }
-                    oSheet.Cells[contadorFila, 24] = CodigoIva;
+                    oSheet.Cells[contadorFila, 25] = CodigoIva;
 
+
+                    ///// Iva liquidado
                     decimal Iva = 0;
                     if (item.Iva1 > 0)
                     {
@@ -577,10 +604,9 @@ namespace Sico
                     {
                         Iva = item.Iva3;
                     }
-                    oSheet.Cells[contadorFila, 25] = CodigoIva;
+                    oSheet.Cells[contadorFila, 26] = CodigoIva;
                     contadorFila = contadorFila + 1;
                     contadorDeLista++;
-                    
                 }
             }
             ExApp.Visible = false;
@@ -589,8 +615,6 @@ namespace Sico
             ExApp.ActiveWorkbook.Close(true, oWBook, Type.Missing);
             ExApp.Quit();
             ExApp = null;
-            ////int[] data = new int[] { 12, 123, 3, 7 };
-            //string[] data = new string[] { "Leo S.A" };
         }
     }
 }
