@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sico.Entidades;
+using Sico.Clases_Maestras;
+using System.IO;
 
 namespace Sico
 {
@@ -473,148 +475,187 @@ namespace Sico
 
         private void btnCitiVentas_Click(object sender, EventArgs e)
         {
-            int contadorFila = 5;
-            Microsoft.Office.Interop.Excel.Application ExApp;
-            ExApp = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel._Workbook oWBook;
-            Microsoft.Office.Interop.Excel._Worksheet oSheet;
-            oWBook = ExApp.Workbooks.Open("C:\\Users\\limoli\\Desktop\\Prueba2.xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            oSheet = (Microsoft.Office.Interop.Excel._Worksheet)oWBook.ActiveSheet;
-
-         
-            int totalElementos = Lista.Count - 1;
-            int contadorDeLista = 0;
-            foreach (var item in Lista)
+            ArchivosParaSiap ruta = new ArchivosParaSiap();
+            string NombreTxt = lblNombreEdit.Text;
+            //string path = ruta.Carpeta + "\\" + NombreTxt + ".txt";
+            string path = @"C:\Users\limoli\Desktop\Txt\" + NombreTxt + ".txt";
+            if (!File.Exists(path))
             {
-                if (item.Fecha != null)
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(path))
                 {
-                    //////Fecha
-                    oSheet.Cells[contadorFila, 2] = item.Fecha;
-                    //////Tipo Comprobante
-                    oSheet.Cells[contadorFila, 3] = "006";
-
-                    string var = item.NroFactura;
-                    var split1 = var.Split('-')[0];
-                    split1 = split1.Trim();
-                    //////Punto de Venta
-                    oSheet.Cells[contadorFila, 4] = split1;
-
-                    string Factura = item.NroFactura;
-                    var FacturaSegundaParte = var.Split('-')[1];
-                    FacturaSegundaParte = FacturaSegundaParte.Trim();
-                    //////"Número de Comprobante"
-                    oSheet.Cells[contadorFila, 5] = FacturaSegundaParte;
-                    //////"Número de Comprobante Hasta"
-                    oSheet.Cells[contadorFila, 6] = FacturaSegundaParte;
-                    //////""Código de Documento del comprador
-                    oSheet.Cells[contadorFila, 7] = "96";
-                    //////""Número de Identificación del comprador"
-                    oSheet.Cells[contadorFila, 8] = item.Dni;
-                    //////"Apellido y Nombre"
-                    oSheet.Cells[contadorFila, 9] = item.ApellidoNombre;
-                    //////"Importe total de la de la operacion"
-                    oSheet.Cells[contadorFila, 10] = item.Monto;
-                    //////"importe total de concepto que no integran"
-                    oSheet.Cells[contadorFila, 11] = "0";
-                    ////// Percepcion a no categorizados
-                    oSheet.Cells[contadorFila, 12] = "0";
-                    ////// Importe de operaciones exentas.
-                    oSheet.Cells[contadorFila, 13] = "0";
-                    ////// Importe percepciones o pagos a cuenta de impuestos 
-                    oSheet.Cells[contadorFila, 14] = "0";
-                    ////// Importe percepciones ingresos bruto
-                    oSheet.Cells[contadorFila, 15] = "0";
-                    ////// Importe percepciones de impuesto municipales
-                    oSheet.Cells[contadorFila, 16] = "0";
-                    ////// Importe  de impuesto internos
-                    oSheet.Cells[contadorFila, 17] = "0";
-                    ////// Codigo de moneda
-                    oSheet.Cells[contadorFila, 18] = "PES";
-                    ////// Tipo de Cambio
-                    oSheet.Cells[contadorFila, 19] = "1";
-
-                    int cantidadAlicuotas = 0;
-                    if (item.Neto1 > 0)
+                    string Blancos = " ";
+                    int restan = 0;
+                    foreach (var item in Lista)
                     {
-                        cantidadAlicuotas = cantidadAlicuotas + 1;
-                    }
-                    if (item.Neto2 > 0)
-                    {
-                        cantidadAlicuotas = cantidadAlicuotas + 1;
-                    }
-                    if (item.Neto3 > 0)
-                    {
-                        cantidadAlicuotas = cantidadAlicuotas + 1;
-                    }
-                    //////Cantida Alicuotas
-                    oSheet.Cells[contadorFila, 20] = cantidadAlicuotas;
-                    //////Código Operación
-                    oSheet.Cells[contadorFila, 21] = "0";
-                    //////Otro Tributo
-                    oSheet.Cells[contadorFila, 22] = "0";
-                    ////// Fecha de vencimiento
-                    oSheet.Cells[contadorFila, 23] = item.Fecha;
-                   
-
-                    decimal Neto = 0;
-                    if (item.Neto1 > 0)
-                    {
-                        Neto = item.Neto1;
-                    }
-                    if (item.Neto2 > 0)
-                    {
-                        Neto = item.Neto2;
-                    }
-                    if (item.Neto3 > 0)
-                    {
-                        Neto = item.Neto3;
-                    }
-                    ////// Importe Neto  gravado
-                    oSheet.Cells[contadorFila, 24] = Neto;
+                        if (item.Fecha != null)
+                        {
+                            int totalCaracteres = 0;
+                            //////Fecha
+                            DateTime Fecha = Convert.ToDateTime(item.Fecha);
+                            string dateFormatted = Fecha.ToString("yyyyMMdd");
+                            string FechaFinal = dateFormatted;
+                            totalCaracteres = FechaFinal.Length;
 
 
-                    ///// Alicuota de Iva
-                    string CodigoIva = "0";
-                    if (item.Iva1 > 0)
-                    {
-                        CodigoIva = "10,50%";
-                    }
-                    if (item.Iva2 > 0)
-                    {
-                        CodigoIva = "21%";
-                    }
-                    if (item.Iva3 > 0)
-                    {
-                        CodigoIva = "27%";
-                    }
-                    oSheet.Cells[contadorFila, 25] = CodigoIva;
+                            //////Tipo Comprobante
+                            string TipoComprobante = "006";
+                            totalCaracteres = totalCaracteres + TipoComprobante.Length;
+                            //////Punto de Venta
+                            string var = item.NroFactura;
+                            var split1 = var.Split('-')[0];
+                            split1 = split1.Trim();
+                            string PuntoDeVenta = split1;
 
+                            if (PuntoDeVenta.Length < 5)
+                            {
+                                //char pad = '0';
+                                PuntoDeVenta = PuntoDeVenta.PadLeft(1, '0');
+                                //restan = 5 - PuntoDeVenta.Length;
+                                //Console.WriteLine(PuntoDeVenta.PadLeft(restan, pad));
+                            }
+                            totalCaracteres = totalCaracteres + PuntoDeVenta.Length;
+                            //////"Número de Comprobante"
+                            string Factura = item.NroFactura;
+                            var FacturaSegundaParte = var.Split('-')[1];
+                            FacturaSegundaParte = FacturaSegundaParte.Trim();
+                            totalCaracteres = totalCaracteres + FacturaSegundaParte.Length;
+                            //////""Código de Documento del comprador
+                            string CodigoDocumentoComprador = "96";
+                            totalCaracteres = totalCaracteres + CodigoDocumentoComprador.Length;
+                            //////""Número de Identificación del comprador"
+                            string Dni = item.Dni;
+                            totalCaracteres = totalCaracteres + Dni.Length;
+                            //////"Apellido y Nombre"
+                            string ApellidoNombre = item.ApellidoNombre;
+                            totalCaracteres = totalCaracteres + ApellidoNombre.Length;
+                            //////"Importe total de la de la operacion"
+                            decimal Monto = item.Monto;
+                            string MontoContar = Convert.ToString(Monto);
+                            totalCaracteres = totalCaracteres + MontoContar.Length;
+                            //////"importe total de concepto que no integran"
+                            string ImpTotalConcep = "0";
+                            totalCaracteres = totalCaracteres + ImpTotalConcep.Length;
+                            ////// Percepcion a no categorizados
+                            string PercNoCatego = "0";
+                            totalCaracteres = totalCaracteres + PercNoCatego.Length;
+                            ////// Importe de operaciones exentas.
+                            string ImpOpeExe = "0";
+                            totalCaracteres = totalCaracteres + ImpOpeExe.Length;
+                            ////// Importe percepciones o pagos a cuenta de impuestos 
+                            string ImpPerPagoImp = "0";
+                            totalCaracteres = totalCaracteres + ImpPerPagoImp.Length;
+                            ////// Importe percepciones ingresos bruto
+                            string IImpPerIngBrutos = "0";
+                            totalCaracteres = totalCaracteres + IImpPerIngBrutos.Length;
+                            ////// Importe percepciones de impuesto municipales
+                            string IImpPerImpMun = "0";
+                            totalCaracteres = totalCaracteres + IImpPerImpMun.Length;
+                            ////// Importe  de impuesto internos
+                            string ImpImpInt = "0";
+                            totalCaracteres = totalCaracteres + ImpImpInt.Length;
+                            ////// Codigo de moneda
+                            string CodMoneda = "PES";
+                            totalCaracteres = totalCaracteres + CodMoneda.Length;
+                            ////// Tipo de Cambio
+                            string TipoCambio = "1";
+                            totalCaracteres = totalCaracteres + TipoCambio.Length;
+                            //////Cantida Alicuotas
+                            int cantidadAlicuotas = 0;
 
-                    ///// Iva liquidado
-                    decimal Iva = 0;
-                    if (item.Iva1 > 0)
-                    {
-                        Iva = item.Iva1;
+                            if (item.Neto1 > 0)
+                            {
+                                cantidadAlicuotas = cantidadAlicuotas + 1;
+                            }
+                            if (item.Neto2 > 0)
+                            {
+                                cantidadAlicuotas = cantidadAlicuotas + 1;
+                            }
+                            if (item.Neto3 > 0)
+                            {
+                                cantidadAlicuotas = cantidadAlicuotas + 1;
+                            }
+                            string contar = Convert.ToString(cantidadAlicuotas);
+                            totalCaracteres = totalCaracteres + contar.Length;
+                            //////Código Operación
+                            string CodOperacion = "0";
+                            totalCaracteres = totalCaracteres + CodOperacion.Length;
+                            //////Otro Tributo
+                            string OtroTributo = "0";
+                            totalCaracteres = totalCaracteres + OtroTributo.Length;
+                            ////// Fecha de vencimiento
+                            DateTime Fecha2 = Convert.ToDateTime(item.Fecha);
+                            string dateFormatted2 = Fecha2.ToString("yyyyMMdd");
+                            string FechaFinal2 = dateFormatted2;
+                            totalCaracteres = totalCaracteres + FechaFinal2.Length;
+                            ////// Importe Neto  gravado
+                            //decimal Neto = 0;
+                            //if (item.Neto1 > 0)
+                            //{
+                            //    Neto = item.Neto1;
+                            //}
+                            //if (item.Neto2 > 0)
+                            //{
+                            //    Neto = item.Neto2;
+                            //}
+                            //if (item.Neto3 > 0)
+                            //{
+                            //    Neto = item.Neto3;
+                            //}
+
+                            /////// Alicuota de Iva
+                            //string CodigoIva = "0";
+                            //if (item.Iva1 > 0)
+                            //{
+                            //    CodigoIva = "10,50%";
+                            //}
+                            //if (item.Iva2 > 0)
+                            //{
+                            //    CodigoIva = "21%";
+                            //}
+                            //if (item.Iva3 > 0)
+                            //{
+                            //    CodigoIva = "27%";
+                            //}
+                            /////// Iva liquidado
+                            //decimal Iva = 0;
+                            //if (item.Iva1 > 0)
+                            //{
+                            //    Iva = item.Iva1;
+                            //}
+                            //if (item.Iva2 > 0)
+                            //{
+                            //    Iva = item.Iva2;
+                            //}
+                            //if (item.Iva3 > 0)
+                            //{
+                            //    Iva = item.Iva3;
+                            //}
+
+                            if (totalCaracteres < 266)
+                            {
+                                restan = 266 - totalCaracteres;
+                                Blancos = Blancos.PadLeft(restan, ' ');
+                                sw.WriteLine(FechaFinal + TipoComprobante + PuntoDeVenta + FacturaSegundaParte + FacturaSegundaParte + CodigoDocumentoComprador + Dni + ApellidoNombre + Blancos + Monto + ImpTotalConcep + PercNoCatego + ImpOpeExe + ImpPerPagoImp + IImpPerIngBrutos + IImpPerImpMun + ImpImpInt + CodMoneda + TipoCambio + cantidadAlicuotas + CodOperacion + OtroTributo + FechaFinal2); /*+ Neto + CodigoIva + Iva);*/
+                            }
+                            if (totalCaracteres == 266)
+                            {
+                                sw.WriteLine(FechaFinal + TipoComprobante + PuntoDeVenta + FacturaSegundaParte + FacturaSegundaParte + CodigoDocumentoComprador + Dni + ApellidoNombre + Monto + ImpTotalConcep + PercNoCatego + ImpOpeExe + ImpPerPagoImp + IImpPerIngBrutos + IImpPerImpMun + ImpImpInt + CodMoneda + TipoCambio + cantidadAlicuotas + CodOperacion + OtroTributo + FechaFinal2); /*+ Neto + CodigoIva + Iva);*/
+                            }
+                        }
                     }
-                    if (item.Iva2 > 0)
-                    {
-                        Iva = item.Iva2;
-                    }
-                    if (item.Iva3 > 0)
-                    {
-                        Iva = item.Iva3;
-                    }
-                    oSheet.Cells[contadorFila, 26] = CodigoIva;
-                    contadorFila = contadorFila + 1;
-                    contadorDeLista++;
                 }
             }
-            ExApp.Visible = false;
-            ExApp.UserControl = true;
-            oWBook.Save();
-            ExApp.ActiveWorkbook.Close(true, oWBook, Type.Missing);
-            ExApp.Quit();
-            ExApp = null;
+
+            // Open the file to read from.
+            using (StreamReader sr = File.OpenText(path))
+            {
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+            }
         }
     }
 }

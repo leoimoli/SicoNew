@@ -168,6 +168,7 @@
     <Compile Include="Clases_Maestras\AutoCompleteClassEmailPericia.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteRazonSocial.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteSubCliente.cs" />
+    <Compile Include="Clases_Maestras\GenerarExcelCiti.cs" />
     <Compile Include="Clases_Maestras\GoogleCloudSamples.cs" />
     <Compile Include="Clases_Maestras\Sesion.cs" />
     <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
