@@ -106,11 +106,12 @@ namespace Sico
                         dataGridView1.Columns.Clear();
                         dataGridView1.Refresh();
                     }
+                    btnExcel.Visible = true;
+                    btnVolver.Visible = true;
+                    btnCitiVentas.Visible = true;
                     dataGridView1.Visible = true;
                     dataGridView1.ReadOnly = true;
                     dataGridView1.RowHeadersVisible = false;
-
-
 
                     double TotalMonto = CalcularTotalMonto(value);
                     double TotalImporte1 = CalcularTotalImporte1(value);
@@ -269,6 +270,22 @@ namespace Sico
                     MessageBox.Show("No se encontraron datos con los parametros ingresados.");
                 }
             }
+        }
+        private void ProgressBar()
+        {
+            progressBar1.Visible = true;
+            progressBar1.Maximum = 100000;
+            progressBar1.Step = 1;
+
+            for (int j = 0; j < 100000; j++)
+            {
+                Caluculate(j);
+                progressBar1.PerformStep();
+            }
+        }
+        private void Caluculate(int i)
+        {
+            double pow = Math.Pow(i, i);
         }
         #region Calculos totales
         private double CalcularTotalIva27(List<SubCliente> value)
@@ -437,11 +454,17 @@ namespace Sico
         {
             try
             {
-
+                groupBox1.Enabled = false;
+                groupBox2.Enabled = false;
+                ProgressBar();
                 string año = cmbAño.Text;
                 string MesSeleccionado = cmbMes.Text;
                 int mes = ValidarMesSeleccionado(MesSeleccionado);
                 ListaTotalFacturacion = ClienteNeg.BuscarFacturacionTotal(cuit, mes, año);
+                groupBox1.Enabled = true;
+                groupBox2.Enabled = true;
+                progressBar1.Value = Convert.ToInt32(null);
+                progressBar1.Visible = false;
             }
             catch (Exception ex)
             { }
@@ -476,7 +499,7 @@ namespace Sico
 
         private void btnCitiVentas_Click(object sender, EventArgs e)
         {
-
+            ProgressBar();
             ArchivosParaSiap ruta = new ArchivosParaSiap();
             string NombreTxt = lblNombreEdit.Text;
             //string path = ruta.Carpeta + "\\" + NombreTxt + ".txt";
@@ -683,6 +706,9 @@ namespace Sico
                     }
                 }
                 GenerarTXTVentasalicuotas();
+                MessageBox.Show("Se generaron los TXT de Ventas y ventas Alicuotas.");
+                progressBar1.Value = Convert.ToInt32(null);
+                progressBar1.Visible = false;
             }
 
             // Open the file to read from.
@@ -695,7 +721,6 @@ namespace Sico
                 }
             }
         }
-
         private void GenerarTXTVentasalicuotas()
         {
             ArchivosParaSiap ruta = new ArchivosParaSiap();

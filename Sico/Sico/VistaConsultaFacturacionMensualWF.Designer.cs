@@ -200,6 +200,7 @@
             this.btnVolver.Text = "Volver";
             this.btnVolver.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Visible = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnExcel
@@ -215,6 +216,7 @@
             this.btnExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnExcel, "Exportar a Excel");
             this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Visible = false;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // toolTip1
@@ -234,6 +236,7 @@
             this.btnCitiVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnCitiVentas, "Citi Ventas");
             this.btnCitiVentas.UseVisualStyleBackColor = true;
+            this.btnCitiVentas.Visible = false;
             this.btnCitiVentas.Click += new System.EventHandler(this.btnCitiVentas_Click);
             // 
             // VistaConsultaFacturacionMensualWF
