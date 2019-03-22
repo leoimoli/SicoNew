@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Sico.Entidades;
 using Sico.Clases_Maestras;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Sico
 {
@@ -475,21 +476,25 @@ namespace Sico
 
         private void btnCitiVentas_Click(object sender, EventArgs e)
         {
+
             ArchivosParaSiap ruta = new ArchivosParaSiap();
             string NombreTxt = lblNombreEdit.Text;
             //string path = ruta.Carpeta + "\\" + NombreTxt + ".txt";
-            string path = @"C:\Users\Leo-Romi\Desktop\Txt\" + NombreTxt + ".txt";
+            string path = @"C:\Users\limoli\Desktop\Txt\" + NombreTxt + ".txt";
             if (!File.Exists(path))
             {
                 // Create a file to write to.
                 using (StreamWriter sw = File.CreateText(path))
                 {
+
                     //string Blancos = " ";
                     //int restan = 0;
                     foreach (var item in Lista)
                     {
                         if (item.Fecha != null)
                         {
+                            string patron = @"[^\w]";
+                            Regex regex = new Regex(patron);
                             int totalCaracteres = 0;
                             //////Fecha
                             DateTime Fecha = Convert.ToDateTime(item.Fecha);
@@ -539,38 +544,32 @@ namespace Sico
                             }
                             totalCaracteres = totalCaracteres + ApellidoNombre.Length;
                             //////"Importe total de la de la operacion"
-                            double Monto = Convert.ToDouble(item.Monto);
-                            string MontoContar = Convert.ToString(Monto);
-                            if (MontoContar.Length < 4)
-                            {
-                                MontoContar = MontoContar.PadRight(4, '0');
-                            }
+
+
+                            //string Monto = Convert.ToString(item.Monto);
+                            string MontoContar = Convert.ToString(item.Monto);
+                            MontoContar = regex.Replace(MontoContar, "");
                             if (MontoContar.Length < 15)
                             {
                                 MontoContar = MontoContar.PadLeft(15, '0');
-                                Monto = Convert.ToDouble(MontoContar);
+                                // Monto = Convert.ToString(MontoContar);
                             }
                             totalCaracteres = totalCaracteres + MontoContar.Length;
                             //////"importe total de concepto que no integran"
                             double ImpTotalConcep = 0;
                             string ImpTotalConcepContar = Convert.ToString(ImpTotalConcep);
-                            if (ImpTotalConcepContar.Length < 4)
-                            {
-                                ImpTotalConcepContar = ImpTotalConcepContar.PadRight(4, '0');
-                            }
+                            ImpTotalConcepContar = regex.Replace(ImpTotalConcepContar, "");
                             if (ImpTotalConcepContar.Length < 15)
                             {
                                 ImpTotalConcepContar = ImpTotalConcepContar.PadLeft(15, '0');
                                 ImpTotalConcep = Convert.ToDouble(ImpTotalConcepContar);
                             }
                             totalCaracteres = totalCaracteres + ImpTotalConcepContar.Length;
+
                             ////// Percepcion a no categorizados
                             double PercNoCatego = 0;
                             string PercNoCategoContar = Convert.ToString(PercNoCatego);
-                            if (PercNoCategoContar.Length < 4)
-                            {
-                                PercNoCategoContar = PercNoCategoContar.PadRight(4, '0');
-                            }
+                            PercNoCategoContar = regex.Replace(PercNoCategoContar, "");
                             if (PercNoCategoContar.Length < 15)
                             {
                                 PercNoCategoContar = PercNoCategoContar.PadLeft(15, '0');
@@ -580,10 +579,7 @@ namespace Sico
                             ////// Importe de operaciones exentas.
                             double ImpOpeExe = 0;
                             string ImpOpeExeContar = Convert.ToString(ImpOpeExe);
-                            if (ImpOpeExeContar.Length < 4)
-                            {
-                                ImpOpeExeContar = ImpOpeExeContar.PadRight(4, '0');
-                            }
+                            ImpOpeExeContar = regex.Replace(ImpOpeExeContar, "");
                             if (ImpOpeExeContar.Length < 15)
                             {
                                 ImpOpeExeContar = ImpOpeExeContar.PadLeft(15, '0');
@@ -593,10 +589,7 @@ namespace Sico
                             ////// Importe percepciones o pagos a cuenta de impuestos 
                             double ImpPerPagoImp = 0;
                             string ImpPerPagoImpContar = Convert.ToString(ImpPerPagoImp);
-                            if (ImpPerPagoImpContar.Length < 4)
-                            {
-                                ImpPerPagoImpContar = ImpPerPagoImpContar.PadRight(4, '0');
-                            }
+                            ImpPerPagoImpContar = regex.Replace(ImpPerPagoImpContar, "");
                             if (ImpPerPagoImpContar.Length < 15)
                             {
                                 ImpPerPagoImpContar = ImpPerPagoImpContar.PadLeft(15, '0');
@@ -607,10 +600,7 @@ namespace Sico
                             ////// Importe percepciones ingresos bruto
                             double IImpPerIngBrutos = 0;
                             string IImpPerIngBrutosContar = Convert.ToString(IImpPerIngBrutos);
-                            if (IImpPerIngBrutosContar.Length < 4)
-                            {
-                                IImpPerIngBrutosContar = IImpPerIngBrutosContar.PadRight(4, '0');
-                            }
+                            IImpPerIngBrutosContar = regex.Replace(IImpPerIngBrutosContar, "");
                             if (IImpPerIngBrutosContar.Length < 15)
                             {
                                 IImpPerIngBrutosContar = IImpPerIngBrutosContar.PadLeft(15, '0');
@@ -620,10 +610,7 @@ namespace Sico
                             ////// Importe percepciones de impuesto municipales
                             double IImpPerImpMun = 0;
                             string IImpPerImpMunContar = Convert.ToString(IImpPerImpMun);
-                            if (IImpPerImpMunContar.Length < 4)
-                            {
-                                IImpPerImpMunContar = IImpPerImpMunContar.PadRight(4, '0');
-                            }
+                            IImpPerImpMunContar = regex.Replace(IImpPerImpMunContar, "");
                             if (IImpPerImpMunContar.Length < 15)
                             {
                                 IImpPerImpMunContar = IImpPerImpMunContar.PadLeft(15, '0');
@@ -633,10 +620,7 @@ namespace Sico
                             ////// Importe  de impuesto internos
                             double ImpImpInt = 0;
                             string ImpImpIntContar = Convert.ToString(ImpImpInt);
-                            if (ImpImpIntContar.Length < 4)
-                            {
-                                ImpImpIntContar = ImpImpIntContar.PadRight(4, '0');
-                            }
+                            ImpImpIntContar = regex.Replace(ImpImpIntContar, "");
                             if (ImpImpIntContar.Length < 15)
                             {
                                 ImpImpIntContar = ImpImpIntContar.PadLeft(15, '0');
@@ -678,10 +662,7 @@ namespace Sico
                             //////Otro Tributo
                             double OtroTributo = 0;
                             string OtroTributoContar = Convert.ToString(OtroTributo);
-                            if (OtroTributoContar.Length < 4)
-                            {
-                                OtroTributoContar = OtroTributoContar.PadRight(4, '0');
-                            }
+                            OtroTributoContar = regex.Replace(OtroTributoContar, "");
                             if (OtroTributoContar.Length < 15)
                             {
                                 OtroTributoContar = OtroTributoContar.PadLeft(15, '0');
@@ -693,64 +674,15 @@ namespace Sico
                             string dateFormatted2 = Fecha2.ToString("yyyyMMdd");
                             string FechaFinal2 = dateFormatted2;
                             totalCaracteres = totalCaracteres + FechaFinal2.Length;
-                            ////// Importe Neto  gravado
-                            //decimal Neto = 0;
-                            //if (item.Neto1 > 0)
-                            //{
-                            //    Neto = item.Neto1;
-                            //}
-                            //if (item.Neto2 > 0)
-                            //{
-                            //    Neto = item.Neto2;
-                            //}
-                            //if (item.Neto3 > 0)
-                            //{
-                            //    Neto = item.Neto3;
-                            //}
-
-                            /////// Alicuota de Iva
-                            //string CodigoIva = "0";
-                            //if (item.Iva1 > 0)
-                            //{
-                            //    CodigoIva = "10,50%";
-                            //}
-                            //if (item.Iva2 > 0)
-                            //{
-                            //    CodigoIva = "21%";
-                            //}
-                            //if (item.Iva3 > 0)
-                            //{
-                            //    CodigoIva = "27%";
-                            //}
-                            /////// Iva liquidado
-                            //decimal Iva = 0;
-                            //if (item.Iva1 > 0)
-                            //{
-                            //    Iva = item.Iva1;
-                            //}
-                            //if (item.Iva2 > 0)
-                            //{
-                            //    Iva = item.Iva2;
-                            //}
-                            //if (item.Iva3 > 0)
-                            //{
-                            //    Iva = item.Iva3;
-                            //}
-
-                            //if (totalCaracteres < 266)
-                            //{
-                            //    restan = 266 - totalCaracteres;
-                            //    Blancos = Blancos.PadLeft(restan, ' ');
-                            //    sw.WriteLine(FechaFinal + TipoComprobante + PuntoDeVenta + FacturaSegundaParte + FacturaSegundaParte + CodigoDocumentoComprador + Dni + ApellidoNombre + Blancos + Monto + ImpTotalConcep + PercNoCatego + ImpOpeExe + ImpPerPagoImp + IImpPerIngBrutos + IImpPerImpMun + ImpImpInt + CodMoneda + TipoCambio + cantidadAlicuotas + CodOperacion + OtroTributo + FechaFinal2); /*+ Neto + CodigoIva + Iva);*/
-                            //}
                             if (totalCaracteres == 266)
                             {
                                 sw.WriteLine(FechaFinal + TipoComprobante + PuntoDeVenta + FacturaSegundaParte + FacturaSegundaParte + CodigoDocumentoComprador + Dni + ApellidoNombre + MontoContar + ImpTotalConcepContar + PercNoCategoContar + ImpOpeExeContar + ImpPerPagoImpContar + IImpPerIngBrutosContar + IImpPerImpMunContar + ImpImpIntContar + CodMoneda + TipoCambio + cantidadAlicuotas + CodOperacion + OtroTributoContar + FechaFinal2); /*+ Neto + CodigoIva + Iva);*/
                             }
-                            GenerarTXTVentasalicuotas();
+
                         }
                     }
                 }
+                GenerarTXTVentasalicuotas();
             }
 
             // Open the file to read from.
@@ -769,7 +701,7 @@ namespace Sico
             ArchivosParaSiap ruta = new ArchivosParaSiap();
             string NombreTxt = lblNombreEdit.Text;
             //string path = ruta.Carpeta + "\\" + NombreTxt + ".txt";
-            string path = @"C:\Users\Leo-Romi\Desktop\Txt\Ventas-Alicuotas\" + NombreTxt + ".txt";
+            string path = @"C:\Users\limoli\Desktop\Txt\Ventas-Alicuotas\" + NombreTxt + ".txt";
             if (!File.Exists(path))
             {
                 // Create a file to write to.
@@ -781,6 +713,8 @@ namespace Sico
                     {
                         if (item.Fecha != null)
                         {
+                            string patron = @"[^\w]";
+                            Regex regex = new Regex(patron);
                             int totalCaracteres = 0;
                             //////Tipo Comprobante
                             string TipoComprobante = "006";
@@ -807,46 +741,35 @@ namespace Sico
                             }
                             totalCaracteres = totalCaracteres + FacturaSegundaParte.Length;
                             //// Importe Neto  gravado
-                            //double Neto = 0;
-                            //string ImpImpIntContar = Convert.ToString(ImpImpInt);
 
                             double Neto = 0;
                             string NetoContar = Convert.ToString(Neto);
+                            NetoContar = regex.Replace(NetoContar, "");
                             if (item.Neto1 > 0)
                             {
-                                if (NetoContar.Length < 4)
-                                {
-                                    NetoContar = NetoContar.PadRight(4, '0');
-                                }
+                                NetoContar = Convert.ToString(item.Neto1);
+                                NetoContar = regex.Replace(NetoContar, "");
                                 if (NetoContar.Length < 15)
                                 {
                                     NetoContar = NetoContar.PadLeft(15, '0');
-                                    Neto = Convert.ToDouble(NetoContar);
                                 }
                             }
                             if (item.Neto2 > 0)
                             {
-                                if (NetoContar.Length < 4)
-                                {
-                                    NetoContar = NetoContar.PadRight(4, '0');
-                                }
+                                NetoContar = Convert.ToString(item.Neto2);
+                                NetoContar = regex.Replace(NetoContar, "");
                                 if (NetoContar.Length < 15)
                                 {
                                     NetoContar = NetoContar.PadLeft(15, '0');
-                                    Neto = Convert.ToDouble(NetoContar);
                                 }
-
                             }
                             if (item.Neto3 > 0)
                             {
-                                if (NetoContar.Length < 4)
-                                {
-                                    NetoContar = NetoContar.PadRight(4, '0');
-                                }
+                                NetoContar = Convert.ToString(item.Neto3);
+                                NetoContar = regex.Replace(NetoContar, "");
                                 if (NetoContar.Length < 15)
                                 {
                                     NetoContar = NetoContar.PadLeft(15, '0');
-                                    Neto = Convert.ToDouble(NetoContar);
                                 }
                             }
                             totalCaracteres = totalCaracteres + NetoContar.Length;
@@ -855,7 +778,7 @@ namespace Sico
                             Double CodigoIva = 0;
                             if (item.Iva1 > 0)
                             {
-                                codigo = "10,50";
+                                codigo = "4";
                                 if (codigo.Length < 4)
                                 {
                                     codigo = codigo.PadLeft(4, '0');
@@ -864,7 +787,7 @@ namespace Sico
                             }
                             if (item.Iva2 > 0)
                             {
-                                codigo = "21";
+                                codigo = "5";
                                 if (codigo.Length < 4)
                                 {
                                     codigo = codigo.PadLeft(4, '0');
@@ -873,7 +796,7 @@ namespace Sico
                             }
                             if (item.Iva3 > 0)
                             {
-                                codigo = "27";
+                                codigo = "6";
                                 if (codigo.Length < 4)
                                 {
                                     codigo = codigo.PadLeft(4, '0');
@@ -886,38 +809,29 @@ namespace Sico
                             string IvaContar = Convert.ToString(Iva);
                             if (item.Iva1 > 0)
                             {
-                                if (IvaContar.Length < 4)
-                                {
-                                    IvaContar = IvaContar.PadRight(4, '0');
-                                }
+                                IvaContar = Convert.ToString(item.Iva1);
+                                IvaContar = regex.Replace(IvaContar, "");
                                 if (IvaContar.Length < 15)
                                 {
                                     IvaContar = IvaContar.PadLeft(15, '0');
-                                    Iva = Convert.ToDouble(IvaContar);
                                 }
                             }
                             if (item.Iva2 > 0)
                             {
-                                if (IvaContar.Length < 4)
-                                {
-                                    IvaContar = IvaContar.PadRight(4, '0');
-                                }
+                                IvaContar = Convert.ToString(item.Iva2);
+                                IvaContar = regex.Replace(IvaContar, "");
                                 if (IvaContar.Length < 15)
                                 {
                                     IvaContar = IvaContar.PadLeft(15, '0');
-                                    Iva = Convert.ToDouble(IvaContar);
                                 }
                             }
                             if (item.Iva3 > 0)
                             {
-                                if (IvaContar.Length < 4)
-                                {
-                                    IvaContar = IvaContar.PadRight(4, '0');
-                                }
+                                IvaContar = Convert.ToString(item.Iva3);
+                                IvaContar = regex.Replace(IvaContar, "");
                                 if (IvaContar.Length < 15)
                                 {
                                     IvaContar = IvaContar.PadLeft(15, '0');
-                                    Iva = Convert.ToDouble(IvaContar);
                                 }
                             }
                             totalCaracteres = totalCaracteres + IvaContar.Length;

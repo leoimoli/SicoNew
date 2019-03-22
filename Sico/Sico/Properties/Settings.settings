@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="db" Type="System.String" Scope="User">
-      <Value Profile="(Default)">          server=35.222.31.115;Port=3306;User Id=root;password=Sf+jJ3af;database=sico_prod;Persist Security Info=True</Value>
+      <Value Profile="(Default)">          server=35.222.31.115;Port=3306;User Id=root;password=Sf+jJ3af;database=sico_desarrollo;Persist Security Info=True</Value>
     </Setting>
     <Setting Name="AccessToken" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
