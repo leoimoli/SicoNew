@@ -243,6 +243,16 @@ namespace Sico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap estadisticas_de_ventas {
+            get {
+                object obj = ResourceManager.GetObject("estadisticas-de-ventas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap factura {
             get {
                 object obj = ResourceManager.GetObject("factura", resourceCulture);
@@ -366,6 +376,16 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap SistemaContable {
             get {
                 object obj = ResourceManager.GetObject("SistemaContable", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tarjeta {
+            get {
+                object obj = ResourceManager.GetObject("tarjeta", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

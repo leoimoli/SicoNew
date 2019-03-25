@@ -496,7 +496,6 @@ namespace Sico
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
-
         private void btnCitiVentas_Click(object sender, EventArgs e)
         {
             ProgressBar();
@@ -862,7 +861,7 @@ namespace Sico
                             totalCaracteres = totalCaracteres + IvaContar.Length;
                             if (totalCaracteres == 62)
                             {
-                                sw.WriteLine(TipoComprobante + PuntoDeVenta + FacturaSegundaParte + NetoContar + CodigoIva + IvaContar);
+                                sw.WriteLine(TipoComprobante + PuntoDeVenta + FacturaSegundaParte + NetoContar + codigo + IvaContar);
                             }
                         }
                     }

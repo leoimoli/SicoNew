@@ -166,6 +166,7 @@
     <Compile Include="Clases_Maestras\AutoCompleClass.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteCausa.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteClassEmailPericia.cs" />
+    <Compile Include="Clases_Maestras\AutoCompleteClassProveedores.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteRazonSocial.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteSubCliente.cs" />
     <Compile Include="Clases_Maestras\GenerarExcelCiti.cs" />
@@ -179,9 +180,23 @@
     <Compile Include="ClienteWF.Designer.cs">
       <DependentUpon>ClienteWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComprasWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComprasWF.Designer.cs">
+      <DependentUpon>ComprasWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dao\PericiaDao.cs" />
+    <Compile Include="Dao\ProveedorDao.cs" />
     <Compile Include="Entidades\CuentaEmailPorUsuario.cs" />
     <Compile Include="Entidades\Pericias.cs" />
+    <Compile Include="Entidades\Proveedor.cs" />
+    <Compile Include="FacturacionCompraWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturacionCompraWF.Designer.cs">
+      <DependentUpon>FacturacionCompraWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="FirmaEmailWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,7 +209,14 @@
     <Compile Include="Master2WF.Designer.cs">
       <DependentUpon>Master2WF.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuClienteWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuClienteWF.Designer.cs">
+      <DependentUpon>MenuClienteWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\PericiaNeg.cs" />
+    <Compile Include="Negocio\ProveedorNeg.cs" />
     <Compile Include="NotaDeCreditoWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +274,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveedoresWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProveedoresWF.Designer.cs">
+      <DependentUpon>ProveedoresWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubClienteWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,11 +313,20 @@
     <EmbeddedResource Include="ClienteWF.resx">
       <DependentUpon>ClienteWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ComprasWF.resx">
+      <DependentUpon>ComprasWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturacionCompraWF.resx">
+      <DependentUpon>FacturacionCompraWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FirmaEmailWF.resx">
       <DependentUpon>FirmaEmailWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Master2WF.resx">
       <DependentUpon>Master2WF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuClienteWF.resx">
+      <DependentUpon>MenuClienteWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NotaDeCreditoWF.resx">
       <DependentUpon>NotaDeCreditoWF.cs</DependentUpon>
@@ -322,6 +359,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ProveedoresWF.resx">
+      <DependentUpon>ProveedoresWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubClienteWF.resx">
       <DependentUpon>SubClienteWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -436,6 +476,8 @@
     <None Include="Resources\email.png" />
     <None Include="Resources\e-mail-sobre-abierto.png" />
     <None Include="Resources\SistemaContable.png" />
+    <None Include="Resources\tarjeta.png" />
+    <None Include="Resources\estadisticas-de-ventas.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

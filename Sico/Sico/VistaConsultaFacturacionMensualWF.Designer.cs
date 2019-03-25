@@ -193,7 +193,7 @@
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
             this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVolver.Location = new System.Drawing.Point(224, 414);
+            this.btnVolver.Location = new System.Drawing.Point(159, 414);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(80, 51);
             this.btnVolver.TabIndex = 48;
@@ -208,7 +208,7 @@
             this.btnExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcel.Image = global::Sico.Properties.Resources.icon;
             this.btnExcel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExcel.Location = new System.Drawing.Point(346, 414);
+            this.btnExcel.Location = new System.Drawing.Point(281, 414);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(80, 51);
             this.btnExcel.TabIndex = 47;
@@ -228,11 +228,11 @@
             this.btnCitiVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCitiVentas.Image = global::Sico.Properties.Resources.icon;
             this.btnCitiVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCitiVentas.Location = new System.Drawing.Point(469, 414);
+            this.btnCitiVentas.Location = new System.Drawing.Point(404, 414);
             this.btnCitiVentas.Name = "btnCitiVentas";
             this.btnCitiVentas.Size = new System.Drawing.Size(80, 51);
             this.btnCitiVentas.TabIndex = 49;
-            this.btnCitiVentas.Text = "CITI Ventas";
+            this.btnCitiVentas.Text = "txtSiap";
             this.btnCitiVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnCitiVentas, "Citi Ventas");
             this.btnCitiVentas.UseVisualStyleBackColor = true;

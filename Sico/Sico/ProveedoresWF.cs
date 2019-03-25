@@ -1,4 +1,5 @@
-﻿using Sico.Negocio;
+﻿using Sico.Entidades;
+using Sico.Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,51 +9,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sico.Entidades;
 
 namespace Sico
 {
-    public partial class ClienteWF : MasterWF
+    public partial class ProveedoresWF : MasterWF
     {
-        public ClienteWF()
+        public ProveedoresWF()
         {
             InitializeComponent();
         }
-        private void ClienteWF_Load(object sender, EventArgs e)
+
+        private void ProveedoresWF_Load(object sender, EventArgs e)
         {
 
         }
-        private void cmbProvincia_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string var = cmbProvincia.Text;
-                if (var != "Seleccione")
-                {
-                    var split1 = var.Split(',')[0];
-                    split1 = split1.Trim();
-                    int idProvinciaSeleccionada = Convert.ToInt32(split1);
 
-
-                    List<string> Localidades = new List<string>();
-                    Localidades = ClienteNeg.CargarComboLocalidadesPorIdProvincia(idProvinciaSeleccionada);
-                    cmbLocalidad.Items.Clear();
-                    cmbLocalidad.Text = "Seleccione";
-                    cmbLocalidad.Items.Add("Seleccione");
-                    foreach (string item in Localidades)
-                    {
-                        cmbLocalidad.Text = "Seleccione";
-                        cmbLocalidad.Items.Add(item);
-                    }
-                    this.cmbLocalidad.Enabled = true;
-
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
         #region Funciones
         private void FuncionesBotonHabilitarBuscar()
         {
@@ -67,9 +38,6 @@ namespace Sico
         {
             txtNombreRazonSocial.Clear();
             txtCuit.Clear();
-            txtActividad.Clear();
-            DateTime fecha = DateTime.Now;
-            dtFechaInscripcion.Value = fecha;
             CargarComboCondicion();
             groupBox1.Enabled = false;
             txtEmail.Clear();
@@ -80,8 +48,11 @@ namespace Sico
             txtTelefono.Clear();
             CargarComboProvincia();
             CargarComboLocalidad();
+            chcFacturaA.Checked = false;
+            chcFacturaB.Checked = false;
+            chcFacturaC.Checked = false;
         }
-        private void FuncionesBotonNuevoCliente()
+        private void FuncionesBotonNuevoProveedor()
         {
             chcPorNombreRazonSocial.Checked = false;
             chcPorCuit.Checked = false;
@@ -90,14 +61,14 @@ namespace Sico
             LimpiarCamposBotonNuevoCliente();
             groupBox1.Enabled = true;
             txtNombreRazonSocial.Focus();
-            groupBox1.Text = "Nuevo Usuario";
+            groupBox1.Text = "Nuevo Proveedor";
             btnHabilitarBuscar.Visible = true;
+            txtCuit.Enabled = true;
         }
         private void FuncionesBotonEditar()
         {
             groupBox1.Enabled = true;
-            groupBox1.Text = "Editar Usuario";
-            txtActividad.Focus();
+            groupBox1.Text = "Editar Proveedor";
         }
         private void ProgressBar()
         {
@@ -147,9 +118,7 @@ namespace Sico
         {
             txtNombreRazonSocial.Clear();
             txtCuit.Clear();
-            txtActividad.Clear();
-            DateTime fecha = DateTime.Now;
-            dtFechaInscripcion.Value = fecha;
+
             CargarComboCondicion();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
@@ -161,7 +130,6 @@ namespace Sico
             txtCodArea.Clear();
             txtTelefono.Clear();
             CargarComboProvincia();
-            //CargarComboLocalidad();
         }
         private void CargarComboLocalidad()
         {
@@ -204,7 +172,6 @@ namespace Sico
         {
             txtNombreRazonSocial.Clear();
             txtCuit.Clear();
-            txtActividad.Clear();
             CargarComboCondicion();
             txtCodArea.Clear();
             txtTelefono.Clear();
@@ -212,8 +179,9 @@ namespace Sico
             txtCalle.Clear();
             txtAltura.Clear();
             txtCodigoPostal.Clear();
-            DateTime fecha = DateTime.Now;
-            dtFechaInscripcion.Value = fecha;
+            chcFacturaA.Checked = false;
+            chcFacturaB.Checked = false;
+            chcFacturaC.Checked = false;
             CargarComboProvincia();
             cmbLocalidad.Text = "Seleccione";
             progressBar1.Value = Convert.ToInt32(null);
@@ -221,27 +189,34 @@ namespace Sico
             groupBox1.Enabled = false;
             groupBox4.Enabled = false;
         }
-        private Cliente CargarEntidad()
+        private Proveedor CargarEntidad()
         {
-            Cliente _cliente = new Cliente();
-            _cliente.NombreRazonSocial = txtNombreRazonSocial.Text;
-            _cliente.Cuit = txtCuit.Text;
-            _cliente.Actividad = txtActividad.Text;
-            DateTime fecha = dtFechaInscripcion.Value;
-            _cliente.FechaDeInscripcion = fecha;
-            _cliente.CondicionAntiAfip = cmbCondicionAntiAfip.Text;
+            Proveedor _proveedor = new Proveedor();
+            _proveedor.NombreRazonSocial = txtNombreRazonSocial.Text;
+            _proveedor.Cuit = txtCuit.Text;
+            _proveedor.CondicionAntiAfip = cmbCondicionAntiAfip.Text;
             string telefono = txtCodArea.Text + "-" + txtTelefono.Text;
-            _cliente.Telefono = telefono;
-            _cliente.Email = txtEmail.Text;
+            _proveedor.Telefono = telefono;
+            _proveedor.Email = txtEmail.Text;
             ////// Datos del domicilio
-            _cliente.Provincia = cmbProvincia.Text;
-            _cliente.Localidad = cmbLocalidad.Text;
-            _cliente.Calle = txtCalle.Text;
-            _cliente.Altura = txtAltura.Text;
-            _cliente.CodigoPostal = txtCodigoPostal.Text;
+            _proveedor.Provincia = cmbProvincia.Text;
+            _proveedor.Localidad = cmbLocalidad.Text;
+            _proveedor.Calle = txtCalle.Text;
+            _proveedor.Altura = txtAltura.Text;
+            _proveedor.CodigoPostal = txtCodigoPostal.Text;
             int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
-            _cliente.idUsuario = idusuarioLogueado;
-            return _cliente;
+            _proveedor.idUsuario = idusuarioLogueado;
+            string Factura = "";
+            if (chcFacturaA.Checked == true)
+                Factura = "FacturaA";
+            if (chcFacturaB.Checked == true)
+                Factura = "FacturaB";
+            if (chcFacturaA.Checked == true & chcFacturaB.Checked == true)
+                Factura = "FacturaA-FacturaB";
+            if (chcFacturaC.Checked == true)
+                Factura = "FacturaC";
+            _proveedor.Factura = Factura;
+            return _proveedor;
         }
         #endregion
         #region Botones
@@ -252,14 +227,14 @@ namespace Sico
         {
             try
             {
-                Entidades.Cliente _cliente = CargarEntidad();
+                Entidades.Proveedor _proveedor = CargarEntidad();
                 if (groupBox3.Visible == true)
                 {
-                    bool Exito = ClienteNeg.EditarCliente(_cliente);
+                    bool Exito = ProveedorNeg.EditarProvvedor(_proveedor);
                     if (Exito == true)
                     {
                         ProgressBar();
-                        const string message2 = "La edición del cliente se registro exitosamente.";
+                        const string message2 = "La edición del proveedor se registro exitosamente.";
                         const string caption2 = "Éxito";
                         var result2 = MessageBox.Show(message2, caption2,
                                                      MessageBoxButtons.OK,
@@ -270,11 +245,11 @@ namespace Sico
                 else
                 {
 
-                    bool Exito = ClienteNeg.GurdarCliente(_cliente);
+                    bool Exito = ProveedorNeg.GurdarProveedor(_proveedor);
                     if (Exito == true)
                     {
                         ProgressBar();
-                        const string message2 = "Se registro el cliente exitosamente.";
+                        const string message2 = "Se registro el proveedor exitosamente.";
                         const string caption2 = "Éxito";
                         var result2 = MessageBox.Show(message2, caption2,
                                                      MessageBoxButtons.OK,
@@ -293,7 +268,7 @@ namespace Sico
         {
             try
             {
-                FuncionesBotonNuevoCliente();
+                FuncionesBotonNuevoProveedor();
 
             }
             catch (Exception ex)
@@ -339,19 +314,18 @@ namespace Sico
             {
                 if (chcPorCuit.Checked == true)
                 {
-                    List<Cliente> _cliente = new List<Cliente>();
+                    List<Proveedor> _cliente = new List<Proveedor>();
                     var cuit = txtCuitBuscar.Text;
-                    _cliente = ClienteNeg.BuscarClientePorCuit(cuit);
+                    _cliente = ProveedorNeg.BuscarProveedorPorCuit(cuit);
 
                     if (_cliente.Count > 0)
                     {
-                        var cliente = _cliente.First();
-                        RazonSocial = cliente.NombreRazonSocial;
-                        Cuit = cliente.Cuit;
-                        txtNombreRazonSocial.Text = cliente.NombreRazonSocial;
-                        txtCuit.Text = cliente.Cuit;
-                        txtActividad.Text = cliente.Actividad;
-                        var tel = cliente.Telefono;
+                        var proveedor = _cliente.First();
+                        RazonSocial = proveedor.NombreRazonSocial;
+                        Cuit = proveedor.Cuit;
+                        txtNombreRazonSocial.Text = proveedor.NombreRazonSocial;
+                        txtCuit.Text = proveedor.Cuit;
+                        var tel = proveedor.Telefono;
                         string var = tel;
                         var split1 = var.Split('-')[0];
                         var split2 = var.Split('-')[1];
@@ -359,22 +333,23 @@ namespace Sico
                         split2 = split2.Trim();
                         txtCodArea.Text = split1;
                         txtTelefono.Text = split2;
-                        txtEmail.Text = cliente.Email;
-                        txtCalle.Text = cliente.Calle;
-                        txtAltura.Text = cliente.Altura;
-                        txtCodigoPostal.Text = cliente.CodigoPostal;
-                        cmbCondicionAntiAfip.Text = cliente.CondicionAntiAfip;
-                        cmbProvincia.Text = cliente.Provincia;
-                        cmbLocalidad.Text = cliente.Localidad;
+                        txtEmail.Text = proveedor.Email;
+                        txtCalle.Text = proveedor.Calle;
+                        txtAltura.Text = proveedor.Altura;
+                        txtCodigoPostal.Text = proveedor.CodigoPostal;
+                        cmbCondicionAntiAfip.Text = proveedor.CondicionAntiAfip;
+                        cmbProvincia.Text = proveedor.Provincia;
+                        cmbLocalidad.Text = proveedor.Localidad;
                         txtCuit.Enabled = false;
                         btnEditar.Visible = true;
                         btnEliminar.Visible = true;
                         btnHistorial.Visible = true;
+
                     }
                     else
                     {
                         txtBuscar.Focus();
-                        const string message = "No existe ningun cliente con el cuit ingresado.";
+                        const string message = "No existe ningún proveedor con el cuit ingresado.";
                         const string caption = "Atención";
                         var result = MessageBox.Show(message, caption,
                                                      MessageBoxButtons.OK,
@@ -384,18 +359,17 @@ namespace Sico
                 }
                 else
                 {
-                    List<Cliente> _cliente = new List<Cliente>();
+                    List<Proveedor> _proveedor = new List<Proveedor>();
                     var nombreRazonSocial = txtBuscar.Text;
-                    _cliente = ClienteNeg.BuscarClientePorNombreRazonSocial(nombreRazonSocial);
-                    if (_cliente.Count > 0)
+                    _proveedor = ProveedorNeg.BuscarProveedorPorNombreRazonSocial(nombreRazonSocial);
+                    if (_proveedor.Count > 0)
                     {
-                        var cliente = _cliente.First();
-                        RazonSocial = cliente.NombreRazonSocial;
-                        Cuit = cliente.Cuit;
-                        txtNombreRazonSocial.Text = cliente.NombreRazonSocial;
-                        txtCuit.Text = cliente.Cuit;
-                        txtActividad.Text = cliente.Actividad;
-                        var tel = cliente.Telefono;
+                        var proveedor = _proveedor.First();
+                        RazonSocial = proveedor.NombreRazonSocial;
+                        Cuit = proveedor.Cuit;
+                        txtNombreRazonSocial.Text = proveedor.NombreRazonSocial;
+                        txtCuit.Text = proveedor.Cuit;
+                        var tel = proveedor.Telefono;
                         string var = tel;
                         var split1 = var.Split('-')[0];
                         var split2 = var.Split('-')[1];
@@ -403,22 +377,46 @@ namespace Sico
                         split2 = split2.Trim();
                         txtCodArea.Text = split1;
                         txtTelefono.Text = split2;
-                        txtEmail.Text = cliente.Email;
-                        txtCalle.Text = cliente.Calle;
-                        txtAltura.Text = cliente.Altura;
-                        txtCodigoPostal.Text = cliente.CodigoPostal;
-                        cmbCondicionAntiAfip.Text = cliente.CondicionAntiAfip;
-                        cmbProvincia.Text = cliente.Provincia;
-                        cmbLocalidad.Text = cliente.Localidad;
+                        txtEmail.Text = proveedor.Email;
+                        txtCalle.Text = proveedor.Calle;
+                        txtAltura.Text = proveedor.Altura;
+                        txtCodigoPostal.Text = proveedor.CodigoPostal;
+                        cmbCondicionAntiAfip.Text = proveedor.CondicionAntiAfip;
+                        cmbProvincia.Text = proveedor.Provincia;
+                        cmbLocalidad.Text = proveedor.Localidad;
                         txtCuit.Enabled = false;
                         btnEditar.Visible = true;
                         btnEliminar.Visible = true;
                         btnHistorial.Visible = true;
+
+
+                        var fac = proveedor.Factura;
+                        if (fac.Length > 8)
+                        {
+                            string Fact = fac;
+                            var splitFactura1 = Fact.Split('-')[0];
+                            var splitFactura2 = Fact.Split('-')[1];
+                            splitFactura1 = splitFactura1.Trim();
+                            splitFactura2 = splitFactura2.Trim();
+                            chcFacturaA.Checked = true;
+                            chcFacturaB.Checked = true;
+                        }
+                        if (fac.Length <= 8)
+                        {
+                            string Fact = fac;
+                            if (Fact == "FacturaA")
+                            { chcFacturaA.Checked = true; }
+                            if (Fact == "FacturaB")
+                            { chcFacturaB.Checked = true; }
+                            if (Fact == "FacturaC")
+                            { chcFacturaC.Checked = true; }
+                        }
+
                     }
                     else
                     {
                         txtBuscar.Focus();
-                        const string message = "No existe ningun cliente con el nombre o razón social ingresado.";
+                        const string message = "No existe ningún proveedor con el nombre o razón social ingresado.";
                         const string caption = "Atención";
                         var result = MessageBox.Show(message, caption,
                                                      MessageBoxButtons.OK,
@@ -455,12 +453,62 @@ namespace Sico
         }
         private void btnHistorial_Click(object sender, EventArgs e)
         {
-            MenuClienteWF _tarea = new MenuClienteWF(RazonSocial, Cuit);
+            TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
             _tarea.Show();
             Hide();
         }
         #endregion
 
+        private void chcFacturaC_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcFacturaC.Checked == true)
+            {
+                chcFacturaA.Checked = false;
+                chcFacturaB.Checked = false;
+            }
+        }
+        private void chcFacturaB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcFacturaB.Checked == true)
+            {
+                chcFacturaC.Checked = false;
+            }
+        }
+        private void chcFacturaA_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcFacturaA.Checked == true)
+            {
+                chcFacturaC.Checked = false;
+            }
+        }
 
+        private void chcPorCuit_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (chcPorCuit.Checked == true)
+            {
+                txtBuscar.Clear();
+                txtBuscar.Visible = false;
+                txtCuitBuscar.Visible = true;
+                chcPorNombreRazonSocial.Checked = false;
+                lblDniOApellidoNombre.Text = "Buscar Por Cuit(*):";
+                txtBuscar.Focus();
+            }
+        }
+        private void chcPorNombreRazonSocial_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (chcPorNombreRazonSocial.Checked == true)
+            {
+                txtCuitBuscar.Clear();
+                txtCuitBuscar.Visible = false;
+                txtBuscar.Visible = true;
+                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassProveedores.Autocomplete();
+                txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtBuscar.Enabled = true;
+                chcPorCuit.Checked = false;
+                lblDniOApellidoNombre.Text = "Buscar Por Nombre o Razón Social(*):";
+                txtBuscar.Focus();
+            }
+        }
     }
 }
