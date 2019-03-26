@@ -38,6 +38,11 @@ namespace Sico.Dao
             return _listaProvincia;
         }
 
+        internal static bool GuardarFacturaSubCliente(FacturaCompra _factura)
+        {
+            throw new NotImplementedException();
+        }
+
         public static List<SubCliente> BuscarDetalleFacturaSubCliente(string idsubCliente)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();

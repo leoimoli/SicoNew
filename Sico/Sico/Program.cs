@@ -16,7 +16,7 @@ namespace Sico
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FacturacionCompraWF());
+            Application.Run(new LoginWF());
         }
     }
 }

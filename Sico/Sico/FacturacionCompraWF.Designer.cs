@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -83,7 +84,6 @@
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,6 +147,15 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Facturación";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(479, 288);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(330, 23);
+            this.progressBar1.TabIndex = 85;
+            this.progressBar1.Value = 50;
+            this.progressBar1.Visible = false;
             // 
             // btnActualizar
             // 
@@ -230,6 +239,8 @@
             this.txtNoGravado.Name = "txtNoGravado";
             this.txtNoGravado.Size = new System.Drawing.Size(211, 20);
             this.txtNoGravado.TabIndex = 77;
+            this.txtNoGravado.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
+            this.txtNoGravado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNoGravado_KeyDown);
             // 
             // btnGuardar
             // 
@@ -244,6 +255,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -267,6 +279,8 @@
             this.txtPercepIngBrutos.Name = "txtPercepIngBrutos";
             this.txtPercepIngBrutos.Size = new System.Drawing.Size(211, 20);
             this.txtPercepIngBrutos.TabIndex = 74;
+            this.txtPercepIngBrutos.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
+            this.txtPercepIngBrutos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPercepIngBrutos_KeyDown);
             // 
             // labelNoGravado
             // 
@@ -285,6 +299,8 @@
             this.txtPercepIVA.Name = "txtPercepIVA";
             this.txtPercepIVA.Size = new System.Drawing.Size(211, 20);
             this.txtPercepIVA.TabIndex = 70;
+            this.txtPercepIVA.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
+            this.txtPercepIVA.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPercepIVA_KeyDown);
             // 
             // label19
             // 
@@ -483,6 +499,8 @@
             this.txtNeto3.Name = "txtNeto3";
             this.txtNeto3.Size = new System.Drawing.Size(211, 20);
             this.txtNeto3.TabIndex = 47;
+            this.txtNeto3.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
+            this.txtNeto3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNeto3_KeyDown);
             // 
             // txtNeto2
             // 
@@ -491,6 +509,8 @@
             this.txtNeto2.Name = "txtNeto2";
             this.txtNeto2.Size = new System.Drawing.Size(211, 20);
             this.txtNeto2.TabIndex = 46;
+            this.txtNeto2.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
+            this.txtNeto2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNeto2_KeyDown);
             // 
             // txtNeto1
             // 
@@ -499,6 +519,8 @@
             this.txtNeto1.Name = "txtNeto1";
             this.txtNeto1.Size = new System.Drawing.Size(211, 20);
             this.txtNeto1.TabIndex = 45;
+            this.txtNeto1.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
+            this.txtNeto1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNeto1_KeyDown);
             // 
             // txtTotal3
             // 
@@ -508,7 +530,6 @@
             this.txtTotal3.Size = new System.Drawing.Size(211, 20);
             this.txtTotal3.TabIndex = 44;
             this.txtTotal3.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
-            this.txtTotal3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotal3_KeyDown);
             // 
             // txtTotal2
             // 
@@ -518,7 +539,6 @@
             this.txtTotal2.Size = new System.Drawing.Size(211, 20);
             this.txtTotal2.TabIndex = 43;
             this.txtTotal2.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
-            this.txtTotal2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotal2_KeyDown);
             this.txtTotal2.Validated += new System.EventHandler(this.txtTotal1_TextChanged);
             // 
             // txtTotal1
@@ -529,7 +549,6 @@
             this.txtTotal1.Size = new System.Drawing.Size(211, 20);
             this.txtTotal1.TabIndex = 42;
             this.txtTotal1.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
-            this.txtTotal1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotal1_KeyDown);
             // 
             // txtApellidoNombre
             // 
@@ -652,15 +671,6 @@
             this.label18.Size = new System.Drawing.Size(199, 25);
             this.label18.TabIndex = 4;
             this.label18.Text = "Facturación Compras";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(479, 288);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(330, 23);
-            this.progressBar1.TabIndex = 85;
-            this.progressBar1.Value = 50;
-            this.progressBar1.Visible = false;
             // 
             // FacturacionCompraWF
             // 

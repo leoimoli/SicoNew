@@ -60,100 +60,9 @@ namespace Sico
             }
         }
         public static decimal Total;
-        private void txtTotal1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                ///// Calculo el NetoGral Alicuota 10,5
-                double Total1 = Convert.ToDouble(txtTotal1.Text);
-                decimal NetoCalculado = CalcularValorNeto1(Total1);
-                txtNeto1.Text = Convert.ToString(NetoCalculado);
 
-                ///// Calculo el IVA Alicuota 10,5
-                decimal IvaCalculado = CalcularIva1(NetoCalculado);
-                txtIva1.Text = Convert.ToString(IvaCalculado);
 
-                ///// Calculo el Monto Total
-                if (Total == 0)
-                {
-                    lblTotalEdit.Text = Convert.ToString(Total1);
-                    decimal TotalCargado = Convert.ToDecimal(Total1);
-                    Total = TotalCargado;
-                }
-                else
-                {
-                    RecalcularTotal1();
-                    //decimal TotalCargado = Convert.ToDecimal(Total1);
-                    //decimal TotalMostrar = Total + TotalCargado;
-                    //Total = TotalMostrar;
-                    lblTotalEdit.Text = Convert.ToString(Total);
-                }
-                txtTotal2.Focus();
-            }
-        }
-        private void txtTotal2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                ///// Calculo el NetoGral Alicuota 21
-                double Total2 = Convert.ToDouble(txtTotal2.Text);
-                decimal NetoCalculado = CalcularValorNeto2(Total2);
-                txtNeto2.Text = Convert.ToString(NetoCalculado);
 
-                ///// Calculo el IVA Alicuota 21
-                decimal IvaCalculado = CalcularIva2(NetoCalculado);
-                txtIva2.Text = Convert.ToString(IvaCalculado);
-
-                ///// Calculo el Monto Total
-                if (Total == 0)
-                {
-                    lblTotalEdit.Text = Convert.ToString(Total2);
-                    decimal TotalCargado = Convert.ToDecimal(Total2);
-                    Total = TotalCargado;
-                }
-                else
-                {
-                    RecalcularTotal2();
-                    lblTotalEdit.Text = Convert.ToString(Total);
-                    //decimal TotalCargado = Convert.ToDecimal(Total2);
-                    //decimal TotalMostrar = Total + TotalCargado;
-                    //Total = TotalMostrar;
-                    //lblTotalEdit.Text = Convert.ToString(TotalMostrar);
-                }
-                txtTotal3.Focus();
-            }
-        }
-        private void txtTotal3_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                ///// Calculo el NetoGral Alicuota 27
-                double Total3 = Convert.ToDouble(txtTotal3.Text);
-                decimal NetoCalculado = CalcularValorNeto3(Total3);
-                txtNeto3.Text = Convert.ToString(NetoCalculado);
-
-                ///// Calculo el IVA Alicuota 27
-                decimal IvaCalculado = CalcularIva3(NetoCalculado);
-                txtIva3.Text = Convert.ToString(IvaCalculado);
-
-                ///// Calculo el Monto Total
-                if (Total == 0)
-                {
-                    lblTotalEdit.Text = Convert.ToString(Total3);
-                    decimal TotalCargado = Convert.ToDecimal(Total3);
-                    Total = TotalCargado;
-                }
-                else
-                {
-                    RecalcularTotal3();
-                    //lblTotalEdit.Text = Convert.ToString(Total);
-                    //decimal TotalCargado = Convert.ToDecimal(Total3);
-                    //decimal TotalMostrar = Total + TotalCargado;
-                    //Total = TotalMostrar;
-                    lblTotalEdit.Text = Convert.ToString(Total);
-                }
-            }
-        }
         private decimal CalcularValorNeto1(double total1)
         {
             string res = Convert.ToString(Math.Round((total1 / 1.105), 2));
@@ -193,6 +102,20 @@ namespace Sico
             decimal resultado = Convert.ToDecimal(res);
             return resultado;
         }
+
+        public void RecalcularTotal4()
+        {
+            decimal Valor1 = 0;
+            decimal Valor2 = 0;
+            decimal Valor3 = 0;
+            decimal NuevoValor = Convert.ToDecimal(txtPercepIngBrutos.Text);
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+
+            Total = NuevoValor + Valor1 + Valor2 + Valor3;
+        }
+
         public void RecalcularTotal1()
         {
             decimal Valor2 = 0;
@@ -310,7 +233,7 @@ namespace Sico
             txtIva3.Enabled = false;
             txtPercepIngBrutos.Enabled = false;
             txtPercepIVA.Enabled = false;
-            labelNoGravado.Enabled = false;
+            txtNoGravado.Enabled = false;
             cmbCodigoMoneda.Enabled = false;
             cmbCodigoOperacion.Enabled = false;
             txtTipoCambio.Enabled = false;
@@ -340,6 +263,7 @@ namespace Sico
             double pow = Math.Pow(i, i);
         }
         #endregion
+        public static int idProveedorSeleccionado;
         private void txtCuit_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -352,11 +276,13 @@ namespace Sico
                     if (_DatosProveedor.Count > 0)
                     {
                         var datos = _DatosProveedor.First();
+                        idProveedorSeleccionado = datos.IdProveedor;
                         txtApellidoNombre.Text = datos.NombreRazonSocial;
                         txtCodigoDocumento.Text = "80-Cuit";
                         cmbCodigoMoneda.Text = "PES - PesosArgentinos";
                         cmbCodigoOperacion.Text = "0 - NO CORRESPONDE";
                         string TipoComprobante = datos.Factura;
+                        txtTipoCambio.Text = "1,000000";
                         if (TipoComprobante.Length > 8)
                         {
                             string Fact = TipoComprobante;
@@ -399,6 +325,251 @@ namespace Sico
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+        }
+
+        private void txtNeto1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ///// Calculo el IVA Alicuota 10,5
+                double Total1 = Convert.ToDouble(txtNeto1.Text);
+                decimal DatoIngresado = Convert.ToDecimal(Total1);
+                string res = Convert.ToString(Math.Round((Total1 * 0.105), 2));
+                decimal resultadoIva1 = Convert.ToDecimal(res);
+                txtIva1.Text = res;
+                ///// Calculo el total1             
+                decimal CampoTotal = resultadoIva1 + DatoIngresado;
+                txtTotal1.Text = Convert.ToString(CampoTotal);
+                if (Total == 0)
+                {
+                    lblTotalEdit.Text = Convert.ToString(CampoTotal);
+                    decimal TotalCargado = Convert.ToDecimal(CampoTotal);
+                    Total = TotalCargado;
+                }
+                else
+                {
+                    RecalcularTotal1();
+                    lblTotalEdit.Text = Convert.ToString(Total);
+                }
+                txtNeto2.Focus();
+            }
+        }
+
+        private void txtNeto2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ///// Calculo el IVA Alicuota 21
+                double Total2 = Convert.ToDouble(txtNeto2.Text);
+                decimal DatoIngresado = Convert.ToDecimal(Total2);
+                string res = Convert.ToString(Math.Round((Total2 * 0.21), 2));
+                decimal resultadoIva2 = Convert.ToDecimal(res);
+                txtIva2.Text = res;
+                ///// Calculo el total2          
+                decimal CampoTotal = resultadoIva2 + DatoIngresado;
+                txtTotal2.Text = Convert.ToString(CampoTotal);
+                if (Total == 0)
+                {
+                    lblTotalEdit.Text = Convert.ToString(CampoTotal);
+                    decimal TotalCargado = Convert.ToDecimal(CampoTotal);
+                    Total = TotalCargado;
+                }
+                else
+                {
+                    RecalcularTotal1();
+                    lblTotalEdit.Text = Convert.ToString(Total);
+                }
+                txtNeto3.Focus();
+            }
+        }
+
+        private void txtNeto3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ///// Calculo el IVA Alicuota 27
+                double Total3 = Convert.ToDouble(txtNeto3.Text);
+                decimal DatoIngresado = Convert.ToDecimal(Total3);
+                string res = Convert.ToString(Math.Round((Total3 * 0.27), 2));
+                decimal resultadoIva3 = Convert.ToDecimal(res);
+                txtIva3.Text = res;
+                ///// Calculo el total2          
+                decimal CampoTotal = resultadoIva3 + DatoIngresado;
+                txtTotal3.Text = Convert.ToString(CampoTotal);
+                if (Total == 0)
+                {
+                    lblTotalEdit.Text = Convert.ToString(CampoTotal);
+                    decimal TotalCargado = Convert.ToDecimal(CampoTotal);
+                    Total = TotalCargado;
+                }
+                else
+                {
+                    RecalcularTotal1();
+                    lblTotalEdit.Text = Convert.ToString(Total);
+                }
+            }
+        }
+
+        private void txtPercepIngBrutos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (Total == 0)
+                {
+                    decimal ValorIngresado = Convert.ToDecimal(txtPercepIngBrutos.Text);
+                    lblTotalEdit.Text = Convert.ToString(ValorIngresado);
+                    decimal TotalCargado = Convert.ToDecimal(ValorIngresado);
+                    Total = TotalCargado;
+                }
+                else
+                {
+                    RecalcularTotal4();
+                    lblTotalEdit.Text = Convert.ToString(Total);
+                }
+                txtPercepIVA.Focus();
+            }
+        }
+
+        private void txtPercepIVA_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (Total == 0)
+                {
+                    decimal ValorIngresado = Convert.ToDecimal(txtPercepIVA.Text);
+                    lblTotalEdit.Text = Convert.ToString(ValorIngresado);
+                    decimal TotalCargado = Convert.ToDecimal(ValorIngresado);
+                    Total = TotalCargado;
+                }
+                else
+                {
+                    RecalcularTotal5();
+                    lblTotalEdit.Text = Convert.ToString(Total);
+                }
+                txtNoGravado.Focus();
+            }
+        }
+        private void RecalcularTotal5()
+        {
+            decimal Valor1 = 0;
+            decimal Valor2 = 0;
+            decimal Valor3 = 0;
+            decimal Valor4 = 0;
+            decimal NuevoValor = Convert.ToDecimal(txtPercepIVA.Text);
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+            if (txtPercepIngBrutos.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+
+            Total = NuevoValor + Valor1 + Valor2 + Valor3 + Valor4;
+        }
+
+        private void txtNoGravado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (Total == 0)
+                {
+                    decimal ValorIngresado = Convert.ToDecimal(txtNoGravado.Text);
+                    lblTotalEdit.Text = Convert.ToString(ValorIngresado);
+                    decimal TotalCargado = Convert.ToDecimal(ValorIngresado);
+                    Total = TotalCargado;
+                }
+                else
+                {
+                    RecalcularTotal6();
+                    lblTotalEdit.Text = Convert.ToString(Total);
+                }
+            }
+        }
+        private void RecalcularTotal6()
+        {
+            decimal Valor1 = 0;
+            decimal Valor2 = 0;
+            decimal Valor3 = 0;
+            decimal Valor4 = 0;
+            decimal Valor5 = 0;
+            decimal NuevoValor = Convert.ToDecimal(txtNoGravado.Text);
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+            if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
+            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+
+            Total = NuevoValor + Valor1 + Valor2 + Valor3 + Valor4 + Valor5;
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entidades.FacturaCompra _factura = CargarEntidad();
+                bool Exito = ComprasNeg.GuardarFacturaCompra(_factura);
+                if (Exito == true)
+                {
+                    ProgressBar();
+                    const string message2 = "Se registro la factura de compra exitosamente.";
+                    const string caption2 = "Éxito";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Asterisk);
+                    LimpiarCampos();
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        private FacturaCompra CargarEntidad()
+        {
+            FacturaCompra _factura = new FacturaCompra();
+            _factura.idProveedor = idProveedorSeleccionado;
+            _factura.CodigoDocumento = txtCodigoDocumento.Text;
+            _factura.ApellidoNombre = txtApellidoNombre.Text;
+            DateTime fecha = dtFecha.Value;
+            _factura.Fecha = fecha.ToShortDateString();
+            _factura.TipoComprobante = cmbTipoComprobante.Text;
+            _factura.NroFactura = txtFactura.Text;
+            if (!String.IsNullOrEmpty(txtTotal1.Text))
+                _factura.Total1 = Convert.ToDecimal(txtTotal1.Text);
+            if (!String.IsNullOrEmpty(txtTotal2.Text))
+                _factura.Total2 = Convert.ToDecimal(txtTotal2.Text);
+            if (!String.IsNullOrEmpty(txtTotal3.Text))
+                _factura.Total3 = Convert.ToDecimal(txtTotal3.Text);
+            if (!String.IsNullOrEmpty(txtNeto1.Text))
+                _factura.Neto1 = Convert.ToDecimal(txtNeto1.Text);
+            if (!String.IsNullOrEmpty(txtNeto2.Text))
+                _factura.Neto2 = Convert.ToDecimal(txtNeto2.Text);
+            if (!String.IsNullOrEmpty(txtNeto3.Text))
+                _factura.Neto3 = Convert.ToDecimal(txtNeto3.Text);
+            _factura.Alicuota1 = lbl105.Text;
+            _factura.Alicuota2 = lbl21.Text;
+            _factura.Alicuota3 = lbl27.Text;
+            if (!String.IsNullOrEmpty(txtIva1.Text))
+                _factura.Iva1 = Convert.ToDecimal(txtIva1.Text);
+            if (!String.IsNullOrEmpty(txtIva2.Text))
+                _factura.Iva2 = Convert.ToDecimal(txtIva2.Text);
+            if (!String.IsNullOrEmpty(txtIva3.Text))
+                _factura.Iva3 = Convert.ToDecimal(txtIva3.Text);
+            _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
+            if (!String.IsNullOrEmpty(txtPercepIngBrutos.Text))
+                _factura.PercepIngBrutos = Convert.ToDecimal(txtPercepIngBrutos.Text);
+            _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
+            if (!String.IsNullOrEmpty(txtPercepIVA.Text))
+                _factura.PercepIngBrutos = Convert.ToDecimal(txtPercepIVA.Text);
+            _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
+            if (!String.IsNullOrEmpty(txtNoGravado.Text))
+                _factura.PercepIngBrutos = Convert.ToDecimal(txtNoGravado.Text);
+            _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
+            _factura.CodigoMoneda = cmbCodigoMoneda.Text;
+            _factura.TipoDeCambio = txtTipoCambio.Text;
+            _factura.CodigoTipoOperacion = cmbCodigoOperacion.Text;
+            _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
+            return _factura;
         }
     }
 }

@@ -35,5 +35,25 @@ namespace Sico.Negocio
         {
             throw new NotImplementedException();
         }
+
+        public static bool GuardarFacturaCompra(FacturaCompra _factura)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatosFactura(_factura);
+                exito = ComprasDao.GuardarFacturaCompra(_factura);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
+
+        private static void ValidarDatosFactura(FacturaCompra _factura)
+        {
+           
+        }
     }
 }

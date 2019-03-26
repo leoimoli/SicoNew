@@ -8,11 +8,12 @@ namespace Sico.Entidades
 {
     public class FacturaCompra
     {
-        public int idCompra { get; set; }
+        public int idProveedor { get; set; }
+        public int idFactura { get; set; }
         public string NroFactura { get; set; }
         public string Fecha { get; set; }
         public string ApellidoNombre { get; set; }
-        public string Dni { get; set; }
+        public string CodigoDocumento { get; set; }
         public string Direccion { get; set; }
         public Decimal Monto { get; set; }
         public int idCliente { get; set; }

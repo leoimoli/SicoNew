@@ -116,6 +116,7 @@
             this.btnCargarCompra.Text = "Cargar Compra";
             this.btnCargarCompra.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCargarCompra.UseVisualStyleBackColor = true;
+            this.btnCargarCompra.Click += new System.EventHandler(this.btnCargarCompra_Click);
             // 
             // btnAgregarProveedor
             // 

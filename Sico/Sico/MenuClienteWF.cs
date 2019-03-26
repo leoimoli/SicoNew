@@ -39,7 +39,7 @@ namespace Sico
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
-            ComprasWF _compras = new ComprasWF();
+            ComprasWF _compras = new ComprasWF(RazonSocial,Cuit);
             _compras.Show();
             Hide();
         }
