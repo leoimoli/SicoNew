@@ -430,11 +430,6 @@ namespace Sico
 
             Total = NuevoValor3 + Valor2 + Valor1;
         }
-
-
-
         #endregion
-
-
     }
 }

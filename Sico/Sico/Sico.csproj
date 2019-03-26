@@ -186,9 +186,11 @@
     <Compile Include="ComprasWF.Designer.cs">
       <DependentUpon>ComprasWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dao\ComprasDao.cs" />
     <Compile Include="Dao\PericiaDao.cs" />
     <Compile Include="Dao\ProveedorDao.cs" />
     <Compile Include="Entidades\CuentaEmailPorUsuario.cs" />
+    <Compile Include="Entidades\FacturaCompra.cs" />
     <Compile Include="Entidades\Pericias.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="FacturacionCompraWF.cs">
@@ -215,6 +217,7 @@
     <Compile Include="MenuClienteWF.Designer.cs">
       <DependentUpon>MenuClienteWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\ComprasNeg.cs" />
     <Compile Include="Negocio\PericiaNeg.cs" />
     <Compile Include="Negocio\ProveedorNeg.cs" />
     <Compile Include="NotaDeCreditoWF.cs">
@@ -478,6 +481,7 @@
     <None Include="Resources\SistemaContable.png" />
     <None Include="Resources\tarjeta.png" />
     <None Include="Resources\estadisticas-de-ventas.png" />
+    <None Include="Resources\refrescar.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

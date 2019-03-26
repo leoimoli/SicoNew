@@ -53,6 +53,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnConsultarTotales = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -67,7 +68,7 @@
             this.groupBox3.Controls.Add(this.lblCuitEdit);
             this.groupBox3.Controls.Add(this.lblNombreEdit);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(38, 86);
+            this.groupBox3.Location = new System.Drawing.Point(38, 118);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(878, 121);
             this.groupBox3.TabIndex = 11;
@@ -167,7 +168,7 @@
             // dgvSubClientes
             // 
             this.dgvSubClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSubClientes.Location = new System.Drawing.Point(86, 268);
+            this.dgvSubClientes.Location = new System.Drawing.Point(86, 300);
             this.dgvSubClientes.Name = "dgvSubClientes";
             this.dgvSubClientes.Size = new System.Drawing.Size(830, 305);
             this.dgvSubClientes.TabIndex = 17;
@@ -258,7 +259,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(34, 231);
+            this.label2.Location = new System.Drawing.Point(34, 263);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 20);
             this.label2.TabIndex = 19;
@@ -269,7 +270,7 @@
             // 
             this.txtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBuscar.Enabled = false;
-            this.txtBuscar.Location = new System.Drawing.Point(468, 233);
+            this.txtBuscar.Location = new System.Drawing.Point(468, 265);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(336, 20);
             this.txtBuscar.TabIndex = 20;
@@ -279,7 +280,7 @@
             // 
             this.lblSeleccionar.AutoSize = true;
             this.lblSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeleccionar.Location = new System.Drawing.Point(261, 234);
+            this.lblSeleccionar.Location = new System.Drawing.Point(261, 266);
             this.lblSeleccionar.Name = "lblSeleccionar";
             this.lblSeleccionar.Size = new System.Drawing.Size(201, 15);
             this.lblSeleccionar.TabIndex = 21;
@@ -290,7 +291,7 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(675, 576);
+            this.lblCantidad.Location = new System.Drawing.Point(675, 608);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(48, 20);
             this.lblCantidad.TabIndex = 23;
@@ -301,7 +302,7 @@
             // 
             this.lblCantidadEdit.AutoSize = true;
             this.lblCantidadEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadEdit.Location = new System.Drawing.Point(729, 576);
+            this.lblCantidadEdit.Location = new System.Drawing.Point(729, 608);
             this.lblCantidadEdit.Name = "lblCantidadEdit";
             this.lblCantidadEdit.Size = new System.Drawing.Size(33, 20);
             this.lblCantidadEdit.TabIndex = 24;
@@ -312,7 +313,7 @@
             // 
             this.btnConsultarTotales.Image = global::Sico.Properties.Resources.factura__1_;
             this.btnConsultarTotales.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConsultarTotales.Location = new System.Drawing.Point(865, 218);
+            this.btnConsultarTotales.Location = new System.Drawing.Point(865, 250);
             this.btnConsultarTotales.Name = "btnConsultarTotales";
             this.btnConsultarTotales.Size = new System.Drawing.Size(49, 39);
             this.btnConsultarTotales.TabIndex = 25;
@@ -326,7 +327,7 @@
             // 
             this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscar.Location = new System.Drawing.Point(810, 218);
+            this.btnBuscar.Location = new System.Drawing.Point(810, 250);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(49, 39);
             this.btnBuscar.TabIndex = 22;
@@ -336,11 +337,23 @@
             this.btnBuscar.Visible = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label18.Location = new System.Drawing.Point(463, 81);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(74, 25);
+            this.label18.TabIndex = 26;
+            this.label18.Text = "Ventas";
+            // 
             // TareaClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.btnConsultarTotales);
             this.Controls.Add(this.lblCantidadEdit);
             this.Controls.Add(this.lblCantidad);
@@ -365,6 +378,7 @@
             this.Controls.SetChildIndex(this.lblCantidad, 0);
             this.Controls.SetChildIndex(this.lblCantidadEdit, 0);
             this.Controls.SetChildIndex(this.btnConsultarTotales, 0);
+            this.Controls.SetChildIndex(this.label18, 0);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).EndInit();
@@ -400,5 +414,6 @@
         private System.Windows.Forms.Button btnFacturarle;
         private System.Windows.Forms.Button btnCuentaCorriente;
         private System.Windows.Forms.Button btnFacturaC;
+        private System.Windows.Forms.Label label18;
     }
 }

@@ -109,10 +109,10 @@ namespace Sico.Dao
                 foreach (DataRow item in Tabla.Rows)
                 {
                     Proveedor listaProveedor = new Proveedor();
-                    listaProveedor.IdProveedor = Convert.ToInt32(item["IdCliente"].ToString());
+                    listaProveedor.IdProveedor = Convert.ToInt32(item["idProveedor"].ToString());
                     listaProveedor.NombreRazonSocial = item["NombreRazonSocial"].ToString();
                     listaProveedor.Cuit = item["Cuit"].ToString();
-                    listaProveedor.Factura = item["Actividad"].ToString();
+                    listaProveedor.Factura = item["TipoFactura"].ToString();
                     listaProveedor.CondicionAntiAfip = item["CondicionAntiAfip"].ToString();
                     listaProveedor.Telefono = item["Telefono"].ToString();
                     listaProveedor.Email = item["Email"].ToString();
