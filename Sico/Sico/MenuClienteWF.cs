@@ -24,7 +24,10 @@ namespace Sico
 
         private void MenuClienteWF_Load(object sender, EventArgs e)
         {
-            
+            lblNombreEdit.Text = razonSocial;
+            lblCuitEdit.Text = cuit;
+            RazonSocial = razonSocial;
+            Cuit = cuit;
         }
         #region Botones
         public static string RazonSocial;

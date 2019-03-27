@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sico.Entidades;
+using System.Windows.Forms;
 
 namespace Sico.Negocio
 {
@@ -31,6 +32,25 @@ namespace Sico.Negocio
             return lista;
         }
 
+        public static List<FacturaCompra> BuscarTodasFacturasDeComprasDelCliente(string cuit)
+        {
+            List<FacturaCompra> _listaFacturasCompras = new List<FacturaCompra>();
+            try
+            {
+                _listaFacturasCompras = ComprasDao.BuscarTodasFacturasDeComprasDelCliente(cuit);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaFacturasCompras;
+        }
+
         public static List<FacturaCompra> BuscarDatosProveedor()
         {
             throw new NotImplementedException();
@@ -53,7 +73,7 @@ namespace Sico.Negocio
 
         private static void ValidarDatosFactura(FacturaCompra _factura)
         {
-           
+
         }
     }
 }

@@ -216,6 +216,9 @@ namespace Sico
             txtFactura.Clear();
             Total = 0;
             lblTotalEdit.Text = "0";
+            progressBar1.Value = Convert.ToInt32(null);
+            progressBar1.Visible = false;
+            lblTotalEdit.Text = "-";
         }
         private void InhabilitarCampos()
         {

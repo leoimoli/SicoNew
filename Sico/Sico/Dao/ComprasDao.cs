@@ -37,6 +37,45 @@ namespace Sico.Dao
             return _listaProvincia;
         }
 
+        public static List<FacturaCompra> BuscarTodasFacturasDeComprasDelCliente(string cuit)
+        {
+            List<FacturaCompra> lista = new List<FacturaCompra>();
+            List<Cliente> id = new List<Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int idCliente = id[0].IdCliente;
+            if (idCliente > 0)
+            {
+                connection.Close();
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                                      new MySqlParameter("idCliente_in", idCliente)};
+                string proceso = "BuscarTodasFacturasDeComprasDelCliente";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        FacturaCompra listaFacturasCompras = new FacturaCompra();
+                        listaFacturasCompras.idFactura = Convert.ToInt32(item["idFactura"].ToString());
+                        listaFacturasCompras.NroFactura = item["NroFactura"].ToString();
+                        listaFacturasCompras.Fecha = item["Fecha"].ToString();
+                        listaFacturasCompras.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+                        listaFacturasCompras.NombreProveedor = item["NombreRazonSocial"].ToString();
+                        lista.Add(listaFacturasCompras);
+                    }
+                }
+                connection.Close();
+            }
+            return lista;
+        }
+
         public static bool GuardarFacturaCompra(FacturaCompra _factura)
         {
             bool exito = false;
@@ -76,7 +115,8 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("TipoComprobante_in", _factura.TipoComprobante);
             cmd.Parameters.AddWithValue("Total1_in", _factura.Total1);
             cmd.Parameters.AddWithValue("Total2_in", _factura.Total2);
-            cmd.Parameters.AddWithValue("Total3_in", _factura.Neto1);
+            cmd.Parameters.AddWithValue("Total3_in", _factura.Total3);
+            cmd.Parameters.AddWithValue("Neto1_in", _factura.Neto1);
             cmd.Parameters.AddWithValue("Neto2_in", _factura.Neto2);
             cmd.Parameters.AddWithValue("Neto3_in", _factura.Neto3);
             cmd.Parameters.AddWithValue("Alicuota1_in", _factura.Alicuota1);

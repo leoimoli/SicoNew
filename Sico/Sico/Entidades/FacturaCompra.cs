@@ -8,15 +8,14 @@ namespace Sico.Entidades
 {
     public class FacturaCompra
     {
-        public int idProveedor { get; set; }
         public int idFactura { get; set; }
         public string NroFactura { get; set; }
         public string Fecha { get; set; }
-        public string ApellidoNombre { get; set; }
-        public string CodigoDocumento { get; set; }
-        public string Direccion { get; set; }
         public Decimal Monto { get; set; }
         public int idCliente { get; set; }
+        public int idProveedor { get; set; }
+        public string NombreProveedor { get; set; }
+        public string CodigoDocumento { get; set; }
         public decimal Total1 { get; set; }
         public decimal Total2 { get; set; }
         public decimal Total3 { get; set; }
@@ -35,8 +34,7 @@ namespace Sico.Entidades
         public decimal PercepIngBrutos { get; set; }
         public decimal NoGravado { get; set; }
         public decimal PercepIva { get; set; }
-        public string  TipoDeCambio { get; set; }
+        public string TipoDeCambio { get; set; }
         public string NroFacturaNotaDeCredtio { get; set; }
-        public string Adjunto { get; set; }
     }
 }
