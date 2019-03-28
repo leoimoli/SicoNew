@@ -163,6 +163,9 @@
   <data name="usuario-hombre" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usuario-hombre.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="refrescar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refrescar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="buscar-con-herramienta-en-esquema" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\buscar-con-herramienta-en-esquema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -226,7 +229,7 @@
   <data name="copia-de-seguridad" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copia-de-seguridad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="refrescar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refrescar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="txt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\txt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

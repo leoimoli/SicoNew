@@ -15,9 +15,11 @@ namespace Sico
 {
     public partial class FacturacionCompraWF : MasterWF
     {
-        public FacturacionCompraWF()
+        private string cuitCliente;
+        public FacturacionCompraWF(string cuitCliente)
         {
             InitializeComponent();
+            this.cuitCliente = cuitCliente;
         }
         private void FacturacionCompraWF_Load(object sender, EventArgs e)
         {
@@ -506,8 +508,9 @@ namespace Sico
         {
             try
             {
+                
                 Entidades.FacturaCompra _factura = CargarEntidad();
-                bool Exito = ComprasNeg.GuardarFacturaCompra(_factura);
+                bool Exito = ComprasNeg.GuardarFacturaCompra(_factura, cuitCliente);
                 if (Exito == true)
                 {
                     ProgressBar();

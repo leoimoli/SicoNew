@@ -217,9 +217,9 @@
     <Compile Include="MenuClienteWF.Designer.cs">
       <DependentUpon>MenuClienteWF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Negocio\ComprasNeg.cs" />
-    <Compile Include="Negocio\PericiaNeg.cs" />
-    <Compile Include="Negocio\ProveedorNeg.cs" />
+    <Compile Include="Entidades\Negocio\ComprasNeg.cs" />
+    <Compile Include="Entidades\Negocio\PericiaNeg.cs" />
+    <Compile Include="Entidades\Negocio\ProveedorNeg.cs" />
     <Compile Include="NotaDeCreditoWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,8 +261,8 @@
     <Compile Include="MasterWF.Designer.cs">
       <DependentUpon>MasterWF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Negocio\ClienteNeg.cs" />
-    <Compile Include="Negocio\UsuarioNeg.cs" />
+    <Compile Include="Entidades\Negocio\ClienteNeg.cs" />
+    <Compile Include="Entidades\Negocio\UsuarioNeg.cs" />
     <Compile Include="PericiaHistoriaWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +300,12 @@
     </Compile>
     <Compile Include="UsuarioWF.Designer.cs">
       <DependentUpon>UsuarioWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaConsultaFacturacionComprasMensualWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaConsultaFacturacionComprasMensualWF.Designer.cs">
+      <DependentUpon>VistaConsultaFacturacionComprasMensualWF.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaConsultaFacturacionMensualWF.cs">
       <SubType>Form</SubType>
@@ -373,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioWF.resx">
       <DependentUpon>UsuarioWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaConsultaFacturacionComprasMensualWF.resx">
+      <DependentUpon>VistaConsultaFacturacionComprasMensualWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaConsultaFacturacionMensualWF.resx">
       <DependentUpon>VistaConsultaFacturacionMensualWF.cs</DependentUpon>

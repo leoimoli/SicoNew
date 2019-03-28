@@ -36,5 +36,6 @@ namespace Sico.Entidades
         public decimal PercepIva { get; set; }
         public string TipoDeCambio { get; set; }
         public string NroFacturaNotaDeCredtio { get; set; }
+        public string ApellidoNombre { get; set; }
     }
 }

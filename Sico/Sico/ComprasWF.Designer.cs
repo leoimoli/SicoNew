@@ -32,6 +32,7 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnVentas = new System.Windows.Forms.Button();
             this.btnCuentaCorriente = new System.Windows.Forms.Button();
             this.btnCargarCompra = new System.Windows.Forms.Button();
             this.btnAgregarProveedor = new System.Windows.Forms.Button();
@@ -83,6 +84,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnVentas);
             this.groupBox2.Controls.Add(this.btnCuentaCorriente);
             this.groupBox2.Controls.Add(this.btnCargarCompra);
             this.groupBox2.Controls.Add(this.btnAgregarProveedor);
@@ -92,6 +94,19 @@
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
+            // 
+            // btnVentas
+            // 
+            this.btnVentas.Image = global::Sico.Properties.Resources.estadisticas_de_ventas;
+            this.btnVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVentas.Location = new System.Drawing.Point(45, 324);
+            this.btnVentas.Name = "btnVentas";
+            this.btnVentas.Size = new System.Drawing.Size(90, 61);
+            this.btnVentas.TabIndex = 17;
+            this.btnVentas.Text = "Ventas";
+            this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVentas.UseVisualStyleBackColor = true;
+            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
             // btnCuentaCorriente
             // 
@@ -139,6 +154,8 @@
             this.dgvCompras.Size = new System.Drawing.Size(830, 305);
             this.dgvCompras.TabIndex = 27;
             this.dgvCompras.Visible = false;
+            this.dgvCompras.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickBoton);
+            this.dgvCompras.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvCompras_CellPainting);
             // 
             // groupBox3
             // 
@@ -204,6 +221,7 @@
             this.btnConsultarTotales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConsultarTotales.UseVisualStyleBackColor = true;
             this.btnConsultarTotales.Visible = false;
+            this.btnConsultarTotales.Click += new System.EventHandler(this.btnConsultarTotales_Click);
             // 
             // btnBuscar
             // 
@@ -216,6 +234,7 @@
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Visible = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label18
             // 
@@ -282,5 +301,6 @@
         private System.Windows.Forms.Label lblNombreEdit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnVentas;
     }
 }

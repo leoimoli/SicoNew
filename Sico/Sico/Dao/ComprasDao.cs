@@ -76,11 +76,157 @@ namespace Sico.Dao
             return lista;
         }
 
-        public static bool GuardarFacturaCompra(FacturaCompra _factura)
+        public static List<FacturaCompra> BuscarCompraPorProveedor(string RazonSocial)
+        {
+            List<FacturaCompra> lista = new List<FacturaCompra>();
+            List<Proveedor> id = new List<Proveedor>();
+            id = BuscarProveedorPorRazonSocial(RazonSocial);
+            int idProveedor = id[0].IdProveedor;
+            if (idProveedor > 0)
+            {
+                connection.Close();
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                                            new MySqlParameter("Proveedor_in", idProveedor)};
+                string proceso = "BuscarCompraPorProveedor";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        FacturaCompra listaFacturasCompras = new FacturaCompra();
+                        listaFacturasCompras.idFactura = Convert.ToInt32(item["idFactura"].ToString());
+                        listaFacturasCompras.NroFactura = item["NroFactura"].ToString();
+                        listaFacturasCompras.Fecha = item["Fecha"].ToString();
+                        listaFacturasCompras.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+                        listaFacturasCompras.NombreProveedor = item["NombreRazonSocial"].ToString();
+                        lista.Add(listaFacturasCompras);
+                    }
+                }
+                connection.Close();
+            }
+            return lista;
+        }
+
+        public static List<FacturaCompra> BuscarFacturacionTotal(string cuit, int mes, string año)
+        {
+            List<FacturaCompra> lista = new List<FacturaCompra>();
+            List<Entidades.Cliente> id = new List<Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int IdCliente = id[0].IdCliente;
+            if (IdCliente > 0)
+            {
+                string fecha = mes + "/" + año;
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                            new MySqlParameter("fecha_in", fecha),
+                                      new MySqlParameter("IdCliente_in", IdCliente)};
+                string proceso = "BuscarFacturacionTotalCompras";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        FacturaCompra listaFacturaCompra = new FacturaCompra();
+                        listaFacturaCompra.idProveedor = Convert.ToInt32(item["idProveedor"].ToString());
+                        listaFacturaCompra.NroFactura = item["NroFactura"].ToString();
+                        listaFacturaCompra.Fecha = item["Fecha"].ToString();
+                        listaFacturaCompra.ApellidoNombre = item["NombreRazonSocial"].ToString();
+                        listaFacturaCompra.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+
+                        //// Detalle de la factura
+                        listaFacturaCompra.TipoComprobante = item["TipoComprobante"].ToString();
+                        listaFacturaCompra.Total1 = Convert.ToDecimal(item["Total1"].ToString());
+                        listaFacturaCompra.Total2 = Convert.ToDecimal(item["Total2"].ToString());
+                        listaFacturaCompra.Total3 = Convert.ToDecimal(item["Total3"].ToString());
+                        listaFacturaCompra.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
+                        listaFacturaCompra.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
+                        listaFacturaCompra.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
+                        listaFacturaCompra.Alicuota1 = item["Alicuota1"].ToString();
+                        listaFacturaCompra.Alicuota2 = item["Alicuota2"].ToString();
+                        listaFacturaCompra.Alicuota3 = item["Alicuota3"].ToString();
+                        listaFacturaCompra.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
+                        listaFacturaCompra.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
+                        listaFacturaCompra.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+
+                        listaFacturaCompra.PercepIngBrutos = Convert.ToDecimal(item["PercepcionIngresosBrutos"].ToString());
+                        listaFacturaCompra.PercepIva = Convert.ToDecimal(item["PercepcionIva"].ToString());
+                        listaFacturaCompra.NoGravado = Convert.ToDecimal(item["NoGravado"].ToString());
+
+                        listaFacturaCompra.CodigoMoneda = item["CodigoMoneda"].ToString();
+                        listaFacturaCompra.TipoDeCambio = item["TipoDeCambio"].ToString();
+                        listaFacturaCompra.CodigoTipoOperacion = item["CodigoOperacion"].ToString();
+                        lista.Add(listaFacturaCompra);
+                    }
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<Proveedor> BuscarProveedorPorRazonSocial(string RazonSocial)
+        {
+            connection.Close();
+            connection.Open();
+            List<Proveedor> lista = new List<Proveedor>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("NombreRazonSocial_in", RazonSocial)};
+            string proceso = "BuscarProveedorPorNombreRazonSocial";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Proveedor listaProveedor = new Proveedor();
+                    listaProveedor.IdProveedor = Convert.ToInt32(item["idProveedor"].ToString());
+                    listaProveedor.NombreRazonSocial = item["NombreRazonSocial"].ToString();
+                    listaProveedor.Cuit = item["Cuit"].ToString();
+                    listaProveedor.Factura = item["TipoFactura"].ToString();
+                    listaProveedor.CondicionAntiAfip = item["CondicionAntiAfip"].ToString();
+                    listaProveedor.Telefono = item["Telefono"].ToString();
+                    listaProveedor.Email = item["Email"].ToString();
+                    listaProveedor.Provincia = item["Provincia"].ToString();
+                    listaProveedor.Localidad = item["Localidad"].ToString();
+                    listaProveedor.Calle = item["Calle"].ToString();
+                    listaProveedor.Altura = item["Altura"].ToString();
+                    listaProveedor.CodigoPostal = item["CodigoPostal"].ToString();
+                    lista.Add(listaProveedor);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static bool GuardarFacturaCompra(FacturaCompra _factura, string cuitCliente)
         {
             bool exito = false;
             int idNotaCredito = 0;
             int idUltimaFacturaCompra = 0;
+
+            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuitCliente);
+            int idCliente = id[0].IdCliente;
+
             connection.Close();
             connection.Open();
             string proceso = "GuardarFacturaCompra";
@@ -89,7 +235,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("NroFactura_in", _factura.NroFactura);
             cmd.Parameters.AddWithValue("Fecha_in", _factura.Fecha);
             cmd.Parameters.AddWithValue("Monto_in", _factura.Monto);
-            cmd.Parameters.AddWithValue("idCliente_in", _factura.idCliente);
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
             cmd.Parameters.AddWithValue("idProveedor_in", _factura.idProveedor);
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())

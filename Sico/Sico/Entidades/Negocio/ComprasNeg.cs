@@ -56,13 +56,13 @@ namespace Sico.Negocio
             throw new NotImplementedException();
         }
 
-        public static bool GuardarFacturaCompra(FacturaCompra _factura)
+        public static bool GuardarFacturaCompra(FacturaCompra _factura, string cuitCliente)
         {
             bool exito = false;
             try
             {
                 ValidarDatosFactura(_factura);
-                exito = ComprasDao.GuardarFacturaCompra(_factura);
+                exito = ComprasDao.GuardarFacturaCompra(_factura, cuitCliente);
             }
             catch (Exception ex)
             {
@@ -74,6 +74,44 @@ namespace Sico.Negocio
         private static void ValidarDatosFactura(FacturaCompra _factura)
         {
 
+        }
+
+        public static List<FacturaCompra> BuscarCompraPorProveedor(string apellidoNombre)
+        {
+            List<FacturaCompra> _listaCompras = new List<FacturaCompra>();
+            try
+            {
+                _listaCompras = ComprasDao.BuscarCompraPorProveedor(apellidoNombre);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaCompras;
+        }
+
+        public static List<FacturaCompra> BuscarFacturacionTotal(string cuit, int mes, string año)
+        {
+            List<FacturaCompra> _listaFacturasSubCliente = new List<FacturaCompra>();
+            try
+            {
+                _listaFacturasSubCliente = ComprasDao.BuscarFacturacionTotal(cuit, mes, año);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaFacturasSubCliente;
         }
     }
 }

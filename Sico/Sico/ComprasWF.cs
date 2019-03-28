@@ -27,10 +27,11 @@ namespace Sico
         {
             lblNombreEdit.Text = razonSocial;
             lblCuitEdit.Text = cuit;
+          
             try
             {
                 ListaFacturas = ComprasNeg.BuscarTodasFacturasDeComprasDelCliente(cuit);
-                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete();
+                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassProveedores.Autocomplete();
                 txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
             }
@@ -66,7 +67,7 @@ namespace Sico
                     dgvCompras.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvCompras.Columns[0].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvCompras.Columns[0].HeaderCell.Style.ForeColor = Color.White;
-                  
+
                     dgvCompras.Columns[1].HeaderText = "Nro.Factura";
                     dgvCompras.Columns[1].Width = 200;
                     dgvCompras.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
@@ -85,26 +86,26 @@ namespace Sico
                     dgvCompras.Columns[3].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvCompras.Columns[3].HeaderCell.Style.ForeColor = Color.White;
 
-                    dgvCompras.Columns[4].HeaderText = "Proveedor";
+                    dgvCompras.Columns[4].HeaderText = "Cliente";
                     dgvCompras.Columns[4].Width = 80;
                     dgvCompras.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvCompras.Columns[4].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvCompras.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+                    dgvCompras.Columns[4].Visible = false;
 
-
-                    dgvCompras.Columns[5].HeaderText = "Dirección";
+                    dgvCompras.Columns[5].HeaderText = "IdProveedor";
                     dgvCompras.Columns[5].Width = 250;
                     dgvCompras.Columns[5].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvCompras.Columns[5].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvCompras.Columns[5].HeaderCell.Style.ForeColor = Color.White;
                     dgvCompras.Columns[5].Visible = false;
 
-                    dgvCompras.Columns[6].HeaderText = "Monto";
+                    dgvCompras.Columns[6].HeaderText = "Proveedor";
                     dgvCompras.Columns[6].Width = 100;
                     dgvCompras.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvCompras.Columns[6].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvCompras.Columns[6].HeaderCell.Style.ForeColor = Color.White;
-                    dgvCompras.Columns[6].Visible = false;
+
 
                     dgvCompras.Columns[7].HeaderText = "Cliente";
                     dgvCompras.Columns[7].Width = 95;
@@ -189,7 +190,7 @@ namespace Sico
                     BotonEditar.Name = "Editar";
                     BotonEditar.HeaderText = "Editar";
                     this.dgvCompras.Columns.Add(BotonEditar);
-                    dgvCompras.Columns[30].Width = 80;
+                    dgvCompras.Columns[30].Width = 100;
                     dgvCompras.Columns[30].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvCompras.Columns[30].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
                     dgvCompras.Columns[30].HeaderCell.Style.ForeColor = Color.White;
@@ -197,6 +198,53 @@ namespace Sico
                 }
 
                 else { MessageBox.Show("No se encontraron resultados para la persona seleccionada."); }
+            }
+        }
+
+        private void dgvCompras_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && this.dgvCompras.Columns[e.ColumnIndex].Name == "Ver" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell BotonVer = this.dgvCompras.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"lupa.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 5, e.CellBounds.Top + 5);
+
+                this.dgvCompras.Rows[e.RowIndex].Height = icoAtomico.Height + 6;
+                this.dgvCompras.Columns[e.ColumnIndex].Width = icoAtomico.Width + 6;
+
+                e.Handled = true;
+            }
+
+            if (e.ColumnIndex >= 0 && this.dgvCompras.Columns[e.ColumnIndex].Name == "Editar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell BotonEditar = this.dgvCompras.Rows[e.RowIndex].Cells["Editar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"editar.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 5, e.CellBounds.Top + 5);
+                this.dgvCompras.Rows[e.RowIndex].Height = icoAtomico.Height + 6;
+                this.dgvCompras.Columns[e.ColumnIndex].Width = icoAtomico.Width + 6;
+                e.Handled = true;
+            }
+        }
+        private void ClickBoton(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCompras.CurrentCell.ColumnIndex == 29)
+            {
+                //EsEditar = false;
+                //var idsubCliente = Convert.ToString(this.dgvCompras.CurrentRow.Cells[0].Value);
+                //VistaFacturacionSubClienteWF _vista = new VistaFacturacionSubClienteWF(idsubCliente, cuit, razonSocial, EsEditar);
+                //_vista.Show();
+                //Hide();
+            }
+
+            if (dgvCompras.CurrentCell.ColumnIndex == 30)
+            {
+                //EsEditar = true;
+                //var idsubCliente = Convert.ToString(this.dgvCompras.CurrentRow.Cells[0].Value);
+                //VistaFacturacionSubClienteWF _vista = new VistaFacturacionSubClienteWF(idsubCliente, cuit, razonSocial, EsEditar);
+                //_vista.Show();
+                //Hide();
             }
         }
         private void btnAgregarProveedor_Click(object sender, EventArgs e)
@@ -208,8 +256,38 @@ namespace Sico
 
         private void btnCargarCompra_Click(object sender, EventArgs e)
         {
-            FacturacionCompraWF _compra = new FacturacionCompraWF();
+            
+            FacturacionCompraWF _compra = new FacturacionCompraWF(cuit);
             _compra.Show();
+            Hide();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var ApellidoNombre = txtBuscar.Text;
+                ListaFacturas = ComprasNeg.BuscarCompraPorProveedor(ApellidoNombre);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            string RazonSocial = lblNombreEdit.Text;
+            string Cuit = lblCuitEdit.Text;
+            TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
+            _tarea.Show();
+            Hide();
+        }
+
+        private void btnConsultarTotales_Click(object sender, EventArgs e)
+        {
+            VistaConsultaFacturacionComprasMensualWF _consulta = new VistaConsultaFacturacionComprasMensualWF(razonSocial, cuit);
+            _consulta.Show();
             Hide();
         }
     }
