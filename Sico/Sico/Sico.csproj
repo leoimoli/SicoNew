@@ -217,9 +217,9 @@
     <Compile Include="MenuClienteWF.Designer.cs">
       <DependentUpon>MenuClienteWF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\Negocio\ComprasNeg.cs" />
-    <Compile Include="Entidades\Negocio\PericiaNeg.cs" />
-    <Compile Include="Entidades\Negocio\ProveedorNeg.cs" />
+    <Compile Include="Negocio\ComprasNeg.cs" />
+    <Compile Include="Negocio\PericiaNeg.cs" />
+    <Compile Include="Negocio\ProveedorNeg.cs" />
     <Compile Include="NotaDeCreditoWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,8 +261,8 @@
     <Compile Include="MasterWF.Designer.cs">
       <DependentUpon>MasterWF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\Negocio\ClienteNeg.cs" />
-    <Compile Include="Entidades\Negocio\UsuarioNeg.cs" />
+    <Compile Include="Negocio\ClienteNeg.cs" />
+    <Compile Include="Negocio\UsuarioNeg.cs" />
     <Compile Include="PericiaHistoriaWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +312,12 @@
     </Compile>
     <Compile Include="VistaConsultaFacturacionMensualWF.Designer.cs">
       <DependentUpon>VistaConsultaFacturacionMensualWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaFacturacionComprasWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaFacturacionComprasWF.Designer.cs">
+      <DependentUpon>VistaFacturacionComprasWF.cs</DependentUpon>
     </Compile>
     <Compile Include="VistaFacturacionSubClienteWF.cs">
       <SubType>Form</SubType>
@@ -385,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VistaConsultaFacturacionMensualWF.resx">
       <DependentUpon>VistaConsultaFacturacionMensualWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaFacturacionComprasWF.resx">
+      <DependentUpon>VistaFacturacionComprasWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaFacturacionSubClienteWF.resx">
       <DependentUpon>VistaFacturacionSubClienteWF.cs</DependentUpon>

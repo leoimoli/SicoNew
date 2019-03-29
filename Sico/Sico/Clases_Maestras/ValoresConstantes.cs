@@ -76,5 +76,13 @@ namespace Sico.Clases_Maestras
                 return new string[] { "Iniciada", "Presentada", "Presentada firme", "Concluida" };
             }
         }
+
+        public static string[] TipoDocumento
+        {
+            get
+            {
+                return new string[] { "Cuit", "Dni" };
+            }
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Sico.Entidades;
-using Sico.Negocio;
+﻿using Sico.Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Sico.Entidades;
+using Sico.Clases_Maestras;
+using System.IO;
+using System.Text.RegularExpressions;
 namespace Sico
 {
     public partial class VistaConsultaFacturacionComprasMensualWF : Form
@@ -295,19 +297,19 @@ namespace Sico
                     dataGridView1.Columns[21].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
                     dataGridView1.Columns[21].Visible = false;
 
-                    dataGridView1.Columns[22].HeaderText = "Codigo Moneda";
+                    dataGridView1.Columns[22].HeaderText = "Tipo Comprobante";
                     dataGridView1.Columns[22].Visible = false;
 
-                    dataGridView1.Columns[23].HeaderText = "Tipo Comprobante";
+                    dataGridView1.Columns[23].HeaderText = "PercepIngBrutos";
                     dataGridView1.Columns[23].Visible = false;
 
-                    dataGridView1.Columns[24].HeaderText = "Tipo Comprobante";
+                    dataGridView1.Columns[24].HeaderText = "NoGravado";
                     dataGridView1.Columns[24].Visible = false;
 
-                    dataGridView1.Columns[24].HeaderText = "Tipo Comprobante";
+                    dataGridView1.Columns[24].HeaderText = "PercepIva";
                     dataGridView1.Columns[24].Visible = false;
 
-                    dataGridView1.Columns[24].HeaderText = "Tipo Comprobante";
+                    dataGridView1.Columns[24].HeaderText = "TipoDeCambio";
                     dataGridView1.Columns[24].Visible = false;
 
                     dataGridView1.Columns[25].HeaderText = "Observacion";
@@ -500,6 +502,217 @@ namespace Sico
             ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
             _tarea.Show();
             Close();
+        }
+
+        private void btnCitiVentas_Click(object sender, EventArgs e)
+        {
+            ProgressBar();
+            string NombreTxt = lblNombreEdit.Text;
+            //string path = ruta.Carpeta + "\\" + NombreTxt + ".txt";
+            string path = @"C:\Desktop\" + NombreTxt + ".txt";
+            if (!File.Exists(path))
+            {
+                // Create a file to write to.
+                using (StreamWriter sw = File.CreateText(path))
+                {
+
+                    //string Blancos = " ";
+                    //int restan = 0;
+                    foreach (var item in Lista)
+                    {
+                        if (item.Fecha != null)
+                        {
+                            string patron = @"[^\w]";
+                            Regex regex = new Regex(patron);
+                            int totalCaracteres = 0;
+                            //////Fecha
+                            DateTime Fecha = Convert.ToDateTime(item.Fecha);
+                            string dateFormatted = Fecha.ToString("yyyyMMdd");
+                            string FechaFinal = dateFormatted;
+                            totalCaracteres = FechaFinal.Length;
+
+
+                            //////Tipo Comprobante
+                            string TipoComprobante = "006";
+                            totalCaracteres = totalCaracteres + TipoComprobante.Length;
+                            //////Punto de Venta
+                            string var = item.NroFactura;
+                            var split1 = var.Split('-')[0];
+                            split1 = split1.Trim();
+                            string PuntoDeVenta = split1;
+
+                            if (PuntoDeVenta.Length < 5)
+                            {
+                                PuntoDeVenta = PuntoDeVenta.PadLeft(5, '0');
+                            }
+                            totalCaracteres = totalCaracteres + PuntoDeVenta.Length;
+                            //////"Número de Comprobante"
+                            string Factura = item.NroFactura;
+                            var FacturaSegundaParte = var.Split('-')[1];
+                            FacturaSegundaParte = FacturaSegundaParte.Trim();
+                            if (FacturaSegundaParte.Length < 20)
+                            {
+                                FacturaSegundaParte = FacturaSegundaParte.PadLeft(20, '0');
+                            }
+                            totalCaracteres = totalCaracteres + FacturaSegundaParte.Length * 2;
+                            //////""Código de Documento del comprador
+                            string CodigoDocumentoComprador = "80";
+                            totalCaracteres = totalCaracteres + CodigoDocumentoComprador.Length;
+                            //////""Número de Identificación del comprador"
+                            string Dni = item.CodigoDocumento;
+                            if (Dni.Length < 20)
+                            {
+                                Dni = Dni.PadLeft(20, '0');
+                            }
+                            totalCaracteres = totalCaracteres + Dni.Length;
+                            //////"Apellido y Nombre"
+                            string ApellidoNombre = item.ApellidoNombre;
+                            if (ApellidoNombre.Length < 30)
+                            {
+                                ApellidoNombre = ApellidoNombre.PadRight(30, ' ');
+                            }
+                            totalCaracteres = totalCaracteres + ApellidoNombre.Length;
+                            //////"Importe total de la de la operacion"
+
+                            string MontoContar = Convert.ToString(item.Monto);
+                            MontoContar = regex.Replace(MontoContar, "");
+                            if (MontoContar.Length < 15)
+                            {
+                                MontoContar = MontoContar.PadLeft(15, '0');
+                            }
+                            totalCaracteres = totalCaracteres + MontoContar.Length;
+                            //////"importe total de concepto que no integran"
+                            double ImpTotalConcep = 0;
+                            string ImpTotalConcepContar = Convert.ToString(ImpTotalConcep);
+                            ImpTotalConcepContar = regex.Replace(ImpTotalConcepContar, "");
+                            if (ImpTotalConcepContar.Length < 15)
+                            {
+                                ImpTotalConcepContar = ImpTotalConcepContar.PadLeft(15, '0');
+                                ImpTotalConcep = Convert.ToDouble(ImpTotalConcepContar);
+                            }
+                            totalCaracteres = totalCaracteres + ImpTotalConcepContar.Length;
+
+                            ////// Percepcion a no categorizados
+                            double PercNoCatego = 0;
+                            string PercNoCategoContar = Convert.ToString(PercNoCatego);
+                            PercNoCategoContar = regex.Replace(PercNoCategoContar, "");
+                            if (PercNoCategoContar.Length < 15)
+                            {
+                                PercNoCategoContar = PercNoCategoContar.PadLeft(15, '0');
+                                PercNoCatego = Convert.ToDouble(PercNoCategoContar);
+                            }
+                            totalCaracteres = totalCaracteres + PercNoCategoContar.Length;
+                            ////// Importe de operaciones exentas.
+                            double ImpOpeExe = 0;
+                            string ImpOpeExeContar = Convert.ToString(ImpOpeExe);
+                            ImpOpeExeContar = regex.Replace(ImpOpeExeContar, "");
+                            if (ImpOpeExeContar.Length < 15)
+                            {
+                                ImpOpeExeContar = ImpOpeExeContar.PadLeft(15, '0');
+                                ImpOpeExe = Convert.ToDouble(ImpOpeExeContar);
+                            }
+                            totalCaracteres = totalCaracteres + ImpOpeExeContar.Length;
+                            ////// Importe percepciones o pagos a cuenta de impuestos 
+                            double ImpPerPagoImp = 0;
+                            string ImpPerPagoImpContar = Convert.ToString(ImpPerPagoImp);
+                            ImpPerPagoImpContar = regex.Replace(ImpPerPagoImpContar, "");
+                            if (ImpPerPagoImpContar.Length < 15)
+                            {
+                                ImpPerPagoImpContar = ImpPerPagoImpContar.PadLeft(15, '0');
+                                ImpPerPagoImp = Convert.ToDouble(ImpPerPagoImpContar);
+                            }
+
+                            totalCaracteres = totalCaracteres + ImpPerPagoImpContar.Length;
+                            ////// Importe percepciones ingresos bruto
+                            double IImpPerIngBrutos = 0;
+                            string IImpPerIngBrutosContar = Convert.ToString(IImpPerIngBrutos);
+                            IImpPerIngBrutosContar = regex.Replace(IImpPerIngBrutosContar, "");
+                            if (IImpPerIngBrutosContar.Length < 15)
+                            {
+                                IImpPerIngBrutosContar = IImpPerIngBrutosContar.PadLeft(15, '0');
+                                IImpPerIngBrutos = Convert.ToDouble(IImpPerIngBrutosContar);
+                            }
+                            totalCaracteres = totalCaracteres + IImpPerIngBrutosContar.Length;
+                            ////// Importe percepciones de impuesto municipales
+                            double IImpPerImpMun = 0;
+                            string IImpPerImpMunContar = Convert.ToString(IImpPerImpMun);
+                            IImpPerImpMunContar = regex.Replace(IImpPerImpMunContar, "");
+                            if (IImpPerImpMunContar.Length < 15)
+                            {
+                                IImpPerImpMunContar = IImpPerImpMunContar.PadLeft(15, '0');
+                                IImpPerImpMun = Convert.ToDouble(IImpPerImpMunContar);
+                            }
+                            totalCaracteres = totalCaracteres + IImpPerImpMunContar.Length;
+                            ////// Importe  de impuesto internos
+                            double ImpImpInt = 0;
+                            string ImpImpIntContar = Convert.ToString(ImpImpInt);
+                            ImpImpIntContar = regex.Replace(ImpImpIntContar, "");
+                            if (ImpImpIntContar.Length < 15)
+                            {
+                                ImpImpIntContar = ImpImpIntContar.PadLeft(15, '0');
+                                ImpImpInt = Convert.ToDouble(ImpImpIntContar);
+                            }
+                            totalCaracteres = totalCaracteres + ImpImpIntContar.Length;
+                            ////// Codigo de moneda
+                            string CodMoneda = "PES";
+                            totalCaracteres = totalCaracteres + CodMoneda.Length;
+                            ////// Tipo de Cambio
+
+                            string TipoCambio = "0001000000";
+                            if (TipoCambio.Length == 1)
+                            {
+                                TipoCambio = TipoCambio.PadLeft(10, '0');
+                            }
+                            totalCaracteres = totalCaracteres + TipoCambio.Length;
+                            //////Cantida Alicuotas
+                            int cantidadAlicuotas = 0;
+
+                            if (item.Neto1 > 0)
+                            {
+                                cantidadAlicuotas = cantidadAlicuotas + 1;
+                            }
+                            if (item.Neto2 > 0)
+                            {
+                                cantidadAlicuotas = cantidadAlicuotas + 1;
+                            }
+                            if (item.Neto3 > 0)
+                            {
+                                cantidadAlicuotas = cantidadAlicuotas + 1;
+                            }
+                            string contar = Convert.ToString(cantidadAlicuotas);
+                            totalCaracteres = totalCaracteres + contar.Length;
+                            //////Código Operación
+                            int CodOperacion = 0;
+                            string ContarCodigo = Convert.ToString(CodOperacion);
+                            totalCaracteres = totalCaracteres + ContarCodigo.Length;
+                            //////Otro Tributo
+                            double OtroTributo = 0;
+                            string OtroTributoContar = Convert.ToString(OtroTributo);
+                            OtroTributoContar = regex.Replace(OtroTributoContar, "");
+                            if (OtroTributoContar.Length < 15)
+                            {
+                                OtroTributoContar = OtroTributoContar.PadLeft(15, '0');
+                                OtroTributo = Convert.ToDouble(OtroTributoContar);
+                            }
+                            totalCaracteres = totalCaracteres + OtroTributoContar.Length;
+                            ////// Fecha de vencimiento
+                            DateTime Fecha2 = Convert.ToDateTime(item.Fecha);
+                            string dateFormatted2 = Fecha2.ToString("yyyyMMdd");
+                            string FechaFinal2 = dateFormatted2;
+                            totalCaracteres = totalCaracteres + FechaFinal2.Length;
+                            if (totalCaracteres == 266)
+                            {
+                                sw.WriteLine(FechaFinal + TipoComprobante + PuntoDeVenta + FacturaSegundaParte + FacturaSegundaParte + CodigoDocumentoComprador + Dni + ApellidoNombre + MontoContar + ImpTotalConcepContar + PercNoCategoContar + ImpOpeExeContar + ImpPerPagoImpContar + IImpPerIngBrutosContar + IImpPerImpMunContar + ImpImpIntContar + CodMoneda + TipoCambio + cantidadAlicuotas + CodOperacion + OtroTributoContar + FechaFinal2); /*+ Neto + CodigoIva + Iva);*/
+                            }
+
+                        }
+                    }
+                }
+                //GenerarTXTVentasalicuotas();
+                MessageBox.Show("Se generaron los TXT de Ventas y ventas Alicuotas.");
+                progressBar1.Value = Convert.ToInt32(null);
+                progressBar1.Visible = false;
+            }
         }
     }
 }

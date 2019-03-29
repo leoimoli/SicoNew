@@ -62,9 +62,6 @@ namespace Sico
             }
         }
         public static decimal Total;
-
-
-
         private decimal CalcularValorNeto1(double total1)
         {
             string res = Convert.ToString(Math.Round((total1 / 1.105), 2));
@@ -103,53 +100,6 @@ namespace Sico
             string res = Convert.ToString(Math.Round((NetoCalculado * 0.27), 2));
             decimal resultado = Convert.ToDecimal(res);
             return resultado;
-        }
-
-        public void RecalcularTotal4()
-        {
-            decimal Valor1 = 0;
-            decimal Valor2 = 0;
-            decimal Valor3 = 0;
-            decimal NuevoValor = Convert.ToDecimal(txtPercepIngBrutos.Text);
-            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
-            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
-            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
-
-            Total = NuevoValor + Valor1 + Valor2 + Valor3;
-        }
-
-        public void RecalcularTotal1()
-        {
-            decimal Valor2 = 0;
-            decimal Valor3 = 0;
-            decimal NuevoValor = Convert.ToDecimal(txtTotal1.Text);
-
-            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
-            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
-
-            Total = NuevoValor + Valor2 + Valor3;
-        }
-        public void RecalcularTotal2()
-        {
-            decimal Valor1 = 0;
-            decimal Valor3 = 0;
-            decimal NuevoValor2 = Convert.ToDecimal(txtTotal2.Text);
-
-            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
-            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
-
-            Total = NuevoValor2 + Valor1 + Valor3;
-        }
-        public void RecalcularTotal3()
-        {
-            decimal Valor2 = 0;
-            decimal Valor1 = 0;
-            decimal NuevoValor3 = Convert.ToDecimal(txtTotal3.Text);
-
-            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
-            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
-
-            Total = NuevoValor3 + Valor2 + Valor1;
         }
         private void HabilitarCampos()
         {
@@ -267,7 +217,6 @@ namespace Sico
         {
             double pow = Math.Pow(i, i);
         }
-        #endregion
         public static int idProveedorSeleccionado;
         private void txtCuit_KeyDown(object sender, KeyEventArgs e)
         {
@@ -322,16 +271,6 @@ namespace Sico
                 { }
             }
         }
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            LimpiarCampos();
-            InhabilitarCampos();
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            LimpiarCampos();
-        }
-
         private void txtNeto1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -359,7 +298,6 @@ namespace Sico
                 txtNeto2.Focus();
             }
         }
-
         private void txtNeto2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -387,7 +325,6 @@ namespace Sico
                 txtNeto3.Focus();
             }
         }
-
         private void txtNeto3_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -414,7 +351,6 @@ namespace Sico
                 }
             }
         }
-
         private void txtPercepIngBrutos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -434,7 +370,6 @@ namespace Sico
                 txtPercepIVA.Focus();
             }
         }
-
         private void txtPercepIVA_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -454,21 +389,6 @@ namespace Sico
                 txtNoGravado.Focus();
             }
         }
-        private void RecalcularTotal5()
-        {
-            decimal Valor1 = 0;
-            decimal Valor2 = 0;
-            decimal Valor3 = 0;
-            decimal Valor4 = 0;
-            decimal NuevoValor = Convert.ToDecimal(txtPercepIVA.Text);
-            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
-            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
-            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
-            if (txtPercepIngBrutos.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
-
-            Total = NuevoValor + Valor1 + Valor2 + Valor3 + Valor4;
-        }
-
         private void txtNoGravado_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -487,28 +407,11 @@ namespace Sico
                 }
             }
         }
-        private void RecalcularTotal6()
-        {
-            decimal Valor1 = 0;
-            decimal Valor2 = 0;
-            decimal Valor3 = 0;
-            decimal Valor4 = 0;
-            decimal Valor5 = 0;
-            decimal NuevoValor = Convert.ToDecimal(txtNoGravado.Text);
-            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
-            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
-            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
-            if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
-            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
-
-            Total = NuevoValor + Valor1 + Valor2 + Valor3 + Valor4 + Valor5;
-        }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                
+
                 Entidades.FacturaCompra _factura = CargarEntidad();
                 bool Exito = ComprasNeg.GuardarFacturaCompra(_factura, cuitCliente);
                 if (Exito == true)
@@ -529,7 +432,108 @@ namespace Sico
             catch (Exception ex)
             { }
         }
+        public void RecalcularTotal1()
+        {
+            decimal Valor1 = 0;
+            decimal Valor2 = 0;
+            decimal Valor3 = 0;
+            decimal Valor4 = 0;
+            decimal Valor5 = 0;
+            decimal Valor6 = 0;
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+            if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
+            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor6 = Convert.ToDecimal(txtNoGravado.Text); }
 
+            Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
+        }
+        public void RecalcularTotal2()
+        {
+            decimal Valor1 = 0;
+            decimal Valor2 = 0;
+            decimal Valor3 = 0;
+            decimal Valor4 = 0;
+            decimal Valor5 = 0;
+            decimal Valor6 = 0;
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+            if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
+            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
+
+            Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
+        }
+        public void RecalcularTotal3()
+        {
+            decimal Valor1 = 0;
+            decimal Valor2 = 0;
+            decimal Valor3 = 0;
+            decimal Valor4 = 0;
+            decimal Valor5 = 0;
+            decimal Valor6 = 0;
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+            if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
+            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
+
+            Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
+        }
+        public void RecalcularTotal4()
+        {
+            decimal Valor1 = 0;
+            decimal Valor2 = 0;
+            decimal Valor3 = 0;
+            decimal Valor4 = 0;
+            decimal Valor5 = 0;
+            decimal Valor6 = 0;
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+            if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
+            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
+
+            Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
+        }
+        private void RecalcularTotal5()
+        {
+            decimal Valor1 = 0;
+            decimal Valor2 = 0;
+            decimal Valor3 = 0;
+            decimal Valor4 = 0;
+            decimal Valor5 = 0;
+            decimal Valor6 = 0;
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+            if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
+            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
+
+            Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
+        }
+        private void RecalcularTotal6()
+        {
+            decimal Valor1 = 0;
+            decimal Valor2 = 0;
+            decimal Valor3 = 0;
+            decimal Valor4 = 0;
+            decimal Valor5 = 0;
+            decimal Valor6 = 0;
+            if (txtTotal1.Text != "") { Valor1 = Convert.ToDecimal(txtTotal1.Text); }
+            if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
+            if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
+            if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
+            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
+
+            Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
+        }
         private FacturaCompra CargarEntidad()
         {
             FacturaCompra _factura = new FacturaCompra();
@@ -566,16 +570,26 @@ namespace Sico
                 _factura.PercepIngBrutos = Convert.ToDecimal(txtPercepIngBrutos.Text);
             _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
             if (!String.IsNullOrEmpty(txtPercepIVA.Text))
-                _factura.PercepIngBrutos = Convert.ToDecimal(txtPercepIVA.Text);
+                _factura.PercepIva = Convert.ToDecimal(txtPercepIVA.Text);
             _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
             if (!String.IsNullOrEmpty(txtNoGravado.Text))
-                _factura.PercepIngBrutos = Convert.ToDecimal(txtNoGravado.Text);
+                _factura.NoGravado = Convert.ToDecimal(txtNoGravado.Text);
             _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
             _factura.CodigoMoneda = cmbCodigoMoneda.Text;
             _factura.TipoDeCambio = txtTipoCambio.Text;
             _factura.CodigoTipoOperacion = cmbCodigoOperacion.Text;
             _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
             return _factura;
+        }
+        #endregion
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            InhabilitarCampos();
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
         }
     }
 }

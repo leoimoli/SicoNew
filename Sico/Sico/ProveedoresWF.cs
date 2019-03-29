@@ -21,7 +21,6 @@ namespace Sico
 
         private void ProveedoresWF_Load(object sender, EventArgs e)
         {
-
         }
 
         #region Funciones

@@ -200,6 +200,7 @@
             this.btnCitiVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCitiVentas.UseVisualStyleBackColor = true;
             this.btnCitiVentas.Visible = false;
+            this.btnCitiVentas.Click += new System.EventHandler(this.btnCitiVentas_Click);
             // 
             // btnVolver
             // 

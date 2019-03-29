@@ -51,6 +51,25 @@ namespace Sico.Negocio
             return _listaFacturasCompras;
         }
 
+        public static List<FacturaCompra> BuscarDetalleFacturaFacturaCompra(string idFactura)
+        {
+            List<FacturaCompra> _listaFacturasCompras = new List<FacturaCompra>();
+            try
+            {
+                _listaFacturasCompras = ComprasDao.BuscarDetalleFacturaFacturaCompra(idFactura);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaFacturasCompras;
+        }
+
         public static List<FacturaCompra> BuscarDatosProveedor()
         {
             throw new NotImplementedException();
@@ -112,6 +131,21 @@ namespace Sico.Negocio
                 throw new Exception();
             }
             return _listaFacturasSubCliente;
+        }
+
+        public static bool GuardarEdicionFacturaCompras(FacturaCompra _factura, string cuit, string idFactura)
+        {
+            bool exito = false;
+            try
+            {
+                //ValidarDatosFactura(_subCliente);
+                exito = ComprasDao.GuardarEdicionFacturaCompras(_factura, cuit, idFactura);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
         }
     }
 }

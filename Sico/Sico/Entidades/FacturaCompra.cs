@@ -37,5 +37,6 @@ namespace Sico.Entidades
         public string TipoDeCambio { get; set; }
         public string NroFacturaNotaDeCredtio { get; set; }
         public string ApellidoNombre { get; set; }
+        public string Cuit { get; set; }
     }
 }

@@ -293,8 +293,6 @@ namespace Sico
             if (!String.IsNullOrEmpty(txtIva3.Text))
                 _subCliente.Iva3 = Convert.ToDecimal(txtIva3.Text);
             _subCliente.Monto = Convert.ToDecimal(lblTotalEdit.Text);
-            //int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
-            //_subCliente.idUsuario = idusuarioLogueado;
             return _subCliente;
         }
         #region Funciones
