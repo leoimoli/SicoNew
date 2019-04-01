@@ -499,10 +499,13 @@ namespace Sico
         private void btnCitiVentas_Click(object sender, EventArgs e)
         {
             ProgressBar();
-            ArchivosParaSiap ruta = new ArchivosParaSiap();
+            VentasTXTSiap ruta = new VentasTXTSiap();
+            DateTime FechaArchivo = DateTime.Now;
             string NombreTxt = lblNombreEdit.Text;
-            //string path = ruta.Carpeta + "\\" + NombreTxt + ".txt";
-            string path = @"C:\Users\limoli\Desktop\Txt\" + NombreTxt + ".txt";
+            string FechaFormato = FechaArchivo.ToString("yyyyMMdd");
+            var GuardarFichero = NombreTxt + FechaFormato;
+            string path = ruta.Carpeta + "\\" + GuardarFichero + ".txt";
+            //string path = @"C:\Users\limoli\Desktop\Txt\" + NombreTxt + ".txt";
             if (!File.Exists(path))
             {
                 // Create a file to write to.
@@ -722,10 +725,12 @@ namespace Sico
         }
         private void GenerarTXTVentasalicuotas()
         {
-            ArchivosParaSiap ruta = new ArchivosParaSiap();
+            VentasTXTAlicuota ruta = new VentasTXTAlicuota();
+            DateTime FechaArchivo = DateTime.Now;
             string NombreTxt = lblNombreEdit.Text;
-            //string path = ruta.Carpeta + "\\" + NombreTxt + ".txt";
-            string path = @"C:\Users\limoli\Desktop\Txt\Ventas-Alicuotas\" + NombreTxt + ".txt";
+            string FechaFormato = FechaArchivo.ToString("yyyyMMdd");
+            var GuardarFichero = NombreTxt + FechaFormato;
+            string path = ruta.Carpeta + "\\" + GuardarFichero + ".txt";
             if (!File.Exists(path))
             {
                 // Create a file to write to.

@@ -343,7 +343,6 @@ namespace Sico
                 txtNoGravado.Focus();
             }
         }
-
         private void txtNoGravado_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -362,7 +361,6 @@ namespace Sico
                 }
             }
         }
-
         private decimal CalcularValorNeto1(double total1)
         {
             string res = Convert.ToString(Math.Round((total1 / 1.105), 2));
@@ -504,6 +502,14 @@ namespace Sico
             if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
 
             Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
+        }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            string RazonSocial = this.razonSocial;
+            string cuit = this.cuit;
+            ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
+            _tarea.Show();
+            Close();
         }
     }
 }

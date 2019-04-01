@@ -260,7 +260,7 @@ namespace Sico
         private void btnCargarCompra_Click(object sender, EventArgs e)
         {
             
-            FacturacionCompraWF _compra = new FacturacionCompraWF(cuit);
+            FacturacionCompraWF _compra = new FacturacionCompraWF(cuit,razonSocial,cuit);
             _compra.Show();
             Hide();
         }

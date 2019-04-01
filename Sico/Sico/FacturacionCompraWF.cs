@@ -16,11 +16,16 @@ namespace Sico
     public partial class FacturacionCompraWF : MasterWF
     {
         private string cuitCliente;
-        public FacturacionCompraWF(string cuitCliente)
+        private string RazonSocial;
+        private string Cuit;
+        public FacturacionCompraWF(string cuitCliente, string razonSocial, string cuit)
         {
             InitializeComponent();
             this.cuitCliente = cuitCliente;
+            this.razonSocial = razonSocial;
+            this.cuit = cuit;
         }
+
         private void FacturacionCompraWF_Load(object sender, EventArgs e)
         {
             CargarCombos();
@@ -218,6 +223,9 @@ namespace Sico
             double pow = Math.Pow(i, i);
         }
         public static int idProveedorSeleccionado;
+        private string razonSocial;
+        private string cuit;
+
         private void txtCuit_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -266,6 +274,7 @@ namespace Sico
                         }
                         HabilitarCampos();
                     }
+                    else { MessageBox.Show("No existe ningun proveedor en la base de datos con el cuit ingresado."); }
                 }
                 catch (Exception ex)
                 { }
@@ -444,7 +453,7 @@ namespace Sico
             if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
             if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
             if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
-            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtPercepIngBrutos.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
             if (txtNoGravado.Text != "") { Valor6 = Convert.ToDecimal(txtNoGravado.Text); }
 
             Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
@@ -461,8 +470,8 @@ namespace Sico
             if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
             if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
             if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
-            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
-            if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
+            if (txtPercepIngBrutos.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor6 = Convert.ToDecimal(txtNoGravado.Text); }
 
             Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
         }
@@ -478,8 +487,8 @@ namespace Sico
             if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
             if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
             if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
-            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
-            if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
+            if (txtPercepIngBrutos.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor6 = Convert.ToDecimal(txtNoGravado.Text); }
 
             Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
         }
@@ -495,8 +504,8 @@ namespace Sico
             if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
             if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
             if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
-            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
-            if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
+            if (txtPercepIngBrutos.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor6 = Convert.ToDecimal(txtNoGravado.Text); }
 
             Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
         }
@@ -512,8 +521,8 @@ namespace Sico
             if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
             if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
             if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
-            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
-            if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
+            if (txtPercepIngBrutos.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor6 = Convert.ToDecimal(txtNoGravado.Text); }
 
             Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
         }
@@ -529,8 +538,8 @@ namespace Sico
             if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
             if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
             if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
-            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
-            if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
+            if (txtPercepIngBrutos.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtNoGravado.Text != "") { Valor6 = Convert.ToDecimal(txtNoGravado.Text); }
 
             Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
         }
@@ -590,6 +599,15 @@ namespace Sico
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            string RazonSocial = this.razonSocial;
+            string cuit = this.cuit;
+            ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
+            _tarea.Show();
+            Close();
         }
     }
 }

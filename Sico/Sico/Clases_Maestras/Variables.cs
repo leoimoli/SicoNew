@@ -26,4 +26,22 @@ namespace Sico.Clases_Maestras
     {
         public string Carpeta = @"C:\Sico-Test\Dropbox\Archivos-Citi";
     }
+    public class txtComprasSiap
+    {
+        public string Carpeta = @"C:\Sico-Prod\Archivos\txt\Compras\";
+    }
+    public class txtComprasAlicuotasSiap
+    {
+        public string Carpeta = @"C:\Sico-Prod\Archivos\txt\Compras-Alicuotas\";
+    }
+    public class VentasTXTSiap
+    {
+        public string Carpeta = @"C:\Sico-Prod\Archivos\txt\Ventas\";
+    }
+    public class VentasTXTAlicuota
+    {
+        public string Carpeta = @"C:\Sico-Prod\Archivos\txt\Ventas-Alicuotas\";
+    }
 }
+
+

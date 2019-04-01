@@ -30,6 +30,10 @@ namespace Sico
         {
             lblNombreEdit.Text = razonSocial;
             lblCuitEdit.Text = cuit;
+            ListaFacturas = ClienteNeg.BuscarTodasFacturasSubCliente(cuit);
+            txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete();
+            txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
         #region Botones
 
@@ -303,11 +307,18 @@ namespace Sico
             }
         }
         #endregion
-
-
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            string RazonSocial = razonSocial;
+            string Cuit = cuit;
+            ComprasWF _compras = new ComprasWF(RazonSocial, Cuit);
+            _compras.Show();
+            Hide();
         }
     }
 }

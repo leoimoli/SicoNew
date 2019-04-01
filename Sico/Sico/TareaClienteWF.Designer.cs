@@ -54,6 +54,7 @@
             this.btnConsultarTotales = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
+            this.btnCompras = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -86,6 +87,7 @@
             this.btnFacturarle.Text = "Facturar";
             this.btnFacturarle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFacturarle.UseVisualStyleBackColor = true;
+            this.btnFacturarle.Visible = false;
             this.btnFacturarle.Click += new System.EventHandler(this.btnFacturarle_Click);
             // 
             // label4
@@ -109,6 +111,7 @@
             this.btnFacturar.Text = "Su Facturación";
             this.btnFacturar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnFacturar.UseVisualStyleBackColor = true;
+            this.btnFacturar.Visible = false;
             this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
             // 
             // btnLibroDiario
@@ -178,6 +181,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnCompras);
             this.groupBox2.Controls.Add(this.btnCuentaCorriente);
             this.groupBox2.Controls.Add(this.btnFacturaC);
             this.groupBox2.Controls.Add(this.btnFacturaA);
@@ -185,7 +189,7 @@
             this.groupBox2.Controls.Add(this.btnNuevoSubCliente);
             this.groupBox2.Location = new System.Drawing.Point(968, 91);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(186, 452);
+            this.groupBox2.Size = new System.Drawing.Size(186, 500);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
@@ -194,7 +198,7 @@
             // 
             this.btnCuentaCorriente.Image = global::Sico.Properties.Resources.dinero;
             this.btnCuentaCorriente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCuentaCorriente.Location = new System.Drawing.Point(45, 365);
+            this.btnCuentaCorriente.Location = new System.Drawing.Point(45, 328);
             this.btnCuentaCorriente.Name = "btnCuentaCorriente";
             this.btnCuentaCorriente.Size = new System.Drawing.Size(90, 61);
             this.btnCuentaCorriente.TabIndex = 4;
@@ -207,7 +211,7 @@
             // 
             this.btnFacturaC.Image = global::Sico.Properties.Resources.factura;
             this.btnFacturaC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFacturaC.Location = new System.Drawing.Point(45, 275);
+            this.btnFacturaC.Location = new System.Drawing.Point(45, 252);
             this.btnFacturaC.Name = "btnFacturaC";
             this.btnFacturaC.Size = new System.Drawing.Size(90, 61);
             this.btnFacturaC.TabIndex = 3;
@@ -220,7 +224,7 @@
             // 
             this.btnFacturaA.Image = global::Sico.Properties.Resources.factura;
             this.btnFacturaA.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFacturaA.Location = new System.Drawing.Point(45, 112);
+            this.btnFacturaA.Location = new System.Drawing.Point(45, 105);
             this.btnFacturaA.Name = "btnFacturaA";
             this.btnFacturaA.Size = new System.Drawing.Size(90, 61);
             this.btnFacturaA.TabIndex = 2;
@@ -233,7 +237,7 @@
             // 
             this.btnNuevaFactura.Image = global::Sico.Properties.Resources.factura;
             this.btnNuevaFactura.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevaFactura.Location = new System.Drawing.Point(45, 192);
+            this.btnNuevaFactura.Location = new System.Drawing.Point(45, 177);
             this.btnNuevaFactura.Name = "btnNuevaFactura";
             this.btnNuevaFactura.Size = new System.Drawing.Size(90, 61);
             this.btnNuevaFactura.TabIndex = 1;
@@ -348,6 +352,19 @@
             this.label18.TabIndex = 26;
             this.label18.Text = "Ventas";
             // 
+            // btnCompras
+            // 
+            this.btnCompras.Image = global::Sico.Properties.Resources.tarjeta;
+            this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCompras.Location = new System.Drawing.Point(45, 403);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(90, 61);
+            this.btnCompras.TabIndex = 16;
+            this.btnCompras.Text = "Compras";
+            this.btnCompras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCompras.UseVisualStyleBackColor = true;
+            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
+            // 
             // TareaClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,5 +432,6 @@
         private System.Windows.Forms.Button btnCuentaCorriente;
         private System.Windows.Forms.Button btnFacturaC;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnCompras;
     }
 }

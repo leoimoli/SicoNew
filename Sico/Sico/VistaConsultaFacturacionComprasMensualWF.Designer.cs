@@ -190,13 +190,13 @@
             // btnCitiVentas
             // 
             this.btnCitiVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCitiVentas.Image = global::Sico.Properties.Resources.icon;
+            this.btnCitiVentas.Image = global::Sico.Properties.Resources.txt;
             this.btnCitiVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCitiVentas.Location = new System.Drawing.Point(405, 423);
             this.btnCitiVentas.Name = "btnCitiVentas";
             this.btnCitiVentas.Size = new System.Drawing.Size(80, 51);
             this.btnCitiVentas.TabIndex = 52;
-            this.btnCitiVentas.Text = "txtSiap";
+            this.btnCitiVentas.Text = "TXT Siap";
             this.btnCitiVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCitiVentas.UseVisualStyleBackColor = true;
             this.btnCitiVentas.Visible = false;
@@ -230,6 +230,7 @@
             this.btnExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcel.UseVisualStyleBackColor = true;
             this.btnExcel.Visible = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // VistaConsultaFacturacionComprasMensualWF
             // 

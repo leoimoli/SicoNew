@@ -261,7 +261,7 @@ namespace Sico.Dao
                         listaFacturaCompra.Fecha = item["Fecha"].ToString();
                         listaFacturaCompra.ApellidoNombre = item["NombreRazonSocial"].ToString();
                         listaFacturaCompra.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
-
+                        listaFacturaCompra.Cuit = item["Cuit"].ToString();
                         //// Detalle de la factura
                         listaFacturaCompra.TipoComprobante = item["TipoComprobante"].ToString();
                         listaFacturaCompra.Total1 = Convert.ToDecimal(item["Total1"].ToString());
