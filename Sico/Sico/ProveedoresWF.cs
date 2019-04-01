@@ -509,5 +509,36 @@ namespace Sico
                 txtBuscar.Focus();
             }
         }
+        private void cmbProvincia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string var = cmbProvincia.Text;
+                if (var != "Seleccione")
+                {
+                    var split1 = var.Split(',')[0];
+                    split1 = split1.Trim();
+                    int idProvinciaSeleccionada = Convert.ToInt32(split1);
+
+
+                    List<string> Localidades = new List<string>();
+                    Localidades = ClienteNeg.CargarComboLocalidadesPorIdProvincia(idProvinciaSeleccionada);
+                    cmbLocalidad.Items.Clear();
+                    cmbLocalidad.Text = "Seleccione";
+                    cmbLocalidad.Items.Add("Seleccione");
+                    foreach (string item in Localidades)
+                    {
+                        cmbLocalidad.Text = "Seleccione";
+                        cmbLocalidad.Items.Add(item);
+                    }
+                    this.cmbLocalidad.Enabled = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

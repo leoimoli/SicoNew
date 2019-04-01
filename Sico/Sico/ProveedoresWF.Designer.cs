@@ -386,6 +386,7 @@
             this.cmbProvincia.Name = "cmbProvincia";
             this.cmbProvincia.Size = new System.Drawing.Size(211, 24);
             this.cmbProvincia.TabIndex = 0;
+            this.cmbProvincia.SelectedIndexChanged += new System.EventHandler(this.cmbProvincia_Click);
             // 
             // label12
             // 
