@@ -26,7 +26,7 @@ namespace Sico.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("          server=35.222.31.115;Port=3306;User Id=root;password=Sf+jJ3af;database=" +
-            "sico_desarrollo;Persist Security Info=True")]
+            "sico_prod;Persist Security Info=True")]
         public string db {
             get {
                 return ((string)(this["db"]));

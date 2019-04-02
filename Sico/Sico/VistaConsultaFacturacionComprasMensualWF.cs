@@ -745,7 +745,7 @@ namespace Sico
                             totalCaracteres = totalCaracteres + IvaComisionContar.Length;
                             if (totalCaracteres == 325)
                             {
-                                sw.WriteLine(FechaFinal + TipoComprobante + PuntoDeVenta + FacturaSegundaParte + DespachoImportacionContar + CodigoDocumentoComprador + DniContar + ApellidoNombre + MontoContar + ImpTotalConcepContar + PercNoCategoContar + ImpOpeExeContar + ImpPerPagoImpContar + IImpPerIngBrutosContar + IImpPerImpMunContar + ImpImpIntContar + CodMoneda + TipoCambio + cantidadAlicuotas + CodOperacion + OtroTributoContar + CuitEmisorContar + DenominacióndelEmisorContar + IvaComisionContar);
+                                sw.WriteLine(FechaFinal + TipoComprobante + PuntoDeVenta + FacturaSegundaParte + DespachoImportacionContar + CodigoDocumentoComprador + DniContar + ApellidoNombre + MontoContar + ImpTotalConcepContar + PercNoCategoContar+ ImpOpeExeContar  + ImpPerPagoImpContar +  IImpPerIngBrutosContar + IImpPerImpMunContar + ImpImpIntContar + CodMoneda + TipoCambio + cantidadAlicuotas + CodOperacion + CreditoFiscalContar + OtroTributoContar + CuitEmisorContar + DenominacióndelEmisorContar + IvaComisionContar);
                             }
                         }
                     }
