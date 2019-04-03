@@ -123,7 +123,7 @@ namespace Sico.Negocio
             List<SubCliente> _listaFacturasSubCliente = new List<SubCliente>();
             try
             {
-                _listaFacturasSubCliente = ClienteDao.BuscarFacturacionTotal(cuit,mes, año);
+                _listaFacturasSubCliente = ClienteDao.BuscarFacturacionTotal(cuit, mes, año);
             }
             catch (Exception ex)
             {
@@ -167,7 +167,7 @@ namespace Sico.Negocio
         {
             string Factura;
             Factura = Dao.ClienteDao.BuscarNuevoNroFacturaNotaDeCredito(persona);
-            if(Factura == "0" || Factura == "")
+            if (Factura == "0" || Factura == "")
             {
                 Factura = "0003-00000001";
             }
@@ -345,7 +345,20 @@ namespace Sico.Negocio
             try
             {
                 ValidarDatosFactura(_subCliente);
-                exito = ClienteDao.GuardarFacturaSubCliente(_subCliente, cuit);
+                bool FacturaExistente = ClienteDao.ValidarFacturaExistente(_subCliente.NroFactura);
+                if (FacturaExistente == true)
+                {
+                    const string message = "El Nro.Factura ingresado ya existe en la base de datos.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
+                else
+                {
+                    exito = ClienteDao.GuardarFacturaSubCliente(_subCliente, cuit);
+                }
             }
             catch (Exception ex)
             {

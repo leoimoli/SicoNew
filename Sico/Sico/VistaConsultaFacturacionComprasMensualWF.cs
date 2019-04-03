@@ -536,7 +536,20 @@ namespace Sico
 
 
                             //////Tipo Comprobante
-                            string TipoComprobante = "006";
+                            string TipoComprobante = "";
+                            string tipo = item.TipoComprobante;
+                            if (tipo == "001 - FACTURAS A")
+                            {
+                                TipoComprobante = "001";
+                            }
+                            if (tipo == "006 - FACTURAS B")
+                            {
+                                TipoComprobante = "006";
+                            }
+                            if (tipo == "011 - FACTURAS C")
+                            {
+                                TipoComprobante = "011";
+                            }
                             totalCaracteres = totalCaracteres + TipoComprobante.Length;
                             //////Punto de Venta
                             string var = item.NroFactura;
@@ -745,13 +758,19 @@ namespace Sico
                             totalCaracteres = totalCaracteres + IvaComisionContar.Length;
                             if (totalCaracteres == 325)
                             {
-                                sw.WriteLine(FechaFinal + TipoComprobante + PuntoDeVenta + FacturaSegundaParte + DespachoImportacionContar + CodigoDocumentoComprador + DniContar + ApellidoNombre + MontoContar + ImpTotalConcepContar + PercNoCategoContar+ ImpOpeExeContar  + ImpPerPagoImpContar +  IImpPerIngBrutosContar + IImpPerImpMunContar + ImpImpIntContar + CodMoneda + TipoCambio + cantidadAlicuotas + CodOperacion + CreditoFiscalContar + OtroTributoContar + CuitEmisorContar + DenominacióndelEmisorContar + IvaComisionContar);
+                                sw.WriteLine(FechaFinal + TipoComprobante + PuntoDeVenta + FacturaSegundaParte + DespachoImportacionContar + CodigoDocumentoComprador + DniContar + ApellidoNombre + MontoContar + ImpTotalConcepContar + PercNoCategoContar + ImpOpeExeContar + ImpPerPagoImpContar + IImpPerIngBrutosContar + IImpPerImpMunContar + ImpImpIntContar + CodMoneda + TipoCambio + cantidadAlicuotas + CodOperacion + CreditoFiscalContar + OtroTributoContar + CuitEmisorContar + DenominacióndelEmisorContar + IvaComisionContar);
                             }
                         }
                     }
                 }
                 GenerarTXTVentasalicuotas();
-                MessageBox.Show("Se generaron los TXT de Ventas y ventas Alicuotas.");
+                MessageBox.Show("Se generaron los TXT de Compras y Compras Alicuotas.");
+                progressBar1.Value = Convert.ToInt32(null);
+                progressBar1.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Ya existe un archivo guardado con el mismo nombre.");
                 progressBar1.Value = Convert.ToInt32(null);
                 progressBar1.Visible = false;
             }
@@ -762,7 +781,7 @@ namespace Sico
             DateTime FechaArchivo = DateTime.Now;
             string NombreTxt = lblNombreEdit.Text;
             string FechaFormato = FechaArchivo.ToString("yyyyMMdd");
-            var GuardarFichero = NombreTxt + FechaFormato;
+            var GuardarFichero = "Alicuotas -" + NombreTxt + FechaFormato;
             string path = ruta.Carpeta + "\\" + GuardarFichero + ".txt";
             if (!File.Exists(path))
             {

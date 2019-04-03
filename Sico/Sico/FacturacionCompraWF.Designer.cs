@@ -648,6 +648,7 @@
             this.cmbTipoComprobante.Name = "cmbTipoComprobante";
             this.cmbTipoComprobante.Size = new System.Drawing.Size(350, 21);
             this.cmbTipoComprobante.TabIndex = 5;
+            this.cmbTipoComprobante.TextChanged += new System.EventHandler(this.cmbTipoComprobante_TextChanged);
             // 
             // label4
             // 

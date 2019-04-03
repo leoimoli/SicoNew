@@ -301,6 +301,32 @@ namespace Sico.Dao
             }
             return DNI;
         }
+
+        public static bool ValidarFacturaExistente(string nroFactura)
+        {
+            connection.Close();
+            bool Existe = false;
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                                 new MySqlParameter("NroFactura_in", nroFactura)};
+            string proceso = "ValidarFacturaExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "subcliente");
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
+
         public static List<SubCliente> BuscarTodasFacturasSubCliente(string cuit)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
@@ -659,6 +685,7 @@ namespace Sico.Dao
             string Actualizar = "EditarFacturaSubCliente";
             MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
             cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
             cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
             cmd.Parameters.AddWithValue("Idsub_in", Idsub);

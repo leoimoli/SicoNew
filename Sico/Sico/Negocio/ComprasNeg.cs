@@ -92,7 +92,15 @@ namespace Sico.Negocio
 
         private static void ValidarDatosFactura(FacturaCompra _factura)
         {
-
+            if (String.IsNullOrEmpty(_factura.NroFactura))
+            {
+                const string message = "El campo Nro.Factura es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
         }
 
         public static List<FacturaCompra> BuscarCompraPorProveedor(string apellidoNombre)

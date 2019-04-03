@@ -148,6 +148,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Fecha_in", _factura.Fecha);
             cmd.Parameters.AddWithValue("Monto_in", _factura.Monto);
             cmd.Parameters.AddWithValue("Idsub_in", Idsub);
+            cmd.Parameters.AddWithValue("NroFactura_in", _factura.NroFactura);
             cmd.ExecuteNonQuery();
             exito = EditarDetalleFacturaCompra(_factura, Idsub);
 

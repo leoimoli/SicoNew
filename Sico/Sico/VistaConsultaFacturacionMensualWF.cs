@@ -712,16 +712,21 @@ namespace Sico
                 progressBar1.Value = Convert.ToInt32(null);
                 progressBar1.Visible = false;
             }
-
-            // Open the file to read from.
-            using (StreamReader sr = File.OpenText(path))
+            else
             {
-                string s = "";
-                while ((s = sr.ReadLine()) != null)
-                {
-                    Console.WriteLine(s);
-                }
+                MessageBox.Show("Ya existe un archivo guardado con el mismo nombre.");
+                progressBar1.Value = Convert.ToInt32(null);
+                progressBar1.Visible = false;
             }
+            //// Open the file to read from.
+            //using (StreamReader sr = File.OpenText(path))
+            //{
+            //    string s = "";
+            //    while ((s = sr.ReadLine()) != null)
+            //    {
+            //        Console.WriteLine(s);
+            //    }
+            //}
         }
         private void GenerarTXTVentasalicuotas()
         {
@@ -729,7 +734,7 @@ namespace Sico
             DateTime FechaArchivo = DateTime.Now;
             string NombreTxt = lblNombreEdit.Text;
             string FechaFormato = FechaArchivo.ToString("yyyyMMdd");
-            var GuardarFichero = NombreTxt + FechaFormato;
+            var GuardarFichero = "Alicuotas -" + NombreTxt + FechaFormato;
             string path = ruta.Carpeta + "\\" + GuardarFichero + ".txt";
             if (!File.Exists(path))
             {

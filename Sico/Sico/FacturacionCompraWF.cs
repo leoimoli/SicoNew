@@ -609,5 +609,30 @@ namespace Sico
             _tarea.Show();
             Close();
         }
+
+        private void cmbTipoComprobante_TextChanged(object sender, EventArgs e)
+        {
+            if (cmbTipoComprobante.Text == "001 - FACTURAS A\r")
+            {
+                HabilitarCampos();
+                txtFactura.Focus();
+            }
+            if (cmbTipoComprobante.Text == "011 - FACTURAS C")
+            {
+                txtTotal1.Enabled = false;
+                txtTotal2.Enabled = false;
+                txtTotal3.Enabled = false;
+                txtNeto1.Enabled = false;
+                txtNeto2.Enabled = false;
+                txtNeto3.Enabled = false;
+                txtIva1.Enabled = false;
+                txtIva2.Enabled = false;
+                txtIva3.Enabled = false;
+                txtPercepIngBrutos.Enabled = false;
+                txtPercepIVA.Enabled = false;
+                txtNoGravado.Enabled = true;
+                txtFactura.Focus();
+            }
+        }
     }
 }

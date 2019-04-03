@@ -77,7 +77,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\Desktop\Leo\Cosas de Leo\Leo\Repositorio Fuentes\Windows Form\Sico(Contable)\Fuentes\SICO\SICO\bin\Debug\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Stock V1.0\Aplicacion\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Graph.Core, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Graph.Core.1.4.0\lib\net45\Microsoft.Graph.Core.dll</HintPath>
@@ -117,7 +117,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\..\Desktop\Leo\Cosas de Leo\Leo\Repositorio Fuentes\Windows Form\Sico(Contable)\Fuentes\SICO\SICO\bin\Debug\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\Leo\MySql.Data.DLL</HintPath>
     </Reference>
     <Reference Include="Nemiro.OAuth, Version=1.13.0.2828, Culture=neutral, PublicKeyToken=cb06320e362d440b, processorArchitecture=MSIL">
       <HintPath>..\packages\Nemiro.OAuth.1.13.0\lib\net452\Nemiro.OAuth.dll</HintPath>
