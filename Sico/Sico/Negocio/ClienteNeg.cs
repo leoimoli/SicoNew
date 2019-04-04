@@ -38,6 +38,13 @@ namespace Sico.Negocio
             return exito;
         }
 
+        public static string BuscarNroFactura(string cuit)
+        {
+            int idCliente = ClienteDao.BuscarIdClientePorCuit(cuit);
+            string NroFactura = ClienteDao.BuscarNroFactura(idCliente);
+            return NroFactura;
+        }
+
         public static List<SubCliente> BuscarDetalleFacturaSubCliente(string idsubCliente)
         {
             List<SubCliente> _listaSubClientes = new List<SubCliente>();

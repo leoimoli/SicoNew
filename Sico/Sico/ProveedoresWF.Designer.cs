@@ -72,6 +72,7 @@
             this.txtCodArea = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtNombreRazonSocial = new System.Windows.Forms.TextBox();
+            this.btnCompras = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -161,6 +162,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnCompras);
             this.groupBox2.Controls.Add(this.btnHabilitarBuscar);
             this.groupBox2.Controls.Add(this.btnNuevoCliente);
             this.groupBox2.Controls.Add(this.btnHistorial);
@@ -168,7 +170,7 @@
             this.groupBox2.Controls.Add(this.btnEditar);
             this.groupBox2.Location = new System.Drawing.Point(915, 147);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(186, 452);
+            this.groupBox2.Size = new System.Drawing.Size(186, 490);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
@@ -203,7 +205,7 @@
             // 
             this.btnHistorial.Image = global::Sico.Properties.Resources.diagnostico;
             this.btnHistorial.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHistorial.Location = new System.Drawing.Point(45, 348);
+            this.btnHistorial.Location = new System.Drawing.Point(45, 421);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.Size = new System.Drawing.Size(90, 61);
             this.btnHistorial.TabIndex = 4;
@@ -216,7 +218,7 @@
             // 
             this.btnEliminar.Image = global::Sico.Properties.Resources.borrar_usuario;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEliminar.Location = new System.Drawing.Point(45, 255);
+            this.btnEliminar.Location = new System.Drawing.Point(45, 328);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(90, 61);
             this.btnEliminar.TabIndex = 3;
@@ -573,6 +575,20 @@
             this.txtNombreRazonSocial.Size = new System.Drawing.Size(211, 23);
             this.txtNombreRazonSocial.TabIndex = 0;
             // 
+            // btnCompras
+            // 
+            this.btnCompras.Image = global::Sico.Properties.Resources.tarjeta;
+            this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCompras.Location = new System.Drawing.Point(45, 251);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(90, 61);
+            this.btnCompras.TabIndex = 17;
+            this.btnCompras.Text = "Compras";
+            this.btnCompras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCompras.UseVisualStyleBackColor = true;
+            this.btnCompras.Visible = false;
+            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
+            // 
             // ProveedoresWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -646,5 +662,6 @@
         private System.Windows.Forms.CheckBox chcFacturaC;
         private System.Windows.Forms.CheckBox chcFacturaB;
         private System.Windows.Forms.CheckBox chcFacturaA;
+        private System.Windows.Forms.Button btnCompras;
     }
 }

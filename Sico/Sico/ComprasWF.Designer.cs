@@ -45,6 +45,7 @@
             this.btnConsultarTotales = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -247,11 +248,25 @@
             this.label18.TabIndex = 34;
             this.label18.Text = "Compras";
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Image = global::Sico.Properties.Resources.refrescar;
+            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnActualizar.Location = new System.Drawing.Point(152, 271);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(40, 30);
+            this.btnActualizar.TabIndex = 86;
+            this.btnActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
             // ComprasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.btnConsultarTotales);
             this.Controls.Add(this.btnBuscar);
@@ -274,6 +289,7 @@
             this.Controls.SetChildIndex(this.btnBuscar, 0);
             this.Controls.SetChildIndex(this.btnConsultarTotales, 0);
             this.Controls.SetChildIndex(this.label18, 0);
+            this.Controls.SetChildIndex(this.btnActualizar, 0);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -302,5 +318,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnVentas;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }

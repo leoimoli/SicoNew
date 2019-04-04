@@ -552,7 +552,25 @@ namespace Sico
             DateTime fecha = dtFecha.Value;
             _factura.Fecha = fecha.ToShortDateString();
             _factura.TipoComprobante = cmbTipoComprobante.Text;
-            _factura.NroFactura = txtFactura.Text;
+
+            string factura = txtFactura.Text;
+            ///// Primera parte del numero
+            var split1 = factura.Split('-')[0];
+            split1 = split1.Trim();
+            ///// Segunda parte del numero
+            var split2 = factura.Split('-')[1];
+            split2 = split2.Trim();
+
+            if (split1.Length < 5)
+            {
+                split1 = split1.PadLeft(5, '0');
+            }
+            if (split2.Length < 8)
+            {
+                split2 = split2.PadLeft(8, '0');
+            }
+            string nroFactura = string.Concat(split1, "-", split2);
+            _factura.NroFactura = nroFactura;
             if (!String.IsNullOrEmpty(txtTotal1.Text))
                 _factura.Total1 = Convert.ToDecimal(txtTotal1.Text);
             if (!String.IsNullOrEmpty(txtTotal2.Text))

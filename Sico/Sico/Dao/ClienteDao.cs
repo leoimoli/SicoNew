@@ -38,6 +38,75 @@ namespace Sico.Dao
             return _listaProvincia;
         }
 
+        public static string BuscarNroFactura(int idCliente)
+        {
+            string Factura = "";
+
+            connection.Close();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idCliente) };
+            string proceso = "BuscarNroFactura";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    string id = item["id"].ToString();
+                    string FacturaVieja = item["NroFactura"].ToString();
+
+                    ///// Primera parte del numero
+                    var split1 = FacturaVieja.Split('-')[0];
+                    split1 = split1.Trim();
+                    ///// Segunda parte del numero
+                    var split2 = FacturaVieja.Split('-')[1];
+                    split2 = split2.Trim();
+
+                    string prueba = string.Concat(split1, split2);
+                    int Numero = Convert.ToInt32(prueba);
+                    int Fac = Numero + 1;
+                    string prueba2 = Convert.ToString(Fac);
+                    Factura = string.Concat("0000", prueba2);
+
+                }
+            }
+
+            connection.Close();
+            return Factura;
+        }
+
+        public static int BuscarIdClientePorCuit(string cuit)
+        {
+            int idCliente = 0;
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Cuit_in", cuit)};
+            string proceso = "BuscarIdClientePorCuit";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    idCliente = Convert.ToInt32(item["IdCliente"].ToString());
+                }
+            }
+            connection.Close();
+            return idCliente;
+        }
+
         internal static bool GuardarFacturaSubCliente(FacturaCompra _factura)
         {
             throw new NotImplementedException();
@@ -473,7 +542,7 @@ namespace Sico.Dao
                     int Numero = Convert.ToInt32(prueba);
                     int Fac = Numero + 1;
                     string prueba2 = Convert.ToString(Fac);
-                    Factura = string.Concat("000", prueba2);
+                    Factura = string.Concat("0000", prueba2);
 
                 }
             }

@@ -107,7 +107,6 @@ namespace Sico
         {
             double pow = Math.Pow(i, i);
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
@@ -496,14 +495,12 @@ namespace Sico
             return valor;
         }
         #endregion
-
         private void btnVolver_Click(object sender, EventArgs e)
         {
             ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
             _tarea.Show();
             Close();
         }
-
         private void btnCitiVentas_Click(object sender, EventArgs e)
         {
             ProgressBar();

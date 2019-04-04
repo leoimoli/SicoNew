@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sico.Entidades;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Sico
 {
@@ -30,6 +31,8 @@ namespace Sico
                 lblNombreEdit.Text = razonSocial;
                 lblCuitEdit.Text = cuit;
                 CargarComboPersonas();
+                string NroFactura = ClienteNeg.BuscarNroFactura(cuit);
+                txtFactura.Text = NroFactura;
                 Total = 0;
             }
             catch (Exception ex)
@@ -258,7 +261,7 @@ namespace Sico
             try
             {
                 string persona = cmbPersonas.Text;
-                string NuevoNroFactura = ClienteNeg.BuscarNuevoNroFactura(persona);
+                string NuevoNroFactura = ClienteNeg.BuscarNroFactura(cuit);
                 txtFactura.Text = NuevoNroFactura;
                 dtFecha.Enabled = true;
                 string apellidoNombre = cmbPersonas.Text;
@@ -296,7 +299,24 @@ namespace Sico
         {
             SubCliente _subCliente = new SubCliente();
             _subCliente.ApellidoNombre = cmbPersonas.Text;
-            _subCliente.NroFactura = txtFactura.Text;
+            string factura = txtFactura.Text;
+            ///// Primera parte del numero
+            var split1 = factura.Split('-')[0];
+            split1 = split1.Trim();
+            ///// Segunda parte del numero
+            var split2 = factura.Split('-')[1];
+            split2 = split2.Trim();
+
+            if (split1.Length < 5)
+            {
+                split1 = split1.PadLeft(5, '0');
+            }
+            if (split2.Length < 8)
+            {
+                split2 = split2.PadLeft(8, '0');
+            }
+            string nroFactura = string.Concat(split1, "-", split2);
+            _subCliente.NroFactura = nroFactura;
             DateTime fecha = dtFecha.Value;
             _subCliente.Fecha = fecha.ToShortDateString();
             if (!String.IsNullOrEmpty(txtTotal1.Text))
@@ -353,22 +373,38 @@ namespace Sico
             txtIva1.Clear();
             txtIva2.Clear();
             txtIva3.Clear();
-            DateTime fecha = DateTime.Now;
-            dtFecha.Value = fecha;
-            CargarComboPersonas();
+            //DateTime fecha = DateTime.Now;
+            //dtFecha.Value = fecha;
+            //CargarComboPersonas();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             lblTotalEdit.Text = "-";
             Total = 0;
-            lblDireccionEdit.Clear();
-            lblDniEdit.Clear();
-            lblObservacionsEdit.Text = "";
-            lblDni.Visible = false;
-            lblDireccion.Visible = false;
-            lblObservaciones.Visible = false;
-            lblDireccionEdit.Visible = false;
-            lblDniEdit.Visible = false;
+            //lblDireccionEdit.Clear();
+            //lblDniEdit.Clear();
+            //lblObservacionsEdit.Text = "";
+            //lblDni.Visible = false;
+            //lblDireccion.Visible = false;
+            //lblObservaciones.Visible = false;
+            //lblDireccionEdit.Visible = false;
+            //lblDniEdit.Visible = false;
             txtAdjunto.Clear();
+            CalcularProximoNumeroBoleta();
+        }
+        private void CalcularProximoNumeroBoleta()
+        {
+            string FacturaVieja = txtFactura.Text;
+            ///// Primera parte del numero
+            var split1 = FacturaVieja.Split('-')[0];
+            split1 = split1.Trim();
+            ///// Segunda parte del numero
+            var split2 = FacturaVieja.Split('-')[1];
+            split2 = split2.Trim();
+            string prueba = string.Concat(split1, split2);
+            int Numero = Convert.ToInt32(prueba);
+            int Fac = Numero + 1;
+            string prueba2 = Convert.ToString(Fac);
+            txtFactura.Text = string.Concat("0000", prueba2);
         }
         private void FuncionesBotonCancelar()
         {

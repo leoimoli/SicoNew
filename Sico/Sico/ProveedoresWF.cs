@@ -540,5 +540,13 @@ namespace Sico
                 throw ex;
             }
         }
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            //string RazonSocial = razonSocial;
+            //string Cuit = cuit;
+            //ComprasWF _compras = new ComprasWF(RazonSocial, Cuit);
+            //_compras.Show();
+            //Hide();
+        }
     }
 }

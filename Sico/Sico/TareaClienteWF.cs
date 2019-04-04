@@ -31,7 +31,7 @@ namespace Sico
             lblNombreEdit.Text = razonSocial;
             lblCuitEdit.Text = cuit;
             ListaFacturas = ClienteNeg.BuscarTodasFacturasSubCliente(cuit);
-            txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete();
+            txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete(cuit);
             txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
@@ -64,7 +64,7 @@ namespace Sico
             try
             {
                 ListaFacturas = ClienteNeg.BuscarTodasFacturasSubCliente(cuit);
-                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete();
+                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete(cuit);
                 txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
@@ -319,6 +319,16 @@ namespace Sico
             ComprasWF _compras = new ComprasWF(RazonSocial, Cuit);
             _compras.Show();
             Hide();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            lblNombreEdit.Text = razonSocial;
+            lblCuitEdit.Text = cuit;
+            ListaFacturas = ClienteNeg.BuscarTodasFacturasSubCliente(cuit);
+            txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete(cuit);
+            txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
     }
 }

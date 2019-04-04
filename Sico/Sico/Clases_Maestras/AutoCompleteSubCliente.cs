@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Sico.Dao;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,24 +11,25 @@ using System.Windows.Forms;
 
 namespace Sico.Clases_Maestras
 {
-   public class AutoCompleteSubCliente
+    public class AutoCompleteSubCliente
     {
-        public static DataTable Datos()
+        public static DataTable Datos(int idCliente)
         {
             DataTable dt = new DataTable();
             MySqlConnection conexion = new MySqlConnection(Properties.Settings.Default.db);
             conexion.Open();
-            string consulta = "Select ApellidoNombre from subcliente";
+            int id = idCliente;
+            string consulta = "Select ApellidoNombre from subcliente where idCliente = '"+ id +"'";
             MySqlCommand cmd = new MySqlCommand(consulta, conexion);
             MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
             adap.Fill(dt);
             conexion.Close();
             return dt;
         }
-
-        public static AutoCompleteStringCollection Autocomplete()
+        public static AutoCompleteStringCollection Autocomplete(string cuit)
         {
-            DataTable DT = Datos();
+            int idCliente = ClienteDao.BuscarIdClientePorCuit(cuit);
+            DataTable DT = Datos(idCliente);
             AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
             foreach (DataRow row in DT.Rows)
             {

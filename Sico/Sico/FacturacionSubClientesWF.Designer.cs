@@ -447,9 +447,9 @@
             // txtFactura
             // 
             this.txtFactura.Location = new System.Drawing.Point(490, 22);
-            this.txtFactura.Mask = "0000-00000000";
+            this.txtFactura.Mask = "00000-00000000";
             this.txtFactura.Name = "txtFactura";
-            this.txtFactura.Size = new System.Drawing.Size(85, 20);
+            this.txtFactura.Size = new System.Drawing.Size(90, 20);
             this.txtFactura.TabIndex = 21;
             // 
             // dtFecha
@@ -542,6 +542,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FacturacionSubClientesWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturación";

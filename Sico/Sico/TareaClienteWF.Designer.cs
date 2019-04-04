@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgvSubClientes = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnCompras = new System.Windows.Forms.Button();
             this.btnCuentaCorriente = new System.Windows.Forms.Button();
             this.btnFacturaC = new System.Windows.Forms.Button();
             this.btnFacturaA = new System.Windows.Forms.Button();
@@ -53,8 +54,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnConsultarTotales = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.btnCompras = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -193,6 +194,19 @@
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
+            // 
+            // btnCompras
+            // 
+            this.btnCompras.Image = global::Sico.Properties.Resources.tarjeta;
+            this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCompras.Location = new System.Drawing.Point(45, 403);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(90, 61);
+            this.btnCompras.TabIndex = 16;
+            this.btnCompras.Text = "Compras";
+            this.btnCompras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCompras.UseVisualStyleBackColor = true;
+            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
             // 
             // btnCuentaCorriente
             // 
@@ -341,6 +355,20 @@
             this.btnBuscar.Visible = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Image = global::Sico.Properties.Resources.refrescar;
+            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnActualizar.Location = new System.Drawing.Point(207, 255);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(40, 30);
+            this.btnActualizar.TabIndex = 85;
+            this.btnActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnActualizar, "Actualizar grilla");
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -352,24 +380,12 @@
             this.label18.TabIndex = 26;
             this.label18.Text = "Ventas";
             // 
-            // btnCompras
-            // 
-            this.btnCompras.Image = global::Sico.Properties.Resources.tarjeta;
-            this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCompras.Location = new System.Drawing.Point(45, 403);
-            this.btnCompras.Name = "btnCompras";
-            this.btnCompras.Size = new System.Drawing.Size(90, 61);
-            this.btnCompras.TabIndex = 16;
-            this.btnCompras.Text = "Compras";
-            this.btnCompras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCompras.UseVisualStyleBackColor = true;
-            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
-            // 
             // TareaClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.btnConsultarTotales);
             this.Controls.Add(this.lblCantidadEdit);
@@ -396,6 +412,7 @@
             this.Controls.SetChildIndex(this.lblCantidadEdit, 0);
             this.Controls.SetChildIndex(this.btnConsultarTotales, 0);
             this.Controls.SetChildIndex(this.label18, 0);
+            this.Controls.SetChildIndex(this.btnActualizar, 0);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).EndInit();
@@ -433,5 +450,6 @@
         private System.Windows.Forms.Button btnFacturaC;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnCompras;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }

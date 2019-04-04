@@ -257,9 +257,12 @@ namespace Sico
 
                     dataGridView1.Columns[21].HeaderText = "Nota De Credito";
                     dataGridView1.Columns[21].Visible = true;
-                    dataGridView1.Columns[18].Width = 80;
-                    dataGridView1.Columns[18].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dataGridView1.Columns[18].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[21].Width = 80;
+                    dataGridView1.Columns[21].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[21].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[22].HeaderText = "Observacion";
+                    dataGridView1.Columns[22].Visible = false;
 
                     dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Red;
 

@@ -27,7 +27,7 @@ namespace Sico
             txtApellidoNombreBuscar.Focus();
             lblNombreEdit.Text = razonSocial;
             lblCuitEdit.Text = cuit;
-            txtApellidoNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete();
+            txtApellidoNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete(cuit);
             txtApellidoNombreBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtApellidoNombreBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }

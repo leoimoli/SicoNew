@@ -293,5 +293,13 @@ namespace Sico
             _consulta.Show();
             Hide();
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            ListaFacturas = ComprasNeg.BuscarTodasFacturasDeComprasDelCliente(cuit);
+            txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassProveedores.Autocomplete();
+            txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
     }
 }
