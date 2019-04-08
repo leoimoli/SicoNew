@@ -195,9 +195,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(337, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 17);
+            this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Sico(contable) V1.2.0";
+            this.label3.Text = "Sico(contable) V-1.2.1";
             // 
             // MasterWF
             // 
