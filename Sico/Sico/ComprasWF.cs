@@ -180,23 +180,26 @@ namespace Sico
                     dgvCompras.Columns[29].HeaderText = "Cuit";
                     dgvCompras.Columns[29].Visible = false;
 
+                    dgvCompras.Columns[30].HeaderText = "Período";
+                    dgvCompras.Columns[30].Visible = false;
+
                     DataGridViewButtonColumn BotonVer = new DataGridViewButtonColumn();
                     BotonVer.Name = "Ver";
                     BotonVer.HeaderText = "Ver";
                     this.dgvCompras.Columns.Add(BotonVer);
-                    dgvCompras.Columns[30].Width = 80;
-                    dgvCompras.Columns[30].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dgvCompras.Columns[30].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                    dgvCompras.Columns[30].HeaderCell.Style.ForeColor = Color.White;
+                    dgvCompras.Columns[31].Width = 80;
+                    dgvCompras.Columns[31].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvCompras.Columns[31].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvCompras.Columns[31].HeaderCell.Style.ForeColor = Color.White;
 
                     DataGridViewButtonColumn BotonEditar = new DataGridViewButtonColumn();
                     BotonEditar.Name = "Editar";
                     BotonEditar.HeaderText = "Editar";
                     this.dgvCompras.Columns.Add(BotonEditar);
-                    dgvCompras.Columns[31].Width = 100;
-                    dgvCompras.Columns[31].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dgvCompras.Columns[31].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                    dgvCompras.Columns[31].HeaderCell.Style.ForeColor = Color.White;
+                    dgvCompras.Columns[32].Width = 100;
+                    dgvCompras.Columns[32].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvCompras.Columns[32].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvCompras.Columns[32].HeaderCell.Style.ForeColor = Color.White;
 
                 }
 
@@ -232,7 +235,7 @@ namespace Sico
         }
         private void ClickBoton(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvCompras.CurrentCell.ColumnIndex == 30)
+            if (dgvCompras.CurrentCell.ColumnIndex == 31)
             {
                 EsEditar = false;
                 var idFactura = Convert.ToString(this.dgvCompras.CurrentRow.Cells[0].Value);
@@ -241,7 +244,7 @@ namespace Sico
                 Hide();
             }
 
-            if (dgvCompras.CurrentCell.ColumnIndex == 31)
+            if (dgvCompras.CurrentCell.ColumnIndex == 32)
             {
                 EsEditar = true;
                 var idFactura = Convert.ToString(this.dgvCompras.CurrentRow.Cells[0].Value);

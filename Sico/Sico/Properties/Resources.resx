@@ -178,11 +178,17 @@
   <data name="tarjeta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tarjeta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ciclo-del-agua" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ciclo-del-agua.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="usuario-hombre (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usuario-hombre (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="email" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="txt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\txt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="estadisticas-de-ventas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\estadisticas-de-ventas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,7 +235,10 @@
   <data name="copia-de-seguridad" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copia-de-seguridad.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="txt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\txt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ciclo-del-agua (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ciclo-del-agua (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ciclo-del-agua (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ciclo-del-agua (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -38,5 +38,6 @@ namespace Sico.Entidades
         public string NroFacturaNotaDeCredtio { get; set; }
         public string ApellidoNombre { get; set; }
         public string Cuit { get; set; }
+        public string Periodo { get; set; }
     }
 }

@@ -101,6 +101,15 @@ namespace Sico.Negocio
                                            MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
+            if (String.IsNullOrEmpty(_factura.Periodo) || _factura.Periodo == "Seleccione")
+            {
+                const string message = "El campo Período es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
         }
 
         public static List<FacturaCompra> BuscarCompraPorProveedor(string apellidoNombre)
@@ -122,12 +131,12 @@ namespace Sico.Negocio
             return _listaCompras;
         }
 
-        public static List<FacturaCompra> BuscarFacturacionTotal(string cuit, int mes, string año)
+        public static List<FacturaCompra> BuscarFacturacionTotal(string cuit, string Periodo)
         {
             List<FacturaCompra> _listaFacturasSubCliente = new List<FacturaCompra>();
             try
             {
-                _listaFacturasSubCliente = ComprasDao.BuscarFacturacionTotal(cuit, mes, año);
+                _listaFacturasSubCliente = ComprasDao.BuscarFacturacionTotal(cuit, Periodo);
             }
             catch (Exception ex)
             {

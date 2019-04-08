@@ -32,6 +32,8 @@ namespace Sico
             {
                 try
                 {
+                    lblNombreEdit.Text = razonSocial;
+                    lblCuitEdit.Text = cuit;
                     List<FacturaCompra> _Factura = new List<FacturaCompra>();
                     _Factura = ComprasNeg.BuscarDetalleFacturaFacturaCompra(idFactura);
                     Total = _Factura[0].Monto;
@@ -71,6 +73,7 @@ namespace Sico
             txtCuit.Text = Factura.Cuit;
             txtCodigoDocumento.Text = "80-Cuit";
             txtFactura.Text = Factura.NroFactura;
+            txtFactura.Enabled = false;
             dtFecha.Value = Convert.ToDateTime(Factura.Fecha);
             lblTotalEdit.Text = Convert.ToString(Factura.Monto);
             if (Factura.Total1 > 0)
@@ -107,12 +110,15 @@ namespace Sico
             txtApellidoNombre.Text = Factura.ApellidoNombre;
             //txtCodigoDocumento.Text = Factura.CodigoDocumento;
             cmbTipoComprobante.Text = Factura.TipoComprobante;
+            cmbPeriodo.Text = Factura.Periodo;
+            cmbPeriodo.Enabled = true;
+            btnCrearPeriodo.Visible = true;
         }
         private void HabilitarCampos()
         {
             dtFecha.Enabled = true;
             cmbTipoComprobante.Enabled = true;
-            txtFactura.Enabled = true;
+            txtFactura.Enabled = false;
             txtTotal1.Enabled = true;
             txtTotal2.Enabled = true;
             txtTotal3.Enabled = true;
@@ -128,10 +134,9 @@ namespace Sico
             cmbCodigoMoneda.Enabled = true;
             cmbCodigoOperacion.Enabled = true;
             txtTipoCambio.Enabled = true;
-            btnCancelar.Enabled = true;
             btnGuardar.Enabled = true;
             txtNoGravado.Enabled = true;
-            btnActualizar.Visible = true;
+            //btnActualizar.Visible = true;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -511,5 +516,36 @@ namespace Sico
             _tarea.Show();
             Close();
         }
+
+        private void btnActualizarCombo_Click(object sender, EventArgs e)
+        {
+            List<string> Periodo = new List<string>();
+            Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
+            cmbPeriodo.Items.Clear();
+            //cmbCodigoMoneda.Text = "Seleccione";
+            //cmbCodigoMoneda.Items.Add("Seleccione");
+            foreach (string item in Periodo)
+            {
+                //cmbCodigoMoneda.Text = "Seleccione";
+                cmbPeriodo.Items.Add(item);
+            }
+        }             
+
+        //private void cmbTipoComprobante_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    this.cmbTipoComprobante.DropDownStyle = ComboBoxStyle.DropDownList;
+        //}
+        //private void cmbCodigoMoneda_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    this.cmbCodigoMoneda.DropDownStyle = ComboBoxStyle.DropDownList;
+        //}
+        //private void cmbPeriodo_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    this.cmbPeriodo.DropDownStyle = ComboBoxStyle.DropDownList;
+        //}
+        //private void cmbCodigoOperacion_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    this.cmbCodigoOperacion.DropDownStyle = ComboBoxStyle.DropDownList;
+        //}
     }
 }

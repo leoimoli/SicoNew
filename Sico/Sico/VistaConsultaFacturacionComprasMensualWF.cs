@@ -44,21 +44,15 @@ namespace Sico
         }
         private void CargarCombo()
         {
-            string[] Meses = Clases_Maestras.ValoresConstantes.Meses;
-            cmbMes.Items.Add("Seleccione");
-            cmbMes.Items.Clear();
-            foreach (string item in Meses)
+            List<string> Periodo = new List<string>();
+            Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
+            cmbPeriodo.Items.Clear();
+            //cmbCodigoMoneda.Text = "Seleccione";
+            //cmbCodigoMoneda.Items.Add("Seleccione");
+            foreach (string item in Periodo)
             {
-                cmbMes.Text = "Seleccione";
-                cmbMes.Items.Add(item);
-            }
-            string[] Años = Clases_Maestras.ValoresConstantes.Años;
-            cmbAño.Items.Add("Seleccione");
-            cmbAño.Items.Clear();
-            foreach (string item in Años)
-            {
-                cmbAño.Text = "Seleccione";
-                cmbAño.Items.Add(item);
+                //cmbCodigoMoneda.Text = "Seleccione";
+                cmbPeriodo.Items.Add(item);
             }
         }
         private int ValidarMesSeleccionado(string mesSeleccionado)
@@ -113,11 +107,9 @@ namespace Sico
             {
                 groupBox1.Enabled = false;
                 groupBox2.Enabled = false;
+                string Periodo = cmbPeriodo.Text;
                 ProgressBar();
-                string año = cmbAño.Text;
-                string MesSeleccionado = cmbMes.Text;
-                int mes = ValidarMesSeleccionado(MesSeleccionado);
-                ListaTotalFacturacion = ComprasNeg.BuscarFacturacionTotal(cuit, mes, año);
+                ListaTotalFacturacion = ComprasNeg.BuscarFacturacionTotal(cuit, Periodo);
                 groupBox1.Enabled = true;
                 groupBox2.Enabled = true;
                 progressBar1.Value = Convert.ToInt32(null);
@@ -299,22 +291,22 @@ namespace Sico
                     dataGridView1.Columns[22].HeaderText = "Tipo Comprobante";
                     dataGridView1.Columns[22].Visible = false;
 
-                    dataGridView1.Columns[23].HeaderText = "PercepIngBrutos";
-                    dataGridView1.Columns[23].Visible = false;
+                    dataGridView1.Columns[23].HeaderText = "Percep Ing Brutos";
+                    dataGridView1.Columns[23].Width = 80;
+                    dataGridView1.Columns[23].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[23].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                    dataGridView1.Columns[24].HeaderText = "NoGravado";
-                    dataGridView1.Columns[24].Visible = false;
+                    dataGridView1.Columns[24].HeaderText = "No Gravado";
+                    dataGridView1.Columns[24].Width = 80;
+                    dataGridView1.Columns[24].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[24].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                    dataGridView1.Columns[24].HeaderText = "PercepIva";
-                    dataGridView1.Columns[24].Visible = false;
+                    dataGridView1.Columns[25].HeaderText = "Percepción Iva";
+                    dataGridView1.Columns[25].Width = 80;
+                    dataGridView1.Columns[25].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[25].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                    dataGridView1.Columns[24].HeaderText = "TipoDeCambio";
-                    dataGridView1.Columns[24].Visible = false;
-
-                    dataGridView1.Columns[25].HeaderText = "Observacion";
-                    dataGridView1.Columns[25].Visible = false;
-
-                    dataGridView1.Columns[26].HeaderText = "Adjunto";
+                    dataGridView1.Columns[26].HeaderText = "TipoDeCambio";
                     dataGridView1.Columns[26].Visible = false;
 
                     dataGridView1.Columns[27].HeaderText = "Observacion";
@@ -322,6 +314,18 @@ namespace Sico
 
                     dataGridView1.Columns[28].HeaderText = "Adjunto";
                     dataGridView1.Columns[28].Visible = false;
+
+                    dataGridView1.Columns[29].HeaderText = "Observacion";
+                    dataGridView1.Columns[29].Visible = false;
+
+                    dataGridView1.Columns[30].HeaderText = "Adjunto";
+                    dataGridView1.Columns[30].Visible = false;
+
+                    //dataGridView1.Columns[31].HeaderText = "Cuit";
+                    //dataGridView1.Columns[31].Visible = false;
+
+                    //dataGridView1.Columns[32].HeaderText = "Periodo";
+                    //dataGridView1.Columns[32].Visible = false;
 
                     dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Red;
 
@@ -499,7 +503,7 @@ namespace Sico
         {
             ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
             _tarea.Show();
-            Close();
+            Hide();
         }
         private void btnCitiVentas_Click(object sender, EventArgs e)
         {
@@ -793,7 +797,21 @@ namespace Sico
                             Regex regex = new Regex(patron);
                             int totalCaracteres = 0;
                             //////Tipo Comprobante
-                            string TipoComprobante = "006";
+                            //////Tipo Comprobante
+                            string TipoComprobante = "";
+                            string tipo = item.TipoComprobante;
+                            if (tipo == "001 - FACTURAS A")
+                            {
+                                TipoComprobante = "001";
+                            }
+                            if (tipo == "006 - FACTURAS B")
+                            {
+                                TipoComprobante = "006";
+                            }
+                            if (tipo == "011 - FACTURAS C")
+                            {
+                                TipoComprobante = "011";
+                            }
                             totalCaracteres = totalCaracteres + TipoComprobante.Length;
                             //////Punto de Venta
                             string var = item.NroFactura;

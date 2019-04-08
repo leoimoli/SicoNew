@@ -105,6 +105,7 @@ namespace Sico.Dao
                     listaFacturaCompra.ApellidoNombre = item["NombreRazonSocial"].ToString();
                     listaFacturaCompra.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
                     listaFacturaCompra.Cuit = item["Cuit"].ToString();
+                    listaFacturaCompra.Periodo = item["Periodo"].ToString();
 
                     //// Detalle de la factura
                     listaFacturaCompra.TipoComprobante = item["TipoComprobante"].ToString();
@@ -148,7 +149,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Fecha_in", _factura.Fecha);
             cmd.Parameters.AddWithValue("Monto_in", _factura.Monto);
             cmd.Parameters.AddWithValue("Idsub_in", Idsub);
-            cmd.Parameters.AddWithValue("NroFactura_in", _factura.NroFactura);
+            cmd.Parameters.AddWithValue("Periodo_in", _factura.Periodo);
             cmd.ExecuteNonQuery();
             exito = EditarDetalleFacturaCompra(_factura, Idsub);
 
@@ -230,7 +231,7 @@ namespace Sico.Dao
             return lista;
         }
 
-        public static List<FacturaCompra> BuscarFacturacionTotal(string cuit, int mes, string año)
+        public static List<FacturaCompra> BuscarFacturacionTotal(string cuit, string Periodo)
         {
             List<FacturaCompra> lista = new List<FacturaCompra>();
             List<Entidades.Cliente> id = new List<Cliente>();
@@ -238,14 +239,13 @@ namespace Sico.Dao
             int IdCliente = id[0].IdCliente;
             if (IdCliente > 0)
             {
-                string fecha = mes + "/" + año;
                 connection.Close();
                 connection.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = connection;
                 DataTable Tabla = new DataTable();
                 MySqlParameter[] oParam = {
-                            new MySqlParameter("fecha_in", fecha),
+                            new MySqlParameter("Periodo_in", Periodo),
                                       new MySqlParameter("IdCliente_in", IdCliente)};
                 string proceso = "BuscarFacturacionTotalCompras";
                 MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
@@ -352,6 +352,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Monto_in", _factura.Monto);
             cmd.Parameters.AddWithValue("idCliente_in", idCliente);
             cmd.Parameters.AddWithValue("idProveedor_in", _factura.idProveedor);
+            cmd.Parameters.AddWithValue("Periodo_in", _factura.Periodo);
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {

@@ -24,6 +24,8 @@ namespace Sico
             this.cuitCliente = cuitCliente;
             this.razonSocial = razonSocial;
             this.cuit = cuit;
+            lblNombreEdit.Text = razonSocial;
+            lblCuitEdit.Text = cuit;
         }
 
         private void FacturacionCompraWF_Load(object sender, EventArgs e)
@@ -64,6 +66,18 @@ namespace Sico
             {
                 //cmbCodigoMoneda.Text = "Seleccione";
                 cmbCodigoMoneda.Items.Add(item);
+            }
+
+
+            List<string> Periodo = new List<string>();
+            Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
+            cmbPeriodo.Items.Clear();
+            //cmbCodigoMoneda.Text = "Seleccione";
+            //cmbCodigoMoneda.Items.Add("Seleccione");
+            foreach (string item in Periodo)
+            {
+                //cmbCodigoMoneda.Text = "Seleccione";
+                cmbPeriodo.Items.Add(item);
             }
         }
         public static decimal Total;
@@ -130,6 +144,8 @@ namespace Sico
             btnGuardar.Enabled = true;
             txtNoGravado.Enabled = true;
             btnActualizar.Visible = true;
+            cmbPeriodo.Enabled = true;
+            btnCrearPeriodo.Visible = true;
         }
         private const char SignoDecimal = '.'; // Carácter separador decimal
         private string _prevTextBoxValue; // Variable que almacena el valor anterior del Textbox
@@ -606,6 +622,7 @@ namespace Sico
             _factura.TipoDeCambio = txtTipoCambio.Text;
             _factura.CodigoTipoOperacion = cmbCodigoOperacion.Text;
             _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
+            _factura.Periodo = cmbPeriodo.Text;
             return _factura;
         }
         #endregion
@@ -625,7 +642,7 @@ namespace Sico
             string cuit = this.cuit;
             ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
             _tarea.Show();
-            Close();
+            Hide();
         }
 
         private void cmbTipoComprobante_TextChanged(object sender, EventArgs e)
@@ -651,6 +668,18 @@ namespace Sico
                 txtNoGravado.Enabled = true;
                 txtFactura.Focus();
             }
+        }
+        public static int idCliente;
+        private void btnCrearPeriodo_Click(object sender, EventArgs e)
+        {
+          
+            PeriodosWF _periodo = new PeriodosWF(cuit, razonSocial);
+            _periodo.Show();
+        }
+
+        private void btnActualizarCombo_Click(object sender, EventArgs e)
+        {
+            CargarCombos();
         }
     }
 }

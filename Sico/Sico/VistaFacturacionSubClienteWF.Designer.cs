@@ -382,7 +382,7 @@
             // txtFactura
             // 
             this.txtFactura.Location = new System.Drawing.Point(504, 66);
-            this.txtFactura.Mask = "0000-00000000";
+            this.txtFactura.Mask = "00000-00000000";
             this.txtFactura.Name = "txtFactura";
             this.txtFactura.Size = new System.Drawing.Size(85, 20);
             this.txtFactura.TabIndex = 21;

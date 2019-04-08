@@ -186,10 +186,12 @@
     </Compile>
     <Compile Include="Dao\ComprasDao.cs" />
     <Compile Include="Dao\PericiaDao.cs" />
+    <Compile Include="Dao\PeriodoDao.cs" />
     <Compile Include="Dao\ProveedorDao.cs" />
     <Compile Include="Entidades\CuentaEmailPorUsuario.cs" />
     <Compile Include="Entidades\FacturaCompra.cs" />
     <Compile Include="Entidades\Pericias.cs" />
+    <Compile Include="Entidades\Periodo.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="FacturacionCompraWF.cs">
       <SubType>Form</SubType>
@@ -217,6 +219,7 @@
     </Compile>
     <Compile Include="Negocio\ComprasNeg.cs" />
     <Compile Include="Negocio\PericiaNeg.cs" />
+    <Compile Include="Negocio\PeriodoNeg.cs" />
     <Compile Include="Negocio\ProveedorNeg.cs" />
     <Compile Include="NotaDeCreditoWF.cs">
       <SubType>Form</SubType>
@@ -272,6 +275,12 @@
     </Compile>
     <Compile Include="PericiasWF.Designer.cs">
       <DependentUpon>PericiasWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PeriodosWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PeriodosWF.Designer.cs">
+      <DependentUpon>PeriodosWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -361,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PericiasWF.resx">
       <DependentUpon>PericiasWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PeriodosWF.resx">
+      <DependentUpon>PeriodosWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -498,6 +510,9 @@
     <None Include="Resources\tarjeta.png" />
     <None Include="Resources\estadisticas-de-ventas.png" />
     <None Include="Resources\refrescar.png" />
+    <None Include="Resources\ciclo-del-agua.png" />
+    <None Include="Resources\ciclo-del-agua %281%29.png" />
+    <None Include="Resources\ciclo-del-agua %282%29.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

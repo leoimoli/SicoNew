@@ -37,10 +37,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.cmbAño = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cmbMes = new System.Windows.Forms.ComboBox();
+            this.cmbPeriodo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCitiVentas = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
@@ -107,17 +105,15 @@
             // 
             this.groupBox2.Controls.Add(this.progressBar1);
             this.groupBox2.Controls.Add(this.btnBuscar);
-            this.groupBox2.Controls.Add(this.cmbAño);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Controls.Add(this.cmbMes);
+            this.groupBox2.Controls.Add(this.cmbPeriodo);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(12, 106);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(616, 311);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Factura sub-cliente";
+            this.groupBox2.Text = "Factura Compras";
             // 
             // progressBar1
             // 
@@ -140,25 +136,6 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // cmbAño
-            // 
-            this.cmbAño.FormattingEnabled = true;
-            this.cmbAño.Location = new System.Drawing.Point(375, 28);
-            this.cmbAño.Name = "cmbAño";
-            this.cmbAño.Size = new System.Drawing.Size(162, 21);
-            this.cmbAño.TabIndex = 44;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Enabled = false;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(331, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 17);
-            this.label4.TabIndex = 43;
-            this.label4.Text = "Año:";
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -168,24 +145,24 @@
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.Visible = false;
             // 
-            // cmbMes
+            // cmbPeriodo
             // 
-            this.cmbMes.FormattingEnabled = true;
-            this.cmbMes.Location = new System.Drawing.Point(109, 28);
-            this.cmbMes.Name = "cmbMes";
-            this.cmbMes.Size = new System.Drawing.Size(214, 21);
-            this.cmbMes.TabIndex = 41;
+            this.cmbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPeriodo.FormattingEnabled = true;
+            this.cmbPeriodo.Location = new System.Drawing.Point(219, 30);
+            this.cmbPeriodo.Name = "cmbPeriodo";
+            this.cmbPeriodo.Size = new System.Drawing.Size(214, 21);
+            this.cmbPeriodo.TabIndex = 41;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Enabled = false;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(65, 29);
+            this.label2.Location = new System.Drawing.Point(152, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 17);
+            this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 40;
-            this.label2.Text = "Mes:";
+            this.label2.Text = "Período:";
             // 
             // btnCitiVentas
             // 
@@ -266,10 +243,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.ComboBox cmbAño;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox cmbMes;
+        private System.Windows.Forms.ComboBox cmbPeriodo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCitiVentas;
         private System.Windows.Forms.Button btnVolver;
