@@ -125,7 +125,9 @@ namespace Sico
             {
                 if (value.Count > 0)
                 {
-
+                    lblCantidad.Visible = true;
+                    lblCantidadEdit.Visible = true;
+                    lblCantidadEdit.Text = Convert.ToString(value.Count);
                     Lista = value;
                     if (value != dataGridView1.DataSource && dataGridView1.DataSource != null)
                     {
@@ -151,7 +153,9 @@ namespace Sico
                     double TotalIva10 = CalcularTotalIva10(value);
                     double TotalIva21 = CalcularTotalIva21(value);
                     double TotalIva27 = CalcularTotalIva27(value);
-
+                    double NoGravado = CalcularTotalNoGravado(value);
+                    double PercepIngBrutos = CalcularTotalPercepIngBrutos(value);
+                    double PercepIva = CalcularTotalPercepIva(value);
                     FacturaCompra ultimo = new FacturaCompra();
                     ultimo.NroFactura = "TOTAL";
                     ultimo.Total1 = Convert.ToDecimal(TotalImporte1);
@@ -166,6 +170,9 @@ namespace Sico
                     ultimo.Iva2 = Convert.ToDecimal(TotalIva21);
                     ultimo.Iva3 = Convert.ToDecimal(TotalIva27);
                     ultimo.Monto = Convert.ToDecimal(TotalMonto);
+                    ultimo.NoGravado = Convert.ToDecimal(TotalMonto);
+                    ultimo.PercepIngBrutos = Convert.ToDecimal(PercepIngBrutos);
+                    ultimo.PercepIva = Convert.ToDecimal(PercepIva);
                     value.Add(ultimo);
                     dataGridView1.DataSource = value;
 
@@ -337,6 +344,40 @@ namespace Sico
                 }
             }
         }
+
+        private double CalcularTotalPercepIva(List<FacturaCompra> value)
+        {
+            decimal totalPercepIva = 0;
+            decimal MontoNegativo = 0;
+            foreach (var item in value)
+            {
+                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                {
+                    MontoNegativo += item.NoGravado;
+                }
+                else { totalPercepIva += item.PercepIva; }
+
+            }
+            double valor = Convert.ToDouble(totalPercepIva - MontoNegativo);
+            return valor;
+        }
+
+        private double CalcularTotalPercepIngBrutos(List<FacturaCompra> value)
+        {
+            decimal totalPercepIngBrutos = 0;
+            decimal MontoNegativo = 0;
+            foreach (var item in value)
+            {
+                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                {
+                    MontoNegativo += item.PercepIngBrutos;
+                }
+                else { totalPercepIngBrutos += item.PercepIngBrutos; }
+
+            }
+            double valor = Convert.ToDouble(totalPercepIngBrutos - MontoNegativo);
+            return valor;
+        }
         #region Calculos totales
         private double CalcularTotalIva27(List<FacturaCompra> value)
         {
@@ -498,6 +539,23 @@ namespace Sico
             double valor = Convert.ToDouble(totalMonto - MontoNegativo);
             return valor;
         }
+
+        private double CalcularTotalNoGravado(List<FacturaCompra> value)
+        {
+            decimal totalnoGravado = 0;
+            decimal MontoNegativo = 0;
+            foreach (var item in value)
+            {
+                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                {
+                    MontoNegativo += item.NoGravado;
+                }
+                else { totalnoGravado += item.NoGravado; }
+
+            }
+            double valor = Convert.ToDouble(totalnoGravado - MontoNegativo);
+            return valor;
+        }
         #endregion
         private void btnVolver_Click(object sender, EventArgs e)
         {
@@ -521,11 +579,13 @@ namespace Sico
                 {
 
                     //string Blancos = " ";
-                    //int restan = 0;
+                    //int ContadoRegistro = 0;
                     foreach (var item in Lista)
                     {
+
                         if (item.Fecha != null)
                         {
+                            //ContadoRegistro = ContadoRegistro + 1;
                             string patron = @"[^\w]";
                             Regex regex = new Regex(patron);
                             int totalCaracteres = 0;
@@ -789,10 +849,12 @@ namespace Sico
                 // Create a file to write to.
                 using (StreamWriter sw = File.CreateText(path))
                 {
+                    int ContadoRegistro = 0;
                     foreach (var item in Lista)
                     {
                         if (item.Fecha != null)
                         {
+                            ContadoRegistro = ContadoRegistro + 1;
                             string patron = @"[^\w]";
                             Regex regex = new Regex(patron);
                             int totalCaracteres = 0;
@@ -876,6 +938,10 @@ namespace Sico
                                     NetoContar = NetoContar.PadLeft(15, '0');
                                 }
                             }
+                            if (NetoContar.Length < 15)
+                            {
+                                NetoContar = NetoContar.PadLeft(15, '0');
+                            }
                             totalCaracteres = totalCaracteres + NetoContar.Length;
                             ///// Alicuota de Iva
                             string codigo = "";
@@ -906,6 +972,10 @@ namespace Sico
                                     codigo = codigo.PadLeft(4, '0');
                                 }
                                 CodigoIva = Convert.ToDouble(codigo);
+                            }
+                            if (codigo.Length < 4)
+                            {
+                                codigo = codigo.PadLeft(4, '0');
                             }
                             totalCaracteres = totalCaracteres + codigo.Length;
                             ///// Iva liquidado
@@ -938,6 +1008,11 @@ namespace Sico
                                     IvaContar = IvaContar.PadLeft(15, '0');
                                 }
                             }
+                            if (IvaContar.Length < 15)
+                            {
+                                IvaContar = IvaContar.PadLeft(15, '0');
+                            }
+
                             totalCaracteres = totalCaracteres + IvaContar.Length;
                             if (totalCaracteres == 84)
                             {

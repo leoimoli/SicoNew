@@ -43,6 +43,8 @@
             this.btnCitiVentas = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
+            this.lblCantidadEdit = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -108,7 +110,7 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.cmbPeriodo);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 106);
+            this.groupBox2.Location = new System.Drawing.Point(12, 95);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(616, 311);
             this.groupBox2.TabIndex = 4;
@@ -209,11 +211,35 @@
             this.btnExcel.Visible = false;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
+            // lblCantidadEdit
+            // 
+            this.lblCantidadEdit.AutoSize = true;
+            this.lblCantidadEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadEdit.Location = new System.Drawing.Point(566, 409);
+            this.lblCantidadEdit.Name = "lblCantidadEdit";
+            this.lblCantidadEdit.Size = new System.Drawing.Size(33, 20);
+            this.lblCantidadEdit.TabIndex = 54;
+            this.lblCantidadEdit.Text = "****";
+            this.lblCantidadEdit.Visible = false;
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(512, 409);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(48, 20);
+            this.lblCantidad.TabIndex = 53;
+            this.lblCantidad.Text = "Total:";
+            this.lblCantidad.Visible = false;
+            // 
             // VistaConsultaFacturacionComprasMensualWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 477);
+            this.Controls.Add(this.lblCantidadEdit);
+            this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.btnCitiVentas);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnExcel);
@@ -230,6 +256,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -249,5 +276,7 @@
         private System.Windows.Forms.Button btnCitiVentas;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.Label lblCantidadEdit;
+        private System.Windows.Forms.Label lblCantidad;
     }
 }
