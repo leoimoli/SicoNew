@@ -32,6 +32,7 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEstadisticas = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
             this.btnCuentaCorriente = new System.Windows.Forms.Button();
             this.btnCargarCompra = new System.Windows.Forms.Button();
@@ -85,16 +86,30 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnEstadisticas);
             this.groupBox2.Controls.Add(this.btnVentas);
             this.groupBox2.Controls.Add(this.btnCuentaCorriente);
             this.groupBox2.Controls.Add(this.btnCargarCompra);
             this.groupBox2.Controls.Add(this.btnAgregarProveedor);
             this.groupBox2.Location = new System.Drawing.Point(950, 77);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(186, 452);
+            this.groupBox2.Size = new System.Drawing.Size(186, 540);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
+            // 
+            // btnEstadisticas
+            // 
+            this.btnEstadisticas.Image = global::Sico.Properties.Resources.estadisticas_de_ventas;
+            this.btnEstadisticas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEstadisticas.Location = new System.Drawing.Point(45, 424);
+            this.btnEstadisticas.Name = "btnEstadisticas";
+            this.btnEstadisticas.Size = new System.Drawing.Size(90, 61);
+            this.btnEstadisticas.TabIndex = 18;
+            this.btnEstadisticas.Text = "Estadísticas";
+            this.btnEstadisticas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEstadisticas.UseVisualStyleBackColor = true;
+            this.btnEstadisticas.Click += new System.EventHandler(this.btnEstadisticas_Click);
             // 
             // btnVentas
             // 
@@ -319,5 +334,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnVentas;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btnEstadisticas;
     }
 }

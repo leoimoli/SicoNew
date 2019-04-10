@@ -46,7 +46,7 @@
             this.groupBox3.Controls.Add(this.lblCuitEdit);
             this.groupBox3.Controls.Add(this.lblNombreEdit);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(34, 93);
+            this.groupBox3.Location = new System.Drawing.Point(34, 94);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(878, 121);
             this.groupBox3.TabIndex = 12;

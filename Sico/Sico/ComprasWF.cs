@@ -304,5 +304,14 @@ namespace Sico
             txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
+
+        private void btnEstadisticas_Click(object sender, EventArgs e)
+        {
+            string RazonSocial = lblNombreEdit.Text;
+            string Cuit = lblCuitEdit.Text;
+            ComprasEstadisticasWF _tarea = new ComprasEstadisticasWF(RazonSocial, Cuit);
+            _tarea.Show();
+            Hide();
+        }
     }
 }

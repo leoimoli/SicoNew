@@ -555,8 +555,17 @@ namespace Sico
                             }
                             totalCaracteres = totalCaracteres + FacturaSegundaParte.Length * 2;
                             //////""Código de Documento del comprador
-                            string CodigoDocumentoComprador = "96";
-                            totalCaracteres = totalCaracteres + CodigoDocumentoComprador.Length;
+                            string CodigoDocumentoComprador = "";
+                            if (item.ApellidoNombre == "CONSUMIDOR FINAL" || item.ApellidoNombre == "CONSUMIDOR FINAL TICK. Z")
+                            {
+                                CodigoDocumentoComprador = "99";
+                                totalCaracteres = totalCaracteres + CodigoDocumentoComprador.Length;
+                            }
+                            else
+                            {
+                                CodigoDocumentoComprador = "96";
+                                totalCaracteres = totalCaracteres + CodigoDocumentoComprador.Length;
+                            }
                             //////""Número de Identificación del comprador"
                             string Dni = item.Dni;
                             if (Dni.Length < 20)

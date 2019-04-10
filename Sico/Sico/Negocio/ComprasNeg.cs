@@ -32,6 +32,25 @@ namespace Sico.Negocio
             return lista;
         }
 
+        public static List<EstadisticaCompra> BuscarComprasEstadisticasPorProveedor(string cuit, string periodo)
+        {
+            List<EstadisticaCompra> _listaFacturasCompras = new List<EstadisticaCompra>();
+            try
+            {
+                _listaFacturasCompras = ComprasDao.BuscarComprasEstadisticasPorProveedor(cuit, periodo);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaFacturasCompras;
+        }
+
         public static List<FacturaCompra> BuscarTodasFacturasDeComprasDelCliente(string cuit)
         {
             List<FacturaCompra> _listaFacturasCompras = new List<FacturaCompra>();
@@ -110,6 +129,23 @@ namespace Sico.Negocio
                                            MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
+
+        bool FacturaExiste =  ValidarFacturaProveedorYaExistente(_factura);
+            if (FacturaExiste == true)
+            {
+                const string message = "Ya existe una factura con ese mismo Nro asociada al proveedor.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+        }
+
+        private static bool ValidarFacturaProveedorYaExistente(FacturaCompra _factura)
+        {
+            bool existe = ComprasDao.ValidarFacturaProveedorYaExistente(_factura);
+            return existe;
         }
 
         public static List<FacturaCompra> BuscarCompraPorProveedor(string apellidoNombre)

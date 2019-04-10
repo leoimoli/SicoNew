@@ -36,6 +36,44 @@ namespace Sico.Dao
             connection.Close();
             return _listaProvincia;
         }
+        public static List<EstadisticaCompra> BuscarComprasEstadisticasPorProveedor(string cuit, string periodo)
+        {
+            List<EstadisticaCompra> lista = new List<EstadisticaCompra>();
+            List<Cliente> id = new List<Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int idCliente = id[0].IdCliente;
+            if (idCliente > 0)
+            {
+                connection.Close();
+                connection.Open();
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                    new MySqlParameter("Periodo_in", periodo),
+                                      new MySqlParameter("idCliente_in", idCliente)};
+                string proceso = "BuscarComprasEstadisticasPorProveedor";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        EstadisticaCompra listaFacturasCompras = new EstadisticaCompra();
+                        listaFacturasCompras.idProveedor = Convert.ToInt32(item["idProveedor"].ToString());
+                        listaFacturasCompras.NombreProveedor = item["NombreRazonSocial"].ToString();
+                        listaFacturasCompras.Cuit = item["Cuit"].ToString();
+                        listaFacturasCompras.TotalDeCompras = Convert.ToInt32(item["Compras"].ToString());
+                        lista.Add(listaFacturasCompras);
+                    }
+                }
+                connection.Close();
+            }
+            return lista;
+        }
 
         public static List<FacturaCompra> BuscarTodasFacturasDeComprasDelCliente(string cuit)
         {
@@ -136,7 +174,31 @@ namespace Sico.Dao
             //}
             return lista;
         }
-
+        public static bool ValidarFacturaProveedorYaExistente(FacturaCompra _factura)
+        {
+            connection.Close();
+            bool Existe = false;
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                                 new MySqlParameter("NroFactura_in", _factura.NroFactura),
+              new MySqlParameter("idProveedor_in", _factura.idProveedor)};
+            string proceso = "ValidarFacturaProveedorYaExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "tComprasFacturas");
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
         public static bool GuardarEdicionFacturaCompras(FacturaCompra _factura, string cuit, string idFactura)
         {
             int Idsub = Convert.ToInt32(idFactura);
