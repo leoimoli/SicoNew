@@ -37,8 +37,75 @@ namespace Sico
                 fillChart(series1, Lista);
             }
             else { chart1.Series.Clear(); }
+            ///// Armo Torta
+            List<EstadisticaCompraTorta> Lista2 = new List<EstadisticaCompraTorta>();
+            string periodoTorta = cmbPeriodo.Text;
+            Lista2 = ComprasNeg.BuscarFacturacionTorta(cuit, periodoTorta);
+            if (Lista2.Count > 0)
+            {
+                string[] series1 = { "FacturacionCompras" };
+                fillChart2(series1, Lista2);
+            }
+            else { chart2.Series.Clear(); }
         }
+        private void fillChart2(string[] series1, List<EstadisticaCompraTorta> lista2)
+        {
+            chart2.Series.Clear();
+            string nombreNuevaSerie = series1[0].ToString();
+            chart2.Series.Add(nombreNuevaSerie);
+            //int ValorSeleccionado = 0;
+            List<Color> color = new List<Color>();
+            color.Add(Color.Red);
+            color.Add(Color.Green);
+            color.Add(Color.Black);
+            color.Add(Color.Orange);
+            color.Add(Color.Coral);
+            color.Add(Color.Brown);
+            color.Add(Color.Blue);
+            color.Add(Color.Gray);
+            color.Add(Color.Violet);
+            color.Add(Color.Red);
+            color.Add(Color.Green);
+            color.Add(Color.Black);
+            color.Add(Color.Orange);
+            color.Add(Color.Coral);
+            color.Add(Color.Brown);
+            color.Add(Color.Blue);
+            color.Add(Color.Gray);
+            color.Add(Color.Violet);
+            //chart1.ChartAreas[nombreNuevaSerie].AxisX.LabelStyle.Interval = 1;
+            foreach (var item in lista2)
+            {
+                chart2.DataSource = lista2;
+                chart2.Series[nombreNuevaSerie].XValueMember = "Proveedor";
+                chart2.Series[nombreNuevaSerie].XValueMember = item.NombreProveedor;
+                chart2.Series[nombreNuevaSerie].XValueMember = "Total";
+                chart2.Series[nombreNuevaSerie].XValueMember = Convert.ToString(item.Monto);
+                //int CantColor = color.Count;
+                //int TotalLista = lista2.Count;
+                //if (TotalLista >= ValorSeleccionado & CantColor > ValorSeleccionado)
+                //{
 
+                //    ValorSeleccionado = ValorSeleccionado + 1;
+                //}
+            }
+        }
+        private double CalcularTotalMonto(List<FacturaCompra> value)
+        {
+            decimal totalMonto = 0;
+            decimal MontoNegativo = 0;
+            foreach (var item in value)
+            {
+                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                {
+                    MontoNegativo += item.Monto;
+                }
+                else { totalMonto += item.Monto; }
+
+            }
+            double valor = Convert.ToDouble(totalMonto - MontoNegativo);
+            return valor;
+        }
         private void fillChart(string[] series1, List<EstadisticaCompra> lista)
         {
             chart1.Series.Clear();
@@ -46,6 +113,15 @@ namespace Sico
             chart1.Series.Add(nombreNuevaSerie);
             int ValorSeleccionado = 0;
             List<Color> color = new List<Color>();
+            color.Add(Color.Red);
+            color.Add(Color.Green);
+            color.Add(Color.Black);
+            color.Add(Color.Orange);
+            color.Add(Color.Coral);
+            color.Add(Color.Brown);
+            color.Add(Color.Blue);
+            color.Add(Color.Gray);
+            color.Add(Color.Violet);
             color.Add(Color.Red);
             color.Add(Color.Green);
             color.Add(Color.Black);
@@ -67,13 +143,13 @@ namespace Sico
                     chart1.Series[nombreNuevaSerie].Points[ValorSeleccionado].Color = color[ValorSeleccionado];
                     ValorSeleccionado = ValorSeleccionado + 1;
                 }
-                else
-                {
-                     chart1.Series[nombreNuevaSerie].Points.AddXY(item.NombreProveedor, item.TotalDeCompras);
-                    chart1.Series[nombreNuevaSerie].Points[ValorSeleccionado].Label = Convert.ToString(item.TotalDeCompras);
-                    int nuevoValor = ValorSeleccionado - 1;
-                    chart1.Series[nombreNuevaSerie].Points[ValorSeleccionado].Color = color[nuevoValor];
-                }
+                //else
+                //{
+                //    chart1.Series[nombreNuevaSerie].Points.AddXY(item.NombreProveedor, item.TotalDeCompras);
+                //    chart1.Series[nombreNuevaSerie].Points[ValorSeleccionado].Label = Convert.ToString(item.TotalDeCompras);
+                //    int nuevoValor = ValorSeleccionado - 1;
+                //    chart1.Series[nombreNuevaSerie].Points[ValorSeleccionado].Color = color[nuevoValor];
+                //}
             }
         }
         private void CargarComboPeriodos()
@@ -86,6 +162,15 @@ namespace Sico
                 cmbPeriodo.Items.Add(item);
             }
             cmbPeriodo.SelectedIndex = 0;
+
+            List<string> PeriodoTorta = new List<string>();
+            PeriodoTorta = PeriodoNeg.CargarComboPeriodo(cuit);
+            cmbPeriodoTorta.Items.Clear();
+            foreach (string item in PeriodoTorta)
+            {
+                cmbPeriodoTorta.Items.Add(item);
+            }
+            cmbPeriodoTorta.SelectedIndex = 0;
         }
         private void cmbPeriodo_SelectedIndexChanged(object sender, EventArgs e)
         {

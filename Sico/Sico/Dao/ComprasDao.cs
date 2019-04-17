@@ -75,6 +75,42 @@ namespace Sico.Dao
             return lista;
         }
 
+        public static List<EstadisticaCompraTorta> BuscarFacturacionTorta(string cuit, string periodoTorta)
+        {
+            List<EstadisticaCompraTorta> lista = new List<EstadisticaCompraTorta>();
+            List<Entidades.Cliente> id = new List<Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int IdCliente = id[0].IdCliente;
+            if (IdCliente > 0)
+            {
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                                       new MySqlParameter("idCliente_in", IdCliente),
+                                       new MySqlParameter("periodo_in", periodoTorta)};
+                string proceso = "FacturacionProveedorPorPeriodo";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        EstadisticaCompraTorta listaFacturaCompra = new EstadisticaCompraTorta();
+                        listaFacturaCompra.NombreProveedor = item["NombreRazonSocial"].ToString();
+                        listaFacturaCompra.Monto = Convert.ToDecimal(item["total"].ToString());
+                        lista.Add(listaFacturaCompra);
+                    }
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<FacturaCompra> BuscarTodasFacturasDeComprasDelCliente(string cuit)
         {
             List<FacturaCompra> lista = new List<FacturaCompra>();

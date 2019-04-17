@@ -51,6 +51,25 @@ namespace Sico.Negocio
             return _listaFacturasCompras;
         }
 
+        public static List<EstadisticaCompraTorta> BuscarFacturacionTorta(string cuit, string periodoTorta)
+        {
+            List<EstadisticaCompraTorta> _listaFacturasSubCliente = new List<EstadisticaCompraTorta>();
+            try
+            {
+                _listaFacturasSubCliente = ComprasDao.BuscarFacturacionTorta(cuit, periodoTorta);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaFacturasSubCliente;
+        }
+
         public static List<FacturaCompra> BuscarTodasFacturasDeComprasDelCliente(string cuit)
         {
             List<FacturaCompra> _listaFacturasCompras = new List<FacturaCompra>();
