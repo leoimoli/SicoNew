@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Sico
 {
@@ -51,9 +52,9 @@ namespace Sico
         private void fillChart2(string[] series1, List<EstadisticaCompraTorta> lista2)
         {
             chart2.Series.Clear();
-            string nombreNuevaSerie = series1[0].ToString();
-            chart2.Series.Add(nombreNuevaSerie);
-            //int ValorSeleccionado = 0;
+            //string nombreNuevaSerie = series1[0].ToString();
+            //chart2.Series.Add(nombreNuevaSerie);
+            int ValorSeleccionado = 0;
             List<Color> color = new List<Color>();
             color.Add(Color.Red);
             color.Add(Color.Green);
@@ -76,18 +77,33 @@ namespace Sico
             //chart1.ChartAreas[nombreNuevaSerie].AxisX.LabelStyle.Interval = 1;
             foreach (var item in lista2)
             {
-                chart2.DataSource = lista2;
-                chart2.Series[nombreNuevaSerie].XValueMember = "Proveedor";
-                chart2.Series[nombreNuevaSerie].XValueMember = item.NombreProveedor;
-                chart2.Series[nombreNuevaSerie].XValueMember = "Total";
-                chart2.Series[nombreNuevaSerie].XValueMember = Convert.ToString(item.Monto);
-                //int CantColor = color.Count;
-                //int TotalLista = lista2.Count;
-                //if (TotalLista >= ValorSeleccionado & CantColor > ValorSeleccionado)
-                //{
-
-                //    ValorSeleccionado = ValorSeleccionado + 1;
-                //}
+                int CantColor = color.Count;
+                int TotalLista = lista2.Count;
+                if (TotalLista >= ValorSeleccionado & CantColor > ValorSeleccionado)
+                {
+                    string seriesname = item.NombreProveedor;
+                    chart2.Series.Add(seriesname);
+                    chart2.Series[seriesname].ChartType = SeriesChartType.Pie;
+                    int ValorMonto = Convert.ToInt32(item.Monto);
+                    chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
+                    chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
+                    chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
+                    //chart2.Series[seriesname].Points[ValorSeleccionado].Color = color[ValorSeleccionado];
+                    ValorSeleccionado = ValorSeleccionado + 1;
+                }
+              
+                //    chart1.Series[nombreNuevaSerie].Points.AddXY(item.NombreProveedor, item.TotalDeCompras);
+                // chart2.Series[seriesname].Points[ValorSeleccionado].Label = Convert.ToString(item.TotalDeCompras);
+                //chart2.DataSource = lista2;
+                //chart2.Legends[0].BorderColor = Color.Black;
+                //string seriesname = item.NombreProveedor;
+                //chart2.Series.Add(seriesname);
+                //chart2.Series[seriesname].ChartType = SeriesChartType.Pie;
+                //int ValorMonto = Convert.ToInt32(item.Monto);
+                //chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
+                //chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
+                //chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
+                //chart2.Series["seriesname"].IsValueShownAsLabel = true;
             }
         }
         private double CalcularTotalMonto(List<FacturaCompra> value)
