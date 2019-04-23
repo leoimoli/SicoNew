@@ -23,6 +23,8 @@ namespace Sico
             InitializeComponent();
             this.razonSocial = razonSocial;
             this.cuit = cuit;
+            lblCuitEdit.Text = cuit;
+            lblNombreEdit.Text = razonSocial;
         }
 
         private void ComprasEstadisticasWF_Load(object sender, EventArgs e)
@@ -52,59 +54,24 @@ namespace Sico
         private void fillChart2(string[] series1, List<EstadisticaCompraTorta> lista2)
         {
             chart2.Series.Clear();
-            //string nombreNuevaSerie = series1[0].ToString();
-            //chart2.Series.Add(nombreNuevaSerie);
-            int ValorSeleccionado = 0;
-            List<Color> color = new List<Color>();
-            color.Add(Color.Red);
-            color.Add(Color.Green);
-            color.Add(Color.Black);
-            color.Add(Color.Orange);
-            color.Add(Color.Coral);
-            color.Add(Color.Brown);
-            color.Add(Color.Blue);
-            color.Add(Color.Gray);
-            color.Add(Color.Violet);
-            color.Add(Color.Red);
-            color.Add(Color.Green);
-            color.Add(Color.Black);
-            color.Add(Color.Orange);
-            color.Add(Color.Coral);
-            color.Add(Color.Brown);
-            color.Add(Color.Blue);
-            color.Add(Color.Gray);
-            color.Add(Color.Violet);
-            //chart1.ChartAreas[nombreNuevaSerie].AxisX.LabelStyle.Interval = 1;
-            foreach (var item in lista2)
+            Series serie = new Series()
             {
-                int CantColor = color.Count;
-                int TotalLista = lista2.Count;
-                if (TotalLista >= ValorSeleccionado & CantColor > ValorSeleccionado)
-                {
-                    string seriesname = item.NombreProveedor;
-                    chart2.Series.Add(seriesname);
-                    chart2.Series[seriesname].ChartType = SeriesChartType.Pie;
-                    int ValorMonto = Convert.ToInt32(item.Monto);
-                    chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
-                    chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
-                    chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
-                    //chart2.Series[seriesname].Points[ValorSeleccionado].Color = color[ValorSeleccionado];
-                    ValorSeleccionado = ValorSeleccionado + 1;
-                }
-              
-                //    chart1.Series[nombreNuevaSerie].Points.AddXY(item.NombreProveedor, item.TotalDeCompras);
-                // chart2.Series[seriesname].Points[ValorSeleccionado].Label = Convert.ToString(item.TotalDeCompras);
-                //chart2.DataSource = lista2;
-                //chart2.Legends[0].BorderColor = Color.Black;
-                //string seriesname = item.NombreProveedor;
-                //chart2.Series.Add(seriesname);
-                //chart2.Series[seriesname].ChartType = SeriesChartType.Pie;
-                //int ValorMonto = Convert.ToInt32(item.Monto);
-                //chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
-                //chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
-                //chart2.Series[seriesname].Points.AddXY(item.NombreProveedor, ValorMonto);
-                //chart2.Series["seriesname"].IsValueShownAsLabel = true;
+                Name = lista2[0].NombreProveedor,
+                ChartType = SeriesChartType.Pie
+            };
+            chart2.Series.Add(serie);
+            int TotalLista = lista2.Count;
+            //Random rnd = new Random(DateTime.Now.Millisecond);
+            for (int i = 0; i < lista2.Count; i++)
+            {
+                int valor = Convert.ToInt32(lista2[i].Monto);
+                int rndVal = valor;
+                DataPoint p = new DataPoint(0, rndVal);
+                p.AxisLabel = rndVal.ToString();
+                p.LegendText = lista2[i].NombreProveedor + "  $" + lista2[i].Monto;
+                serie.Points.Add(p);
             }
+
         }
         private double CalcularTotalMonto(List<FacturaCompra> value)
         {
@@ -124,49 +91,29 @@ namespace Sico
         }
         private void fillChart(string[] series1, List<EstadisticaCompra> lista)
         {
-            chart1.Series.Clear();
-            string nombreNuevaSerie = series1[0].ToString();
-            chart1.Series.Add(nombreNuevaSerie);
             int ValorSeleccionado = 0;
-            List<Color> color = new List<Color>();
-            color.Add(Color.Red);
-            color.Add(Color.Green);
-            color.Add(Color.Black);
-            color.Add(Color.Orange);
-            color.Add(Color.Coral);
-            color.Add(Color.Brown);
-            color.Add(Color.Blue);
-            color.Add(Color.Gray);
-            color.Add(Color.Violet);
-            color.Add(Color.Red);
-            color.Add(Color.Green);
-            color.Add(Color.Black);
-            color.Add(Color.Orange);
-            color.Add(Color.Coral);
-            color.Add(Color.Brown);
-            color.Add(Color.Blue);
-            color.Add(Color.Gray);
-            color.Add(Color.Violet);
-            //chart1.ChartAreas[nombreNuevaSerie].AxisX.LabelStyle.Interval = 1;
+            chart1.Series.Clear();
             foreach (var item in lista)
             {
-                int CantColor = color.Count;
-                int TotalLista = lista.Count;
-                if (TotalLista >= ValorSeleccionado & CantColor > ValorSeleccionado)
+                Series serie = new Series()
                 {
+                    Name = lista[ValorSeleccionado].NombreProveedor + "(" + lista[ValorSeleccionado].TotalDeCompras + "Compras" + ")",
+                    ChartType = SeriesChartType.Column
+                };
+                chart1.Series.Add(serie);
+                for (int i = 0; i < ValorSeleccionado || i == 0; i++)
+                {
+                    int valor = Convert.ToInt32(lista[i].TotalDeCompras);
+                    int rndVal = valor;
+                    DataPoint p = new DataPoint(0, rndVal);
+                    p.AxisLabel = rndVal.ToString();
+                    string nombreNuevaSerie = serie.Name.ToString();
                     chart1.Series[nombreNuevaSerie].Points.AddXY(item.NombreProveedor, item.TotalDeCompras);
-                    chart1.Series[nombreNuevaSerie].Points[ValorSeleccionado].Label = Convert.ToString(item.TotalDeCompras);
-                    chart1.Series[nombreNuevaSerie].Points[ValorSeleccionado].Color = color[ValorSeleccionado];
                     ValorSeleccionado = ValorSeleccionado + 1;
+                    i = ValorSeleccionado;
                 }
-                //else
-                //{
-                //    chart1.Series[nombreNuevaSerie].Points.AddXY(item.NombreProveedor, item.TotalDeCompras);
-                //    chart1.Series[nombreNuevaSerie].Points[ValorSeleccionado].Label = Convert.ToString(item.TotalDeCompras);
-                //    int nuevoValor = ValorSeleccionado - 1;
-                //    chart1.Series[nombreNuevaSerie].Points[ValorSeleccionado].Color = color[nuevoValor];
-                //}
             }
+
         }
         private void CargarComboPeriodos()
         {
@@ -200,6 +147,13 @@ namespace Sico
                 fillChart(series1, Lista);
             }
             else { chart1.Series.Clear(); }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
+            _tarea.Show();
+            Hide();
         }
     }
 }

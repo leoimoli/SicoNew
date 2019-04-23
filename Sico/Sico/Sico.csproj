@@ -542,6 +542,7 @@
     <None Include="Resources\ciclo-del-agua.png" />
     <None Include="Resources\ciclo-del-agua %281%29.png" />
     <None Include="Resources\ciclo-del-agua %282%29.png" />
+    <None Include="Resources\diagrama.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

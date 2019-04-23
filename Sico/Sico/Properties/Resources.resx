@@ -133,9 +133,6 @@
   <data name="Imagen_Sico" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Imagen_Sico.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="pdf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pdf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -153,6 +150,9 @@
   </data>
   <data name="carpeta (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\carpeta (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ciclo-del-agua (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ciclo-del-agua (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,6 +178,9 @@
   <data name="tarjeta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tarjeta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="clip-sujetapapeles (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clip-sujetapapeles (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ciclo-del-agua" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ciclo-del-agua.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -199,8 +202,8 @@
   <data name="comprador (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\comprador (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="clip-sujetapapeles (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\clip-sujetapapeles (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="comprador (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\comprador (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,7 +241,7 @@
   <data name="ciclo-del-agua (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ciclo-del-agua (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ciclo-del-agua (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ciclo-del-agua (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="diagrama" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\diagrama.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

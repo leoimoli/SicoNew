@@ -100,7 +100,7 @@
             // 
             // btnEstadisticas
             // 
-            this.btnEstadisticas.Image = global::Sico.Properties.Resources.estadisticas_de_ventas;
+            this.btnEstadisticas.Image = global::Sico.Properties.Resources.diagrama;
             this.btnEstadisticas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnEstadisticas.Location = new System.Drawing.Point(45, 424);
             this.btnEstadisticas.Name = "btnEstadisticas";
