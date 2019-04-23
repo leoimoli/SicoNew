@@ -155,5 +155,19 @@ namespace Sico
             _tarea.Show();
             Hide();
         }
+
+        private void cmbPeriodoTorta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chart2.Series.Clear();
+            List<EstadisticaCompraTorta> Lista2 = new List<EstadisticaCompraTorta>();
+            string periodoTorta = cmbPeriodo.Text;
+            Lista2 = ComprasNeg.BuscarFacturacionTorta(cuit, periodoTorta);
+            if (Lista2.Count > 0)
+            {
+                string[] series1 = { "FacturacionCompras" };
+                fillChart2(series1, Lista2);
+            }
+            else { chart2.Series.Clear(); }
+        }
     }
 }

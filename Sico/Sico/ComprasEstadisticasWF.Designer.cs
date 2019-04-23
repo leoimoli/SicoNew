@@ -202,6 +202,7 @@ namespace Sico
             this.cmbPeriodoTorta.Name = "cmbPeriodoTorta";
             this.cmbPeriodoTorta.Size = new System.Drawing.Size(211, 21);
             this.cmbPeriodoTorta.TabIndex = 90;
+            this.cmbPeriodoTorta.SelectedIndexChanged += new System.EventHandler(this.cmbPeriodoTorta_SelectedIndexChanged);
             // 
             // label6
             // 
