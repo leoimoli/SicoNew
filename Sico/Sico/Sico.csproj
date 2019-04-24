@@ -215,6 +215,7 @@
     <Compile Include="Entidades\CuentaEmailPorUsuario.cs" />
     <Compile Include="Entidades\EstadisticaCompra.cs" />
     <Compile Include="Entidades\EstadisticaCompraTorta.cs" />
+    <Compile Include="Entidades\FacturaCompraAnual.cs" />
     <Compile Include="Entidades\FacturaCompra.cs" />
     <Compile Include="Entidades\Pericias.cs" />
     <Compile Include="Entidades\Periodo.cs" />

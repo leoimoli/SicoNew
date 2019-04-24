@@ -68,7 +68,7 @@ namespace Sico
                 int rndVal = valor;
                 DataPoint p = new DataPoint(0, rndVal);
                 p.AxisLabel = rndVal.ToString();
-                p.LegendText = lista2[i].NombreProveedor + "  $" + lista2[i].Monto;
+                p.LegendText = lista2[i].NombreProveedor + "  " + "(" + "$" + lista2[i].Monto + ")";
                 serie.Points.Add(p);
             }
 

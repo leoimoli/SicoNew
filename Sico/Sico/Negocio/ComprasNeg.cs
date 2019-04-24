@@ -70,6 +70,25 @@ namespace Sico.Negocio
             return _listaFacturasSubCliente;
         }
 
+        public static List<FacturaCompraAnual> FacturacionAnualPorPeriodos(string cuit, string año)
+        {
+            List<FacturaCompraAnual> _listaFacturacionCompraAnual = new List<FacturaCompraAnual>();
+            try
+            {
+                _listaFacturacionCompraAnual = ComprasDao.FacturacionAnualPorPeriodos(cuit, año);
+            }
+            catch (Exception ex)
+            {
+                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaFacturacionCompraAnual;
+        }
+
         public static List<FacturaCompra> BuscarTodasFacturasDeComprasDelCliente(string cuit)
         {
             List<FacturaCompra> _listaFacturasCompras = new List<FacturaCompra>();

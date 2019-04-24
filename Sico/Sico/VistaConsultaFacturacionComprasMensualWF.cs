@@ -345,6 +345,8 @@ namespace Sico
             }
         }
 
+
+        #region Calculos totales
         private double CalcularTotalPercepIva(List<FacturaCompra> value)
         {
             decimal totalPercepIva = 0;
@@ -378,7 +380,6 @@ namespace Sico
             double valor = Convert.ToDouble(totalPercepIngBrutos - MontoNegativo);
             return valor;
         }
-        #region Calculos totales
         private double CalcularTotalIva27(List<FacturaCompra> value)
         {
             decimal totaliva27 = 0;
