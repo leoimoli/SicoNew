@@ -10,13 +10,13 @@ namespace Sico.Negocio
 {
     public class PeriodoNeg
     {
-        public static bool GuardarPeriodo(string cuit, string nombre)
+        public static bool GuardarPeriodo(string cuit, string nombre, string Año)
         {
             bool exito = false;
             try
             {
                 ValidarDatos(nombre);
-                exito = PeriodoDao.GuardarPeriodo(cuit, nombre);
+                exito = PeriodoDao.GuardarPeriodo(cuit, nombre, Año);
             }
             catch (Exception ex)
             {

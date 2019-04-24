@@ -35,6 +35,8 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.cmbAño = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtPeriodo
@@ -105,11 +107,31 @@
             this.progressBar1.Value = 50;
             this.progressBar1.Visible = false;
             // 
+            // cmbAño
+            // 
+            this.cmbAño.FormattingEnabled = true;
+            this.cmbAño.Location = new System.Drawing.Point(162, 75);
+            this.cmbAño.Name = "cmbAño";
+            this.cmbAño.Size = new System.Drawing.Size(162, 21);
+            this.cmbAño.TabIndex = 92;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(118, 76);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 17);
+            this.label4.TabIndex = 91;
+            this.label4.Text = "Año:";
+            // 
             // PeriodosWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(438, 362);
+            this.Controls.Add(this.cmbAño);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnGuardar);
@@ -120,6 +142,7 @@
             this.Name = "PeriodosWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Períodos";
+            this.Load += new System.EventHandler(this.PeriodosWF_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,5 +156,7 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ComboBox cmbAño;
+        private System.Windows.Forms.Label label4;
     }
 }

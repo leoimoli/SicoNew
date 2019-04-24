@@ -12,13 +12,13 @@ namespace Sico.Dao
     public class PeriodoDao
     {
         private static MySql.Data.MySqlClient.MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.db);
-        public static bool GuardarPeriodo(string cuit, string nombre)
+        public static bool GuardarPeriodo(string cuit, string nombre, string Año)
         {
             bool exito = false;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
             id = ClienteDao.BuscarClientePorCuit(cuit);
             int idCliente = id[0].IdCliente;
-            bool YaExiste = ValidadPeriodoExistente(nombre, idCliente);
+            bool YaExiste = ValidadPeriodoExistente(nombre, idCliente, Año);
             if (YaExiste == false)
             {
                 connection.Close();
@@ -27,6 +27,7 @@ namespace Sico.Dao
                 MySqlCommand cmd = new MySqlCommand(proceso, connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                cmd.Parameters.AddWithValue("Ano_in", Año);
                 cmd.Parameters.AddWithValue("Nombre_in", nombre);
                 cmd.ExecuteNonQuery();
                 exito = true;
@@ -45,7 +46,7 @@ namespace Sico.Dao
                 return exito;
             }
         }
-        private static bool ValidadPeriodoExistente(string nombre, int idCliente)
+        private static bool ValidadPeriodoExistente(string nombre, int idCliente, string Año)
         {
             connection.Close();
             bool Existe = false;
@@ -55,6 +56,7 @@ namespace Sico.Dao
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
                                       new MySqlParameter("Nombre_in", nombre),
+                                      new MySqlParameter("Ano_in", Año),
             new MySqlParameter("idCliente_in", idCliente)};
             string proceso = "ValidadPeriodoExistente";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);

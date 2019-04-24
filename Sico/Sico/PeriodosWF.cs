@@ -24,8 +24,9 @@ namespace Sico
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            string Año = cmbAño.Text;
             string nombre = txtPeriodo.Text;
-            bool Exito = PeriodoNeg.GuardarPeriodo(cuit, nombre);
+            bool Exito = PeriodoNeg.GuardarPeriodo(cuit, nombre, Año);
             if (Exito == true)
             {
                 ProgressBar();
@@ -62,6 +63,7 @@ namespace Sico
             txtPeriodo.Clear();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
+            CargarCombo();
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -71,6 +73,23 @@ namespace Sico
         private void btnVolver_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void PeriodosWF_Load(object sender, EventArgs e)
+        {
+            CargarCombo();
+        }
+
+        private void CargarCombo()
+        {
+            string[] Años = Clases_Maestras.ValoresConstantes.Años;
+            cmbAño.Items.Add("Seleccione");
+            cmbAño.Items.Clear();
+            foreach (string item in Años)
+            {
+                cmbAño.Text = "Seleccione";
+                cmbAño.Items.Add(item);
+            }
         }
     }
 }
