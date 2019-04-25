@@ -38,10 +38,32 @@ namespace Sico.Negocio
             }
         }
 
+        public static bool GuardarPeriodoVenta(string cuit, string nombre, string año)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatos(nombre);
+                exito = PeriodoDao.GuardarPeriodoVenta(cuit, nombre, año);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
+
         public static List<string> CargarComboPeriodo(string cuit)
         {
             List<string> lista = new List<string>();
             lista = PeriodoDao.CargarComboPeriodo(cuit);
+            return lista;
+        }
+
+        public static List<string> CargarComboPeriodoVenta(string cuit)
+        {
+            List<string> lista = new List<string>();
+            lista = PeriodoDao.CargarComboPeriodoVenta(cuit);
             return lista;
         }
     }

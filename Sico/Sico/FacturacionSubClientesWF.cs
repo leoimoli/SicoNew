@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
 
 namespace Sico
 {
-    public partial class FacturacionSubClientesWF : Form
+    public partial class FacturacionSubClientesWF : MasterWF
     {
         private string cuit;
         private string razonSocial;
@@ -31,9 +31,14 @@ namespace Sico
                 lblNombreEdit.Text = razonSocial;
                 lblCuitEdit.Text = cuit;
                 CargarComboPersonas();
+                CargarCombo();
                 string NroFactura = ClienteNeg.BuscarNroFactura(cuit);
                 txtFactura.Text = NroFactura;
                 Total = 0;
+                cmbCodigoMoneda.Text = "PES - PesosArgentinos";
+                cmbCodigoOperacion.Text = "0 - NO CORRESPONDE";
+                cmbTipoComprobante.Text = "006 - FACTURAS B";
+                txtTipoCambio.Text = "1,000000";
             }
             catch (Exception ex)
             { }
@@ -108,8 +113,59 @@ namespace Sico
                 sr.Close();
             }
         }
+        private void btnCrearPeriodo_Click(object sender, EventArgs e)
+        {
+            PeriodosVentasWF _periodo = new PeriodosVentasWF(cuit, razonSocial);
+            _periodo.Show();
+        }
+        private void btnActualizarCombo_Click(object sender, EventArgs e)
+        {
+            CargarCombo();
+        }
         #region Funciones
         public static decimal Total;
+        private void CargarCombo()
+        {
+            List<string> TipoComprobante = new List<string>();
+            TipoComprobante = ComprasNeg.CargarComboTipoComprobante();
+            cmbTipoComprobante.Items.Clear();
+            //cmbTipoComprobante.Text = "Seleccione";
+            //cmbTipoComprobante.Items.Add("Seleccione");
+            foreach (string item in TipoComprobante)
+            {
+                //cmbTipoComprobante.Text = "Seleccione";
+                cmbTipoComprobante.Items.Add(item);
+            }
+
+            List<string> CodigoOperacion = new List<string>();
+            CodigoOperacion = ComprasNeg.CargarComboCodigoOperacion();
+            cmbCodigoOperacion.Items.Clear();
+            //cmbCodigoOperacion.Text = "Seleccione";
+            //cmbCodigoOperacion.Items.Add("Seleccione");
+            foreach (string item in CodigoOperacion)
+            {
+                //cmbCodigoOperacion.Text = "Seleccione";
+                cmbCodigoOperacion.Items.Add(item);
+            }
+
+            List<string> TipoMoneda = new List<string>();
+            TipoMoneda = ComprasNeg.CargarComboTipoMoneda();
+            cmbCodigoMoneda.Items.Clear();
+            //cmbCodigoMoneda.Text = "Seleccione";
+            //cmbCodigoMoneda.Items.Add("Seleccione");
+            foreach (string item in TipoMoneda)
+            {
+                //cmbCodigoMoneda.Text = "Seleccione";
+                cmbCodigoMoneda.Items.Add(item);
+            }
+            List<string> Periodo = new List<string>();
+            Periodo = PeriodoNeg.CargarComboPeriodoVenta(cuit);
+            cmbPeriodo.Items.Clear();
+            foreach (string item in Periodo)
+            {
+                cmbPeriodo.Items.Add(item);
+            }
+        }
         private void txtTotal1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -467,5 +523,6 @@ namespace Sico
             Total = NuevoValor3 + Valor2 + Valor1;
         }
         #endregion
+
     }
 }

@@ -303,6 +303,12 @@
     <Compile Include="PericiasWF.Designer.cs">
       <DependentUpon>PericiasWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="PeriodosVentasWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PeriodosVentasWF.Designer.cs">
+      <DependentUpon>PeriodosVentasWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="PeriodosWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PericiasWF.resx">
       <DependentUpon>PericiasWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PeriodosVentasWF.resx">
+      <DependentUpon>PeriodosVentasWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PeriodosWF.resx">
       <DependentUpon>PeriodosWF.cs</DependentUpon>
