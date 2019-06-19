@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace Sico
 {
-    public partial class VistaFacturacionSubClienteWF : Form
+    public partial class VistaFacturacionSubClienteWF : MasterWF
     {
         private string cuit;
         private string idsubCliente;
@@ -48,8 +48,8 @@ namespace Sico
                     {
                         if (listaArchivos.Count > contador)
                         {
-                            txtAdjunto1.Text = listaArchivos[0].ToString();
-                            txtAdjunto1.Visible = true; btnAbrir1.Visible = true; lblAdjunto1.Visible = true; contador = 1;
+                            txtAdjunto.Text = listaArchivos[0].ToString();
+                            txtAdjunto.Visible = true; btnAdjuntarFacturaElectronica.Visible = true; lblArchivo1.Visible = true; contador = 1;
                         }
                     }
 
@@ -77,8 +77,8 @@ namespace Sico
                     {
                         if (listaArchivos.Count > contador)
                         {
-                            txtAdjunto1.Text = listaArchivos[0].ToString();
-                            txtAdjunto1.Visible = true; btnAbrir1.Visible = true; lblAdjunto1.Visible = true; contador = 1;
+                            txtAdjunto.Text = listaArchivos[0].ToString();
+                            txtAdjunto.Visible = true; btnAdjuntarFacturaElectronica.Visible = true; lblArchivo1.Visible = true; contador = 1;
                         }
                     }
                     if (_Factura.Count <= 0)
@@ -96,7 +96,8 @@ namespace Sico
         private void HabilitarCamposConDatosEditar(List<SubCliente> _Factura)
         {
             var Factura = _Factura.First();
-            lblsubCliente.Text = Factura.ApellidoNombre;
+            cmbPersonas.Text = Factura.ApellidoNombre;
+            cmbPersonas.Enabled = false;
             txtFactura.Text = Factura.NroFactura;
             dtFecha.Value = Convert.ToDateTime(Factura.Fecha);
             lblTotalEdit.Text = Convert.ToString(Factura.Monto);
@@ -120,19 +121,24 @@ namespace Sico
                 txtIva3.Text = Convert.ToString(Factura.Iva3);
             if (Factura.Monto > 0)
                 lblTotalEdit.Text = Convert.ToString(Factura.Monto);
+            cmbTipoComprobante.Text = Factura.TipoComprobante;
+            cmbCodigoOperacion.Text = Factura.CodigoTipoOperacion;
+            cmbCodigoMoneda.Text = Factura.CodigoMoneda;
+            txtTipoCambio.Text = Factura.TipoDeCambio;
+            cmbPeriodo.Text = Factura.Periodo;
+            cmbPeriodo.Enabled = false;
             btnGuardar.Visible = true;
             btnPdf.Visible = false;
             dtFecha.Enabled = true;
-            txtAdjunto1.Enabled = false;
+            txtAdjunto.Enabled = false;
         }
         private void HabilitarCamposConDatos(List<SubCliente> _Factura)
         {
             var Factura = _Factura.First();
-            lblsubCliente.Text = Factura.ApellidoNombre;
+            cmbPersonas.Text = Factura.ApellidoNombre;
             txtFactura.Text = Factura.NroFactura;
             dtFecha.Value = Convert.ToDateTime(Factura.Fecha);
             lblTotalEdit.Text = Convert.ToString(Factura.Monto);
-
             if (Factura.Total1 > 0)
                 txtTotal1.Text = Convert.ToString(Factura.Total1);
             if (Factura.Total2 > 0)
@@ -154,8 +160,12 @@ namespace Sico
             if (Factura.Iva3 > 0)
                 txtIva3.Text = Convert.ToString(Factura.Iva3);
 
-            txtAdjunto1.Visible = true; btnAbrir1.Visible = true; lblAdjunto1.Visible = true;
-
+            cmbTipoComprobante.Text = Factura.TipoComprobante;
+            cmbCodigoOperacion.Text = Factura.CodigoTipoOperacion;
+            cmbCodigoMoneda.Text = Factura.CodigoMoneda;
+            txtTipoCambio.Text = Factura.TipoDeCambio;
+            cmbPeriodo.Text = Factura.Periodo;
+            txtAdjunto.Visible = true; btnAdjuntarFacturaElectronica.Visible = true; lblArchivo1.Visible = true;
             InhabilitarCampos();
         }
         private void InhabilitarCampos()
@@ -170,18 +180,25 @@ namespace Sico
             txtIva1.Enabled = false;
             txtIva2.Enabled = false;
             txtIva3.Enabled = false;
-            txtAdjunto1.Enabled = false;
+            txtAdjunto.Enabled = false;
+            cmbPersonas.Enabled = false;
+            cmbTipoComprobante.Enabled = false;
+            cmbCodigoMoneda.Enabled = false;
+            cmbCodigoOperacion.Enabled = false;
+            txtTipoCambio.Enabled = false;
+            cmbPeriodo.Enabled = false;
+            btnAdjuntarFacturaElectronica.Visible = false;
         }
         private void btnPdf_Click(object sender, EventArgs e)
         {
             ProgressBar();
             Document documentoPDF = new Document();
             var prueba =
-            PdfWriter.GetInstance(documentoPDF, new FileStream("C:/'" + lblsubCliente.Text + " Nro.Factura " + txtFactura.Text + "'.pdf", FileMode.Create));
+            PdfWriter.GetInstance(documentoPDF, new FileStream("C:/'" + cmbPersonas.Text + " Nro.Factura " + txtFactura.Text + "'.pdf", FileMode.Create));
             documentoPDF.Open();
             Paragraph p1 = new Paragraph("RAZON SOCIAL:" + lblNombreEdit.Text + "" + "                                                                       " + " CUIT: " + lblCuitEdit.Text + "", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
             Paragraph p1a = new Paragraph("" + System.Environment.NewLine + "");
-            Paragraph p2 = new Paragraph("APELLIDO Y NOMBRE:" + lblsubCliente.Text + "", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
+            Paragraph p2 = new Paragraph("APELLIDO Y NOMBRE:" + cmbPersonas.Text + "", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
             Paragraph p2a = new Paragraph("" + System.Environment.NewLine + "");
             Paragraph p3 = new Paragraph("FECHA:" + dtFecha.Text + "" + "                                            " + " NRO:BOLETA: " + txtFactura.Text + "", FontFactory.GetFont(FontFactory.TIMES, 11, iTextSharp.text.Font.NORMAL));
             Paragraph p3a = new Paragraph("" + System.Environment.NewLine + "");
@@ -212,6 +229,11 @@ namespace Sico
             //'Cerramos el objeto documento, guardamos y creamos el PDF
             documentoPDF.Close();
             //System.Diagnostics.Process.Start(lblNombreEdit.Text);
+            const string message2 = "Se realizo la exportación exitosamente.";
+            const string caption2 = "Éxito";
+            var result2 = MessageBox.Show(message2, caption2,
+                                         MessageBoxButtons.OK,
+                                         MessageBoxIcon.Asterisk);
             LimpiarCampos();
         }
         private void LimpiarCampos()
@@ -267,7 +289,7 @@ namespace Sico
         private SubCliente CargarEntidad()
         {
             SubCliente _subCliente = new SubCliente();
-            _subCliente.ApellidoNombre = lblsubCliente.Text;
+            _subCliente.ApellidoNombre = cmbPersonas.Text;
             _subCliente.NroFactura = txtFactura.Text;
             DateTime fecha = dtFecha.Value;
             _subCliente.Fecha = fecha.ToShortDateString();
@@ -293,6 +315,11 @@ namespace Sico
             if (!String.IsNullOrEmpty(txtIva3.Text))
                 _subCliente.Iva3 = Convert.ToDecimal(txtIva3.Text);
             _subCliente.Monto = Convert.ToDecimal(lblTotalEdit.Text);
+            _subCliente.CodigoTipoOperacion = cmbCodigoOperacion.Text;
+            _subCliente.TipoDeCambio = txtTipoCambio.Text;
+            _subCliente.TipoComprobante = cmbTipoComprobante.Text;
+            _subCliente.CodigoMoneda = cmbCodigoMoneda.Text;
+            _subCliente.Periodo = cmbPeriodo.Text;
             return _subCliente;
         }
         #region Funciones
@@ -466,7 +493,7 @@ namespace Sico
         #endregion
         private void btnAbrir1_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", txtAdjunto1.Text);
+            Process.Start("explorer.exe", txtAdjunto.Text);
         }
     }
 }

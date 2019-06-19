@@ -236,23 +236,38 @@ namespace Sico
                     dgvSubClientes.Columns[22].HeaderText = "Adjunto";
                     dgvSubClientes.Columns[22].Visible = false;
 
+                    dgvSubClientes.Columns[23].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[23].Visible = false;
+
+                    dgvSubClientes.Columns[24].HeaderText = "Cliente";
+                    dgvSubClientes.Columns[24].Visible = false;
+
+                    dgvSubClientes.Columns[25].HeaderText = "Observacion";
+                    dgvSubClientes.Columns[25].Visible = false;
+
+                    dgvSubClientes.Columns[26].HeaderText = "Observacion";
+                    dgvSubClientes.Columns[26].Visible = false;
+
+                    dgvSubClientes.Columns[27].HeaderText = "Adjunto";
+                    dgvSubClientes.Columns[27].Visible = false;
+
                     DataGridViewButtonColumn BotonVer = new DataGridViewButtonColumn();
                     BotonVer.Name = "Ver";
                     BotonVer.HeaderText = "Ver";
                     this.dgvSubClientes.Columns.Add(BotonVer);
-                    dgvSubClientes.Columns[23].Width = 80;
-                    dgvSubClientes.Columns[23].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dgvSubClientes.Columns[23].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                    dgvSubClientes.Columns[23].HeaderCell.Style.ForeColor = Color.White;
+                    dgvSubClientes.Columns[28].Width = 80;
+                    dgvSubClientes.Columns[28].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvSubClientes.Columns[28].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvSubClientes.Columns[28].HeaderCell.Style.ForeColor = Color.White;
 
                     DataGridViewButtonColumn BotonEditar = new DataGridViewButtonColumn();
                     BotonEditar.Name = "Editar";
                     BotonEditar.HeaderText = "Editar";
                     this.dgvSubClientes.Columns.Add(BotonEditar);
-                    dgvSubClientes.Columns[24].Width = 80;
-                    dgvSubClientes.Columns[24].HeaderCell.Style.BackColor = Color.DarkBlue;
-                    dgvSubClientes.Columns[24].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
-                    dgvSubClientes.Columns[24].HeaderCell.Style.ForeColor = Color.White;
+                    dgvSubClientes.Columns[29].Width = 80;
+                    dgvSubClientes.Columns[29].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvSubClientes.Columns[29].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                    dgvSubClientes.Columns[29].HeaderCell.Style.ForeColor = Color.White;
 
                 }
 
@@ -288,7 +303,7 @@ namespace Sico
         }
         private void ClickBoton(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvSubClientes.CurrentCell.ColumnIndex == 23)
+            if (dgvSubClientes.CurrentCell.ColumnIndex == 28)
             {
                 EsEditar = false;
                 var idsubCliente = Convert.ToString(this.dgvSubClientes.CurrentRow.Cells[0].Value);
@@ -297,7 +312,7 @@ namespace Sico
                 Hide();
             }
 
-            if (dgvSubClientes.CurrentCell.ColumnIndex == 24)
+            if (dgvSubClientes.CurrentCell.ColumnIndex == 29)
             {
                 EsEditar = true;
                 var idsubCliente = Convert.ToString(this.dgvSubClientes.CurrentRow.Cells[0].Value);

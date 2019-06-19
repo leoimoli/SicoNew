@@ -31,5 +31,10 @@ namespace Sico.Entidades
         public string Observacion { get; set; }
         public string NroFacturaNotaDeCredtio { get; set; }
         public string Adjunto { get; set; }
+        public string TipoComprobante { get; set; }
+        public string CodigoMoneda { get; set; }
+        public string CodigoTipoOperacion { get; set; }
+        public string TipoDeCambio { get; set; }
+        public string Periodo { get; set; }
     }
 }

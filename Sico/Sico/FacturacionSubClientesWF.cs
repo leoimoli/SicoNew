@@ -399,7 +399,12 @@ namespace Sico
             _subCliente.Monto = Convert.ToDecimal(lblTotalEdit.Text);
             //int idusuarioLogueado = Sesion.UsuarioLogueado.IdUsuario;
             //_subCliente.idUsuario = idusuarioLogueado;
+            _subCliente.TipoComprobante = cmbTipoComprobante.Text;
+            _subCliente.CodigoMoneda = cmbCodigoMoneda.Text;
+            _subCliente.TipoDeCambio = txtTipoCambio.Text;
+            _subCliente.CodigoTipoOperacion = cmbCodigoOperacion.Text;
             _subCliente.Adjunto = txtAdjunto.Text;
+            _subCliente.Periodo = cmbPeriodo.Text;
             return _subCliente;
         }
         private void ProgressBar()

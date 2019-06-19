@@ -139,8 +139,12 @@ namespace Sico.Dao
                     listaSubCliente.NroFactura = item["NroFactura"].ToString();
                     listaSubCliente.Fecha = item["Fecha"].ToString();
                     listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
+                    listaSubCliente.Dni = item["Dni"].ToString();
+                    listaSubCliente.Direccion = item["Direccion"].ToString();
+                    listaSubCliente.Observacion = item["Observacion"].ToString();
                     listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
                     listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                    listaSubCliente.Periodo = item["Periodo"].ToString();
                     //// Detalle de la factura
                     listaSubCliente.Total1 = Convert.ToDecimal(item["Total1"].ToString());
                     listaSubCliente.Total2 = Convert.ToDecimal(item["Total2"].ToString());
@@ -154,6 +158,10 @@ namespace Sico.Dao
                     listaSubCliente.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
                     listaSubCliente.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
                     listaSubCliente.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+                    listaSubCliente.TipoComprobante = item["TipoComprobante"].ToString();
+                    listaSubCliente.CodigoMoneda = item["CodigoMoneda"].ToString();
+                    listaSubCliente.TipoDeCambio = item["TipoDeCambio"].ToString();
+                    listaSubCliente.CodigoTipoOperacion = item["CodigoOperacion"].ToString();
                     lista.Add(listaSubCliente);
                 }
             }
@@ -658,6 +666,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("idCliente_in", idCliente);
             cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
             cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
+            cmd.Parameters.AddWithValue("Periodo_in", _subCliente.Periodo);
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
@@ -785,6 +794,10 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Iva1_in", _subCliente.Iva1);
             cmd.Parameters.AddWithValue("Iva2_in", _subCliente.Iva2);
             cmd.Parameters.AddWithValue("Iva3_in", _subCliente.Iva3);
+            cmd.Parameters.AddWithValue("TipoComprobante_in", _subCliente.TipoComprobante);
+            cmd.Parameters.AddWithValue("CodigoMoneda_in", _subCliente.CodigoMoneda);
+            cmd.Parameters.AddWithValue("CodigoTipoOperacion_in", _subCliente.CodigoTipoOperacion);
+            cmd.Parameters.AddWithValue("TipoDeCambio_in", _subCliente.TipoDeCambio);
             cmd.Parameters.AddWithValue("Idsub_in", Idsub);
             cmd.ExecuteNonQuery();
             exito = true;
@@ -813,6 +826,10 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Iva3_in", _subCliente.Iva3);
             cmd.Parameters.AddWithValue("idSubCliente_in", idUltimaFacturaSubCliente);
             cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("TipoComprobante_in", _subCliente.TipoComprobante);
+            cmd.Parameters.AddWithValue("CodigoMoneda_in", _subCliente.CodigoMoneda);
+            cmd.Parameters.AddWithValue("TipoDeCambio_in", _subCliente.TipoDeCambio);
+            cmd.Parameters.AddWithValue("CodigoTipoOperacion_in", _subCliente.CodigoTipoOperacion);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();

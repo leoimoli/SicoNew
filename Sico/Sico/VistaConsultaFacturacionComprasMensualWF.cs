@@ -170,7 +170,7 @@ namespace Sico
                     ultimo.Iva2 = Convert.ToDecimal(TotalIva21);
                     ultimo.Iva3 = Convert.ToDecimal(TotalIva27);
                     ultimo.Monto = Convert.ToDecimal(TotalMonto);
-                    ultimo.NoGravado = Convert.ToDecimal(TotalMonto);
+                    ultimo.NoGravado = Convert.ToDecimal(NoGravado);
                     ultimo.PercepIngBrutos = Convert.ToDecimal(PercepIngBrutos);
                     ultimo.PercepIva = Convert.ToDecimal(PercepIva);
                     value.Add(ultimo);
@@ -741,7 +741,7 @@ namespace Sico
                             string CodMoneda = "PES";
                             totalCaracteres = totalCaracteres + CodMoneda.Length;
                             ////// Tipo de Cambio
-
+                            //string TipoCambio = "0001000000";
                             string TipoCambio = "0001000000";
                             if (TipoCambio.Length == 1)
                             {

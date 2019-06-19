@@ -264,6 +264,26 @@ namespace Sico
                     dataGridView1.Columns[22].HeaderText = "Observacion";
                     dataGridView1.Columns[22].Visible = false;
 
+
+                    dataGridView1.Columns[23].HeaderText = "Observacion";
+                    dataGridView1.Columns[23].Visible = false;
+
+
+                    dataGridView1.Columns[24].HeaderText = "Observacion";
+                    dataGridView1.Columns[24].Visible = false;
+
+
+                    dataGridView1.Columns[25].HeaderText = "Observacion";
+                    dataGridView1.Columns[25].Visible = false;
+
+
+                    dataGridView1.Columns[26].HeaderText = "Observacion";
+                    dataGridView1.Columns[26].Visible = false;
+
+
+                    dataGridView1.Columns[27].HeaderText = "Observacion";
+                    dataGridView1.Columns[27].Visible = false;
+
                     dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Red;
 
                 }

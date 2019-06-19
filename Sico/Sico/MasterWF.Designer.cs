@@ -197,7 +197,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Sico(contable) V-1.2.3";
+            this.label3.Text = "Sico(contable) V-1.3.0";
             // 
             // MasterWF
             // 
