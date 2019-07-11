@@ -326,7 +326,6 @@ namespace Sico
         {
 
         }
-
         private void btnCompras_Click(object sender, EventArgs e)
         {
             string RazonSocial = razonSocial;
@@ -335,7 +334,6 @@ namespace Sico
             _compras.Show();
             Hide();
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             lblNombreEdit.Text = razonSocial;
