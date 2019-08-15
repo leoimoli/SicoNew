@@ -398,6 +398,15 @@ namespace Sico.Negocio
                                            MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
+            if (String.IsNullOrEmpty(_subCliente.Periodo) || _subCliente.Periodo == "Seleccione")
+            {
+                const string message = "El campo Periodo es obligatorio.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
         }
 
         public static List<Cliente> BuscarClientePorNombreRazonSocial(string nombreRazonSocial)
