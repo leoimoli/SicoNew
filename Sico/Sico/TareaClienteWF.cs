@@ -90,6 +90,7 @@ namespace Sico
         {
             FacturacionSubClientesWF _facturacion = new FacturacionSubClientesWF(razonSocial, cuit);
             _facturacion.Show();
+            Hide();
         }
         private void btnNuevoSubCliente_Click(object sender, EventArgs e)
         {

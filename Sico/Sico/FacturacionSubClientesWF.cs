@@ -529,5 +529,11 @@ namespace Sico
         }
         #endregion
 
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            _tarea.Show();
+            Hide();
+        }
     }
 }

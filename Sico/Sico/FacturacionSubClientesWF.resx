@@ -125,17 +125,20 @@
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7oAAAO6AHcdKD4AAAAB3RJ
-        TUUH4wMBDjsUj+7IdgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGySURBVEhL
-        Y2AgAORCK0NkQqrPyYZU/ZQNqX4OpKfIRVUIEtJHlLxcSHUB0MD/QHxRNqSyWza4aimQ/Vs2tOqySnQD
-        H1GG4FIkHVQmA3K1XGjVGgaHBhaYOrmQKmeg+B8gbqPIApnQymSQ66XDK9XQDZIJqdoC8gVlFoRUloEs
-        YAgNZcawILhqAlDuBUUWAIOiHGxBQwMTukHA+OinnwVYHECUz4jyAdBwoE8eywZXRxJlKLIiYiwwTktj
-        BQUjSC1FFgDzQyiyK2FxQDULgElyB9DQ/TBXjloADgnkSB4NIqxJGCWIQqo2ANP7CUQqqpoBLPAeUC2Z
-        ykAKvr/A+qBQJrgqBsh+D0yqyyiyAGhACbiwA9YFKp657ED2RmjlA6yAqs/IRpRJQcWB/MoS0nNyaGUs
-        2MDwGmWYZvnQGkWF4EoNWBEOYoPUgHxFsgXQGu23THB1Oy7NQMPngqpQmdBqaZItAGkAVfDg6jG0KgGj
-        TgiuyoYG2RSyDAdpAoUxsEWxGVpiHgOGfSuoLgbi02Cx0OqtIDVkWwDWCKwywfVzaNVxoKFfQBiYhI+B
-        xLBVp+iWAQBXoCp/Lx8pnAAAAABJRU5ErkJggg==
+        TUUH4wMBDjsUj+7IdgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGvSURBVEhL
+        7VY9SwNBED38wE6wNXenYhB7/4BgZevtEj9BENKIoBCit5viGmNhoUUKG0utLBQV7OxUUATxDwgW2tnY
+        SCLxzWY8EgzkcglWeTDc7JvZebe7l51YjeBKX9hCPzpCfTlCv+FZcOe3BjjcGlyh11GwDHtyhL/reOoI
+        ftGR6jm5EPRzWjwkZrI2vbUr1Yk1GfQwDVE1Bb4EyzMVD7b0V1CknEj5Y0yFsIW6oFXwMB5s4WdJwJKy
+        m6kQtqf2EXvnYTxgKzaNQBB0MRUC57H3fwJ14pEQSQAxPF8dT89xKDqiCEyk072UQ7kcio5qAfweZPVb
+        tl0An+QVil5zqCNQQUegIWoEhDqF3XEIAuoAF95L2wT44vtGP9jARbcI/wOrOG5JAAUyRgC9IDm91gf/
+        jMYV0w/ObHaQeYz9DE+LDrTKJTM5lRtlyhqSuZFhzx//vcLJpxxalUloBtzRirand5j6A8QPTY7UCaaa
+        AyYXYCV8RctMhcB5rCJGW1ZgqnnQHuMfxTkVwkHeYO+34edh94aT+pJyOD0msN+mP0t1i6KfZCRGXL12
+        WgvL+gFXoCp/M9Qm6wAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>229, 17</value>
   </metadata>

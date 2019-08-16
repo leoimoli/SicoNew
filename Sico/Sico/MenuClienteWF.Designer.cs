@@ -173,7 +173,7 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(242, 20);
             this.label18.TabIndex = 44;
-            this.label18.Text = "Facturación de compras Anulaes";
+            this.label18.Text = "Facturación de compras Anuales";
             // 
             // dgvComprasAnuales
             // 
@@ -223,7 +223,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(228, 20);
             this.label5.TabIndex = 45;
-            this.label5.Text = "Facturación de ventas Anulaes";
+            this.label5.Text = "Facturación de ventas Anuales";
             // 
             // dgvVentasAnuales
             // 
