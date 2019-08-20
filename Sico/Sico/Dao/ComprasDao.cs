@@ -74,7 +74,50 @@ namespace Sico.Dao
             }
             return lista;
         }
-
+        public static List<FacturaVentaAnual> FacturacionAnualVentasPorPeriodos(string cuit, string año)
+        {
+            List<FacturaVentaAnual> lista = new List<FacturaVentaAnual>();
+            List<Entidades.Cliente> id = new List<Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int IdCliente = id[0].IdCliente;
+            if (IdCliente > 0)
+            {
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                            new MySqlParameter("Ano_in", año),
+                                      new MySqlParameter("idCliente_in", IdCliente)};
+                string proceso = "FacturacionAnualVentasPorPeriodos";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        FacturaVentaAnual listaFacturacion = new FacturaVentaAnual();
+                        listaFacturacion.Periodo = item["Periodo"].ToString();
+                        listaFacturacion.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+                        listaFacturacion.Total1 = Convert.ToDecimal(item["Total1"].ToString());
+                        listaFacturacion.Total2 = Convert.ToDecimal(item["Total2"].ToString());
+                        listaFacturacion.Total3 = Convert.ToDecimal(item["Total3"].ToString());
+                        listaFacturacion.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
+                        listaFacturacion.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
+                        listaFacturacion.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
+                        listaFacturacion.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
+                        listaFacturacion.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
+                        listaFacturacion.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+                        lista.Add(listaFacturacion);
+                    }
+                }
+            }
+            connection.Close();
+            return lista;
+        }
         public static List<FacturaCompraAnual> FacturacionAnualPorPeriodos(string cuit, string año)
         {
             List<FacturaCompraAnual> lista = new List<FacturaCompraAnual>();

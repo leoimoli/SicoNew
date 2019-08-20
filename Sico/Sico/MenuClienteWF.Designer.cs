@@ -203,6 +203,7 @@
             this.cmbAñoVentas.Name = "cmbAñoVentas";
             this.cmbAñoVentas.Size = new System.Drawing.Size(162, 21);
             this.cmbAñoVentas.TabIndex = 49;
+            this.cmbAñoVentas.SelectedIndexChanged += new System.EventHandler(this.cmbAñoVentas_SelectedIndexChanged);
             // 
             // label7
             // 
