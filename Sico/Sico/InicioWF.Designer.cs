@@ -100,45 +100,41 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.AutoSize = true;
             this.groupBox2.Controls.Add(this.webBrowser1);
-            this.groupBox2.Location = new System.Drawing.Point(821, 92);
+            this.groupBox2.Location = new System.Drawing.Point(821, 122);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(300, 266);
+            this.groupBox2.Size = new System.Drawing.Size(200, 210);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.webBrowser1.Location = new System.Drawing.Point(2, 16);
+            this.webBrowser1.Location = new System.Drawing.Point(3, 16);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(294, 231);
+            this.webBrowser1.Size = new System.Drawing.Size(200, 210);
             this.webBrowser1.TabIndex = 0;
             // 
             // groupBox3
             // 
-            this.groupBox3.AutoSize = true;
             this.groupBox3.Controls.Add(this.webBrowser2);
-            this.groupBox3.Location = new System.Drawing.Point(824, 348);
+            this.groupBox3.Location = new System.Drawing.Point(848, 354);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(300, 250);
+            this.groupBox3.Size = new System.Drawing.Size(150, 160);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
             // 
             // webBrowser2
             // 
-            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser2.Location = new System.Drawing.Point(3, 16);
+            this.webBrowser2.Location = new System.Drawing.Point(0, 16);
             this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser2.Name = "webBrowser2";
             this.webBrowser2.ScrollBarsEnabled = false;
-            this.webBrowser2.Size = new System.Drawing.Size(294, 231);
-            this.webBrowser2.TabIndex = 0;
+            this.webBrowser2.Size = new System.Drawing.Size(150, 160);
+            this.webBrowser2.TabIndex = 1;
             // 
             // InicioWF
             // 

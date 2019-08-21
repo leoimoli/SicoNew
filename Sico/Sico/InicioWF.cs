@@ -21,32 +21,27 @@ namespace Sico
         {
             ObtenerValorDolar();
         }
-
         private void ObtenerValorDolar()
         {
             CalcularDolar();
             BuscarClima();
         }
-
         private void BuscarClima()
         {
-            webBrowser2.Navigate($"     https://www.dolarsi.com/cotizador/cotizadorDolarsiFull.php");       
-            groupBox3.Text = "El clima en la ciudad";
-            groupBox3.Font = new Font("Tahoma", 10);
-            //groupBox3.Width = 180;
-            //groupBox3.Height = 180;
+            webBrowser1.Navigate($"https://www.meteored.com.ar/wimages/foto732421e658351c65f05e4df3beefcc02.png");
+            groupBox2.Text = "El clima en la ciudad";
+            groupBox2.Font = new Font("Tahoma", 10);
+            //groupBox2.Width = 200;
+            //groupBox2.Height = 210;
         }
-
         private void CalcularDolar()
         {
-            webBrowser1.Navigate($"https://www.meteored.com.ar/wimages/foto732421e658351c65f05e4df3beefcc02.png");
-            groupBox2.Text = "Cotización del dolar";
-            groupBox2.Font = new Font("Tahoma", 10);
-            //groupBox2.Width = 170;
-            //groupBox2.Height = 170;
-           
+            webBrowser2.Navigate($"https://www.dolarsi.com/cotizador/cotizadorDolarsiFull.php");
+            groupBox3.Text = " Cotización";
+            groupBox3.Font = new Font("Tahoma", 10);
+            //groupBox3.Width = 150;
+            //groupBox3.Height = 160;
         }
-
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             UsuarioWF _usuario = new UsuarioWF();
