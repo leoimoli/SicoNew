@@ -363,6 +363,26 @@ namespace Sico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap email1 {
+            get {
+                object obj = ResourceManager.GetObject("email1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap escribir_con_una_pluma_en_un_libro {
+            get {
+                object obj = ResourceManager.GetObject("escribir-con-una-pluma-en-un-libro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap estadisticas_de_ventas {
             get {
                 object obj = ResourceManager.GetObject("estadisticas-de-ventas", resourceCulture);
@@ -516,6 +536,16 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap nueva_pagina {
             get {
                 object obj = ResourceManager.GetObject("nueva-pagina", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap palabra {
+            get {
+                object obj = ResourceManager.GetObject("palabra", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

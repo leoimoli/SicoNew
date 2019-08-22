@@ -572,6 +572,8 @@
     <None Include="Resources\AutoGestion.png" />
     <None Include="Resources\AutoGestion1.jpg" />
     <None Include="Resources\Ministerio de trabajo.jpg" />
+    <None Include="Resources\escribir-con-una-pluma-en-un-libro.png" />
+    <None Include="Resources\palabra.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

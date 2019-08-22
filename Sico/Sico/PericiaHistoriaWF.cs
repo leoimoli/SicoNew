@@ -151,7 +151,7 @@ namespace Sico
                 MessageBox.Show("La pericia nunca fue enviada por email a ningun destinatario.");
             if (Compartir == 1 & chcEmail.Checked == false)
                 Compartir = 0;
-                _pericia.Causa = Causa;
+            _pericia.Causa = Causa;
             _pericia.NroCausa = NroCausa;
             _pericia.Tribunal = Tribunal;
             _pericia.TotalEstados = TotalHistorial;
@@ -759,6 +759,7 @@ namespace Sico
             //cmbEstado.Text = EstadoCombo;
             btnNuevaHistoria.Visible = false;
             btnVolver.Visible = false;
+            grbTexto.Visible = false;
         }
         private void CargarComboEstado()
         {
@@ -826,6 +827,15 @@ namespace Sico
         private void cmbEstado_Click(object sender, EventArgs e)
         {
             CargarComboEstado();
+        }
+
+        private void btnGenerarTexto_Click(object sender, EventArgs e)
+        {
+            groupBox2.Visible = false;
+            groupBox3.Visible = false;
+            grbTexto.Visible = true;
+            btnNuevaHistoria.Visible = false;
+            btnVolver.Visible = false;
         }
     }
 }

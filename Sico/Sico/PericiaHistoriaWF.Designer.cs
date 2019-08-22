@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PericiaHistoriaWF));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnGenerarTexto = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.btnNuevaHistoria = new System.Windows.Forms.Button();
@@ -111,6 +112,8 @@
             this.lblAdjunto1 = new System.Windows.Forms.Label();
             this.txtAdjunto1 = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnMandarEmail = new System.Windows.Forms.Button();
+            this.btnGenerarEscrito = new System.Windows.Forms.Button();
             this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog5 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog6 = new System.Windows.Forms.OpenFileDialog();
@@ -118,14 +121,21 @@
             this.openFileDialog8 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog9 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog10 = new System.Windows.Forms.OpenFileDialog();
+            this.grbTexto = new System.Windows.Forms.GroupBox();
+            this.txtTexto = new System.Windows.Forms.TextBox();
+            this.chcRespuestaPredefinida = new System.Windows.Forms.CheckBox();
+            this.chcRedactar = new System.Windows.Forms.CheckBox();
+            this.cmbRespuestas = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.grbTexto.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnGenerarTexto);
             this.groupBox1.Controls.Add(this.btnVolver);
             this.groupBox1.Controls.Add(this.lblMensaje);
             this.groupBox1.Controls.Add(this.btnNuevaHistoria);
@@ -138,12 +148,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Historial Pericia";
             // 
+            // btnGenerarTexto
+            // 
+            this.btnGenerarTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarTexto.Image = global::Sico.Properties.Resources.escribir_con_una_pluma_en_un_libro;
+            this.btnGenerarTexto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGenerarTexto.Location = new System.Drawing.Point(699, 190);
+            this.btnGenerarTexto.Name = "btnGenerarTexto";
+            this.btnGenerarTexto.Size = new System.Drawing.Size(80, 51);
+            this.btnGenerarTexto.TabIndex = 87;
+            this.btnGenerarTexto.Text = "Nuevo Texto";
+            this.btnGenerarTexto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnGenerarTexto, "Generar Texto");
+            this.btnGenerarTexto.UseVisualStyleBackColor = true;
+            this.btnGenerarTexto.Click += new System.EventHandler(this.btnGenerarTexto_Click);
+            // 
             // btnVolver
             // 
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
             this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVolver.Location = new System.Drawing.Point(686, 191);
+            this.btnVolver.Location = new System.Drawing.Point(610, 190);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(80, 51);
             this.btnVolver.TabIndex = 18;
@@ -169,7 +194,7 @@
             this.btnNuevaHistoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevaHistoria.Image = global::Sico.Properties.Resources.historial_medico__1_;
             this.btnNuevaHistoria.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevaHistoria.Location = new System.Drawing.Point(785, 191);
+            this.btnNuevaHistoria.Location = new System.Drawing.Point(785, 190);
             this.btnNuevaHistoria.Name = "btnNuevaHistoria";
             this.btnNuevaHistoria.Size = new System.Drawing.Size(80, 51);
             this.btnNuevaHistoria.TabIndex = 17;
@@ -1049,6 +1074,34 @@
             this.txtAdjunto1.TabIndex = 39;
             this.txtAdjunto1.Visible = false;
             // 
+            // btnMandarEmail
+            // 
+            this.btnMandarEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMandarEmail.Image = global::Sico.Properties.Resources.email1;
+            this.btnMandarEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMandarEmail.Location = new System.Drawing.Point(775, 187);
+            this.btnMandarEmail.Name = "btnMandarEmail";
+            this.btnMandarEmail.Size = new System.Drawing.Size(80, 51);
+            this.btnMandarEmail.TabIndex = 89;
+            this.btnMandarEmail.Text = "Enviar Email";
+            this.btnMandarEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnMandarEmail, "Enviar Email");
+            this.btnMandarEmail.UseVisualStyleBackColor = true;
+            // 
+            // btnGenerarEscrito
+            // 
+            this.btnGenerarEscrito.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarEscrito.Image = global::Sico.Properties.Resources.palabra;
+            this.btnGenerarEscrito.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGenerarEscrito.Location = new System.Drawing.Point(775, 108);
+            this.btnGenerarEscrito.Name = "btnGenerarEscrito";
+            this.btnGenerarEscrito.Size = new System.Drawing.Size(80, 51);
+            this.btnGenerarEscrito.TabIndex = 88;
+            this.btnGenerarEscrito.Text = "Escrito";
+            this.btnGenerarEscrito.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnGenerarEscrito, "Generar Escrito");
+            this.btnGenerarEscrito.UseVisualStyleBackColor = true;
+            // 
             // openFileDialog4
             // 
             this.openFileDialog4.FileName = "openFileDialog4";
@@ -1077,11 +1130,67 @@
             // 
             this.openFileDialog10.FileName = "openFileDialog10";
             // 
+            // grbTexto
+            // 
+            this.grbTexto.Controls.Add(this.cmbRespuestas);
+            this.grbTexto.Controls.Add(this.btnMandarEmail);
+            this.grbTexto.Controls.Add(this.btnGenerarEscrito);
+            this.grbTexto.Controls.Add(this.txtTexto);
+            this.grbTexto.Controls.Add(this.chcRespuestaPredefinida);
+            this.grbTexto.Controls.Add(this.chcRedactar);
+            this.grbTexto.Location = new System.Drawing.Point(25, 322);
+            this.grbTexto.Name = "grbTexto";
+            this.grbTexto.Size = new System.Drawing.Size(880, 320);
+            this.grbTexto.TabIndex = 109;
+            this.grbTexto.TabStop = false;
+            this.grbTexto.Text = "Nuevo Texto";
+            // 
+            // txtTexto
+            // 
+            this.txtTexto.Location = new System.Drawing.Point(31, 51);
+            this.txtTexto.Multiline = true;
+            this.txtTexto.Name = "txtTexto";
+            this.txtTexto.Size = new System.Drawing.Size(730, 260);
+            this.txtTexto.TabIndex = 4;
+            // 
+            // chcRespuestaPredefinida
+            // 
+            this.chcRespuestaPredefinida.AutoSize = true;
+            this.chcRespuestaPredefinida.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcRespuestaPredefinida.Location = new System.Drawing.Point(267, 19);
+            this.chcRespuestaPredefinida.Name = "chcRespuestaPredefinida";
+            this.chcRespuestaPredefinida.Size = new System.Drawing.Size(171, 21);
+            this.chcRespuestaPredefinida.TabIndex = 2;
+            this.chcRespuestaPredefinida.Text = "Respuesta Predefinida";
+            this.chcRespuestaPredefinida.UseVisualStyleBackColor = true;
+            // 
+            // chcRedactar
+            // 
+            this.chcRedactar.AutoSize = true;
+            this.chcRedactar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcRedactar.Location = new System.Drawing.Point(126, 19);
+            this.chcRedactar.Name = "chcRedactar";
+            this.chcRedactar.Size = new System.Drawing.Size(85, 21);
+            this.chcRedactar.TabIndex = 3;
+            this.chcRedactar.Text = "Redactar";
+            this.chcRedactar.UseVisualStyleBackColor = true;
+            // 
+            // cmbRespuestas
+            // 
+            this.cmbRespuestas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRespuestas.Enabled = false;
+            this.cmbRespuestas.FormattingEnabled = true;
+            this.cmbRespuestas.Location = new System.Drawing.Point(444, 21);
+            this.cmbRespuestas.Name = "cmbRespuestas";
+            this.cmbRespuestas.Size = new System.Drawing.Size(211, 21);
+            this.cmbRespuestas.TabIndex = 91;
+            // 
             // PericiaHistoriaWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 743);
+            this.Controls.Add(this.grbTexto);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -1092,6 +1201,7 @@
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
+            this.Controls.SetChildIndex(this.grbTexto, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).EndInit();
@@ -1099,6 +1209,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.grbTexto.ResumeLayout(false);
+            this.grbTexto.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1194,5 +1306,13 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog8;
         private System.Windows.Forms.OpenFileDialog openFileDialog9;
         private System.Windows.Forms.OpenFileDialog openFileDialog10;
+        private System.Windows.Forms.Button btnGenerarTexto;
+        private System.Windows.Forms.GroupBox grbTexto;
+        private System.Windows.Forms.CheckBox chcRespuestaPredefinida;
+        private System.Windows.Forms.CheckBox chcRedactar;
+        private System.Windows.Forms.TextBox txtTexto;
+        private System.Windows.Forms.Button btnMandarEmail;
+        private System.Windows.Forms.Button btnGenerarEscrito;
+        private System.Windows.Forms.ComboBox cmbRespuestas;
     }
 }
