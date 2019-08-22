@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblSeleccionar = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,16 +48,31 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.lblCantidadEdit = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.grbEnlances = new System.Windows.Forms.GroupBox();
+            this.imgApr = new System.Windows.Forms.PictureBox();
+            this.imgArba = new System.Windows.Forms.PictureBox();
+            this.imgAnses = new System.Windows.Forms.PictureBox();
+            this.imgAfip = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.imgAutoGestion = new System.Windows.Forms.PictureBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.grbEnlances.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgApr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgArba)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAnses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAfip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAutoGestion)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSeleccionar
             // 
             this.lblSeleccionar.AutoSize = true;
             this.lblSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeleccionar.Location = new System.Drawing.Point(243, 278);
+            this.lblSeleccionar.Location = new System.Drawing.Point(243, 200);
             this.lblSeleccionar.Name = "lblSeleccionar";
             this.lblSeleccionar.Size = new System.Drawing.Size(201, 15);
             this.lblSeleccionar.TabIndex = 31;
@@ -67,7 +83,7 @@
             // 
             this.txtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBuscar.Enabled = false;
-            this.txtBuscar.Location = new System.Drawing.Point(450, 277);
+            this.txtBuscar.Location = new System.Drawing.Point(450, 199);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(336, 20);
             this.txtBuscar.TabIndex = 30;
@@ -77,7 +93,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 275);
+            this.label2.Location = new System.Drawing.Point(16, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 20);
             this.label2.TabIndex = 29;
@@ -108,6 +124,7 @@
             this.btnEstadisticas.TabIndex = 18;
             this.btnEstadisticas.Text = "Estadísticas";
             this.btnEstadisticas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnEstadisticas, "Estadisticas");
             this.btnEstadisticas.UseVisualStyleBackColor = true;
             this.btnEstadisticas.Click += new System.EventHandler(this.btnEstadisticas_Click);
             // 
@@ -121,6 +138,7 @@
             this.btnVentas.TabIndex = 17;
             this.btnVentas.Text = "Ventas";
             this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnVentas, "Ventas");
             this.btnVentas.UseVisualStyleBackColor = true;
             this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
@@ -146,6 +164,7 @@
             this.btnCargarCompra.TabIndex = 2;
             this.btnCargarCompra.Text = "Cargar Compra";
             this.btnCargarCompra.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnCargarCompra, "Nueva Compra");
             this.btnCargarCompra.UseVisualStyleBackColor = true;
             this.btnCargarCompra.Click += new System.EventHandler(this.btnCargarCompra_Click);
             // 
@@ -159,13 +178,14 @@
             this.btnAgregarProveedor.TabIndex = 0;
             this.btnAgregarProveedor.Text = "Proveedor";
             this.btnAgregarProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnAgregarProveedor, "Nuevo Proveedor");
             this.btnAgregarProveedor.UseVisualStyleBackColor = true;
             this.btnAgregarProveedor.Click += new System.EventHandler(this.btnAgregarProveedor_Click);
             // 
             // dgvCompras
             // 
             this.dgvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCompras.Location = new System.Drawing.Point(68, 312);
+            this.dgvCompras.Location = new System.Drawing.Point(68, 234);
             this.dgvCompras.Name = "dgvCompras";
             this.dgvCompras.Size = new System.Drawing.Size(830, 305);
             this.dgvCompras.TabIndex = 27;
@@ -181,7 +201,7 @@
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(20, 130);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(878, 121);
+            this.groupBox3.Size = new System.Drawing.Size(878, 50);
             this.groupBox3.TabIndex = 26;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tareas";
@@ -230,11 +250,12 @@
             // 
             this.btnConsultarTotales.Image = global::Sico.Properties.Resources.factura__1_;
             this.btnConsultarTotales.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConsultarTotales.Location = new System.Drawing.Point(847, 262);
+            this.btnConsultarTotales.Location = new System.Drawing.Point(847, 184);
             this.btnConsultarTotales.Name = "btnConsultarTotales";
             this.btnConsultarTotales.Size = new System.Drawing.Size(49, 39);
             this.btnConsultarTotales.TabIndex = 33;
             this.btnConsultarTotales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnConsultarTotales, "Facturación Mensual");
             this.btnConsultarTotales.UseVisualStyleBackColor = true;
             this.btnConsultarTotales.Visible = false;
             this.btnConsultarTotales.Click += new System.EventHandler(this.btnConsultarTotales_Click);
@@ -243,11 +264,12 @@
             // 
             this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscar.Location = new System.Drawing.Point(792, 262);
+            this.btnBuscar.Location = new System.Drawing.Point(792, 184);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(49, 39);
             this.btnBuscar.TabIndex = 32;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnBuscar, "Buscar por proveedor");
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Visible = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -268,19 +290,115 @@
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.Image = global::Sico.Properties.Resources.refrescar;
             this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnActualizar.Location = new System.Drawing.Point(152, 271);
+            this.btnActualizar.Location = new System.Drawing.Point(152, 193);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(40, 30);
             this.btnActualizar.TabIndex = 86;
             this.btnActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnActualizar, "Actualizar grilla");
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // lblCantidadEdit
+            // 
+            this.lblCantidadEdit.AutoSize = true;
+            this.lblCantidadEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadEdit.Location = new System.Drawing.Point(788, 542);
+            this.lblCantidadEdit.Name = "lblCantidadEdit";
+            this.lblCantidadEdit.Size = new System.Drawing.Size(33, 20);
+            this.lblCantidadEdit.TabIndex = 88;
+            this.lblCantidadEdit.Text = "****";
+            this.lblCantidadEdit.Visible = false;
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(734, 542);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(48, 20);
+            this.lblCantidad.TabIndex = 87;
+            this.lblCantidad.Text = "Total:";
+            this.lblCantidad.Visible = false;
+            // 
+            // grbEnlances
+            // 
+            this.grbEnlances.Controls.Add(this.imgAutoGestion);
+            this.grbEnlances.Controls.Add(this.imgApr);
+            this.grbEnlances.Controls.Add(this.imgArba);
+            this.grbEnlances.Controls.Add(this.imgAnses);
+            this.grbEnlances.Controls.Add(this.imgAfip);
+            this.grbEnlances.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbEnlances.Location = new System.Drawing.Point(58, 565);
+            this.grbEnlances.Name = "grbEnlances";
+            this.grbEnlances.Size = new System.Drawing.Size(850, 70);
+            this.grbEnlances.TabIndex = 93;
+            this.grbEnlances.TabStop = false;
+            this.grbEnlances.Text = "Enlaces";
+            // 
+            // imgApr
+            // 
+            this.imgApr.Image = global::Sico.Properties.Resources.Apr;
+            this.imgApr.Location = new System.Drawing.Point(510, 24);
+            this.imgApr.Name = "imgApr";
+            this.imgApr.Size = new System.Drawing.Size(145, 35);
+            this.imgApr.TabIndex = 89;
+            this.imgApr.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgApr, "Agencia Platense de racaudación");
+            this.imgApr.Click += new System.EventHandler(this.imgArba_Click);
+            // 
+            // imgArba
+            // 
+            this.imgArba.Image = global::Sico.Properties.Resources.Arba;
+            this.imgArba.Location = new System.Drawing.Point(19, 24);
+            this.imgArba.Name = "imgArba";
+            this.imgArba.Size = new System.Drawing.Size(145, 35);
+            this.imgArba.TabIndex = 86;
+            this.imgArba.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgArba, "Arba");
+            this.imgArba.Click += new System.EventHandler(this.imgArba_Click);
+            // 
+            // imgAnses
+            // 
+            this.imgAnses.Image = global::Sico.Properties.Resources.Anses_2;
+            this.imgAnses.Location = new System.Drawing.Point(344, 24);
+            this.imgAnses.Name = "imgAnses";
+            this.imgAnses.Size = new System.Drawing.Size(145, 35);
+            this.imgAnses.TabIndex = 88;
+            this.imgAnses.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgAnses, "Anses");
+            this.imgAnses.Click += new System.EventHandler(this.imgAnses_Click);
+            // 
+            // imgAfip
+            // 
+            this.imgAfip.Image = global::Sico.Properties.Resources.Afip_1_;
+            this.imgAfip.Location = new System.Drawing.Point(182, 24);
+            this.imgAfip.Name = "imgAfip";
+            this.imgAfip.Size = new System.Drawing.Size(145, 35);
+            this.imgAfip.TabIndex = 87;
+            this.imgAfip.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgAfip, "Afip");
+            this.imgAfip.Click += new System.EventHandler(this.imgAfip_Click);
+            // 
+            // imgAutoGestion
+            // 
+            this.imgAutoGestion.Image = global::Sico.Properties.Resources.AutoGestion2;
+            this.imgAutoGestion.Location = new System.Drawing.Point(680, 24);
+            this.imgAutoGestion.Name = "imgAutoGestion";
+            this.imgAutoGestion.Size = new System.Drawing.Size(145, 35);
+            this.imgAutoGestion.TabIndex = 91;
+            this.imgAutoGestion.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgAutoGestion, "AutoGestión");
+            this.imgAutoGestion.Click += new System.EventHandler(this.imgAutoGestion_Click);
             // 
             // ComprasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.Controls.Add(this.grbEnlances);
+            this.Controls.Add(this.lblCantidadEdit);
+            this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.btnConsultarTotales);
@@ -305,10 +423,19 @@
             this.Controls.SetChildIndex(this.btnConsultarTotales, 0);
             this.Controls.SetChildIndex(this.label18, 0);
             this.Controls.SetChildIndex(this.btnActualizar, 0);
+            this.Controls.SetChildIndex(this.lblCantidad, 0);
+            this.Controls.SetChildIndex(this.lblCantidadEdit, 0);
+            this.Controls.SetChildIndex(this.grbEnlances, 0);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.grbEnlances.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgApr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgArba)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAnses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAfip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAutoGestion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,5 +462,14 @@
         private System.Windows.Forms.Button btnVentas;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEstadisticas;
+        private System.Windows.Forms.Label lblCantidadEdit;
+        private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.GroupBox grbEnlances;
+        private System.Windows.Forms.PictureBox imgApr;
+        private System.Windows.Forms.PictureBox imgArba;
+        private System.Windows.Forms.PictureBox imgAnses;
+        private System.Windows.Forms.PictureBox imgAfip;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.PictureBox imgAutoGestion;
     }
 }

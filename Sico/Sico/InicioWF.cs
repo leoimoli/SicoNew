@@ -61,5 +61,19 @@ namespace Sico
             _pericia.Show();
             Hide();
         }
+        private void imgNacion_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.bna.com.ar/Personas");
+        }
+
+        private void imgProvincia_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.bancoprovincia.com.ar/web/inversiones");
+        }
+
+        private void imgHipotecario_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://hipotecario.com.ar/default.asp?ID=41");
+        }
     }
 }

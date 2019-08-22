@@ -44,6 +44,7 @@ namespace Sico
             txtCausaBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteCausa.Autocomplete();
             txtCausaBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtCausaBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            grbEnlances.Visible = false;
         }
         private void LimpiarCamposBotonNuevaPericia()
         {
@@ -236,6 +237,7 @@ namespace Sico
                         dgvPericias.Columns.Clear();
                         dgvPericias.Refresh();
                     }
+                    grbEnlances.Visible = true;
                     btnCargarArchivo10.Visible = false;
                     btnBuscar.Visible = true;
                     groupBox1.Visible = true;
@@ -433,6 +435,26 @@ namespace Sico
                 Hide();
             }
         }
+        private void imgJudicial1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("IExplore.exe", "https://notificaciones.scba.gov.ar/");
+        }
+        private void imgJudicialMesaDeEntrada_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://mev.scba.gov.ar/loguin.asp");
+        }
+        private void imgMinisterioDeTrabajo_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://convenios.trabajo.gob.ar/ConsultaWeb/consultaBasica.asp");
+        }
+        private void imgAfip_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.afip.gob.ar/sitio/externos/default.asp");
+        }
+        //private void imgApr_Click(object sender, EventArgs e)
+        //{
+        //    System.Diagnostics.Process.Start("http://apronline.gov.ar/");
+        //}
         #endregion
         #region Botones
         private void btnNuevaPericia_Click(object sender, EventArgs e)
@@ -783,6 +805,6 @@ namespace Sico
         private void PericiasWF_Load(object sender, EventArgs e)
         {
 
-        }
+        }      
     }
 }

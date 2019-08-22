@@ -344,5 +344,26 @@ namespace Sico
             txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
+        private void imgArba_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.arba.gov.ar/");
+        }
+        private void imgAfip_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.afip.gob.ar/sitio/externos/default.asp");
+        }
+        private void imgAnses_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://servicioscorp.anses.gob.ar/clavelogon/logon.aspx?system=mianses");
+        }
+        private void imgApr_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://apronline.gov.ar/");
+        }
+        private void imgAutoGestion_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://autogestion.apronline.gov.ar/");
+        }
+              
     }
 }

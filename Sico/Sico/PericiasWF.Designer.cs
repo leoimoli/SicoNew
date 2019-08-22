@@ -41,6 +41,12 @@
             this.btnHabilitarBuscar = new System.Windows.Forms.Button();
             this.btnNuevaPericia = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grbEnlances = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imgAfip = new System.Windows.Forms.PictureBox();
+            this.imgJudicial1 = new System.Windows.Forms.PictureBox();
+            this.imgMinisterioDeTrabajo = new System.Windows.Forms.PictureBox();
+            this.imgJudicialMesaDeEntrada = new System.Windows.Forms.PictureBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnCargarArchivo10 = new System.Windows.Forms.Button();
             this.dgvPericias = new System.Windows.Forms.DataGridView();
@@ -100,6 +106,12 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.grbEnlances.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAfip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgJudicial1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMinisterioDeTrabajo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgJudicialMesaDeEntrada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,6 +235,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.grbEnlances);
             this.groupBox1.Controls.Add(this.progressBar1);
             this.groupBox1.Controls.Add(this.btnCargarArchivo10);
             this.groupBox1.Controls.Add(this.dgvPericias);
@@ -278,6 +291,76 @@
             this.groupBox1.Text = "v";
             this.groupBox1.Visible = false;
             // 
+            // grbEnlances
+            // 
+            this.grbEnlances.Controls.Add(this.pictureBox1);
+            this.grbEnlances.Controls.Add(this.imgAfip);
+            this.grbEnlances.Controls.Add(this.imgJudicial1);
+            this.grbEnlances.Controls.Add(this.imgMinisterioDeTrabajo);
+            this.grbEnlances.Controls.Add(this.imgJudicialMesaDeEntrada);
+            this.grbEnlances.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbEnlances.Location = new System.Drawing.Point(21, 394);
+            this.grbEnlances.Name = "grbEnlances";
+            this.grbEnlances.Size = new System.Drawing.Size(850, 70);
+            this.grbEnlances.TabIndex = 93;
+            this.grbEnlances.TabStop = false;
+            this.grbEnlances.Text = "Enlaces";
+            this.grbEnlances.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Sico.Properties.Resources.Provincia_5_;
+            this.pictureBox1.Location = new System.Drawing.Point(679, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(145, 35);
+            this.pictureBox1.TabIndex = 90;
+            this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Banco Provincia");
+            // 
+            // imgAfip
+            // 
+            this.imgAfip.Image = global::Sico.Properties.Resources.Afip_1_;
+            this.imgAfip.Location = new System.Drawing.Point(510, 24);
+            this.imgAfip.Name = "imgAfip";
+            this.imgAfip.Size = new System.Drawing.Size(145, 35);
+            this.imgAfip.TabIndex = 89;
+            this.imgAfip.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgAfip, "Afip");
+            this.imgAfip.Click += new System.EventHandler(this.imgAfip_Click);
+            // 
+            // imgJudicial1
+            // 
+            this.imgJudicial1.Image = global::Sico.Properties.Resources.Poder_Judicial;
+            this.imgJudicial1.Location = new System.Drawing.Point(19, 24);
+            this.imgJudicial1.Name = "imgJudicial1";
+            this.imgJudicial1.Size = new System.Drawing.Size(145, 35);
+            this.imgJudicial1.TabIndex = 86;
+            this.imgJudicial1.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgJudicial1, "Suprema Corte");
+            this.imgJudicial1.Click += new System.EventHandler(this.imgJudicial1_Click);
+            // 
+            // imgMinisterioDeTrabajo
+            // 
+            this.imgMinisterioDeTrabajo.Image = global::Sico.Properties.Resources.Ministerio_de_trabajo;
+            this.imgMinisterioDeTrabajo.Location = new System.Drawing.Point(344, 24);
+            this.imgMinisterioDeTrabajo.Name = "imgMinisterioDeTrabajo";
+            this.imgMinisterioDeTrabajo.Size = new System.Drawing.Size(145, 35);
+            this.imgMinisterioDeTrabajo.TabIndex = 88;
+            this.imgMinisterioDeTrabajo.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgMinisterioDeTrabajo, "Ministerio de Trabajo");
+            this.imgMinisterioDeTrabajo.Click += new System.EventHandler(this.imgMinisterioDeTrabajo_Click);
+            // 
+            // imgJudicialMesaDeEntrada
+            // 
+            this.imgJudicialMesaDeEntrada.Image = global::Sico.Properties.Resources.Poder_Jud_2;
+            this.imgJudicialMesaDeEntrada.Location = new System.Drawing.Point(182, 24);
+            this.imgJudicialMesaDeEntrada.Name = "imgJudicialMesaDeEntrada";
+            this.imgJudicialMesaDeEntrada.Size = new System.Drawing.Size(145, 35);
+            this.imgJudicialMesaDeEntrada.TabIndex = 87;
+            this.imgJudicialMesaDeEntrada.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgJudicialMesaDeEntrada, "Mesa de entrada Virtual");
+            this.imgJudicialMesaDeEntrada.Click += new System.EventHandler(this.imgJudicialMesaDeEntrada_Click);
+            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(261, 351);
@@ -305,7 +388,7 @@
             this.dgvPericias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPericias.Location = new System.Drawing.Point(6, 24);
             this.dgvPericias.Name = "dgvPericias";
-            this.dgvPericias.Size = new System.Drawing.Size(870, 440);
+            this.dgvPericias.Size = new System.Drawing.Size(870, 368);
             this.dgvPericias.TabIndex = 14;
             this.dgvPericias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickBoton);
             this.dgvPericias.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvPericias_CellPainting);
@@ -789,6 +872,12 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.grbEnlances.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAfip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgJudicial1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMinisterioDeTrabajo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgJudicialMesaDeEntrada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -864,5 +953,11 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog8;
         private System.Windows.Forms.OpenFileDialog openFileDialog9;
         private System.Windows.Forms.OpenFileDialog openFileDialog10;
+        private System.Windows.Forms.GroupBox grbEnlances;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox imgAfip;
+        private System.Windows.Forms.PictureBox imgJudicial1;
+        private System.Windows.Forms.PictureBox imgMinisterioDeTrabajo;
+        private System.Windows.Forms.PictureBox imgJudicialMesaDeEntrada;
     }
 }

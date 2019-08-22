@@ -30,10 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnFacturarle = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnFacturar = new System.Windows.Forms.Button();
-            this.btnLibroDiario = new System.Windows.Forms.Button();
             this.lblCuitEdit = new System.Windows.Forms.Label();
             this.lblNombreEdit = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,41 +50,36 @@
             this.btnConsultarTotales = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.imgArba = new System.Windows.Forms.PictureBox();
+            this.imgAnses = new System.Windows.Forms.PictureBox();
+            this.imgAfip = new System.Windows.Forms.PictureBox();
+            this.imgApr = new System.Windows.Forms.PictureBox();
+            this.imgAutoGestion = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.grbEnlances = new System.Windows.Forms.GroupBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgArba)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAnses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAfip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgApr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAutoGestion)).BeginInit();
+            this.grbEnlances.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btnFacturarle);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.btnFacturar);
-            this.groupBox3.Controls.Add(this.btnLibroDiario);
             this.groupBox3.Controls.Add(this.lblCuitEdit);
             this.groupBox3.Controls.Add(this.lblNombreEdit);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(38, 118);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(878, 121);
+            this.groupBox3.Size = new System.Drawing.Size(878, 50);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tareas";
-            // 
-            // btnFacturarle
-            // 
-            this.btnFacturarle.Image = global::Sico.Properties.Resources.factura;
-            this.btnFacturarle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFacturarle.Location = new System.Drawing.Point(48, 54);
-            this.btnFacturarle.Name = "btnFacturarle";
-            this.btnFacturarle.Size = new System.Drawing.Size(90, 61);
-            this.btnFacturarle.TabIndex = 18;
-            this.btnFacturarle.Text = "Facturar";
-            this.btnFacturarle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFacturarle.UseVisualStyleBackColor = true;
-            this.btnFacturarle.Visible = false;
-            this.btnFacturarle.Click += new System.EventHandler(this.btnFacturarle_Click);
             // 
             // label4
             // 
@@ -98,34 +90,6 @@
             this.label4.Size = new System.Drawing.Size(167, 20);
             this.label4.TabIndex = 17;
             this.label4.Text = "Nombre/Razón Social:";
-            // 
-            // btnFacturar
-            // 
-            this.btnFacturar.Image = global::Sico.Properties.Resources.diagnostico1;
-            this.btnFacturar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnFacturar.Location = new System.Drawing.Point(173, 54);
-            this.btnFacturar.Name = "btnFacturar";
-            this.btnFacturar.Size = new System.Drawing.Size(90, 61);
-            this.btnFacturar.TabIndex = 15;
-            this.btnFacturar.Text = "Su Facturación";
-            this.btnFacturar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFacturar.UseVisualStyleBackColor = true;
-            this.btnFacturar.Visible = false;
-            this.btnFacturar.Click += new System.EventHandler(this.btnFacturar_Click);
-            // 
-            // btnLibroDiario
-            // 
-            this.btnLibroDiario.Image = global::Sico.Properties.Resources.diario_abierto;
-            this.btnLibroDiario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLibroDiario.Location = new System.Drawing.Point(302, 54);
-            this.btnLibroDiario.Name = "btnLibroDiario";
-            this.btnLibroDiario.Size = new System.Drawing.Size(90, 61);
-            this.btnLibroDiario.TabIndex = 16;
-            this.btnLibroDiario.Text = "Libro Diario";
-            this.btnLibroDiario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnLibroDiario.UseVisualStyleBackColor = true;
-            this.btnLibroDiario.Visible = false;
-            this.btnLibroDiario.Click += new System.EventHandler(this.btnLibroDiario_Click);
             // 
             // lblCuitEdit
             // 
@@ -170,7 +134,7 @@
             // dgvSubClientes
             // 
             this.dgvSubClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSubClientes.Location = new System.Drawing.Point(86, 300);
+            this.dgvSubClientes.Location = new System.Drawing.Point(86, 236);
             this.dgvSubClientes.Name = "dgvSubClientes";
             this.dgvSubClientes.Size = new System.Drawing.Size(830, 305);
             this.dgvSubClientes.TabIndex = 17;
@@ -247,7 +211,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(34, 263);
+            this.label2.Location = new System.Drawing.Point(34, 199);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 20);
             this.label2.TabIndex = 19;
@@ -258,7 +222,7 @@
             // 
             this.txtBuscar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBuscar.Enabled = false;
-            this.txtBuscar.Location = new System.Drawing.Point(468, 265);
+            this.txtBuscar.Location = new System.Drawing.Point(468, 201);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(336, 20);
             this.txtBuscar.TabIndex = 20;
@@ -268,7 +232,7 @@
             // 
             this.lblSeleccionar.AutoSize = true;
             this.lblSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeleccionar.Location = new System.Drawing.Point(261, 266);
+            this.lblSeleccionar.Location = new System.Drawing.Point(261, 202);
             this.lblSeleccionar.Name = "lblSeleccionar";
             this.lblSeleccionar.Size = new System.Drawing.Size(201, 15);
             this.lblSeleccionar.TabIndex = 21;
@@ -279,7 +243,7 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(675, 608);
+            this.lblCantidad.Location = new System.Drawing.Point(675, 549);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(48, 20);
             this.lblCantidad.TabIndex = 23;
@@ -290,7 +254,7 @@
             // 
             this.lblCantidadEdit.AutoSize = true;
             this.lblCantidadEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadEdit.Location = new System.Drawing.Point(729, 608);
+            this.lblCantidadEdit.Location = new System.Drawing.Point(729, 549);
             this.lblCantidadEdit.Name = "lblCantidadEdit";
             this.lblCantidadEdit.Size = new System.Drawing.Size(33, 20);
             this.lblCantidadEdit.TabIndex = 24;
@@ -301,7 +265,7 @@
             // 
             this.btnConsultarTotales.Image = global::Sico.Properties.Resources.factura__1_;
             this.btnConsultarTotales.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConsultarTotales.Location = new System.Drawing.Point(865, 250);
+            this.btnConsultarTotales.Location = new System.Drawing.Point(865, 186);
             this.btnConsultarTotales.Name = "btnConsultarTotales";
             this.btnConsultarTotales.Size = new System.Drawing.Size(49, 39);
             this.btnConsultarTotales.TabIndex = 25;
@@ -315,7 +279,7 @@
             // 
             this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscar.Location = new System.Drawing.Point(810, 250);
+            this.btnBuscar.Location = new System.Drawing.Point(810, 186);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(49, 39);
             this.btnBuscar.TabIndex = 22;
@@ -330,7 +294,7 @@
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.Image = global::Sico.Properties.Resources.refrescar;
             this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnActualizar.Location = new System.Drawing.Point(207, 255);
+            this.btnActualizar.Location = new System.Drawing.Point(207, 191);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(40, 30);
             this.btnActualizar.TabIndex = 85;
@@ -338,6 +302,61 @@
             this.toolTip1.SetToolTip(this.btnActualizar, "Actualizar grilla");
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // imgArba
+            // 
+            this.imgArba.Image = global::Sico.Properties.Resources.Arba;
+            this.imgArba.Location = new System.Drawing.Point(19, 24);
+            this.imgArba.Name = "imgArba";
+            this.imgArba.Size = new System.Drawing.Size(145, 35);
+            this.imgArba.TabIndex = 86;
+            this.imgArba.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgArba, "Arba");
+            this.imgArba.Click += new System.EventHandler(this.imgArba_Click);
+            // 
+            // imgAnses
+            // 
+            this.imgAnses.Image = global::Sico.Properties.Resources.Anses_2;
+            this.imgAnses.Location = new System.Drawing.Point(344, 24);
+            this.imgAnses.Name = "imgAnses";
+            this.imgAnses.Size = new System.Drawing.Size(145, 35);
+            this.imgAnses.TabIndex = 88;
+            this.imgAnses.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgAnses, "Anses");
+            this.imgAnses.Click += new System.EventHandler(this.imgAnses_Click);
+            // 
+            // imgAfip
+            // 
+            this.imgAfip.Image = global::Sico.Properties.Resources.Afip_1_;
+            this.imgAfip.Location = new System.Drawing.Point(182, 24);
+            this.imgAfip.Name = "imgAfip";
+            this.imgAfip.Size = new System.Drawing.Size(145, 35);
+            this.imgAfip.TabIndex = 87;
+            this.imgAfip.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgAfip, "Afip");
+            this.imgAfip.Click += new System.EventHandler(this.imgAfip_Click);
+            // 
+            // imgApr
+            // 
+            this.imgApr.Image = global::Sico.Properties.Resources.Apr;
+            this.imgApr.Location = new System.Drawing.Point(510, 24);
+            this.imgApr.Name = "imgApr";
+            this.imgApr.Size = new System.Drawing.Size(145, 35);
+            this.imgApr.TabIndex = 89;
+            this.imgApr.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgApr, "Agencia Platense de racaudación");
+            this.imgApr.Click += new System.EventHandler(this.imgApr_Click);
+            // 
+            // imgAutoGestion
+            // 
+            this.imgAutoGestion.Image = global::Sico.Properties.Resources.AutoGestion2;
+            this.imgAutoGestion.Location = new System.Drawing.Point(679, 24);
+            this.imgAutoGestion.Name = "imgAutoGestion";
+            this.imgAutoGestion.Size = new System.Drawing.Size(145, 35);
+            this.imgAutoGestion.TabIndex = 90;
+            this.imgAutoGestion.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgAutoGestion, "AutoGestión");
+            this.imgAutoGestion.Click += new System.EventHandler(this.imgAutoGestion_Click);
             // 
             // label18
             // 
@@ -350,11 +369,27 @@
             this.label18.TabIndex = 26;
             this.label18.Text = "Ventas";
             // 
+            // grbEnlances
+            // 
+            this.grbEnlances.Controls.Add(this.imgAutoGestion);
+            this.grbEnlances.Controls.Add(this.imgApr);
+            this.grbEnlances.Controls.Add(this.imgArba);
+            this.grbEnlances.Controls.Add(this.imgAnses);
+            this.grbEnlances.Controls.Add(this.imgAfip);
+            this.grbEnlances.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbEnlances.Location = new System.Drawing.Point(77, 568);
+            this.grbEnlances.Name = "grbEnlances";
+            this.grbEnlances.Size = new System.Drawing.Size(850, 70);
+            this.grbEnlances.TabIndex = 92;
+            this.grbEnlances.TabStop = false;
+            this.grbEnlances.Text = "Enlaces";
+            // 
             // TareaClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.Controls.Add(this.grbEnlances);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.btnConsultarTotales);
@@ -383,10 +418,17 @@
             this.Controls.SetChildIndex(this.btnConsultarTotales, 0);
             this.Controls.SetChildIndex(this.label18, 0);
             this.Controls.SetChildIndex(this.btnActualizar, 0);
+            this.Controls.SetChildIndex(this.grbEnlances, 0);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgArba)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAnses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAfip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgApr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAutoGestion)).EndInit();
+            this.grbEnlances.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,8 +441,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblCuitEdit;
         private System.Windows.Forms.Label lblNombreEdit;
-        private System.Windows.Forms.Button btnFacturar;
-        private System.Windows.Forms.Button btnLibroDiario;
         private System.Windows.Forms.DataGridView dgvSubClientes;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnNuevoSubCliente;
@@ -414,10 +454,15 @@
         private System.Windows.Forms.Button btnConsultarTotales;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnFacturarle;
         private System.Windows.Forms.Button btnCuentaCorriente;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnCompras;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.PictureBox imgArba;
+        private System.Windows.Forms.PictureBox imgAnses;
+        private System.Windows.Forms.PictureBox imgAfip;
+        private System.Windows.Forms.PictureBox imgApr;
+        private System.Windows.Forms.GroupBox grbEnlances;
+        private System.Windows.Forms.PictureBox imgAutoGestion;
     }
 }

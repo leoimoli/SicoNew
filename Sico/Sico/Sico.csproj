@@ -554,6 +554,24 @@
     <None Include="Resources\ciclo-del-agua %281%29.png" />
     <None Include="Resources\ciclo-del-agua %282%29.png" />
     <None Include="Resources\diagrama.png" />
+    <None Include="Resources\Provincia%283%29.jpg" />
+    <None Include="Resources\Provincia%284%29.jpg" />
+    <None Include="Resources\Provincia%285%29.jpg" />
+    <None Include="Resources\Nacion.jpg" />
+    <None Include="Resources\Hipotecario.jpg" />
+    <None Include="Resources\Banco Nacion.jpg" />
+    <None Include="Resources\Nacion1.jpg" />
+    <None Include="Resources\Arba.jpg" />
+    <None Include="Resources\Afip%281%29.jpg" />
+    <None Include="Resources\Anses 2.jpg" />
+    <None Include="Resources\Apr.jpg" />
+    <None Include="Resources\Poder Judicial.jpg" />
+    <None Include="Resources\Poder jud3.jpg" />
+    <None Include="Resources\Poder Jud 2.jpg" />
+    <None Include="Resources\AutoGestion.jpg" />
+    <None Include="Resources\AutoGestion.png" />
+    <None Include="Resources\AutoGestion1.jpg" />
+    <None Include="Resources\Ministerio de trabajo.jpg" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
