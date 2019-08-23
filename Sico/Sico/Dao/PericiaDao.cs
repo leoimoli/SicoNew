@@ -163,6 +163,56 @@ namespace Sico.Dao
             }
             return exito;
         }
+
+        public static List<string> CargarComboRespuestasPorTituloSeleccionado(string var)
+        {
+            connection.Close();
+            connection.Open();
+            List<string> _listaPlantillas = new List<string>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("Titulo_in", var) };
+            string proceso = "ListarTextoDePlantillas";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    _listaPlantillas.Add(item["Respuesta"].ToString());
+                }
+            }
+            connection.Close();
+            return _listaPlantillas;
+        }
+
+        public static List<string> CargarComboRespuestas()
+        {
+            connection.Close();
+            connection.Open();
+            List<string> _listaPlantillas = new List<string>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "ListarPlantillas";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    _listaPlantillas.Add(item["Titulo"].ToString());
+                }
+            }
+            connection.Close();
+            return _listaPlantillas;
+        }
         public static List<Pericias> BuscarHistorialPericia(int idPer)
         {
             connection.Close();
@@ -855,7 +905,6 @@ namespace Sico.Dao
         }
     }
 }
-
 
 
 

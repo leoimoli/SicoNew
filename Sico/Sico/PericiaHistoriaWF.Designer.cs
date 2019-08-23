@@ -122,10 +122,10 @@
             this.openFileDialog9 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog10 = new System.Windows.Forms.OpenFileDialog();
             this.grbTexto = new System.Windows.Forms.GroupBox();
+            this.cmbRespuestas = new System.Windows.Forms.ComboBox();
             this.txtTexto = new System.Windows.Forms.TextBox();
             this.chcRespuestaPredefinida = new System.Windows.Forms.CheckBox();
             this.chcRedactar = new System.Windows.Forms.CheckBox();
-            this.cmbRespuestas = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -1101,6 +1101,7 @@
             this.btnGenerarEscrito.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnGenerarEscrito, "Generar Escrito");
             this.btnGenerarEscrito.UseVisualStyleBackColor = true;
+            this.btnGenerarEscrito.Click += new System.EventHandler(this.btnGenerarEscrito_Click);
             // 
             // openFileDialog4
             // 
@@ -1144,9 +1145,23 @@
             this.grbTexto.TabIndex = 109;
             this.grbTexto.TabStop = false;
             this.grbTexto.Text = "Nuevo Texto";
+            this.grbTexto.Visible = false;
+            // 
+            // cmbRespuestas
+            // 
+            this.cmbRespuestas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRespuestas.Enabled = false;
+            this.cmbRespuestas.FormattingEnabled = true;
+            this.cmbRespuestas.Location = new System.Drawing.Point(444, 21);
+            this.cmbRespuestas.Name = "cmbRespuestas";
+            this.cmbRespuestas.Size = new System.Drawing.Size(300, 21);
+            this.cmbRespuestas.TabIndex = 91;
+            this.cmbRespuestas.Visible = false;
+            this.cmbRespuestas.SelectedIndexChanged += new System.EventHandler(this.cmbRespuestas_Click);
             // 
             // txtTexto
             // 
+            this.txtTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTexto.Location = new System.Drawing.Point(31, 51);
             this.txtTexto.Multiline = true;
             this.txtTexto.Name = "txtTexto";
@@ -1163,10 +1178,13 @@
             this.chcRespuestaPredefinida.TabIndex = 2;
             this.chcRespuestaPredefinida.Text = "Respuesta Predefinida";
             this.chcRespuestaPredefinida.UseVisualStyleBackColor = true;
+            this.chcRespuestaPredefinida.CheckedChanged += new System.EventHandler(this.chcRespuestaPredefinida_CheckedChanged);
             // 
             // chcRedactar
             // 
             this.chcRedactar.AutoSize = true;
+            this.chcRedactar.Checked = true;
+            this.chcRedactar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chcRedactar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chcRedactar.Location = new System.Drawing.Point(126, 19);
             this.chcRedactar.Name = "chcRedactar";
@@ -1174,16 +1192,7 @@
             this.chcRedactar.TabIndex = 3;
             this.chcRedactar.Text = "Redactar";
             this.chcRedactar.UseVisualStyleBackColor = true;
-            // 
-            // cmbRespuestas
-            // 
-            this.cmbRespuestas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRespuestas.Enabled = false;
-            this.cmbRespuestas.FormattingEnabled = true;
-            this.cmbRespuestas.Location = new System.Drawing.Point(444, 21);
-            this.cmbRespuestas.Name = "cmbRespuestas";
-            this.cmbRespuestas.Size = new System.Drawing.Size(211, 21);
-            this.cmbRespuestas.TabIndex = 91;
+            this.chcRedactar.CheckedChanged += new System.EventHandler(this.chcRedactar_CheckedChanged);
             // 
             // PericiaHistoriaWF
             // 

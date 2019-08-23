@@ -127,7 +127,6 @@ namespace Sico.Negocio
             }
             return _listaPericias;
         }
-
         public static List<Pericias> BuscarPericiasPorCausa(string causa)
         {
             List<Pericias> _listaPericias = new List<Pericias>();
@@ -160,7 +159,6 @@ namespace Sico.Negocio
             }
             return exito;
         }
-
         private static void ValidarDatosHistorialPericia(Pericias _pericia)
         {
             if (_pericia.Estado == "Seleccione")
@@ -181,6 +179,19 @@ namespace Sico.Negocio
                                            MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
+        }
+        public static List<string> CargarComboRespuestas()
+        {
+            List<string> lista = new List<string>();
+            lista = PericiaDao.CargarComboRespuestas();
+            return lista;
+        }
+
+        public static List<string> CargarComboRespuestasPorTituloSeleccionado(string var)
+        {
+            List<string> lista = new List<string>();
+            lista = PericiaDao.CargarComboRespuestasPorTituloSeleccionado(var);
+            return lista;
         }
     }
 }

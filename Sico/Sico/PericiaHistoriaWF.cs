@@ -1,4 +1,5 @@
-﻿using Sico.Entidades;
+﻿using Sico.Clases_Maestras;
+using Sico.Entidades;
 using Sico.Negocio;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace Sico
 {
@@ -28,11 +30,8 @@ namespace Sico
             objListOrder = PericiaNeg.BuscarHistorialPericia(idPericiaSeleccionada);
             List<Pericias> SortedList = objListOrder.OrderByDescending(o => o.Fecha).ToList();
             ListaPericias = SortedList;
-
             var lista = SortedList.First();
             cmbEstado.Text = lista.Estado;
-
-
             List<string> listaArchivos = new List<string>();
             listaArchivos = Dao.PericiaDao.CargarArchivos(idPericiaSeleccionada);
             int contador = 0;
@@ -755,8 +754,6 @@ namespace Sico
             groupBox2.Visible = true;
             dtFechaPericia.Focus();
             ValidarCantidadArchivos();
-            //CargarComboEstado();
-            //cmbEstado.Text = EstadoCombo;
             btnNuevaHistoria.Visible = false;
             btnVolver.Visible = false;
             grbTexto.Visible = false;
@@ -823,19 +820,130 @@ namespace Sico
             Process.Start("explorer.exe", txtAdjunto10.Text);
         }
         #endregion
-
         private void cmbEstado_Click(object sender, EventArgs e)
         {
             CargarComboEstado();
         }
-
         private void btnGenerarTexto_Click(object sender, EventArgs e)
         {
             groupBox2.Visible = false;
             groupBox3.Visible = false;
             grbTexto.Visible = true;
-            btnNuevaHistoria.Visible = false;
-            btnVolver.Visible = false;
+            btnNuevaHistoria.Visible = true;
+            btnVolver.Visible = true;
+            btnGenerarTexto.Visible = false;
+            txtTexto.Focus();
+        }
+        private void chcRedactar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcRedactar.Checked == true)
+            {
+                cmbRespuestas.Visible = false;
+                chcRespuestaPredefinida.Checked = false;
+            }
+        }
+        private void chcRespuestaPredefinida_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcRespuestaPredefinida.Checked == true)
+            {
+                chcRedactar.Checked = false;
+                cmbRespuestas.Visible = true;
+                CargarComboRespuestas();
+                cmbRespuestas.Enabled = true;
+            }
+        }
+        private void CargarComboRespuestas()
+        {
+            List<string> Plantillas = new List<string>();
+            Plantillas = PericiaNeg.CargarComboRespuestas();
+            cmbRespuestas.Items.Clear();
+            cmbRespuestas.Text = "Seleccione";
+            cmbRespuestas.Items.Add("Seleccione");
+            foreach (string item in Plantillas)
+            {
+                cmbRespuestas.Text = "Seleccione";
+                cmbRespuestas.Items.Add(item);
+            }
+        }
+        private void cmbRespuestas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string var = cmbRespuestas.Text;
+                if (var != "Seleccione")
+                {
+                    List<string> Texto = new List<string>();
+                    Texto = PericiaNeg.CargarComboRespuestasPorTituloSeleccionado(var);
+                    if (Texto.Count > 0)
+                    {
+                        CargarTextoEnPantalla(Texto);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private void CargarTextoEnPantalla(List<string> texto)
+        {
+            Entidades.Pericias _pericia = CargarEntidad();
+            if (cmbRespuestas.Text == "Perito contador solicita domicilio de compulsa")
+            {
+                var textoNuevo = texto.First();
+                string Plantilla = textoNuevo;
+                string Causa = _pericia.Causa;
+                string NroCausa = "N°" + _pericia.NroCausa;
+                string Tribunal = _pericia.Tribunal;
+                string source = Plantilla;
+                var replacement = source.Replace("+ @Causa +", '"' + Causa + '"');
+                var replacement2 = replacement.Replace("+ @NroCausa +", '"' + NroCausa + '"');
+                var replacement3 = replacement2.Replace("+ @Tribunal +", '"' + Tribunal + '"');
+                txtTexto.Text = replacement3;
+            }
+            if (cmbRespuestas.Text == "Escrito Perito Contado Acepta Cargo")
+            {
+                var textoNuevo = texto.First();
+                string Plantilla = textoNuevo;
+                string Causa = _pericia.Causa;
+                string NroCausa = "N°" + _pericia.NroCausa;
+                string Tribunal = _pericia.Tribunal;
+                string source = Plantilla;
+                var replacement = source.Replace("+ @Causa +", '"' + Causa + '"');
+                var replacement2 = replacement.Replace("+ @NroCausa +", '"' + NroCausa + '"');
+                var replacement3 = replacement2.Replace("+ @Tribunal +", '"' + Tribunal + '"');
+                txtTexto.Text = replacement3;
+            }
+        }
+        private void btnGenerarEscrito_Click(object sender, EventArgs e)
+        {
+            if (cmbRespuestas.Text == "Perito contador solicita domicilio de compulsa")
+            {
+                Microsoft.Office.Interop.Word._Application oWord = new Microsoft.Office.Interop.Word.Application();
+                oWord.Visible = true;
+                var oDoc = oWord.Documents.Add();
+                var paragraph1 = oDoc.Content.Paragraphs.Add();
+                paragraph1.Range.Text = txtTexto.Text;
+                paragraph1.Range.Font.Bold = 1;
+                paragraph1.Format.SpaceAfter = 24;
+                string NombreArchivo = "Domicilio de compulsa";
+                oDoc.SaveAs2(@"C:\Users\'" + NombreArchivo + "'");
+                oWord.Quit();
+            }
+
+                if (cmbRespuestas.Text == "Escrito Perito Contado Acepta Cargo")
+            {
+                Microsoft.Office.Interop.Word._Application oWord = new Microsoft.Office.Interop.Word.Application();
+                oWord.Visible = true;
+                var oDoc = oWord.Documents.Add();
+                var paragraph1 = oDoc.Content.Paragraphs.Add();
+                paragraph1.Range.Text = txtTexto.Text;
+                paragraph1.Range.Font.Bold = 1;
+                paragraph1.Format.SpaceAfter = 24;
+                string NombreArchivo = "Acepta Cargo";
+                oDoc.SaveAs2(@"C:\Users\'" + NombreArchivo + "'");
+                oWord.Quit();
+            }
         }
     }
 }
