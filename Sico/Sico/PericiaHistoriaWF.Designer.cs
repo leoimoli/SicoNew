@@ -122,6 +122,7 @@
             this.openFileDialog9 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog10 = new System.Windows.Forms.OpenFileDialog();
             this.grbTexto = new System.Windows.Forms.GroupBox();
+            this.lblDiseño = new System.Windows.Forms.Label();
             this.cmbRespuestas = new System.Windows.Forms.ComboBox();
             this.txtTexto = new System.Windows.Forms.TextBox();
             this.chcRespuestaPredefinida = new System.Windows.Forms.CheckBox();
@@ -1133,6 +1134,7 @@
             // 
             // grbTexto
             // 
+            this.grbTexto.Controls.Add(this.lblDiseño);
             this.grbTexto.Controls.Add(this.cmbRespuestas);
             this.grbTexto.Controls.Add(this.btnMandarEmail);
             this.grbTexto.Controls.Add(this.btnGenerarEscrito);
@@ -1146,6 +1148,16 @@
             this.grbTexto.TabStop = false;
             this.grbTexto.Text = "Nuevo Texto";
             this.grbTexto.Visible = false;
+            // 
+            // lblDiseño
+            // 
+            this.lblDiseño.AutoSize = true;
+            this.lblDiseño.Location = new System.Drawing.Point(358, 173);
+            this.lblDiseño.Name = "lblDiseño";
+            this.lblDiseño.Size = new System.Drawing.Size(35, 13);
+            this.lblDiseño.TabIndex = 92;
+            this.lblDiseño.Text = "label5";
+            this.lblDiseño.Visible = false;
             // 
             // cmbRespuestas
             // 
@@ -1323,5 +1335,6 @@
         private System.Windows.Forms.Button btnMandarEmail;
         private System.Windows.Forms.Button btnGenerarEscrito;
         private System.Windows.Forms.ComboBox cmbRespuestas;
+        private System.Windows.Forms.Label lblDiseño;
     }
 }

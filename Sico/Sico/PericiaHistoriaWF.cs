@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Word = Microsoft.Office.Interop.Word;
@@ -896,10 +897,18 @@ namespace Sico
                 string NroCausa = "N°" + _pericia.NroCausa;
                 string Tribunal = _pericia.Tribunal;
                 string source = Plantilla;
-                var replacement = source.Replace("+ @Causa +", '"' + Causa + '"');
-                var replacement2 = replacement.Replace("+ @NroCausa +", '"' + NroCausa + '"');
-                var replacement3 = replacement2.Replace("+ @Tribunal +", '"' + Tribunal + '"');
+                var replacement = source.Replace("@Causa", '"' + Causa + '"');
+                var replacement2 = replacement.Replace("@NroCausa", '"' + NroCausa + '"');
+                var replacement3 = replacement2.Replace("@Tribunal", '"' + Tribunal + '"');
+
+                //string nTrombre = "Jose";
+                //string apellido1 = "Suarez";
+                //string apellido2 = "González";
+                //textbox1.Text += "Nombre: " + nombre + "\n";
+
+
                 txtTexto.Text = replacement3;
+
             }
             if (cmbRespuestas.Text == "Escrito Perito Contado Acepta Cargo")
             {
@@ -917,6 +926,7 @@ namespace Sico
         }
         private void btnGenerarEscrito_Click(object sender, EventArgs e)
         {
+            Entidades.Pericias _pericia = CargarEntidad();
             if (cmbRespuestas.Text == "Perito contador solicita domicilio de compulsa")
             {
                 Microsoft.Office.Interop.Word._Application oWord = new Microsoft.Office.Interop.Word.Application();
@@ -924,25 +934,38 @@ namespace Sico
                 var oDoc = oWord.Documents.Add();
                 var paragraph1 = oDoc.Content.Paragraphs.Add();
                 paragraph1.Range.Text = txtTexto.Text;
-                paragraph1.Range.Font.Bold = 1;
+                //paragraph1.Range.Font.Bold = 1;
                 paragraph1.Format.SpaceAfter = 24;
-                string NombreArchivo = "Domicilio de compulsa";
-                oDoc.SaveAs2(@"C:\Users\'" + NombreArchivo + "'");
+                string NombreArchivo = "Domicilio de compulsa" + " " + _pericia.Causa + "Causa N°" + _pericia.NroCausa;
+                oDoc.SaveAs2(@"C:\Sico-Archivos-Prod\Escritos\" + NombreArchivo + "'");
                 oWord.Quit();
+
+                const string message2 = "Se genero y se guardo el escrito exitosamente.";
+                const string caption2 = "Éxito";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Asterisk);
+
             }
 
-                if (cmbRespuestas.Text == "Escrito Perito Contado Acepta Cargo")
+            if (cmbRespuestas.Text == "Escrito Perito Contado Acepta Cargo")
             {
                 Microsoft.Office.Interop.Word._Application oWord = new Microsoft.Office.Interop.Word.Application();
                 oWord.Visible = true;
                 var oDoc = oWord.Documents.Add();
                 var paragraph1 = oDoc.Content.Paragraphs.Add();
                 paragraph1.Range.Text = txtTexto.Text;
-                paragraph1.Range.Font.Bold = 1;
+                //paragraph1.Range.Font.Bold = 1;
                 paragraph1.Format.SpaceAfter = 24;
-                string NombreArchivo = "Acepta Cargo";
-                oDoc.SaveAs2(@"C:\Users\'" + NombreArchivo + "'");
+                string NombreArchivo = "Acepta Cargo" + " " + _pericia.Causa + "Causa N°" + _pericia.NroCausa;
+                oDoc.SaveAs2(@"C:\Sico-Archivos-Prod\Escritos\" + NombreArchivo + "'");
                 oWord.Quit();
+
+                const string message2 = "Se genero y se guardo el escrito exitosamente.";
+                const string caption2 = "Éxito";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Asterisk);
             }
         }
     }

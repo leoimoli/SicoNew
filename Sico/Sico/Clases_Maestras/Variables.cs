@@ -8,8 +8,7 @@ namespace Sico.Clases_Maestras
 {
     public class Variables
     {
-        public string emisorEmail = "leoimoli@gmail.com";
-        public string ClaveEmail = "Leo33244793";
+
     }
 
     public class CarpetaDestino
