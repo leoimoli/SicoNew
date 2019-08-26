@@ -193,5 +193,18 @@ namespace Sico.Negocio
             lista = PericiaDao.CargarComboRespuestasPorTituloSeleccionado(var);
             return lista;
         }
+        public static bool EnviarEmailConEscrito(string TextoEmail, string CuentaEmail, int usuarioLogin, string Encabezado)
+        {
+            bool exito = false;
+            try
+            {
+             exito  = PericiaDao.EnviarEmailConEscrito(TextoEmail, CuentaEmail, usuarioLogin, Encabezado);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
     }
 }

@@ -114,6 +114,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnMandarEmail = new System.Windows.Forms.Button();
             this.btnGenerarEscrito = new System.Windows.Forms.Button();
+            this.btnEnviarEmail = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog5 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog6 = new System.Windows.Forms.OpenFileDialog();
@@ -122,16 +124,22 @@
             this.openFileDialog9 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog10 = new System.Windows.Forms.OpenFileDialog();
             this.grbTexto = new System.Windows.Forms.GroupBox();
+            this.grbCuentaEmail = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCuentaEmail = new System.Windows.Forms.TextBox();
+            this.txtTexto = new System.Windows.Forms.RichTextBox();
             this.lblDiseño = new System.Windows.Forms.Label();
             this.cmbRespuestas = new System.Windows.Forms.ComboBox();
-            this.txtTexto = new System.Windows.Forms.TextBox();
             this.chcRespuestaPredefinida = new System.Windows.Forms.CheckBox();
             this.chcRedactar = new System.Windows.Forms.CheckBox();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.grbTexto.SuspendLayout();
+            this.grbCuentaEmail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -1088,6 +1096,7 @@
             this.btnMandarEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnMandarEmail, "Enviar Email");
             this.btnMandarEmail.UseVisualStyleBackColor = true;
+            this.btnMandarEmail.Click += new System.EventHandler(this.btnMandarEmail_Click);
             // 
             // btnGenerarEscrito
             // 
@@ -1103,6 +1112,35 @@
             this.toolTip1.SetToolTip(this.btnGenerarEscrito, "Generar Escrito");
             this.btnGenerarEscrito.UseVisualStyleBackColor = true;
             this.btnGenerarEscrito.Click += new System.EventHandler(this.btnGenerarEscrito_Click);
+            // 
+            // btnEnviarEmail
+            // 
+            this.btnEnviarEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnviarEmail.Image = global::Sico.Properties.Resources.email1;
+            this.btnEnviarEmail.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEnviarEmail.Location = new System.Drawing.Point(375, 160);
+            this.btnEnviarEmail.Name = "btnEnviarEmail";
+            this.btnEnviarEmail.Size = new System.Drawing.Size(80, 51);
+            this.btnEnviarEmail.TabIndex = 90;
+            this.btnEnviarEmail.Text = "Enviar Email";
+            this.btnEnviarEmail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnEnviarEmail, "Enviar Email");
+            this.btnEnviarEmail.UseVisualStyleBackColor = true;
+            this.btnEnviarEmail.Click += new System.EventHandler(this.btnEnviarEmail_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Image = global::Sico.Properties.Resources.cancelar;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelar.Location = new System.Drawing.Point(234, 160);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(80, 51);
+            this.btnCancelar.TabIndex = 95;
+            this.btnCancelar.Text = "Enviar Email";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // openFileDialog4
             // 
@@ -1134,11 +1172,12 @@
             // 
             // grbTexto
             // 
+            this.grbTexto.Controls.Add(this.grbCuentaEmail);
+            this.grbTexto.Controls.Add(this.txtTexto);
             this.grbTexto.Controls.Add(this.lblDiseño);
             this.grbTexto.Controls.Add(this.cmbRespuestas);
             this.grbTexto.Controls.Add(this.btnMandarEmail);
             this.grbTexto.Controls.Add(this.btnGenerarEscrito);
-            this.grbTexto.Controls.Add(this.txtTexto);
             this.grbTexto.Controls.Add(this.chcRespuestaPredefinida);
             this.grbTexto.Controls.Add(this.chcRedactar);
             this.grbTexto.Location = new System.Drawing.Point(25, 322);
@@ -1149,10 +1188,50 @@
             this.grbTexto.Text = "Nuevo Texto";
             this.grbTexto.Visible = false;
             // 
+            // grbCuentaEmail
+            // 
+            this.grbCuentaEmail.Controls.Add(this.btnCancelar);
+            this.grbCuentaEmail.Controls.Add(this.btnEnviarEmail);
+            this.grbCuentaEmail.Controls.Add(this.label5);
+            this.grbCuentaEmail.Controls.Add(this.txtCuentaEmail);
+            this.grbCuentaEmail.Location = new System.Drawing.Point(6, 54);
+            this.grbCuentaEmail.Name = "grbCuentaEmail";
+            this.grbCuentaEmail.Size = new System.Drawing.Size(730, 260);
+            this.grbCuentaEmail.TabIndex = 94;
+            this.grbCuentaEmail.TabStop = false;
+            this.grbCuentaEmail.Text = "Cuenta Email";
+            this.grbCuentaEmail.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(79, 101);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(188, 20);
+            this.label5.TabIndex = 42;
+            this.label5.Text = "Ingrese Cuenta de Email:";
+            // 
+            // txtCuentaEmail
+            // 
+            this.txtCuentaEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCuentaEmail.Location = new System.Drawing.Point(273, 101);
+            this.txtCuentaEmail.Name = "txtCuentaEmail";
+            this.txtCuentaEmail.Size = new System.Drawing.Size(300, 26);
+            this.txtCuentaEmail.TabIndex = 0;
+            // 
+            // txtTexto
+            // 
+            this.txtTexto.Location = new System.Drawing.Point(6, 54);
+            this.txtTexto.Name = "txtTexto";
+            this.txtTexto.Size = new System.Drawing.Size(730, 260);
+            this.txtTexto.TabIndex = 93;
+            this.txtTexto.Text = "";
+            // 
             // lblDiseño
             // 
             this.lblDiseño.AutoSize = true;
-            this.lblDiseño.Location = new System.Drawing.Point(358, 173);
+            this.lblDiseño.Location = new System.Drawing.Point(296, 218);
             this.lblDiseño.Name = "lblDiseño";
             this.lblDiseño.Size = new System.Drawing.Size(35, 13);
             this.lblDiseño.TabIndex = 92;
@@ -1170,15 +1249,6 @@
             this.cmbRespuestas.TabIndex = 91;
             this.cmbRespuestas.Visible = false;
             this.cmbRespuestas.SelectedIndexChanged += new System.EventHandler(this.cmbRespuestas_Click);
-            // 
-            // txtTexto
-            // 
-            this.txtTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTexto.Location = new System.Drawing.Point(31, 51);
-            this.txtTexto.Multiline = true;
-            this.txtTexto.Name = "txtTexto";
-            this.txtTexto.Size = new System.Drawing.Size(730, 260);
-            this.txtTexto.TabIndex = 4;
             // 
             // chcRespuestaPredefinida
             // 
@@ -1206,6 +1276,11 @@
             this.chcRedactar.UseVisualStyleBackColor = true;
             this.chcRedactar.CheckedChanged += new System.EventHandler(this.chcRedactar_CheckedChanged);
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
             // PericiaHistoriaWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1232,6 +1307,9 @@
             this.groupBox3.PerformLayout();
             this.grbTexto.ResumeLayout(false);
             this.grbTexto.PerformLayout();
+            this.grbCuentaEmail.ResumeLayout(false);
+            this.grbCuentaEmail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1331,10 +1409,16 @@
         private System.Windows.Forms.GroupBox grbTexto;
         private System.Windows.Forms.CheckBox chcRespuestaPredefinida;
         private System.Windows.Forms.CheckBox chcRedactar;
-        private System.Windows.Forms.TextBox txtTexto;
         private System.Windows.Forms.Button btnMandarEmail;
         private System.Windows.Forms.Button btnGenerarEscrito;
         private System.Windows.Forms.ComboBox cmbRespuestas;
         private System.Windows.Forms.Label lblDiseño;
+        private System.Windows.Forms.RichTextBox txtTexto;
+        private System.Windows.Forms.GroupBox grbCuentaEmail;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCuentaEmail;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnEnviarEmail;
     }
 }

@@ -900,15 +900,8 @@ namespace Sico
                 var replacement = source.Replace("@Causa", '"' + Causa + '"');
                 var replacement2 = replacement.Replace("@NroCausa", '"' + NroCausa + '"');
                 var replacement3 = replacement2.Replace("@Tribunal", '"' + Tribunal + '"');
-
-                //string nTrombre = "Jose";
-                //string apellido1 = "Suarez";
-                //string apellido2 = "González";
-                //textbox1.Text += "Nombre: " + nombre + "\n";
-
-
-                txtTexto.Text = replacement3;
-
+                var replacement4 = replacement3.Replace("<Salto>", "\r\n");
+                txtTexto.Text = replacement4;
             }
             if (cmbRespuestas.Text == "Escrito Perito Contado Acepta Cargo")
             {
@@ -921,7 +914,8 @@ namespace Sico
                 var replacement = source.Replace("+ @Causa +", '"' + Causa + '"');
                 var replacement2 = replacement.Replace("+ @NroCausa +", '"' + NroCausa + '"');
                 var replacement3 = replacement2.Replace("+ @Tribunal +", '"' + Tribunal + '"');
-                txtTexto.Text = replacement3;
+                var replacement4 = replacement3.Replace("<Salto>", "\r\n");
+                txtTexto.Text = replacement4;
             }
         }
         private void btnGenerarEscrito_Click(object sender, EventArgs e)
@@ -962,6 +956,32 @@ namespace Sico
                 oWord.Quit();
 
                 const string message2 = "Se genero y se guardo el escrito exitosamente.";
+                const string caption2 = "Éxito";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Asterisk);
+            }
+        }
+
+        private void btnMandarEmail_Click(object sender, EventArgs e)
+        {
+            grbCuentaEmail.Visible = true;
+            txtCuentaEmail.Focus();
+            btnMandarEmail.Visible = false;
+            btnGenerarEscrito.Visible = false;
+        }
+
+        private void btnEnviarEmail_Click(object sender, EventArgs e)
+        {
+            bool Exito = false;
+            Entidades.Pericias _pericia = CargarEntidad();
+            if (!String.IsNullOrEmpty(txtCuentaEmail.Text))
+            {
+                Exito = PericiaNeg.EnviarEmailConEscrito(txtTexto.Text, txtCuentaEmail.Text, _pericia.UsuarioLogin, cmbRespuestas.Text);
+            }
+            if (Exito == true)
+            {
+                const string message2 = "Se envio el email correctamente.";
                 const string caption2 = "Éxito";
                 var result2 = MessageBox.Show(message2, caption2,
                                              MessageBoxButtons.OK,

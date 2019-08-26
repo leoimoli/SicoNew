@@ -189,6 +189,54 @@ namespace Sico.Dao
             return _listaPlantillas;
         }
 
+        public static bool EnviarEmailConEscrito(string TextoEmail, string CuentaEmailDestino, int usuarioLogin, string Encabezado)
+        {
+            List<CuentaEmailPorUsuario> cuenta = new List<CuentaEmailPorUsuario>();
+            cuenta = UsuarioDao.BuscarCuentaEmailPorUsuario(usuarioLogin);
+            var Cuenta = cuenta.First();
+            Variables _variables = new Variables();
+            bool exito = false;
+            string emisor = Cuenta.CuentaEmail;
+            string pwd = Cuenta.ClaveEmail;
+            string correo = TextoEmail;
+
+
+            ///// Firma Email
+            string source = Cuenta.FirmaEmail;
+            var replacement = source.Replace("<Salto>", "\r\n");
+            Cuenta.FirmaEmail = replacement;
+
+
+            MailMessage msg = new MailMessage();
+            //Quien escribe al correo
+            msg.From = new MailAddress(emisor);
+            //A quien va dirigido
+            msg.To.Add(new MailAddress(CuentaEmailDestino));
+            //Asunto
+            msg.Subject = Encabezado;
+            //Contenido del correo
+
+            // ". < br /> " + Cuenta.FirmaEmail + ".";
+            msg.Body = correo + " < br /> " + Cuenta.FirmaEmail + "." ;
+
+            msg.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential(emisor, pwd);
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true; //Esto es para que vaya a través de SSL que es obligatorio con GMail
+            try
+            {
+                client.Send(msg);
+                exito = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fallo el envio de email.");
+            }
+            return exito;
+        }
+
         public static List<string> CargarComboRespuestas()
         {
             connection.Close();
