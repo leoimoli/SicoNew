@@ -217,8 +217,8 @@ namespace Sico.Dao
             //Contenido del correo
 
             // ". < br /> " + Cuenta.FirmaEmail + ".";
-            msg.Body = correo + " < br /> " + Cuenta.FirmaEmail + "." ;
-
+            msg.Body = correo + "<br />" + " " + "< br /> " + " < br />" + Cuenta.FirmaEmail + "<br />.";
+            //msg.Body = correo + Cuenta.FirmaEmail;
             msg.IsBodyHtml = true;
             SmtpClient client = new SmtpClient();
             client.Credentials = new System.Net.NetworkCredential(emisor, pwd);

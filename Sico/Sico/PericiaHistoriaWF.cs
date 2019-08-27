@@ -897,6 +897,10 @@ namespace Sico
                 string NroCausa = "N°" + _pericia.NroCausa;
                 string Tribunal = _pericia.Tribunal;
                 string source = Plantilla;
+                //lblDiseño.Text = Causa;
+                //lblDiseño.Font = new System.Drawing.Font(label1.Font, FontStyle.Bold);
+                //string CausaFinal = lblDiseño.Text;
+                //new Label = new
                 var replacement = source.Replace("@Causa", '"' + Causa + '"');
                 var replacement2 = replacement.Replace("@NroCausa", '"' + NroCausa + '"');
                 var replacement3 = replacement2.Replace("@Tribunal", '"' + Tribunal + '"');
@@ -987,6 +991,14 @@ namespace Sico
                                              MessageBoxButtons.OK,
                                              MessageBoxIcon.Asterisk);
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtCuentaEmail.Clear();
+            grbCuentaEmail.Visible = false;
+            btnGenerarEscrito.Visible = true;
+            btnMandarEmail.Visible = true;
         }
     }
 }

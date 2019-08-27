@@ -215,7 +215,6 @@ namespace Sico
             {
                 txtCausaBuscar.Clear();
                 txtCausaBuscar.Enabled = true;
-                txtCausaBuscar.Focus();
                 txtCausaBuscar.Visible = true;
                 cmbTribunalBuscar.Visible = false;
                 chcPorTribunal.Checked = false;
@@ -223,6 +222,7 @@ namespace Sico
                 txtCausaBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteCausa.Autocomplete();
                 txtCausaBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtCausaBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txtCausaBuscar.Focus();
             }
         }
         public List<Entidades.Pericias> ListaPericias
@@ -805,6 +805,6 @@ namespace Sico
         private void PericiasWF_Load(object sender, EventArgs e)
         {
 
-        }      
+        }
     }
 }
