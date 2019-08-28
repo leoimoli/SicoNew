@@ -203,8 +203,13 @@ namespace Sico.Dao
 
             ///// Firma Email
             string source = Cuenta.FirmaEmail;
-            var replacement = source.Replace("<Salto>", "\r\n");
-            Cuenta.FirmaEmail = replacement;
+            var replacement = source.Replace("<Salto>", "<br />");
+            string firma = replacement;
+
+            ///// Cuerpo Email
+            string source2 = correo;
+            var replacement2 = source2.Replace("\n", "<br />");
+            string CuerpoFinal = replacement2;
 
 
             MailMessage msg = new MailMessage();
@@ -214,11 +219,11 @@ namespace Sico.Dao
             msg.To.Add(new MailAddress(CuentaEmailDestino));
             //Asunto
             msg.Subject = Encabezado;
-            //Contenido del correo
+            //Contenido del correo                
 
-            // ". < br /> " + Cuenta.FirmaEmail + ".";
-            msg.Body = correo + "<br />" + " " + "< br /> " + " < br />" + Cuenta.FirmaEmail + "<br />.";
+            msg.Body = CuerpoFinal + "<br />" + firma + "<br />";
             //msg.Body = correo + Cuenta.FirmaEmail;
+          
             msg.IsBodyHtml = true;
             SmtpClient client = new SmtpClient();
             client.Credentials = new System.Net.NetworkCredential(emisor, pwd);

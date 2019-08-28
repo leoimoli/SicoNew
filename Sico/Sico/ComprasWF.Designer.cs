@@ -51,21 +51,21 @@
             this.lblCantidadEdit = new System.Windows.Forms.Label();
             this.lblCantidad = new System.Windows.Forms.Label();
             this.grbEnlances = new System.Windows.Forms.GroupBox();
+            this.imgAutoGestion = new System.Windows.Forms.PictureBox();
             this.imgApr = new System.Windows.Forms.PictureBox();
             this.imgArba = new System.Windows.Forms.PictureBox();
             this.imgAnses = new System.Windows.Forms.PictureBox();
             this.imgAfip = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.imgAutoGestion = new System.Windows.Forms.PictureBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.grbEnlances.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgAutoGestion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgApr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgArba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAnses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAfip)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgAutoGestion)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSeleccionar
@@ -336,6 +336,17 @@
             this.grbEnlances.TabStop = false;
             this.grbEnlances.Text = "Enlaces";
             // 
+            // imgAutoGestion
+            // 
+            this.imgAutoGestion.Image = global::Sico.Properties.Resources.AutoGestion2;
+            this.imgAutoGestion.Location = new System.Drawing.Point(680, 24);
+            this.imgAutoGestion.Name = "imgAutoGestion";
+            this.imgAutoGestion.Size = new System.Drawing.Size(145, 35);
+            this.imgAutoGestion.TabIndex = 91;
+            this.imgAutoGestion.TabStop = false;
+            this.toolTip1.SetToolTip(this.imgAutoGestion, "AutoGestión");
+            this.imgAutoGestion.Click += new System.EventHandler(this.imgAutoGestion_Click);
+            // 
             // imgApr
             // 
             this.imgApr.Image = global::Sico.Properties.Resources.Apr;
@@ -345,7 +356,7 @@
             this.imgApr.TabIndex = 89;
             this.imgApr.TabStop = false;
             this.toolTip1.SetToolTip(this.imgApr, "Agencia Platense de racaudación");
-            this.imgApr.Click += new System.EventHandler(this.imgArba_Click);
+            this.imgApr.Click += new System.EventHandler(this.imgApr_Click);
             // 
             // imgArba
             // 
@@ -379,17 +390,6 @@
             this.imgAfip.TabStop = false;
             this.toolTip1.SetToolTip(this.imgAfip, "Afip");
             this.imgAfip.Click += new System.EventHandler(this.imgAfip_Click);
-            // 
-            // imgAutoGestion
-            // 
-            this.imgAutoGestion.Image = global::Sico.Properties.Resources.AutoGestion2;
-            this.imgAutoGestion.Location = new System.Drawing.Point(680, 24);
-            this.imgAutoGestion.Name = "imgAutoGestion";
-            this.imgAutoGestion.Size = new System.Drawing.Size(145, 35);
-            this.imgAutoGestion.TabIndex = 91;
-            this.imgAutoGestion.TabStop = false;
-            this.toolTip1.SetToolTip(this.imgAutoGestion, "AutoGestión");
-            this.imgAutoGestion.Click += new System.EventHandler(this.imgAutoGestion_Click);
             // 
             // ComprasWF
             // 
@@ -431,11 +431,11 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.grbEnlances.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgAutoGestion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgApr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgArba)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAnses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgAfip)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgAutoGestion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -133,6 +133,8 @@
             this.chcRespuestaPredefinida = new System.Windows.Forms.CheckBox();
             this.chcRedactar = new System.Windows.Forms.CheckBox();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.txtAsunto = new System.Windows.Forms.TextBox();
+            this.lblTituloEmail = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPericias)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -1191,6 +1193,8 @@
             // 
             // grbCuentaEmail
             // 
+            this.grbCuentaEmail.Controls.Add(this.lblTituloEmail);
+            this.grbCuentaEmail.Controls.Add(this.txtAsunto);
             this.grbCuentaEmail.Controls.Add(this.btnCancelar);
             this.grbCuentaEmail.Controls.Add(this.btnEnviarEmail);
             this.grbCuentaEmail.Controls.Add(this.label5);
@@ -1207,11 +1211,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(79, 101);
+            this.label5.Location = new System.Drawing.Point(63, 101);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(188, 20);
+            this.label5.Size = new System.Drawing.Size(204, 20);
             this.label5.TabIndex = 42;
-            this.label5.Text = "Ingrese Cuenta de Email:";
+            this.label5.Text = "Ingrese Cuenta de Email(*):";
             // 
             // txtCuentaEmail
             // 
@@ -1281,6 +1285,24 @@
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
+            // txtAsunto
+            // 
+            this.txtAsunto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAsunto.Location = new System.Drawing.Point(273, 43);
+            this.txtAsunto.Name = "txtAsunto";
+            this.txtAsunto.Size = new System.Drawing.Size(300, 26);
+            this.txtAsunto.TabIndex = 96;
+            // 
+            // lblTituloEmail
+            // 
+            this.lblTituloEmail.AutoSize = true;
+            this.lblTituloEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloEmail.Location = new System.Drawing.Point(187, 46);
+            this.lblTituloEmail.Name = "lblTituloEmail";
+            this.lblTituloEmail.Size = new System.Drawing.Size(80, 20);
+            this.lblTituloEmail.TabIndex = 97;
+            this.lblTituloEmail.Text = "Asunto(*):";
             // 
             // PericiaHistoriaWF
             // 
@@ -1421,5 +1443,7 @@
         private System.Windows.Forms.TextBox txtCuentaEmail;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnEnviarEmail;
+        private System.Windows.Forms.Label lblTituloEmail;
+        private System.Windows.Forms.TextBox txtAsunto;
     }
 }

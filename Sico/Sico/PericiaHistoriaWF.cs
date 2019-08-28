@@ -839,6 +839,7 @@ namespace Sico
         {
             if (chcRedactar.Checked == true)
             {
+                txtTexto.Clear();
                 cmbRespuestas.Visible = false;
                 chcRespuestaPredefinida.Checked = false;
             }
@@ -897,15 +898,13 @@ namespace Sico
                 string NroCausa = "N°" + _pericia.NroCausa;
                 string Tribunal = _pericia.Tribunal;
                 string source = Plantilla;
-                //lblDiseño.Text = Causa;
-                //lblDiseño.Font = new System.Drawing.Font(label1.Font, FontStyle.Bold);
-                //string CausaFinal = lblDiseño.Text;
-                //new Label = new
                 var replacement = source.Replace("@Causa", '"' + Causa + '"');
                 var replacement2 = replacement.Replace("@NroCausa", '"' + NroCausa + '"');
                 var replacement3 = replacement2.Replace("@Tribunal", '"' + Tribunal + '"');
                 var replacement4 = replacement3.Replace("<Salto>", "\r\n");
-                txtTexto.Text = replacement4;
+                var replacement5 = replacement4.Replace('"', ' ');
+                var replacement6 = replacement5.Replace('+', ' ');
+                txtTexto.Text = replacement6;
             }
             if (cmbRespuestas.Text == "Escrito Perito Contado Acepta Cargo")
             {
@@ -919,7 +918,9 @@ namespace Sico
                 var replacement2 = replacement.Replace("+ @NroCausa +", '"' + NroCausa + '"');
                 var replacement3 = replacement2.Replace("+ @Tribunal +", '"' + Tribunal + '"');
                 var replacement4 = replacement3.Replace("<Salto>", "\r\n");
-                txtTexto.Text = replacement4;
+                var replacement5 = replacement4.Replace('"', ' ');
+                var replacement6 = replacement5.Replace('+', ' ');
+                txtTexto.Text = replacement6;
             }
         }
         private void btnGenerarEscrito_Click(object sender, EventArgs e)
@@ -966,22 +967,40 @@ namespace Sico
                                              MessageBoxIcon.Asterisk);
             }
         }
-
         private void btnMandarEmail_Click(object sender, EventArgs e)
         {
-            grbCuentaEmail.Visible = true;
-            txtCuentaEmail.Focus();
-            btnMandarEmail.Visible = false;
-            btnGenerarEscrito.Visible = false;
+            if (chcRedactar.Checked)
+            {
+                txtAsunto.Text = "";
+                grbCuentaEmail.Visible = true;
+                txtCuentaEmail.Focus();
+                btnMandarEmail.Visible = false;
+                btnGenerarEscrito.Visible = false;
+            }
+            if (chcRespuestaPredefinida.Checked)
+            {
+                txtAsunto.Text = cmbRespuestas.Text;
+                grbCuentaEmail.Visible = true;
+                txtCuentaEmail.Focus();
+                btnMandarEmail.Visible = false;
+                btnGenerarEscrito.Visible = false;
+            }
         }
-
         private void btnEnviarEmail_Click(object sender, EventArgs e)
         {
             bool Exito = false;
             Entidades.Pericias _pericia = CargarEntidad();
-            if (!String.IsNullOrEmpty(txtCuentaEmail.Text))
+            if (!String.IsNullOrEmpty(txtCuentaEmail.Text) & !String.IsNullOrEmpty(txtAsunto.Text))
             {
                 Exito = PericiaNeg.EnviarEmailConEscrito(txtTexto.Text, txtCuentaEmail.Text, _pericia.UsuarioLogin, cmbRespuestas.Text);
+            }
+            else
+            {
+                const string message = "Los campos Asuntos y cuenta de email son obligatorios.";
+                const string caption = "Atención";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Warning);
             }
             if (Exito == true)
             {
@@ -992,7 +1011,6 @@ namespace Sico
                                              MessageBoxIcon.Asterisk);
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtCuentaEmail.Clear();
