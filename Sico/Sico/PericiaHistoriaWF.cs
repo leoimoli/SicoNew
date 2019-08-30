@@ -936,7 +936,7 @@ namespace Sico
                 //paragraph1.Range.Font.Bold = 1;
                 paragraph1.Format.SpaceAfter = 24;
                 string NombreArchivo = "Domicilio de compulsa" + " " + _pericia.Causa + "Causa N°" + _pericia.NroCausa;
-                oDoc.SaveAs2(@"C:\Sico-Archivos-Prod\Escritos\" + NombreArchivo + "'");
+                oDoc.SaveAs2(@"C:\Sico-Setup\Dropbox\Archivos\Escritos\" + NombreArchivo + "'");
                 oWord.Quit();
 
                 const string message2 = "Se genero y se guardo el escrito exitosamente.";
@@ -957,7 +957,7 @@ namespace Sico
                 //paragraph1.Range.Font.Bold = 1;
                 paragraph1.Format.SpaceAfter = 24;
                 string NombreArchivo = "Acepta Cargo" + " " + _pericia.Causa + "Causa N°" + _pericia.NroCausa;
-                oDoc.SaveAs2(@"C:\Sico-Archivos-Prod\Escritos\" + NombreArchivo + "'");
+                oDoc.SaveAs2(@"C:\Sico-Setup\Dropbox\Archivos\Escritos\" + NombreArchivo + "'");
                 oWord.Quit();
 
                 const string message2 = "Se genero y se guardo el escrito exitosamente.";
