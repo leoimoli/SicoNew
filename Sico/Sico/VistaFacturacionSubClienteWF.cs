@@ -79,6 +79,7 @@ namespace Sico
                         {
                             txtAdjunto.Text = listaArchivos[0].ToString();
                             txtAdjunto.Visible = true; btnAdjuntarFacturaElectronica.Visible = true; lblArchivo1.Visible = true; contador = 1;
+                            btnAdjuntarFacturaElectronica.Enabled = true;
                         }
                     }
                     if (_Factura.Count <= 0)
@@ -187,7 +188,7 @@ namespace Sico
             cmbCodigoOperacion.Enabled = false;
             txtTipoCambio.Enabled = false;
             cmbPeriodo.Enabled = false;
-            btnAdjuntarFacturaElectronica.Visible = false;
+            //btnAdjuntarFacturaElectronica.Visible = false;
         }
         private void btnPdf_Click(object sender, EventArgs e)
         {
@@ -492,6 +493,11 @@ namespace Sico
         }
         #endregion
         private void btnAbrir1_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", txtAdjunto.Text);
+        }
+
+        private void btnAdjuntarFacturaElectronica_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", txtAdjunto.Text);
         }

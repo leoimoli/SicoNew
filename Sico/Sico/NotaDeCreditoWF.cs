@@ -267,7 +267,7 @@ namespace Sico
             try
             {
                 string persona = cmbPersonas.Text;
-                string NuevoNroFactura = ClienteNeg.BuscarNuevoNroFacturaNotaDeCredito(persona);
+                string NuevoNroFactura = ClienteNeg.BuscarNuevoNroFacturaNotaDeCredito(cuit);
                 txtFactura.Text = NuevoNroFactura;
                 dtFecha.Enabled = true;
                 string apellidoNombre = cmbPersonas.Text;
@@ -301,7 +301,6 @@ namespace Sico
             lblDireccion.Visible = true;
             lblDireccionEdit.Visible = true;
         }
-
         private SubCliente CargarEntidad()
         {
             SubCliente _subCliente = new SubCliente();
@@ -331,7 +330,12 @@ namespace Sico
             if (!String.IsNullOrEmpty(txtIva3.Text))
                 _subCliente.Iva3 = Convert.ToDecimal(txtIva3.Text);
             _subCliente.Monto = Convert.ToDecimal(lblTotalEdit.Text);
-            
+            _subCliente.Periodo = cmbPeriodo.Text;
+            _subCliente.TipoComprobante = cmbTipoComprobante.Text;
+            _subCliente.CodigoMoneda = cmbCodigoMoneda.Text;
+            _subCliente.TipoDeCambio = txtTipoCambio.Text;
+            _subCliente.CodigoTipoOperacion = cmbCodigoOperacion.Text;
+            _subCliente.Adjunto = txtAdjunto.Text;
             return _subCliente;
         }
         private void ProgressBar()
@@ -414,66 +418,131 @@ namespace Sico
                 lblNombreEdit.Text = razonSocial;
                 lblCuitEdit.Text = cuit;
                 CargarComboPersonas();
+                CargarCombo();
                 Total = 0;
+                cmbCodigoMoneda.Text = "PES - PesosArgentinos";
+                cmbCodigoOperacion.Text = "0 - NO CORRESPONDE";
+                cmbTipoComprobante.Text = "006 - FACTURAS B";
+                txtTipoCambio.Text = "1,000000";
             }
             catch (Exception ex)
             { }
         }
+        private void CargarCombo()
+        {
+            List<string> TipoComprobante = new List<string>();
+            TipoComprobante = ComprasNeg.CargarComboTipoComprobante();
+            cmbTipoComprobante.Items.Clear();
+            //cmbTipoComprobante.Text = "Seleccione";
+            //cmbTipoComprobante.Items.Add("Seleccione");
+            foreach (string item in TipoComprobante)
+            {
+                //cmbTipoComprobante.Text = "Seleccione";
+                cmbTipoComprobante.Items.Add(item);
+            }
+
+            List<string> CodigoOperacion = new List<string>();
+            CodigoOperacion = ComprasNeg.CargarComboCodigoOperacion();
+            cmbCodigoOperacion.Items.Clear();
+            //cmbCodigoOperacion.Text = "Seleccione";
+            //cmbCodigoOperacion.Items.Add("Seleccione");
+            foreach (string item in CodigoOperacion)
+            {
+                //cmbCodigoOperacion.Text = "Seleccione";
+                cmbCodigoOperacion.Items.Add(item);
+            }
+
+            List<string> TipoMoneda = new List<string>();
+            TipoMoneda = ComprasNeg.CargarComboTipoMoneda();
+            cmbCodigoMoneda.Items.Clear();
+            //cmbCodigoMoneda.Text = "Seleccione";
+            //cmbCodigoMoneda.Items.Add("Seleccione");
+            foreach (string item in TipoMoneda)
+            {
+                //cmbCodigoMoneda.Text = "Seleccione";
+                cmbCodigoMoneda.Items.Add(item);
+            }
+            List<string> Periodo = new List<string>();
+            Periodo = PeriodoNeg.CargarComboPeriodoVenta(cuit);
+            cmbPeriodo.Items.Clear();
+            foreach (string item in Periodo)
+            {
+                cmbPeriodo.Items.Add(item);
+            }
+        }
         private void CargarComboTipoFactura()
         {
-            string[] Tipo = Clases_Maestras.ValoresConstantes.TipoFactura;
-            cmbTipoFactura.Items.Add("Seleccione");
-            cmbTipoFactura.Items.Clear();
-            foreach (string item in Tipo)
-            {
-                cmbTipoFactura.Text = "Seleccione";
-                cmbTipoFactura.Items.Add(item);
-            }
+            //string[] Tipo = Clases_Maestras.ValoresConstantes.TipoFactura;
+            //cmbTipoFactura.Items.Add("Seleccione");
+            //cmbTipoFactura.Items.Clear();
+            //foreach (string item in Tipo)
+            //{
+            //    cmbTipoFactura.Text = "Seleccione";
+            //    cmbTipoFactura.Items.Add(item);
+            //}
         }
         private void cmbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTipoFactura.Text == "Factura B")
+        //    if (cmbTipoFactura.Text == "Factura B")
+        //    {
+        //        idTipoFactura = 2;
+        //        label6.Visible = true;
+        //        label7.Visible = true;
+        //        label8.Visible = true;
+        //        label9.Visible = true;
+        //        lbl105.Visible = true;
+        //        lbl21.Visible = true;
+        //        lbl27.Visible = true;
+        //        label13.Visible = true;
+        //        lblTotalEdit.Visible = true;
+        //        lblObservaciones.Visible = true;
+        //        lblObservacionsEdit.Visible = true;
+        //        lblDireccion.Visible = true;
+        //        label2.Visible = true;
+        //        lblDni.Visible = true;
+        //        label4.Visible = true;
+        //        label5.Visible = true;
+        //        lblDireccionEdit.Visible = true;
+
+        //        cmbPersonas.Visible = true;
+        //        dtFecha.Visible = true;
+        //        txtFactura.Visible = true;
+        //        lblDniEdit.Visible = true;
+        //        lblDireccion.Visible = true;
+
+
+
+        //        txtIva1.Visible = true;
+        //        txtIva2.Visible = true;
+        //        txtIva3.Visible = true;
+
+        //        txtNeto1.Visible = true;
+        //        txtNeto2.Visible = true;
+        //        txtNeto3.Visible = true;
+
+        //        txtTotal1.Visible = true;
+        //        txtTotal2.Visible = true;
+        //        txtTotal3.Visible = true;
+
+        //    }
+        }
+        private void btnAdjuntarFacturaElectronica_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                idTipoFactura = 2;
-                label6.Visible = true;
-                label7.Visible = true;
-                label8.Visible = true;
-                label9.Visible = true;
-                lbl105.Visible = true;
-                lbl21.Visible = true;
-                lbl27.Visible = true;
-                label13.Visible = true;
-                lblTotalEdit.Visible = true;
-                lblObservaciones.Visible = true;
-                lblObservacionsEdit.Visible = true;
-                lblDireccion.Visible = true;
-                label2.Visible = true;
-                lblDni.Visible = true;
-                label4.Visible = true;
-                label5.Visible = true;
-                lblDireccionEdit.Visible = true;
-
-                cmbPersonas.Visible = true;
-                dtFecha.Visible = true;
-                txtFactura.Visible = true;
-                lblDniEdit.Visible = true;
-                lblDireccion.Visible = true;
-
-
-
-                txtIva1.Visible = true;
-                txtIva2.Visible = true;
-                txtIva3.Visible = true;
-
-                txtNeto1.Visible = true;
-                txtNeto2.Visible = true;
-                txtNeto3.Visible = true;
-
-                txtTotal1.Visible = true;
-                txtTotal2.Visible = true;
-                txtTotal3.Visible = true;
-
+                string path = "";
+                System.IO.StreamReader sr = new
+                   System.IO.StreamReader(openFileDialog1.FileName);
+                path = openFileDialog1.FileName;
+                txtAdjunto.Text = path;
+                sr.Close();
             }
+        }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            _tarea.Show();
+            Hide();
         }
     }
 }

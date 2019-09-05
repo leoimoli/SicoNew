@@ -200,6 +200,13 @@ namespace Sico.Dao
 
         public static bool GuardarNotaDeCredito(SubCliente _subCliente, string cuit)
         {
+            bool exitoGuardarImagenes = false;
+            if (_subCliente.Adjunto != "")
+            {
+                exitoGuardarImagenes = GuardarImagenesEnCarpeta(_subCliente);
+            }
+
+
             int idUltimaFacturaSubCliente = 0;
             int idsubcliente = 0;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
@@ -219,6 +226,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("idCliente_in", idCliente);
             cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
             cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
+            cmd.Parameters.AddWithValue("Periodo_in", _subCliente.Periodo);
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
@@ -249,7 +257,7 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-        public static string BuscarNuevoNroFacturaNotaDeCredito(string persona)
+        public static string BuscarNuevoNroFacturaNotaDeCredito(int idCliente)
         {
             string Factura = "";
 
@@ -259,7 +267,7 @@ namespace Sico.Dao
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { new MySqlParameter("Persona_in", persona) };
+            MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idCliente) };
             string proceso = "BuscarNuevoNroFacturaNotaDeCredito";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -282,8 +290,7 @@ namespace Sico.Dao
                     int Numero = Convert.ToInt32(prueba);
                     int Fac = Numero + 1;
                     string prueba2 = Convert.ToString(Fac);
-                    Factura = string.Concat("000", prueba2);
-
+                    Factura = string.Concat("0000", prueba2);
                 }
             }
 

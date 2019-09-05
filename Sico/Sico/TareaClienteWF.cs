@@ -55,6 +55,7 @@ namespace Sico
         }
         private void btnCuentaCorriente_Click(object sender, EventArgs e)
         {
+            Hide();
             NotaDeCreditoWF _ctaCorriente = new NotaDeCreditoWF(razonSocial, cuit);
             _ctaCorriente.Show();
         }
