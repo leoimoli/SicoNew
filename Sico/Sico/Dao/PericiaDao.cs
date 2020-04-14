@@ -395,12 +395,17 @@ namespace Sico.Dao
             string emisor = Cuenta.CuentaEmail;
             string pwd = Cuenta.ClaveEmail;
             string correo = "";
+            ///// Firma Email
+            string source = Cuenta.FirmaEmail;
+            var replacement = source.Replace("<Salto>", "<br />");
+            string firma = replacement;
+
             if (_pericia.TotalEstados > 1)
             {
-                correo = "Estimada/o, le informamos que se creo un nuevo movimiento en la pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br />abierta en el " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Se informa que lo siguiente respecto a la pericia: " + _pericia.Descripcion + "<br />" + Cuenta.FirmaEmail + "<br />.";
+                correo = "Estimada/o, le informamos que se creo un nuevo movimiento en la pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br />abierta en el " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> Se informa que lo siguiente respecto a la pericia: " + _pericia.Descripcion + "<br />";
 
             }
-            else { correo = "Estimada/o, le informamos que se inicio una nueva pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br /> abierta en el " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> " + Cuenta.FirmaEmail + "."; }
+            else { correo = "Estimada/o, le informamos que se inicio una nueva pericia con Número de causa " + _pericia.NroCausa + ", referente a la causa " + _pericia.Causa + " <br /> abierta en el " + _pericia.Tribunal + " con fecha de creación " + _pericia.Fecha + ". <br /> "; }
             List<string> adjuntos = new List<string>();
             string adjunto1 = Adj1;
             if (adjunto1 != null)
@@ -444,7 +449,7 @@ namespace Sico.Dao
             //Asunto
             msg.Subject = "Pericia " + _pericia.NroCausa + " por la causa " + _pericia.Causa + "";
             //Contenido del correo
-            msg.Body = correo;
+            msg.Body = correo + "<br />" + firma + "<br />"; ;
             msg.IsBodyHtml = true;
             //Adjuntamos archivo
             //string tempFileName = Oid.ToString();

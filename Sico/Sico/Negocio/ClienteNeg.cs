@@ -170,10 +170,11 @@ namespace Sico.Negocio
             return _listaFacturasSubCliente;
         }
 
-        public static string BuscarNuevoNroFacturaNotaDeCredito(string persona)
+        public static string BuscarNuevoNroFacturaNotaDeCredito(string cuit)
         {
             string Factura;
-            Factura = Dao.ClienteDao.BuscarNuevoNroFacturaNotaDeCredito(persona);
+            int idCliente = ClienteDao.BuscarIdClientePorCuit(cuit);
+            Factura = Dao.ClienteDao.BuscarNuevoNroFacturaNotaDeCredito(idCliente);
             if (Factura == "0" || Factura == "")
             {
                 Factura = "0003-00000001";

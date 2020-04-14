@@ -353,6 +353,7 @@
             this.btnAdjuntarFacturaElectronica.Size = new System.Drawing.Size(45, 35);
             this.btnAdjuntarFacturaElectronica.TabIndex = 52;
             this.btnAdjuntarFacturaElectronica.UseVisualStyleBackColor = false;
+            this.btnAdjuntarFacturaElectronica.Click += new System.EventHandler(this.btnAdjuntarFacturaElectronica_Click);
             // 
             // lblArchivo1
             // 
