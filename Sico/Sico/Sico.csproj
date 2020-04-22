@@ -588,6 +588,12 @@
     <None Include="Resources\Ministerio de trabajo.jpg" />
     <None Include="Resources\escribir-con-una-pluma-en-un-libro.png" />
     <None Include="Resources\palabra.png" />
+    <None Include="Resources\importacion %283%29.png" />
+    <None Include="Resources\importacion %284%29.png" />
+    <None Include="Resources\importacion %285%29.png" />
+    <None Include="Resources\encontrar.png" />
+    <None Include="Resources\importacion %285%291.png" />
+    <None Include="Resources\archivos-y-carpetas.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

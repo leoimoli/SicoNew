@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacturacionSubClientesWF));
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.btnActualizarCombo = new System.Windows.Forms.Button();
             this.btnCrearPeriodo = new System.Windows.Forms.Button();
             this.cmbPeriodo = new System.Windows.Forms.ComboBox();
@@ -90,7 +91,6 @@
             this.lblNombreEdit = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.btnVolver = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -163,6 +163,20 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Factura sub-cliente";
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
+            this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVolver.Location = new System.Drawing.Point(468, 424);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(80, 51);
+            this.btnVolver.TabIndex = 95;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnActualizarCombo
             // 
@@ -281,6 +295,7 @@
             this.cmbTipoComprobante.Name = "cmbTipoComprobante";
             this.cmbTipoComprobante.Size = new System.Drawing.Size(350, 21);
             this.cmbTipoComprobante.TabIndex = 54;
+            this.cmbTipoComprobante.SelectedIndexChanged += new System.EventHandler(this.cmbTipoComprobante_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -707,20 +722,6 @@
             this.label18.Size = new System.Drawing.Size(181, 25);
             this.label18.TabIndex = 28;
             this.label18.Text = "Facturación Ventas";
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
-            this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVolver.Location = new System.Drawing.Point(468, 424);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(80, 51);
-            this.btnVolver.TabIndex = 95;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // FacturacionSubClientesWF
             // 

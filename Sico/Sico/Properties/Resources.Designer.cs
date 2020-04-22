@@ -113,6 +113,16 @@ namespace Sico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap archivos_y_carpetas {
+            get {
+                object obj = ResourceManager.GetObject("archivos-y-carpetas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AutoGestion {
             get {
                 object obj = ResourceManager.GetObject("AutoGestion", resourceCulture);
@@ -373,6 +383,16 @@ namespace Sico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap encontrar {
+            get {
+                object obj = ResourceManager.GetObject("encontrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap escribir_con_una_pluma_en_un_libro {
             get {
                 object obj = ResourceManager.GetObject("escribir-con-una-pluma-en-un-libro", resourceCulture);
@@ -466,6 +486,46 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap Imagen_Sico {
             get {
                 object obj = ResourceManager.GetObject("Imagen_Sico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap importacion__3_ {
+            get {
+                object obj = ResourceManager.GetObject("importacion (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap importacion__4_ {
+            get {
+                object obj = ResourceManager.GetObject("importacion (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap importacion__5_ {
+            get {
+                object obj = ResourceManager.GetObject("importacion (5)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap importacion__5_1 {
+            get {
+                object obj = ResourceManager.GetObject("importacion (5)1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

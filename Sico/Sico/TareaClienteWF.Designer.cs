@@ -159,7 +159,7 @@
             // 
             // btnInportarVentas
             // 
-            this.btnInportarVentas.Image = global::Sico.Properties.Resources.dinero;
+            this.btnInportarVentas.Image = global::Sico.Properties.Resources.importacion__5_;
             this.btnInportarVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnInportarVentas.Location = new System.Drawing.Point(45, 330);
             this.btnInportarVentas.Name = "btnInportarVentas";

@@ -22,6 +22,8 @@ namespace Sico
             InitializeComponent();
             this.razonSocial = razonSocial;
             this.cuit = cuit;
+            RazonSocial = razonSocial;
+            Cuit = cuit;
         }
         private void VentasImportarFacturasWF_Load(object sender, EventArgs e)
         {
@@ -57,6 +59,7 @@ namespace Sico
             ProgressBar();
             btnCargarDatos.Enabled = false;
             Datos();
+            btnCargaMasiva.Enabled = true;
             LimpiarCampos();
         }
         public void LimpiarCampos()
@@ -334,10 +337,19 @@ namespace Sico
                                                  MessageBoxIcon.Asterisk);
                     LimpiarCampos();
                 }
-
-                else
+                if (Exito == 0)
                 {
-                    const string message2 = "Algo fallo.";
+                   
+                    string message2 = "Las facturas que intento cargar ya se encontraban registradas.";
+                    const string caption2 = "Atención";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Exclamation);
+                    LimpiarCampos();
+                }
+               if (Exito != 0 && Exito < 0)
+                {
+                    const string message2 = "Algo falló.";
                     const string caption2 = "Error";
                     var result2 = MessageBox.Show(message2, caption2,
                                                  MessageBoxButtons.OK,
@@ -356,6 +368,14 @@ namespace Sico
         private void btnActualizarCombo_Click(object sender, EventArgs e)
         {
             CargarCombo();
+        }
+        public static string RazonSocial;
+        public static string Cuit;
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
+            _tarea.Show();
+            Hide();
         }
     }
 }

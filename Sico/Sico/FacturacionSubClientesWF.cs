@@ -535,5 +535,38 @@ namespace Sico
             _tarea.Show();
             Hide();
         }
+
+        private void cmbTipoComprobante_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string Dato = cmbTipoComprobante.Text;
+
+            var CodigoComprobante = Dato.Split(' ')[0];
+            CodigoComprobante = CodigoComprobante.Trim();
+
+            if (CodigoComprobante == "011")
+            {
+                txtTotal2.Enabled = false;
+                txtTotal3.Enabled = false;
+                txtIva1.Enabled = false;
+                txtIva2.Enabled = false;
+                txtIva3.Enabled = false;
+                txtNeto1.Enabled = false;
+                txtNeto2.Enabled = false;
+                txtNeto3.Enabled = false;
+                label6.Text = "Total Monotributo";
+            }
+            if (CodigoComprobante == "006")
+            {
+                txtTotal2.Enabled = true;
+                txtTotal3.Enabled = true;
+                txtIva1.Enabled = true;
+                txtIva2.Enabled = true;
+                txtIva3.Enabled = true;
+                txtNeto1.Enabled = true;
+                txtNeto2.Enabled = true;
+                txtNeto3.Enabled = true;
+                label6.Text = "Total";
+            }
+        }
     }
 }

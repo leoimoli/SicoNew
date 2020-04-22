@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblCuitEdit = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -35,19 +36,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtRuta = new System.Windows.Forms.TextBox();
-            this.btnCargarArchivo = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmbPeriodo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCargaMasiva = new System.Windows.Forms.Button();
-            this.btnVolver = new System.Windows.Forms.Button();
-            this.btnCargarDatos = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label6 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCargarDatos = new System.Windows.Forms.Button();
+            this.btnCargaMasiva = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.btnActualizarCombo = new System.Windows.Forms.Button();
             this.btnCrearPeriodo = new System.Windows.Forms.Button();
+            this.btnCargarArchivo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -61,7 +64,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(616, 64);
+            this.groupBox1.Size = new System.Drawing.Size(616, 48);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
@@ -108,6 +111,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnActualizarCombo);
             this.groupBox2.Controls.Add(this.btnCrearPeriodo);
             this.groupBox2.Controls.Add(this.txtRuta);
@@ -116,9 +120,9 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.cmbPeriodo);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 85);
+            this.groupBox2.Location = new System.Drawing.Point(12, 66);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(616, 316);
+            this.groupBox2.Size = new System.Drawing.Size(616, 335);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Factura Compras";
@@ -130,18 +134,9 @@
             this.txtRuta.Size = new System.Drawing.Size(214, 20);
             this.txtRuta.TabIndex = 44;
             // 
-            // btnCargarArchivo
-            // 
-            this.btnCargarArchivo.Location = new System.Drawing.Point(457, 8);
-            this.btnCargarArchivo.Name = "btnCargarArchivo";
-            this.btnCargarArchivo.Size = new System.Drawing.Size(40, 30);
-            this.btnCargarArchivo.TabIndex = 43;
-            this.btnCargarArchivo.UseVisualStyleBackColor = true;
-            this.btnCargarArchivo.Click += new System.EventHandler(this.btnCargarArchivo_Click);
-            // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(142, 262);
+            this.progressBar1.Location = new System.Drawing.Point(142, 278);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 42;
@@ -151,7 +146,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 77);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 93);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(601, 231);
             this.dataGridView1.TabIndex = 42;
@@ -161,7 +156,7 @@
             // 
             this.cmbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPeriodo.FormattingEnabled = true;
-            this.cmbPeriodo.Location = new System.Drawing.Point(219, 49);
+            this.cmbPeriodo.Location = new System.Drawing.Point(219, 58);
             this.cmbPeriodo.Name = "cmbPeriodo";
             this.cmbPeriodo.Size = new System.Drawing.Size(214, 21);
             this.cmbPeriodo.TabIndex = 41;
@@ -170,52 +165,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(152, 50);
+            this.label2.Location = new System.Drawing.Point(152, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 40;
             this.label2.Text = "Período:";
-            // 
-            // btnCargaMasiva
-            // 
-            this.btnCargaMasiva.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargaMasiva.Image = global::Sico.Properties.Resources.txt;
-            this.btnCargaMasiva.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCargaMasiva.Location = new System.Drawing.Point(418, 425);
-            this.btnCargaMasiva.Name = "btnCargaMasiva";
-            this.btnCargaMasiva.Size = new System.Drawing.Size(80, 51);
-            this.btnCargaMasiva.TabIndex = 55;
-            this.btnCargaMasiva.Text = "Importar";
-            this.btnCargaMasiva.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCargaMasiva.UseVisualStyleBackColor = true;
-            this.btnCargaMasiva.Click += new System.EventHandler(this.btnCargaMasiva_Click);
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
-            this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVolver.Location = new System.Drawing.Point(191, 425);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(80, 51);
-            this.btnVolver.TabIndex = 54;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnVolver.UseVisualStyleBackColor = true;
-            // 
-            // btnCargarDatos
-            // 
-            this.btnCargarDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargarDatos.Image = global::Sico.Properties.Resources.txt;
-            this.btnCargarDatos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCargarDatos.Location = new System.Drawing.Point(307, 425);
-            this.btnCargarDatos.Name = "btnCargarDatos";
-            this.btnCargarDatos.Size = new System.Drawing.Size(80, 51);
-            this.btnCargarDatos.TabIndex = 56;
-            this.btnCargarDatos.Text = "Cargar Datos";
-            this.btnCargarDatos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCargarDatos.UseVisualStyleBackColor = true;
-            this.btnCargarDatos.Click += new System.EventHandler(this.bntCargarDatos_Click);
             // 
             // label4
             // 
@@ -243,16 +197,69 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(106, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 17);
+            this.label6.TabIndex = 97;
+            this.label6.Text = "Buscar Archivo:";
+            // 
+            // btnCargarDatos
+            // 
+            this.btnCargarDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargarDatos.Image = global::Sico.Properties.Resources.archivos_y_carpetas;
+            this.btnCargarDatos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCargarDatos.Location = new System.Drawing.Point(307, 425);
+            this.btnCargarDatos.Name = "btnCargarDatos";
+            this.btnCargarDatos.Size = new System.Drawing.Size(80, 51);
+            this.btnCargarDatos.TabIndex = 56;
+            this.btnCargarDatos.Text = "Cargar Datos";
+            this.btnCargarDatos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCargarDatos.UseVisualStyleBackColor = true;
+            this.btnCargarDatos.Click += new System.EventHandler(this.bntCargarDatos_Click);
+            // 
+            // btnCargaMasiva
+            // 
+            this.btnCargaMasiva.Enabled = false;
+            this.btnCargaMasiva.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargaMasiva.Image = global::Sico.Properties.Resources.importacion__5_;
+            this.btnCargaMasiva.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCargaMasiva.Location = new System.Drawing.Point(418, 425);
+            this.btnCargaMasiva.Name = "btnCargaMasiva";
+            this.btnCargaMasiva.Size = new System.Drawing.Size(80, 51);
+            this.btnCargaMasiva.TabIndex = 55;
+            this.btnCargaMasiva.Text = "Importar";
+            this.btnCargaMasiva.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCargaMasiva.UseVisualStyleBackColor = true;
+            this.btnCargaMasiva.Click += new System.EventHandler(this.btnCargaMasiva_Click);
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
+            this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVolver.Location = new System.Drawing.Point(191, 425);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(80, 51);
+            this.btnVolver.TabIndex = 54;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // btnActualizarCombo
             // 
             this.btnActualizarCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizarCombo.Image = global::Sico.Properties.Resources.refrescar;
-            this.btnActualizarCombo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnActualizarCombo.Location = new System.Drawing.Point(513, 41);
+            this.btnActualizarCombo.Location = new System.Drawing.Point(510, 49);
             this.btnActualizarCombo.Name = "btnActualizarCombo";
-            this.btnActualizarCombo.Size = new System.Drawing.Size(40, 30);
+            this.btnActualizarCombo.Size = new System.Drawing.Size(46, 35);
             this.btnActualizarCombo.TabIndex = 96;
             this.btnActualizarCombo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnActualizarCombo, "Actualizar");
             this.btnActualizarCombo.UseVisualStyleBackColor = true;
             this.btnActualizarCombo.Click += new System.EventHandler(this.btnActualizarCombo_Click);
             // 
@@ -261,13 +268,25 @@
             this.btnCrearPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrearPeriodo.Image = global::Sico.Properties.Resources.ciclo_del_agua__2_;
             this.btnCrearPeriodo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCrearPeriodo.Location = new System.Drawing.Point(457, 41);
+            this.btnCrearPeriodo.Location = new System.Drawing.Point(458, 49);
             this.btnCrearPeriodo.Name = "btnCrearPeriodo";
-            this.btnCrearPeriodo.Size = new System.Drawing.Size(40, 30);
+            this.btnCrearPeriodo.Size = new System.Drawing.Size(46, 35);
             this.btnCrearPeriodo.TabIndex = 95;
             this.btnCrearPeriodo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnCrearPeriodo, "Nuevo Periodo");
             this.btnCrearPeriodo.UseVisualStyleBackColor = true;
             this.btnCrearPeriodo.Click += new System.EventHandler(this.btnCrearPeriodo_Click);
+            // 
+            // btnCargarArchivo
+            // 
+            this.btnCargarArchivo.Image = global::Sico.Properties.Resources.encontrar;
+            this.btnCargarArchivo.Location = new System.Drawing.Point(458, 10);
+            this.btnCargarArchivo.Name = "btnCargarArchivo";
+            this.btnCargarArchivo.Size = new System.Drawing.Size(46, 35);
+            this.btnCargarArchivo.TabIndex = 43;
+            this.toolTip1.SetToolTip(this.btnCargarArchivo, "Buscar Archivo");
+            this.btnCargarArchivo.UseVisualStyleBackColor = true;
+            this.btnCargarArchivo.Click += new System.EventHandler(this.btnCargarArchivo_Click);
             // 
             // VentasImportarFacturasWF
             // 
@@ -317,5 +336,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnActualizarCombo;
         private System.Windows.Forms.Button btnCrearPeriodo;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

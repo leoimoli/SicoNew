@@ -432,7 +432,7 @@ namespace Sico.Dao
                 }
             }
             connection.Close();
-            return Exito;
+            return ContadorDeExitos;
         }
 
         private static string BuscarDniSubCliente(string ApellidoNombre)
@@ -760,6 +760,7 @@ namespace Sico.Dao
                 cmd.Parameters.AddWithValue("idCliente_in", idCliente);
                 cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
                 cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
+                cmd.Parameters.AddWithValue("Observacion_in", _subCliente.Observacion);
                 cmd.Parameters.AddWithValue("Periodo_in", _subCliente.Periodo);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
