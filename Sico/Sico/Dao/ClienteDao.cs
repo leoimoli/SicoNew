@@ -360,9 +360,10 @@ namespace Sico.Dao
             return lista;
         }
 
-        public static bool GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, string cuit, string periodo)
+        public static int GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, string cuit, string periodo)
         {
-            bool Exito = false;
+            int ContadorDeExitos = 0;
+            int Exito = 0;
             int idNotaCredito = 0;
             int idUltimaFacturaSubCliente = 0;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
@@ -370,6 +371,7 @@ namespace Sico.Dao
             int idCliente = id[0].IdCliente;
             foreach (var item in listaPrecargada)
             {
+                bool FacturaExistente = false;
                 string var = item.NroFactura;
                 var split1 = var.Split('|')[0];
                 split1 = split1.Trim();
@@ -390,15 +392,15 @@ namespace Sico.Dao
 
                 item.NroFactura = PuntoDeVenta + "-" + FacturaSegundaParte;
 
-                bool FacturaExistente = ValidarFacturaExistente(item.NroFactura, idCliente);
+                FacturaExistente = ValidarFacturaExistente(item.NroFactura, idCliente);
                 if (FacturaExistente == true)
                 {
-                    break;
+                    continue;
                 }
 
                 if (item.ApellidoNombre == "" || item.ApellidoNombre == null)
                 {
-                    item.ApellidoNombre = "ConsumidorFinal";
+                    item.ApellidoNombre = "Consumidor Final";
                 }
                 connection.Close();
                 connection.Open();
@@ -419,9 +421,14 @@ namespace Sico.Dao
                 {
                     idUltimaFacturaSubCliente = Convert.ToInt32(r["ID"].ToString());
                 }
+                bool DetalleExitoso = false;
                 if (idUltimaFacturaSubCliente > 0)
                 {
-                    Exito = RegistrarDetalleFacturaSubCliente(item, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
+                    DetalleExitoso = RegistrarDetalleFacturaSubCliente(item, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
+                }
+                if (DetalleExitoso == true)
+                {
+                    ContadorDeExitos = ContadorDeExitos + 1;
                 }
             }
             connection.Close();

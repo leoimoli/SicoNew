@@ -323,10 +323,11 @@ namespace Sico
             {
                 ProgressBar();
                 string Periodo = cmbPeriodo.Text;
-                bool Exito = ClienteNeg.GuardarCargaMasivaVentas(ListaPrecargada, cuit, Periodo);
-                if (Exito == true)
+                int Exito = ClienteNeg.GuardarCargaMasivaVentas(ListaPrecargada, cuit, Periodo);
+                if (Exito > 0)
                 {
-                    const string message2 = "Se registro la factura exitosamente.";
+                    string Numero = Convert.ToString(Exito);
+                    string message2 = "Se registraron '" + Numero + "' facturas exitosamente.";
                     const string caption2 = "Éxito";
                     var result2 = MessageBox.Show(message2, caption2,
                                                  MessageBoxButtons.OK,

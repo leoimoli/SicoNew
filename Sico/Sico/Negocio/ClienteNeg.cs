@@ -375,9 +375,9 @@ namespace Sico.Negocio
             return exito;
         }
 
-        public static bool GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, string cuit, string periodo)
+        public static int GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, string cuit, string periodo)
         {
-            bool exito = false;
+            int  exito = 0;
             try
             {
                 exito = ClienteDao.GuardarCargaMasivaVentas(listaPrecargada, cuit, periodo);
