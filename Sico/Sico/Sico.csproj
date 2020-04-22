@@ -347,6 +347,12 @@
     <Compile Include="UsuarioWF.Designer.cs">
       <DependentUpon>UsuarioWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="VentasImportarFacturasWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentasImportarFacturasWF.Designer.cs">
+      <DependentUpon>VentasImportarFacturasWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaConsultaFacturacionComprasMensualWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -440,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioWF.resx">
       <DependentUpon>UsuarioWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentasImportarFacturasWF.resx">
+      <DependentUpon>VentasImportarFacturasWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaConsultaFacturacionComprasMensualWF.resx">
       <DependentUpon>VistaConsultaFacturacionComprasMensualWF.cs</DependentUpon>

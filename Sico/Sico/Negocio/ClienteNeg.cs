@@ -353,20 +353,20 @@ namespace Sico.Negocio
             try
             {
                 ValidarDatosFactura(_subCliente);
-                bool FacturaExistente = ClienteDao.ValidarFacturaExistente(_subCliente.NroFactura);
-                if (FacturaExistente == true)
-                {
-                    const string message = "El Nro.Factura ingresado ya existe en la base de datos.";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption,
-                                                 MessageBoxButtons.OK,
-                                               MessageBoxIcon.Exclamation);
-                    throw new Exception();
-                }
-                else
-                {
-                    exito = ClienteDao.GuardarFacturaSubCliente(_subCliente, cuit);
-                }
+                //bool FacturaExistente = ClienteDao.ValidarFacturaExistente(_subCliente.NroFactura);
+                //if (FacturaExistente == true)
+                //{
+                //    const string message = "El Nro.Factura ingresado ya existe en la base de datos.";
+                //    const string caption = "Error";
+                //    var result = MessageBox.Show(message, caption,
+                //                                 MessageBoxButtons.OK,
+                //                               MessageBoxIcon.Exclamation);
+                //    throw new Exception();
+                //}
+                //else
+                //{
+                exito = ClienteDao.GuardarFacturaSubCliente(_subCliente, cuit);
+                //}
             }
             catch (Exception ex)
             {
@@ -374,6 +374,21 @@ namespace Sico.Negocio
             }
             return exito;
         }
+
+        public static bool GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, string cuit, string periodo)
+        {
+            bool exito = false;
+            try
+            {
+                exito = ClienteDao.GuardarCargaMasivaVentas(listaPrecargada, cuit, periodo);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
+
         public static bool GuardarEdicionFacturaSubCliente(SubCliente _subCliente, string cuit, string id)
         {
             bool exito = false;
@@ -428,6 +443,6 @@ namespace Sico.Negocio
             }
             return _listaClientes;
         }
-       
+
     }
 }

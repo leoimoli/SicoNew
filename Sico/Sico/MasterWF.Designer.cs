@@ -84,7 +84,7 @@
             // 
             this.periciasToolStripMenuItem.Image = global::Sico.Properties.Resources.juicio;
             this.periciasToolStripMenuItem.Name = "periciasToolStripMenuItem";
-            this.periciasToolStripMenuItem.Size = new System.Drawing.Size(91, 25);
+            this.periciasToolStripMenuItem.Size = new System.Drawing.Size(90, 25);
             this.periciasToolStripMenuItem.Text = "Pericias";
             this.periciasToolStripMenuItem.Click += new System.EventHandler(this.periciasToolStripMenuItem_Click);
             // 
@@ -197,7 +197,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Sico(contable) V-1.3.2";
+            this.label3.Text = "Sico(contable) V-1.4.0";
             // 
             // MasterWF
             // 

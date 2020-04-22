@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgvSubClientes = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnInportarVentas = new System.Windows.Forms.Button();
             this.btnCompras = new System.Windows.Forms.Button();
             this.btnCuentaCorriente = new System.Windows.Forms.Button();
             this.btnNuevaFactura = new System.Windows.Forms.Button();
@@ -144,6 +145,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnInportarVentas);
             this.groupBox2.Controls.Add(this.btnCompras);
             this.groupBox2.Controls.Add(this.btnCuentaCorriente);
             this.groupBox2.Controls.Add(this.btnNuevaFactura);
@@ -155,11 +157,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
             // 
+            // btnInportarVentas
+            // 
+            this.btnInportarVentas.Image = global::Sico.Properties.Resources.dinero;
+            this.btnInportarVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnInportarVentas.Location = new System.Drawing.Point(45, 330);
+            this.btnInportarVentas.Name = "btnInportarVentas";
+            this.btnInportarVentas.Size = new System.Drawing.Size(90, 61);
+            this.btnInportarVentas.TabIndex = 17;
+            this.btnInportarVentas.Text = "Importar Ventas";
+            this.btnInportarVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnInportarVentas.UseVisualStyleBackColor = true;
+            this.btnInportarVentas.Click += new System.EventHandler(this.btnInportarVentas_Click);
+            // 
             // btnCompras
             // 
             this.btnCompras.Image = global::Sico.Properties.Resources.tarjeta;
             this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCompras.Location = new System.Drawing.Point(45, 350);
+            this.btnCompras.Location = new System.Drawing.Point(45, 433);
             this.btnCompras.Name = "btnCompras";
             this.btnCompras.Size = new System.Drawing.Size(90, 61);
             this.btnCompras.TabIndex = 16;
@@ -172,7 +187,7 @@
             // 
             this.btnCuentaCorriente.Image = global::Sico.Properties.Resources.dinero;
             this.btnCuentaCorriente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCuentaCorriente.Location = new System.Drawing.Point(45, 239);
+            this.btnCuentaCorriente.Location = new System.Drawing.Point(45, 228);
             this.btnCuentaCorriente.Name = "btnCuentaCorriente";
             this.btnCuentaCorriente.Size = new System.Drawing.Size(90, 61);
             this.btnCuentaCorriente.TabIndex = 4;
@@ -464,5 +479,6 @@
         private System.Windows.Forms.PictureBox imgApr;
         private System.Windows.Forms.GroupBox grbEnlances;
         private System.Windows.Forms.PictureBox imgAutoGestion;
+        private System.Windows.Forms.Button btnInportarVentas;
     }
 }

@@ -43,6 +43,10 @@ namespace Sico.Clases_Maestras
     {
         public string Carpeta = @"C:\Sico-Setup\Dropbox\Archivos\txt\Ventas-Alicuotas\";
     }
+    public class Ventas_CargaMasiva
+    {
+        public string Carpeta = @"C:\Sico-Setup\Archivos";
+    }
 }
 
 

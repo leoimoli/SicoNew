@@ -365,6 +365,12 @@ namespace Sico
         {
             System.Diagnostics.Process.Start("https://autogestion.apronline.gov.ar/");
         }
-              
+
+        private void btnInportarVentas_Click(object sender, EventArgs e)
+        {
+            VentasImportarFacturasWF _importar = new VentasImportarFacturasWF(razonSocial, cuit);
+            _importar.Show();
+            Hide();
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sico.Entidades;
 using Sico.Clases_Maestras;
+using System.Windows.Forms;
 
 namespace Sico.Dao
 {
@@ -359,6 +360,74 @@ namespace Sico.Dao
             return lista;
         }
 
+        public static bool GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, string cuit, string periodo)
+        {
+            bool Exito = false;
+            int idNotaCredito = 0;
+            int idUltimaFacturaSubCliente = 0;
+            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
+            id = BuscarClientePorCuit(cuit);
+            int idCliente = id[0].IdCliente;
+            foreach (var item in listaPrecargada)
+            {
+                string var = item.NroFactura;
+                var split1 = var.Split('|')[0];
+                split1 = split1.Trim();
+                string PuntoDeVenta = split1;
+
+                if (PuntoDeVenta.Length < 5)
+                {
+                    PuntoDeVenta = PuntoDeVenta.PadLeft(5, '0');
+                }
+                //////"Número de Comprobante"
+                string Factura = item.NroFactura;
+                var FacturaSegundaParte = var.Split('|')[1];
+                FacturaSegundaParte = FacturaSegundaParte.Trim();
+                if (FacturaSegundaParte.Length < 8)
+                {
+                    FacturaSegundaParte = FacturaSegundaParte.PadLeft(8, '0');
+                }
+
+                item.NroFactura = PuntoDeVenta + "-" + FacturaSegundaParte;
+
+                bool FacturaExistente = ValidarFacturaExistente(item.NroFactura, idCliente);
+                if (FacturaExistente == true)
+                {
+                    break;
+                }
+
+                if (item.ApellidoNombre == "" || item.ApellidoNombre == null)
+                {
+                    item.ApellidoNombre = "ConsumidorFinal";
+                }
+                connection.Close();
+                connection.Open();
+                string proceso = "GuardarFacturaSubCliente";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("ApellidoNombre_in", item.ApellidoNombre);
+                cmd.Parameters.AddWithValue("NroFactura_in", item.NroFactura);
+                cmd.Parameters.AddWithValue("Fecha_in", item.Fecha);
+                cmd.Parameters.AddWithValue("Monto_in", item.Monto);
+                cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                cmd.Parameters.AddWithValue("Dni_in", item.Dni);
+                cmd.Parameters.AddWithValue("Direccion_in", item.Direccion);
+                cmd.Parameters.AddWithValue("Observacion_in", item.Observacion);
+                cmd.Parameters.AddWithValue("Periodo_in", periodo);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    idUltimaFacturaSubCliente = Convert.ToInt32(r["ID"].ToString());
+                }
+                if (idUltimaFacturaSubCliente > 0)
+                {
+                    Exito = RegistrarDetalleFacturaSubCliente(item, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
+                }
+            }
+            connection.Close();
+            return Exito;
+        }
+
         private static string BuscarDniSubCliente(string ApellidoNombre)
         {
             string DNI = "";
@@ -385,8 +454,7 @@ namespace Sico.Dao
             }
             return DNI;
         }
-
-        public static bool ValidarFacturaExistente(string nroFactura)
+        public static bool ValidarFacturaExistente(string nroFactura, int idCliente)
         {
             connection.Close();
             bool Existe = false;
@@ -395,7 +463,8 @@ namespace Sico.Dao
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
-                                                 new MySqlParameter("NroFactura_in", nroFactura)};
+                 new MySqlParameter("NroFactura_in", nroFactura),
+                                                 new MySqlParameter("idCliente_in", idCliente)};
             string proceso = "ValidarFacturaExistente";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -410,7 +479,6 @@ namespace Sico.Dao
             connection.Close();
             return Existe;
         }
-
         public static List<SubCliente> BuscarTodasFacturasSubCliente(string cuit)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
@@ -452,7 +520,6 @@ namespace Sico.Dao
             }
             return lista;
         }
-
         public static List<SubCliente> BuscarDatosSubClientePorApellidoNombre(string apellidoNombre, string cuit)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
@@ -648,65 +715,79 @@ namespace Sico.Dao
         }
         public static bool GuardarFacturaSubCliente(SubCliente _subCliente, string cuit)
         {
-            bool exitoGuardarImagenes = false;
-            if (_subCliente.Adjunto != "")
-            {
-                exitoGuardarImagenes = GuardarImagenesEnCarpeta(_subCliente);
-            }
-
-            int idNotaCredito = 0;
-            int idUltimaFacturaSubCliente = 0;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
             id = BuscarClientePorCuit(cuit);
             int idCliente = id[0].IdCliente;
-
-            bool exito = false;
-            connection.Close();
-            connection.Open();
-            string proceso = "GuardarFacturaSubCliente";
-            MySqlCommand cmd = new MySqlCommand(proceso, connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("ApellidoNombre_in", _subCliente.ApellidoNombre);
-            cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
-            cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
-            cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
-            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
-            cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
-            cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
-            cmd.Parameters.AddWithValue("Periodo_in", _subCliente.Periodo);
-            MySqlDataReader r = cmd.ExecuteReader();
-            while (r.Read())
+            bool FacturaExistente = ClienteDao.ValidarFacturaExistente(_subCliente.NroFactura, idCliente);
+            if (FacturaExistente == true)
             {
-                idUltimaFacturaSubCliente = Convert.ToInt32(r["ID"].ToString());
+                const string message = "El Nro.Factura ingresado ya existe en la base de datos para el cliente seleccionado.";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
             }
-            if (idUltimaFacturaSubCliente > 0)
+            else
             {
-                exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
-            }
-            if (exito == true)
-            {
-                List<string> ListaArchivos = new List<string>();
+                bool exitoGuardarImagenes = false;
                 if (_subCliente.Adjunto != "")
-                    ListaArchivos.Add(_subCliente.Adjunto);
-                if (ListaArchivos.Count > 0)
                 {
-                    foreach (var item in ListaArchivos)
+                    exitoGuardarImagenes = GuardarImagenesEnCarpeta(_subCliente);
+                }
+
+                int idNotaCredito = 0;
+                int idUltimaFacturaSubCliente = 0;
+
+
+                bool exito = false;
+                connection.Close();
+                connection.Open();
+                string proceso = "GuardarFacturaSubCliente";
+                MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("ApellidoNombre_in", _subCliente.ApellidoNombre);
+                cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
+                cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
+                cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
+                cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
+                cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
+                cmd.Parameters.AddWithValue("Periodo_in", _subCliente.Periodo);
+                MySqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    idUltimaFacturaSubCliente = Convert.ToInt32(r["ID"].ToString());
+                }
+                if (idUltimaFacturaSubCliente > 0)
+                {
+                    exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
+                }
+                if (exito == true)
+                {
+                    List<string> ListaArchivos = new List<string>();
+                    if (_subCliente.Adjunto != "")
+                        ListaArchivos.Add(_subCliente.Adjunto);
+                    if (ListaArchivos.Count > 0)
                     {
-                        connection.Close();
-                        connection.Open();
-                        string proceso3 = "AltaArchivosFactura";
-                        MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
-                        cmd3.CommandType = CommandType.StoredProcedure;
-                        cmd3.Parameters.AddWithValue("Archivo_in", item);
-                        cmd3.Parameters.AddWithValue("idFacturaSubCliente_in", idUltimaFacturaSubCliente);
-                        cmd3.ExecuteNonQuery();
-                        exito = true;
-                        connection.Close();
+                        foreach (var item in ListaArchivos)
+                        {
+                            connection.Close();
+                            connection.Open();
+                            string proceso3 = "AltaArchivosFactura";
+                            MySqlCommand cmd3 = new MySqlCommand(proceso3, connection);
+                            cmd3.CommandType = CommandType.StoredProcedure;
+                            cmd3.Parameters.AddWithValue("Archivo_in", item);
+                            cmd3.Parameters.AddWithValue("idFacturaSubCliente_in", idUltimaFacturaSubCliente);
+                            cmd3.ExecuteNonQuery();
+                            exito = true;
+                            connection.Close();
+                        }
                     }
                 }
+                connection.Close();
+                return exito;
             }
-            connection.Close();
-            return exito;
         }
         public static string Adj1;
         private static bool GuardarImagenesEnCarpeta(SubCliente _subCliente)
@@ -814,6 +895,10 @@ namespace Sico.Dao
         private static bool RegistrarDetalleFacturaSubCliente(SubCliente _subCliente, int idCliente, int idUltimaFacturaSubCliente, int idsubcliente)
         {
             bool exito = false;
+            if (_subCliente.CodigoTipoOperacion == null)
+            {
+                _subCliente.CodigoTipoOperacion = "N/E";
+            }
             connection.Close();
             connection.Open();
             string proceso = "RegistrarDetalleFacturaSubCliente";

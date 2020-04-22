@@ -1,6 +1,6 @@
 ﻿namespace Sico
 {
-    partial class VistaConsultaFacturacionComprasMensualWF
+    partial class VentasImportarFacturasWF
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VistaConsultaFacturacionComprasMensualWF));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblCuitEdit = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblNombreEdit = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtRuta = new System.Windows.Forms.TextBox();
+            this.btnCargarArchivo = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmbPeriodo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCitiVentas = new System.Windows.Forms.Button();
+            this.btnCargaMasiva = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.lblCantidadEdit = new System.Windows.Forms.Label();
-            this.lblCantidad = new System.Windows.Forms.Label();
+            this.btnCargarDatos = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnActualizarCombo = new System.Windows.Forms.Button();
+            this.btnCrearPeriodo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -56,10 +59,10 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lblNombreEdit);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(12, 23);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(616, 64);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
             // 
@@ -105,43 +108,50 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnActualizarCombo);
+            this.groupBox2.Controls.Add(this.btnCrearPeriodo);
+            this.groupBox2.Controls.Add(this.txtRuta);
+            this.groupBox2.Controls.Add(this.btnCargarArchivo);
             this.groupBox2.Controls.Add(this.progressBar1);
-            this.groupBox2.Controls.Add(this.btnBuscar);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.cmbPeriodo);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 95);
+            this.groupBox2.Location = new System.Drawing.Point(12, 85);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(616, 311);
-            this.groupBox2.TabIndex = 4;
+            this.groupBox2.Size = new System.Drawing.Size(616, 316);
+            this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Factura Compras";
             // 
+            // txtRuta
+            // 
+            this.txtRuta.Location = new System.Drawing.Point(219, 18);
+            this.txtRuta.Name = "txtRuta";
+            this.txtRuta.Size = new System.Drawing.Size(214, 20);
+            this.txtRuta.TabIndex = 44;
+            // 
+            // btnCargarArchivo
+            // 
+            this.btnCargarArchivo.Location = new System.Drawing.Point(457, 8);
+            this.btnCargarArchivo.Name = "btnCargarArchivo";
+            this.btnCargarArchivo.Size = new System.Drawing.Size(40, 30);
+            this.btnCargarArchivo.TabIndex = 43;
+            this.btnCargarArchivo.UseVisualStyleBackColor = true;
+            this.btnCargarArchivo.Click += new System.EventHandler(this.btnCargarArchivo_Click);
+            // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(142, 249);
+            this.progressBar1.Location = new System.Drawing.Point(142, 262);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 42;
             this.progressBar1.Value = 50;
             this.progressBar1.Visible = false;
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
-            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscar.Location = new System.Drawing.Point(543, 19);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
-            this.btnBuscar.TabIndex = 45;
-            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 64);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 77);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(601, 231);
             this.dataGridView1.TabIndex = 42;
@@ -151,7 +161,7 @@
             // 
             this.cmbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPeriodo.FormattingEnabled = true;
-            this.cmbPeriodo.Location = new System.Drawing.Point(219, 30);
+            this.cmbPeriodo.Location = new System.Drawing.Point(219, 49);
             this.cmbPeriodo.Name = "cmbPeriodo";
             this.cmbPeriodo.Size = new System.Drawing.Size(214, 21);
             this.cmbPeriodo.TabIndex = 41;
@@ -160,96 +170,121 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(152, 31);
+            this.label2.Location = new System.Drawing.Point(152, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 40;
             this.label2.Text = "Período:";
             // 
-            // btnCitiVentas
+            // btnCargaMasiva
             // 
-            this.btnCitiVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCitiVentas.Image = global::Sico.Properties.Resources.txt;
-            this.btnCitiVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCitiVentas.Location = new System.Drawing.Point(405, 414);
-            this.btnCitiVentas.Name = "btnCitiVentas";
-            this.btnCitiVentas.Size = new System.Drawing.Size(80, 51);
-            this.btnCitiVentas.TabIndex = 52;
-            this.btnCitiVentas.Text = "TXT Siap";
-            this.btnCitiVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCitiVentas.UseVisualStyleBackColor = true;
-            this.btnCitiVentas.Visible = false;
-            this.btnCitiVentas.Click += new System.EventHandler(this.btnCitiVentas_Click);
+            this.btnCargaMasiva.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargaMasiva.Image = global::Sico.Properties.Resources.txt;
+            this.btnCargaMasiva.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCargaMasiva.Location = new System.Drawing.Point(418, 425);
+            this.btnCargaMasiva.Name = "btnCargaMasiva";
+            this.btnCargaMasiva.Size = new System.Drawing.Size(80, 51);
+            this.btnCargaMasiva.TabIndex = 55;
+            this.btnCargaMasiva.Text = "Importar";
+            this.btnCargaMasiva.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCargaMasiva.UseVisualStyleBackColor = true;
+            this.btnCargaMasiva.Click += new System.EventHandler(this.btnCargaMasiva_Click);
             // 
             // btnVolver
             // 
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
             this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVolver.Location = new System.Drawing.Point(160, 414);
+            this.btnVolver.Location = new System.Drawing.Point(191, 425);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(80, 51);
-            this.btnVolver.TabIndex = 51;
+            this.btnVolver.TabIndex = 54;
             this.btnVolver.Text = "Volver";
             this.btnVolver.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Visible = false;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // btnExcel
+            // btnCargarDatos
             // 
-            this.btnExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcel.Image = global::Sico.Properties.Resources.icon;
-            this.btnExcel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExcel.Location = new System.Drawing.Point(282, 414);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(80, 51);
-            this.btnExcel.TabIndex = 50;
-            this.btnExcel.Text = "Excel";
-            this.btnExcel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Visible = false;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            this.btnCargarDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargarDatos.Image = global::Sico.Properties.Resources.txt;
+            this.btnCargarDatos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCargarDatos.Location = new System.Drawing.Point(307, 425);
+            this.btnCargarDatos.Name = "btnCargarDatos";
+            this.btnCargarDatos.Size = new System.Drawing.Size(80, 51);
+            this.btnCargarDatos.TabIndex = 56;
+            this.btnCargarDatos.Text = "Cargar Datos";
+            this.btnCargarDatos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCargarDatos.UseVisualStyleBackColor = true;
+            this.btnCargarDatos.Click += new System.EventHandler(this.bntCargarDatos_Click);
             // 
-            // lblCantidadEdit
+            // label4
             // 
-            this.lblCantidadEdit.AutoSize = true;
-            this.lblCantidadEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadEdit.Location = new System.Drawing.Point(566, 409);
-            this.lblCantidadEdit.Name = "lblCantidadEdit";
-            this.lblCantidadEdit.Size = new System.Drawing.Size(33, 20);
-            this.lblCantidadEdit.TabIndex = 54;
-            this.lblCantidadEdit.Text = "****";
-            this.lblCantidadEdit.Visible = false;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(583, 404);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.TabIndex = 72;
+            this.label4.Text = "label4";
+            this.label4.Visible = false;
             // 
-            // lblCantidad
+            // label5
             // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(512, 409);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(48, 20);
-            this.lblCantidad.TabIndex = 53;
-            this.lblCantidad.Text = "Total:";
-            this.lblCantidad.Visible = false;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(446, 404);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(119, 17);
+            this.label5.TabIndex = 71;
+            this.label5.Text = "Total de facturas:";
+            this.label5.Visible = false;
             // 
-            // VistaConsultaFacturacionComprasMensualWF
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnActualizarCombo
+            // 
+            this.btnActualizarCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarCombo.Image = global::Sico.Properties.Resources.refrescar;
+            this.btnActualizarCombo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnActualizarCombo.Location = new System.Drawing.Point(513, 41);
+            this.btnActualizarCombo.Name = "btnActualizarCombo";
+            this.btnActualizarCombo.Size = new System.Drawing.Size(40, 30);
+            this.btnActualizarCombo.TabIndex = 96;
+            this.btnActualizarCombo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnActualizarCombo.UseVisualStyleBackColor = true;
+            this.btnActualizarCombo.Click += new System.EventHandler(this.btnActualizarCombo_Click);
+            // 
+            // btnCrearPeriodo
+            // 
+            this.btnCrearPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearPeriodo.Image = global::Sico.Properties.Resources.ciclo_del_agua__2_;
+            this.btnCrearPeriodo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCrearPeriodo.Location = new System.Drawing.Point(457, 41);
+            this.btnCrearPeriodo.Name = "btnCrearPeriodo";
+            this.btnCrearPeriodo.Size = new System.Drawing.Size(40, 30);
+            this.btnCrearPeriodo.TabIndex = 95;
+            this.btnCrearPeriodo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCrearPeriodo.UseVisualStyleBackColor = true;
+            this.btnCrearPeriodo.Click += new System.EventHandler(this.btnCrearPeriodo_Click);
+            // 
+            // VentasImportarFacturasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 477);
-            this.Controls.Add(this.lblCantidadEdit);
-            this.Controls.Add(this.lblCantidad);
-            this.Controls.Add(this.btnCitiVentas);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnCargarDatos);
+            this.Controls.Add(this.btnCargaMasiva);
             this.Controls.Add(this.btnVolver);
-            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "VistaConsultaFacturacionComprasMensualWF";
+            this.Name = "VentasImportarFacturasWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Vista Consulta Facturación Compras Mensual";
-            this.Load += new System.EventHandler(this.VistaConsultaFacturacionComprasMensualWF_Load);
+            this.Text = "Ventas Importar Facturas";
+            this.Load += new System.EventHandler(this.VentasImportarFacturasWF_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -269,14 +304,18 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox cmbPeriodo;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnCitiVentas;
+        private System.Windows.Forms.Button btnCargaMasiva;
         private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.Button btnExcel;
-        private System.Windows.Forms.Label lblCantidadEdit;
-        private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnCargarDatos;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtRuta;
+        private System.Windows.Forms.Button btnCargarArchivo;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnActualizarCombo;
+        private System.Windows.Forms.Button btnCrearPeriodo;
     }
 }
