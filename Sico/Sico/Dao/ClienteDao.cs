@@ -107,12 +107,6 @@ namespace Sico.Dao
             connection.Close();
             return idCliente;
         }
-
-        internal static bool GuardarFacturaSubCliente(FacturaCompra _factura)
-        {
-            throw new NotImplementedException();
-        }
-
         public static List<SubCliente> BuscarDetalleFacturaSubCliente(string idsubCliente)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
@@ -416,6 +410,7 @@ namespace Sico.Dao
                 cmd.Parameters.AddWithValue("Direccion_in", item.Direccion);
                 cmd.Parameters.AddWithValue("Observacion_in", item.Observacion);
                 cmd.Parameters.AddWithValue("Periodo_in", periodo);
+                cmd.Parameters.AddWithValue("TipoDNI_in", item.TipoDNI);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
@@ -762,6 +757,7 @@ namespace Sico.Dao
                 cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
                 cmd.Parameters.AddWithValue("Observacion_in", _subCliente.Observacion);
                 cmd.Parameters.AddWithValue("Periodo_in", _subCliente.Periodo);
+                cmd.Parameters.AddWithValue("TipoDNI_in", _subCliente.TipoDNI);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {

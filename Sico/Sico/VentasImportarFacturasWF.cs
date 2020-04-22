@@ -57,10 +57,21 @@ namespace Sico
         private void bntCargarDatos_Click(object sender, EventArgs e)
         {
             ProgressBar();
-            btnCargarDatos.Enabled = false;
-            Datos();
-            btnCargaMasiva.Enabled = true;
-            LimpiarCampos();
+            if (chcTipaAyB.Checked == false && chcTipoC.Checked == false)
+            {
+                string message2 = "Debe tildar un tipo de Factura.";
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                btnCargarDatos.Enabled = false;
+                Datos();
+                btnCargaMasiva.Enabled = true;
+                LimpiarCampos();
+            }
         }
         public void LimpiarCampos()
         {
@@ -93,30 +104,116 @@ namespace Sico
                 DataTable data = new DataTable();
                 //Cargar los datos
                 sda.Fill(data);
-                //Cargar la grilla
-                if (data.Rows.Count > 0)
+
+                /////Cargar la grilla Para Tipo C
+                if (chcTipoC.Checked == true)
                 {
-                    foreach (DataRow item in data.Rows)
+                    if (data.Rows.Count > 0)
                     {
-                        ////// Para Importar Factura C
-                        Entidades.SubCliente list = new Entidades.SubCliente();
-                        list.TipoComprobante = item[1].ToString();
-                        if (list.TipoComprobante == "11 - Factura C")
+                        foreach (DataRow item in data.Rows)
                         {
+                            ////// Para Importar Factura C
+                            Entidades.SubCliente list = new Entidades.SubCliente();
+                            list.Fecha = item[0].ToString();
+                            if (list.Fecha == "Fecha")
+                            { continue; }
+                            list.TipoComprobante = item[1].ToString();
                             list.Fecha = item[0].ToString();
                             list.NroFactura = item[2].ToString() + "|" + item[3].ToString();
-                            list.Dni = item[6].ToString();
+                            list.TipoDNI = item[6].ToString();
+                            if (list.Dni == "CUIT")
+                            {
+                                list.TipoDNI = "80";
+                            }
+                            if (list.Dni == "DNI")
+                            {
+                                list.TipoDNI = "96";
+                            }
                             list.Dni = item[7].ToString();
                             list.ApellidoNombre = item[8].ToString();
                             list.TipoDeCambio = item[9].ToString();
                             list.CodigoMoneda = item[10].ToString();
+                            if (list.CodigoMoneda == "$")
+                            {
+                                list.CodigoMoneda = "PES - PesosArgentinos";
+                            }
                             list.Monto = Convert.ToDecimal(item[15].ToString());
                             listaSubCliente.Add(list);
                         }
                     }
+                    ListaFacturasVentas = listaSubCliente;
+                    btnCargaMasiva.Visible = true;
                 }
-                ListaFacturasVentas = listaSubCliente;
-                btnCargaMasiva.Visible = true;
+                /////Cargar la grilla Para Tipo A y B
+                if (chcTipaAyB.Checked == true)
+                {
+                    if (data.Rows.Count > 0)
+                    {
+                        foreach (DataRow item in data.Rows)
+                        {
+                            ////// Para Importar Factura C
+                            Entidades.SubCliente list = new Entidades.SubCliente();
+                            list.Fecha = item[0].ToString();
+                            if (list.Fecha == "Fecha")
+                            { continue; }
+                            list.TipoComprobante = item[1].ToString();
+                            list.NroFactura = item[2].ToString() + "|" + item[3].ToString();
+                            list.TipoDNI = item[6].ToString();
+                            if (list.TipoDNI == "CUIT")
+                            {
+                                list.TipoDNI = "80";
+                            }
+                            if (list.TipoDNI == "DNI")
+                            {
+                                list.TipoDNI = "96";
+                            }
+                            list.Dni = item[7].ToString();
+                            list.ApellidoNombre = item[8].ToString();
+                            list.TipoDeCambio = item[9].ToString();
+                            list.CodigoMoneda = item[10].ToString();
+                            if (list.CodigoMoneda == "$")
+                            {
+                                list.CodigoMoneda = "PES - PesosArgentinos";
+                            }
+
+                            double ImpNetoGravado = Convert.ToDouble(item[11].ToString());
+                            double ImpNetoNoGravado = Convert.ToDouble(item[12].ToString());
+                            double ImpOpExentas = Convert.ToDouble(item[13].ToString());
+                            decimal Iva = Convert.ToDecimal(item[14].ToString());
+                            list.Monto = Convert.ToDecimal(item[15].ToString());
+                            if (ImpNetoGravado > 0)
+                            {
+                                ///// Calculo al %10,5
+                                string Valor1 = Convert.ToString(Math.Round((ImpNetoGravado * 0.105), 2));
+                                decimal resultado1 = Convert.ToDecimal(Valor1);
+                                if (resultado1 == Iva)
+                                {
+                                    list.Total1 = Convert.ToDecimal(list.Monto);
+                                    list.Iva1 = Convert.ToDecimal(Iva);
+                                }
+                                ///// Calculo al %21
+                                string Valor2 = Convert.ToString(Math.Round((ImpNetoGravado * 0.21), 2));
+                                decimal resultado2 = Convert.ToDecimal(Valor2);
+                                if (resultado2 == Iva)
+                                {
+                                    list.Total2 = Convert.ToDecimal(list.Monto);
+                                    list.Iva2 = Convert.ToDecimal(Iva);
+                                }
+                                ///// Calculo al %27
+                                string Valor3 = Convert.ToString(Math.Round((ImpNetoGravado * 0.27), 2));
+                                decimal resultado3 = Convert.ToDecimal(Valor3);
+                                if (resultado3 == Iva)
+                                {
+                                    list.Total3 = Convert.ToDecimal(list.Monto);
+                                    list.Iva3 = Convert.ToDecimal(Iva);
+                                }
+                            }
+                            listaSubCliente.Add(list);
+                        }
+                    }
+                    ListaFacturasVentas = listaSubCliente;
+                    btnCargaMasiva.Visible = true;
+                }
             }
             catch (Exception ex)
             {
@@ -126,7 +223,6 @@ namespace Sico
             {
                 //Funcione o no, cerramos la cadena de conexión
                 con.Close();
-
             }
         }
 
@@ -135,6 +231,7 @@ namespace Sico
         {
             set
             {
+
                 dataGridView1.DataSource = value;
                 dataGridView1.Visible = true;
                 var contadortotal = value.Count;
@@ -142,153 +239,316 @@ namespace Sico
                 label5.Visible = true;
                 label4.Text = Convert.ToString(contadortotal);
                 ListaPrecargada = value;
+                if (chcTipoC.Checked == true)
+                {
+                    dataGridView1.Columns[0].HeaderText = "Id Movimiento";
+                    dataGridView1.Columns[0].Width = 130;
+                    dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[0].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[0].Visible = false;
 
-                dataGridView1.Columns[0].HeaderText = "Id Movimiento";
-                dataGridView1.Columns[0].Width = 130;
-                dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[0].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.White;
-                dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[1].HeaderText = "Nro.Factura";
+                    dataGridView1.Columns[1].Width = 130;
+                    dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[1].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
 
-                dataGridView1.Columns[1].HeaderText = "Nro.Factura";
-                dataGridView1.Columns[1].Width = 130;
-                dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[1].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[2].HeaderText = "Fecha";
+                    dataGridView1.Columns[2].Width = 80;
+                    dataGridView1.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[2].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
 
-                dataGridView1.Columns[2].HeaderText = "Fecha";
-                dataGridView1.Columns[2].Width = 80;
-                dataGridView1.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[2].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[3].HeaderText = "Persona";
+                    dataGridView1.Columns[3].Width = 200;
+                    dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[3].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[3].Visible = true;
 
-                dataGridView1.Columns[3].HeaderText = "Persona";
-                dataGridView1.Columns[3].Width = 200;
-                dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[3].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
-                dataGridView1.Columns[3].Visible = true;
+                    dataGridView1.Columns[4].HeaderText = "Dni";
+                    dataGridView1.Columns[4].Width = 80;
+                    dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[4].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[4].Visible = true;
 
-                dataGridView1.Columns[4].HeaderText = "Dni";
-                dataGridView1.Columns[4].Width = 80;
-                dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[4].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
-                dataGridView1.Columns[4].Visible = true;
+                    dataGridView1.Columns[5].HeaderText = "Dirección";
+                    dataGridView1.Columns[5].Width = 250;
+                    dataGridView1.Columns[5].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[5].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[5].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[5].Visible = false;
 
-                dataGridView1.Columns[5].HeaderText = "Dirección";
-                dataGridView1.Columns[5].Width = 250;
-                dataGridView1.Columns[5].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[5].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[5].HeaderCell.Style.ForeColor = Color.White;
-                dataGridView1.Columns[5].Visible = false;
+                    dataGridView1.Columns[6].HeaderText = "Monto";
+                    dataGridView1.Columns[6].Width = 100;
+                    dataGridView1.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[6].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dataGridView1.Columns[6].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[6].Visible = true;
 
-                dataGridView1.Columns[6].HeaderText = "Monto";
-                dataGridView1.Columns[6].Width = 100;
-                dataGridView1.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[6].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
-                dataGridView1.Columns[6].HeaderCell.Style.ForeColor = Color.White;
-                dataGridView1.Columns[6].Visible = true;
+                    dataGridView1.Columns[7].HeaderText = "IdCliente";
+                    dataGridView1.Columns[7].Width = 95;
+                    dataGridView1.Columns[7].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[7].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[7].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[7].Visible = false;
 
-                dataGridView1.Columns[7].HeaderText = "Cliente";
-                dataGridView1.Columns[7].Width = 95;
-                dataGridView1.Columns[7].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[7].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                dataGridView1.Columns[7].HeaderCell.Style.ForeColor = Color.White;
-                dataGridView1.Columns[7].Visible = false;
+                    dataGridView1.Columns[8].HeaderText = "Importe 1";
+                    dataGridView1.Columns[8].Visible = false;
 
-                dataGridView1.Columns[8].HeaderText = "Importe 1";
-                dataGridView1.Columns[8].Visible = false;
+                    dataGridView1.Columns[9].HeaderText = "Importe 2";
+                    dataGridView1.Columns[9].Visible = false;
 
-                dataGridView1.Columns[9].HeaderText = "Importe 2";
-                dataGridView1.Columns[9].Visible = false;
+                    dataGridView1.Columns[10].HeaderText = "Importe 3";
+                    dataGridView1.Columns[10].Visible = false;
 
-                dataGridView1.Columns[10].HeaderText = "Importe 3";
-                dataGridView1.Columns[10].Visible = false;
+                    dataGridView1.Columns[11].HeaderText = "Neto al 10,5";
+                    dataGridView1.Columns[11].Visible = false;
+                    dataGridView1.Columns[11].Width = 80;
+                    dataGridView1.Columns[11].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[11].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                dataGridView1.Columns[11].HeaderText = "Neto al 10,5";
-                dataGridView1.Columns[11].Visible = false;
-                dataGridView1.Columns[11].Width = 80;
-                dataGridView1.Columns[11].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[11].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[12].HeaderText = "Neto al 21";
+                    dataGridView1.Columns[12].Visible = false;
+                    dataGridView1.Columns[12].Width = 80;
+                    dataGridView1.Columns[12].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[12].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                dataGridView1.Columns[12].HeaderText = "Neto al 21";
-                dataGridView1.Columns[12].Visible = false;
-                dataGridView1.Columns[12].Width = 80;
-                dataGridView1.Columns[12].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[12].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[13].HeaderText = "Neto al 27";
+                    dataGridView1.Columns[13].Visible = false;
+                    dataGridView1.Columns[13].Width = 80;
+                    dataGridView1.Columns[13].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[13].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                dataGridView1.Columns[13].HeaderText = "Neto al 27";
-                dataGridView1.Columns[13].Visible = false;
-                dataGridView1.Columns[13].Width = 80;
-                dataGridView1.Columns[13].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[13].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[14].HeaderText = "alicuota 1";
+                    dataGridView1.Columns[14].Visible = false;
 
-                dataGridView1.Columns[14].HeaderText = "alicuota 1";
-                dataGridView1.Columns[14].Visible = false;
+                    dataGridView1.Columns[15].HeaderText = "alicuota 2";
+                    dataGridView1.Columns[15].Visible = false;
 
-                dataGridView1.Columns[15].HeaderText = "alicuota 2";
-                dataGridView1.Columns[15].Visible = false;
+                    dataGridView1.Columns[16].HeaderText = "alicuota 3";
+                    dataGridView1.Columns[16].Visible = false;
 
-                dataGridView1.Columns[16].HeaderText = "alicuota 3";
-                dataGridView1.Columns[16].Visible = false;
+                    dataGridView1.Columns[17].HeaderText = "Iva al 10,5";
+                    dataGridView1.Columns[17].Visible = false;
+                    dataGridView1.Columns[17].Width = 80;
+                    dataGridView1.Columns[17].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[17].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                dataGridView1.Columns[17].HeaderText = "Iva al 10,5";
-                dataGridView1.Columns[17].Visible = true;
-                dataGridView1.Columns[17].Width = 80;
-                dataGridView1.Columns[17].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[17].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[18].HeaderText = "Iva al 21";
+                    dataGridView1.Columns[18].Visible = false;
+                    dataGridView1.Columns[18].Width = 80;
+                    dataGridView1.Columns[18].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[18].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                dataGridView1.Columns[18].HeaderText = "Iva al 21";
-                dataGridView1.Columns[18].Visible = false;
-                dataGridView1.Columns[18].Width = 80;
-                dataGridView1.Columns[18].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[18].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[19].HeaderText = "Iva al 27";
+                    dataGridView1.Columns[19].Visible = false;
+                    dataGridView1.Columns[19].Width = 80;
+                    dataGridView1.Columns[19].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[19].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                dataGridView1.Columns[19].HeaderText = "Iva al 27";
-                dataGridView1.Columns[19].Visible = false;
-                dataGridView1.Columns[19].Width = 80;
-                dataGridView1.Columns[19].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[19].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[20].HeaderText = "Observacion";
+                    dataGridView1.Columns[20].Visible = false;
 
-                dataGridView1.Columns[20].HeaderText = "Observacion";
-                dataGridView1.Columns[20].Visible = false;
+                   
+                    dataGridView1.Columns[21].HeaderText = "NroFacturaNotaDeCredtio";
+                    dataGridView1.Columns[21].Visible = false;
 
-                dataGridView1.Columns[21].HeaderText = "Nota De Credito";
-                dataGridView1.Columns[21].Visible = false;
-                dataGridView1.Columns[21].Width = 80;
-                dataGridView1.Columns[21].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[21].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[22].HeaderText = "Adjunto";
+                    dataGridView1.Columns[22].Visible = false;
 
-                dataGridView1.Columns[22].HeaderText = "Observacion";
-                dataGridView1.Columns[22].Visible = false;
+                    dataGridView1.Columns[23].HeaderText = "Tipo Comprobante";
+                    dataGridView1.Columns[23].Visible = true;
+                    dataGridView1.Columns[23].Width = 80;
+                    dataGridView1.Columns[23].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[23].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-
-                dataGridView1.Columns[23].HeaderText = "Observacion";
-                dataGridView1.Columns[23].Visible = false;
-
-
-                dataGridView1.Columns[24].HeaderText = "Observacion";
-                dataGridView1.Columns[24].Visible = false;
-
-
-                dataGridView1.Columns[25].HeaderText = "Observacion";
-                dataGridView1.Columns[25].Visible = false;
-
-
-                dataGridView1.Columns[26].HeaderText = "Código de Operación";
-                dataGridView1.Columns[26].Width = 80;
-                dataGridView1.Columns[26].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[26].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[24].HeaderText = "Codigo Moneda";
+                    dataGridView1.Columns[24].Visible = true;
+                    dataGridView1.Columns[24].Width = 80;
+                    dataGridView1.Columns[24].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[24].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
 
+                    dataGridView1.Columns[25].HeaderText = "Código de Operación";
+                    dataGridView1.Columns[25].Visible = false;
+                    dataGridView1.Columns[25].Width = 80;
+                    dataGridView1.Columns[25].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[25].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                dataGridView1.Columns[27].HeaderText = "Tipo de cambio";
+                    dataGridView1.Columns[26].HeaderText = "Tipo de cambio";
+                    dataGridView1.Columns[26].Width = 80;
+                    dataGridView1.Columns[26].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[26].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                dataGridView1.Columns[27].Width = 80;
-                dataGridView1.Columns[27].HeaderCell.Style.BackColor = Color.DarkBlue;
-                dataGridView1.Columns[27].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[27].HeaderText = "Periodo";
+                    dataGridView1.Columns[27].Visible = false;
+                    dataGridView1.Columns[27].Width = 80;
+                    dataGridView1.Columns[27].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[27].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
+                    dataGridView1.Columns[28].HeaderText = "TipoDNI";
+                    dataGridView1.Columns[28].Width = 80;
+                    dataGridView1.Columns[28].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[28].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                }
+                if (chcTipaAyB.Checked == true)
+                {
+                    dataGridView1.Columns[0].HeaderText = "Id Movimiento";
+                    dataGridView1.Columns[0].Width = 130;
+                    dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[0].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[0].Visible = false;
+
+                    dataGridView1.Columns[1].HeaderText = "Nro.Factura";
+                    dataGridView1.Columns[1].Width = 130;
+                    dataGridView1.Columns[1].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[1].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[1].HeaderCell.Style.ForeColor = Color.White;
+
+                    dataGridView1.Columns[2].HeaderText = "Fecha";
+                    dataGridView1.Columns[2].Width = 80;
+                    dataGridView1.Columns[2].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[2].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[2].HeaderCell.Style.ForeColor = Color.White;
+
+                    dataGridView1.Columns[3].HeaderText = "Persona";
+                    dataGridView1.Columns[3].Width = 200;
+                    dataGridView1.Columns[3].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[3].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[3].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[3].Visible = true;
+
+                    dataGridView1.Columns[4].HeaderText = "Dni";
+                    dataGridView1.Columns[4].Width = 80;
+                    dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[4].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[4].Visible = true;
+
+                    dataGridView1.Columns[5].HeaderText = "Dirección";
+                    dataGridView1.Columns[5].Width = 250;
+                    dataGridView1.Columns[5].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[5].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[5].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[5].Visible = false;
+
+                    dataGridView1.Columns[6].HeaderText = "Monto";
+                    dataGridView1.Columns[6].Width = 100;
+                    dataGridView1.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[6].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dataGridView1.Columns[6].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[6].Visible = true;
+
+                    dataGridView1.Columns[7].HeaderText = "IdCliente";
+                    dataGridView1.Columns[7].Width = 95;
+                    dataGridView1.Columns[7].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[7].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                    dataGridView1.Columns[7].HeaderCell.Style.ForeColor = Color.White;
+                    dataGridView1.Columns[7].Visible = false;
+
+                    dataGridView1.Columns[8].HeaderText = "Importe Neto Gravado 1";
+                    dataGridView1.Columns[8].Visible = true;
+
+                    dataGridView1.Columns[9].HeaderText = "Importe Neto Gravado 2";
+                    dataGridView1.Columns[9].Visible = true;
+
+                    dataGridView1.Columns[10].HeaderText = "Importe Neto Gravado 3";
+                    dataGridView1.Columns[10].Visible = true;
+
+                    dataGridView1.Columns[11].HeaderText = "Neto al 10,5";
+                    dataGridView1.Columns[11].Visible = false;
+                    dataGridView1.Columns[11].Width = 80;
+                    dataGridView1.Columns[11].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[11].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[12].HeaderText = "Neto al 21";
+                    dataGridView1.Columns[12].Visible = false;
+                    dataGridView1.Columns[12].Width = 80;
+                    dataGridView1.Columns[12].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[12].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[13].HeaderText = "Neto al 27";
+                    dataGridView1.Columns[13].Visible = false;
+                    dataGridView1.Columns[13].Width = 80;
+                    dataGridView1.Columns[13].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[13].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[14].HeaderText = "alicuota 1";
+                    dataGridView1.Columns[14].Visible = false;
+
+                    dataGridView1.Columns[15].HeaderText = "alicuota 2";
+                    dataGridView1.Columns[15].Visible = false;
+
+                    dataGridView1.Columns[16].HeaderText = "alicuota 3";
+                    dataGridView1.Columns[16].Visible = false;
+
+                    dataGridView1.Columns[17].HeaderText = "Iva al 10,5";
+                    dataGridView1.Columns[17].Visible = true;
+                    dataGridView1.Columns[17].Width = 80;
+                    dataGridView1.Columns[17].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[17].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[18].HeaderText = "Iva al 21";
+                    dataGridView1.Columns[18].Visible = true;
+                    dataGridView1.Columns[18].Width = 80;
+                    dataGridView1.Columns[18].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[18].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[19].HeaderText = "Iva al 27";
+                    dataGridView1.Columns[19].Visible = true;
+                    dataGridView1.Columns[19].Width = 80;
+                    dataGridView1.Columns[19].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[19].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[20].HeaderText = "Observacion";
+                    dataGridView1.Columns[20].Visible = false;
+
+
+                    dataGridView1.Columns[21].HeaderText = "NroFacturaNotaDeCredtio";
+                    dataGridView1.Columns[21].Visible = false;
+
+                    dataGridView1.Columns[22].HeaderText = "Adjunto";
+                    dataGridView1.Columns[22].Visible = false;
+
+                    dataGridView1.Columns[23].HeaderText = "Tipo Comprobante";
+                    dataGridView1.Columns[23].Visible = true;
+                    dataGridView1.Columns[23].Width = 80;
+                    dataGridView1.Columns[23].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[23].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[24].HeaderText = "Codigo Moneda";
+                    dataGridView1.Columns[24].Visible = true;
+                    dataGridView1.Columns[24].Width = 80;
+                    dataGridView1.Columns[24].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[24].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+
+                    dataGridView1.Columns[25].HeaderText = "Código de Operación";
+                    dataGridView1.Columns[25].Visible = false;
+                    dataGridView1.Columns[25].Width = 80;
+                    dataGridView1.Columns[25].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[25].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[26].HeaderText = "Tipo de cambio";
+                    dataGridView1.Columns[26].Width = 80;
+                    dataGridView1.Columns[26].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[26].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[27].HeaderText = "Periodo";
+                    dataGridView1.Columns[27].Visible = false;
+                    dataGridView1.Columns[27].Width = 80;
+                    dataGridView1.Columns[27].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[27].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+
+                    dataGridView1.Columns[28].HeaderText = "TipoDNI";
+                    dataGridView1.Columns[28].Width = 80;
+                    dataGridView1.Columns[28].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dataGridView1.Columns[28].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
+                }
             }
         }
         private void ProgressBar()
@@ -339,7 +599,7 @@ namespace Sico
                 }
                 if (Exito == 0)
                 {
-                   
+
                     string message2 = "Las facturas que intento cargar ya se encontraban registradas.";
                     const string caption2 = "Atención";
                     var result2 = MessageBox.Show(message2, caption2,
@@ -347,7 +607,7 @@ namespace Sico
                                                  MessageBoxIcon.Exclamation);
                     LimpiarCampos();
                 }
-               if (Exito != 0 && Exito < 0)
+                if (Exito != 0 && Exito < 0)
                 {
                     const string message2 = "Algo falló.";
                     const string caption2 = "Error";
@@ -359,7 +619,6 @@ namespace Sico
             catch (Exception ex)
             { }
         }
-
         private void btnCrearPeriodo_Click(object sender, EventArgs e)
         {
             PeriodosVentasWF _periodo = new PeriodosVentasWF(cuit, razonSocial);
@@ -376,6 +635,18 @@ namespace Sico
             TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
             _tarea.Show();
             Hide();
+        }
+
+        private void chcTipaAyB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcTipaAyB.Checked == true)
+            { chcTipoC.Checked = false; }
+        }
+
+        private void chcTipoC_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chcTipoC.Checked == true)
+            { chcTipaAyB.Checked = false; }
         }
     }
 }

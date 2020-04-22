@@ -36,5 +36,6 @@ namespace Sico.Entidades
         public string CodigoTipoOperacion { get; set; }
         public string TipoDeCambio { get; set; }
         public string Periodo { get; set; }
+        public string TipoDNI { get; set; }
     }
 }
