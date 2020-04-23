@@ -78,6 +78,7 @@ namespace Sico
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             btnVolver.Enabled = true;
+            dataGridView1.Visible = false;
         }
         private void Datos()
         {

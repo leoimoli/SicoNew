@@ -420,7 +420,7 @@ namespace Sico.Dao
             return lista;
         }
 
-        public static List<FacturaCompra> BuscarFacturacionTotal(string cuit, string Periodo)
+        public static List<FacturaCompra> BuscarFacturacionTotalCompras(string cuit, string Periodo)
         {
             List<FacturaCompra> lista = new List<FacturaCompra>();
             List<Entidades.Cliente> id = new List<Cliente>();

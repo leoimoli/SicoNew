@@ -46,21 +46,12 @@ namespace Sico
         }
         private void CargarCombo()
         {
-            string[] Meses = Clases_Maestras.ValoresConstantes.Meses;
-            cmbMes.Items.Add("Seleccione");
-            cmbMes.Items.Clear();
-            foreach (string item in Meses)
+            List<string> Periodo = new List<string>();
+            Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
+            cmbPeriodo.Items.Clear();
+            foreach (string item in Periodo)
             {
-                cmbMes.Text = "Seleccione";
-                cmbMes.Items.Add(item);
-            }
-            string[] Años = Clases_Maestras.ValoresConstantes.Años;
-            cmbAño.Items.Add("Seleccione");
-            cmbAño.Items.Clear();
-            foreach (string item in Años)
-            {
-                cmbAño.Text = "Seleccione";
-                cmbAño.Items.Add(item);
+                cmbPeriodo.Items.Add(item);
             }
         }
         private int ValidarMesSeleccionado(string mesSeleccionado)
@@ -108,6 +99,7 @@ namespace Sico
                     }
                     btnExcel.Visible = true;
                     btnVolver.Visible = true;
+                    btnVolver2.Visible = false;
                     btnCitiVentas.Visible = true;
                     dataGridView1.Visible = true;
                     dataGridView1.ReadOnly = true;
@@ -283,6 +275,9 @@ namespace Sico
 
                     dataGridView1.Columns[27].HeaderText = "Observacion";
                     dataGridView1.Columns[27].Visible = false;
+
+                    dataGridView1.Columns[28].HeaderText = "Observacion";
+                    dataGridView1.Columns[28].Visible = false;
 
                     dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Red;
 
@@ -479,11 +474,9 @@ namespace Sico
             {
                 groupBox1.Enabled = false;
                 groupBox2.Enabled = false;
+                string Periodo = cmbPeriodo.Text;
                 ProgressBar();
-                string año = cmbAño.Text;
-                string MesSeleccionado = cmbMes.Text;
-                int mes = ValidarMesSeleccionado(MesSeleccionado);
-                ListaTotalFacturacion = ClienteNeg.BuscarFacturacionTotal(cuit, mes, año);
+                ListaTotalFacturacion = ClienteNeg.BuscarFacturacionTotalVentas(cuit, Periodo);
                 groupBox1.Enabled = true;
                 groupBox2.Enabled = true;
                 progressBar1.Value = Convert.ToInt32(null);
@@ -909,6 +902,12 @@ namespace Sico
                     }
                 }
             }
+        }
+        private void btnVolver2_Click(object sender, EventArgs e)
+        {
+            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            _tarea.Show();
+            Close();
         }
     }
 }

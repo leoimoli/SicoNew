@@ -224,12 +224,12 @@ namespace Sico.Negocio
             return _listaCompras;
         }
 
-        public static List<FacturaCompra> BuscarFacturacionTotal(string cuit, string Periodo)
+        public static List<FacturaCompra> BuscarFacturacionTotalCompras(string cuit, string Periodo)
         {
             List<FacturaCompra> _listaFacturasSubCliente = new List<FacturaCompra>();
             try
             {
-                _listaFacturasSubCliente = ComprasDao.BuscarFacturacionTotal(cuit, Periodo);
+                _listaFacturasSubCliente = ComprasDao.BuscarFacturacionTotalCompras(cuit, Periodo);
             }
             catch (Exception ex)
             {

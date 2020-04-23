@@ -109,7 +109,7 @@ namespace Sico
                 groupBox2.Enabled = false;
                 string Periodo = cmbPeriodo.Text;
                 ProgressBar();
-                ListaTotalFacturacion = ComprasNeg.BuscarFacturacionTotal(cuit, Periodo);
+                ListaTotalFacturacion = ComprasNeg.BuscarFacturacionTotalCompras(cuit, Periodo);
                 groupBox1.Enabled = true;
                 groupBox2.Enabled = true;
                 progressBar1.Value = Convert.ToInt32(null);
@@ -136,6 +136,7 @@ namespace Sico
                     }
                     btnExcel.Visible = true;
                     btnVolver.Visible = true;
+                    btnVolver2.Visible = false;
                     btnCitiVentas.Visible = true;
                     dataGridView1.Visible = true;
                     dataGridView1.ReadOnly = true;
@@ -1044,6 +1045,13 @@ namespace Sico
             Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+        }
+
+        private void btnVolver2_Click(object sender, EventArgs e)
+        {
+            ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
+            _tarea.Show();
+            Hide();
         }
     }
 }

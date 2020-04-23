@@ -292,7 +292,7 @@ namespace Sico.Dao
             connection.Close();
             return Factura;
         }
-        public static List<SubCliente> BuscarFacturacionTotal(string cuit, int mes, string año)
+        public static List<SubCliente> BuscarFacturacionTotalVentas(string cuit, string Periodo)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
@@ -300,15 +300,14 @@ namespace Sico.Dao
             int idCliente = id[0].IdCliente;
             if (idCliente > 0)
             {
-                string fecha = mes + "/" + año;
                 connection.Close();
                 connection.Open();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = connection;
                 DataTable Tabla = new DataTable();
                 MySqlParameter[] oParam = {
-                            new MySqlParameter("fecha_in", fecha),
-                                      new MySqlParameter("idCliente_in", idCliente)};
+                            new MySqlParameter("Periodo_in", Periodo),
+                                      new MySqlParameter("IdCliente_in", idCliente)};
                 string proceso = "BuscarFacturacionTotal";
                 MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
                 dt.SelectCommand.CommandType = CommandType.StoredProcedure;

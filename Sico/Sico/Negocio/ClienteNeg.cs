@@ -125,12 +125,12 @@ namespace Sico.Negocio
             }
         }
 
-        public static List<SubCliente> BuscarFacturacionTotal(string cuit, int mes, string año)
+        public static List<SubCliente> BuscarFacturacionTotalVentas(string cuit, string Periodo)
         {
             List<SubCliente> _listaFacturasSubCliente = new List<SubCliente>();
             try
             {
-                _listaFacturasSubCliente = ClienteDao.BuscarFacturacionTotal(cuit, mes, año);
+                _listaFacturasSubCliente = ClienteDao.BuscarFacturacionTotalVentas(cuit, Periodo);
             }
             catch (Exception ex)
             {

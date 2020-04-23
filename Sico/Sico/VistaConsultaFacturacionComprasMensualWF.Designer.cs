@@ -45,6 +45,7 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.lblCantidadEdit = new System.Windows.Forms.Label();
             this.lblCantidad = new System.Windows.Forms.Label();
+            this.btnVolver2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -105,6 +106,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnVolver2);
             this.groupBox2.Controls.Add(this.progressBar1);
             this.groupBox2.Controls.Add(this.btnBuscar);
             this.groupBox2.Controls.Add(this.dataGridView1);
@@ -130,7 +132,7 @@
             // 
             this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscar.Location = new System.Drawing.Point(543, 19);
+            this.btnBuscar.Location = new System.Drawing.Point(455, 19);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(49, 39);
             this.btnBuscar.TabIndex = 45;
@@ -233,6 +235,19 @@
             this.lblCantidad.Text = "Total:";
             this.lblCantidad.Visible = false;
             // 
+            // btnVolver2
+            // 
+            this.btnVolver2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver2.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
+            this.btnVolver2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVolver2.Location = new System.Drawing.Point(519, 19);
+            this.btnVolver2.Name = "btnVolver2";
+            this.btnVolver2.Size = new System.Drawing.Size(49, 39);
+            this.btnVolver2.TabIndex = 50;
+            this.btnVolver2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVolver2.UseVisualStyleBackColor = true;
+            this.btnVolver2.Click += new System.EventHandler(this.btnVolver2_Click);
+            // 
             // VistaConsultaFacturacionComprasMensualWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,5 +293,6 @@
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Label lblCantidadEdit;
         private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.Button btnVolver2;
     }
 }
