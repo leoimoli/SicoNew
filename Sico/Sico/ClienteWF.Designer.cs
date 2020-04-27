@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chcTodosLosClientes = new System.Windows.Forms.CheckBox();
             this.txtCuitBuscar = new System.Windows.Forms.MaskedTextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.chcPorCuit = new System.Windows.Forms.CheckBox();
@@ -42,6 +43,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvTodosLosClientes = new System.Windows.Forms.DataGridView();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.dtFechaInscripcion = new System.Windows.Forms.DateTimePicker();
@@ -72,16 +74,20 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtActividad = new System.Windows.Forms.TextBox();
             this.txtNombreRazonSocial = new System.Windows.Forms.TextBox();
+            this.lblCantidadEdit = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTodosLosClientes)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.chcTodosLosClientes);
             this.groupBox3.Controls.Add(this.txtCuitBuscar);
             this.groupBox3.Controls.Add(this.btnBuscar);
             this.groupBox3.Controls.Add(this.chcPorCuit);
@@ -95,6 +101,20 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Buscar Cliente";
             this.groupBox3.Visible = false;
+            // 
+            // chcTodosLosClientes
+            // 
+            this.chcTodosLosClientes.AutoSize = true;
+            this.chcTodosLosClientes.Checked = true;
+            this.chcTodosLosClientes.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chcTodosLosClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chcTodosLosClientes.Location = new System.Drawing.Point(106, 19);
+            this.chcTodosLosClientes.Name = "chcTodosLosClientes";
+            this.chcTodosLosClientes.Size = new System.Drawing.Size(148, 21);
+            this.chcTodosLosClientes.TabIndex = 5;
+            this.chcTodosLosClientes.Text = "Todos Los Clientes";
+            this.chcTodosLosClientes.UseVisualStyleBackColor = true;
+            this.chcTodosLosClientes.CheckedChanged += new System.EventHandler(this.chcTodosLosClientes_CheckedChanged);
             // 
             // txtCuitBuscar
             // 
@@ -121,7 +141,7 @@
             // 
             this.chcPorCuit.AutoSize = true;
             this.chcPorCuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chcPorCuit.Location = new System.Drawing.Point(108, 19);
+            this.chcPorCuit.Location = new System.Drawing.Point(307, 19);
             this.chcPorCuit.Name = "chcPorCuit";
             this.chcPorCuit.Size = new System.Drawing.Size(77, 21);
             this.chcPorCuit.TabIndex = 0;
@@ -133,7 +153,7 @@
             // 
             this.chcPorNombreRazonSocial.AutoSize = true;
             this.chcPorNombreRazonSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chcPorNombreRazonSocial.Location = new System.Drawing.Point(238, 19);
+            this.chcPorNombreRazonSocial.Location = new System.Drawing.Point(425, 19);
             this.chcPorNombreRazonSocial.Name = "chcPorNombreRazonSocial";
             this.chcPorNombreRazonSocial.Size = new System.Drawing.Size(202, 21);
             this.chcPorNombreRazonSocial.TabIndex = 1;
@@ -245,6 +265,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dgvTodosLosClientes);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.dtFechaInscripcion);
@@ -269,10 +290,20 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(35, 138);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(878, 495);
+            this.groupBox1.Size = new System.Drawing.Size(878, 480);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // dgvTodosLosClientes
+            // 
+            this.dgvTodosLosClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTodosLosClientes.Location = new System.Drawing.Point(3, 21);
+            this.dgvTodosLosClientes.Name = "dgvTodosLosClientes";
+            this.dgvTodosLosClientes.Size = new System.Drawing.Size(865, 455);
+            this.dgvTodosLosClientes.TabIndex = 25;
+            this.dgvTodosLosClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTodosLosClientes_CellClick);
+            this.dgvTodosLosClientes.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvTodosLosClientes_CellPainting);
             // 
             // label15
             // 
@@ -565,6 +596,28 @@
             this.txtNombreRazonSocial.Size = new System.Drawing.Size(211, 23);
             this.txtNombreRazonSocial.TabIndex = 0;
             // 
+            // lblCantidadEdit
+            // 
+            this.lblCantidadEdit.AutoSize = true;
+            this.lblCantidadEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadEdit.Location = new System.Drawing.Point(796, 622);
+            this.lblCantidadEdit.Name = "lblCantidadEdit";
+            this.lblCantidadEdit.Size = new System.Drawing.Size(33, 20);
+            this.lblCantidadEdit.TabIndex = 26;
+            this.lblCantidadEdit.Text = "****";
+            this.lblCantidadEdit.Visible = false;
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(645, 622);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(131, 20);
+            this.lblCantidad.TabIndex = 25;
+            this.lblCantidad.Text = "Total de Clientes:";
+            this.lblCantidad.Visible = false;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -590,7 +643,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 731);
+            this.Controls.Add(this.lblCantidadEdit);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Location = new System.Drawing.Point(0, 0);
@@ -599,12 +654,15 @@
             this.Load += new System.EventHandler(this.ClienteWF_Load);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.lblCantidad, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
+            this.Controls.SetChildIndex(this.lblCantidadEdit, 0);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTodosLosClientes)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
@@ -660,5 +718,9 @@
         private System.Windows.Forms.MaskedTextBox txtCuitBuscar;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox chcTodosLosClientes;
+        private System.Windows.Forms.Label lblCantidadEdit;
+        private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.DataGridView dgvTodosLosClientes;
     }
 }

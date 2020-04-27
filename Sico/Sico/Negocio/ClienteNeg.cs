@@ -444,5 +444,18 @@ namespace Sico.Negocio
             return _listaClientes;
         }
 
+        public static List<Cliente> ListarTodosLosClientes()
+        {
+            List<Cliente> _listaClientes = new List<Cliente>();
+            try
+            {
+                _listaClientes = ClienteDao.ListarTodosLosClientes();
+            }
+            catch (Exception ex)
+            {
+               
+            }
+            return _listaClientes;
+        }
     }
 }

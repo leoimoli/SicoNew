@@ -78,7 +78,6 @@ namespace Sico
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             btnVolver.Enabled = true;
-            dataGridView1.Visible = false;
         }
         private void Datos()
         {
@@ -191,6 +190,7 @@ namespace Sico
                                 {
                                     list.Total1 = Convert.ToDecimal(list.Monto);
                                     list.Iva1 = Convert.ToDecimal(Iva);
+                                    list.Neto1 = Convert.ToDecimal(ImpNetoGravado);
                                 }
                                 ///// Calculo al %21
                                 string Valor2 = Convert.ToString(Math.Round((ImpNetoGravado * 0.21), 2));
@@ -199,6 +199,7 @@ namespace Sico
                                 {
                                     list.Total2 = Convert.ToDecimal(list.Monto);
                                     list.Iva2 = Convert.ToDecimal(Iva);
+                                    list.Neto2 = Convert.ToDecimal(ImpNetoGravado);
                                 }
                                 ///// Calculo al %27
                                 string Valor3 = Convert.ToString(Math.Round((ImpNetoGravado * 0.27), 2));
@@ -207,6 +208,41 @@ namespace Sico
                                 {
                                     list.Total3 = Convert.ToDecimal(list.Monto);
                                     list.Iva3 = Convert.ToDecimal(Iva);
+                                    list.Neto3 = Convert.ToDecimal(ImpNetoGravado);
+                                }
+
+                                else
+                                {
+                                    ///// Calculo al %10,5
+                                    var trncateCalculo1 = ImpNetoGravado * 0.105;
+                                    trncateCalculo1 = Math.Truncate(trncateCalculo1 * 100) / 100;
+                                    decimal TruncateResultado1 = Convert.ToDecimal(trncateCalculo1);
+                                    if (TruncateResultado1 == Iva)
+                                    {
+                                        list.Total1 = Convert.ToDecimal(list.Monto);
+                                        list.Iva1 = Convert.ToDecimal(Iva);
+                                        list.Neto1 = Convert.ToDecimal(ImpNetoGravado);
+                                    }
+                                    ///// Calculo al %21
+                                    var trncateCalculo2 = ImpNetoGravado * 0.21;
+                                    trncateCalculo2 = Math.Truncate(trncateCalculo2 * 100) / 100;
+                                    decimal TruncateResultado2 = Convert.ToDecimal(trncateCalculo2);
+                                    if (TruncateResultado2 == Iva)
+                                    {
+                                        list.Total2 = Convert.ToDecimal(list.Monto);
+                                        list.Iva2 = Convert.ToDecimal(Iva);
+                                        list.Neto2 = Convert.ToDecimal(ImpNetoGravado);
+                                    }
+                                    ///// Calculo al %27
+                                    var trncateCalculo3 = ImpNetoGravado * 0.27;
+                                    trncateCalculo3 = Math.Truncate(trncateCalculo3);
+                                    decimal TruncateResultado3 = Convert.ToDecimal(trncateCalculo3);
+                                    if (TruncateResultado3 == Iva)
+                                    {
+                                        list.Total3 = Convert.ToDecimal(list.Monto);
+                                        list.Iva3 = Convert.ToDecimal(Iva);
+                                        list.Neto3 = Convert.ToDecimal(ImpNetoGravado);
+                                    }
                                 }
                             }
                             listaSubCliente.Add(list);
@@ -353,7 +389,7 @@ namespace Sico
                     dataGridView1.Columns[20].HeaderText = "Observacion";
                     dataGridView1.Columns[20].Visible = false;
 
-                   
+
                     dataGridView1.Columns[21].HeaderText = "NroFacturaNotaDeCredtio";
                     dataGridView1.Columns[21].Visible = false;
 
@@ -451,29 +487,29 @@ namespace Sico
                     dataGridView1.Columns[7].HeaderCell.Style.ForeColor = Color.White;
                     dataGridView1.Columns[7].Visible = false;
 
-                    dataGridView1.Columns[8].HeaderText = "Importe Neto Gravado 1";
-                    dataGridView1.Columns[8].Visible = true;
+                    dataGridView1.Columns[8].HeaderText = "Total 1";
+                    dataGridView1.Columns[8].Visible = false;
 
-                    dataGridView1.Columns[9].HeaderText = "Importe Neto Gravado 2";
-                    dataGridView1.Columns[9].Visible = true;
+                    dataGridView1.Columns[9].HeaderText = "Total 2";
+                    dataGridView1.Columns[9].Visible = false;
 
-                    dataGridView1.Columns[10].HeaderText = "Importe Neto Gravado 3";
-                    dataGridView1.Columns[10].Visible = true;
+                    dataGridView1.Columns[10].HeaderText = "Total 3";
+                    dataGridView1.Columns[10].Visible = false;
 
-                    dataGridView1.Columns[11].HeaderText = "Neto al 10,5";
-                    dataGridView1.Columns[11].Visible = false;
+                    dataGridView1.Columns[11].HeaderText = "Importe Neto Gravado al 10,5";
+                    dataGridView1.Columns[11].Visible = true;
                     dataGridView1.Columns[11].Width = 80;
                     dataGridView1.Columns[11].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dataGridView1.Columns[11].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                    dataGridView1.Columns[12].HeaderText = "Neto al 21";
-                    dataGridView1.Columns[12].Visible = false;
+                    dataGridView1.Columns[12].HeaderText = "Importe Neto Gravado al 21";
+                    dataGridView1.Columns[12].Visible = true;
                     dataGridView1.Columns[12].Width = 80;
                     dataGridView1.Columns[12].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dataGridView1.Columns[12].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
 
-                    dataGridView1.Columns[13].HeaderText = "Neto al 27";
-                    dataGridView1.Columns[13].Visible = false;
+                    dataGridView1.Columns[13].HeaderText = "Importe Neto Gravado al 27";
+                    dataGridView1.Columns[13].Visible = true;
                     dataGridView1.Columns[13].Width = 80;
                     dataGridView1.Columns[13].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dataGridView1.Columns[13].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
