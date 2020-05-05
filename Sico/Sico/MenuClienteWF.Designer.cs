@@ -30,8 +30,6 @@
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnCompras = new System.Windows.Forms.Button();
-            this.btnVentas = new System.Windows.Forms.Button();
             this.lblCuitEdit = new System.Windows.Forms.Label();
             this.lblNombreEdit = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,6 +43,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvVentasAnuales = new System.Windows.Forms.DataGridView();
+            this.btnConsultarVencimientos = new System.Windows.Forms.Button();
+            this.btnVencimientos = new System.Windows.Forms.Button();
+            this.btnCompras = new System.Windows.Forms.Button();
+            this.btnVentas = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvComprasAnuales)).BeginInit();
@@ -54,6 +56,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnConsultarVencimientos);
+            this.groupBox3.Controls.Add(this.btnVencimientos);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.btnCompras);
             this.groupBox3.Controls.Add(this.btnVentas);
@@ -76,32 +80,6 @@
             this.label4.Size = new System.Drawing.Size(167, 20);
             this.label4.TabIndex = 17;
             this.label4.Text = "Nombre/Razón Social:";
-            // 
-            // btnCompras
-            // 
-            this.btnCompras.Image = global::Sico.Properties.Resources.tarjeta;
-            this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCompras.Location = new System.Drawing.Point(25, 54);
-            this.btnCompras.Name = "btnCompras";
-            this.btnCompras.Size = new System.Drawing.Size(90, 61);
-            this.btnCompras.TabIndex = 15;
-            this.btnCompras.Text = "Compras";
-            this.btnCompras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCompras.UseVisualStyleBackColor = true;
-            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
-            // 
-            // btnVentas
-            // 
-            this.btnVentas.Image = global::Sico.Properties.Resources.estadisticas_de_ventas;
-            this.btnVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVentas.Location = new System.Drawing.Point(154, 54);
-            this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Size = new System.Drawing.Size(90, 61);
-            this.btnVentas.TabIndex = 16;
-            this.btnVentas.Text = "Ventas";
-            this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnVentas.UseVisualStyleBackColor = true;
-            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
             // lblCuitEdit
             // 
@@ -235,6 +213,58 @@
             this.dgvVentasAnuales.TabIndex = 44;
             this.dgvVentasAnuales.Visible = false;
             // 
+            // btnConsultarVencimientos
+            // 
+            this.btnConsultarVencimientos.Image = global::Sico.Properties.Resources.buscar__1_;
+            this.btnConsultarVencimientos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnConsultarVencimientos.Location = new System.Drawing.Point(404, 54);
+            this.btnConsultarVencimientos.Name = "btnConsultarVencimientos";
+            this.btnConsultarVencimientos.Size = new System.Drawing.Size(90, 61);
+            this.btnConsultarVencimientos.TabIndex = 19;
+            this.btnConsultarVencimientos.Text = "Consultar Vencimientos";
+            this.btnConsultarVencimientos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnConsultarVencimientos.UseVisualStyleBackColor = true;
+            this.btnConsultarVencimientos.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnVencimientos
+            // 
+            this.btnVencimientos.Image = global::Sico.Properties.Resources.calendario1;
+            this.btnVencimientos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVencimientos.Location = new System.Drawing.Point(282, 54);
+            this.btnVencimientos.Name = "btnVencimientos";
+            this.btnVencimientos.Size = new System.Drawing.Size(90, 61);
+            this.btnVencimientos.TabIndex = 18;
+            this.btnVencimientos.Text = "Cargar Vencimientos";
+            this.btnVencimientos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVencimientos.UseVisualStyleBackColor = true;
+            this.btnVencimientos.Click += new System.EventHandler(this.btnVencimientos_Click);
+            // 
+            // btnCompras
+            // 
+            this.btnCompras.Image = global::Sico.Properties.Resources.tarjeta;
+            this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCompras.Location = new System.Drawing.Point(25, 54);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(90, 61);
+            this.btnCompras.TabIndex = 15;
+            this.btnCompras.Text = "Compras";
+            this.btnCompras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCompras.UseVisualStyleBackColor = true;
+            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
+            // 
+            // btnVentas
+            // 
+            this.btnVentas.Image = global::Sico.Properties.Resources.estadisticas_de_ventas;
+            this.btnVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVentas.Location = new System.Drawing.Point(154, 54);
+            this.btnVentas.Name = "btnVentas";
+            this.btnVentas.Size = new System.Drawing.Size(90, 61);
+            this.btnVentas.TabIndex = 16;
+            this.btnVentas.Text = "Ventas";
+            this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVentas.UseVisualStyleBackColor = true;
+            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
+            // 
             // MenuClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,7 +275,7 @@
             this.Controls.Add(this.groupBox3);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MenuClienteWF";
-            this.Text = "MenuClienteWF";
+            this.Text = "Menú Cliente";
             this.Load += new System.EventHandler(this.MenuClienteWF_Load);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
@@ -282,5 +312,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbAñoVentas;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnVencimientos;
+        private System.Windows.Forms.Button btnConsultarVencimientos;
     }
 }

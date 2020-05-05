@@ -219,6 +219,12 @@
     <Compile Include="ConfigurarVencimientosWF.Designer.cs">
       <DependentUpon>ConfigurarVencimientosWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultaVencimientosWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaVencimientosWF.Designer.cs">
+      <DependentUpon>ConsultaVencimientosWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dao\ComprasDao.cs" />
     <Compile Include="Dao\PericiaDao.cs" />
     <Compile Include="Dao\PeriodoDao.cs" />
@@ -232,6 +238,7 @@
     <Compile Include="Entidades\Pericias.cs" />
     <Compile Include="Entidades\Periodo.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
+    <Compile Include="Entidades\Vencimientos.cs" />
     <Compile Include="FacturacionCompraWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +360,12 @@
     <Compile Include="UsuarioWF.Designer.cs">
       <DependentUpon>UsuarioWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="VencimientoPorClienteWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VencimientoPorClienteWF.Designer.cs">
+      <DependentUpon>VencimientoPorClienteWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="VentasImportarFacturasWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -394,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigurarVencimientosWF.resx">
       <DependentUpon>ConfigurarVencimientosWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaVencimientosWF.resx">
+      <DependentUpon>ConsultaVencimientosWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FacturacionCompraWF.resx">
       <DependentUpon>FacturacionCompraWF.cs</DependentUpon>
@@ -455,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioWF.resx">
       <DependentUpon>UsuarioWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VencimientoPorClienteWF.resx">
+      <DependentUpon>VencimientoPorClienteWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentasImportarFacturasWF.resx">
       <DependentUpon>VentasImportarFacturasWF.cs</DependentUpon>
@@ -605,6 +624,8 @@
     <None Include="Resources\archivos-y-carpetas.png" />
     <None Include="Resources\interfaz.png" />
     <None Include="Resources\calendario.png" />
+    <None Include="Resources\calendario1.png" />
+    <None Include="Resources\buscar %281%29.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

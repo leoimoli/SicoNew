@@ -775,5 +775,19 @@ namespace Sico
             return valor;
         }
         #endregion
+
+        private void btnVencimientos_Click(object sender, EventArgs e)
+        {
+            VencimientoPorClienteWF _vencimientos = new VencimientoPorClienteWF(RazonSocial, Cuit);
+            _vencimientos.Show();
+            Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ConsultaVencimientosWF _consulta = new ConsultaVencimientosWF(razonSocial, cuit);
+            _consulta.Show();
+            Hide();
+        }
     }
 }

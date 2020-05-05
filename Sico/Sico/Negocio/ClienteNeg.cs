@@ -37,7 +37,18 @@ namespace Sico.Negocio
             }
             return exito;
         }
-
+        public static List<Vencimientos> BuscarTodosLosVencimientos(string cuit, DateTime fechaHoy)
+        {
+            List<Vencimientos> _listaVencimientos = new List<Vencimientos>();
+            try
+            {
+                _listaVencimientos = ClienteDao.BuscarTodosLosVencimientos(cuit, fechaHoy);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _listaVencimientos;
+        }
         public static bool GuardarVencimiento(string año, int idTipoVencimiento, string diaVencimiento)
         {
             bool exito = false;
@@ -65,6 +76,72 @@ namespace Sico.Negocio
             }
             return exito;
         }
+        public static bool GuardarVencimientoPorCliente(string año, int idTipoVencimiento, string diasPrevios, string cuit)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatosCantidadDiasPrevios(diasPrevios);
+                bool VencimientoExistente = ClienteDao.ValidarVencimientoExistente(año, idTipoVencimiento);
+
+                if (VencimientoExistente == true)
+                {
+                    List<Vencimientos> _vencimientos = new List<Vencimientos>();
+                    _vencimientos = ClienteDao.BuscarVencimiento(año, idTipoVencimiento);
+                    var DatosVencimiento = _vencimientos.First();
+                    bool YaExiste = ClienteDao.ValidarVencimientoExistentePorCliente(DatosVencimiento.idVencimiento, cuit);
+                    if (YaExiste == true)
+                    {
+                        const string message = "Ya Existe una notificación creada para el año y tipo de vencimiento ingresado.";
+                        const string caption = "Atención";
+                        var result = MessageBox.Show(message, caption,
+                                                     MessageBoxButtons.OK,
+                                                   MessageBoxIcon.Exclamation);
+                        throw new Exception();
+                    }
+                    else
+                    {
+
+                        int DiaDeVencimiento = Convert.ToInt32(DatosVencimiento.DiaDeVencimiento);
+                        int DiaPrevioAviso = Convert.ToInt32(diasPrevios);
+                        int DiaCalculado = DiaDeVencimiento - DiaPrevioAviso;
+                        string Año = año;
+                        string Fecha = Convert.ToString(DiaCalculado) + "/01/" + Año + " 0:00:00";
+                        DateTime FechaDeAviso = Convert.ToDateTime(Fecha);
+                        //05 / 05 / 2020 2:55:32 p.m.
+                        exito = ClienteDao.GuardarVencimientoPorCliente(FechaDeAviso, DatosVencimiento.idVencimiento, cuit, idTipoVencimiento);
+
+                    }
+                }
+                else
+                {
+                    const string message = "No existe ningun vencimiento precargado para el tipo y año ingresado.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
+        private static void ValidarDatosCantidadDiasPrevios(string diasPrevios)
+        {
+            int ValorCargado = Convert.ToInt32(diasPrevios);
+            if (ValorCargado <= 0 || ValorCargado > 31)
+            {
+                const string message = "El campo Dias Previos debe ser mayor a 0 y Menor a 31";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+        }
         private static void ValidarDatosTipoVencimiento(string diaVencimiento)
         {
             int ValorCargado = Convert.ToInt32(diaVencimiento);
@@ -78,20 +155,32 @@ namespace Sico.Negocio
                 throw new Exception();
             }
         }
+
+        public static List<Vencimientos> BuscarTodosLosVencimientosIdVencimiento(string cuit, int idTipoDeVencimiento)
+        {
+            List<Vencimientos> _listaVencimientos = new List<Vencimientos>();
+            try
+            {
+                _listaVencimientos = ClienteDao.BuscarTodosLosVencimientosIdVencimiento(cuit, idTipoDeVencimiento);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _listaVencimientos;
+        }
+
         public static List<string> CargarComboTipoVencimientos()
         {
             List<string> lista = new List<string>();
             lista = Dao.ClienteDao.CargarComboTipoVencimientos();
             return lista;
         }
-
         public static string BuscarNroFactura(string cuit)
         {
             int idCliente = ClienteDao.BuscarIdClientePorCuit(cuit);
             string NroFactura = ClienteDao.BuscarNroFactura(idCliente);
             return NroFactura;
         }
-
         public static List<SubCliente> BuscarDetalleFacturaSubCliente(string idsubCliente)
         {
             List<SubCliente> _listaSubClientes = new List<SubCliente>();
@@ -110,7 +199,6 @@ namespace Sico.Negocio
             }
             return _listaSubClientes;
         }
-
         public static bool GuardarNotaDeCredito(SubCliente _subCliente, string cuit)
         {
             bool exito = false;
@@ -139,7 +227,6 @@ namespace Sico.Negocio
             }
             return exito;
         }
-
         private static void ValidarDatosSubCliente(SubCliente _subCliente)
         {
             if (String.IsNullOrEmpty(_subCliente.Dni))
@@ -171,7 +258,6 @@ namespace Sico.Negocio
                 throw new Exception();
             }
         }
-
         public static List<SubCliente> BuscarFacturacionTotalVentas(string cuit, string Periodo)
         {
             List<SubCliente> _listaFacturasSubCliente = new List<SubCliente>();
@@ -190,14 +276,12 @@ namespace Sico.Negocio
             }
             return _listaFacturasSubCliente;
         }
-
         public static List<string> CargarComboLocalidadesPorIdProvincia(int idProvinciaSeleccionada)
         {
             List<string> lista = new List<string>();
             lista = Dao.ClienteDao.CargarComboLocalidadesPorIdProvincia(idProvinciaSeleccionada);
             return lista;
         }
-
         public static List<SubCliente> BuscarTodasFacturasSubCliente(string cuit)
         {
             List<SubCliente> _listaFacturasSubCliente = new List<SubCliente>();
@@ -216,7 +300,6 @@ namespace Sico.Negocio
             }
             return _listaFacturasSubCliente;
         }
-
         public static string BuscarNuevoNroFacturaNotaDeCredito(string cuit)
         {
             string Factura;

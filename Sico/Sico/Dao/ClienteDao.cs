@@ -38,7 +38,37 @@ namespace Sico.Dao
             connection.Close();
             return _listaProvincia;
         }
-
+        public static List<Vencimientos> BuscarTodosLosVencimientos(string cuit, DateTime fechaHoy)
+        {
+            int idCliente = BuscarIdClientePorCuit(cuit);
+            connection.Close();
+            connection.Open();
+            List<Vencimientos> lista = new List<Vencimientos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idCliente_in", idCliente),
+            new MySqlParameter("fechaHoy_in", fechaHoy)};
+            string proceso = "BuscarTodosLosVencimientosPorCliente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Vencimientos listaVencimientos = new Vencimientos();
+                    listaVencimientos.NombreRazonSocial = item["Nombre"].ToString();
+                    listaVencimientos.Fecha = Convert.ToDateTime(item["Fecha"].ToString());
+                    listaVencimientos.NombreTipoDeVencimiento = item["NombreTipoVencimiento"].ToString();
+                    lista.Add(listaVencimientos);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
         public static bool ValidarVencimientoExistente(string año, int idTipoVencimiento)
         {
             connection.Close();
@@ -65,7 +95,6 @@ namespace Sico.Dao
             connection.Close();
             return Existe;
         }
-
         public static bool GuardarVencimiento(string año, int idTipoVencimiento, string diaVencimiento)
         {
             bool exito = false;
@@ -82,7 +111,175 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
+        public static bool ValidarVencimientoExistentePorCliente(int idVencimiento, string cuit)
+        {
+            int idCliente = BuscarIdClientePorCuit(cuit);
+            connection.Close();
+            bool Existe = false;
+            connection.Open();
+            List<Usuario> lista = new List<Usuario>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idVencimiento_in",idVencimiento ),
+              new MySqlParameter("idCliente_in", idCliente)};
+            string proceso = "ValidarVencimientoExistentePorCliente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
+        public static List<Vencimientos> BuscarVencimiento(string año, int idTipoVencimiento)
+        {
+            connection.Close();
+            connection.Open();
+            List<Vencimientos> lista = new List<Vencimientos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("ano_in", año),
+            new MySqlParameter("idTipoVencimiento_in", idTipoVencimiento)};
+            string proceso = "BuscarVencimiento";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Vencimientos listaVencimientos = new Vencimientos();
+                    listaVencimientos.idVencimiento = Convert.ToInt32(item["idVencimientos"].ToString());
+                    listaVencimientos.ano = item["Ano"].ToString();
+                    listaVencimientos.DiaDeVencimiento = item["DiaDeVencimiento"].ToString();
+                    listaVencimientos.idTipoDeVencimento = item["idTipoDeVencimiento"].ToString();
+                    lista.Add(listaVencimientos);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+        public static List<Vencimientos> BuscarTodosLosVencimientosIdVencimiento(string cuit, int idTipoDeVencimiento)
+        {
+            int idCliente = BuscarIdClientePorCuit(cuit);
+            connection.Close();
+            connection.Open();
+            List<Vencimientos> lista = new List<Vencimientos>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idCliente_in", idCliente),
+            new MySqlParameter("idTipoDeVencimiento_in", idTipoDeVencimiento)};
+            string proceso = "BuscarTodosLosVencimientosIdTipoVencimiento";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Vencimientos listaVencimientos = new Vencimientos();
+                    listaVencimientos.NombreRazonSocial = item["Nombre"].ToString();
+                    listaVencimientos.Fecha = Convert.ToDateTime(item["Fecha"].ToString());
+                    listaVencimientos.NombreTipoDeVencimiento = item["NombreTipoVencimiento"].ToString();
+                    lista.Add(listaVencimientos);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
 
+        public static bool GuardarVencimientoPorCliente(DateTime Fecha, int idVencimiento, string cuit, int idTipoVencimiento)
+        {
+            int idCliente = BuscarIdClientePorCuit(cuit);
+            bool exito = false;
+            int ListaRecorrer = 0;
+            if (idTipoVencimiento == 1 || idTipoVencimiento == 2 || idTipoVencimiento == 3 || idTipoVencimiento == 4 || idTipoVencimiento == 5 || idTipoVencimiento == 6 || idTipoVencimiento == 10)
+            {
+                ListaRecorrer = 12;
+            }
+            if (idTipoVencimiento == 8 || idTipoVencimiento == 9)
+            {
+                ListaRecorrer = 1;
+            }
+            if (idTipoVencimiento == 7)
+            {
+                ListaRecorrer = 6;
+            }
+            for (int i = 1; i <= ListaRecorrer; i++)
+            {
+                ///// Pregunto si es Anual.
+                if (idTipoVencimiento == 8 || idTipoVencimiento == 9)
+                {
+                    Fecha = Fecha.AddMonths(5);
+                    i = i + 1;
+                    connection.Close();
+                    connection.Open();
+                    string Guardar = "GuardarVencimientoPorCliente";
+                    MySqlCommand cmd = new MySqlCommand(Guardar, connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Fecha_in", Fecha);
+                    cmd.Parameters.AddWithValue("idVencimiento_in", idVencimiento);
+                    cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                    cmd.ExecuteNonQuery();
+                }
+                if (i == 1)
+                {
+                    connection.Close();
+                    connection.Open();
+                    string Guardar = "GuardarVencimientoPorCliente";
+                    MySqlCommand cmd = new MySqlCommand(Guardar, connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Fecha_in", Fecha);
+                    cmd.Parameters.AddWithValue("idVencimiento_in", idVencimiento);
+                    cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    ///// Pregunto si es Mensual.
+                    if (idTipoVencimiento == 1 || idTipoVencimiento == 2 || idTipoVencimiento == 3 || idTipoVencimiento == 4 || idTipoVencimiento == 5 || idTipoVencimiento == 6 || idTipoVencimiento == 10)
+                    {
+                        Fecha = Fecha.AddMonths(1);
+                        connection.Close();
+                        connection.Open();
+                        string Guardar = "GuardarVencimientoPorCliente";
+                        MySqlCommand cmd = new MySqlCommand(Guardar, connection);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("Fecha_in", Fecha);
+                        cmd.Parameters.AddWithValue("idVencimiento_in", idVencimiento);
+                        cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                        cmd.ExecuteNonQuery();
+                    }
+                    ///// Pregunto si es Bimestral.
+                    if (idTipoVencimiento == 7)
+                    {
+                        Fecha = Fecha.AddMonths(2);
+                        connection.Close();
+                        connection.Open();
+                        string Guardar = "GuardarVencimientoPorCliente";
+                        MySqlCommand cmd = new MySqlCommand(Guardar, connection);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("Fecha_in", Fecha);
+                        cmd.Parameters.AddWithValue("idVencimiento_in", idVencimiento);
+                        cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            exito = true;
+            return exito;
+        }
         public static List<string> CargarComboTipoVencimientos()
         {
             List<string> _listaTipoVencimiento = new List<string>();

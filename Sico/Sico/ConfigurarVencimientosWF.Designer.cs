@@ -173,7 +173,7 @@
             this.Controls.Add(this.label7);
             this.Name = "ConfigurarVencimientosWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Configurar Vencimientos";
+            this.Text = "Configurar Nuevos Vencimientos";
             this.Load += new System.EventHandler(this.ConfigurarVencimientosWF_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -90,12 +90,10 @@ namespace Sico
                 cmbTipoVencimiento.Items.Add(item);
             }
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
         }
-
         private void btnVolver_Click(object sender, EventArgs e)
         {
             InicioWF _inicio = new InicioWF();
