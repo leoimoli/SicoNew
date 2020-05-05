@@ -213,6 +213,12 @@
     <Compile Include="ComprasWF.Designer.cs">
       <DependentUpon>ComprasWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigurarVencimientosWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigurarVencimientosWF.Designer.cs">
+      <DependentUpon>ConfigurarVencimientosWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dao\ComprasDao.cs" />
     <Compile Include="Dao\PericiaDao.cs" />
     <Compile Include="Dao\PeriodoDao.cs" />
@@ -385,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComprasWF.resx">
       <DependentUpon>ComprasWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurarVencimientosWF.resx">
+      <DependentUpon>ConfigurarVencimientosWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FacturacionCompraWF.resx">
       <DependentUpon>FacturacionCompraWF.cs</DependentUpon>
@@ -594,6 +603,8 @@
     <None Include="Resources\encontrar.png" />
     <None Include="Resources\importacion %285%291.png" />
     <None Include="Resources\archivos-y-carpetas.png" />
+    <None Include="Resources\interfaz.png" />
+    <None Include="Resources\calendario.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

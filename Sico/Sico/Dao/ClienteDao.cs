@@ -39,6 +39,74 @@ namespace Sico.Dao
             return _listaProvincia;
         }
 
+        public static bool ValidarVencimientoExistente(string año, int idTipoVencimiento)
+        {
+            connection.Close();
+            bool Existe = false;
+            connection.Open();
+            List<Usuario> lista = new List<Usuario>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("ano_in", año),
+            new MySqlParameter("idTipoVencimiento_in", idTipoVencimiento)};
+            string proceso = "ValidarVencimientoExistente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            DataSet ds = new DataSet();
+            dt.Fill(ds, "tVencimientos");
+            if (Tabla.Rows.Count > 0)
+            {
+                Existe = true;
+            }
+            connection.Close();
+            return Existe;
+        }
+
+        public static bool GuardarVencimiento(string año, int idTipoVencimiento, string diaVencimiento)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "GuardarVencimiento";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("ano_in", año);
+            cmd.Parameters.AddWithValue("idTipoVencimiento_in", idTipoVencimiento);
+            cmd.Parameters.AddWithValue("diaVencimiento_in", diaVencimiento);
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
+        public static List<string> CargarComboTipoVencimientos()
+        {
+            List<string> _listaTipoVencimiento = new List<string>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "CargarComboTipoVencimientos";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    _listaTipoVencimiento.Add(item["idTipoVencimiento"].ToString() + "-" + item["Nombre"].ToString());
+                }
+            }
+            connection.Close();
+            return _listaTipoVencimiento;
+        }
         public static string BuscarNroFactura(int idCliente)
         {
             string Factura = "";
@@ -437,7 +505,7 @@ namespace Sico.Dao
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = {};
+            MySqlParameter[] oParam = { };
             string proceso = "ListarTodosLosClientes";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;

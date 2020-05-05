@@ -36,8 +36,20 @@ namespace Sico.Negocio
                                            MessageBoxIcon.Exclamation);
                 throw new Exception();
             }
+        }     
+        private static void ValidarDatosTipoVencimiento(string diaVencimiento)
+        {
+            int ValorCargado = Convert.ToInt32(diaVencimiento);
+            if (ValorCargado <= 0 || ValorCargado > 31)
+            {
+                const string message = "El campo Dia de vencimiento debe ser mayor a 0 y Menor a 31";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
         }
-
         public static bool GuardarPeriodoVenta(string cuit, string nombre, string año)
         {
             bool exito = false;

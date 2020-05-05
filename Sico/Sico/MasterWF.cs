@@ -75,5 +75,12 @@ namespace Sico
             CuentaEmailWF _cuenta = new CuentaEmailWF();
             _cuenta.Show();
         }
+
+        private void vencimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarVencimientosWF _vencimientos = new ConfigurarVencimientosWF();
+            _vencimientos.Show();
+            Hide();
+        }
     }
 }

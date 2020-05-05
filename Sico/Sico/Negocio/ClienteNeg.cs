@@ -38,6 +38,53 @@ namespace Sico.Negocio
             return exito;
         }
 
+        public static bool GuardarVencimiento(string año, int idTipoVencimiento, string diaVencimiento)
+        {
+            bool exito = false;
+            try
+            {
+                ValidarDatosTipoVencimiento(diaVencimiento);
+                bool YaExiste = ClienteDao.ValidarVencimientoExistente(año, idTipoVencimiento);
+                if (YaExiste == true)
+                {
+                    const string message = "Ya existe un Vencimiento Para el año y Tipo de vencimiento seleccionado.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
+                else
+                {
+                    exito = ClienteDao.GuardarVencimiento(año, idTipoVencimiento, diaVencimiento);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
+        private static void ValidarDatosTipoVencimiento(string diaVencimiento)
+        {
+            int ValorCargado = Convert.ToInt32(diaVencimiento);
+            if (ValorCargado <= 0 || ValorCargado > 31)
+            {
+                const string message = "El campo Dia de vencimiento debe ser mayor a 0 y Menor a 31";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.OK,
+                                           MessageBoxIcon.Exclamation);
+                throw new Exception();
+            }
+        }
+        public static List<string> CargarComboTipoVencimientos()
+        {
+            List<string> lista = new List<string>();
+            lista = Dao.ClienteDao.CargarComboTipoVencimientos();
+            return lista;
+        }
+
         public static string BuscarNroFactura(string cuit)
         {
             int idCliente = ClienteDao.BuscarIdClientePorCuit(cuit);
@@ -377,7 +424,7 @@ namespace Sico.Negocio
 
         public static int GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, string cuit, string periodo)
         {
-            int  exito = 0;
+            int exito = 0;
             try
             {
                 exito = ClienteDao.GuardarCargaMasivaVentas(listaPrecargada, cuit, periodo);
@@ -453,7 +500,7 @@ namespace Sico.Negocio
             }
             catch (Exception ex)
             {
-               
+
             }
             return _listaClientes;
         }
