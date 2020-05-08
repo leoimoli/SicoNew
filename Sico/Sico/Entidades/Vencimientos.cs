@@ -14,6 +14,8 @@ namespace Sico.Entidades
         public string DiaDeVencimiento{ get; set; }
         public string NombreRazonSocial { get; set; }
         public string NombreTipoDeVencimiento { get; set; }
-        public DateTime Fecha { get; set; } ///// Hasta aca 6 elementos
-     }
+        public DateTime Fecha { get; set; } 
+
+        public DateTime FechaVencimiento { get; set; } ///// Hasta aca 7 elementos
+    }
 }

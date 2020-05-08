@@ -71,14 +71,14 @@ namespace Sico
 
 
                     dgvVencimientos.Columns[4].HeaderText = "Cliente";
-                    dgvVencimientos.Columns[4].Width = 250;
+                    dgvVencimientos.Columns[4].Width = 180;
                     dgvVencimientos.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvVencimientos.Columns[4].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvVencimientos.Columns[4].HeaderCell.Style.ForeColor = Color.White;
 
 
                     dgvVencimientos.Columns[5].HeaderText = "Tipo De Vencimiento";
-                    dgvVencimientos.Columns[5].Width = 200;
+                    dgvVencimientos.Columns[5].Width = 180;
                     dgvVencimientos.Columns[5].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvVencimientos.Columns[5].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvVencimientos.Columns[5].HeaderCell.Style.ForeColor = Color.White;
@@ -89,6 +89,12 @@ namespace Sico
                     dgvVencimientos.Columns[6].HeaderCell.Style.BackColor = Color.DarkBlue;
                     dgvVencimientos.Columns[6].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
                     dgvVencimientos.Columns[6].HeaderCell.Style.ForeColor = Color.White;
+
+                    dgvVencimientos.Columns[7].HeaderText = "Fecha Vencimiento";
+                    dgvVencimientos.Columns[7].Width = 150;
+                    dgvVencimientos.Columns[7].HeaderCell.Style.BackColor = Color.DarkBlue;
+                    dgvVencimientos.Columns[7].HeaderCell.Style.Font = new System.Drawing.Font("Tahoma", 10, FontStyle.Bold);
+                    dgvVencimientos.Columns[7].HeaderCell.Style.ForeColor = Color.White;
                 }
             }
         }

@@ -106,10 +106,12 @@ namespace Sico.Negocio
                         int DiaPrevioAviso = Convert.ToInt32(diasPrevios);
                         int DiaCalculado = DiaDeVencimiento - DiaPrevioAviso;
                         string Año = año;
+                        string DiaVencimiento = Convert.ToString(DiaDeVencimiento) + "/01/" + Año + " 0:00:00";
                         string Fecha = Convert.ToString(DiaCalculado) + "/01/" + Año + " 0:00:00";
+                        DateTime FechaVencimiento = Convert.ToDateTime(DiaVencimiento);
                         DateTime FechaDeAviso = Convert.ToDateTime(Fecha);
                         //05 / 05 / 2020 2:55:32 p.m.
-                        exito = ClienteDao.GuardarVencimientoPorCliente(FechaDeAviso, DatosVencimiento.idVencimiento, cuit, idTipoVencimiento);
+                        exito = ClienteDao.GuardarVencimientoPorCliente(FechaDeAviso, DatosVencimiento.idVencimiento, cuit, idTipoVencimiento, FechaVencimiento);
 
                     }
                 }

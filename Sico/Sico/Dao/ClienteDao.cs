@@ -63,6 +63,7 @@ namespace Sico.Dao
                     listaVencimientos.NombreRazonSocial = item["Nombre"].ToString();
                     listaVencimientos.Fecha = Convert.ToDateTime(item["Fecha"].ToString());
                     listaVencimientos.NombreTipoDeVencimiento = item["NombreTipoVencimiento"].ToString();
+                    listaVencimientos.FechaVencimiento = Convert.ToDateTime(item["FechaVencimiento"].ToString());
                     lista.Add(listaVencimientos);
                 }
             }
@@ -192,6 +193,7 @@ namespace Sico.Dao
                     listaVencimientos.NombreRazonSocial = item["Nombre"].ToString();
                     listaVencimientos.Fecha = Convert.ToDateTime(item["Fecha"].ToString());
                     listaVencimientos.NombreTipoDeVencimiento = item["NombreTipoVencimiento"].ToString();
+                    listaVencimientos.FechaVencimiento = Convert.ToDateTime(item["FechaVencimiento"].ToString());
                     lista.Add(listaVencimientos);
                 }
             }
@@ -199,7 +201,7 @@ namespace Sico.Dao
             return lista;
         }
 
-        public static bool GuardarVencimientoPorCliente(DateTime Fecha, int idVencimiento, string cuit, int idTipoVencimiento)
+        public static bool GuardarVencimientoPorCliente(DateTime Fecha, int idVencimiento, string cuit, int idTipoVencimiento, DateTime FechaVencimiento)
         {
             int idCliente = BuscarIdClientePorCuit(cuit);
             bool exito = false;
@@ -221,6 +223,7 @@ namespace Sico.Dao
                 ///// Pregunto si es Anual.
                 if (idTipoVencimiento == 8 || idTipoVencimiento == 9)
                 {
+                    FechaVencimiento = FechaVencimiento.AddMonths(5);
                     Fecha = Fecha.AddMonths(5);
                     i = i + 1;
                     connection.Close();
@@ -228,9 +231,11 @@ namespace Sico.Dao
                     string Guardar = "GuardarVencimientoPorCliente";
                     MySqlCommand cmd = new MySqlCommand(Guardar, connection);
                     cmd.CommandType = CommandType.StoredProcedure;
+
                     cmd.Parameters.AddWithValue("Fecha_in", Fecha);
                     cmd.Parameters.AddWithValue("idVencimiento_in", idVencimiento);
                     cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                    cmd.Parameters.AddWithValue("FechaVencimiento_in", FechaVencimiento);
                     cmd.ExecuteNonQuery();
                 }
                 if (i == 1)
@@ -243,6 +248,7 @@ namespace Sico.Dao
                     cmd.Parameters.AddWithValue("Fecha_in", Fecha);
                     cmd.Parameters.AddWithValue("idVencimiento_in", idVencimiento);
                     cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                    cmd.Parameters.AddWithValue("FechaVencimiento_in", FechaVencimiento);
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -250,6 +256,7 @@ namespace Sico.Dao
                     ///// Pregunto si es Mensual.
                     if (idTipoVencimiento == 1 || idTipoVencimiento == 2 || idTipoVencimiento == 3 || idTipoVencimiento == 4 || idTipoVencimiento == 5 || idTipoVencimiento == 6 || idTipoVencimiento == 10)
                     {
+                        FechaVencimiento = FechaVencimiento.AddMonths(1);
                         Fecha = Fecha.AddMonths(1);
                         connection.Close();
                         connection.Open();
@@ -259,11 +266,13 @@ namespace Sico.Dao
                         cmd.Parameters.AddWithValue("Fecha_in", Fecha);
                         cmd.Parameters.AddWithValue("idVencimiento_in", idVencimiento);
                         cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                        cmd.Parameters.AddWithValue("FechaVencimiento_in", FechaVencimiento);
                         cmd.ExecuteNonQuery();
                     }
                     ///// Pregunto si es Bimestral.
                     if (idTipoVencimiento == 7)
                     {
+                        FechaVencimiento = FechaVencimiento.AddMonths(2);
                         Fecha = Fecha.AddMonths(2);
                         connection.Close();
                         connection.Open();
@@ -273,6 +282,7 @@ namespace Sico.Dao
                         cmd.Parameters.AddWithValue("Fecha_in", Fecha);
                         cmd.Parameters.AddWithValue("idVencimiento_in", idVencimiento);
                         cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                        cmd.Parameters.AddWithValue("FechaVencimiento_in", FechaVencimiento);
                         cmd.ExecuteNonQuery();
                     }
                 }
