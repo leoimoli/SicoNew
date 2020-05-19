@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnConsultarVencimientos = new System.Windows.Forms.Button();
             this.btnVencimientos = new System.Windows.Forms.Button();
@@ -215,10 +215,10 @@
             // 
             // chart2
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart2.Legends.Add(legend3);
+            chartArea11.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.chart2.Legends.Add(legend11);
             this.chart2.Location = new System.Drawing.Point(4, 92);
             this.chart2.Name = "chart2";
             this.chart2.Size = new System.Drawing.Size(590, 280);
@@ -240,6 +240,7 @@
             this.toolTip1.SetToolTip(this.lblComprasGraficar, " Graficar Reportes");
             this.lblComprasGraficar.Visible = false;
             this.lblComprasGraficar.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.lblComprasGraficar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblComprasGraficar_LinkClicked);
             // 
             // lblComprasLinea
             // 
@@ -255,6 +256,7 @@
             this.toolTip1.SetToolTip(this.lblComprasLinea, " Graficar Reportes");
             this.lblComprasLinea.Visible = false;
             this.lblComprasLinea.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.lblComprasLinea.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblComprasLinea_LinkClicked);
             // 
             // lblComprasBarra
             // 
@@ -270,6 +272,7 @@
             this.toolTip1.SetToolTip(this.lblComprasBarra, " Graficar Reportes");
             this.lblComprasBarra.Visible = false;
             this.lblComprasBarra.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.lblComprasBarra.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblComprasBarra_LinkClicked);
             // 
             // lblComprasIva
             // 
@@ -285,6 +288,7 @@
             this.toolTip1.SetToolTip(this.lblComprasIva, " Graficar Reportes");
             this.lblComprasIva.Visible = false;
             this.lblComprasIva.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.lblComprasIva.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblComprasIva_LinkClicked);
             // 
             // lblComprasNeto
             // 
@@ -300,6 +304,7 @@
             this.toolTip1.SetToolTip(this.lblComprasNeto, " Graficar Reportes");
             this.lblComprasNeto.Visible = false;
             this.lblComprasNeto.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.lblComprasNeto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblComprasNeto_LinkClicked);
             // 
             // lblComprasMonto
             // 
@@ -315,6 +320,7 @@
             this.toolTip1.SetToolTip(this.lblComprasMonto, " Graficar Reportes");
             this.lblComprasMonto.Visible = false;
             this.lblComprasMonto.VisitedLinkColor = System.Drawing.Color.Blue;
+            this.lblComprasMonto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblComprasMonto_LinkClicked);
             // 
             // btnBuscarCompras
             // 
@@ -492,10 +498,10 @@
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
+            chartArea12.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.chart1.Legends.Add(legend12);
             this.chart1.Location = new System.Drawing.Point(4, 92);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(590, 280);

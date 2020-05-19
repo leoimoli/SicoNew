@@ -240,6 +240,85 @@ namespace Sico.Dao
             }
             return lista;
         }
+
+        public static List<FacturaCompraAnual> FacturacionAnualPorAño(string cuit, string año)
+        {
+            List<string> listaPeriodos = new List<string>();
+            List<FacturaCompraAnual> lista = new List<FacturaCompraAnual>();
+            List<Entidades.Cliente> id = new List<Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int IdCliente = id[0].IdCliente;
+            if (IdCliente > 0)
+            {
+                listaPeriodos = BuscarPeriodosComprasPorAñoIdCliente(IdCliente, año);
+                foreach (var item in listaPeriodos)
+                {
+                    string Periodo = item;
+                    connection.Close();
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    DataTable Tabla = new DataTable();
+                    MySqlParameter[] oParam = {
+                            new MySqlParameter("Periodo_in", Periodo),
+                                      new MySqlParameter("idCliente_in", IdCliente)};
+                    string proceso = "FacturacionAnualPorPeriodos";
+                    MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                    dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    dt.SelectCommand.Parameters.AddRange(oParam);
+                    dt.Fill(Tabla);
+                    if (Tabla.Rows.Count > 0)
+                    {
+                        foreach (DataRow item2 in Tabla.Rows)
+                        {
+                            FacturaCompraAnual listaFacturacion = new FacturaCompraAnual();
+                            listaFacturacion.Periodo = item2["Periodo"].ToString();
+                            listaFacturacion.Monto = Convert.ToDecimal(item2["MontoTotal"].ToString());
+                            listaFacturacion.Total1 = Convert.ToDecimal(item2["Total1"].ToString());
+                            listaFacturacion.Total2 = Convert.ToDecimal(item2["Total2"].ToString());
+                            listaFacturacion.Total3 = Convert.ToDecimal(item2["Total3"].ToString());
+                            listaFacturacion.Neto1 = Convert.ToDecimal(item2["Neto1"].ToString());
+                            listaFacturacion.Neto2 = Convert.ToDecimal(item2["Neto2"].ToString());
+                            listaFacturacion.Neto3 = Convert.ToDecimal(item2["Neto3"].ToString());
+                            listaFacturacion.Iva1 = Convert.ToDecimal(item2["Iva1"].ToString());
+                            listaFacturacion.Iva2 = Convert.ToDecimal(item2["Iva2"].ToString());
+                            listaFacturacion.Iva3 = Convert.ToDecimal(item2["Iva3"].ToString());
+                            lista.Add(listaFacturacion);
+                        }
+                    }
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        private static List<string> BuscarPeriodosComprasPorAñoIdCliente(int idCliente, string año)
+        {
+            List<string> listaPeriodos = new List<string>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                            new MySqlParameter("Ano_in", año),
+                                      new MySqlParameter("idCliente_in", idCliente)};
+            string proceso = "BuscarPeriodosComprasPorAñoIdCliente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    listaPeriodos.Add(item["Nombre"].ToString());
+                }
+            }
+            connection.Close();
+            return listaPeriodos;
+        }
+
         public static List<FacturaVentaAnual> FacturacionAnualVentasPorAño(string cuit, string año)
         {
             List<string> listaPeriodos = new List<string>();

@@ -35,6 +35,7 @@ namespace Sico
             ///// Hago una busqueda Inicial De Ventas.
             string Año = "2020";
             ListaTotalFacturacionVentas = ComprasNeg.FacturacionAnualVentasPorAño(cuit, Año);
+            ListaTotalFacturacion = ComprasNeg.FacturacionAnualPorAño(cuit, Año);
         }
         private void CargarCombo()
         {
@@ -111,12 +112,15 @@ namespace Sico
             {
                 if (value.Count > 0)
                 {
-
+                    ListaComprasStatic = value;
                     if (value != dgvComprasAnuales.DataSource && dgvComprasAnuales.DataSource != null)
                     {
                         dgvComprasAnuales.Columns.Clear();
                         dgvComprasAnuales.Refresh();
                     }
+                    lblComprasGraficar.Visible = true;
+                    chart1.Visible = false;
+                    lblGraficarVentas.Visible = true;
                     dgvComprasAnuales.Visible = true;
                     dgvComprasAnuales.ReadOnly = true;
                     dgvComprasAnuales.RowHeadersVisible = false;
@@ -260,6 +264,7 @@ namespace Sico
         public static bool GraficoMonto;
         public static bool GraficoIVA;
         public static bool GraficoNeto;
+        public static List<Entidades.FacturaCompraAnual> ListaComprasStatic;
         public List<Entidades.FacturaVentaAnual> ListaTotalFacturacionVentas
         {
             set
@@ -1114,7 +1119,6 @@ namespace Sico
                 series.Points.AddXY(item.Periodo + "(" + TotalIva + ")", TotalIva);
             }
         }
-
         private void btnBuscarCompras_Click(object sender, EventArgs e)
         {
             try
@@ -1137,11 +1141,262 @@ namespace Sico
                 }
                 if (Año != "Seleccione" && Periodo == "Seleccione")
                 {
-                    //ListaTotalFacturacion = ComprasNeg.BuscarFacturacionTotalComprasPorAño(cuit, Año);
+                    ListaTotalFacturacion = ComprasNeg.FacturacionAnualPorAño(cuit, Año);
                 }
             }
             catch (Exception ex)
             { }
+        }
+        private void lblComprasGraficar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            lblComprasIva.Visible = true;
+            lblComprasNeto.Visible = true;
+            lblComprasMonto.Visible = true;
+            lblComprasBarra.Visible = true;
+            lblComprasLinea.Visible = true;
+        }
+        public static bool GraficoComprasMonto;
+        public static bool GraficoComprasIVA;
+        public static bool GraficoComprasNeto;
+        private void lblComprasMonto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.chart2.Titles.Clear();
+            GraficoComprasMonto = true;
+            GraficoComprasNeto = false;
+            GraficoComprasIVA = false;
+            chart2.Visible = true;
+            dgvComprasAnuales.Visible = false;
+            this.chart2.Series.Clear();
+            this.chart2.Titles.Add("Total Por Monto");
+            foreach (var item in ListaComprasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaComprasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaComprasStatic)
+            {
+                Series series = this.chart2.Series.Add(item.Periodo + "(" + "$ " + item.Monto + ")");
+                series.Points.AddXY("-", item.Monto);
+            }
+        }
+        private void lblComprasNeto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.chart2.Titles.Clear();
+            GraficoComprasMonto = false;
+            GraficoComprasNeto = true;
+            GraficoComprasIVA = false;
+            chart2.Visible = true;
+            dgvComprasAnuales.Visible = false;
+            this.chart2.Series.Clear();
+            this.chart2.Titles.Add("Total Por Neto Grabado");
+            foreach (var item in ListaComprasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaComprasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaComprasStatic)
+            {
+                decimal NetoTotal = item.Neto1 + item.Neto2 + item.Neto3;
+                Series series = this.chart2.Series.Add(item.Periodo + "(" + "$ " + NetoTotal + ")");
+                series.Points.AddXY("-", NetoTotal);
+            }
+        }
+        private void lblComprasIva_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.chart2.Titles.Clear();
+            GraficoComprasMonto = false;
+            GraficoComprasNeto = false;
+            GraficoComprasIVA = true;
+            chart2.Visible = true;
+            dgvComprasAnuales.Visible = false;
+            this.chart2.Series.Clear();
+            this.chart2.Titles.Add("Total Por IVA");
+            foreach (var item in ListaComprasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaComprasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaComprasStatic)
+            {
+                decimal IvaTotal = item.Iva1 + item.Iva2 + item.Iva3;
+                Series series = this.chart2.Series.Add(item.Periodo + "(" + "$ " + IvaTotal + ")");
+                series.Points.AddXY("-", IvaTotal);
+            }
+        }
+        private void lblComprasBarra_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (GraficoComprasMonto == true)
+            {
+                GraficoComprasBarraPorMonto();
+            }
+            if (GraficoComprasIVA == true)
+            {
+                GraficoComprasBarraPorIVA();
+            }
+            if (GraficoComprasNeto == true)
+            {
+                GraficoComprasBarraPorNeto();
+            }
+        }
+        private void GraficoComprasBarraPorNeto()
+        {
+            this.chart1.Titles.Clear();
+            GraficoComprasMonto = false;
+            GraficoComprasNeto = true;
+            GraficoComprasIVA = false;
+            chart2.Visible = true;
+            dgvComprasAnuales.Visible = false;
+            this.chart2.Series.Clear();
+            this.chart2.Titles.Add("Total Por Neto Grabado");
+            foreach (var item in ListaComprasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaComprasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaComprasStatic)
+            {
+                decimal NetoTotal = item.Neto1 + item.Neto2 + item.Neto3;
+                Series series = this.chart2.Series.Add(item.Periodo + "(" + "$ " + NetoTotal + ")");
+                series.Points.AddXY("-", NetoTotal);
+            }
+        }
+        private void GraficoComprasBarraPorIVA()
+        {
+            this.chart1.Titles.Clear();
+            GraficoComprasMonto = false;
+            GraficoComprasNeto = false;
+            GraficoComprasIVA = true;
+            chart2.Visible = true;
+            dgvComprasAnuales.Visible = false;
+            this.chart2.Series.Clear();
+            this.chart2.Titles.Add("Total Por IVA");
+            foreach (var item in ListaComprasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaComprasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaComprasStatic)
+            {
+                decimal IvaTotal = item.Iva1 + item.Iva2 + item.Iva3;
+                Series series = this.chart2.Series.Add(item.Periodo + "(" + "$ " + IvaTotal + ")");
+                series.Points.AddXY("-", IvaTotal);
+            }
+        }
+        private void GraficoComprasBarraPorMonto()
+        {
+            this.chart1.Titles.Clear();
+            GraficoComprasMonto = true;
+            GraficoComprasNeto = false;
+            GraficoComprasIVA = false;
+            chart2.Visible = true;
+            dgvComprasAnuales.Visible = false;
+            this.chart2.Series.Clear();
+            this.chart2.Titles.Add("Total Por Monto");
+            foreach (var item in ListaComprasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaComprasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaComprasStatic)
+            {
+                Series series = this.chart1.Series.Add(item.Periodo + "(" + "$ " + item.Monto + ")");
+                series.Points.AddXY("-", item.Monto);
+            }
+        }
+        private void lblComprasLinea_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (GraficoComprasMonto == true)
+            {
+                GraficoComprasLineaMonto();
+            }
+            if (GraficoComprasIVA == true)
+            {
+                GraficoComprasLineaIVA();
+            }
+            if (GraficoComprasNeto == true)
+            {
+                GraficoComprasLineaNeto();
+            }
+        }
+        private void GraficoComprasLineaNeto()
+        {
+            this.chart2.Titles.Clear();
+            this.chart2.Series.Clear();
+            this.chart2.Titles.Add("Total Por Neto Grabado");
+            Series series = this.chart2.Series.Add("Total Por Neto Grabado");
+            series.ChartType = SeriesChartType.Spline;
+            foreach (var item in ListaComprasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaComprasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaComprasStatic)
+            {
+                decimal TotalNeto = item.Neto1 + item.Neto2 + item.Neto3;
+                series.Points.AddXY(item.Periodo + "(" + TotalNeto + ")", TotalNeto);
+            }
+        }
+        private void GraficoComprasLineaIVA()
+        {
+            this.chart2.Titles.Clear();
+            this.chart2.Series.Clear();
+            this.chart2.Titles.Add("Total Por IVA");
+            Series series = this.chart2.Series.Add("Total Por IVA");
+            series.ChartType = SeriesChartType.Spline;
+            foreach (var item in ListaComprasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaComprasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaComprasStatic)
+            {
+                decimal TotalIva = item.Iva1 + item.Iva2 + item.Iva3;
+                series.Points.AddXY(item.Periodo + "(" + TotalIva + ")", TotalIva);
+            }
+        }
+        private void GraficoComprasLineaMonto()
+        {
+            this.chart2.Titles.Clear();
+            this.chart2.Series.Clear();
+            this.chart2.Titles.Add("Total Por Monto");
+            Series series = this.chart2.Series.Add("Total Por Monto");
+            series.ChartType = SeriesChartType.Spline;
+            foreach (var item in ListaComprasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaComprasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaComprasStatic)
+            {
+                series.Points.AddXY(item.Periodo + "(" + item.Monto + ")", item.Monto);
+            }
         }
     }
 }
