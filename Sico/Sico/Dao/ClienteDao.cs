@@ -70,6 +70,59 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
+        public static List<string> CargarComboPeriodosCompras(string año, string cuit)
+        {
+            int idCliente = BuscarIdClientePorCuit(cuit);
+            connection.Close();
+            connection.Open();
+            List<string> _listaPeriodos = new List<string>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("ano_in", año),
+            new MySqlParameter("idCliente_in", idCliente)};
+            string proceso = "CargarComboPeriodosCompras";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    _listaPeriodos.Add(item["Nombre"].ToString());
+                }
+            }
+            connection.Close();
+            return _listaPeriodos;
+        }
+        public static List<string> CargarComboPeriodos(string año, string cuit)
+        {
+            int idCliente = BuscarIdClientePorCuit(cuit);
+            connection.Close();
+            connection.Open();
+            List<string> _listaPeriodos = new List<string>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("ano_in", año),
+            new MySqlParameter("idCliente_in", idCliente)};
+            string proceso = "CargarComboPeriodos";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    _listaPeriodos.Add(item["Nombre"].ToString());
+                }
+            }
+            connection.Close();
+            return _listaPeriodos;
+        }
+
         public static bool ValidarVencimientoExistente(string año, int idTipoVencimiento)
         {
             connection.Close();
@@ -575,6 +628,8 @@ namespace Sico.Dao
             int idCliente = id[0].IdCliente;
             if (idCliente > 0)
             {
+
+
                 connection.Close();
                 connection.Open();
                 MySqlCommand cmd = new MySqlCommand();
@@ -640,33 +695,56 @@ namespace Sico.Dao
             foreach (var item in listaPrecargada)
             {
                 bool FacturaExistente = false;
-                string var = item.NroFactura;
-                var split1 = var.Split('|')[0];
-                split1 = split1.Trim();
-                string PuntoDeVenta = split1;
-
-                if (PuntoDeVenta.Length < 5)
-                {
-                    PuntoDeVenta = PuntoDeVenta.PadLeft(5, '0');
-                }
+                string var = "";
                 //////"Número de Comprobante"
-                string Factura = item.NroFactura;
-                var FacturaSegundaParte = var.Split('|')[1];
-                FacturaSegundaParte = FacturaSegundaParte.Trim();
-                if (FacturaSegundaParte.Length < 8)
+                if (item.NroFactura != null)
                 {
-                    FacturaSegundaParte = FacturaSegundaParte.PadLeft(8, '0');
+                    var = item.NroFactura;
+                    var split1 = var.Split('|')[0];
+                    split1 = split1.Trim();
+                    string PuntoDeVenta = split1;
+                    if (PuntoDeVenta.Length < 5)
+                    {
+                        PuntoDeVenta = PuntoDeVenta.PadLeft(5, '0');
+                    }
+                    var FacturaSegundaParte = var.Split('|')[1];
+                    FacturaSegundaParte = FacturaSegundaParte.Trim();
+                    if (FacturaSegundaParte.Length < 8)
+                    {
+                        FacturaSegundaParte = FacturaSegundaParte.PadLeft(8, '0');
+                    }
+
+                    item.NroFactura = PuntoDeVenta + "-" + FacturaSegundaParte;
+                    FacturaExistente = ValidarFacturaExistente(item.NroFactura, idCliente);
+                    if (FacturaExistente == true)
+                    {
+                        continue;
+                    }
                 }
-
-                item.NroFactura = PuntoDeVenta + "-" + FacturaSegundaParte;
-
-                FacturaExistente = ValidarFacturaExistente(item.NroFactura, idCliente);
-                if (FacturaExistente == true)
+                if (item.NroFacturaNotaDeCredtio != null)
                 {
-                    continue;
+                    var = item.NroFacturaNotaDeCredtio;
+                    var split1 = var.Split('|')[0];
+                    split1 = split1.Trim();
+                    string PuntoDeVenta = split1;
+                    if (PuntoDeVenta.Length < 5)
+                    {
+                        PuntoDeVenta = PuntoDeVenta.PadLeft(5, '0');
+                    }
+                    var FacturaSegundaParte = var.Split('|')[1];
+                    FacturaSegundaParte = FacturaSegundaParte.Trim();
+                    if (FacturaSegundaParte.Length < 8)
+                    {
+                        FacturaSegundaParte = FacturaSegundaParte.PadLeft(8, '0');
+                    }
+                    item.NroFacturaNotaDeCredtio = PuntoDeVenta + "-" + FacturaSegundaParte;
+                    FacturaExistente = ValidarFacturaExistente(item.NroFacturaNotaDeCredtio, idCliente);
+                    if (FacturaExistente == true)
+                    {
+                        continue;
+                    }
                 }
-
-                if (item.ApellidoNombre == "" || item.ApellidoNombre == null)
+                if (item.ApellidoNombre == "" || item.ApellidoNombre == null && item.Dni == null || item.Dni == "")
                 {
                     item.ApellidoNombre = "Consumidor Final";
                 }
@@ -685,6 +763,7 @@ namespace Sico.Dao
                 cmd.Parameters.AddWithValue("Observacion_in", item.Observacion);
                 cmd.Parameters.AddWithValue("Periodo_in", periodo);
                 cmd.Parameters.AddWithValue("TipoDNI_in", item.TipoDNI);
+                cmd.Parameters.AddWithValue("NroFacturaNotaDeCredtio_in", item.NroFacturaNotaDeCredtio);
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {

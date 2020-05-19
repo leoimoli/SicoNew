@@ -69,13 +69,12 @@ namespace Sico.Negocio
             }
             return _listaFacturasSubCliente;
         }
-
-        public static List<FacturaVentaAnual> FacturacionAnualVentasPorPeriodos(string cuit, string año)
+        public static List<FacturaCompra> BuscarFacturacionTotalCompras(string cuit, string Periodo)
         {
-            List<FacturaVentaAnual> _listaFacturacionVentaAnual = new List<FacturaVentaAnual>();
+            List<FacturaCompra> _listaFacturasSubCliente = new List<FacturaCompra>();
             try
             {
-                _listaFacturacionVentaAnual = ComprasDao.FacturacionAnualVentasPorPeriodos(cuit, año);
+                _listaFacturasSubCliente = ComprasDao.BuscarFacturacionTotalCompras(cuit, Periodo);
             }
             catch (Exception ex)
             {
@@ -84,26 +83,34 @@ namespace Sico.Negocio
                 var result = MessageBox.Show(message, caption,
                                              MessageBoxButtons.OK,
                                            MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+            return _listaFacturasSubCliente;
+        }
+
+        public static List<FacturaVentaAnual> FacturacionAnualVentasPorPeriodos(string cuit, string Periodo)
+        {
+            List<FacturaVentaAnual> _listaFacturacionVentaAnual = new List<FacturaVentaAnual>();
+            try
+            {
+                _listaFacturacionVentaAnual = ComprasDao.FacturacionAnualVentasPorPeriodos(cuit, Periodo);
+            }
+            catch (Exception ex)
+            {
                 throw new Exception();
             }
             return _listaFacturacionVentaAnual;
         }
 
-        public static List<FacturaCompraAnual> FacturacionAnualPorPeriodos(string cuit, string año)
+        public static List<FacturaCompraAnual> FacturacionAnualPorPeriodos(string cuit, string periodo)
         {
             List<FacturaCompraAnual> _listaFacturacionCompraAnual = new List<FacturaCompraAnual>();
             try
             {
-                _listaFacturacionCompraAnual = ComprasDao.FacturacionAnualPorPeriodos(cuit, año);
+                _listaFacturacionCompraAnual = ComprasDao.FacturacionAnualPorPeriodos(cuit, periodo);
             }
             catch (Exception ex)
             {
-                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                const string caption = "Atención";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Warning);
-                throw new Exception();
             }
             return _listaFacturacionCompraAnual;
         }
@@ -150,7 +157,6 @@ namespace Sico.Negocio
         {
             throw new NotImplementedException();
         }
-
         public static bool GuardarFacturaCompra(FacturaCompra _factura, string cuitCliente)
         {
             bool exito = false;
@@ -165,7 +171,6 @@ namespace Sico.Negocio
             }
             return exito;
         }
-
         private static void ValidarDatosFactura(FacturaCompra _factura)
         {
             if (String.IsNullOrEmpty(_factura.NroFactura))
@@ -187,7 +192,7 @@ namespace Sico.Negocio
                 throw new Exception();
             }
 
-        bool FacturaExiste =  ValidarFacturaProveedorYaExistente(_factura);
+            bool FacturaExiste = ValidarFacturaProveedorYaExistente(_factura);
             if (FacturaExiste == true)
             {
                 const string message = "Ya existe una factura con ese mismo Nro asociada al proveedor.";
@@ -198,13 +203,11 @@ namespace Sico.Negocio
                 throw new Exception();
             }
         }
-
         private static bool ValidarFacturaProveedorYaExistente(FacturaCompra _factura)
         {
             bool existe = ComprasDao.ValidarFacturaProveedorYaExistente(_factura);
             return existe;
         }
-
         public static List<FacturaCompra> BuscarCompraPorProveedor(string apellidoNombre)
         {
             List<FacturaCompra> _listaCompras = new List<FacturaCompra>();
@@ -223,26 +226,6 @@ namespace Sico.Negocio
             }
             return _listaCompras;
         }
-
-        public static List<FacturaCompra> BuscarFacturacionTotalCompras(string cuit, string Periodo)
-        {
-            List<FacturaCompra> _listaFacturasSubCliente = new List<FacturaCompra>();
-            try
-            {
-                _listaFacturasSubCliente = ComprasDao.BuscarFacturacionTotalCompras(cuit, Periodo);
-            }
-            catch (Exception ex)
-            {
-                const string message = "Error en el sistema. Intente nuevamente o comuniquese con el administrador.";
-                const string caption = "Atención";
-                var result = MessageBox.Show(message, caption,
-                                             MessageBoxButtons.OK,
-                                           MessageBoxIcon.Warning);
-                throw new Exception();
-            }
-            return _listaFacturasSubCliente;
-        }
-
         public static bool GuardarEdicionFacturaCompras(FacturaCompra _factura, string cuit, string idFactura)
         {
             bool exito = false;
@@ -256,6 +239,19 @@ namespace Sico.Negocio
 
             }
             return exito;
+        }
+        public static List<FacturaVentaAnual> FacturacionAnualVentasPorAño(string cuit, string año)
+        {
+            List<FacturaVentaAnual> _listaFacturacionVentaAnual = new List<FacturaVentaAnual>();
+            try
+            {
+                _listaFacturacionVentaAnual = ComprasDao.FacturacionAnualVentasPorAño(cuit, año);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+            return _listaFacturacionVentaAnual;
         }
     }
 }

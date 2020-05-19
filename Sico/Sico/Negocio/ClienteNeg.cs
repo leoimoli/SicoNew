@@ -76,6 +76,32 @@ namespace Sico.Negocio
             }
             return exito;
         }
+        public static List<string> CargarComboPeriodosCompras(string año, string cuit)
+        {
+            List<string> _ListaPeriodos = new List<string>();
+            try
+            {
+                _ListaPeriodos = ClienteDao.CargarComboPeriodosCompras(año, cuit);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _ListaPeriodos;
+        }
+
+        public static List<string> CargarComboPeriodos(string año, string cuit)
+        {
+            List<string> _ListaPeriodos = new List<string>();
+            try
+            {
+                _ListaPeriodos = ClienteDao.CargarComboPeriodos(año, cuit);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _ListaPeriodos;
+        }
+
         public static bool GuardarVencimientoPorCliente(string año, int idTipoVencimiento, string diasPrevios, string cuit)
         {
             bool exito = false;

@@ -118,6 +118,14 @@ namespace Sico
                             if (list.Fecha == "Fecha")
                             { continue; }
                             list.TipoComprobante = item[1].ToString();
+                            if (list.TipoComprobante == "11 - Factura C")
+                            {
+                                list.NroFactura = item[2].ToString() + "|" + item[3].ToString();
+                            }
+                            if (list.TipoComprobante == "13 - Nota de Crédito C")
+                            {
+                                list.NroFacturaNotaDeCredtio = item[2].ToString() + "|" + item[3].ToString();
+                            }
                             list.Fecha = item[0].ToString();
                             list.NroFactura = item[2].ToString() + "|" + item[3].ToString();
                             list.TipoDNI = item[6].ToString();
@@ -157,7 +165,14 @@ namespace Sico
                             if (list.Fecha == "Fecha")
                             { continue; }
                             list.TipoComprobante = item[1].ToString();
-                            list.NroFactura = item[2].ToString() + "|" + item[3].ToString();
+                            if (list.TipoComprobante == "6 - Factura B" || list.TipoComprobante == " 1 - Factura A")
+                            {
+                                list.NroFactura = item[2].ToString() + "|" + item[3].ToString();
+                            }
+                            if (list.TipoComprobante == "8 - Nota de Crédito B" || list.TipoComprobante == "13 - Nota de Crédito C")
+                            {
+                                list.NroFacturaNotaDeCredtio = item[2].ToString() + "|" + item[3].ToString();
+                            }
                             list.TipoDNI = item[6].ToString();
                             if (list.TipoDNI == "CUIT")
                             {

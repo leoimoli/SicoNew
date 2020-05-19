@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using System.Web.UI.DataVisualization.Charting;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Sico
 {
@@ -30,11 +32,13 @@ namespace Sico
             RazonSocial = razonSocial;
             Cuit = cuit;
             CargarCombo();
-
+            ///// Hago una busqueda Inicial De Ventas.
+            string Año = "2020";
+            ListaTotalFacturacionVentas = ComprasNeg.FacturacionAnualVentasPorAño(cuit, Año);
         }
         private void CargarCombo()
         {
-            string[] Años = Clases_Maestras.ValoresConstantes.Años;
+            string[] Años = Clases_Maestras.ValoresConstantes.AñosHistoricos;
             cmbAño.Items.Add("Seleccione");
             cmbAño.Items.Clear();
             foreach (string item in Años)
@@ -69,12 +73,37 @@ namespace Sico
         private void cmbAño_SelectedIndexChanged(object sender, EventArgs e)
         {
             string año = cmbAño.Text;
-            ListaTotalFacturacion = ComprasNeg.FacturacionAnualPorPeriodos(cuit, año);
+            List<string> Periodos = new List<string>();
+            Periodos = ClienteNeg.CargarComboPeriodosCompras(año, cuit);
+            if (Periodos.Count > 0)
+            {
+                cmbPeriodoCompras.Enabled = true;
+                cmbPeriodoCompras.Items.Add("Seleccione");
+                cmbPeriodoCompras.Items.Clear();
+                foreach (string item in Periodos)
+                {
+                    cmbPeriodoCompras.Text = "Seleccione";
+                    cmbPeriodoCompras.Items.Add(item);
+                }
+            }
         }
         private void cmbAñoVentas_SelectedIndexChanged(object sender, EventArgs e)
         {
             string año = cmbAñoVentas.Text;
-            ListaTotalFacturacionVentas = ComprasNeg.FacturacionAnualVentasPorPeriodos(cuit, año);
+            List<string> Periodos = new List<string>();
+            Periodos = ClienteNeg.CargarComboPeriodos(año, cuit);
+            if (Periodos.Count > 0)
+            {
+                cmbPeriodosVentas.Enabled = true;
+                cmbPeriodosVentas.Items.Add("Seleccione");
+                cmbPeriodosVentas.Items.Clear();
+                foreach (string item in Periodos)
+                {
+                    cmbPeriodosVentas.Text = "Seleccione";
+                    cmbPeriodosVentas.Items.Add(item);
+                }
+            }
+
         }
         public List<Entidades.FacturaCompraAnual> ListaTotalFacturacion
         {
@@ -227,18 +256,24 @@ namespace Sico
                 }
             }
         }
+        public static List<Entidades.FacturaVentaAnual> ListaVentasStatic;
+        public static bool GraficoMonto;
+        public static bool GraficoIVA;
+        public static bool GraficoNeto;
         public List<Entidades.FacturaVentaAnual> ListaTotalFacturacionVentas
         {
             set
             {
                 if (value.Count > 0)
                 {
-
+                    ListaVentasStatic = value;
                     if (value != dgvVentasAnuales.DataSource && dgvVentasAnuales.DataSource != null)
                     {
                         dgvVentasAnuales.Columns.Clear();
                         dgvVentasAnuales.Refresh();
                     }
+                    chart1.Visible = false;
+                    lblGraficarVentas.Visible = true;
                     dgvVentasAnuales.Visible = true;
                     dgvVentasAnuales.ReadOnly = true;
                     dgvVentasAnuales.RowHeadersVisible = false;
@@ -775,19 +810,338 @@ namespace Sico
             return valor;
         }
         #endregion
-
         private void btnVencimientos_Click(object sender, EventArgs e)
         {
             VencimientoPorClienteWF _vencimientos = new VencimientoPorClienteWF(RazonSocial, Cuit);
             _vencimientos.Show();
             Hide();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             ConsultaVencimientosWF _consulta = new ConsultaVencimientosWF(razonSocial, cuit);
             _consulta.Show();
             Hide();
+        }
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnBuscarVentas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string Año = cmbAñoVentas.Text;
+                string Periodo = cmbPeriodosVentas.Text;
+                if (Año == "Seleccione")
+                {
+                    const string message = "Debe seleccionar un Año para realizar la busqueda.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Warning);
+                    throw new Exception();
+                }
+                if (Año != "Seleccione" && Periodo != "Seleccione")
+                {
+                    ListaTotalFacturacionVentas = ComprasNeg.FacturacionAnualVentasPorPeriodos(cuit, Periodo);
+                }
+                if (Año != "Seleccione" && Periodo == "Seleccione")
+                {
+                    ListaTotalFacturacionVentas = ComprasNeg.FacturacionAnualVentasPorAño(cuit, Año);
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            lblVentasIva.Visible = true;
+            lblVentasNeto.Visible = true;
+            lblVentasPorMonto.Visible = true;
+            lblBarras.Visible = true;
+            lblLineas.Visible = true;
+        }
+        private void fillChart(string[] series1, List<FacturaVentaAnual> listaVentasStatic)
+        {
+            chart1.Visible = true;
+            dgvVentasAnuales.Visible = false;
+            chart1.Series.Clear();
+            string nombreNuevaSerie = series1[0].ToString();
+            chart1.Series.Add(nombreNuevaSerie);
+            foreach (var item in listaVentasStatic)
+            {
+                chart1.Series[nombreNuevaSerie].Points.AddXY(item.Monto, item.Periodo);
+            }
+        }
+        private void lblVentasPorMonto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.chart1.Titles.Clear();
+            GraficoMonto = true;
+            GraficoNeto = false;
+            GraficoIVA = false;
+            chart1.Visible = true;
+            dgvVentasAnuales.Visible = false;
+            this.chart1.Series.Clear();
+            this.chart1.Titles.Add("Total Por Monto");
+            foreach (var item in ListaVentasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaVentasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaVentasStatic)
+            {
+                Series series = this.chart1.Series.Add(item.Periodo + "(" + "$ " + item.Monto + ")");
+                series.Points.AddXY("-", item.Monto);
+            }
+        }
+        private void lblVentasNeto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.chart1.Titles.Clear();
+            GraficoMonto = false;
+            GraficoNeto = true;
+            GraficoIVA = false;
+            chart1.Visible = true;
+            dgvVentasAnuales.Visible = false;
+            this.chart1.Series.Clear();
+            this.chart1.Titles.Add("Total Por Neto Grabado");
+            foreach (var item in ListaVentasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaVentasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaVentasStatic)
+            {
+                decimal TotalNeto = item.Neto1 + item.Neto2 + item.Neto3;
+                Series series = this.chart1.Series.Add(item.Periodo + "(" + "$" + TotalNeto + ")");
+                series.Points.AddXY("-", TotalNeto);
+            }
+        }
+        private void lblVentasIva_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.chart1.Titles.Clear();
+            GraficoMonto = false;
+            GraficoNeto = false;
+            GraficoIVA = true;
+            chart1.Visible = true;
+            dgvVentasAnuales.Visible = false;
+            this.chart1.Series.Clear();
+            this.chart1.Titles.Add("Total Por IVA");
+            foreach (var item in ListaVentasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaVentasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaVentasStatic)
+            {
+                decimal TotalIva = item.Iva1 + item.Iva2 + item.Iva3;
+                Series series = this.chart1.Series.Add(item.Periodo + "(" + "$" + TotalIva + ")");
+                series.Points.AddXY("-", TotalIva);
+            }
+        }
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (GraficoMonto == true)
+            {
+                GraficoBarraPorMonto();
+            }
+            if (GraficoIVA == true)
+            {
+                GraficoBarraPorIVA();
+            }
+            if (GraficoNeto == true)
+            {
+                GraficoBarraPorNeto();
+            }
+        }
+        private void GraficoBarraPorMonto()
+        {
+            this.chart1.Titles.Clear();
+            GraficoMonto = true;
+            GraficoNeto = false;
+            GraficoIVA = false;
+            chart1.Visible = true;
+            dgvVentasAnuales.Visible = false;
+            this.chart1.Series.Clear();
+            this.chart1.Titles.Add("Total Por Monto");
+            foreach (var item in ListaVentasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaVentasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaVentasStatic)
+            {
+                Series series = this.chart1.Series.Add(item.Periodo + "(" + "$ " + item.Monto + ")");
+                series.Points.AddXY("-", item.Monto);
+            }
+        }
+        private void GraficoBarraPorNeto()
+        {
+            this.chart1.Titles.Clear();
+            GraficoMonto = false;
+            GraficoNeto = true;
+            GraficoIVA = false;
+            chart1.Visible = true;
+            dgvVentasAnuales.Visible = false;
+            this.chart1.Series.Clear();
+            this.chart1.Titles.Add("Total Por Neto Grabado");
+            foreach (var item in ListaVentasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaVentasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaVentasStatic)
+            {
+                decimal TotalNeto = item.Neto1 + item.Neto2 + item.Neto3;
+                Series series = this.chart1.Series.Add(item.Periodo + "(" + "$" + TotalNeto + ")");
+                series.Points.AddXY("-", TotalNeto);
+            }
+        }
+        private void GraficoBarraPorIVA()
+        {
+            this.chart1.Titles.Clear();
+            GraficoMonto = false;
+            GraficoNeto = false;
+            GraficoIVA = true;
+            chart1.Visible = true;
+            dgvVentasAnuales.Visible = false;
+            this.chart1.Series.Clear();
+            this.chart1.Titles.Add("Total Por IVA");
+            foreach (var item in ListaVentasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaVentasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaVentasStatic)
+            {
+                decimal TotalIva = item.Iva1 + item.Iva2 + item.Iva3;
+                Series series = this.chart1.Series.Add(item.Periodo + "(" + "$" + TotalIva + ")");
+                series.Points.AddXY("-", TotalIva);
+            }
+        }
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (GraficoMonto == true)
+            {
+                GraficoLineaMonto();
+            }
+            if (GraficoIVA == true)
+            {
+                GraficoLineaIVA();
+            }
+            if (GraficoNeto == true)
+            {
+                GraficoLineaNeto();
+            }
+        }
+        private void GraficoLineaMonto()
+        {
+            this.chart1.Titles.Clear();
+            this.chart1.Series.Clear();
+            this.chart1.Titles.Add("Total Por Monto");
+            Series series = this.chart1.Series.Add("Total Por Monto");
+            series.ChartType = SeriesChartType.Spline;
+            foreach (var item in ListaVentasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaVentasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaVentasStatic)
+            {
+                series.Points.AddXY(item.Periodo + "(" + item.Monto + ")", item.Monto);
+            }
+        }
+        private void GraficoLineaNeto()
+        {
+            this.chart1.Titles.Clear();
+            this.chart1.Series.Clear();
+            this.chart1.Titles.Add("Total Por Neto Grabado");
+            Series series = this.chart1.Series.Add("Total Por Neto Grabado");
+            series.ChartType = SeriesChartType.Spline;
+            foreach (var item in ListaVentasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaVentasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaVentasStatic)
+            {
+                decimal TotalNeto = item.Neto1 + item.Neto2 + item.Neto3;
+                series.Points.AddXY(item.Periodo + "(" + TotalNeto + ")", TotalNeto);
+            }
+        }
+        private void GraficoLineaIVA()
+        {
+            this.chart1.Titles.Clear();
+            this.chart1.Series.Clear();
+            this.chart1.Titles.Add("Total Por IVA");
+            Series series = this.chart1.Series.Add("Total Por IVA");
+            series.ChartType = SeriesChartType.Spline;
+            foreach (var item in ListaVentasStatic)
+            {
+                if (item.Periodo == "TOTALES")
+                {
+                    ListaVentasStatic.Remove(item);
+                    break;
+                }
+            }
+            foreach (var item in ListaVentasStatic)
+            {
+                decimal TotalIva = item.Iva1 + item.Iva2 + item.Iva3;
+                series.Points.AddXY(item.Periodo + "(" + TotalIva + ")", TotalIva);
+            }
+        }
+
+        private void btnBuscarCompras_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string Año = cmbAño.Text;
+                string Periodo = cmbPeriodoCompras.Text;
+                if (Año == "Seleccione")
+                {
+                    const string message = "Debe seleccionar un Año para realizar la busqueda.";
+                    const string caption = "Atención";
+                    var result = MessageBox.Show(message, caption,
+                                                 MessageBoxButtons.OK,
+                                               MessageBoxIcon.Warning);
+                    throw new Exception();
+                }
+                if (Año != "Seleccione" && Periodo != "Seleccione")
+                {
+                    ListaTotalFacturacion = ComprasNeg.FacturacionAnualPorPeriodos(cuit, Periodo);
+                }
+                if (Año != "Seleccione" && Periodo == "Seleccione")
+                {
+                    //ListaTotalFacturacion = ComprasNeg.BuscarFacturacionTotalComprasPorAño(cuit, Año);
+                }
+            }
+            catch (Exception ex)
+            { }
         }
     }
 }

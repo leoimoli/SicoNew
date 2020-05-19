@@ -54,6 +54,14 @@ namespace Sico.Clases_Maestras
             }
         }
 
+        public static string[] AñosHistoricos
+        {
+            get
+            {
+                return new string[] { "2017","2018", "2019", "2020"};
+            }
+        }
+
         public static string[] TipoFactura
         {
             get
