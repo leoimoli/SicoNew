@@ -34,6 +34,7 @@
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vencimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarVencimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.periciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +47,7 @@
             this.lblMaster_FechaHora = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.calculadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -60,6 +62,7 @@
             this.configuraciónToolStripMenuItem,
             this.periciasToolStripMenuItem,
             this.usuariosToolStripMenuItem,
+            this.calculadoraToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -86,7 +89,8 @@
             // configuraciónToolStripMenuItem
             // 
             this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.vencimientosToolStripMenuItem});
+            this.vencimientosToolStripMenuItem,
+            this.consultarVencimientosToolStripMenuItem});
             this.configuraciónToolStripMenuItem.Image = global::Sico.Properties.Resources.interfaz;
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(136, 25);
@@ -96,9 +100,16 @@
             // 
             this.vencimientosToolStripMenuItem.Image = global::Sico.Properties.Resources.calendario;
             this.vencimientosToolStripMenuItem.Name = "vencimientosToolStripMenuItem";
-            this.vencimientosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.vencimientosToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
             this.vencimientosToolStripMenuItem.Text = "Cargar Vencimientos";
             this.vencimientosToolStripMenuItem.Click += new System.EventHandler(this.vencimientosToolStripMenuItem_Click);
+            // 
+            // consultarVencimientosToolStripMenuItem
+            // 
+            this.consultarVencimientosToolStripMenuItem.Image = global::Sico.Properties.Resources.buscar__1_;
+            this.consultarVencimientosToolStripMenuItem.Name = "consultarVencimientosToolStripMenuItem";
+            this.consultarVencimientosToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.consultarVencimientosToolStripMenuItem.Text = "Consultar Vencimientos";
             // 
             // periciasToolStripMenuItem
             // 
@@ -219,6 +230,13 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Sico(contable) V-1.5.1";
             // 
+            // calculadoraToolStripMenuItem
+            // 
+            this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
+            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(104, 25);
+            this.calculadoraToolStripMenuItem.Text = "Calculadora";
+            this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
+            // 
             // MasterWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,5 +281,7 @@
         private System.Windows.Forms.ToolStripMenuItem crearUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vencimientosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultarVencimientosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem calculadoraToolStripMenuItem;
     }
 }

@@ -38,6 +38,39 @@ namespace Sico.Dao
             connection.Close();
             return _listaProvincia;
         }
+
+        public static List<VencimientosPorMesAnio> BuscarVencimientosPorMesAño(string month, string year)
+        {
+            connection.Close();
+            connection.Open();
+            List<VencimientosPorMesAnio> lista = new List<VencimientosPorMesAnio>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("Mes_in", month),
+            new MySqlParameter("Anio_in", year)};
+            string proceso = "BuscarVencimientosPorMesAño";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    VencimientosPorMesAnio listaVencimientos = new VencimientosPorMesAnio();
+                    listaVencimientos.NombreTipoDeVencimiento = item["NombreTipoVencimiento"].ToString();
+                    listaVencimientos.FechaVencimiento = Convert.ToDateTime(item["FechaVencimiento"].ToString());
+                    String DiaDeLaSemana = listaVencimientos.FechaVencimiento.Day.ToString();
+                    listaVencimientos.Dia = DiaDeLaSemana;
+                    lista.Add(listaVencimientos);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<Vencimientos> BuscarTodosLosVencimientos(string cuit, DateTime fechaHoy)
         {
             int idCliente = BuscarIdClientePorCuit(cuit);

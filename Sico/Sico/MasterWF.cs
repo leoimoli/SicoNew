@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -81,6 +82,11 @@ namespace Sico
             ConfigurarVencimientosWF _vencimientos = new ConfigurarVencimientosWF();
             _vencimientos.Show();
             Hide();
+        }
+
+        private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\Windows\System32\calc.exe"); // Se abre paint
         }
     }
 }
