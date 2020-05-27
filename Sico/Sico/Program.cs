@@ -16,7 +16,7 @@ namespace Sico
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CalendarioWF());
+            Application.Run(new LoginWF());
         }
     }
 }

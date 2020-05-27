@@ -60,6 +60,7 @@ namespace Sico.Dao
                 foreach (DataRow item in Tabla.Rows)
                 {
                     VencimientosPorMesAnio listaVencimientos = new VencimientosPorMesAnio();
+                    listaVencimientos.idVencimiento = Convert.ToInt32(item["IdVencimiento"].ToString());
                     listaVencimientos.NombreTipoDeVencimiento = item["NombreTipoVencimiento"].ToString();
                     listaVencimientos.FechaVencimiento = Convert.ToDateTime(item["FechaVencimiento"].ToString());
                     String DiaDeLaSemana = listaVencimientos.FechaVencimiento.Day.ToString();
@@ -155,7 +156,30 @@ namespace Sico.Dao
             connection.Close();
             return _listaPeriodos;
         }
-
+        public static List<string> BuscarClientesPorIdVencimientos(string idVencimientos)
+        {
+            List<string> _listaPersonas = new List<string>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idVencimientos_in", idVencimientos) };
+            string proceso = "BuscarClientesPorIdVencimientos";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    _listaPersonas.Add(item["NombreRazonSocial"].ToString());
+                }
+            }
+            connection.Close();
+            return _listaPersonas;
+        }
         public static bool ValidarVencimientoExistente(string año, int idTipoVencimiento)
         {
             connection.Close();

@@ -433,6 +433,16 @@ namespace Sico.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap espalda {
+            get {
+                object obj = ResourceManager.GetObject("espalda", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap estadisticas_de_ventas {
             get {
                 object obj = ResourceManager.GetObject("estadisticas-de-ventas", resourceCulture);
@@ -716,6 +726,16 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap Provincia_5_ {
             get {
                 object obj = ResourceManager.GetObject("Provincia(5)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap proximo {
+            get {
+                object obj = ResourceManager.GetObject("proximo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

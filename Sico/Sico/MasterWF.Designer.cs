@@ -39,6 +39,7 @@
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarFirmaEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calculadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMaster_UsuarioLogin = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.lblMaster_FechaHora = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.calculadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -146,6 +146,13 @@
             this.cargarFirmaEmailToolStripMenuItem.Text = "Cargar Datos Email";
             this.cargarFirmaEmailToolStripMenuItem.Click += new System.EventHandler(this.cargarFirmaEmailToolStripMenuItem_Click);
             // 
+            // calculadoraToolStripMenuItem
+            // 
+            this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
+            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(104, 25);
+            this.calculadoraToolStripMenuItem.Text = "Calculadora";
+            this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Image = global::Sico.Properties.Resources.logout;
@@ -228,14 +235,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Sico(contable) V-1.5.1";
-            // 
-            // calculadoraToolStripMenuItem
-            // 
-            this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
-            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(104, 25);
-            this.calculadoraToolStripMenuItem.Text = "Calculadora";
-            this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
+            this.label3.Text = "Sico(contable) V-1.6.0";
             // 
             // MasterWF
             // 
