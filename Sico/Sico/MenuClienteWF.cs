@@ -256,7 +256,7 @@ namespace Sico
                 else
                 {
                     dgvComprasAnuales.Visible = false;
-                    MessageBox.Show("No se encontraron datos con los parametros ingresados.");
+                    MessageBox.Show("No se encontraron datos con los parametros ingresados en Compras.");
                 }
             }
         }
@@ -393,7 +393,7 @@ namespace Sico
                 else
                 {
                     dgvVentasAnuales.Visible = false;
-                    MessageBox.Show("No se encontraron datos con los parametros ingresados.");
+                    MessageBox.Show("No se encontraron datos con los parametros ingresados en Ventas.");
                 }
             }
         }

@@ -148,8 +148,9 @@
             // 
             // calculadoraToolStripMenuItem
             // 
+            this.calculadoraToolStripMenuItem.Image = global::Sico.Properties.Resources.calculadora;
             this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
-            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(104, 25);
+            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(120, 25);
             this.calculadoraToolStripMenuItem.Text = "Calculadora";
             this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
             // 

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnConsultarVencimientos = new System.Windows.Forms.Button();
             this.btnVencimientos = new System.Windows.Forms.Button();
@@ -215,10 +215,10 @@
             // 
             // chart2
             // 
-            chartArea11.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            this.chart2.Legends.Add(legend11);
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart2.Legends.Add(legend3);
             this.chart2.Location = new System.Drawing.Point(4, 92);
             this.chart2.Name = "chart2";
             this.chart2.Size = new System.Drawing.Size(590, 280);
@@ -381,9 +381,9 @@
             this.label18.ForeColor = System.Drawing.Color.SteelBlue;
             this.label18.Location = new System.Drawing.Point(188, 13);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(242, 20);
+            this.label18.Size = new System.Drawing.Size(206, 20);
             this.label18.TabIndex = 44;
-            this.label18.Text = "Facturación de compras Anuales";
+            this.label18.Text = "Compras Facturación Anual";
             // 
             // dgvComprasAnuales
             // 
@@ -498,10 +498,10 @@
             // 
             // chart1
             // 
-            chartArea12.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            this.chart1.Legends.Add(legend12);
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
             this.chart1.Location = new System.Drawing.Point(4, 92);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(590, 280);
@@ -583,9 +583,9 @@
             this.label5.ForeColor = System.Drawing.Color.SteelBlue;
             this.label5.Location = new System.Drawing.Point(197, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(228, 20);
+            this.label5.Size = new System.Drawing.Size(193, 20);
             this.label5.TabIndex = 45;
-            this.label5.Text = "Facturación de ventas Anuales";
+            this.label5.Text = "Ventas Facturación Anual";
             // 
             // dgvVentasAnuales
             // 

@@ -643,6 +643,7 @@
     <None Include="Resources\buscar %281%29.png" />
     <None Include="Resources\proximo.png" />
     <None Include="Resources\espalda.png" />
+    <None Include="Resources\calculadora.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
