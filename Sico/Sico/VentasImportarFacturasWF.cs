@@ -688,13 +688,11 @@ namespace Sico
             _tarea.Show();
             Hide();
         }
-
         private void chcTipaAyB_CheckedChanged(object sender, EventArgs e)
         {
             if (chcTipaAyB.Checked == true)
             { chcTipoC.Checked = false; }
         }
-
         private void chcTipoC_CheckedChanged(object sender, EventArgs e)
         {
             if (chcTipoC.Checked == true)

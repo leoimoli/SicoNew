@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterWF));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMaster_UsuarioLogin = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblFechaHora_Edit = new System.Windows.Forms.Label();
+            this.lblMaster_FechaHora = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,13 +48,6 @@
             this.cargarFirmaEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calculadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblMaster_UsuarioLogin = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblFechaHora_Edit = new System.Windows.Forms.Label();
-            this.lblMaster_FechaHora = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -69,98 +69,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1370, 29);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // inicioToolStripMenuItem
-            // 
-            this.inicioToolStripMenuItem.Image = global::Sico.Properties.Resources.icon__1_;
-            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
-            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(75, 25);
-            this.inicioToolStripMenuItem.Text = "Inicio";
-            this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.Image = global::Sico.Properties.Resources.comprador__2_;
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(93, 25);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
-            // 
-            // configuraciónToolStripMenuItem
-            // 
-            this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.vencimientosToolStripMenuItem,
-            this.consultarVencimientosToolStripMenuItem});
-            this.configuraciónToolStripMenuItem.Image = global::Sico.Properties.Resources.interfaz;
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(136, 25);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
-            // 
-            // vencimientosToolStripMenuItem
-            // 
-            this.vencimientosToolStripMenuItem.Image = global::Sico.Properties.Resources.calendario;
-            this.vencimientosToolStripMenuItem.Name = "vencimientosToolStripMenuItem";
-            this.vencimientosToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
-            this.vencimientosToolStripMenuItem.Text = "Cargar Vencimientos";
-            this.vencimientosToolStripMenuItem.Click += new System.EventHandler(this.vencimientosToolStripMenuItem_Click);
-            // 
-            // consultarVencimientosToolStripMenuItem
-            // 
-            this.consultarVencimientosToolStripMenuItem.Image = global::Sico.Properties.Resources.buscar__1_;
-            this.consultarVencimientosToolStripMenuItem.Name = "consultarVencimientosToolStripMenuItem";
-            this.consultarVencimientosToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
-            this.consultarVencimientosToolStripMenuItem.Text = "Consultar Vencimientos";
-            // 
-            // periciasToolStripMenuItem
-            // 
-            this.periciasToolStripMenuItem.Image = global::Sico.Properties.Resources.juicio;
-            this.periciasToolStripMenuItem.Name = "periciasToolStripMenuItem";
-            this.periciasToolStripMenuItem.Size = new System.Drawing.Size(90, 25);
-            this.periciasToolStripMenuItem.Text = "Pericias";
-            this.periciasToolStripMenuItem.Click += new System.EventHandler(this.periciasToolStripMenuItem_Click);
-            // 
-            // usuariosToolStripMenuItem
-            // 
-            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.crearUsuarioToolStripMenuItem,
-            this.cargarFirmaEmailToolStripMenuItem});
-            this.usuariosToolStripMenuItem.Image = global::Sico.Properties.Resources.usuario_hombre;
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(99, 25);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
-            // 
-            // crearUsuarioToolStripMenuItem
-            // 
-            this.crearUsuarioToolStripMenuItem.Image = global::Sico.Properties.Resources.usuario_hombre;
-            this.crearUsuarioToolStripMenuItem.Name = "crearUsuarioToolStripMenuItem";
-            this.crearUsuarioToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
-            this.crearUsuarioToolStripMenuItem.Text = "Crear Usuario";
-            this.crearUsuarioToolStripMenuItem.Click += new System.EventHandler(this.crearUsuarioToolStripMenuItem_Click);
-            // 
-            // cargarFirmaEmailToolStripMenuItem
-            // 
-            this.cargarFirmaEmailToolStripMenuItem.Image = global::Sico.Properties.Resources.e_mail_sobre_abierto;
-            this.cargarFirmaEmailToolStripMenuItem.Name = "cargarFirmaEmailToolStripMenuItem";
-            this.cargarFirmaEmailToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
-            this.cargarFirmaEmailToolStripMenuItem.Text = "Cargar Datos Email";
-            this.cargarFirmaEmailToolStripMenuItem.Click += new System.EventHandler(this.cargarFirmaEmailToolStripMenuItem_Click);
-            // 
-            // calculadoraToolStripMenuItem
-            // 
-            this.calculadoraToolStripMenuItem.Image = global::Sico.Properties.Resources.calculadora;
-            this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
-            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(120, 25);
-            this.calculadoraToolStripMenuItem.Text = "Calculadora";
-            this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Image = global::Sico.Properties.Resources.logout;
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(69, 25);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -237,6 +145,99 @@
             this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Sico(contable) V-1.6.0";
+            // 
+            // inicioToolStripMenuItem
+            // 
+            this.inicioToolStripMenuItem.Image = global::Sico.Properties.Resources.icon__1_;
+            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
+            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(75, 25);
+            this.inicioToolStripMenuItem.Text = "Inicio";
+            this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Image = global::Sico.Properties.Resources.comprador__2_;
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(93, 25);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
+            // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.vencimientosToolStripMenuItem,
+            this.consultarVencimientosToolStripMenuItem});
+            this.configuraciónToolStripMenuItem.Image = global::Sico.Properties.Resources.interfaz;
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(136, 25);
+            this.configuraciónToolStripMenuItem.Text = "Configuración";
+            // 
+            // vencimientosToolStripMenuItem
+            // 
+            this.vencimientosToolStripMenuItem.Image = global::Sico.Properties.Resources.calendario;
+            this.vencimientosToolStripMenuItem.Name = "vencimientosToolStripMenuItem";
+            this.vencimientosToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.vencimientosToolStripMenuItem.Text = "Cargar Vencimientos";
+            this.vencimientosToolStripMenuItem.Click += new System.EventHandler(this.vencimientosToolStripMenuItem_Click);
+            // 
+            // consultarVencimientosToolStripMenuItem
+            // 
+            this.consultarVencimientosToolStripMenuItem.Image = global::Sico.Properties.Resources.buscar__1_;
+            this.consultarVencimientosToolStripMenuItem.Name = "consultarVencimientosToolStripMenuItem";
+            this.consultarVencimientosToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.consultarVencimientosToolStripMenuItem.Text = "Consultar Vencimientos";
+            this.consultarVencimientosToolStripMenuItem.Click += new System.EventHandler(this.consultarVencimientosToolStripMenuItem_Click);
+            // 
+            // periciasToolStripMenuItem
+            // 
+            this.periciasToolStripMenuItem.Image = global::Sico.Properties.Resources.juicio;
+            this.periciasToolStripMenuItem.Name = "periciasToolStripMenuItem";
+            this.periciasToolStripMenuItem.Size = new System.Drawing.Size(90, 25);
+            this.periciasToolStripMenuItem.Text = "Pericias";
+            this.periciasToolStripMenuItem.Click += new System.EventHandler(this.periciasToolStripMenuItem_Click);
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crearUsuarioToolStripMenuItem,
+            this.cargarFirmaEmailToolStripMenuItem});
+            this.usuariosToolStripMenuItem.Image = global::Sico.Properties.Resources.usuario_hombre;
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(99, 25);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            // 
+            // crearUsuarioToolStripMenuItem
+            // 
+            this.crearUsuarioToolStripMenuItem.Image = global::Sico.Properties.Resources.usuario_hombre;
+            this.crearUsuarioToolStripMenuItem.Name = "crearUsuarioToolStripMenuItem";
+            this.crearUsuarioToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.crearUsuarioToolStripMenuItem.Text = "Crear Usuario";
+            this.crearUsuarioToolStripMenuItem.Click += new System.EventHandler(this.crearUsuarioToolStripMenuItem_Click);
+            // 
+            // cargarFirmaEmailToolStripMenuItem
+            // 
+            this.cargarFirmaEmailToolStripMenuItem.Image = global::Sico.Properties.Resources.e_mail_sobre_abierto;
+            this.cargarFirmaEmailToolStripMenuItem.Name = "cargarFirmaEmailToolStripMenuItem";
+            this.cargarFirmaEmailToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.cargarFirmaEmailToolStripMenuItem.Text = "Cargar Datos Email";
+            this.cargarFirmaEmailToolStripMenuItem.Click += new System.EventHandler(this.cargarFirmaEmailToolStripMenuItem_Click);
+            // 
+            // calculadoraToolStripMenuItem
+            // 
+            this.calculadoraToolStripMenuItem.Image = global::Sico.Properties.Resources.calculadora__1_;
+            this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
+            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(120, 25);
+            this.calculadoraToolStripMenuItem.Text = "Calculadora";
+            this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Image = global::Sico.Properties.Resources.logout;
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(69, 25);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // MasterWF
             // 

@@ -29,16 +29,42 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSeleccionar = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnInportarCompras = new System.Windows.Forms.Button();
             this.btnEstadisticas = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
             this.btnCuentaCorriente = new System.Windows.Forms.Button();
             this.btnCargarCompra = new System.Windows.Forms.Button();
             this.btnAgregarProveedor = new System.Windows.Forms.Button();
             this.dgvCompras = new System.Windows.Forms.DataGridView();
+            this.idFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ver = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Total1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Neto1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Neto2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Neto3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Iva1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Iva2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Iva3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PerIva = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PercIngre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoGravado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblCuitEdit = new System.Windows.Forms.Label();
@@ -57,6 +83,8 @@
             this.imgAnses = new System.Windows.Forms.PictureBox();
             this.imgAfip = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblFacturasMensaje = new System.Windows.Forms.Label();
+            this.btnCoral = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -102,9 +130,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnEstadisticas);
+            this.groupBox2.Controls.Add(this.btnInportarCompras);
             this.groupBox2.Controls.Add(this.btnVentas);
             this.groupBox2.Controls.Add(this.btnCuentaCorriente);
+            this.groupBox2.Controls.Add(this.btnEstadisticas);
             this.groupBox2.Controls.Add(this.btnCargarCompra);
             this.groupBox2.Controls.Add(this.btnAgregarProveedor);
             this.groupBox2.Location = new System.Drawing.Point(950, 77);
@@ -114,11 +143,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
             // 
+            // btnInportarCompras
+            // 
+            this.btnInportarCompras.Image = global::Sico.Properties.Resources.importacion__5_;
+            this.btnInportarCompras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnInportarCompras.Location = new System.Drawing.Point(45, 323);
+            this.btnInportarCompras.Name = "btnInportarCompras";
+            this.btnInportarCompras.Size = new System.Drawing.Size(90, 61);
+            this.btnInportarCompras.TabIndex = 19;
+            this.btnInportarCompras.Text = "Importar Compras";
+            this.btnInportarCompras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnInportarCompras.UseVisualStyleBackColor = true;
+            this.btnInportarCompras.Click += new System.EventHandler(this.btnInportarCompras_Click);
+            // 
             // btnEstadisticas
             // 
             this.btnEstadisticas.Image = global::Sico.Properties.Resources.diagrama;
             this.btnEstadisticas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEstadisticas.Location = new System.Drawing.Point(45, 424);
+            this.btnEstadisticas.Location = new System.Drawing.Point(45, 433);
             this.btnEstadisticas.Name = "btnEstadisticas";
             this.btnEstadisticas.Size = new System.Drawing.Size(90, 61);
             this.btnEstadisticas.TabIndex = 18;
@@ -126,17 +168,18 @@
             this.btnEstadisticas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnEstadisticas, "Estadisticas");
             this.btnEstadisticas.UseVisualStyleBackColor = true;
+            this.btnEstadisticas.Visible = false;
             this.btnEstadisticas.Click += new System.EventHandler(this.btnEstadisticas_Click);
             // 
             // btnVentas
             // 
             this.btnVentas.Image = global::Sico.Properties.Resources.estadisticas_de_ventas;
             this.btnVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVentas.Location = new System.Drawing.Point(45, 324);
+            this.btnVentas.Location = new System.Drawing.Point(45, 433);
             this.btnVentas.Name = "btnVentas";
             this.btnVentas.Size = new System.Drawing.Size(90, 61);
             this.btnVentas.TabIndex = 17;
-            this.btnVentas.Text = "Ventas";
+            this.btnVentas.Text = "Menú Ventas";
             this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnVentas, "Ventas");
             this.btnVentas.UseVisualStyleBackColor = true;
@@ -184,7 +227,35 @@
             // 
             // dgvCompras
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idFactura,
+            this.NroFactura,
+            this.Fecha,
+            this.Monto,
+            this.Proveedor,
+            this.Ver,
+            this.Editar,
+            this.Total1,
+            this.Total2,
+            this.Total3,
+            this.Neto1,
+            this.Neto2,
+            this.Neto3,
+            this.Iva1,
+            this.Iva2,
+            this.Iva3,
+            this.PerIva,
+            this.PercIngre,
+            this.NoGravado});
             this.dgvCompras.Location = new System.Drawing.Point(68, 234);
             this.dgvCompras.Name = "dgvCompras";
             this.dgvCompras.Size = new System.Drawing.Size(830, 305);
@@ -192,6 +263,133 @@
             this.dgvCompras.Visible = false;
             this.dgvCompras.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickBoton);
             this.dgvCompras.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvCompras_CellPainting);
+            // 
+            // idFactura
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idFactura.DefaultCellStyle = dataGridViewCellStyle2;
+            this.idFactura.HeaderText = "idFactura";
+            this.idFactura.Name = "idFactura";
+            // 
+            // NroFactura
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NroFactura.DefaultCellStyle = dataGridViewCellStyle3;
+            this.NroFactura.HeaderText = "Nro.Factura";
+            this.NroFactura.Name = "NroFactura";
+            this.NroFactura.Width = 160;
+            // 
+            // Fecha
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Fecha.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 80;
+            // 
+            // Monto
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Monto.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
+            // 
+            // Proveedor
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Proveedor.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.Name = "Proveedor";
+            this.Proveedor.Width = 280;
+            // 
+            // Ver
+            // 
+            this.Ver.HeaderText = "Ver";
+            this.Ver.Name = "Ver";
+            this.Ver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ver.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Name = "Editar";
+            // 
+            // Total1
+            // 
+            this.Total1.HeaderText = "Total1";
+            this.Total1.Name = "Total1";
+            this.Total1.Visible = false;
+            // 
+            // Total2
+            // 
+            this.Total2.HeaderText = "Total2";
+            this.Total2.Name = "Total2";
+            this.Total2.Visible = false;
+            // 
+            // Total3
+            // 
+            this.Total3.HeaderText = "Total3";
+            this.Total3.Name = "Total3";
+            this.Total3.Visible = false;
+            // 
+            // Neto1
+            // 
+            this.Neto1.HeaderText = "Neto1";
+            this.Neto1.Name = "Neto1";
+            this.Neto1.Visible = false;
+            // 
+            // Neto2
+            // 
+            this.Neto2.HeaderText = "Neto2";
+            this.Neto2.Name = "Neto2";
+            this.Neto2.Visible = false;
+            // 
+            // Neto3
+            // 
+            this.Neto3.HeaderText = "Neto3";
+            this.Neto3.Name = "Neto3";
+            this.Neto3.Visible = false;
+            // 
+            // Iva1
+            // 
+            this.Iva1.HeaderText = "Iva1";
+            this.Iva1.Name = "Iva1";
+            this.Iva1.Visible = false;
+            // 
+            // Iva2
+            // 
+            this.Iva2.HeaderText = "Iva2";
+            this.Iva2.Name = "Iva2";
+            this.Iva2.Visible = false;
+            // 
+            // Iva3
+            // 
+            this.Iva3.HeaderText = "Iva3";
+            this.Iva3.Name = "Iva3";
+            this.Iva3.Visible = false;
+            // 
+            // PerIva
+            // 
+            this.PerIva.HeaderText = "PerIva";
+            this.PerIva.Name = "PerIva";
+            this.PerIva.Visible = false;
+            // 
+            // PercIngre
+            // 
+            this.PercIngre.HeaderText = "PercIngre";
+            this.PercIngre.Name = "PercIngre";
+            this.PercIngre.Visible = false;
+            // 
+            // NoGravado
+            // 
+            this.NoGravado.HeaderText = "NoGravado";
+            this.NoGravado.Name = "NoGravado";
+            this.NoGravado.Visible = false;
             // 
             // groupBox3
             // 
@@ -303,7 +501,7 @@
             // 
             this.lblCantidadEdit.AutoSize = true;
             this.lblCantidadEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadEdit.Location = new System.Drawing.Point(788, 542);
+            this.lblCantidadEdit.Location = new System.Drawing.Point(788, 545);
             this.lblCantidadEdit.Name = "lblCantidadEdit";
             this.lblCantidadEdit.Size = new System.Drawing.Size(33, 20);
             this.lblCantidadEdit.TabIndex = 88;
@@ -314,7 +512,7 @@
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(734, 542);
+            this.lblCantidad.Location = new System.Drawing.Point(734, 545);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(48, 20);
             this.lblCantidad.TabIndex = 87;
@@ -391,11 +589,34 @@
             this.toolTip1.SetToolTip(this.imgAfip, "Afip");
             this.imgAfip.Click += new System.EventHandler(this.imgAfip_Click);
             // 
+            // lblFacturasMensaje
+            // 
+            this.lblFacturasMensaje.AutoSize = true;
+            this.lblFacturasMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFacturasMensaje.Location = new System.Drawing.Point(194, 545);
+            this.lblFacturasMensaje.Name = "lblFacturasMensaje";
+            this.lblFacturasMensaje.Size = new System.Drawing.Size(265, 20);
+            this.lblFacturasMensaje.TabIndex = 94;
+            this.lblFacturasMensaje.Text = "Facturas con montos inconsistentes";
+            this.lblFacturasMensaje.Visible = false;
+            // 
+            // btnCoral
+            // 
+            this.btnCoral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnCoral.Enabled = false;
+            this.btnCoral.Location = new System.Drawing.Point(158, 541);
+            this.btnCoral.Name = "btnCoral";
+            this.btnCoral.Size = new System.Drawing.Size(30, 30);
+            this.btnCoral.TabIndex = 95;
+            this.btnCoral.UseVisualStyleBackColor = false;
+            // 
             // ComprasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.Controls.Add(this.btnCoral);
+            this.Controls.Add(this.lblFacturasMensaje);
             this.Controls.Add(this.grbEnlances);
             this.Controls.Add(this.lblCantidadEdit);
             this.Controls.Add(this.lblCantidad);
@@ -426,6 +647,8 @@
             this.Controls.SetChildIndex(this.lblCantidad, 0);
             this.Controls.SetChildIndex(this.lblCantidadEdit, 0);
             this.Controls.SetChildIndex(this.grbEnlances, 0);
+            this.Controls.SetChildIndex(this.lblFacturasMensaje, 0);
+            this.Controls.SetChildIndex(this.btnCoral, 0);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -471,5 +694,27 @@
         private System.Windows.Forms.PictureBox imgAfip;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox imgAutoGestion;
+        private System.Windows.Forms.Button btnInportarCompras;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idFactura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NroFactura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
+        private System.Windows.Forms.DataGridViewButtonColumn Ver;
+        private System.Windows.Forms.DataGridViewButtonColumn Editar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Neto1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Neto2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Neto3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Iva1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Iva2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Iva3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PerIva;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PercIngre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoGravado;
+        private System.Windows.Forms.Label lblFacturasMensaje;
+        private System.Windows.Forms.Button btnCoral;
     }
 }

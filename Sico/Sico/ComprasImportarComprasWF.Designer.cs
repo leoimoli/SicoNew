@@ -1,6 +1,6 @@
 ﻿namespace Sico
 {
-    partial class VentasImportarFacturasWF
+    partial class ComprasImportarComprasWF
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentasImportarFacturasWF));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComprasImportarComprasWF));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblCuitEdit = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblNombreEdit = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.chcTipoC = new System.Windows.Forms.CheckBox();
-            this.chcTipaAyB = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnActualizarCombo = new System.Windows.Forms.Button();
             this.btnCrearPeriodo = new System.Windows.Forms.Button();
@@ -46,15 +43,31 @@
             this.btnCargarArchivo = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NroDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoCambio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Moneda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImpNetoGravado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImpNetoNoGravado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImpOpExentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PercIva = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PercepIngBrutos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImpTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Actualizar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.cmbPeriodo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnCargarDatos = new System.Windows.Forms.Button();
             this.btnCargaMasiva = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -69,7 +82,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(616, 48);
-            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Cliente";
             // 
@@ -115,9 +128,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.chcTipoC);
-            this.groupBox2.Controls.Add(this.chcTipaAyB);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.btnActualizarCombo);
             this.groupBox2.Controls.Add(this.btnCrearPeriodo);
@@ -127,50 +137,18 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.cmbPeriodo);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 81);
+            this.groupBox2.Location = new System.Drawing.Point(12, 63);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(616, 335);
-            this.groupBox2.TabIndex = 5;
+            this.groupBox2.Size = new System.Drawing.Size(616, 363);
+            this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Factura Ventas";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(101, 12);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(112, 17);
-            this.label7.TabIndex = 100;
-            this.label7.Text = "Tipo de Factura:";
-            // 
-            // chcTipoC
-            // 
-            this.chcTipoC.AutoSize = true;
-            this.chcTipoC.Location = new System.Drawing.Point(340, 13);
-            this.chcTipoC.Name = "chcTipoC";
-            this.chcTipoC.Size = new System.Drawing.Size(96, 17);
-            this.chcTipoC.TabIndex = 99;
-            this.chcTipoC.Text = "Tipo Factura C";
-            this.chcTipoC.UseVisualStyleBackColor = true;
-            this.chcTipoC.CheckedChanged += new System.EventHandler(this.chcTipoC_CheckedChanged);
-            // 
-            // chcTipaAyB
-            // 
-            this.chcTipaAyB.AutoSize = true;
-            this.chcTipaAyB.Location = new System.Drawing.Point(219, 13);
-            this.chcTipaAyB.Name = "chcTipaAyB";
-            this.chcTipaAyB.Size = new System.Drawing.Size(115, 17);
-            this.chcTipaAyB.TabIndex = 98;
-            this.chcTipaAyB.Text = "Tipo Factura  A - B";
-            this.chcTipaAyB.UseVisualStyleBackColor = true;
-            this.chcTipaAyB.CheckedChanged += new System.EventHandler(this.chcTipaAyB_CheckedChanged);
+            this.groupBox2.Text = "Factura Compras";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(106, 39);
+            this.label6.Location = new System.Drawing.Point(106, 23);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 17);
             this.label6.TabIndex = 97;
@@ -180,12 +158,11 @@
             // 
             this.btnActualizarCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizarCombo.Image = global::Sico.Properties.Resources.refrescar;
-            this.btnActualizarCombo.Location = new System.Drawing.Point(510, 68);
+            this.btnActualizarCombo.Location = new System.Drawing.Point(510, 52);
             this.btnActualizarCombo.Name = "btnActualizarCombo";
             this.btnActualizarCombo.Size = new System.Drawing.Size(46, 35);
             this.btnActualizarCombo.TabIndex = 96;
             this.btnActualizarCombo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnActualizarCombo, "Actualizar");
             this.btnActualizarCombo.UseVisualStyleBackColor = true;
             this.btnActualizarCombo.Click += new System.EventHandler(this.btnActualizarCombo_Click);
             // 
@@ -194,18 +171,17 @@
             this.btnCrearPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrearPeriodo.Image = global::Sico.Properties.Resources.ciclo_del_agua__2_;
             this.btnCrearPeriodo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCrearPeriodo.Location = new System.Drawing.Point(458, 68);
+            this.btnCrearPeriodo.Location = new System.Drawing.Point(458, 52);
             this.btnCrearPeriodo.Name = "btnCrearPeriodo";
             this.btnCrearPeriodo.Size = new System.Drawing.Size(46, 35);
             this.btnCrearPeriodo.TabIndex = 95;
             this.btnCrearPeriodo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnCrearPeriodo, "Nuevo Periodo");
             this.btnCrearPeriodo.UseVisualStyleBackColor = true;
             this.btnCrearPeriodo.Click += new System.EventHandler(this.btnCrearPeriodo_Click);
             // 
             // txtRuta
             // 
-            this.txtRuta.Location = new System.Drawing.Point(219, 38);
+            this.txtRuta.Location = new System.Drawing.Point(219, 22);
             this.txtRuta.Name = "txtRuta";
             this.txtRuta.Size = new System.Drawing.Size(217, 20);
             this.txtRuta.TabIndex = 44;
@@ -213,17 +189,16 @@
             // btnCargarArchivo
             // 
             this.btnCargarArchivo.Image = global::Sico.Properties.Resources.encontrar;
-            this.btnCargarArchivo.Location = new System.Drawing.Point(458, 30);
+            this.btnCargarArchivo.Location = new System.Drawing.Point(458, 14);
             this.btnCargarArchivo.Name = "btnCargarArchivo";
             this.btnCargarArchivo.Size = new System.Drawing.Size(46, 35);
             this.btnCargarArchivo.TabIndex = 43;
-            this.toolTip1.SetToolTip(this.btnCargarArchivo, "Buscar Archivo");
             this.btnCargarArchivo.UseVisualStyleBackColor = true;
             this.btnCargarArchivo.Click += new System.EventHandler(this.btnCargarArchivo_Click);
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(142, 293);
+            this.progressBar1.Location = new System.Drawing.Point(142, 305);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 42;
@@ -233,17 +208,117 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Fecha,
+            this.Tipo,
+            this.NroFactura,
+            this.TipoDoc,
+            this.NroDoc,
+            this.Proveedor,
+            this.TipoCambio,
+            this.Moneda,
+            this.ImpNetoGravado,
+            this.ImpNetoNoGravado,
+            this.ImpOpExentas,
+            this.PercIva,
+            this.PercepIngBrutos,
+            this.IVA,
+            this.ImpTotal,
+            this.Actualizar});
             this.dataGridView1.Location = new System.Drawing.Point(9, 108);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(601, 231);
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.Visible = false;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo Comprobante";
+            this.Tipo.Name = "Tipo";
+            // 
+            // NroFactura
+            // 
+            this.NroFactura.HeaderText = "NroFactura";
+            this.NroFactura.Name = "NroFactura";
+            // 
+            // TipoDoc
+            // 
+            this.TipoDoc.HeaderText = "Tipo Documento";
+            this.TipoDoc.Name = "TipoDoc";
+            // 
+            // NroDoc
+            // 
+            this.NroDoc.HeaderText = "Nro. Doc. Emisor";
+            this.NroDoc.Name = "NroDoc";
+            // 
+            // Proveedor
+            // 
+            this.Proveedor.HeaderText = "Denominación Emisor";
+            this.Proveedor.Name = "Proveedor";
+            // 
+            // TipoCambio
+            // 
+            this.TipoCambio.HeaderText = "Tipo de Cambio";
+            this.TipoCambio.Name = "TipoCambio";
+            // 
+            // Moneda
+            // 
+            this.Moneda.HeaderText = "Cod.Moneda";
+            this.Moneda.Name = "Moneda";
+            // 
+            // ImpNetoGravado
+            // 
+            this.ImpNetoGravado.HeaderText = "Imp. Neto Gravado";
+            this.ImpNetoGravado.Name = "ImpNetoGravado";
+            // 
+            // ImpNetoNoGravado
+            // 
+            this.ImpNetoNoGravado.HeaderText = "Imp. Neto No Gravado";
+            this.ImpNetoNoGravado.Name = "ImpNetoNoGravado";
+            // 
+            // ImpOpExentas
+            // 
+            this.ImpOpExentas.HeaderText = "Imp Op Exentas";
+            this.ImpOpExentas.Name = "ImpOpExentas";
+            // 
+            // PercIva
+            // 
+            this.PercIva.HeaderText = "Percep. Iva";
+            this.PercIva.Name = "PercIva";
+            // 
+            // PercepIngBrutos
+            // 
+            this.PercepIngBrutos.HeaderText = "Percep Ing Brutos";
+            this.PercepIngBrutos.Name = "PercepIngBrutos";
+            // 
+            // IVA
+            // 
+            this.IVA.HeaderText = "IVA";
+            this.IVA.Name = "IVA";
+            // 
+            // ImpTotal
+            // 
+            this.ImpTotal.HeaderText = "Imp Total";
+            this.ImpTotal.Name = "ImpTotal";
+            // 
+            // Actualizar
+            // 
+            this.Actualizar.HeaderText = "Act";
+            this.Actualizar.Name = "Actualizar";
+            this.Actualizar.Text = "Act";
             // 
             // cmbPeriodo
             // 
             this.cmbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPeriodo.FormattingEnabled = true;
-            this.cmbPeriodo.Location = new System.Drawing.Point(219, 77);
+            this.cmbPeriodo.Location = new System.Drawing.Point(219, 61);
             this.cmbPeriodo.Name = "cmbPeriodo";
             this.cmbPeriodo.Size = new System.Drawing.Size(217, 21);
             this.cmbPeriodo.TabIndex = 41;
@@ -252,7 +327,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(152, 78);
+            this.label2.Location = new System.Drawing.Point(152, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 40;
@@ -262,10 +337,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(583, 422);
+            this.label4.Location = new System.Drawing.Point(559, 429);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 17);
-            this.label4.TabIndex = 72;
+            this.label4.TabIndex = 78;
             this.label4.Text = "label4";
             this.label4.Visible = false;
             // 
@@ -273,30 +348,26 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(446, 422);
+            this.label5.Location = new System.Drawing.Point(422, 429);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 17);
-            this.label5.TabIndex = 71;
+            this.label5.TabIndex = 77;
             this.label5.Text = "Total de facturas:";
             this.label5.Visible = false;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // btnCargarDatos
             // 
             this.btnCargarDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargarDatos.Image = global::Sico.Properties.Resources.archivos_y_carpetas;
             this.btnCargarDatos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCargarDatos.Location = new System.Drawing.Point(307, 444);
+            this.btnCargarDatos.Location = new System.Drawing.Point(283, 449);
             this.btnCargarDatos.Name = "btnCargarDatos";
             this.btnCargarDatos.Size = new System.Drawing.Size(80, 51);
-            this.btnCargarDatos.TabIndex = 56;
+            this.btnCargarDatos.TabIndex = 76;
             this.btnCargarDatos.Text = "Cargar Datos";
             this.btnCargarDatos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCargarDatos.UseVisualStyleBackColor = true;
-            this.btnCargarDatos.Click += new System.EventHandler(this.bntCargarDatos_Click);
+            this.btnCargarDatos.Click += new System.EventHandler(this.btnCargarDatos_Click);
             // 
             // btnCargaMasiva
             // 
@@ -304,10 +375,10 @@
             this.btnCargaMasiva.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargaMasiva.Image = global::Sico.Properties.Resources.importacion__5_;
             this.btnCargaMasiva.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCargaMasiva.Location = new System.Drawing.Point(418, 444);
+            this.btnCargaMasiva.Location = new System.Drawing.Point(394, 449);
             this.btnCargaMasiva.Name = "btnCargaMasiva";
             this.btnCargaMasiva.Size = new System.Drawing.Size(80, 51);
-            this.btnCargaMasiva.TabIndex = 55;
+            this.btnCargaMasiva.TabIndex = 75;
             this.btnCargaMasiva.Text = "Importar";
             this.btnCargaMasiva.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCargaMasiva.UseVisualStyleBackColor = true;
@@ -318,16 +389,20 @@
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
             this.btnVolver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVolver.Location = new System.Drawing.Point(191, 444);
+            this.btnVolver.Location = new System.Drawing.Point(167, 449);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(80, 51);
-            this.btnVolver.TabIndex = 54;
+            this.btnVolver.TabIndex = 74;
             this.btnVolver.Text = "Volver";
             this.btnVolver.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // VentasImportarFacturasWF
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // ComprasImportarComprasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -340,10 +415,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "VentasImportarFacturasWF";
+            this.Name = "ComprasImportarComprasWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ventas Importar Facturas";
-            this.Load += new System.EventHandler(this.VentasImportarFacturasWF_Load);
+            this.Text = "Importar Compras";
+            this.Load += new System.EventHandler(this.ComprasImportarComprasWF_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -362,24 +437,37 @@
         private System.Windows.Forms.Label lblNombreEdit;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ComboBox cmbPeriodo;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnCargaMasiva;
-        private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnCargarDatos;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtRuta;
-        private System.Windows.Forms.Button btnCargarArchivo;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnActualizarCombo;
         private System.Windows.Forms.Button btnCrearPeriodo;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtRuta;
+        private System.Windows.Forms.Button btnCargarArchivo;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox cmbPeriodo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnCargarDatos;
+        private System.Windows.Forms.Button btnCargaMasiva;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox chcTipoC;
-        private System.Windows.Forms.CheckBox chcTipaAyB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NroFactura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NroDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoCambio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Moneda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImpNetoGravado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImpNetoNoGravado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImpOpExentas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PercIva;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PercepIngBrutos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IVA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImpTotal;
+        private System.Windows.Forms.DataGridViewButtonColumn Actualizar;
     }
 }

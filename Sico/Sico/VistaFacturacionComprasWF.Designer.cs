@@ -204,8 +204,6 @@
             this.cmbPeriodo.Name = "cmbPeriodo";
             this.cmbPeriodo.Size = new System.Drawing.Size(211, 21);
             this.cmbPeriodo.TabIndex = 88;
-            //this.cmbPeriodo.SelectedIndexChanged += new System.EventHandler(this.cmbPeriodo_SelectedIndexChanged);
-            //this.cmbPeriodo.Click += new System.EventHandler(this.cmbPeriodo_SelectedIndexChanged);
             // 
             // label28
             // 
@@ -380,7 +378,6 @@
             this.cmbCodigoOperacion.Name = "cmbCodigoOperacion";
             this.cmbCodigoOperacion.Size = new System.Drawing.Size(211, 21);
             this.cmbCodigoOperacion.TabIndex = 67;
-            //this.cmbCodigoOperacion.SelectedIndexChanged += new System.EventHandler(this.cmbCodigoOperacion_SelectedIndexChanged);
             // 
             // cmbCodigoMoneda
             // 
@@ -390,8 +387,6 @@
             this.cmbCodigoMoneda.Name = "cmbCodigoMoneda";
             this.cmbCodigoMoneda.Size = new System.Drawing.Size(211, 21);
             this.cmbCodigoMoneda.TabIndex = 66;
-            //this.cmbCodigoMoneda.SelectedIndexChanged += new System.EventHandler(this.cmbCodigoMoneda_SelectedIndexChanged);
-            //this.cmbCodigoMoneda.Click += new System.EventHandler(this.cmbCodigoMoneda_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -678,8 +673,6 @@
             this.cmbTipoComprobante.Name = "cmbTipoComprobante";
             this.cmbTipoComprobante.Size = new System.Drawing.Size(350, 21);
             this.cmbTipoComprobante.TabIndex = 5;
-            //this.cmbTipoComprobante.SelectedIndexChanged += new System.EventHandler(this.cmbTipoComprobante_SelectedIndexChanged);
-            //this.cmbTipoComprobante.Click += new System.EventHandler(this.cmbTipoComprobante_SelectedIndexChanged);
             // 
             // label4
             // 

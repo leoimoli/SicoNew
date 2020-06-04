@@ -38,45 +38,30 @@ namespace Sico
             List<string> TipoComprobante = new List<string>();
             TipoComprobante = ComprasNeg.CargarComboTipoComprobante();
             cmbTipoComprobante.Items.Clear();
-            //cmbTipoComprobante.Text = "Seleccione";
-            //cmbTipoComprobante.Items.Add("Seleccione");
             foreach (string item in TipoComprobante)
             {
-                //cmbTipoComprobante.Text = "Seleccione";
                 cmbTipoComprobante.Items.Add(item);
             }
 
             List<string> CodigoOperacion = new List<string>();
             CodigoOperacion = ComprasNeg.CargarComboCodigoOperacion();
             cmbCodigoOperacion.Items.Clear();
-            //cmbCodigoOperacion.Text = "Seleccione";
-            //cmbCodigoOperacion.Items.Add("Seleccione");
             foreach (string item in CodigoOperacion)
             {
-                //cmbCodigoOperacion.Text = "Seleccione";
                 cmbCodigoOperacion.Items.Add(item);
             }
-
             List<string> TipoMoneda = new List<string>();
             TipoMoneda = ComprasNeg.CargarComboTipoMoneda();
             cmbCodigoMoneda.Items.Clear();
-            //cmbCodigoMoneda.Text = "Seleccione";
-            //cmbCodigoMoneda.Items.Add("Seleccione");
             foreach (string item in TipoMoneda)
             {
-                //cmbCodigoMoneda.Text = "Seleccione";
                 cmbCodigoMoneda.Items.Add(item);
             }
-
-
             List<string> Periodo = new List<string>();
             Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
             cmbPeriodo.Items.Clear();
-            //cmbCodigoMoneda.Text = "Seleccione";
-            //cmbCodigoMoneda.Items.Add("Seleccione");
             foreach (string item in Periodo)
             {
-                //cmbCodigoMoneda.Text = "Seleccione";
                 cmbPeriodo.Items.Add(item);
             }
         }
@@ -647,12 +632,33 @@ namespace Sico
 
         private void cmbTipoComprobante_TextChanged(object sender, EventArgs e)
         {
-            if (cmbTipoComprobante.Text == "001 - FACTURAS A\r")
+            if (cmbTipoComprobante.Text == "001 - FACTURA A\r" || cmbTipoComprobante.Text == "003 - NOTA DE CREDITO A\r")
             {
-                HabilitarCampos();
+                txtNeto1.Enabled = true;
+                txtNeto2.Enabled = true;
+                txtNeto3.Enabled = true;
+                txtTotal1.Enabled = false;
+                txtTotal2.Enabled = false;
+                txtTotal3.Enabled = false;
+                txtIva1.Enabled = false;
+                txtIva2.Enabled = false;
+                txtIva3.Enabled = false;
                 txtFactura.Focus();
             }
-            if (cmbTipoComprobante.Text == "011 - FACTURAS C")
+            if (cmbTipoComprobante.Text == "006 - FACTURA B\r" || cmbTipoComprobante.Text == "008 - NOTA DE CREDITO B\r")
+            {
+                txtNeto1.Enabled = false;
+                txtNeto2.Enabled = false;
+                txtNeto3.Enabled = false;
+                txtTotal1.Enabled = true;
+                txtTotal2.Enabled = true;
+                txtTotal3.Enabled = true;
+                txtIva1.Enabled = false;
+                txtIva2.Enabled = false;
+                txtIva3.Enabled = false;
+                txtFactura.Focus();
+            }
+            if (cmbTipoComprobante.Text == "011 - FACTURA C" || cmbTipoComprobante.Text == "013 - NOTA DE CREDITO C")
             {
                 txtTotal1.Enabled = false;
                 txtTotal2.Enabled = false;
@@ -672,7 +678,7 @@ namespace Sico
         public static int idCliente;
         private void btnCrearPeriodo_Click(object sender, EventArgs e)
         {
-          
+
             PeriodosWF _periodo = new PeriodosWF(cuit, razonSocial);
             _periodo.Show();
         }
@@ -681,5 +687,101 @@ namespace Sico
         {
             CargarCombos();
         }
+
+        private void txtTotal1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ///// Calculo el NetoGral Alicuota 10,5
+                double Total1 = Convert.ToDouble(txtTotal1.Text);
+                decimal NetoCalculado = CalcularValorNeto1(Total1);
+                txtNeto1.Text = Convert.ToString(NetoCalculado);
+
+                ///// Calculo el IVA Alicuota 10,5
+                decimal IvaCalculado = CalcularIva1(NetoCalculado);
+                txtIva1.Text = Convert.ToString(IvaCalculado);
+
+                ///// Calculo el Monto Total
+                if (Total == 0)
+                {
+                    lblTotalEdit.Text = Convert.ToString(Total1);
+                    decimal TotalCargado = Convert.ToDecimal(Total1);
+                    Total = TotalCargado;
+                }
+                else
+                {
+                    RecalcularTotal1();
+                    //decimal TotalCargado = Convert.ToDecimal(Total1);
+                    //decimal TotalMostrar = Total + TotalCargado;
+                    //Total = TotalMostrar;
+                    lblTotalEdit.Text = Convert.ToString(Total);
+                }
+                txtTotal2.Focus();
+            }
+        }
+        private void txtTotal2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ///// Calculo el NetoGral Alicuota 21
+                double Total2 = Convert.ToDouble(txtTotal2.Text);
+                decimal NetoCalculado = CalcularValorNeto2(Total2);
+                txtNeto2.Text = Convert.ToString(NetoCalculado);
+
+                ///// Calculo el IVA Alicuota 21
+                decimal IvaCalculado = CalcularIva2(NetoCalculado);
+                txtIva2.Text = Convert.ToString(IvaCalculado);
+
+                ///// Calculo el Monto Total
+                if (Total == 0)
+                {
+                    lblTotalEdit.Text = Convert.ToString(Total2);
+                    decimal TotalCargado = Convert.ToDecimal(Total2);
+                    Total = TotalCargado;
+                }
+                else
+                {
+                    RecalcularTotal2();
+                    lblTotalEdit.Text = Convert.ToString(Total);
+                    //decimal TotalCargado = Convert.ToDecimal(Total2);
+                    //decimal TotalMostrar = Total + TotalCargado;
+                    //Total = TotalMostrar;
+                    //lblTotalEdit.Text = Convert.ToString(TotalMostrar);
+                }
+                txtTotal3.Focus();
+            }
+        }
+        private void txtTotal3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ///// Calculo el NetoGral Alicuota 27
+                double Total3 = Convert.ToDouble(txtTotal3.Text);
+                decimal NetoCalculado = CalcularValorNeto3(Total3);
+                txtNeto3.Text = Convert.ToString(NetoCalculado);
+
+                ///// Calculo el IVA Alicuota 27
+                decimal IvaCalculado = CalcularIva3(NetoCalculado);
+                txtIva3.Text = Convert.ToString(IvaCalculado);
+
+                ///// Calculo el Monto Total
+                if (Total == 0)
+                {
+                    lblTotalEdit.Text = Convert.ToString(Total3);
+                    decimal TotalCargado = Convert.ToDecimal(Total3);
+                    Total = TotalCargado;
+                }
+                else
+                {
+                    RecalcularTotal3();
+                    //lblTotalEdit.Text = Convert.ToString(Total);
+                    //decimal TotalCargado = Convert.ToDecimal(Total3);
+                    //decimal TotalMostrar = Total + TotalCargado;
+                    //Total = TotalMostrar;
+                    lblTotalEdit.Text = Convert.ToString(Total);
+                }
+            }
+        }
     }
 }
+

@@ -36,6 +36,7 @@
             this.lblNombreEdit = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnVolver2 = new System.Windows.Forms.Button();
             this.cmbPeriodo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -45,7 +46,6 @@
             this.btnCitiVentas = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.btnVolver2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -118,6 +118,19 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Factura sub-cliente";
+            // 
+            // btnVolver2
+            // 
+            this.btnVolver2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver2.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
+            this.btnVolver2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVolver2.Location = new System.Drawing.Point(530, 19);
+            this.btnVolver2.Name = "btnVolver2";
+            this.btnVolver2.Size = new System.Drawing.Size(49, 39);
+            this.btnVolver2.TabIndex = 49;
+            this.btnVolver2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVolver2.UseVisualStyleBackColor = true;
+            this.btnVolver2.Click += new System.EventHandler(this.btnVolver2_Click);
             // 
             // cmbPeriodo
             // 
@@ -218,19 +231,6 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Visible = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
-            // btnVolver2
-            // 
-            this.btnVolver2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver2.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
-            this.btnVolver2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVolver2.Location = new System.Drawing.Point(530, 19);
-            this.btnVolver2.Name = "btnVolver2";
-            this.btnVolver2.Size = new System.Drawing.Size(49, 39);
-            this.btnVolver2.TabIndex = 49;
-            this.btnVolver2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnVolver2.UseVisualStyleBackColor = true;
-            this.btnVolver2.Click += new System.EventHandler(this.btnVolver2_Click);
             // 
             // VistaConsultaFacturacionMensualWF
             // 

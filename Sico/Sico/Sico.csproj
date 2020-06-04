@@ -209,6 +209,12 @@
     <Compile Include="ComprasEstadisticasWF.Designer.cs">
       <DependentUpon>ComprasEstadisticasWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComprasImportarComprasWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComprasImportarComprasWF.Designer.cs">
+      <DependentUpon>ComprasImportarComprasWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComprasWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -413,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComprasEstadisticasWF.resx">
       <DependentUpon>ComprasEstadisticasWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComprasImportarComprasWF.resx">
+      <DependentUpon>ComprasImportarComprasWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ComprasWF.resx">
       <DependentUpon>ComprasWF.cs</DependentUpon>
@@ -644,6 +653,7 @@
     <None Include="Resources\proximo.png" />
     <None Include="Resources\espalda.png" />
     <None Include="Resources\calculadora.png" />
+    <None Include="Resources\calculadora %281%29.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

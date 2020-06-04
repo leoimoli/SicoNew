@@ -88,5 +88,12 @@ namespace Sico
         {
             Process.Start(@"C:\Windows\System32\calc.exe"); // Se abre paint
         }
+
+        private void consultarVencimientosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CalendarioWF _calendario = new CalendarioWF();
+            _calendario.Show();
+            Hide();
+        }
     }
 }

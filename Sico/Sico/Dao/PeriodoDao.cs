@@ -74,7 +74,33 @@ namespace Sico.Dao
             connection.Close();
             return _TipoMoneda;
         }
-
+        public static List<string> CargarComboPeriodoCompras(string cuit)
+        {
+            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int idCliente = id[0].IdCliente;
+            connection.Close();
+            connection.Open();
+            List<string> _TipoMoneda = new List<string>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idCliente) };
+            string proceso = "ListarPeriodoCompras";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    _TipoMoneda.Add(item["Nombre"].ToString());
+                }
+            }
+            connection.Close();
+            return _TipoMoneda;
+        }
         public static bool GuardarPeriodoVenta(string cuit, string nombre, string Año)
         {
             bool exito = false;
@@ -177,7 +203,7 @@ namespace Sico.Dao
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idCliente) };
-            string proceso = "ListarPeriodoVenta";
+            string proceso = "ListarPeriodoCompras";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
             dt.SelectCommand.Parameters.AddRange(oParam);

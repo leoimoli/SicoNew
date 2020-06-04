@@ -32,6 +32,7 @@ namespace Sico
         }
         public void DiseñoDataGridView(DataGridView dgv, List<VencimientosPorMesAnio> _listaVencimientos)
         {
+            
             dataGridView1.Columns.Clear();
             dataGridView1.Refresh();
             dataGridView1.RowHeadersVisible = false;
@@ -84,6 +85,9 @@ namespace Sico
             dataGridView1.Columns[4].HeaderCell.Style.BackColor = Color.DarkBlue;
             dataGridView1.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 10, FontStyle.Bold);
             dataGridView1.Columns[4].HeaderCell.Style.ForeColor = Color.White;
+            dataGridView1.CurrentCell = null;
+
+
         }
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {

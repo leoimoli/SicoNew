@@ -267,5 +267,19 @@ namespace Sico.Negocio
             }
             return _listaFacturacionComprasAnual;
         }
+
+        public static int GuardarCargaMasivaCompras(List<FacturaCompra> listaStatic, string cuit, string periodo)
+        {
+            int exito = 0;
+            try
+            {
+                exito = ComprasDao.GuardarCargaMasivaCompras(listaStatic, cuit, periodo);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return exito;
+        }
     }
 }

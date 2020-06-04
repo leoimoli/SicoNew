@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubClienteWF));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.txtObservacion = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblAltura = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtApellidoNombre = new System.Windows.Forms.TextBox();
             this.txtDni = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblCuitEdit = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -78,15 +78,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Sub-Cliente";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(108, 449);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(330, 23);
-            this.progressBar1.TabIndex = 43;
-            this.progressBar1.Value = 50;
-            this.progressBar1.Visible = false;
             // 
             // txtObservacion
             // 
@@ -177,6 +168,15 @@
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(211, 20);
             this.txtDni.TabIndex = 2;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(108, 449);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(330, 23);
+            this.progressBar1.TabIndex = 43;
+            this.progressBar1.Value = 50;
+            this.progressBar1.Visible = false;
             // 
             // groupBox2
             // 

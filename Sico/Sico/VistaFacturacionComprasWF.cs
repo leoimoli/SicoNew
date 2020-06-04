@@ -113,11 +113,85 @@ namespace Sico
             cmbPeriodo.Text = Factura.Periodo;
             cmbPeriodo.Enabled = true;
             btnCrearPeriodo.Visible = true;
+
+            if (txtTotal1.Text != "")
+            {
+                double ValorIncial = Convert.ToDouble(txtTotal1.Text);
+                double Result = Convert.ToDouble(Factura.Neto1 + Factura.Iva1);
+                txtTotal1.Text = Convert.ToString(Math.Round((Result), 2));
+                if (ValorIncial != Result)
+                {
+                    txtTotal1.BackColor = Color.LightCoral;
+                    txtNeto1.BackColor = Color.LightCoral;
+                    txtIva1.BackColor = Color.LightCoral;
+                }
+            }
+            if (txtTotal2.Text != "")
+            {
+                double ValorIncial = Convert.ToDouble(txtTotal2.Text);
+                double Result = Convert.ToDouble(Factura.Neto2 + Factura.Iva2);
+                txtTotal2.Text = Convert.ToString(Math.Round((Result), 2));
+                if (ValorIncial != Result)
+                {
+                    txtTotal2.BackColor = Color.LightCoral;
+                    txtNeto2.BackColor = Color.LightCoral;
+                    txtIva2.BackColor = Color.LightCoral;
+                }
+            }
+            if (txtTotal3.Text != "")
+            {
+                double ValorIncial = Convert.ToDouble(txtTotal3.Text);
+                double Result = Convert.ToDouble(Factura.Neto3 + Factura.Iva3);
+                txtTotal3.Text = Convert.ToString(Math.Round((Result), 2));
+                if (ValorIncial != Result)
+                {
+                    txtTotal3.BackColor = Color.LightCoral;
+                    txtNeto3.BackColor = Color.LightCoral;
+                    txtIva3.BackColor = Color.LightCoral;
+                }
+            }
+
+            if (cmbTipoComprobante.Text == "001 - Factura A" || cmbTipoComprobante.Text == "003 - Nota de Crédito A")
+            {
+                txtNeto1.Enabled = true;
+                txtNeto2.Enabled = true;
+                txtNeto3.Enabled = true;
+                txtTotal1.Enabled = false;
+                txtTotal2.Enabled = false;
+                txtTotal3.Enabled = false;
+                txtIva1.Enabled = false;
+                txtIva2.Enabled = false;
+                txtIva3.Enabled = false;
+            }
+            if (cmbTipoComprobante.Text == "6 - Factura B" || cmbTipoComprobante.Text == "8 - Nota de Crédito B")
+            {
+                txtNeto1.Enabled = false;
+                txtNeto2.Enabled = false;
+                txtNeto3.Enabled = false;
+                txtTotal1.Enabled = true;
+                txtTotal2.Enabled = true;
+                txtTotal3.Enabled = true;
+                txtIva1.Enabled = false;
+                txtIva2.Enabled = false;
+                txtIva3.Enabled = false;
+            }
+            if (cmbTipoComprobante.Text == "11 - Factura C" || cmbTipoComprobante.Text == "13 - Nota de Crédito C")
+            {
+                txtNeto1.Enabled = false;
+                txtNeto2.Enabled = false;
+                txtNeto3.Enabled = false;
+                txtTotal1.Enabled = false;
+                txtTotal2.Enabled = false;
+                txtTotal3.Enabled = false;
+                txtIva1.Enabled = false;
+                txtIva2.Enabled = false;
+                txtIva3.Enabled = false;
+            }
         }
         private void HabilitarCampos()
         {
             dtFecha.Enabled = true;
-            cmbTipoComprobante.Enabled = true;
+            cmbTipoComprobante.Enabled = false;
             txtFactura.Enabled = false;
             txtTotal1.Enabled = true;
             txtTotal2.Enabled = true;
@@ -136,6 +210,7 @@ namespace Sico
             txtTipoCambio.Enabled = true;
             btnGuardar.Enabled = true;
             txtNoGravado.Enabled = true;
+            cmbPeriodo.Enabled = false;
             //btnActualizar.Visible = true;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -228,6 +303,7 @@ namespace Sico
             _factura.TipoDeCambio = txtTipoCambio.Text;
             _factura.CodigoTipoOperacion = cmbCodigoOperacion.Text;
             _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
+            _factura.Periodo = cmbPeriodo.Text;
             return _factura;
         }
         private void txtNeto1_KeyDown(object sender, KeyEventArgs e)
@@ -486,7 +562,7 @@ namespace Sico
             if (txtTotal2.Text != "") { Valor2 = Convert.ToDecimal(txtTotal2.Text); }
             if (txtTotal3.Text != "") { Valor3 = Convert.ToDecimal(txtTotal3.Text); }
             if (txtPercepIVA.Text != "") { Valor4 = Convert.ToDecimal(txtPercepIVA.Text); }
-            if (txtPercepIVA.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
+            if (txtPercepIngBrutos.Text != "") { Valor5 = Convert.ToDecimal(txtPercepIngBrutos.Text); }
             if (txtNoGravado.Text != "") { Valor5 = Convert.ToDecimal(txtNoGravado.Text); }
 
             Total = Valor1 + Valor2 + Valor3 + Valor4 + Valor5 + Valor6;
@@ -510,11 +586,9 @@ namespace Sico
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            string RazonSocial = this.razonSocial;
-            string cuit = this.cuit;
             ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
             _tarea.Show();
-            Close();
+            Hide();
         }
 
         private void btnActualizarCombo_Click(object sender, EventArgs e)
@@ -529,23 +603,6 @@ namespace Sico
                 //cmbCodigoMoneda.Text = "Seleccione";
                 cmbPeriodo.Items.Add(item);
             }
-        }             
-
-        //private void cmbTipoComprobante_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    this.cmbTipoComprobante.DropDownStyle = ComboBoxStyle.DropDownList;
-        //}
-        //private void cmbCodigoMoneda_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    this.cmbCodigoMoneda.DropDownStyle = ComboBoxStyle.DropDownList;
-        //}
-        //private void cmbPeriodo_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    this.cmbPeriodo.DropDownStyle = ComboBoxStyle.DropDownList;
-        //}
-        //private void cmbCodigoOperacion_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    this.cmbCodigoOperacion.DropDownStyle = ComboBoxStyle.DropDownList;
-        //}
+        }
     }
 }

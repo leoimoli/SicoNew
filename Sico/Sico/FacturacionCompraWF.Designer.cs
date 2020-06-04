@@ -285,7 +285,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(862, 146);
+            this.label22.Location = new System.Drawing.Point(862, 152);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(58, 17);
             this.label22.TabIndex = 80;
@@ -609,6 +609,7 @@
             this.txtTotal3.Size = new System.Drawing.Size(211, 20);
             this.txtTotal3.TabIndex = 44;
             this.txtTotal3.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
+            this.txtTotal3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotal3_KeyDown);
             // 
             // txtTotal2
             // 
@@ -618,6 +619,7 @@
             this.txtTotal2.Size = new System.Drawing.Size(211, 20);
             this.txtTotal2.TabIndex = 43;
             this.txtTotal2.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
+            this.txtTotal2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotal2_KeyDown);
             this.txtTotal2.Validated += new System.EventHandler(this.txtTotal1_TextChanged);
             // 
             // txtTotal1
@@ -628,6 +630,7 @@
             this.txtTotal1.Size = new System.Drawing.Size(211, 20);
             this.txtTotal1.TabIndex = 42;
             this.txtTotal1.TextChanged += new System.EventHandler(this.txtTotal1_TextChanged);
+            this.txtTotal1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotal1_KeyDown);
             // 
             // txtApellidoNombre
             // 
@@ -711,6 +714,7 @@
             this.cmbTipoComprobante.Name = "cmbTipoComprobante";
             this.cmbTipoComprobante.Size = new System.Drawing.Size(350, 21);
             this.cmbTipoComprobante.TabIndex = 5;
+            this.cmbTipoComprobante.SelectedIndexChanged += new System.EventHandler(this.cmbTipoComprobante_TextChanged);
             this.cmbTipoComprobante.TextChanged += new System.EventHandler(this.cmbTipoComprobante_TextChanged);
             // 
             // label4

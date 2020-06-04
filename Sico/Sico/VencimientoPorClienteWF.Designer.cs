@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VencimientoPorClienteWF));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblCuitEdit = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -231,6 +232,7 @@
             this.Controls.Add(this.txtDia);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VencimientoPorClienteWF";
             this.Text = "Vencimientos por Cliente";
             this.Load += new System.EventHandler(this.VencimientoPorClienteWF_Load);

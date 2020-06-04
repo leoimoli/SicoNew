@@ -50,6 +50,12 @@ namespace Sico.Negocio
                 throw new Exception();
             }
         }
+        internal static List<string> CargarComboPeriodoCompras(string cuit)
+        {
+            List<string> lista = new List<string>();
+            lista = PeriodoDao.CargarComboPeriodoCompras(cuit);
+            return lista;
+        }
         public static bool GuardarPeriodoVenta(string cuit, string nombre, string año)
         {
             bool exito = false;

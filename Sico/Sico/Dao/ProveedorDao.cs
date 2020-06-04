@@ -166,5 +166,46 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
+        public static int GuardarProveedorMasivos(string nombreProveedor, string cuit, string TipoFactura)
+        {
+            int idProveedor = 0;
+            string condicionAntiAfip = "";
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string proceso = "AltaProveedor";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("NombreRazonSocial_in", nombreProveedor);
+            cuit = cuit.Insert(2, "-");
+            cuit = cuit.Insert(11, "-");
+            cmd.Parameters.AddWithValue("Cuit_in", cuit);
+            cmd.Parameters.AddWithValue("Factura_in", TipoFactura);
+            if (TipoFactura == "1 - Factura A" || TipoFactura == "6 - Factura B" || TipoFactura == "3 - Nota de Crédito A" || TipoFactura == "8 - Nota de Crédito B")
+            {
+                condicionAntiAfip = "Responsable Inscripto";
+            }
+            if (TipoFactura == "11 - Factura C" || TipoFactura == "13 - Nota de Crédito C")
+            {
+                condicionAntiAfip = "Monotributo" + "/" + "Exento";
+            }
+            cmd.Parameters.AddWithValue("CondicionAntiAfip_in", condicionAntiAfip);
+            cmd.Parameters.AddWithValue("Telefono_in", "");
+            cmd.Parameters.AddWithValue("Email_in", "");
+            cmd.Parameters.AddWithValue("Provincia_in", "");
+            cmd.Parameters.AddWithValue("Localidad_in", "");
+            cmd.Parameters.AddWithValue("Calle_in", "");
+            cmd.Parameters.AddWithValue("Altura_in", "");
+            cmd.Parameters.AddWithValue("CodigoPostal_in", "");
+            int idUsuario = 1;
+            cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
+            MySqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                idProveedor = Convert.ToInt32(r["ID"].ToString());
+            }
+            connection.Close();
+            return idProveedor;
+        }
     }
 }
