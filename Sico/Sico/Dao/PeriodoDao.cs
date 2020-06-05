@@ -19,6 +19,7 @@ namespace Sico.Dao
             id = ClienteDao.BuscarClientePorCuit(cuit);
             int idCliente = id[0].IdCliente;
             bool YaExiste = ValidadPeriodoExistente(nombre, idCliente, Año);
+            string NombrePeriodo = nombre + Año;
             if (YaExiste == false)
             {
                 connection.Close();
@@ -28,7 +29,7 @@ namespace Sico.Dao
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("idCliente_in", idCliente);
                 cmd.Parameters.AddWithValue("Ano_in", Año);
-                cmd.Parameters.AddWithValue("Nombre_in", nombre);
+                cmd.Parameters.AddWithValue("Nombre_in", NombrePeriodo);
                 cmd.ExecuteNonQuery();
                 exito = true;
                 connection.Close();
