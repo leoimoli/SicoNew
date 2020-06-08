@@ -9,7 +9,7 @@ namespace Sico.Entidades
     public class FacturaVentaAnual
     {
         public string Periodo { get; set; }
-        public Decimal Monto { get; set; }
+        public decimal Monto { get; set; }
         public decimal Total1 { get; set; }
         public decimal Total2 { get; set; }
         public decimal Total3 { get; set; }

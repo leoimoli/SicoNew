@@ -47,7 +47,7 @@ namespace Sico
         private void CargarCombo()
         {
             List<string> Periodo = new List<string>();
-            Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
+            Periodo = PeriodoNeg.CargarComboPeriodoVenta(cuit);
             cmbPeriodo.Items.Clear();
             foreach (string item in Periodo)
             {

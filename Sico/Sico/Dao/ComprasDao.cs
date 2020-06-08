@@ -74,98 +74,6 @@ namespace Sico.Dao
             }
             return lista;
         }
-        public static List<FacturaVentaAnual> FacturacionAnualVentasPorPeriodos(string cuit, string Periodo)
-        {
-            List<FacturaVentaAnual> lista = new List<FacturaVentaAnual>();
-            List<Entidades.Cliente> id = new List<Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuit);
-            int IdCliente = id[0].IdCliente;
-            if (IdCliente > 0)
-            {
-                connection.Close();
-                connection.Open();
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = connection;
-                DataTable Tabla = new DataTable();
-                MySqlParameter[] oParam = {
-                            new MySqlParameter("Periodo_in", Periodo),
-                                      new MySqlParameter("idCliente_in", IdCliente)};
-                string proceso = "FacturacionAnualVentasPorPeriodos";
-                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt.SelectCommand.Parameters.AddRange(oParam);
-                dt.Fill(Tabla);
-                if (Tabla.Rows.Count > 0)
-                {
-                    foreach (DataRow item in Tabla.Rows)
-                    {
-                        FacturaVentaAnual listaFacturacion = new FacturaVentaAnual();
-                        listaFacturacion.Periodo = item["Periodo"].ToString();
-                        listaFacturacion.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
-                        listaFacturacion.Total1 = Convert.ToDecimal(item["Total1"].ToString());
-                        listaFacturacion.Total2 = Convert.ToDecimal(item["Total2"].ToString());
-                        listaFacturacion.Total3 = Convert.ToDecimal(item["Total3"].ToString());
-                        listaFacturacion.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
-                        listaFacturacion.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
-                        listaFacturacion.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
-                        listaFacturacion.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
-                        listaFacturacion.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
-                        listaFacturacion.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
-                        lista.Add(listaFacturacion);
-                    }
-                }
-            }
-            connection.Close();
-            return lista;
-        }
-        public static List<FacturaCompraAnual> FacturacionAnualPorPeriodos(string cuit, string periodo)
-        {
-            List<FacturaCompraAnual> lista = new List<FacturaCompraAnual>();
-            List<Entidades.Cliente> id = new List<Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuit);
-            int IdCliente = id[0].IdCliente;
-            if (IdCliente > 0)
-            {
-                connection.Close();
-                connection.Open();
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = connection;
-                DataTable Tabla = new DataTable();
-                MySqlParameter[] oParam = {
-                            new MySqlParameter("Periodo_in", periodo),
-                                      new MySqlParameter("idCliente_in", IdCliente)};
-                string proceso = "FacturacionAnualPorPeriodos";
-                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt.SelectCommand.Parameters.AddRange(oParam);
-                dt.Fill(Tabla);
-                if (Tabla.Rows.Count > 0)
-                {
-                    foreach (DataRow item in Tabla.Rows)
-                    {
-                        FacturaCompraAnual listaFacturacion = new FacturaCompraAnual();
-                        listaFacturacion.Periodo = item["Periodo"].ToString();
-                        listaFacturacion.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
-                        listaFacturacion.Total1 = Convert.ToDecimal(item["Total1"].ToString());
-                        listaFacturacion.Total2 = Convert.ToDecimal(item["Total2"].ToString());
-                        listaFacturacion.Total3 = Convert.ToDecimal(item["Total3"].ToString());
-                        listaFacturacion.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
-                        listaFacturacion.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
-                        listaFacturacion.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
-                        listaFacturacion.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
-                        listaFacturacion.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
-                        listaFacturacion.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
-                        listaFacturacion.PercepIngBrutos = Convert.ToDecimal(item["PercepcionIngresosBrutos"].ToString());
-                        listaFacturacion.PercepIva = Convert.ToDecimal(item["PercepcionIva"].ToString());
-                        listaFacturacion.NoGravado = Convert.ToDecimal(item["NoGravado"].ToString());
-                        lista.Add(listaFacturacion);
-                    }
-                }
-            }
-            connection.Close();
-            return lista;
-        }
-
         public static List<EstadisticaCompraTorta> BuscarFacturacionTorta(string cuit, string periodoTorta)
         {
             List<EstadisticaCompraTorta> lista = new List<EstadisticaCompraTorta>();
@@ -201,7 +109,6 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
-
         public static List<FacturaCompra> BuscarTodasFacturasDeComprasDelCliente(string cuit)
         {
             List<FacturaCompra> lista = new List<FacturaCompra>();
@@ -261,167 +168,6 @@ namespace Sico.Dao
             }
             return lista;
         }
-        public static List<FacturaCompraAnual> FacturacionAnualPorAño(string cuit, string año)
-        {
-            List<string> listaPeriodos = new List<string>();
-            List<FacturaCompraAnual> lista = new List<FacturaCompraAnual>();
-            List<FacturaCompraAnual> listaNotas = new List<FacturaCompraAnual>();
-            string PeriodoMostrar = "";
-            List<Entidades.Cliente> id = new List<Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuit);
-            int IdCliente = id[0].IdCliente;
-            if (IdCliente > 0)
-            {
-                listaPeriodos = BuscarPeriodosComprasPorAñoIdCliente(IdCliente, año);
-                foreach (var item in listaPeriodos)
-                {
-                    string Periodo = item;
-                    connection.Close();
-                    connection.Open();
-                    MySqlCommand cmd = new MySqlCommand();
-                    cmd.Connection = connection;
-                    DataTable Tabla = new DataTable();
-                    MySqlParameter[] oParam = {
-                            new MySqlParameter("Periodo_in", Periodo),
-                                      new MySqlParameter("idCliente_in", IdCliente)};
-                    string proceso = "FacturacionAnualPorPeriodos";
-                    MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-                    dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                    dt.SelectCommand.Parameters.AddRange(oParam);
-                    dt.Fill(Tabla);
-                    if (Tabla.Rows.Count > 0)
-                    {
-                        foreach (DataRow item2 in Tabla.Rows)
-                        {
-                            FacturaCompraAnual listaFacturacion = new FacturaCompraAnual();
-                            PeriodoMostrar = item2["Periodo"].ToString();
-                            listaFacturacion.Periodo = item2["Periodo"].ToString();
-                            listaFacturacion.Monto = Convert.ToDecimal(item2["MontoTotal"].ToString());
-                            listaFacturacion.Total1 = Convert.ToDecimal(item2["Total1"].ToString());
-                            listaFacturacion.Total2 = Convert.ToDecimal(item2["Total2"].ToString());
-                            listaFacturacion.Total3 = Convert.ToDecimal(item2["Total3"].ToString());
-                            listaFacturacion.Neto1 = Convert.ToDecimal(item2["Neto1"].ToString());
-                            listaFacturacion.Neto2 = Convert.ToDecimal(item2["Neto2"].ToString());
-                            listaFacturacion.Neto3 = Convert.ToDecimal(item2["Neto3"].ToString());
-                            listaFacturacion.Iva1 = Convert.ToDecimal(item2["Iva1"].ToString());
-                            listaFacturacion.Iva2 = Convert.ToDecimal(item2["Iva2"].ToString());
-                            listaFacturacion.Iva3 = Convert.ToDecimal(item2["Iva3"].ToString());
-                            lista.Add(listaFacturacion);
-                        }
-                    }
-                    connection.Close();
-                    connection.Open();
-                    MySqlCommand cmd2 = new MySqlCommand();
-                    cmd.Connection = connection;
-                    DataTable Tabla2 = new DataTable();
-                    MySqlParameter[] oParam2 = {
-                            new MySqlParameter("Periodo_in", Periodo),
-                                      new MySqlParameter("idCliente_in", IdCliente)};
-                    string proceso2 = "FacturacionAnualNotasDeCreditoPorPeriodos";
-                    MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
-                    dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
-                    dt2.SelectCommand.Parameters.AddRange(oParam2);
-                    dt2.Fill(Tabla2);
-                    if (Tabla2.Rows.Count > 0)
-                    {
-                        foreach (DataRow item2 in Tabla2.Rows)
-                        {
-                            FacturaCompraAnual listaFacturacionNotaDeCredito = new FacturaCompraAnual();
-                            listaFacturacionNotaDeCredito.Periodo = item2["Periodo"].ToString();
-                            listaFacturacionNotaDeCredito.Monto = Convert.ToDecimal(item2["MontoTotal"].ToString());
-                            listaFacturacionNotaDeCredito.Total1 = Convert.ToDecimal(item2["Total1"].ToString());
-                            listaFacturacionNotaDeCredito.Total2 = Convert.ToDecimal(item2["Total2"].ToString());
-                            listaFacturacionNotaDeCredito.Total3 = Convert.ToDecimal(item2["Total3"].ToString());
-                            listaFacturacionNotaDeCredito.Neto1 = Convert.ToDecimal(item2["Neto1"].ToString());
-                            listaFacturacionNotaDeCredito.Neto2 = Convert.ToDecimal(item2["Neto2"].ToString());
-                            listaFacturacionNotaDeCredito.Neto3 = Convert.ToDecimal(item2["Neto3"].ToString());
-                            listaFacturacionNotaDeCredito.Iva1 = Convert.ToDecimal(item2["Iva1"].ToString());
-                            listaFacturacionNotaDeCredito.Iva2 = Convert.ToDecimal(item2["Iva2"].ToString());
-                            listaFacturacionNotaDeCredito.Iva3 = Convert.ToDecimal(item2["Iva3"].ToString());
-                            listaNotas.Add(listaFacturacionNotaDeCredito);
-                        }
-                    }
-                    if (lista.Count > 0 && listaNotas.Count > 0)
-                    {
-                        decimal ListaMontoTotal = 0;
-                        decimal ListaTotal1 = 0;
-                        decimal ListaTotal2 = 0;
-                        decimal ListaTotal3 = 0;
-                        decimal ListaNeto1 = 0;
-                        decimal ListaNeto2 = 0;
-                        decimal ListaNeto3 = 0;
-                        decimal ListaIva1 = 0;
-                        decimal ListaIva2 = 0;
-                        decimal ListaIva3 = 0;
-                        foreach (var itemLista in lista)
-                        {
-                            ListaMontoTotal = itemLista.Monto;
-                            ListaTotal1 = itemLista.Total1;
-                            ListaTotal2 = itemLista.Total2;
-                            ListaTotal3 = itemLista.Total3;
-                            ListaNeto1 = itemLista.Neto1;
-                            ListaNeto2 = itemLista.Neto2;
-                            ListaNeto3 = itemLista.Neto3;
-                            ListaIva1 = itemLista.Iva1;
-                            ListaIva2 = itemLista.Iva2;
-                            ListaIva3 = itemLista.Iva3;
-
-                        }
-                        decimal NotasMontoTotal = 0;
-                        decimal NotasTotal1 = 0;
-                        decimal NotasTotal2 = 0;
-                        decimal NotasTotal3 = 0;
-                        decimal NotasNeto1 = 0;
-                        decimal NotasNeto2 = 0;
-                        decimal NotasNeto3 = 0;
-                        decimal NotasIva1 = 0;
-                        decimal NotasIva2 = 0;
-                        decimal NotasIva3 = 0;
-                        foreach (var itemListaNotas in listaNotas)
-                        {
-                            NotasMontoTotal = itemListaNotas.Monto;
-                            NotasTotal1 = itemListaNotas.Total1;
-                            NotasTotal2 = itemListaNotas.Total2;
-                            NotasTotal3 = itemListaNotas.Total3;
-                            NotasNeto1 = itemListaNotas.Neto1;
-                            NotasNeto2 = itemListaNotas.Neto2;
-                            NotasNeto3 = itemListaNotas.Neto3;
-                            NotasIva1 = itemListaNotas.Iva1;
-                            NotasIva2 = itemListaNotas.Iva2;
-                            NotasIva3 = itemListaNotas.Iva3;
-                        }
-                        decimal FinalMonto = ListaMontoTotal - NotasMontoTotal;
-                        decimal FinalTotal1 = ListaTotal1 - NotasTotal1;
-                        decimal FinalTotal2 = ListaTotal2 - NotasTotal2;
-                        decimal FinalTotal3 = ListaTotal3 - NotasTotal3;
-                        decimal FinalNeto1 = ListaNeto1 - NotasNeto1;
-                        decimal FinalNeto2 = ListaNeto2 - NotasNeto2;
-                        decimal FinalNeto3 = ListaNeto3 - NotasNeto3;
-                        decimal FinalIva1 = ListaIva1 - NotasIva1;
-                        decimal FinalIva2 = ListaIva2 - NotasIva2;
-                        decimal FinalIva3 = ListaIva3 - NotasIva3;
-                        lista.Clear();
-                        //lista.Add(FinalMonto, FinalTotal1, FinalTotal2, FinalTotal3, FinalNeto1, FinalNeto2, FinalNeto3, FinalIva1, FinalIva2, FinalIva3);
-                        FacturaCompraAnual listaFacturacion = new FacturaCompraAnual();
-                        listaFacturacion.Periodo = PeriodoMostrar;
-                        listaFacturacion.Monto = Convert.ToDecimal(FinalMonto);
-                        listaFacturacion.Total1 = Convert.ToDecimal(FinalTotal1);
-                        listaFacturacion.Total2 = Convert.ToDecimal(FinalTotal2);
-                        listaFacturacion.Total3 = Convert.ToDecimal(FinalTotal3);
-                        listaFacturacion.Neto1 = Convert.ToDecimal(FinalNeto1);
-                        listaFacturacion.Neto2 = Convert.ToDecimal(FinalNeto2);
-                        listaFacturacion.Neto3 = Convert.ToDecimal(FinalNeto3);
-                        listaFacturacion.Iva1 = Convert.ToDecimal(FinalIva1);
-                        listaFacturacion.Iva2 = Convert.ToDecimal(FinalIva2);
-                        listaFacturacion.Iva3 = Convert.ToDecimal(FinalIva3);
-                        lista.Clear();
-                        lista.Add(listaFacturacion);
-                    }
-                }
-            }
-            connection.Close();
-            return lista;
-        }
         private static List<string> BuscarPeriodosComprasPorAñoIdCliente(int idCliente, string año)
         {
             List<string> listaPeriodos = new List<string>();
@@ -447,56 +193,6 @@ namespace Sico.Dao
             }
             connection.Close();
             return listaPeriodos;
-        }
-        public static List<FacturaVentaAnual> FacturacionAnualVentasPorAño(string cuit, string año)
-        {
-            List<string> listaPeriodos = new List<string>();
-            List<FacturaVentaAnual> lista = new List<FacturaVentaAnual>();
-            List<Entidades.Cliente> id = new List<Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuit);
-            int IdCliente = id[0].IdCliente;
-            if (IdCliente > 0)
-            {
-                listaPeriodos = BuscarPeriodosPorAñoIdCliente(IdCliente, año);
-                foreach (var item in listaPeriodos)
-                {
-                    string Periodo = item;
-                    connection.Close();
-                    connection.Open();
-                    MySqlCommand cmd = new MySqlCommand();
-                    cmd.Connection = connection;
-                    DataTable Tabla = new DataTable();
-                    MySqlParameter[] oParam = {
-                            new MySqlParameter("Periodo_in", Periodo),
-                                      new MySqlParameter("idCliente_in", IdCliente)};
-                    string proceso = "FacturacionAnualVentasDetallePorPeriodo";
-                    MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-                    dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                    dt.SelectCommand.Parameters.AddRange(oParam);
-                    dt.Fill(Tabla);
-                    if (Tabla.Rows.Count > 0)
-                    {
-                        foreach (DataRow item2 in Tabla.Rows)
-                        {
-                            FacturaVentaAnual listaFacturacion = new FacturaVentaAnual();
-                            listaFacturacion.Periodo = item2["Periodo"].ToString();
-                            listaFacturacion.Monto = Convert.ToDecimal(item2["MontoTotal"].ToString());
-                            listaFacturacion.Total1 = Convert.ToDecimal(item2["Total1"].ToString());
-                            listaFacturacion.Total2 = Convert.ToDecimal(item2["Total2"].ToString());
-                            listaFacturacion.Total3 = Convert.ToDecimal(item2["Total3"].ToString());
-                            listaFacturacion.Neto1 = Convert.ToDecimal(item2["Neto1"].ToString());
-                            listaFacturacion.Neto2 = Convert.ToDecimal(item2["Neto2"].ToString());
-                            listaFacturacion.Neto3 = Convert.ToDecimal(item2["Neto3"].ToString());
-                            listaFacturacion.Iva1 = Convert.ToDecimal(item2["Iva1"].ToString());
-                            listaFacturacion.Iva2 = Convert.ToDecimal(item2["Iva2"].ToString());
-                            listaFacturacion.Iva3 = Convert.ToDecimal(item2["Iva3"].ToString());
-                            lista.Add(listaFacturacion);
-                        }
-                    }
-                }
-            }
-            connection.Close();
-            return lista;
         }
         private static List<string> BuscarPeriodosPorAñoIdCliente(int id, string año)
         {
@@ -736,7 +432,7 @@ namespace Sico.Dao
                 MySqlParameter[] oParam = {
                             new MySqlParameter("Periodo_in", Periodo),
                                       new MySqlParameter("IdCliente_in", IdCliente)};
-                string proceso = "BuscarFacturacionTotalComprasPorPeriodo";
+                string proceso = "BuscarFacturacionTotalCompras";
                 MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
                 dt.SelectCommand.CommandType = CommandType.StoredProcedure;
                 dt.SelectCommand.Parameters.AddRange(oParam);
@@ -902,7 +598,6 @@ namespace Sico.Dao
             connection.Close();
             return CodigoRespuesta;
         }
-
         private static bool RegistrarDetalleFacturaCompraMasiva(FacturaCompra item, int idUltimaFacturaCompra)
         {
             bool exito = false;
@@ -937,7 +632,6 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-
         private static int BuscarProveedor(string nombreProveedor)
         {
             connection.Open();
@@ -1077,5 +771,685 @@ namespace Sico.Dao
             connection.Close();
             return _CodigoOperacion;
         }
+
+
+        ///////// Consultas Para Ventas
+        public static List<FacturaVentaAnual> FacturacionAnualVentasPorPeriodos(string cuit, string Periodo)
+        {
+            /////Facturas
+            decimal ListaMontoTotal = 0;
+            decimal ListaTotal1 = 0;
+            decimal ListaTotal2 = 0;
+            decimal ListaTotal3 = 0;
+            decimal ListaNeto1 = 0;
+            decimal ListaNeto2 = 0;
+            decimal ListaNeto3 = 0;
+            decimal ListaIva1 = 0;
+            decimal ListaIva2 = 0;
+            decimal ListaIva3 = 0;
+            /////Notas 
+            decimal NotasMontoTotal = 0;
+            decimal NotasTotal1 = 0;
+            decimal NotasTotal2 = 0;
+            decimal NotasTotal3 = 0;
+            decimal NotasNeto1 = 0;
+            decimal NotasNeto2 = 0;
+            decimal NotasNeto3 = 0;
+            decimal NotasIva1 = 0;
+            decimal NotasIva2 = 0;
+            decimal NotasIva3 = 0;
+            List<FacturaVentaAnual> listaFinal = new List<FacturaVentaAnual>();
+            List<FacturaVentaAnual> Notaslista = new List<FacturaVentaAnual>();
+            List<FacturaVentaAnual> lista = new List<FacturaVentaAnual>();
+            List<Entidades.Cliente> id = new List<Cliente>();
+            string PeriodoMostrar = "";
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int IdCliente = id[0].IdCliente;
+            if (IdCliente > 0)
+            {
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                            new MySqlParameter("Periodo_in", Periodo),
+                                      new MySqlParameter("idCliente_in", IdCliente)};
+                string proceso = "FacturacionAnualVentasPorPeriodos";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        FacturaVentaAnual Facturacion = new FacturaVentaAnual();
+                        PeriodoMostrar = item["Periodo"].ToString();
+                        Facturacion.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+                        Facturacion.Total1 = Convert.ToDecimal(item["Total1"].ToString());
+                        Facturacion.Total2 = Convert.ToDecimal(item["Total2"].ToString());
+                        Facturacion.Total3 = Convert.ToDecimal(item["Total3"].ToString());
+                        Facturacion.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
+                        Facturacion.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
+                        Facturacion.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
+                        Facturacion.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
+                        Facturacion.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
+                        Facturacion.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+                        lista.Add(Facturacion);
+                    }
+                    if (lista.Count > 0)
+                    {
+                        var LisFacturas = lista.First();
+                        ListaMontoTotal = LisFacturas.Monto;
+                        ListaTotal1 = LisFacturas.Total1;
+                        ListaTotal2 = LisFacturas.Total2;
+                        ListaTotal3 = LisFacturas.Total3;
+                        ListaNeto1 = LisFacturas.Neto1;
+                        ListaNeto2 = LisFacturas.Neto2;
+                        ListaNeto3 = LisFacturas.Neto3;
+                        ListaIva1 = LisFacturas.Iva1;
+                        ListaIva2 = LisFacturas.Iva2;
+                        ListaIva3 = LisFacturas.Iva3;
+                    }
+                }
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd2 = new MySqlCommand();
+                cmd2.Connection = connection;
+                DataTable Tabla2 = new DataTable();
+                MySqlParameter[] oParam2 = {
+                            new MySqlParameter("Periodo_in", Periodo),
+                                      new MySqlParameter("idCliente_in", IdCliente)};
+                string proceso2 = "FacturacionAnualVentasNotasDeCreditoPorPeriodos";
+                MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+                dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt2.SelectCommand.Parameters.AddRange(oParam2);
+                dt2.Fill(Tabla2);
+                if (Tabla2.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla2.Rows)
+                    {
+                        FacturaVentaAnual NotaslistaFacturacion = new FacturaVentaAnual();
+                        NotaslistaFacturacion.Periodo = item["Periodo"].ToString();
+                        NotaslistaFacturacion.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+                        NotaslistaFacturacion.Total1 = Convert.ToDecimal(item["Total1"].ToString());
+                        NotaslistaFacturacion.Total2 = Convert.ToDecimal(item["Total2"].ToString());
+                        NotaslistaFacturacion.Total3 = Convert.ToDecimal(item["Total3"].ToString());
+                        NotaslistaFacturacion.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
+                        NotaslistaFacturacion.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
+                        NotaslistaFacturacion.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
+                        NotaslistaFacturacion.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
+                        NotaslistaFacturacion.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
+                        NotaslistaFacturacion.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+                        Notaslista.Add(NotaslistaFacturacion);
+                    }
+                    if (Notaslista.Count > 0)
+                    {
+                        var LisNotas = Notaslista.First();
+                        NotasMontoTotal = LisNotas.Monto;
+                        NotasTotal1 = LisNotas.Total1;
+                        NotasTotal2 = LisNotas.Total2;
+                        NotasTotal3 = LisNotas.Total3;
+                        NotasNeto1 = LisNotas.Neto1;
+                        NotasNeto2 = LisNotas.Neto2;
+                        NotasNeto3 = LisNotas.Neto3;
+                        NotasIva1 = LisNotas.Iva1;
+                        NotasIva2 = LisNotas.Iva2;
+                        NotasIva3 = LisNotas.Iva3;
+                    }
+                }
+                decimal FinalMonto = ListaMontoTotal - NotasMontoTotal;
+                decimal FinalTotal1 = ListaTotal1 - NotasTotal1;
+                decimal FinalTotal2 = ListaTotal2 - NotasTotal2;
+                decimal FinalTotal3 = ListaTotal3 - NotasTotal3;
+                decimal FinalNeto1 = ListaNeto1 - NotasNeto1;
+                decimal FinalNeto2 = ListaNeto2 - NotasNeto2;
+                decimal FinalNeto3 = ListaNeto3 - NotasNeto3;
+                decimal FinalIva1 = ListaIva1 - NotasIva1;
+                decimal FinalIva2 = ListaIva2 - NotasIva2;
+                decimal FinalIva3 = ListaIva3 - NotasIva3;
+                FacturaVentaAnual listaFacturacion = new FacturaVentaAnual();
+                listaFacturacion.Periodo = PeriodoMostrar;
+                listaFacturacion.Monto = Convert.ToDecimal(FinalMonto);
+                listaFacturacion.Total1 = Convert.ToDecimal(FinalTotal1);
+                listaFacturacion.Total2 = Convert.ToDecimal(FinalTotal2);
+                listaFacturacion.Total3 = Convert.ToDecimal(FinalTotal3);
+                listaFacturacion.Neto1 = Convert.ToDecimal(FinalNeto1);
+                listaFacturacion.Neto2 = Convert.ToDecimal(FinalNeto2);
+                listaFacturacion.Neto3 = Convert.ToDecimal(FinalNeto3);
+                listaFacturacion.Iva1 = Convert.ToDecimal(FinalIva1);
+                listaFacturacion.Iva2 = Convert.ToDecimal(FinalIva2);
+                listaFacturacion.Iva3 = Convert.ToDecimal(FinalIva3);
+                listaFinal.Add(listaFacturacion);
+            }
+            connection.Close();
+            return listaFinal;
+        }
+        public static List<FacturaVentaAnual> FacturacionAnualVentasPorAño(string cuit, string año)
+        {
+            /////Facturas
+            decimal ListaMontoTotal = 0;
+            decimal ListaTotal1 = 0;
+            decimal ListaTotal2 = 0;
+            decimal ListaTotal3 = 0;
+            decimal ListaNeto1 = 0;
+            decimal ListaNeto2 = 0;
+            decimal ListaNeto3 = 0;
+            decimal ListaIva1 = 0;
+            decimal ListaIva2 = 0;
+            decimal ListaIva3 = 0;
+            /////Notas 
+            decimal NotasMontoTotal = 0;
+            decimal NotasTotal1 = 0;
+            decimal NotasTotal2 = 0;
+            decimal NotasTotal3 = 0;
+            decimal NotasNeto1 = 0;
+            decimal NotasNeto2 = 0;
+            decimal NotasNeto3 = 0;
+            decimal NotasIva1 = 0;
+            decimal NotasIva2 = 0;
+            decimal NotasIva3 = 0;
+            List<FacturaVentaAnual> Notaslista = new List<FacturaVentaAnual>();
+            string PeriodoMostrar = "";
+            List<string> listaPeriodos = new List<string>();
+            List<FacturaVentaAnual> lista = new List<FacturaVentaAnual>();
+            List<FacturaVentaAnual> listaFinal = new List<FacturaVentaAnual>();
+            List<Entidades.Cliente> id = new List<Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int IdCliente = id[0].IdCliente;
+            if (IdCliente > 0)
+            {
+                listaPeriodos = BuscarPeriodosPorAñoIdCliente(IdCliente, año);
+                foreach (var item in listaPeriodos)
+                {
+                    string Periodo = item;
+                    connection.Close();
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    DataTable Tabla = new DataTable();
+                    MySqlParameter[] oParam = {
+                            new MySqlParameter("Periodo_in", Periodo),
+                                      new MySqlParameter("idCliente_in", IdCliente)};
+                    string proceso = "FacturacionAnualVentasDetallePorPeriodo";
+                    MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                    dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    dt.SelectCommand.Parameters.AddRange(oParam);
+                    dt.Fill(Tabla);
+                    if (Tabla.Rows.Count > 0)
+                    {
+                        foreach (DataRow item2 in Tabla.Rows)
+                        {
+                            FacturaVentaAnual Facturacion = new FacturaVentaAnual();
+                            PeriodoMostrar = item2["Periodo"].ToString();
+                            Facturacion.Monto = Convert.ToDecimal(item2["MontoTotal"].ToString());
+                            Facturacion.Total1 = Convert.ToDecimal(item2["Total1"].ToString());
+                            Facturacion.Total2 = Convert.ToDecimal(item2["Total2"].ToString());
+                            Facturacion.Total3 = Convert.ToDecimal(item2["Total3"].ToString());
+                            Facturacion.Neto1 = Convert.ToDecimal(item2["Neto1"].ToString());
+                            Facturacion.Neto2 = Convert.ToDecimal(item2["Neto2"].ToString());
+                            Facturacion.Neto3 = Convert.ToDecimal(item2["Neto3"].ToString());
+                            Facturacion.Iva1 = Convert.ToDecimal(item2["Iva1"].ToString());
+                            Facturacion.Iva2 = Convert.ToDecimal(item2["Iva2"].ToString());
+                            Facturacion.Iva3 = Convert.ToDecimal(item2["Iva3"].ToString());
+                            lista.Clear();
+                            lista.Add(Facturacion);
+                        }
+                        if (lista.Count > 0)
+                        {
+                            var LisFacturas = lista.First();
+                            ListaMontoTotal = LisFacturas.Monto;
+                            ListaTotal1 = LisFacturas.Total1;
+                            ListaTotal2 = LisFacturas.Total2;
+                            ListaTotal3 = LisFacturas.Total3;
+                            ListaNeto1 = LisFacturas.Neto1;
+                            ListaNeto2 = LisFacturas.Neto2;
+                            ListaNeto3 = LisFacturas.Neto3;
+                            ListaIva1 = LisFacturas.Iva1;
+                            ListaIva2 = LisFacturas.Iva2;
+                            ListaIva3 = LisFacturas.Iva3;
+                        }
+                    }
+                    connection.Close();
+                    connection.Open();
+                    MySqlCommand cmd2 = new MySqlCommand();
+                    cmd2.Connection = connection;
+                    DataTable Tabla2 = new DataTable();
+                    MySqlParameter[] oParam2 = {
+                            new MySqlParameter("Periodo_in", Periodo),
+                                      new MySqlParameter("idCliente_in", IdCliente)};
+                    string proceso2 = "FacturacionAnualVentasNotasDeCreditoPorPeriodos";
+                    MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+                    dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    dt2.SelectCommand.Parameters.AddRange(oParam2);
+                    dt2.Fill(Tabla2);
+                    if (Tabla2.Rows.Count > 0)
+                    {
+                        foreach (DataRow item2 in Tabla2.Rows)
+                        {
+                            FacturaVentaAnual NotaslistaFacturacion = new FacturaVentaAnual();
+                            NotaslistaFacturacion.Periodo = item2["Periodo"].ToString();
+                            NotaslistaFacturacion.Monto = Convert.ToDecimal(item2["MontoTotal"].ToString());
+                            NotaslistaFacturacion.Total1 = Convert.ToDecimal(item2["Total1"].ToString());
+                            NotaslistaFacturacion.Total2 = Convert.ToDecimal(item2["Total2"].ToString());
+                            NotaslistaFacturacion.Total3 = Convert.ToDecimal(item2["Total3"].ToString());
+                            NotaslistaFacturacion.Neto1 = Convert.ToDecimal(item2["Neto1"].ToString());
+                            NotaslistaFacturacion.Neto2 = Convert.ToDecimal(item2["Neto2"].ToString());
+                            NotaslistaFacturacion.Neto3 = Convert.ToDecimal(item2["Neto3"].ToString());
+                            NotaslistaFacturacion.Iva1 = Convert.ToDecimal(item2["Iva1"].ToString());
+                            NotaslistaFacturacion.Iva2 = Convert.ToDecimal(item2["Iva2"].ToString());
+                            NotaslistaFacturacion.Iva3 = Convert.ToDecimal(item2["Iva3"].ToString());
+                            Notaslista.Clear();
+                            Notaslista.Add(NotaslistaFacturacion);
+                        }
+                        if (Notaslista.Count > 0)
+                        {
+                            var LisNotas = Notaslista.First();
+                            NotasMontoTotal = LisNotas.Monto;
+                            NotasTotal1 = LisNotas.Total1;
+                            NotasTotal2 = LisNotas.Total2;
+                            NotasTotal3 = LisNotas.Total3;
+                            NotasNeto1 = LisNotas.Neto1;
+                            NotasNeto2 = LisNotas.Neto2;
+                            NotasNeto3 = LisNotas.Neto3;
+                            NotasIva1 = LisNotas.Iva1;
+                            NotasIva2 = LisNotas.Iva2;
+                            NotasIva3 = LisNotas.Iva3;
+                        }
+                    }
+                    decimal FinalMonto = ListaMontoTotal - NotasMontoTotal;
+                    decimal FinalTotal1 = ListaTotal1 - NotasTotal1;
+                    decimal FinalTotal2 = ListaTotal2 - NotasTotal2;
+                    decimal FinalTotal3 = ListaTotal3 - NotasTotal3;
+                    decimal FinalNeto1 = ListaNeto1 - NotasNeto1;
+                    decimal FinalNeto2 = ListaNeto2 - NotasNeto2;
+                    decimal FinalNeto3 = ListaNeto3 - NotasNeto3;
+                    decimal FinalIva1 = ListaIva1 - NotasIva1;
+                    decimal FinalIva2 = ListaIva2 - NotasIva2;
+                    decimal FinalIva3 = ListaIva3 - NotasIva3;
+                    FacturaVentaAnual listaFacturacion = new FacturaVentaAnual();
+                    listaFacturacion.Periodo = PeriodoMostrar;
+                    listaFacturacion.Monto = Convert.ToDecimal(FinalMonto);
+                    listaFacturacion.Total1 = Convert.ToDecimal(FinalTotal1);
+                    listaFacturacion.Total2 = Convert.ToDecimal(FinalTotal2);
+                    listaFacturacion.Total3 = Convert.ToDecimal(FinalTotal3);
+                    listaFacturacion.Neto1 = Convert.ToDecimal(FinalNeto1);
+                    listaFacturacion.Neto2 = Convert.ToDecimal(FinalNeto2);
+                    listaFacturacion.Neto3 = Convert.ToDecimal(FinalNeto3);
+                    listaFacturacion.Iva1 = Convert.ToDecimal(FinalIva1);
+                    listaFacturacion.Iva2 = Convert.ToDecimal(FinalIva2);
+                    listaFacturacion.Iva3 = Convert.ToDecimal(FinalIva3);
+                    listaFinal.Add(listaFacturacion);
+                }
+            }
+            connection.Close();
+            return listaFinal;
+        }
+        ///////// Consultas Para Compras
+        public static List<FacturaCompraAnual> FacturacionAnualPorAño(string cuit, string año)
+        {
+            ///// Facturas
+            decimal ListaMontoTotal = 0;
+            decimal ListaTotal1 = 0;
+            decimal ListaTotal2 = 0;
+            decimal ListaTotal3 = 0;
+            decimal ListaNeto1 = 0;
+            decimal ListaNeto2 = 0;
+            decimal ListaNeto3 = 0;
+            decimal ListaIva1 = 0;
+            decimal ListaIva2 = 0;
+            decimal ListaIva3 = 0;
+            decimal ListaPerIva = 0;
+            decimal ListaPerIng = 0;
+            decimal ListaNoGrav = 0;
+            decimal NotasMontoTotal = 0;
+            ///// Notas de credito
+            decimal NotasTotal1 = 0;
+            decimal NotasTotal2 = 0;
+            decimal NotasTotal3 = 0;
+            decimal NotasNeto1 = 0;
+            decimal NotasNeto2 = 0;
+            decimal NotasNeto3 = 0;
+            decimal NotasIva1 = 0;
+            decimal NotasIva2 = 0;
+            decimal NotasIva3 = 0;
+            decimal NotasPerIva = 0;
+            decimal NotasPerIng = 0;
+            decimal NotasNoGrav = 0;
+            List<string> listaPeriodos = new List<string>();
+            List<FacturaCompraAnual> lista = new List<FacturaCompraAnual>();
+            List<FacturaCompraAnual> listaNotas = new List<FacturaCompraAnual>();
+            List<FacturaCompraAnual> listaFinal = new List<FacturaCompraAnual>();
+            string PeriodoMostrar = "";
+            List<Entidades.Cliente> id = new List<Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int IdCliente = id[0].IdCliente;
+            if (IdCliente > 0)
+            {
+                listaPeriodos = BuscarPeriodosComprasPorAñoIdCliente(IdCliente, año);
+                foreach (var item in listaPeriodos)
+                {
+                    string Periodo = item;
+                    connection.Close();
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    DataTable Tabla = new DataTable();
+                    MySqlParameter[] oParam = {
+                            new MySqlParameter("Periodo_in", Periodo),
+                                      new MySqlParameter("idCliente_in", IdCliente)};
+                    string proceso = "FacturacionAnualPorPeriodos";
+                    MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                    dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    dt.SelectCommand.Parameters.AddRange(oParam);
+                    dt.Fill(Tabla);
+                    if (Tabla.Rows.Count > 0)
+                    {
+                        foreach (DataRow item2 in Tabla.Rows)
+                        {
+                            FacturaCompraAnual Facturacion = new FacturaCompraAnual();
+                            PeriodoMostrar = item2["Periodo"].ToString();
+                            Facturacion.Periodo = item2["Periodo"].ToString();
+                            Facturacion.Monto = Convert.ToDecimal(item2["MontoTotal"].ToString());
+                            Facturacion.Total1 = Convert.ToDecimal(item2["Total1"].ToString());
+                            Facturacion.Total2 = Convert.ToDecimal(item2["Total2"].ToString());
+                            Facturacion.Total3 = Convert.ToDecimal(item2["Total3"].ToString());
+                            Facturacion.Neto1 = Convert.ToDecimal(item2["Neto1"].ToString());
+                            Facturacion.Neto2 = Convert.ToDecimal(item2["Neto2"].ToString());
+                            Facturacion.Neto3 = Convert.ToDecimal(item2["Neto3"].ToString());
+                            Facturacion.Iva1 = Convert.ToDecimal(item2["Iva1"].ToString());
+                            Facturacion.Iva2 = Convert.ToDecimal(item2["Iva2"].ToString());
+                            Facturacion.Iva3 = Convert.ToDecimal(item2["Iva3"].ToString());
+                            Facturacion.PercepIva = Convert.ToDecimal(item2["PercepcionIva"].ToString());
+                            Facturacion.PercepIngBrutos = Convert.ToDecimal(item2["PercepcionIngresosBrutos"].ToString());
+                            Facturacion.NoGravado = Convert.ToDecimal(item2["NoGravado"].ToString());
+                            lista.Clear();
+                            lista.Add(Facturacion);
+                        }
+                        if (lista.Count > 0)
+                        {
+                            var FacLista = lista.First();
+                            ListaMontoTotal = FacLista.Monto;
+                            ListaTotal1 = FacLista.Total1;
+                            ListaTotal2 = FacLista.Total2;
+                            ListaTotal3 = FacLista.Total3;
+                            ListaNeto1 = FacLista.Neto1;
+                            ListaNeto2 = FacLista.Neto2;
+                            ListaNeto3 = FacLista.Neto3;
+                            ListaIva1 = FacLista.Iva1;
+                            ListaIva2 = FacLista.Iva2;
+                            ListaIva3 = FacLista.Iva3;
+                            ListaPerIva = FacLista.PercepIva;
+                            ListaPerIng = FacLista.PercepIngBrutos;
+                            ListaNoGrav = FacLista.NoGravado;
+                        }
+                    }
+                    connection.Close();
+                    connection.Open();
+                    MySqlCommand cmd2 = new MySqlCommand();
+                    cmd2.Connection = connection;
+                    DataTable Tabla2 = new DataTable();
+                    MySqlParameter[] oParam2 = {
+                            new MySqlParameter("Periodo_in", Periodo),
+                                      new MySqlParameter("idCliente_in", IdCliente)};
+                    string proceso2 = "FacturacionAnualNotasDeCreditoPorPeriodos";
+                    MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+                    dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    dt2.SelectCommand.Parameters.AddRange(oParam2);
+                    dt2.Fill(Tabla2);
+                    if (Tabla2.Rows.Count > 0)
+                    {
+                        foreach (DataRow item2 in Tabla2.Rows)
+                        {
+                            FacturaCompraAnual listaFacturacionNotaDeCredito = new FacturaCompraAnual();
+                            listaFacturacionNotaDeCredito.Periodo = item2["Periodo"].ToString();
+                            listaFacturacionNotaDeCredito.Monto = Convert.ToDecimal(item2["MontoTotal"].ToString());
+                            listaFacturacionNotaDeCredito.Total1 = Convert.ToDecimal(item2["Total1"].ToString());
+                            listaFacturacionNotaDeCredito.Total2 = Convert.ToDecimal(item2["Total2"].ToString());
+                            listaFacturacionNotaDeCredito.Total3 = Convert.ToDecimal(item2["Total3"].ToString());
+                            listaFacturacionNotaDeCredito.Neto1 = Convert.ToDecimal(item2["Neto1"].ToString());
+                            listaFacturacionNotaDeCredito.Neto2 = Convert.ToDecimal(item2["Neto2"].ToString());
+                            listaFacturacionNotaDeCredito.Neto3 = Convert.ToDecimal(item2["Neto3"].ToString());
+                            listaFacturacionNotaDeCredito.Iva1 = Convert.ToDecimal(item2["Iva1"].ToString());
+                            listaFacturacionNotaDeCredito.Iva2 = Convert.ToDecimal(item2["Iva2"].ToString());
+                            listaFacturacionNotaDeCredito.Iva3 = Convert.ToDecimal(item2["Iva3"].ToString());
+                            listaFacturacionNotaDeCredito.PercepIva = Convert.ToDecimal(item2["PercepcionIva"].ToString());
+                            listaFacturacionNotaDeCredito.PercepIngBrutos = Convert.ToDecimal(item2["PercepcionIngresosBrutos"].ToString());
+                            listaFacturacionNotaDeCredito.NoGravado = Convert.ToDecimal(item2["NoGravado"].ToString());
+                            listaNotas.Clear();
+                            listaNotas.Add(listaFacturacionNotaDeCredito);
+                        }
+                        if (listaNotas.Count > 0)
+                        {
+                            var NotasList = listaNotas.First();
+                            NotasMontoTotal = NotasList.Monto;
+                            NotasTotal1 = NotasList.Total1;
+                            NotasTotal2 = NotasList.Total2;
+                            NotasTotal3 = NotasList.Total3;
+                            NotasNeto1 = NotasList.Neto1;
+                            NotasNeto2 = NotasList.Neto2;
+                            NotasNeto3 = NotasList.Neto3;
+                            NotasIva1 = NotasList.Iva1;
+                            NotasIva2 = NotasList.Iva2;
+                            NotasIva3 = NotasList.Iva3;
+                            NotasPerIva = NotasList.PercepIva;
+                            NotasPerIng = NotasList.PercepIngBrutos;
+                            NotasNoGrav = NotasList.NoGravado;
+                        }
+                    }
+                    decimal FinalMonto = ListaMontoTotal - NotasMontoTotal;
+                    decimal FinalTotal1 = ListaTotal1 - NotasTotal1;
+                    decimal FinalTotal2 = ListaTotal2 - NotasTotal2;
+                    decimal FinalTotal3 = ListaTotal3 - NotasTotal3;
+                    decimal FinalNeto1 = ListaNeto1 - NotasNeto1;
+                    decimal FinalNeto2 = ListaNeto2 - NotasNeto2;
+                    decimal FinalNeto3 = ListaNeto3 - NotasNeto3;
+                    decimal FinalIva1 = ListaIva1 - NotasIva1;
+                    decimal FinalIva2 = ListaIva2 - NotasIva2;
+                    decimal FinalIva3 = ListaIva3 - NotasIva3;
+                    decimal FinalPerIva = ListaPerIva - NotasPerIva;
+                    decimal FinalPerIng = ListaPerIng - NotasPerIng;
+                    decimal FinalNoGrav = ListaNoGrav - NotasNoGrav;
+                    FacturaCompraAnual listaFacturacion = new FacturaCompraAnual();
+                    listaFacturacion.Periodo = PeriodoMostrar;
+                    listaFacturacion.Monto = Convert.ToDecimal(FinalMonto);
+                    listaFacturacion.Total1 = Convert.ToDecimal(FinalTotal1);
+                    listaFacturacion.Total2 = Convert.ToDecimal(FinalTotal2);
+                    listaFacturacion.Total3 = Convert.ToDecimal(FinalTotal3);
+                    listaFacturacion.Neto1 = Convert.ToDecimal(FinalNeto1);
+                    listaFacturacion.Neto2 = Convert.ToDecimal(FinalNeto2);
+                    listaFacturacion.Neto3 = Convert.ToDecimal(FinalNeto3);
+                    listaFacturacion.Iva1 = Convert.ToDecimal(FinalIva1);
+                    listaFacturacion.Iva2 = Convert.ToDecimal(FinalIva2);
+                    listaFacturacion.Iva3 = Convert.ToDecimal(FinalIva3);
+                    listaFacturacion.PercepIva = Convert.ToDecimal(FinalPerIva);
+                    listaFacturacion.PercepIngBrutos = Convert.ToDecimal(FinalPerIng);
+                    listaFacturacion.NoGravado = Convert.ToDecimal(FinalNoGrav);
+                    listaFinal.Add(listaFacturacion);
+                }
+            }
+            connection.Close();
+            return listaFinal;
+        }
+        public static List<FacturaCompraAnual> FacturacionAnualPorPeriodos(string cuit, string periodo)
+        {
+            ///// Facturas
+            decimal ListaMontoTotal = 0;
+            decimal ListaTotal1 = 0;
+            decimal ListaTotal2 = 0;
+            decimal ListaTotal3 = 0;
+            decimal ListaNeto1 = 0;
+            decimal ListaNeto2 = 0;
+            decimal ListaNeto3 = 0;
+            decimal ListaIva1 = 0;
+            decimal ListaIva2 = 0;
+            decimal ListaIva3 = 0;
+            decimal ListaPerIva = 0;
+            decimal ListaPerIng = 0;
+            decimal ListaNoGrav = 0;
+            ///// Notas de Credito
+            decimal NotasMontoTotal = 0;
+            decimal NotasTotal1 = 0;
+            decimal NotasTotal2 = 0;
+            decimal NotasTotal3 = 0;
+            decimal NotasNeto1 = 0;
+            decimal NotasNeto2 = 0;
+            decimal NotasNeto3 = 0;
+            decimal NotasIva1 = 0;
+            decimal NotasIva2 = 0;
+            decimal NotasIva3 = 0;
+            decimal NotasPerIva = 0;
+            decimal NotasPerIng = 0;
+            decimal NotasNoGrav = 0;
+            List<FacturaCompraAnual> listaNotas = new List<FacturaCompraAnual>();
+            string PeriodoMostrar = "";
+            List<FacturaCompraAnual> lista = new List<FacturaCompraAnual>();
+            List<FacturaCompraAnual> listaFinal = new List<FacturaCompraAnual>();
+            List<Entidades.Cliente> id = new List<Cliente>();
+            id = ClienteDao.BuscarClientePorCuit(cuit);
+            int IdCliente = id[0].IdCliente;
+            if (IdCliente > 0)
+            {
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                            new MySqlParameter("Periodo_in", periodo),
+                                      new MySqlParameter("idCliente_in", IdCliente)};
+                string proceso = "FacturacionAnualPorPeriodos";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                if (Tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Tabla.Rows)
+                    {
+                        FacturaCompraAnual Facturacion = new FacturaCompraAnual();
+                        Facturacion.Periodo = item["Periodo"].ToString();
+                        Facturacion.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+                        Facturacion.Total1 = Convert.ToDecimal(item["Total1"].ToString());
+                        Facturacion.Total2 = Convert.ToDecimal(item["Total2"].ToString());
+                        Facturacion.Total3 = Convert.ToDecimal(item["Total3"].ToString());
+                        Facturacion.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
+                        Facturacion.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
+                        Facturacion.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
+                        Facturacion.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
+                        Facturacion.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
+                        Facturacion.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+                        Facturacion.PercepIngBrutos = Convert.ToDecimal(item["PercepcionIngresosBrutos"].ToString());
+                        Facturacion.PercepIva = Convert.ToDecimal(item["PercepcionIva"].ToString());
+                        Facturacion.NoGravado = Convert.ToDecimal(item["NoGravado"].ToString());
+                        lista.Clear();
+                        lista.Add(Facturacion);
+                    }
+                    if (lista.Count > 0)
+                    {
+                        var FacLista = lista.First();
+                        ListaMontoTotal = FacLista.Monto;
+                        ListaTotal1 = FacLista.Total1;
+                        ListaTotal2 = FacLista.Total2;
+                        ListaTotal3 = FacLista.Total3;
+                        ListaNeto1 = FacLista.Neto1;
+                        ListaNeto2 = FacLista.Neto2;
+                        ListaNeto3 = FacLista.Neto3;
+                        ListaIva1 = FacLista.Iva1;
+                        ListaIva2 = FacLista.Iva2;
+                        ListaIva3 = FacLista.Iva3;
+                        ListaPerIva = FacLista.PercepIva;
+                        ListaPerIng = FacLista.PercepIngBrutos;
+                        ListaNoGrav = FacLista.NoGravado;
+                    }
+                }
+                connection.Close();
+                connection.Open();
+                MySqlCommand cmd2 = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla2 = new DataTable();
+                MySqlParameter[] oParam2 = {
+                            new MySqlParameter("Periodo_in", periodo),
+                                      new MySqlParameter("idCliente_in", IdCliente)};
+                string proceso2 = "FacturacionAnualNotasDeCreditoPorPeriodos";
+                MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+                dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt2.SelectCommand.Parameters.AddRange(oParam2);
+                dt2.Fill(Tabla2);
+                if (Tabla2.Rows.Count > 0)
+                {
+                    foreach (DataRow item2 in Tabla2.Rows)
+                    {
+                        FacturaCompraAnual listaFacturacionNotaDeCredito = new FacturaCompraAnual();
+                        listaFacturacionNotaDeCredito.Periodo = item2["Periodo"].ToString();
+                        listaFacturacionNotaDeCredito.Monto = Convert.ToDecimal(item2["MontoTotal"].ToString());
+                        listaFacturacionNotaDeCredito.Total1 = Convert.ToDecimal(item2["Total1"].ToString());
+                        listaFacturacionNotaDeCredito.Total2 = Convert.ToDecimal(item2["Total2"].ToString());
+                        listaFacturacionNotaDeCredito.Total3 = Convert.ToDecimal(item2["Total3"].ToString());
+                        listaFacturacionNotaDeCredito.Neto1 = Convert.ToDecimal(item2["Neto1"].ToString());
+                        listaFacturacionNotaDeCredito.Neto2 = Convert.ToDecimal(item2["Neto2"].ToString());
+                        listaFacturacionNotaDeCredito.Neto3 = Convert.ToDecimal(item2["Neto3"].ToString());
+                        listaFacturacionNotaDeCredito.Iva1 = Convert.ToDecimal(item2["Iva1"].ToString());
+                        listaFacturacionNotaDeCredito.Iva2 = Convert.ToDecimal(item2["Iva2"].ToString());
+                        listaFacturacionNotaDeCredito.Iva3 = Convert.ToDecimal(item2["Iva3"].ToString());
+                        listaFacturacionNotaDeCredito.PercepIva = Convert.ToDecimal(item2["PercepcionIva"].ToString());
+                        listaFacturacionNotaDeCredito.PercepIngBrutos = Convert.ToDecimal(item2["PercepcionIngresosBrutos"].ToString());
+                        listaFacturacionNotaDeCredito.NoGravado = Convert.ToDecimal(item2["NoGravado"].ToString());
+                        listaNotas.Clear();
+                        listaNotas.Add(listaFacturacionNotaDeCredito);
+                    }
+                    if (listaNotas.Count > 0)
+                    {
+                        var NotaLista = listaNotas.First();
+                        NotasMontoTotal = NotaLista.Monto;
+                        NotasTotal1 = NotaLista.Total1;
+                        NotasTotal2 = NotaLista.Total2;
+                        NotasTotal3 = NotaLista.Total3;
+                        NotasNeto1 = NotaLista.Neto1;
+                        NotasNeto2 = NotaLista.Neto2;
+                        NotasNeto3 = NotaLista.Neto3;
+                        NotasIva1 = NotaLista.Iva1;
+                        NotasIva2 = NotaLista.Iva2;
+                        NotasIva3 = NotaLista.Iva3;
+                        NotasPerIva = NotaLista.PercepIva;
+                        NotasPerIng = NotaLista.PercepIngBrutos;
+                        NotasNoGrav = NotaLista.NoGravado;
+                    }
+                }
+                decimal FinalMonto = ListaMontoTotal - NotasMontoTotal;
+                decimal FinalTotal1 = ListaTotal1 - NotasTotal1;
+                decimal FinalTotal2 = ListaTotal2 - NotasTotal2;
+                decimal FinalTotal3 = ListaTotal3 - NotasTotal3;
+                decimal FinalNeto1 = ListaNeto1 - NotasNeto1;
+                decimal FinalNeto2 = ListaNeto2 - NotasNeto2;
+                decimal FinalNeto3 = ListaNeto3 - NotasNeto3;
+                decimal FinalIva1 = ListaIva1 - NotasIva1;
+                decimal FinalIva2 = ListaIva2 - NotasIva2;
+                decimal FinalIva3 = ListaIva3 - NotasIva3;
+                decimal FinalPerIva = ListaPerIva - NotasPerIva;
+                decimal FinalPerIng = ListaPerIng - NotasPerIng;
+                decimal FinalNoGrav = ListaNoGrav - NotasNoGrav;
+                FacturaCompraAnual listaFacturacion = new FacturaCompraAnual();
+                listaFacturacion.Periodo = PeriodoMostrar;
+                listaFacturacion.Monto = Convert.ToDecimal(FinalMonto);
+                listaFacturacion.Total1 = Convert.ToDecimal(FinalTotal1);
+                listaFacturacion.Total2 = Convert.ToDecimal(FinalTotal2);
+                listaFacturacion.Total3 = Convert.ToDecimal(FinalTotal3);
+                listaFacturacion.Neto1 = Convert.ToDecimal(FinalNeto1);
+                listaFacturacion.Neto2 = Convert.ToDecimal(FinalNeto2);
+                listaFacturacion.Neto3 = Convert.ToDecimal(FinalNeto3);
+                listaFacturacion.Iva1 = Convert.ToDecimal(FinalIva1);
+                listaFacturacion.Iva2 = Convert.ToDecimal(FinalIva2);
+                listaFacturacion.Iva3 = Convert.ToDecimal(FinalIva3);
+                listaFacturacion.PercepIva = Convert.ToDecimal(FinalPerIva);
+                listaFacturacion.PercepIngBrutos = Convert.ToDecimal(FinalPerIng);
+                listaFacturacion.NoGravado = Convert.ToDecimal(FinalNoGrav);
+                listaFinal.Add(listaFacturacion);
+            }
+            connection.Close();
+            return listaFinal;
+        }
     }
 }
+

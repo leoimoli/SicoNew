@@ -297,6 +297,7 @@ namespace Sico
                     double TotalIva27 = CalcularTotalIva27Ventas(value);
                     FacturaVentaAnual ultimo = new FacturaVentaAnual();
                     ultimo.Periodo = "TOTALES";
+                    ultimo.Monto = Convert.ToDecimal(TotalMonto);
                     ultimo.Total1 = Convert.ToDecimal(TotalImporte1);
                     ultimo.Total2 = Convert.ToDecimal(TotalImporte2);
                     ultimo.Total3 = Convert.ToDecimal(TotalImporte3);
@@ -308,7 +309,6 @@ namespace Sico
                     ultimo.Iva1 = Convert.ToDecimal(TotalIva10);
                     ultimo.Iva2 = Convert.ToDecimal(TotalIva21);
                     ultimo.Iva3 = Convert.ToDecimal(TotalIva27);
-                    ultimo.Monto = Convert.ToDecimal(TotalMonto);
                     value.Add(ultimo);
                     dgvVentasAnuales.DataSource = value;
 
@@ -404,13 +404,8 @@ namespace Sico
             decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo += item.NoGravado;
-                //}
-                //else {
+
                 totalPercepIva += item.PercepIva;
-                //}
 
             }
             double valor = Convert.ToDouble(totalPercepIva - MontoNegativo);
@@ -422,13 +417,7 @@ namespace Sico
             decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo += item.PercepIngBrutos;
-                //}
-                //else {
                 totalPercepIngBrutos += item.PercepIngBrutos;
-                //}
 
             }
             double valor = Convert.ToDouble(totalPercepIngBrutos - MontoNegativo);
@@ -440,13 +429,7 @@ namespace Sico
             decimal MontoNegativoiva27 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativoiva27 += item.Iva3;
-                //}
-                //else {
                 totaliva27 += item.Iva3;
-                //}
 
             }
             double valor = Convert.ToDouble(totaliva27 - MontoNegativoiva27);
@@ -458,14 +441,7 @@ namespace Sico
             decimal MontoNegativoiva21 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativoiva21 += item.Iva2;
-                //}
-                //else {
                 totaliva21 += item.Iva2;
-                //}
-
             }
             double valor = Convert.ToDouble(totaliva21 - MontoNegativoiva21);
             return valor;
@@ -476,13 +452,7 @@ namespace Sico
             decimal MontoNegativoiva10 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativoiva10 += item.Iva1;
-                //}
-                //else {
                 totaliva10 += item.Iva1;
-                //}
 
             }
             double valor = Convert.ToDouble(totaliva10 - MontoNegativoiva10);
@@ -494,13 +464,8 @@ namespace Sico
             decimal MontoNegativo27 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo27 += item.Neto3;
-                //}
-                //else {
+
                 totalNeto27 += item.Neto3;
-                //}
 
             }
             double valor = Convert.ToDouble(totalNeto27 - MontoNegativo27);
@@ -512,14 +477,7 @@ namespace Sico
             decimal MontoNegativo21 = 0;
             foreach (var item in value)
             {
-                //    if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //    {
-                //        MontoNegativo21 += item.Neto2;
-                //    }
-                //    else {
                 totalNeto21 += item.Neto2;
-                //}
-
             }
             double valor = Convert.ToDouble(totalNeto21 - MontoNegativo21);
             return valor;
@@ -530,14 +488,7 @@ namespace Sico
             decimal MontoNegativo10 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo10 += item.Neto1;
-                //}
-                //else {
                 totalNeto10 += item.Neto1;
-                //}
-
             }
             double valor = Convert.ToDouble(totalNeto10 - MontoNegativo10);
             return valor;
@@ -548,14 +499,8 @@ namespace Sico
             decimal MontoNegativo3 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo3 += item.Total3;
-                //}
-                //else {
-                totalImporte3 += item.Total3;
-                //}
 
+                totalImporte3 += item.Total3;
             }
             double valor = Convert.ToDouble(totalImporte3 - MontoNegativo3);
             return valor;
@@ -566,14 +511,7 @@ namespace Sico
             decimal MontoNegativo2 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo2 += item.Total2;
-                //}
-                //else {
                 totalImporte2 += item.Total2;
-                //}
-
             }
             double valor = Convert.ToDouble(totalImporte2 - MontoNegativo2);
             return valor;
@@ -584,13 +522,8 @@ namespace Sico
             decimal MontoNegativo1 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo1 += item.Total1;
-                //}
-                //else {
+
                 totalImporte1 += item.Total1;
-                //}
 
             }
             double valor = Convert.ToDouble(totalImporte1 - MontoNegativo1);
@@ -602,13 +535,8 @@ namespace Sico
             decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo += item.Monto;
-                //}
-                //else {
+
                 totalMonto += item.Monto;
-                //}
 
             }
             double valor = Convert.ToDouble(totalMonto - MontoNegativo);
@@ -620,13 +548,7 @@ namespace Sico
             decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo += item.NoGravado;
-                //}
-                //else {
                 totalnoGravado += item.NoGravado;
-                //}
 
             }
             double valor = Convert.ToDouble(totalnoGravado - MontoNegativo);
@@ -640,13 +562,7 @@ namespace Sico
             decimal MontoNegativoiva27 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativoiva27 += item.Iva3;
-                //}
-                //else {
                 totaliva27 += item.Iva3;
-                //}
 
             }
             double valor = Convert.ToDouble(totaliva27 - MontoNegativoiva27);
@@ -658,13 +574,8 @@ namespace Sico
             decimal MontoNegativoiva21 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativoiva21 += item.Iva2;
-                //}
-                //else {
+
                 totaliva21 += item.Iva2;
-                //}
 
             }
             double valor = Convert.ToDouble(totaliva21 - MontoNegativoiva21);
@@ -676,14 +587,7 @@ namespace Sico
             decimal MontoNegativoiva10 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativoiva10 += item.Iva1;
-                //}
-                //else {
                 totaliva10 += item.Iva1;
-                //}
-
             }
             double valor = Convert.ToDouble(totaliva10 - MontoNegativoiva10);
             return valor;
@@ -694,13 +598,9 @@ namespace Sico
             decimal MontoNegativo27 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo27 += item.Neto3;
-                //}
-                //else {
+
                 totalNeto27 += item.Neto3;
-                //}
+
 
             }
             double valor = Convert.ToDouble(totalNeto27 - MontoNegativo27);
@@ -712,13 +612,7 @@ namespace Sico
             decimal MontoNegativo21 = 0;
             foreach (var item in value)
             {
-                //    if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //    {
-                //        MontoNegativo21 += item.Neto2;
-                //    }
-                //    else {
                 totalNeto21 += item.Neto2;
-                //}
 
             }
             double valor = Convert.ToDouble(totalNeto21 - MontoNegativo21);
@@ -730,14 +624,7 @@ namespace Sico
             decimal MontoNegativo10 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo10 += item.Neto1;
-                //}
-                //else {
                 totalNeto10 += item.Neto1;
-                //}
-
             }
             double valor = Convert.ToDouble(totalNeto10 - MontoNegativo10);
             return valor;
@@ -748,13 +635,7 @@ namespace Sico
             decimal MontoNegativo3 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo3 += item.Total3;
-                //}
-                //else {
                 totalImporte3 += item.Total3;
-                //}
 
             }
             double valor = Convert.ToDouble(totalImporte3 - MontoNegativo3);
@@ -766,14 +647,7 @@ namespace Sico
             decimal MontoNegativo2 = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo2 += item.Total2;
-                //}
-                //else {
                 totalImporte2 += item.Total2;
-                //}
-
             }
             double valor = Convert.ToDouble(totalImporte2 - MontoNegativo2);
             return valor;
@@ -802,13 +676,7 @@ namespace Sico
             decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                //if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
-                //{
-                //    MontoNegativo += item.Monto;
-                //}
-                //else {
                 totalMonto += item.Monto;
-                //}
 
             }
             double valor = Convert.ToDouble(totalMonto - MontoNegativo);

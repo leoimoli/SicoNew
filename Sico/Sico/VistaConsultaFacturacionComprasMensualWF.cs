@@ -47,11 +47,8 @@ namespace Sico
             List<string> Periodo = new List<string>();
             Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
             cmbPeriodo.Items.Clear();
-            //cmbCodigoMoneda.Text = "Seleccione";
-            //cmbCodigoMoneda.Items.Add("Seleccione");
             foreach (string item in Periodo)
             {
-                //cmbCodigoMoneda.Text = "Seleccione";
                 cmbPeriodo.Items.Add(item);
             }
         }
@@ -354,7 +351,7 @@ namespace Sico
             decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo += item.NoGravado;
                 }
@@ -364,14 +361,13 @@ namespace Sico
             double valor = Convert.ToDouble(totalPercepIva - MontoNegativo);
             return valor;
         }
-
         private double CalcularTotalPercepIngBrutos(List<FacturaCompra> value)
         {
             decimal totalPercepIngBrutos = 0;
             decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo += item.PercepIngBrutos;
                 }
@@ -387,7 +383,7 @@ namespace Sico
             decimal MontoNegativoiva27 = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativoiva27 += item.Iva3;
                 }
@@ -403,7 +399,7 @@ namespace Sico
             decimal MontoNegativoiva21 = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativoiva21 += item.Iva2;
                 }
@@ -419,7 +415,7 @@ namespace Sico
             decimal MontoNegativoiva10 = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativoiva10 += item.Iva1;
                 }
@@ -435,7 +431,7 @@ namespace Sico
             decimal MontoNegativo27 = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo27 += item.Neto3;
                 }
@@ -451,7 +447,7 @@ namespace Sico
             decimal MontoNegativo21 = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo21 += item.Neto2;
                 }
@@ -467,7 +463,7 @@ namespace Sico
             decimal MontoNegativo10 = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo10 += item.Neto1;
                 }
@@ -483,7 +479,7 @@ namespace Sico
             decimal MontoNegativo3 = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo3 += item.Total3;
                 }
@@ -499,7 +495,7 @@ namespace Sico
             decimal MontoNegativo2 = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo2 += item.Total2;
                 }
@@ -515,7 +511,7 @@ namespace Sico
             decimal MontoNegativo1 = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo1 += item.Total1;
                 }
@@ -531,7 +527,7 @@ namespace Sico
             decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo += item.Monto;
                 }
@@ -541,14 +537,13 @@ namespace Sico
             double valor = Convert.ToDouble(totalMonto - MontoNegativo);
             return valor;
         }
-
         private double CalcularTotalNoGravado(List<FacturaCompra> value)
         {
             decimal totalnoGravado = 0;
             decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                if (item.NroFacturaNotaDeCredtio != "" & item.NroFacturaNotaDeCredtio != null)
+                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo += item.NoGravado;
                 }
@@ -1046,7 +1041,6 @@ namespace Sico
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
         }
-
         private void btnVolver2_Click(object sender, EventArgs e)
         {
             ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
