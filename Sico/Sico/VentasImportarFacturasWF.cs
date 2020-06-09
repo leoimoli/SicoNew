@@ -78,6 +78,9 @@ namespace Sico
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             btnVolver.Enabled = true;
+            btnCargaMasiva.Enabled = true;
+            txtRuta.Clear();
+            CargarCombo();
         }
         private void Datos()
         {

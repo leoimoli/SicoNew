@@ -25,6 +25,8 @@ namespace Sico
             this.cuit = cuit;
             RazonSocial = razonSocial;
             Cuit = cuit;
+            txtRuta.Clear();
+            CargarCombo();
         }
         public static string RazonSocial;
         public static string Cuit;
@@ -62,6 +64,8 @@ namespace Sico
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             btnVolver.Enabled = true;
+            btnCargaMasiva.Enabled = true;
+            dataGridView1.Rows.Clear();
         }
         private void btnCargarArchivo_Click(object sender, EventArgs e)
         {

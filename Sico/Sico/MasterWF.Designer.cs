@@ -30,13 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterWF));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblMaster_UsuarioLogin = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblFechaHora_Edit = new System.Windows.Forms.Label();
-            this.lblMaster_FechaHora = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +41,13 @@
             this.cargarFirmaEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calculadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMaster_UsuarioLogin = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblFechaHora_Edit = new System.Windows.Forms.Label();
+            this.lblMaster_FechaHora = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -69,82 +69,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1370, 29);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Controls.Add(this.lblMaster_UsuarioLogin);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.lblFechaHora_Edit);
-            this.panel1.Controls.Add(this.lblMaster_FechaHora);
-            this.panel1.Location = new System.Drawing.Point(0, 32);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1386, 28);
-            this.panel1.TabIndex = 1;
-            // 
-            // lblMaster_UsuarioLogin
-            // 
-            this.lblMaster_UsuarioLogin.AutoSize = true;
-            this.lblMaster_UsuarioLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaster_UsuarioLogin.ForeColor = System.Drawing.Color.White;
-            this.lblMaster_UsuarioLogin.Location = new System.Drawing.Point(863, 6);
-            this.lblMaster_UsuarioLogin.Name = "lblMaster_UsuarioLogin";
-            this.lblMaster_UsuarioLogin.Size = new System.Drawing.Size(97, 17);
-            this.lblMaster_UsuarioLogin.TabIndex = 7;
-            this.lblMaster_UsuarioLogin.Text = "Fecha y Hora:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(797, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Usuario:";
-            // 
-            // lblFechaHora_Edit
-            // 
-            this.lblFechaHora_Edit.AutoSize = true;
-            this.lblFechaHora_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaHora_Edit.ForeColor = System.Drawing.Color.White;
-            this.lblFechaHora_Edit.Location = new System.Drawing.Point(110, 5);
-            this.lblFechaHora_Edit.Name = "lblFechaHora_Edit";
-            this.lblFechaHora_Edit.Size = new System.Drawing.Size(97, 17);
-            this.lblFechaHora_Edit.TabIndex = 5;
-            this.lblFechaHora_Edit.Text = "Fecha y Hora:";
-            // 
-            // lblMaster_FechaHora
-            // 
-            this.lblMaster_FechaHora.AutoSize = true;
-            this.lblMaster_FechaHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaster_FechaHora.ForeColor = System.Drawing.Color.White;
-            this.lblMaster_FechaHora.Location = new System.Drawing.Point(7, 5);
-            this.lblMaster_FechaHora.Name = "lblMaster_FechaHora";
-            this.lblMaster_FechaHora.Size = new System.Drawing.Size(97, 17);
-            this.lblMaster_FechaHora.TabIndex = 4;
-            this.lblMaster_FechaHora.Text = "Fecha y Hora:";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(0, 646);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1386, 28);
-            this.panel2.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(627, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Sico(contable) V-1.6.0";
             // 
             // inicioToolStripMenuItem
             // 
@@ -238,6 +162,82 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(69, 25);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.lblMaster_UsuarioLogin);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lblFechaHora_Edit);
+            this.panel1.Controls.Add(this.lblMaster_FechaHora);
+            this.panel1.Location = new System.Drawing.Point(0, 32);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1386, 28);
+            this.panel1.TabIndex = 1;
+            // 
+            // lblMaster_UsuarioLogin
+            // 
+            this.lblMaster_UsuarioLogin.AutoSize = true;
+            this.lblMaster_UsuarioLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaster_UsuarioLogin.ForeColor = System.Drawing.Color.White;
+            this.lblMaster_UsuarioLogin.Location = new System.Drawing.Point(863, 6);
+            this.lblMaster_UsuarioLogin.Name = "lblMaster_UsuarioLogin";
+            this.lblMaster_UsuarioLogin.Size = new System.Drawing.Size(97, 17);
+            this.lblMaster_UsuarioLogin.TabIndex = 7;
+            this.lblMaster_UsuarioLogin.Text = "Fecha y Hora:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(797, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Usuario:";
+            // 
+            // lblFechaHora_Edit
+            // 
+            this.lblFechaHora_Edit.AutoSize = true;
+            this.lblFechaHora_Edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaHora_Edit.ForeColor = System.Drawing.Color.White;
+            this.lblFechaHora_Edit.Location = new System.Drawing.Point(110, 5);
+            this.lblFechaHora_Edit.Name = "lblFechaHora_Edit";
+            this.lblFechaHora_Edit.Size = new System.Drawing.Size(97, 17);
+            this.lblFechaHora_Edit.TabIndex = 5;
+            this.lblFechaHora_Edit.Text = "Fecha y Hora:";
+            // 
+            // lblMaster_FechaHora
+            // 
+            this.lblMaster_FechaHora.AutoSize = true;
+            this.lblMaster_FechaHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaster_FechaHora.ForeColor = System.Drawing.Color.White;
+            this.lblMaster_FechaHora.Location = new System.Drawing.Point(7, 5);
+            this.lblMaster_FechaHora.Name = "lblMaster_FechaHora";
+            this.lblMaster_FechaHora.Size = new System.Drawing.Size(97, 17);
+            this.lblMaster_FechaHora.TabIndex = 4;
+            this.lblMaster_FechaHora.Text = "Fecha y Hora:";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Location = new System.Drawing.Point(0, 646);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1386, 28);
+            this.panel2.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(627, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(149, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Sico(contable) V-1.6.1";
             // 
             // MasterWF
             // 
