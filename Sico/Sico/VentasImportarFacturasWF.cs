@@ -78,9 +78,6 @@ namespace Sico
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             btnVolver.Enabled = true;
-            btnCargaMasiva.Enabled = true;
-            txtRuta.Clear();
-            CargarCombo();
         }
         private void Datos()
         {
@@ -121,7 +118,7 @@ namespace Sico
                             if (list.Fecha == "Fecha")
                             { continue; }
                             list.TipoComprobante = item[1].ToString();
-                            if (list.TipoComprobante == "11 - Factura C")
+                            if (list.TipoComprobante == "11 - Factura C" || list.TipoComprobante == "15 - Recibo C" || list.TipoComprobante == "12 - Nota de Débito C")
                             {
                                 list.NroFactura = item[2].ToString() + "|" + item[3].ToString();
                             }
@@ -168,11 +165,11 @@ namespace Sico
                             if (list.Fecha == "Fecha")
                             { continue; }
                             list.TipoComprobante = item[1].ToString();
-                            if (list.TipoComprobante == "6 - Factura B" || list.TipoComprobante == " 1 - Factura A")
+                            if (list.TipoComprobante == "6 - Factura B" || list.TipoComprobante == " 1 - Factura A" || list.TipoComprobante == "4 - Recibo A" || list.TipoComprobante == "9 - Recibo B" || list.TipoComprobante == "2 - Nota de Débito A" || list.TipoComprobante == "7 - Nota de Débito B")
                             {
                                 list.NroFactura = item[2].ToString() + "|" + item[3].ToString();
                             }
-                            if (list.TipoComprobante == "8 - Nota de Crédito B" || list.TipoComprobante == "13 - Nota de Crédito C")
+                            if (list.TipoComprobante == "7 - Nota de Crédito B" || list.TipoComprobante == "3 - Nota de Crédito A")
                             {
                                 list.NroFacturaNotaDeCredtio = item[2].ToString() + "|" + item[3].ToString();
                             }
@@ -280,7 +277,6 @@ namespace Sico
                 con.Close();
             }
         }
-
         public static List<Entidades.SubCliente> ListaPrecargada;
         public List<Entidades.SubCliente> ListaFacturasVentas
         {
