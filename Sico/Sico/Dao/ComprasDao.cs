@@ -772,7 +772,6 @@ namespace Sico.Dao
             return _CodigoOperacion;
         }
 
-
         ///////// Consultas Para Ventas
         public static List<FacturaVentaAnual> FacturacionAnualVentasPorPeriodos(string cuit, string Periodo)
         {
@@ -928,28 +927,6 @@ namespace Sico.Dao
         }
         public static List<FacturaVentaAnual> FacturacionAnualVentasPorAño(string cuit, string año)
         {
-            /////Facturas
-            decimal ListaMontoTotal = 0;
-            decimal ListaTotal1 = 0;
-            decimal ListaTotal2 = 0;
-            decimal ListaTotal3 = 0;
-            decimal ListaNeto1 = 0;
-            decimal ListaNeto2 = 0;
-            decimal ListaNeto3 = 0;
-            decimal ListaIva1 = 0;
-            decimal ListaIva2 = 0;
-            decimal ListaIva3 = 0;
-            /////Notas 
-            decimal NotasMontoTotal = 0;
-            decimal NotasTotal1 = 0;
-            decimal NotasTotal2 = 0;
-            decimal NotasTotal3 = 0;
-            decimal NotasNeto1 = 0;
-            decimal NotasNeto2 = 0;
-            decimal NotasNeto3 = 0;
-            decimal NotasIva1 = 0;
-            decimal NotasIva2 = 0;
-            decimal NotasIva3 = 0;
             List<FacturaVentaAnual> Notaslista = new List<FacturaVentaAnual>();
             string PeriodoMostrar = "";
             List<string> listaPeriodos = new List<string>();
@@ -963,6 +940,28 @@ namespace Sico.Dao
                 listaPeriodos = BuscarPeriodosPorAñoIdCliente(IdCliente, año);
                 foreach (var item in listaPeriodos)
                 {
+                    /////Facturas
+                    decimal ListaMontoTotal = 0;
+                    decimal ListaTotal1 = 0;
+                    decimal ListaTotal2 = 0;
+                    decimal ListaTotal3 = 0;
+                    decimal ListaNeto1 = 0;
+                    decimal ListaNeto2 = 0;
+                    decimal ListaNeto3 = 0;
+                    decimal ListaIva1 = 0;
+                    decimal ListaIva2 = 0;
+                    decimal ListaIva3 = 0;
+                    /////Notas 
+                    decimal NotasMontoTotal = 0;
+                    decimal NotasTotal1 = 0;
+                    decimal NotasTotal2 = 0;
+                    decimal NotasTotal3 = 0;
+                    decimal NotasNeto1 = 0;
+                    decimal NotasNeto2 = 0;
+                    decimal NotasNeto3 = 0;
+                    decimal NotasIva1 = 0;
+                    decimal NotasIva2 = 0;
+                    decimal NotasIva3 = 0;
                     string Periodo = item;
                     connection.Close();
                     connection.Open();
@@ -1081,6 +1080,7 @@ namespace Sico.Dao
                     listaFacturacion.Iva2 = Convert.ToDecimal(FinalIva2);
                     listaFacturacion.Iva3 = Convert.ToDecimal(FinalIva3);
                     listaFinal.Add(listaFacturacion);
+
                 }
             }
             connection.Close();
@@ -1089,34 +1089,6 @@ namespace Sico.Dao
         ///////// Consultas Para Compras
         public static List<FacturaCompraAnual> FacturacionAnualPorAño(string cuit, string año)
         {
-            ///// Facturas
-            decimal ListaMontoTotal = 0;
-            decimal ListaTotal1 = 0;
-            decimal ListaTotal2 = 0;
-            decimal ListaTotal3 = 0;
-            decimal ListaNeto1 = 0;
-            decimal ListaNeto2 = 0;
-            decimal ListaNeto3 = 0;
-            decimal ListaIva1 = 0;
-            decimal ListaIva2 = 0;
-            decimal ListaIva3 = 0;
-            decimal ListaPerIva = 0;
-            decimal ListaPerIng = 0;
-            decimal ListaNoGrav = 0;
-            decimal NotasMontoTotal = 0;
-            ///// Notas de credito
-            decimal NotasTotal1 = 0;
-            decimal NotasTotal2 = 0;
-            decimal NotasTotal3 = 0;
-            decimal NotasNeto1 = 0;
-            decimal NotasNeto2 = 0;
-            decimal NotasNeto3 = 0;
-            decimal NotasIva1 = 0;
-            decimal NotasIva2 = 0;
-            decimal NotasIva3 = 0;
-            decimal NotasPerIva = 0;
-            decimal NotasPerIng = 0;
-            decimal NotasNoGrav = 0;
             List<string> listaPeriodos = new List<string>();
             List<FacturaCompraAnual> lista = new List<FacturaCompraAnual>();
             List<FacturaCompraAnual> listaNotas = new List<FacturaCompraAnual>();
@@ -1130,6 +1102,34 @@ namespace Sico.Dao
                 listaPeriodos = BuscarPeriodosComprasPorAñoIdCliente(IdCliente, año);
                 foreach (var item in listaPeriodos)
                 {
+                    ///// Facturas
+                    decimal ListaMontoTotal = 0;
+                    decimal ListaTotal1 = 0;
+                    decimal ListaTotal2 = 0;
+                    decimal ListaTotal3 = 0;
+                    decimal ListaNeto1 = 0;
+                    decimal ListaNeto2 = 0;
+                    decimal ListaNeto3 = 0;
+                    decimal ListaIva1 = 0;
+                    decimal ListaIva2 = 0;
+                    decimal ListaIva3 = 0;
+                    decimal ListaPerIva = 0;
+                    decimal ListaPerIng = 0;
+                    decimal ListaNoGrav = 0;
+                    decimal NotasMontoTotal = 0;
+                    ///// Notas de credito
+                    decimal NotasTotal1 = 0;
+                    decimal NotasTotal2 = 0;
+                    decimal NotasTotal3 = 0;
+                    decimal NotasNeto1 = 0;
+                    decimal NotasNeto2 = 0;
+                    decimal NotasNeto3 = 0;
+                    decimal NotasIva1 = 0;
+                    decimal NotasIva2 = 0;
+                    decimal NotasIva3 = 0;
+                    decimal NotasPerIva = 0;
+                    decimal NotasPerIng = 0;
+                    decimal NotasNoGrav = 0;
                     string Periodo = item;
                     connection.Close();
                     connection.Open();
