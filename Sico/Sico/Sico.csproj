@@ -77,7 +77,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\Desktop\Stock V1.0\Aplicacion\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\SicoNew\Sico\Sico\bin\Debug\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
@@ -197,6 +197,12 @@
     <Compile Include="Clases_Maestras\Sesion.cs" />
     <Compile Include="Clases_Maestras\ValoresConstantes.cs" />
     <Compile Include="Clases_Maestras\Variables.cs" />
+    <Compile Include="ClientesNuevoWFcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientesNuevoWFcs.Designer.cs">
+      <DependentUpon>ClientesNuevoWFcs.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClienteWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,11 +272,23 @@
     <Compile Include="FirmaEmailWF.Designer.cs">
       <DependentUpon>FirmaEmailWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginNuevoWF.Designer.cs">
+      <DependentUpon>LoginNuevoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Master2WF.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Master2WF.Designer.cs">
       <DependentUpon>Master2WF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterNuevaWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterNuevaWF.Designer.cs">
+      <DependentUpon>MasterNuevaWF.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuClienteWF.cs">
       <SubType>Form</SubType>
@@ -414,6 +432,9 @@
     <EmbeddedResource Include="CalendarioWF.resx">
       <DependentUpon>CalendarioWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientesNuevoWFcs.resx">
+      <DependentUpon>ClientesNuevoWFcs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClienteWF.resx">
       <DependentUpon>ClienteWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -441,8 +462,14 @@
     <EmbeddedResource Include="FirmaEmailWF.resx">
       <DependentUpon>FirmaEmailWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginNuevoWF.resx">
+      <DependentUpon>LoginNuevoWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Master2WF.resx">
       <DependentUpon>Master2WF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterNuevaWF.resx">
+      <DependentUpon>MasterNuevaWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuClienteWF.resx">
       <DependentUpon>MenuClienteWF.cs</DependentUpon>
@@ -654,6 +681,36 @@
     <None Include="Resources\espalda.png" />
     <None Include="Resources\calculadora.png" />
     <None Include="Resources\calculadora %281%29.png" />
+    <None Include="Resources\Imagen_Sico_Login.png" />
+    <None Include="Resources\maximizar.png" />
+    <None Include="Resources\cerrar.png" />
+    <None Include="Resources\minimizar.png" />
+    <None Include="Resources\menos.png" />
+    <None Include="Resources\menos %281%29.png" />
+    <None Include="Resources\cerrar1.png" />
+    <None Include="Resources\cancelar2.png" />
+    <None Include="Resources\maximizar1.png" />
+    <None Include="Resources\menos %282%291.png" />
+    <None Include="Resources\restaurar.png" />
+    <None Include="Resources\trabajando.png" />
+    <None Include="Resources\Imagen_Sico_Login1.png" />
+    <None Include="Resources\usuario1.png" />
+    <None Include="Resources\carrito-de-compras %281%29.png" />
+    <None Include="Resources\ventas.png" />
+    <None Include="Resources\calculadora1.png" />
+    <None Include="Resources\calendario2.png" />
+    <None Include="Resources\informe-seo.png" />
+    <None Include="Resources\empleado.png" />
+    <None Include="Resources\llave.png" />
+    <None Include="Resources\reporte-de-salud.png" />
+    <None Include="Resources\noticias.png" />
+    <None Include="Resources\presupuesto.png" />
+    <None Include="Resources\calendario %281%29.png" />
+    <None Include="Resources\notas.png" />
+    <None Include="Resources\fabrica.png" />
+    <None Include="Resources\usuario2.png" />
+    <None Include="Resources\usuario %281%29.png" />
+    <None Include="Resources\seleccion %281%29.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

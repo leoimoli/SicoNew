@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPericias = new System.Windows.Forms.Button();
-            this.btnUsuarios = new System.Windows.Forms.Button();
-            this.btnClientes = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.imgHipotecario = new System.Windows.Forms.PictureBox();
             this.imgProvincia = new System.Windows.Forms.PictureBox();
             this.imgNacion = new System.Windows.Forms.PictureBox();
-            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnPericias = new System.Windows.Forms.Button();
+            this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnClientes = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -56,49 +56,16 @@
             this.groupBox1.Controls.Add(this.btnPericias);
             this.groupBox1.Controls.Add(this.btnUsuarios);
             this.groupBox1.Controls.Add(this.btnClientes);
-            this.groupBox1.Location = new System.Drawing.Point(108, 78);
+            this.groupBox1.Location = new System.Drawing.Point(108, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(550, 100);
+            this.groupBox1.Size = new System.Drawing.Size(550, 98);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            // 
-            // btnPericias
-            // 
-            this.btnPericias.Image = global::Sico.Properties.Resources.juicio__1_;
-            this.btnPericias.Location = new System.Drawing.Point(218, 14);
-            this.btnPericias.Name = "btnPericias";
-            this.btnPericias.Size = new System.Drawing.Size(100, 80);
-            this.btnPericias.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.btnPericias, "Pericias");
-            this.btnPericias.UseVisualStyleBackColor = true;
-            this.btnPericias.Click += new System.EventHandler(this.btnPericias_Click);
-            // 
-            // btnUsuarios
-            // 
-            this.btnUsuarios.Image = global::Sico.Properties.Resources.usuario_hombre__1_;
-            this.btnUsuarios.Location = new System.Drawing.Point(415, 14);
-            this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(100, 80);
-            this.btnUsuarios.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.btnUsuarios, "Usuarios");
-            this.btnUsuarios.UseVisualStyleBackColor = true;
-            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
-            // 
-            // btnClientes
-            // 
-            this.btnClientes.Image = global::Sico.Properties.Resources.comprador__1_1;
-            this.btnClientes.Location = new System.Drawing.Point(43, 14);
-            this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(100, 80);
-            this.btnClientes.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.btnClientes, "Clientes");
-            this.btnClientes.UseVisualStyleBackColor = true;
-            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.webBrowser1);
-            this.groupBox2.Location = new System.Drawing.Point(821, 122);
+            this.groupBox2.Location = new System.Drawing.Point(838, 51);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 210);
             this.groupBox2.TabIndex = 4;
@@ -120,12 +87,21 @@
             this.groupBox3.Controls.Add(this.imgProvincia);
             this.groupBox3.Controls.Add(this.imgNacion);
             this.groupBox3.Controls.Add(this.webBrowser2);
-            this.groupBox3.Location = new System.Drawing.Point(848, 335);
+            this.groupBox3.Location = new System.Drawing.Point(685, 166);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(150, 300);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
+            // 
+            // webBrowser2
+            // 
+            this.webBrowser2.Location = new System.Drawing.Point(0, 16);
+            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser2.Name = "webBrowser2";
+            this.webBrowser2.ScrollBarsEnabled = false;
+            this.webBrowser2.Size = new System.Drawing.Size(150, 160);
+            this.webBrowser2.TabIndex = 1;
             // 
             // imgHipotecario
             // 
@@ -160,41 +136,61 @@
             this.toolTip1.SetToolTip(this.imgNacion, "Banco Nación");
             this.imgNacion.Click += new System.EventHandler(this.imgNacion_Click);
             // 
-            // webBrowser2
-            // 
-            this.webBrowser2.Location = new System.Drawing.Point(0, 16);
-            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser2.Name = "webBrowser2";
-            this.webBrowser2.ScrollBarsEnabled = false;
-            this.webBrowser2.Size = new System.Drawing.Size(150, 160);
-            this.webBrowser2.TabIndex = 1;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Sico.Properties.Resources.SistemaContable;
-            this.pictureBox1.Location = new System.Drawing.Point(108, 184);
+            this.pictureBox1.Location = new System.Drawing.Point(108, 127);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(550, 450);
+            this.pictureBox1.Size = new System.Drawing.Size(550, 339);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnPericias
+            // 
+            this.btnPericias.Image = global::Sico.Properties.Resources.juicio__1_;
+            this.btnPericias.Location = new System.Drawing.Point(218, 14);
+            this.btnPericias.Name = "btnPericias";
+            this.btnPericias.Size = new System.Drawing.Size(100, 80);
+            this.btnPericias.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.btnPericias, "Pericias");
+            this.btnPericias.UseVisualStyleBackColor = true;
+            this.btnPericias.Click += new System.EventHandler(this.btnPericias_Click);
+            // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.Image = global::Sico.Properties.Resources.usuario_hombre__1_;
+            this.btnUsuarios.Location = new System.Drawing.Point(415, 14);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(100, 80);
+            this.btnUsuarios.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.btnUsuarios, "Usuarios");
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            // 
+            // btnClientes
+            // 
+            this.btnClientes.Image = global::Sico.Properties.Resources.comprador__1_1;
+            this.btnClientes.Location = new System.Drawing.Point(43, 14);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(100, 80);
+            this.btnClientes.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.btnClientes, "Clientes");
+            this.btnClientes.UseVisualStyleBackColor = true;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // InicioWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.ClientSize = new System.Drawing.Size(1099, 564);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
-            this.Location = new System.Drawing.Point(0, 0);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InicioWF";
             this.Text = "Inicio";
             this.Load += new System.EventHandler(this.InicioWF_Load);
-            this.Controls.SetChildIndex(this.groupBox1, 0);
-            this.Controls.SetChildIndex(this.pictureBox1, 0);
-            this.Controls.SetChildIndex(this.groupBox2, 0);
-            this.Controls.SetChildIndex(this.groupBox3, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -203,7 +199,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgNacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

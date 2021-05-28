@@ -12,7 +12,7 @@ using Sico.Entidades;
 
 namespace Sico
 {
-    public partial class ClienteWF : MasterWF
+    public partial class ClienteWF : Form
     {
         public ClienteWF()
         {
@@ -20,10 +20,18 @@ namespace Sico
         }
         private void ClienteWF_Load(object sender, EventArgs e)
         {
-            if (chcTodosLosClientes.Checked == true)
-            {
-                ListarClientes = ClienteNeg.ListarTodosLosClientes();
-            }
+            //if (chcTodosLosClientes.Checked == true)
+            //{
+            //    List<Entidades.Cliente> ListarClientes = ClienteNeg.ListarTodosLosClientes();
+            //    // ListarClientes = ClienteNeg.ListarTodosLosClientes();
+            //    if (ListarClientes.Count > 0)
+            //    {
+            //        foreach (var item in ListarClientes)
+            //        {
+            //            dgvTodosLosClientes.Rows.Add(item.IdCliente, item.NombreRazonSocial, item.Cuit, item.Actividad, item.CondicionAntiAfip);
+            //        }
+            //    }
+            //}
         }
         private void cmbProvincia_Click(object sender, EventArgs e)
         {
@@ -344,6 +352,11 @@ namespace Sico
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            BuscarRazonSocial();
+        }
+
+        private void BuscarRazonSocial()
+        {
             try
             {
                 if (chcPorCuit.Checked == true)
@@ -447,7 +460,16 @@ namespace Sico
 
                 if (chcTodosLosClientes.Checked == true)
                 {
-                    ListarClientes = ClienteNeg.ListarTodosLosClientes();
+                    List<Entidades.Cliente> ListarClientes = ClienteNeg.ListarTodosLosClientes();
+                    // ListarClientes = ClienteNeg.ListarTodosLosClientes();
+                    if (ListarClientes.Count > 0)
+                    {
+                        foreach (var item in ListarClientes)
+                        {
+                            dgvTodosLosClientes.Rows.Add(item.IdCliente, item.NombreRazonSocial, item.Cuit, item.Actividad, item.CondicionAntiAfip);
+                        }
+                    }
+                    dgvTodosLosClientes.ReadOnly = true;
                 }
             }
             catch (Exception ex)
@@ -455,6 +477,7 @@ namespace Sico
 
             }
         }
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
@@ -482,7 +505,6 @@ namespace Sico
             _tarea.Show();
             Hide();
         }
-
         #endregion
         public List<Entidades.Cliente> ListarClientes
         {
@@ -611,13 +633,12 @@ namespace Sico
                 btnBuscar.Focus();
             }
         }
-
         private void dgvTodosLosClientes_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && this.dgvTodosLosClientes.Columns[e.ColumnIndex].Name == "Ver" && e.RowIndex >= 0)
+            if (e.ColumnIndex >= 0 && this.dgvTodosLosClientes.Columns[e.ColumnIndex].Name == "Seleccionar" && e.RowIndex >= 0)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                DataGridViewButtonCell BotonVer = this.dgvTodosLosClientes.Rows[e.RowIndex].Cells["Ver"] as DataGridViewButtonCell;
+                DataGridViewButtonCell BotonVer = this.dgvTodosLosClientes.Rows[e.RowIndex].Cells["Seleccionar"] as DataGridViewButtonCell;
                 Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"lupa.ico");
                 e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 5, e.CellBounds.Top + 5);
 
@@ -639,7 +660,6 @@ namespace Sico
                 e.Handled = true;
             }
         }
-
         private void dgvTodosLosClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvTodosLosClientes.CurrentCell.ColumnIndex == 14)

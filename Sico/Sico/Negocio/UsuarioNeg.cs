@@ -58,6 +58,7 @@ namespace Sico.Negocio
             if (lista.Count > 0)
             {
                 int idUsuario = Convert.ToInt32(lista[0].IdUsuario.ToString());
+                UsuarioDao.ActualizarUltimaConexion(idUsuario);
             }
             return lista;
         }

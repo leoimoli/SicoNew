@@ -44,6 +44,13 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvTodosLosClientes = new System.Windows.Forms.DataGridView();
+            this.idCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreRazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CuitCuil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Actividad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Condicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.dtFechaInscripcion = new System.Windows.Forms.DateTimePicker();
@@ -60,8 +67,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.txtCuit = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -78,6 +83,8 @@
             this.lblCantidad = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -94,7 +101,7 @@
             this.groupBox3.Controls.Add(this.chcPorNombreRazonSocial);
             this.groupBox3.Controls.Add(this.txtBuscar);
             this.groupBox3.Controls.Add(this.lblDniOApellidoNombre);
-            this.groupBox3.Location = new System.Drawing.Point(35, 63);
+            this.groupBox3.Location = new System.Drawing.Point(35, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(878, 72);
             this.groupBox3.TabIndex = 10;
@@ -188,9 +195,9 @@
             this.groupBox2.Controls.Add(this.btnHistorial);
             this.groupBox2.Controls.Add(this.btnEliminar);
             this.groupBox2.Controls.Add(this.btnEditar);
-            this.groupBox2.Location = new System.Drawing.Point(929, 140);
+            this.groupBox2.Location = new System.Drawing.Point(924, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(186, 452);
+            this.groupBox2.Size = new System.Drawing.Size(147, 419);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funciones";
@@ -199,7 +206,7 @@
             // 
             this.btnHabilitarBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
             this.btnHabilitarBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHabilitarBuscar.Location = new System.Drawing.Point(45, 98);
+            this.btnHabilitarBuscar.Location = new System.Drawing.Point(34, 98);
             this.btnHabilitarBuscar.Name = "btnHabilitarBuscar";
             this.btnHabilitarBuscar.Size = new System.Drawing.Size(90, 61);
             this.btnHabilitarBuscar.TabIndex = 1;
@@ -212,7 +219,7 @@
             // 
             this.btnNuevoCliente.Image = global::Sico.Properties.Resources.agregar_usuario_nuevo;
             this.btnNuevoCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNuevoCliente.Location = new System.Drawing.Point(45, 19);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(34, 19);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
             this.btnNuevoCliente.Size = new System.Drawing.Size(90, 61);
             this.btnNuevoCliente.TabIndex = 0;
@@ -225,7 +232,7 @@
             // 
             this.btnHistorial.Image = global::Sico.Properties.Resources.diagnostico;
             this.btnHistorial.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHistorial.Location = new System.Drawing.Point(45, 348);
+            this.btnHistorial.Location = new System.Drawing.Point(34, 348);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.Size = new System.Drawing.Size(90, 61);
             this.btnHistorial.TabIndex = 4;
@@ -239,7 +246,7 @@
             // 
             this.btnEliminar.Image = global::Sico.Properties.Resources.borrar_usuario;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEliminar.Location = new System.Drawing.Point(45, 255);
+            this.btnEliminar.Location = new System.Drawing.Point(34, 255);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(90, 61);
             this.btnEliminar.TabIndex = 3;
@@ -253,7 +260,7 @@
             // 
             this.btnEditar.Image = global::Sico.Properties.Resources.usuario;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnEditar.Location = new System.Drawing.Point(45, 175);
+            this.btnEditar.Location = new System.Drawing.Point(34, 175);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(90, 61);
             this.btnEditar.TabIndex = 2;
@@ -272,8 +279,6 @@
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtTelefono);
-            this.groupBox1.Controls.Add(this.btnGuardar);
-            this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.txtCuit);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.progressBar1);
@@ -288,9 +293,9 @@
             this.groupBox1.Controls.Add(this.txtNombreRazonSocial);
             this.groupBox1.Enabled = false;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(35, 138);
+            this.groupBox1.Location = new System.Drawing.Point(35, 82);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(878, 480);
+            this.groupBox1.Size = new System.Drawing.Size(878, 636);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -298,12 +303,66 @@
             // dgvTodosLosClientes
             // 
             this.dgvTodosLosClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTodosLosClientes.Location = new System.Drawing.Point(3, 21);
+            this.dgvTodosLosClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idCliente,
+            this.NombreRazonSocial,
+            this.CuitCuil,
+            this.Actividad,
+            this.Condicion,
+            this.Seleccionar,
+            this.Editar});
+            this.dgvTodosLosClientes.Location = new System.Drawing.Point(95, 12);
             this.dgvTodosLosClientes.Name = "dgvTodosLosClientes";
-            this.dgvTodosLosClientes.Size = new System.Drawing.Size(865, 455);
+            this.dgvTodosLosClientes.RowHeadersVisible = false;
+            this.dgvTodosLosClientes.Size = new System.Drawing.Size(289, 171);
             this.dgvTodosLosClientes.TabIndex = 25;
+            this.dgvTodosLosClientes.Visible = false;
             this.dgvTodosLosClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTodosLosClientes_CellClick);
             this.dgvTodosLosClientes.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvTodosLosClientes_CellPainting);
+            // 
+            // idCliente
+            // 
+            this.idCliente.HeaderText = "idCliente";
+            this.idCliente.Name = "idCliente";
+            this.idCliente.Width = 80;
+            // 
+            // NombreRazonSocial
+            // 
+            this.NombreRazonSocial.HeaderText = "Razón Social";
+            this.NombreRazonSocial.Name = "NombreRazonSocial";
+            this.NombreRazonSocial.Width = 210;
+            // 
+            // CuitCuil
+            // 
+            this.CuitCuil.HeaderText = "Cuit";
+            this.CuitCuil.Name = "CuitCuil";
+            this.CuitCuil.Width = 130;
+            // 
+            // Actividad
+            // 
+            this.Actividad.HeaderText = "Actividad";
+            this.Actividad.Name = "Actividad";
+            this.Actividad.Width = 145;
+            // 
+            // Condicion
+            // 
+            this.Condicion.HeaderText = "Condición";
+            this.Condicion.Name = "Condicion";
+            this.Condicion.Width = 150;
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Seleccionar.Width = 85;
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Name = "Editar";
+            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Editar.Width = 60;
             // 
             // label15
             // 
@@ -350,6 +409,7 @@
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos Domicilio";
+            this.groupBox4.Visible = false;
             // 
             // txtCodigoPostal
             // 
@@ -460,34 +520,6 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(123, 23);
             this.txtTelefono.TabIndex = 6;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Image = global::Sico.Properties.Resources.copia_de_seguridad;
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnGuardar.Location = new System.Drawing.Point(425, 426);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(80, 51);
-            this.btnGuardar.TabIndex = 9;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Image = global::Sico.Properties.Resources.cancelar;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(327, 426);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(80, 51);
-            this.btnCancelar.TabIndex = 8;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtCuit
             // 
@@ -638,25 +670,50 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Actividad(*):";
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Image = global::Sico.Properties.Resources.copia_de_seguridad;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGuardar.Location = new System.Drawing.Point(1027, 477);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(35, 25);
+            this.btnGuardar.TabIndex = 9;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Image = global::Sico.Properties.Resources.cancelar;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCancelar.Location = new System.Drawing.Point(958, 477);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(35, 25);
+            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // ClienteWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 731);
+            this.ClientSize = new System.Drawing.Size(1099, 615);
             this.Controls.Add(this.lblCantidadEdit);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Location = new System.Drawing.Point(0, 0);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnCancelar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClienteWF";
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.ClienteWF_Load);
-            this.Controls.SetChildIndex(this.groupBox1, 0);
-            this.Controls.SetChildIndex(this.groupBox2, 0);
-            this.Controls.SetChildIndex(this.lblCantidad, 0);
-            this.Controls.SetChildIndex(this.groupBox3, 0);
-            this.Controls.SetChildIndex(this.lblCantidadEdit, 0);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -722,5 +779,12 @@
         private System.Windows.Forms.Label lblCantidadEdit;
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.DataGridView dgvTodosLosClientes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreRazonSocial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CuitCuil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Actividad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Condicion;
+        private System.Windows.Forms.DataGridViewButtonColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewButtonColumn Editar;
     }
 }

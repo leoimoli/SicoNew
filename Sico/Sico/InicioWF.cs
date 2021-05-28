@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Sico
 {
-    public partial class InicioWF : MasterWF
+    public partial class InicioWF : Form
     {
         public InicioWF()
         {

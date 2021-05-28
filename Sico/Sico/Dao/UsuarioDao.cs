@@ -67,6 +67,20 @@ namespace Sico.Dao
             connection.Close();
             return listaCuenta;
         }
+        public static void ActualizarUltimaConexion(int idUsuario)
+        {
+            connection.Close();
+            connection.Open();
+            ///PROCEDIMIENTO
+            string proceso = "ActualizarUltimaConexion";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
+            DateTime Fecha = DateTime.Now;
+            cmd.Parameters.AddWithValue("FechaUltimaConexion_in", Fecha);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
         public static bool InsertCuentaEmail(CuentaEmailPorUsuario _cuenta)
         {
             bool exito = false;
