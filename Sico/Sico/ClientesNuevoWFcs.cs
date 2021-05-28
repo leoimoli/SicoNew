@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +19,6 @@ namespace Sico
         {
             InitializeComponent();
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             BuscarRazonSocial();
@@ -27,7 +27,7 @@ namespace Sico
         {
             try
             {
-                if (txtCuitBuscar.Text != "")
+                if (txtCuitBuscar.Text != "  -        -")
                 {
                     BuscarEmpresaPorCuit();
                 }
@@ -43,18 +43,20 @@ namespace Sico
         {
             dgvTodosLosClientes.Columns.Clear();
             dgvTodosLosClientes.DataSource = null;
-            dgvTodosLosClientes.Visible = false;
-            //lblCantidad.Visible = false;
-            //lblCantidadEdit.Visible = false;
+            dgvTodosLosClientes.Visible = false;           
             List<Cliente> _cliente = new List<Cliente>();
             var nombreRazonSocial = txtBuscarRazonSocial.Text;
             _cliente = ClienteNeg.BuscarClientePorNombreRazonSocial(nombreRazonSocial);
             if (_cliente.Count > 0)
             {
+                dgvTodosLosClientes.Rows.Clear();
+                //DiseñoGrilla();
+                dgvTodosLosClientes.Visible = true;
                 foreach (var item in _cliente)
                 {
                     dgvTodosLosClientes.Rows.Add(item.IdCliente, item.NombreRazonSocial, item.Cuit, item.Actividad, item.CondicionAntiAfip);
                 }
+                dgvTodosLosClientes.AllowUserToAddRows = false;
             }
             else
             {
@@ -76,10 +78,14 @@ namespace Sico
             _cliente = ClienteNeg.BuscarClientePorCuit(cuit);
             if (_cliente.Count > 0)
             {
+                dgvTodosLosClientes.Rows.Clear();
+                DiseñoGrilla();
+                dgvTodosLosClientes.Visible = true;
                 foreach (var item in _cliente)
                 {
                     dgvTodosLosClientes.Rows.Add(item.IdCliente, item.NombreRazonSocial, item.Cuit, item.Actividad, item.CondicionAntiAfip);
                 }
+                dgvTodosLosClientes.AllowUserToAddRows = false;
             }
             else
             {
@@ -94,16 +100,37 @@ namespace Sico
         }
         private void ClientesNuevoWFcs_Load(object sender, EventArgs e)
         {
+            BuscarTexto();
+            BuscarTodasLasEmpresas();
+        }
+        private void BuscarTexto()
+        {
+            txtBuscarRazonSocial.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteRazonSocial.Autocomplete();
+            txtBuscarRazonSocial.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtBuscarRazonSocial.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
+        private void BuscarTodasLasEmpresas()
+        {
+            dgvTodosLosClientes.Rows.Clear();
             List<Entidades.Cliente> ListarClientes = ClienteNeg.ListarTodosLosClientes();
             if (ListarClientes.Count > 0)
             {
+                DiseñoGrilla();
+                dgvTodosLosClientes.Visible = true;
                 foreach (var item in ListarClientes)
                 {
-                    dgvTodosLosClientes.Visible = true;
                     dgvTodosLosClientes.Rows.Add(item.IdCliente, item.NombreRazonSocial, item.Cuit, item.Actividad, item.CondicionAntiAfip);
                 }
                 dgvTodosLosClientes.AllowUserToAddRows = false;
             }
+        }
+        private void DiseñoGrilla()
+        {
+            this.dgvTodosLosClientes.DefaultCellStyle.Font = new Font("Tahoma", 9);
+            this.dgvTodosLosClientes.DefaultCellStyle.ForeColor = Color.Black;
+            this.dgvTodosLosClientes.DefaultCellStyle.BackColor = Color.White;
+            this.dgvTodosLosClientes.DefaultCellStyle.SelectionForeColor = Color.SteelBlue;
+            this.dgvTodosLosClientes.DefaultCellStyle.SelectionBackColor = Color.White;
         }
         public static int Funcion = 0;
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -123,6 +150,7 @@ namespace Sico
                                                      MessageBoxButtons.OK,
                                                      MessageBoxIcon.Asterisk);
                         LimpiarCampos();
+                        BuscarTodasLasEmpresas();
                     }
                 }
                 if (Funcion == 1)
@@ -138,6 +166,7 @@ namespace Sico
                                                      MessageBoxButtons.OK,
                                                      MessageBoxIcon.Asterisk);
                         LimpiarCampos();
+                        BuscarTodasLasEmpresas();
                     }
                     else
                     {
@@ -273,24 +302,24 @@ namespace Sico
         }
         private void dgvTodosLosClientes_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && this.dgvTodosLosClientes.Columns[e.ColumnIndex].Name == "Seleccionar" && e.RowIndex >= 0)
+            if (e.ColumnIndex >= 0 && this.dgvTodosLosClientes.Columns[e.ColumnIndex].Name == "SeleccionarNuevo" && e.RowIndex >= 0)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                DataGridViewButtonCell BotonVer = this.dgvTodosLosClientes.Rows[e.RowIndex].Cells["Seleccionar"] as DataGridViewButtonCell;
-                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"Editar.ico");
-                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 5, e.CellBounds.Top + 5);
-                this.dgvTodosLosClientes.Rows[e.RowIndex].Height = icoAtomico.Height + 6;
-                this.dgvTodosLosClientes.Columns[e.ColumnIndex].Width = icoAtomico.Width + 15;
+                DataGridViewButtonCell BotonVer = this.dgvTodosLosClientes.Rows[e.RowIndex].Cells["SeleccionarNuevo"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"grifo.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 25, e.CellBounds.Top + 0);
+                this.dgvTodosLosClientes.Rows[e.RowIndex].Height = icoAtomico.Height + 3;
+                this.dgvTodosLosClientes.Columns[e.ColumnIndex].Width = icoAtomico.Width + 45;
                 e.Handled = true;
             }
-            if (e.ColumnIndex >= 0 && this.dgvTodosLosClientes.Columns[e.ColumnIndex].Name == "Editar" && e.RowIndex >= 0)
+            if (e.ColumnIndex >= 0 && this.dgvTodosLosClientes.Columns[e.ColumnIndex].Name == "EditarNuevo" && e.RowIndex >= 0)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                DataGridViewButtonCell BotonVer = this.dgvTodosLosClientes.Rows[e.RowIndex].Cells["Editar"] as DataGridViewButtonCell;
-                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"Eliminar.ico");
-                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 5, e.CellBounds.Top + 5);
-                this.dgvTodosLosClientes.Rows[e.RowIndex].Height = icoAtomico.Height + 6;
-                this.dgvTodosLosClientes.Columns[e.ColumnIndex].Width = icoAtomico.Width + 15;
+                DataGridViewButtonCell BotonVer = this.dgvTodosLosClientes.Rows[e.RowIndex].Cells["EditarNuevo"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"Editar.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 8, e.CellBounds.Top + 0);
+                this.dgvTodosLosClientes.Rows[e.RowIndex].Height = icoAtomico.Height + 3;
+                this.dgvTodosLosClientes.Columns[e.ColumnIndex].Width = icoAtomico.Width + 10;
                 e.Handled = true;
             }
         }
@@ -298,11 +327,14 @@ namespace Sico
         {
             if (dgvTodosLosClientes.CurrentCell.ColumnIndex == 5)
             {
-                //var idsubCliente = Convert.ToString(this.dgvTodosLosClientes.CurrentRow.Cells[0].Value);
+                int idEmpresa = Convert.ToInt32(this.dgvTodosLosClientes.CurrentRow.Cells[0].Value.ToString());
                 string RazonSocial = this.dgvTodosLosClientes.CurrentRow.Cells[1].Value.ToString();
-                string Cuit = this.dgvTodosLosClientes.CurrentRow.Cells[2].Value.ToString();
-                MenuClienteWF _tarea = new MenuClienteWF(RazonSocial, Cuit);
-                _tarea.Show();
+                Sesion.UsuarioLogueado.idEmpresaSeleccionado = idEmpresa;
+                Sesion.UsuarioLogueado.EmpresaSeleccionada = RazonSocial;
+                MasterNuevaWF frm2 = new MasterNuevaWF(idEmpresa, RazonSocial);
+                frm2.idEmpresa = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
+                frm2.Empresa = Sesion.UsuarioLogueado.EmpresaSeleccionada;
+                frm2.Validar(idEmpresa, RazonSocial);
                 Hide();
             }
             if (dgvTodosLosClientes.CurrentCell.ColumnIndex == 6)
@@ -313,7 +345,6 @@ namespace Sico
                 _cliente = ClienteNeg.BuscarClientePorCuit(cuit);
                 if (_cliente.Count > 0)
                 {
-                    dgvTodosLosClientes.Visible = false;
                     var cliente = _cliente.First();
                     //RazonSocial = cliente.NombreRazonSocial;
                     //Cuit = cliente.Cuit;
@@ -340,7 +371,77 @@ namespace Sico
                     cmbLocalidad.Text = cliente.Localidad;
                     txtCuit.Enabled = false;
                 }
+            }           
+        }
+        private void txtBuscarRazonSocial_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    BuscarRazonSocial();
+                }
+                catch (Exception ex)
+                { }
             }
+
+        }
+        private void txtCuitBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    BuscarRazonSocial();
+                }
+                catch (Exception ex)
+                { }
+            }
+
+        }
+        private void cmbProvincia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string var = cmbProvincia.Text;
+                if (var != "Seleccione")
+                {
+                    var split1 = var.Split(',')[0];
+                    split1 = split1.Trim();
+                    int idProvinciaSeleccionada = Convert.ToInt32(split1);
+
+
+                    List<string> Localidades = new List<string>();
+                    Localidades = ClienteNeg.CargarComboLocalidadesPorIdProvincia(idProvinciaSeleccionada);
+                    cmbLocalidad.Items.Clear();
+                    cmbLocalidad.Text = "Seleccione";
+                    cmbLocalidad.Items.Add("Seleccione");
+                    foreach (string item in Localidades)
+                    {
+                        cmbLocalidad.Text = "Seleccione";
+                        cmbLocalidad.Items.Add(item);
+                    }
+                    this.cmbLocalidad.Enabled = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private void SoloNumeros(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+            // solo 1 punto decimal
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
+            //e.Handled = !char.IsNumber(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back);
         }
     }
 }

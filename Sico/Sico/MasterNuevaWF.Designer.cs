@@ -66,19 +66,16 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.grbEmpresaSeleccionada = new System.Windows.Forms.GroupBox();
+            this.lblidEmpresa = new System.Windows.Forms.Label();
             this.btnSeleccionarEmpresa = new System.Windows.Forms.Button();
             this.PictureBoxEmpresa = new System.Windows.Forms.PictureBox();
+            this.lblEmpresa = new System.Windows.Forms.Label();
             this.lblEmpresaSoleccionada = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.menuSupEmpresa = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuSupContabilidad = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSupSueldos = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,6 +83,11 @@
             this.asistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novedadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSupContabilidad = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.PanelContenedor = new System.Windows.Forms.Panel();
@@ -105,11 +107,12 @@
             this.MenuSupIva.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.grbEmpresaSeleccionada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).BeginInit();
             this.panel5.SuspendLayout();
             this.menuSupEmpresa.SuspendLayout();
-            this.MenuSupContabilidad.SuspendLayout();
             this.MenuSupSueldos.SuspendLayout();
+            this.MenuSupContabilidad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
@@ -532,17 +535,14 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(360, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(272, 17);
+            this.label7.Size = new System.Drawing.Size(205, 17);
             this.label7.TabIndex = 6;
-            this.label7.Text = "StoCom(Sistema Stock Comercial) V-1.0.0";
+            this.label7.Text = "Sico(Sistema Contable) V-1.0.0";
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.panel4.Controls.Add(this.btnSeleccionarEmpresa);
-            this.panel4.Controls.Add(this.PictureBoxEmpresa);
-            this.panel4.Controls.Add(this.lblEmpresaSoleccionada);
-            this.panel4.Controls.Add(this.label8);
+            this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.Controls.Add(this.grbEmpresaSeleccionada);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.pictureBox6);
@@ -552,62 +552,89 @@
             this.panel4.Size = new System.Drawing.Size(1099, 87);
             this.panel4.TabIndex = 10;
             // 
+            // grbEmpresaSeleccionada
+            // 
+            this.grbEmpresaSeleccionada.Controls.Add(this.lblidEmpresa);
+            this.grbEmpresaSeleccionada.Controls.Add(this.btnSeleccionarEmpresa);
+            this.grbEmpresaSeleccionada.Controls.Add(this.PictureBoxEmpresa);
+            this.grbEmpresaSeleccionada.Controls.Add(this.lblEmpresa);
+            this.grbEmpresaSeleccionada.Controls.Add(this.lblEmpresaSoleccionada);
+            this.grbEmpresaSeleccionada.Location = new System.Drawing.Point(6, 3);
+            this.grbEmpresaSeleccionada.Name = "grbEmpresaSeleccionada";
+            this.grbEmpresaSeleccionada.Size = new System.Drawing.Size(266, 54);
+            this.grbEmpresaSeleccionada.TabIndex = 158;
+            this.grbEmpresaSeleccionada.TabStop = false;
+            this.grbEmpresaSeleccionada.Visible = false;
+            // 
+            // lblidEmpresa
+            // 
+            this.lblidEmpresa.AutoSize = true;
+            this.lblidEmpresa.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblidEmpresa.ForeColor = System.Drawing.Color.White;
+            this.lblidEmpresa.Location = new System.Drawing.Point(208, 13);
+            this.lblidEmpresa.Name = "lblidEmpresa";
+            this.lblidEmpresa.Size = new System.Drawing.Size(20, 17);
+            this.lblidEmpresa.TabIndex = 7;
+            this.lblidEmpresa.Text = "id";
+            this.lblidEmpresa.Visible = false;
+            // 
             // btnSeleccionarEmpresa
             // 
             this.btnSeleccionarEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnSeleccionarEmpresa.Enabled = false;
             this.btnSeleccionarEmpresa.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
             this.btnSeleccionarEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSeleccionarEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSeleccionarEmpresa.ForeColor = System.Drawing.Color.White;
             this.btnSeleccionarEmpresa.Image = global::Sico.Properties.Resources.seleccion__1_;
-            this.btnSeleccionarEmpresa.Location = new System.Drawing.Point(250, 15);
+            this.btnSeleccionarEmpresa.Location = new System.Drawing.Point(232, 17);
             this.btnSeleccionarEmpresa.Name = "btnSeleccionarEmpresa";
             this.btnSeleccionarEmpresa.Size = new System.Drawing.Size(27, 29);
             this.btnSeleccionarEmpresa.TabIndex = 157;
             this.btnSeleccionarEmpresa.UseVisualStyleBackColor = false;
+            this.btnSeleccionarEmpresa.Click += new System.EventHandler(this.btnSeleccionarEmpresa_Click);
             // 
             // PictureBoxEmpresa
             // 
             this.PictureBoxEmpresa.Image = global::Sico.Properties.Resources.usuario__1_;
-            this.PictureBoxEmpresa.Location = new System.Drawing.Point(24, 9);
+            this.PictureBoxEmpresa.Location = new System.Drawing.Point(6, 11);
             this.PictureBoxEmpresa.Name = "PictureBoxEmpresa";
             this.PictureBoxEmpresa.Size = new System.Drawing.Size(35, 35);
             this.PictureBoxEmpresa.TabIndex = 8;
             this.PictureBoxEmpresa.TabStop = false;
             // 
+            // lblEmpresa
+            // 
+            this.lblEmpresa.AutoSize = true;
+            this.lblEmpresa.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpresa.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblEmpresa.Location = new System.Drawing.Point(52, 35);
+            this.lblEmpresa.Name = "lblEmpresa";
+            this.lblEmpresa.Size = new System.Drawing.Size(125, 16);
+            this.lblEmpresa.TabIndex = 6;
+            this.lblEmpresa.Text = "Usuario Logueado";
+            // 
             // lblEmpresaSoleccionada
             // 
             this.lblEmpresaSoleccionada.AutoSize = true;
-            this.lblEmpresaSoleccionada.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmpresaSoleccionada.ForeColor = System.Drawing.Color.White;
-            this.lblEmpresaSoleccionada.Location = new System.Drawing.Point(78, 9);
+            this.lblEmpresaSoleccionada.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpresaSoleccionada.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblEmpresaSoleccionada.Location = new System.Drawing.Point(49, 11);
             this.lblEmpresaSoleccionada.Name = "lblEmpresaSoleccionada";
-            this.lblEmpresaSoleccionada.Size = new System.Drawing.Size(155, 17);
+            this.lblEmpresaSoleccionada.Size = new System.Drawing.Size(158, 16);
             this.lblEmpresaSoleccionada.TabIndex = 7;
             this.lblEmpresaSoleccionada.Text = "Empresa Seleccionada";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(78, 33);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(125, 17);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Usuario Logueado";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.menuSupEmpresa);
             this.panel5.Controls.Add(this.MenuSupIva);
             this.panel5.Controls.Add(this.MenuSupSueldos);
             this.panel5.Controls.Add(this.MenuSupContabilidad);
-            this.panel5.Location = new System.Drawing.Point(0, 57);
+            this.panel5.Location = new System.Drawing.Point(-1, 57);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1093, 30);
+            this.panel5.Size = new System.Drawing.Size(1100, 30);
             this.panel5.TabIndex = 5;
             this.panel5.Visible = false;
             // 
@@ -621,7 +648,7 @@
             this.toolStripMenuItem12});
             this.menuSupEmpresa.Location = new System.Drawing.Point(3, 1);
             this.menuSupEmpresa.Name = "menuSupEmpresa";
-            this.menuSupEmpresa.Size = new System.Drawing.Size(333, 29);
+            this.menuSupEmpresa.Size = new System.Drawing.Size(213, 29);
             this.menuSupEmpresa.TabIndex = 5;
             this.menuSupEmpresa.Text = "menuStrip4";
             // 
@@ -641,54 +668,6 @@
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
             this.toolStripMenuItem12.Size = new System.Drawing.Size(100, 25);
             this.toolStripMenuItem12.Text = "Informes";
-            // 
-            // MenuSupContabilidad
-            // 
-            this.MenuSupContabilidad.BackColor = System.Drawing.SystemColors.Control;
-            this.MenuSupContabilidad.Dock = System.Windows.Forms.DockStyle.None;
-            this.MenuSupContabilidad.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.MenuSupContabilidad.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8});
-            this.MenuSupContabilidad.Location = new System.Drawing.Point(3, 1);
-            this.MenuSupContabilidad.Name = "MenuSupContabilidad";
-            this.MenuSupContabilidad.Size = new System.Drawing.Size(401, 29);
-            this.MenuSupContabilidad.TabIndex = 4;
-            this.MenuSupContabilidad.Text = "menuStrip3";
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem5.Image = global::Sico.Properties.Resources.presupuesto;
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(94, 25);
-            this.toolStripMenuItem5.Text = "Cuentas";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem6.Image = global::Sico.Properties.Resources.calendario__1_;
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(102, 25);
-            this.toolStripMenuItem6.Text = "Ejercicios";
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Image = global::Sico.Properties.Resources.notas;
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(97, 25);
-            this.toolStripMenuItem7.Text = "Asientos";
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Image = global::Sico.Properties.Resources.informe_seo;
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(100, 25);
-            this.toolStripMenuItem8.Text = "Informes";
             // 
             // MenuSupSueldos
             // 
@@ -754,11 +733,59 @@
             this.toolStripMenuItem4.Size = new System.Drawing.Size(100, 25);
             this.toolStripMenuItem4.Text = "Informes";
             // 
+            // MenuSupContabilidad
+            // 
+            this.MenuSupContabilidad.BackColor = System.Drawing.SystemColors.Control;
+            this.MenuSupContabilidad.Dock = System.Windows.Forms.DockStyle.None;
+            this.MenuSupContabilidad.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.MenuSupContabilidad.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8});
+            this.MenuSupContabilidad.Location = new System.Drawing.Point(3, 1);
+            this.MenuSupContabilidad.Name = "MenuSupContabilidad";
+            this.MenuSupContabilidad.Size = new System.Drawing.Size(401, 29);
+            this.MenuSupContabilidad.TabIndex = 4;
+            this.MenuSupContabilidad.Text = "menuStrip3";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem5.Image = global::Sico.Properties.Resources.presupuesto;
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(94, 25);
+            this.toolStripMenuItem5.Text = "Cuentas";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem6.Image = global::Sico.Properties.Resources.calendario__1_;
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(102, 25);
+            this.toolStripMenuItem6.Text = "Ejercicios";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Image = global::Sico.Properties.Resources.notas;
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(97, 25);
+            this.toolStripMenuItem7.Text = "Asientos";
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Image = global::Sico.Properties.Resources.informe_seo;
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(100, 25);
+            this.toolStripMenuItem8.Text = "Informes";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.ForeColor = System.Drawing.Color.SteelBlue;
             this.label6.Location = new System.Drawing.Point(964, 17);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 17);
@@ -767,6 +794,7 @@
             // 
             // pictureBox6
             // 
+            this.pictureBox6.BackColor = System.Drawing.Color.SteelBlue;
             this.pictureBox6.Image = global::Sico.Properties.Resources.usuario1;
             this.pictureBox6.Location = new System.Drawing.Point(923, 6);
             this.pictureBox6.Name = "pictureBox6";
@@ -802,6 +830,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MasterNuevaWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.MasterNuevaWF_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
@@ -822,15 +851,17 @@
             this.panel14.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.grbEmpresaSeleccionada.ResumeLayout(false);
+            this.grbEmpresaSeleccionada.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.menuSupEmpresa.ResumeLayout(false);
             this.menuSupEmpresa.PerformLayout();
-            this.MenuSupContabilidad.ResumeLayout(false);
-            this.MenuSupContabilidad.PerformLayout();
             this.MenuSupSueldos.ResumeLayout(false);
             this.MenuSupSueldos.PerformLayout();
+            this.MenuSupContabilidad.ResumeLayout(false);
+            this.MenuSupContabilidad.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
@@ -895,9 +926,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label lblEmpresaSoleccionada;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblEmpresa;
         private System.Windows.Forms.PictureBox PictureBoxEmpresa;
         private System.Windows.Forms.Button btnSeleccionarEmpresa;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.GroupBox grbEmpresaSeleccionada;
+        private System.Windows.Forms.Label lblidEmpresa;
     }
 }

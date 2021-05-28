@@ -183,6 +183,16 @@ namespace Sico.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buscar__2_ {
+            get {
+                object obj = ResourceManager.GetObject("buscar (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buscar_con_herramienta_en_esquema {
             get {
                 object obj = ResourceManager.GetObject("buscar-con-herramienta-en-esquema", resourceCulture);

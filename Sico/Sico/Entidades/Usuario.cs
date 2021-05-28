@@ -19,5 +19,7 @@ namespace Sico.Entidades
         public string Contraseña2 { get; set; }
         public string Perfil { get; set; }
         public string Estado { get; set; }
+        public int idEmpresaSeleccionado { get; set; }
+        public string EmpresaSeleccionada { get; set; }
     }
 }

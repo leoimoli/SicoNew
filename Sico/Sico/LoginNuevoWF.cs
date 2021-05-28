@@ -50,7 +50,7 @@ namespace Sico
                 else
                 {
                     Sesion.UsuarioLogueado = usuarios.First();
-                    MasterNuevaWF _inicio = new MasterNuevaWF();
+                    MasterNuevaWF _inicio = new MasterNuevaWF(0, null);
                     _inicio.Show();
                     Hide();
                 }
@@ -66,7 +66,6 @@ namespace Sico
                 Login();
             }
         }
-
         private void txtClave_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

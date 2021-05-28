@@ -272,6 +272,12 @@
     <Compile Include="FirmaEmailWF.Designer.cs">
       <DependentUpon>FirmaEmailWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="InicioNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioNuevoWF.Designer.cs">
+      <DependentUpon>InicioNuevoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginNuevoWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -461,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FirmaEmailWF.resx">
       <DependentUpon>FirmaEmailWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InicioNuevoWF.resx">
+      <DependentUpon>InicioNuevoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginNuevoWF.resx">
       <DependentUpon>LoginNuevoWF.cs</DependentUpon>
@@ -711,6 +720,7 @@
     <None Include="Resources\usuario2.png" />
     <None Include="Resources\usuario %281%29.png" />
     <None Include="Resources\seleccion %281%29.png" />
+    <None Include="Resources\buscar %282%29.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

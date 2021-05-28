@@ -193,9 +193,6 @@
   <data name="cancelar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cancelar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="calculadora1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calculadora1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="txt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\txt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -259,9 +256,6 @@
   <data name="dinero" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dinero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="menos (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\menos (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Nacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Nacion.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -283,6 +277,12 @@
   <data name="ciclo-del-agua (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ciclo-del-agua (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AutoGestion2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AutoGestion1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="juicio (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\juicio (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="clip-sujetapapeles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clip-sujetapapeles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -300,6 +300,9 @@
   </data>
   <data name="flecha-curva-hacia-atras-a-la-izquierda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flecha-curva-hacia-atras-a-la-izquierda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="seleccion (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\seleccion (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SistemaContable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SistemaContable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -364,11 +367,11 @@
   <data name="menos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AutoGestion2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AutoGestion1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="calculadora1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calculadora1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="juicio (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\juicio (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="menos (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menos (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="interfaz" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\interfaz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -436,7 +439,7 @@
   <data name="Apr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Apr.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="seleccion (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\seleccion (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="buscar (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buscar (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
