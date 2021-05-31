@@ -35,8 +35,10 @@
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.MenuVertical = new System.Windows.Forms.Panel();
-            this.PanelUsuarios = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.btnUsuarios = new System.Windows.Forms.Button();
+            this.PanelUsuarios = new System.Windows.Forms.Panel();
+            this.btnHonorarios = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnRazonSocial = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -91,6 +93,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.PanelContenedor = new System.Windows.Forms.Panel();
+            this.MenuSupHonorarios = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -114,6 +120,7 @@
             this.MenuSupSueldos.SuspendLayout();
             this.MenuSupContabilidad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.MenuSupHonorarios.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -186,8 +193,10 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.MenuVertical.Controls.Add(this.PanelUsuarios);
+            this.MenuVertical.Controls.Add(this.panel6);
             this.MenuVertical.Controls.Add(this.btnUsuarios);
+            this.MenuVertical.Controls.Add(this.PanelUsuarios);
+            this.MenuVertical.Controls.Add(this.btnHonorarios);
             this.MenuVertical.Controls.Add(this.panel3);
             this.MenuVertical.Controls.Add(this.btnRazonSocial);
             this.MenuVertical.Controls.Add(this.panel12);
@@ -206,14 +215,14 @@
             this.MenuVertical.Size = new System.Drawing.Size(201, 615);
             this.MenuVertical.TabIndex = 1;
             // 
-            // PanelUsuarios
+            // panel6
             // 
-            this.PanelUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.PanelUsuarios.Location = new System.Drawing.Point(3, 390);
-            this.PanelUsuarios.Name = "PanelUsuarios";
-            this.PanelUsuarios.Size = new System.Drawing.Size(5, 32);
-            this.PanelUsuarios.TabIndex = 26;
-            this.PanelUsuarios.Visible = false;
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.panel6.Location = new System.Drawing.Point(3, 442);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(5, 32);
+            this.panel6.TabIndex = 28;
+            this.panel6.Visible = false;
             // 
             // btnUsuarios
             // 
@@ -224,13 +233,39 @@
             this.btnUsuarios.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuarios.ForeColor = System.Drawing.Color.White;
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(6, 390);
+            this.btnUsuarios.Location = new System.Drawing.Point(6, 442);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(195, 32);
-            this.btnUsuarios.TabIndex = 25;
+            this.btnUsuarios.TabIndex = 27;
             this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.UseVisualStyleBackColor = true;
             this.btnUsuarios.Visible = false;
+            // 
+            // PanelUsuarios
+            // 
+            this.PanelUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.PanelUsuarios.Location = new System.Drawing.Point(3, 390);
+            this.PanelUsuarios.Name = "PanelUsuarios";
+            this.PanelUsuarios.Size = new System.Drawing.Size(5, 32);
+            this.PanelUsuarios.TabIndex = 26;
+            this.PanelUsuarios.Visible = false;
+            // 
+            // btnHonorarios
+            // 
+            this.btnHonorarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHonorarios.FlatAppearance.BorderSize = 0;
+            this.btnHonorarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.btnHonorarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHonorarios.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHonorarios.ForeColor = System.Drawing.Color.White;
+            this.btnHonorarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHonorarios.Location = new System.Drawing.Point(6, 390);
+            this.btnHonorarios.Name = "btnHonorarios";
+            this.btnHonorarios.Size = new System.Drawing.Size(195, 32);
+            this.btnHonorarios.TabIndex = 25;
+            this.btnHonorarios.Text = "Honorarios";
+            this.btnHonorarios.UseVisualStyleBackColor = true;
+            this.btnHonorarios.Click += new System.EventHandler(this.btnHonorarios_Click);
             // 
             // panel3
             // 
@@ -628,6 +663,7 @@
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Control;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.MenuSupHonorarios);
             this.panel5.Controls.Add(this.menuSupEmpresa);
             this.panel5.Controls.Add(this.MenuSupIva);
             this.panel5.Controls.Add(this.MenuSupSueldos);
@@ -812,6 +848,46 @@
             this.PanelContenedor.Size = new System.Drawing.Size(1099, 482);
             this.PanelContenedor.TabIndex = 11;
             // 
+            // MenuSupHonorarios
+            // 
+            this.MenuSupHonorarios.BackColor = System.Drawing.SystemColors.Control;
+            this.MenuSupHonorarios.Dock = System.Windows.Forms.DockStyle.None;
+            this.MenuSupHonorarios.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.MenuSupHonorarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem10,
+            this.toolStripMenuItem11});
+            this.MenuSupHonorarios.Location = new System.Drawing.Point(0, 0);
+            this.MenuSupHonorarios.Name = "MenuSupHonorarios";
+            this.MenuSupHonorarios.Size = new System.Drawing.Size(258, 29);
+            this.MenuSupHonorarios.TabIndex = 6;
+            this.MenuSupHonorarios.Text = "menuStrip4";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem10.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem10.Image = global::Sico.Properties.Resources.dia_de_pago;
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(171, 25);
+            this.toolStripMenuItem10.Text = "Plan de Honorarios";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+            // 
+            // toolStripMenuItem11
+            // 
+            this.toolStripMenuItem11.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registroDePagoToolStripMenuItem});
+            this.toolStripMenuItem11.Image = global::Sico.Properties.Resources.bolsa_de_dinero;
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(79, 25);
+            this.toolStripMenuItem11.Text = "Pagos";
+            // 
+            // registroDePagoToolStripMenuItem
+            // 
+            this.registroDePagoToolStripMenuItem.Image = global::Sico.Properties.Resources.metodo_de_pago;
+            this.registroDePagoToolStripMenuItem.Name = "registroDePagoToolStripMenuItem";
+            this.registroDePagoToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
+            this.registroDePagoToolStripMenuItem.Text = "Registro de Pago";
+            // 
             // toolTip1
             // 
             this.toolTip1.ToolTipTitle = "Seleccionar Empresa";
@@ -863,6 +939,8 @@
             this.MenuSupContabilidad.ResumeLayout(false);
             this.MenuSupContabilidad.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.MenuSupHonorarios.ResumeLayout(false);
+            this.MenuSupHonorarios.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -906,7 +984,7 @@
         private System.Windows.Forms.ToolStripMenuItem iVAComprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iVAVentasToolStripMenuItem;
         private System.Windows.Forms.Panel PanelUsuarios;
-        private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.Button btnHonorarios;
         private System.Windows.Forms.ToolStripMenuItem liquidacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem informesToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuSupEmpresa;
@@ -932,5 +1010,11 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.GroupBox grbEmpresaSeleccionada;
         private System.Windows.Forms.Label lblidEmpresa;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.MenuStrip MenuSupHonorarios;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
+        private System.Windows.Forms.ToolStripMenuItem registroDePagoToolStripMenuItem;
     }
 }

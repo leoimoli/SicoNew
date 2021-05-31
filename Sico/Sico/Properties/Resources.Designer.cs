@@ -163,6 +163,16 @@ namespace Sico.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bolsa_de_dinero {
+            get {
+                object obj = ResourceManager.GetObject("bolsa-de-dinero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap borrar_usuario {
             get {
                 object obj = ResourceManager.GetObject("borrar-usuario", resourceCulture);
@@ -246,6 +256,16 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap calendario__1_ {
             get {
                 object obj = ResourceManager.GetObject("calendario (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap calendario__2_ {
+            get {
+                object obj = ResourceManager.GetObject("calendario (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -426,6 +446,16 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap copia_de_seguridad {
             get {
                 object obj = ResourceManager.GetObject("copia-de-seguridad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dia_de_pago {
+            get {
+                object obj = ResourceManager.GetObject("dia-de-pago", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -816,6 +846,16 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap menos__2_1 {
             get {
                 object obj = ResourceManager.GetObject("menos (2)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap metodo_de_pago {
+            get {
+                object obj = ResourceManager.GetObject("metodo-de-pago", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

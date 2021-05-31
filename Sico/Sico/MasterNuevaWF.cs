@@ -70,6 +70,7 @@ namespace Sico
             MenuSupContabilidad.Visible = false;
             MenuSupIva.Visible = false;
             MenuSupSueldos.Visible = false;
+            MenuSupHonorarios.Visible = false;
         }
         private void btnIva_Click(object sender, EventArgs e)
         {
@@ -79,6 +80,7 @@ namespace Sico
             MenuSupContabilidad.Visible = false;
             MenuSupIva.Visible = true;
             MenuSupSueldos.Visible = false;
+            MenuSupHonorarios.Visible = false;
         }
         private void btnContabilidad_Click(object sender, EventArgs e)
         {
@@ -88,6 +90,7 @@ namespace Sico
             MenuSupContabilidad.Visible = true;
             MenuSupIva.Visible = false;
             MenuSupSueldos.Visible = false;
+            MenuSupHonorarios.Visible = false;
         }
         private void btnSueldos_Click(object sender, EventArgs e)
         {
@@ -97,6 +100,7 @@ namespace Sico
             MenuSupContabilidad.Visible = false;
             MenuSupIva.Visible = false;
             MenuSupSueldos.Visible = true;
+            MenuSupHonorarios.Visible = false;
         }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -156,6 +160,22 @@ namespace Sico
         private void btnSeleccionarEmpresa_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new ClientesNuevoWFcs());
+        }
+
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new PlanDeHonorariosWF());
+        }
+
+        private void btnHonorarios_Click(object sender, EventArgs e)
+        {
+            panel5.Visible = true;
+            MenuSupHonorarios.Dock = DockStyle.Top;
+            menuSupEmpresa.Visible = false;
+            MenuSupContabilidad.Visible = false;
+            MenuSupIva.Visible = false;
+            MenuSupSueldos.Visible = false;
+            MenuSupHonorarios.Visible = true;
         }
     }
 }
