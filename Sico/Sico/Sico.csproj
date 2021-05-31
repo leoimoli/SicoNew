@@ -246,9 +246,16 @@
       <DependentUpon>ConsultaVencimientosWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Dao\ComprasDao.cs" />
+    <Compile Include="Dao\HonorariosDao.cs" />
     <Compile Include="Dao\PericiaDao.cs" />
     <Compile Include="Dao\PeriodoDao.cs" />
     <Compile Include="Dao\ProveedorDao.cs" />
+    <Compile Include="DetalleDePagosWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetalleDePagosWF.Designer.cs">
+      <DependentUpon>DetalleDePagosWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\CuentaEmailPorUsuario.cs" />
     <Compile Include="Entidades\EstadisticaCompra.cs" />
     <Compile Include="Entidades\EstadisticaCompraTorta.cs" />
@@ -257,6 +264,7 @@
     <Compile Include="Entidades\FacturaCompra.cs" />
     <Compile Include="Entidades\Pericias.cs" />
     <Compile Include="Entidades\Periodo.cs" />
+    <Compile Include="Entidades\PlanHonorarios.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\Vencimientos.cs" />
     <Compile Include="Entidades\VencimientosPorMesAnio.cs" />
@@ -303,6 +311,7 @@
       <DependentUpon>MenuClienteWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Negocio\ComprasNeg.cs" />
+    <Compile Include="Negocio\HonorariosNeg.cs" />
     <Compile Include="Negocio\PericiaNeg.cs" />
     <Compile Include="Negocio\PeriodoNeg.cs" />
     <Compile Include="Negocio\ProveedorNeg.cs" />
@@ -387,6 +396,12 @@
     <Compile Include="ProveedoresWF.Designer.cs">
       <DependentUpon>ProveedoresWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarPagoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarPagoWF.Designer.cs">
+      <DependentUpon>RegistrarPagoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubClienteWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -468,6 +483,9 @@
     <EmbeddedResource Include="ConsultaVencimientosWF.resx">
       <DependentUpon>ConsultaVencimientosWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetalleDePagosWF.resx">
+      <DependentUpon>DetalleDePagosWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FacturacionCompraWF.resx">
       <DependentUpon>FacturacionCompraWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -531,6 +549,9 @@
     </Compile>
     <EmbeddedResource Include="ProveedoresWF.resx">
       <DependentUpon>ProveedoresWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarPagoWF.resx">
+      <DependentUpon>RegistrarPagoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubClienteWF.resx">
       <DependentUpon>SubClienteWF.cs</DependentUpon>
@@ -734,6 +755,7 @@
     <None Include="Resources\bolsa-de-dinero.png" />
     <None Include="Resources\calendario %282%29.png" />
     <None Include="Resources\metodo-de-pago.png" />
+    <None Include="Resources\sobresalir.png" />
     <Content Include="Sico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

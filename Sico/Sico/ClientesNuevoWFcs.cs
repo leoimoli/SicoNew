@@ -41,16 +41,13 @@ namespace Sico
         }
         private void BuscarEmpresaPorRazonSocial()
         {
-            dgvTodosLosClientes.Columns.Clear();
-            dgvTodosLosClientes.DataSource = null;
-            dgvTodosLosClientes.Visible = false;           
             List<Cliente> _cliente = new List<Cliente>();
             var nombreRazonSocial = txtBuscarRazonSocial.Text;
             _cliente = ClienteNeg.BuscarClientePorNombreRazonSocial(nombreRazonSocial);
             if (_cliente.Count > 0)
             {
                 dgvTodosLosClientes.Rows.Clear();
-                //DiseñoGrilla();
+                DiseñoGrilla();
                 dgvTodosLosClientes.Visible = true;
                 foreach (var item in _cliente)
                 {
@@ -71,8 +68,6 @@ namespace Sico
         }
         private void BuscarEmpresaPorCuit()
         {
-            dgvTodosLosClientes.Columns.Clear();
-            dgvTodosLosClientes.Visible = false;
             List<Cliente> _cliente = new List<Cliente>();
             var cuit = txtCuitBuscar.Text;
             _cliente = ClienteNeg.BuscarClientePorCuit(cuit);
@@ -102,6 +97,7 @@ namespace Sico
         {
             BuscarTexto();
             BuscarTodasLasEmpresas();
+            Hide();
         }
         private void BuscarTexto()
         {
@@ -281,7 +277,7 @@ namespace Sico
         }
         private void LimpiarCamposBotonNuevoCliente()
         {
-            PanelRegistroEmpresa.Enabled = true;
+            PanelRegistroPlan.Enabled = true;
             txtNombreRazonSocial.Clear();
             txtCuit.Clear();
             txtActividad.Clear();
@@ -339,15 +335,14 @@ namespace Sico
             }
             if (dgvTodosLosClientes.CurrentCell.ColumnIndex == 6)
             {
-                PanelRegistroEmpresa.Enabled = true;
+                Funcion = 2;
+                PanelRegistroPlan.Enabled = true;
                 List<Cliente> _cliente = new List<Cliente>();
                 var cuit = dgvTodosLosClientes.CurrentRow.Cells[2].Value.ToString();
                 _cliente = ClienteNeg.BuscarClientePorCuit(cuit);
                 if (_cliente.Count > 0)
                 {
                     var cliente = _cliente.First();
-                    //RazonSocial = cliente.NombreRazonSocial;
-                    //Cuit = cliente.Cuit;
                     txtNombreRazonSocial.Text = cliente.NombreRazonSocial;
                     txtCuit.Text = cliente.Cuit;
                     txtActividad.Text = cliente.Actividad;
@@ -371,7 +366,7 @@ namespace Sico
                     cmbLocalidad.Text = cliente.Localidad;
                     txtCuit.Enabled = false;
                 }
-            }           
+            }
         }
         private void txtBuscarRazonSocial_KeyDown(object sender, KeyEventArgs e)
         {

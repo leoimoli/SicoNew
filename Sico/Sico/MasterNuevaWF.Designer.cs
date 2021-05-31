@@ -75,6 +75,8 @@
             this.lblEmpresa = new System.Windows.Forms.Label();
             this.lblEmpresaSoleccionada = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.MenuSupHonorarios = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSupEmpresa = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,10 +95,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.PanelContenedor = new System.Windows.Forms.Panel();
-            this.MenuSupHonorarios = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
-            this.registroDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -116,11 +114,11 @@
             this.grbEmpresaSeleccionada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).BeginInit();
             this.panel5.SuspendLayout();
+            this.MenuSupHonorarios.SuspendLayout();
             this.menuSupEmpresa.SuspendLayout();
             this.MenuSupSueldos.SuspendLayout();
             this.MenuSupContabilidad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.MenuSupHonorarios.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -674,6 +672,29 @@
             this.panel5.TabIndex = 5;
             this.panel5.Visible = false;
             // 
+            // MenuSupHonorarios
+            // 
+            this.MenuSupHonorarios.BackColor = System.Drawing.SystemColors.Control;
+            this.MenuSupHonorarios.Dock = System.Windows.Forms.DockStyle.None;
+            this.MenuSupHonorarios.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.MenuSupHonorarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem10});
+            this.MenuSupHonorarios.Location = new System.Drawing.Point(0, 0);
+            this.MenuSupHonorarios.Name = "MenuSupHonorarios";
+            this.MenuSupHonorarios.Size = new System.Drawing.Size(179, 29);
+            this.MenuSupHonorarios.TabIndex = 6;
+            this.MenuSupHonorarios.Text = "menuStrip4";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem10.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem10.Image = global::Sico.Properties.Resources.dia_de_pago;
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(171, 25);
+            this.toolStripMenuItem10.Text = "Plan de Honorarios";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+            // 
             // menuSupEmpresa
             // 
             this.menuSupEmpresa.BackColor = System.Drawing.SystemColors.Control;
@@ -848,46 +869,6 @@
             this.PanelContenedor.Size = new System.Drawing.Size(1099, 482);
             this.PanelContenedor.TabIndex = 11;
             // 
-            // MenuSupHonorarios
-            // 
-            this.MenuSupHonorarios.BackColor = System.Drawing.SystemColors.Control;
-            this.MenuSupHonorarios.Dock = System.Windows.Forms.DockStyle.None;
-            this.MenuSupHonorarios.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.MenuSupHonorarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem10,
-            this.toolStripMenuItem11});
-            this.MenuSupHonorarios.Location = new System.Drawing.Point(0, 0);
-            this.MenuSupHonorarios.Name = "MenuSupHonorarios";
-            this.MenuSupHonorarios.Size = new System.Drawing.Size(258, 29);
-            this.MenuSupHonorarios.TabIndex = 6;
-            this.MenuSupHonorarios.Text = "menuStrip4";
-            // 
-            // toolStripMenuItem10
-            // 
-            this.toolStripMenuItem10.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem10.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem10.Image = global::Sico.Properties.Resources.dia_de_pago;
-            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(171, 25);
-            this.toolStripMenuItem10.Text = "Plan de Honorarios";
-            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
-            // 
-            // toolStripMenuItem11
-            // 
-            this.toolStripMenuItem11.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registroDePagoToolStripMenuItem});
-            this.toolStripMenuItem11.Image = global::Sico.Properties.Resources.bolsa_de_dinero;
-            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(79, 25);
-            this.toolStripMenuItem11.Text = "Pagos";
-            // 
-            // registroDePagoToolStripMenuItem
-            // 
-            this.registroDePagoToolStripMenuItem.Image = global::Sico.Properties.Resources.metodo_de_pago;
-            this.registroDePagoToolStripMenuItem.Name = "registroDePagoToolStripMenuItem";
-            this.registroDePagoToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
-            this.registroDePagoToolStripMenuItem.Text = "Registro de Pago";
-            // 
             // toolTip1
             // 
             this.toolTip1.ToolTipTitle = "Seleccionar Empresa";
@@ -932,6 +913,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.MenuSupHonorarios.ResumeLayout(false);
+            this.MenuSupHonorarios.PerformLayout();
             this.menuSupEmpresa.ResumeLayout(false);
             this.menuSupEmpresa.PerformLayout();
             this.MenuSupSueldos.ResumeLayout(false);
@@ -939,8 +922,6 @@
             this.MenuSupContabilidad.ResumeLayout(false);
             this.MenuSupContabilidad.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.MenuSupHonorarios.ResumeLayout(false);
-            this.MenuSupHonorarios.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1014,7 +995,5 @@
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.MenuStrip MenuSupHonorarios;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem11;
-        private System.Windows.Forms.ToolStripMenuItem registroDePagoToolStripMenuItem;
     }
 }

@@ -161,12 +161,10 @@ namespace Sico
         {
             AbrirFormEnPanel(new ClientesNuevoWFcs());
         }
-
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new PlanDeHonorariosWF());
         }
-
         private void btnHonorarios_Click(object sender, EventArgs e)
         {
             panel5.Visible = true;

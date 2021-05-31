@@ -36,7 +36,7 @@
             this.lblDniOApellidoNombre = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.PanelRegistroEmpresa = new System.Windows.Forms.Panel();
+            this.PanelRegistroPlan = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtCodigoPostal = new System.Windows.Forms.TextBox();
@@ -77,7 +77,7 @@
             this.CondicionNuevo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SeleccionarNuevo = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EditarNuevo = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.PanelRegistroEmpresa.SuspendLayout();
+            this.PanelRegistroPlan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodosLosClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,42 +132,42 @@
             this.label2.TabIndex = 28;
             this.label2.Text = "Listado de Empresas";
             // 
-            // PanelRegistroEmpresa
+            // PanelRegistroPlan
             // 
-            this.PanelRegistroEmpresa.BackColor = System.Drawing.Color.Gainsboro;
-            this.PanelRegistroEmpresa.Controls.Add(this.progressBar1);
-            this.PanelRegistroEmpresa.Controls.Add(this.btnGuardar);
-            this.PanelRegistroEmpresa.Controls.Add(this.txtCodigoPostal);
-            this.PanelRegistroEmpresa.Controls.Add(this.label13);
-            this.PanelRegistroEmpresa.Controls.Add(this.txtAltura);
-            this.PanelRegistroEmpresa.Controls.Add(this.label12);
-            this.PanelRegistroEmpresa.Controls.Add(this.txtCalle);
-            this.PanelRegistroEmpresa.Controls.Add(this.label11);
-            this.PanelRegistroEmpresa.Controls.Add(this.cmbLocalidad);
-            this.PanelRegistroEmpresa.Controls.Add(this.label10);
-            this.PanelRegistroEmpresa.Controls.Add(this.cmbProvincia);
-            this.PanelRegistroEmpresa.Controls.Add(this.label9);
-            this.PanelRegistroEmpresa.Controls.Add(this.label7);
-            this.PanelRegistroEmpresa.Controls.Add(this.txtEmail);
-            this.PanelRegistroEmpresa.Controls.Add(this.label8);
-            this.PanelRegistroEmpresa.Controls.Add(this.txtTelefono);
-            this.PanelRegistroEmpresa.Controls.Add(this.label6);
-            this.PanelRegistroEmpresa.Controls.Add(this.txtCodArea);
-            this.PanelRegistroEmpresa.Controls.Add(this.cmbCondicionAntiAfip);
-            this.PanelRegistroEmpresa.Controls.Add(this.label5);
-            this.PanelRegistroEmpresa.Controls.Add(this.label14);
-            this.PanelRegistroEmpresa.Controls.Add(this.dtFechaInscripcion);
-            this.PanelRegistroEmpresa.Controls.Add(this.label15);
-            this.PanelRegistroEmpresa.Controls.Add(this.txtActividad);
-            this.PanelRegistroEmpresa.Controls.Add(this.txtCuit);
-            this.PanelRegistroEmpresa.Controls.Add(this.label4);
-            this.PanelRegistroEmpresa.Controls.Add(this.label3);
-            this.PanelRegistroEmpresa.Controls.Add(this.lblRegistroEmpresa);
-            this.PanelRegistroEmpresa.Controls.Add(this.txtNombreRazonSocial);
-            this.PanelRegistroEmpresa.Location = new System.Drawing.Point(756, 70);
-            this.PanelRegistroEmpresa.Name = "PanelRegistroEmpresa";
-            this.PanelRegistroEmpresa.Size = new System.Drawing.Size(339, 400);
-            this.PanelRegistroEmpresa.TabIndex = 29;
+            this.PanelRegistroPlan.BackColor = System.Drawing.Color.Gainsboro;
+            this.PanelRegistroPlan.Controls.Add(this.progressBar1);
+            this.PanelRegistroPlan.Controls.Add(this.btnGuardar);
+            this.PanelRegistroPlan.Controls.Add(this.txtCodigoPostal);
+            this.PanelRegistroPlan.Controls.Add(this.label13);
+            this.PanelRegistroPlan.Controls.Add(this.txtAltura);
+            this.PanelRegistroPlan.Controls.Add(this.label12);
+            this.PanelRegistroPlan.Controls.Add(this.txtCalle);
+            this.PanelRegistroPlan.Controls.Add(this.label11);
+            this.PanelRegistroPlan.Controls.Add(this.cmbLocalidad);
+            this.PanelRegistroPlan.Controls.Add(this.label10);
+            this.PanelRegistroPlan.Controls.Add(this.cmbProvincia);
+            this.PanelRegistroPlan.Controls.Add(this.label9);
+            this.PanelRegistroPlan.Controls.Add(this.label7);
+            this.PanelRegistroPlan.Controls.Add(this.txtEmail);
+            this.PanelRegistroPlan.Controls.Add(this.label8);
+            this.PanelRegistroPlan.Controls.Add(this.txtTelefono);
+            this.PanelRegistroPlan.Controls.Add(this.label6);
+            this.PanelRegistroPlan.Controls.Add(this.txtCodArea);
+            this.PanelRegistroPlan.Controls.Add(this.cmbCondicionAntiAfip);
+            this.PanelRegistroPlan.Controls.Add(this.label5);
+            this.PanelRegistroPlan.Controls.Add(this.label14);
+            this.PanelRegistroPlan.Controls.Add(this.dtFechaInscripcion);
+            this.PanelRegistroPlan.Controls.Add(this.label15);
+            this.PanelRegistroPlan.Controls.Add(this.txtActividad);
+            this.PanelRegistroPlan.Controls.Add(this.txtCuit);
+            this.PanelRegistroPlan.Controls.Add(this.label4);
+            this.PanelRegistroPlan.Controls.Add(this.label3);
+            this.PanelRegistroPlan.Controls.Add(this.lblRegistroEmpresa);
+            this.PanelRegistroPlan.Controls.Add(this.txtNombreRazonSocial);
+            this.PanelRegistroPlan.Location = new System.Drawing.Point(756, 70);
+            this.PanelRegistroPlan.Name = "PanelRegistroPlan";
+            this.PanelRegistroPlan.Size = new System.Drawing.Size(339, 400);
+            this.PanelRegistroPlan.TabIndex = 29;
             // 
             // progressBar1
             // 
@@ -277,6 +277,7 @@
             this.cmbProvincia.Name = "cmbProvincia";
             this.cmbProvincia.Size = new System.Drawing.Size(172, 21);
             this.cmbProvincia.TabIndex = 46;
+            this.cmbProvincia.SelectedIndexChanged += new System.EventHandler(this.cmbProvincia_Click);
             // 
             // label9
             // 
@@ -573,7 +574,7 @@
             this.Controls.Add(this.dgvTodosLosClientes);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.PanelRegistroEmpresa);
+            this.Controls.Add(this.PanelRegistroPlan);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCuitBuscar);
@@ -583,8 +584,8 @@
             this.Name = "ClientesNuevoWFcs";
             this.Text = "ClientesNuevoWFcs";
             this.Load += new System.EventHandler(this.ClientesNuevoWFcs_Load);
-            this.PanelRegistroEmpresa.ResumeLayout(false);
-            this.PanelRegistroEmpresa.PerformLayout();
+            this.PanelRegistroPlan.ResumeLayout(false);
+            this.PanelRegistroPlan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodosLosClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -597,7 +598,7 @@
         private System.Windows.Forms.Label lblDniOApellidoNombre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel PanelRegistroEmpresa;
+        private System.Windows.Forms.Panel PanelRegistroPlan;
         private System.Windows.Forms.Label lblRegistroEmpresa;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNombreRazonSocial;
