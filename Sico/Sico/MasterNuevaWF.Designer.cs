@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterNuevaWF));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRestaurar = new System.Windows.Forms.PictureBox();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
@@ -246,7 +247,6 @@
             this.PanelUsuarios.Name = "PanelUsuarios";
             this.PanelUsuarios.Size = new System.Drawing.Size(5, 32);
             this.PanelUsuarios.TabIndex = 26;
-            this.PanelUsuarios.Visible = false;
             // 
             // btnHonorarios
             // 
@@ -885,6 +885,7 @@
             this.Controls.Add(this.MenuVertical);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MasterNuevaWF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MasterNuevaWF_Load);

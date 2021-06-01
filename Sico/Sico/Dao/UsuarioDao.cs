@@ -14,6 +14,7 @@ namespace Sico.Dao
     public class UsuarioDao
     {
         private static MySql.Data.MySqlClient.MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.db);
+
         public static bool InsertUsuario(Usuario _usuario)
         {
             bool exito = false;
@@ -181,49 +182,6 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
-        //public static bool GenerarBackup()
-        //{
-        //    string rutaPen = "";
-        //    DriveInfo[] mydrives = DriveInfo.GetDrives();
-        //    foreach (DriveInfo mydrive in mydrives)
-        //    {
-        //        //Check for removable devices like USB's
-        //        if (mydrive.DriveType == DriveType.Removable)
-        //        {
-        //            //Check for that specific USB
-        //            if (mydrive.IsReady == true)
-        //            {
-        //                if (mydrive.VolumeLabel.Equals("KINGSTON"))
-        //                {
-        //                    DirectoryInfo path = mydrive.RootDirectory;
-        //                    Path.GetFullPath(path.ToString());
-        //                    rutaPen = Path.GetFullPath(path.ToString());
-        //                }
-        //            }
-        //        }
-        //    }
-        //    bool exito = false;
-        //    connection.Close();
-        //    string constring = "server=localhost;Port=3307;User Id=root;password=admin;database=sico_desarrollo;Persist Security Info=True;";
-        //    constring += "convertzerodatetime=true;";
-        //    string file = "" + rutaPen + "backup.sql";
-        //    using (MySqlConnection conn = new MySqlConnection(constring))
-        //    {
-        //        using (MySqlCommand cmd = new MySqlCommand())
-        //        {
-        //            using (MySqlBackup mb = new MySqlBackup(cmd))
-        //            {
-        //                cmd.Connection = conn;
-        //                conn.Open();
-        //                mb.ExportToFile(file);
-        //                conn.Close();
-        //                exito = true;
-        //            }
-        //        }
-        //    }
-        //    return exito;
-
-        //}
         public static bool BajaUsuario(string dni)
         {
             bool exito = false;

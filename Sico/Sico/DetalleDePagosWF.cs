@@ -59,11 +59,11 @@ namespace Sico
                 {
                     SaldoDeudor = Convert.ToDouble(row.Cells[2].Value);
                 }
-                if (SaldoDeudor > Monto)
-                {
-                    row.DefaultCellStyle.ForeColor = Color.Red;
-                }
-                else { row.DefaultCellStyle.ForeColor = Color.Green; }
+                //if (SaldoDeudor > Monto)
+                //{
+                //    row.DefaultCellStyle.ForeColor = Color.Red;
+                //}
+                //else { row.DefaultCellStyle.ForeColor = Color.Green; }
             }
         }
         private void DiseñoGrilla()

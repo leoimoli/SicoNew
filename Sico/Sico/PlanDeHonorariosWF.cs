@@ -21,18 +21,24 @@ namespace Sico
 
         private void PlanDeHonorariosWF_Load(object sender, EventArgs e)
         {
-            if (Sesion.UsuarioLogueado.idEmpresaSeleccionado > 0)
+            try
             {
-                BuscarTodasLosPlanesParaElCliente(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
+                if (Sesion.UsuarioLogueado.idEmpresaSeleccionado > 0)
+                {
+                    BuscarTodasLosPlanesParaElCliente(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
+                }
+                else
+                {
+                    const string message2 = "Atención: Usted debe seleccionar una empresa previamente.";
+                    const string caption2 = "Atención";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Asterisk);
+                    throw new Exception();
+                }
             }
-            else
-            {
-                const string message2 = "Atención: Usted debe seleccionar una empresa previamente.";
-                const string caption2 = "Atención";
-                var result2 = MessageBox.Show(message2, caption2,
-                                             MessageBoxButtons.OK,
-                                             MessageBoxIcon.Asterisk);
-            }
+            catch (Exception ex)
+            { }
         }
         private void DiseñoGrilla()
         {
@@ -113,7 +119,7 @@ namespace Sico
             dgvPlanesHonorarios.Rows.Clear();
             List<Entidades.PlanHonorarios> ListarClientes = HonorariosNeg.ListarTodosPlanesParaCliente(idEmpresaSeleccionado);
             if (ListarClientes.Count > 0)
-            {
+            {           
                 DiseñoGrilla();
                 dgvPlanesHonorarios.Visible = true;
                 btnEditar.Visible = true;
@@ -126,7 +132,7 @@ namespace Sico
                 dgvPlanesHonorarios.AllowUserToAddRows = false;
             }
             else
-            {
+            {              
                 dgvPlanesHonorarios.Visible = false;
                 btnEditar.Visible = false;
             }
