@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
 
 namespace Sico
 {
-    public partial class FacturacionSubClientesWF : MasterWF
+    public partial class FacturacionSubClientesWF : Form
     {
         private string cuit;
         private string razonSocial;

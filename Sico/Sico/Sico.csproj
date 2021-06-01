@@ -671,6 +671,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="calcular.ico" />
+    <None Include="Resources\satisfecho.png" />
+    <None Include="Resources\garantia.png" />
+    <None Include="Resources\documento.png" />
+    <None Include="Resources\comunidad.png" />
     <Content Include="wepik-202151-104656.ico" />
     <None Include="Resources\historial-medico %281%29.png" />
     <None Include="Resources\juicio.png" />

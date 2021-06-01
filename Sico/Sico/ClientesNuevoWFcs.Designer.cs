@@ -164,6 +164,7 @@
             this.PanelRegistroPlan.Controls.Add(this.label3);
             this.PanelRegistroPlan.Controls.Add(this.lblRegistroEmpresa);
             this.PanelRegistroPlan.Controls.Add(this.txtNombreRazonSocial);
+            this.PanelRegistroPlan.Enabled = false;
             this.PanelRegistroPlan.Location = new System.Drawing.Point(756, 70);
             this.PanelRegistroPlan.Name = "PanelRegistroPlan";
             this.PanelRegistroPlan.Size = new System.Drawing.Size(339, 400);
