@@ -17,19 +17,19 @@ namespace Sico
 {
     public partial class VistaConsultaFacturacionMensualWF : Form
     {
-        private string cuit;
+        private int idEmpresa;
         private string razonSocial;
-        public VistaConsultaFacturacionMensualWF(string razonSocial, string cuit)
+        public VistaConsultaFacturacionMensualWF(string razonSocial, int idEmpresa)
         {
             InitializeComponent();
             this.razonSocial = razonSocial;
-            this.cuit = cuit;
+            this.idEmpresa = idEmpresa;
         }
         private void VistaConsultaFacturacionMensualWF_Load(object sender, EventArgs e)
         {
             try
             {
-                lblCuitEdit.Text = cuit;
+                lblCuitEdit.Text =Convert.ToString(idEmpresa);
                 lblNombreEdit.Text = razonSocial;
                 CargarCombo();
             }
@@ -47,7 +47,7 @@ namespace Sico
         private void CargarCombo()
         {
             List<string> Periodo = new List<string>();
-            Periodo = PeriodoNeg.CargarComboPeriodoVenta(cuit);
+            Periodo = PeriodoNeg.CargarComboPeriodoVenta(idEmpresa);
             cmbPeriodo.Items.Clear();
             foreach (string item in Periodo)
             {
@@ -476,7 +476,7 @@ namespace Sico
                 groupBox2.Enabled = false;
                 string Periodo = cmbPeriodo.Text;
                 ProgressBar();
-                ListaTotalFacturacion = ClienteNeg.BuscarFacturacionTotalVentas(cuit, Periodo);
+                ListaTotalFacturacion = ClienteNeg.BuscarFacturacionTotalVentas(idEmpresa, Periodo);
                 groupBox1.Enabled = true;
                 groupBox2.Enabled = true;
                 progressBar1.Value = Convert.ToInt32(null);
@@ -487,9 +487,9 @@ namespace Sico
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
-            _tarea.Show();
-            Close();
+            //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            //_tarea.Show();
+            //Close();
         }
         private void btnExcel_Click(object sender, EventArgs e)
         {
@@ -905,9 +905,9 @@ namespace Sico
         }
         private void btnVolver2_Click(object sender, EventArgs e)
         {
-            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
-            _tarea.Show();
-            Close();
+            //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            //_tarea.Show();
+            //Close();
         }
     }
 }

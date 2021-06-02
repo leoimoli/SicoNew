@@ -375,8 +375,8 @@ namespace Sico
             {
                 EsEditar = false;
                 var idFactura = Convert.ToString(this.dgvCompras.CurrentRow.Cells[0].Value);
-                VistaFacturacionComprasWF _vista = new VistaFacturacionComprasWF(idFactura, cuit, razonSocial, EsEditar);
-                _vista.Show();
+                //VistaFacturacionComprasWF _vista = new VistaFacturacionComprasWF(idFactura, cuit, razonSocial, EsEditar);
+                //_vista.Show();
                 Hide();
             }
 
@@ -384,8 +384,8 @@ namespace Sico
             {
                 EsEditar = true;
                 var idFactura = Convert.ToString(this.dgvCompras.CurrentRow.Cells[0].Value);
-                VistaFacturacionComprasWF _vista = new VistaFacturacionComprasWF(idFactura, cuit, razonSocial, EsEditar);
-                _vista.Show();
+                //VistaFacturacionComprasWF _vista = new VistaFacturacionComprasWF(idFactura, idEmpresa, razonSocial, EsEditar);
+                //_vista.Show();
                 Hide();
             }
         }
@@ -440,11 +440,11 @@ namespace Sico
         }
         private void btnVentas_Click(object sender, EventArgs e)
         {
-            string RazonSocial = lblNombreEdit.Text;
-            string Cuit = lblCuitEdit.Text;
-            TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
-            _tarea.Show();
-            Hide();
+            //string RazonSocial = lblNombreEdit.Text;
+            //string Cuit = lblCuitEdit.Text;
+            //TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
+            //_tarea.Show();
+            //Hide();
         }
         private void btnConsultarTotales_Click(object sender, EventArgs e)
         {

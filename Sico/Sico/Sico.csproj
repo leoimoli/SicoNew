@@ -403,6 +403,12 @@
     <Compile Include="RegistrarPagoWF.Designer.cs">
       <DependentUpon>RegistrarPagoWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubClientesNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubClientesNuevoWF.Designer.cs">
+      <DependentUpon>SubClientesNuevoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubClienteWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -554,6 +560,9 @@
     <EmbeddedResource Include="RegistrarPagoWF.resx">
       <DependentUpon>RegistrarPagoWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubClientesNuevoWF.resx">
+      <DependentUpon>SubClientesNuevoWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubClienteWF.resx">
       <DependentUpon>SubClienteWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -675,6 +684,12 @@
     <None Include="Resources\garantia.png" />
     <None Include="Resources\documento.png" />
     <None Include="Resources\comunidad.png" />
+    <None Include="Resources\actualizar.png" />
+    <None Include="Resources\mas.png" />
+    <None Include="Resources\mas %281%29.png" />
+    <None Include="Resources\mas %282%29.png" />
+    <None Include="Resources\actualizado.png" />
+    <None Include="Resources\lupa %281%29.png" />
     <Content Include="wepik-202151-104656.ico" />
     <None Include="Resources\historial-medico %281%29.png" />
     <None Include="Resources\juicio.png" />

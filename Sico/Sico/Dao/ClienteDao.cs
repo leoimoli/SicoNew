@@ -38,6 +38,35 @@ namespace Sico.Dao
             connection.Close();
             return _listaProvincia;
         }
+        public static List<SubCliente> BuscarSubClientes(int idEmpresaSeleccionado)
+        {
+            List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idEmpresaSeleccionado_in", idEmpresaSeleccionado)};
+            string proceso = "BuscarSubClientes";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    SubCliente listaSubCliente = new SubCliente();
+                    listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                    listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
+                    listaSubCliente.Dni = item["Dni"].ToString();
+                    lista.Add(listaSubCliente);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
 
         public static List<VencimientosPorMesAnio> BuscarVencimientosPorMesAño(string month, string year)
         {
@@ -72,9 +101,8 @@ namespace Sico.Dao
             return lista;
         }
 
-        public static List<Vencimientos> BuscarTodosLosVencimientos(string cuit, DateTime fechaHoy)
+        public static List<Vencimientos> BuscarTodosLosVencimientos(int idEmpresa, DateTime fechaHoy)
         {
-            int idCliente = BuscarIdClientePorCuit(cuit);
             connection.Close();
             connection.Open();
             List<Vencimientos> lista = new List<Vencimientos>();
@@ -82,7 +110,7 @@ namespace Sico.Dao
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
-                                      new MySqlParameter("idCliente_in", idCliente),
+                                      new MySqlParameter("idCliente_in", idEmpresa),
             new MySqlParameter("fechaHoy_in", fechaHoy)};
             string proceso = "BuscarTodosLosVencimientosPorCliente";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
@@ -104,9 +132,8 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
-        public static List<string> CargarComboPeriodosCompras(string año, string cuit)
+        public static List<string> CargarComboPeriodosCompras(string año, int idEmpresa)
         {
-            int idCliente = BuscarIdClientePorCuit(cuit);
             connection.Close();
             connection.Open();
             List<string> _listaPeriodos = new List<string>();
@@ -114,7 +141,7 @@ namespace Sico.Dao
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = { new MySqlParameter("ano_in", año),
-            new MySqlParameter("idCliente_in", idCliente)};
+            new MySqlParameter("idCliente_in", idEmpresa)};
             string proceso = "CargarComboPeriodosCompras";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -130,9 +157,8 @@ namespace Sico.Dao
             connection.Close();
             return _listaPeriodos;
         }
-        public static List<string> CargarComboPeriodos(string año, string cuit)
+        public static List<string> CargarComboPeriodos(string año, int idEmpresa)
         {
-            int idCliente = BuscarIdClientePorCuit(cuit);
             connection.Close();
             connection.Open();
             List<string> _listaPeriodos = new List<string>();
@@ -140,7 +166,7 @@ namespace Sico.Dao
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = { new MySqlParameter("ano_in", año),
-            new MySqlParameter("idCliente_in", idCliente)};
+            new MySqlParameter("idCliente_in", idEmpresa)};
             string proceso = "CargarComboPeriodos";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -222,9 +248,8 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-        public static bool ValidarVencimientoExistentePorCliente(int idVencimiento, string cuit)
+        public static bool ValidarVencimientoExistentePorCliente(int idVencimiento, int idEmpresa)
         {
-            int idCliente = BuscarIdClientePorCuit(cuit);
             connection.Close();
             bool Existe = false;
             connection.Open();
@@ -234,7 +259,7 @@ namespace Sico.Dao
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
                                       new MySqlParameter("idVencimiento_in",idVencimiento ),
-              new MySqlParameter("idCliente_in", idCliente)};
+              new MySqlParameter("idCliente_in", idEmpresa)};
             string proceso = "ValidarVencimientoExistentePorCliente";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -278,9 +303,8 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
-        public static List<Vencimientos> BuscarTodosLosVencimientosIdVencimiento(string cuit, int idTipoDeVencimiento)
+        public static List<Vencimientos> BuscarTodosLosVencimientosIdVencimiento(int idEmpresa, int idTipoDeVencimiento)
         {
-            int idCliente = BuscarIdClientePorCuit(cuit);
             connection.Close();
             connection.Open();
             List<Vencimientos> lista = new List<Vencimientos>();
@@ -288,7 +312,7 @@ namespace Sico.Dao
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
-                                      new MySqlParameter("idCliente_in", idCliente),
+                                      new MySqlParameter("idCliente_in", idEmpresa),
             new MySqlParameter("idTipoDeVencimiento_in", idTipoDeVencimiento)};
             string proceso = "BuscarTodosLosVencimientosIdTipoVencimiento";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
@@ -311,9 +335,9 @@ namespace Sico.Dao
             return lista;
         }
 
-        public static bool GuardarVencimientoPorCliente(DateTime Fecha, int idVencimiento, string cuit, int idTipoVencimiento, DateTime FechaVencimiento)
+        public static bool GuardarVencimientoPorCliente(DateTime Fecha, int idVencimiento, int idEmpresa, int idTipoVencimiento, DateTime FechaVencimiento)
         {
-            int idCliente = BuscarIdClientePorCuit(cuit);
+            int idCliente = BuscarIdClientePorCuit(idEmpresa);
             bool exito = false;
             int ListaRecorrer = 0;
             if (idTipoVencimiento == 1 || idTipoVencimiento == 2 || idTipoVencimiento == 3 || idTipoVencimiento == 4 || idTipoVencimiento == 5 || idTipoVencimiento == 6 || idTipoVencimiento == 10)
@@ -467,7 +491,7 @@ namespace Sico.Dao
             return Factura;
         }
 
-        public static int BuscarIdClientePorCuit(string cuit)
+        public static int BuscarIdClientePorCuit(int idEmpresa)
         {
             int idCliente = 0;
             connection.Close();
@@ -476,7 +500,7 @@ namespace Sico.Dao
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
-                                      new MySqlParameter("Cuit_in", cuit)};
+                                      new MySqlParameter("Cuit_in", idEmpresa)};
             string proceso = "BuscarIdClientePorCuit";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -578,7 +602,7 @@ namespace Sico.Dao
             return listarArchivos;
         }
 
-        public static bool GuardarNotaDeCredito(SubCliente _subCliente, string cuit)
+        public static bool GuardarNotaDeCredito(SubCliente _subCliente, int idEmpresa)
         {
             bool exitoGuardarImagenes = false;
             if (_subCliente.Adjunto != "")
@@ -590,9 +614,6 @@ namespace Sico.Dao
             int idUltimaFacturaSubCliente = 0;
             int idsubcliente = 0;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
-
             bool exito = false;
             connection.Close();
             connection.Open();
@@ -603,7 +624,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("NroFacturaNotaDeCredito_in", _subCliente.NroFactura);
             cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
             cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
-            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
             cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
             cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
             cmd.Parameters.AddWithValue("Periodo_in", _subCliente.Periodo);
@@ -614,12 +635,12 @@ namespace Sico.Dao
             }
             if (idUltimaFacturaSubCliente > 0)
             {
-                exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente, idsubcliente);
+                exito = RegistrarDetalleFacturaSubCliente(_subCliente, idEmpresa, idUltimaFacturaSubCliente, idsubcliente);
             }
             connection.Close();
             return exito;
         }
-        public static bool EditarSubCliente(SubCliente _subCliente, string cuit)
+        public static bool EditarSubCliente(SubCliente _subCliente, int idEmpresa)
         {
             bool exito = false;
             connection.Close();
@@ -677,78 +698,69 @@ namespace Sico.Dao
             connection.Close();
             return Factura;
         }
-        public static List<SubCliente> BuscarFacturacionTotalVentas(string cuit, string Periodo)
+        public static List<SubCliente> BuscarFacturacionTotalVentas(int idEmpresa, string Periodo)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
-            if (idCliente > 0)
-            {
-
-
-                connection.Close();
-                connection.Open();
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = connection;
-                DataTable Tabla = new DataTable();
-                MySqlParameter[] oParam = {
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
                             new MySqlParameter("Periodo_in", Periodo),
-                                      new MySqlParameter("IdCliente_in", idCliente)};
-                string proceso = "BuscarFacturacionTotal";
-                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt.SelectCommand.Parameters.AddRange(oParam);
-                dt.Fill(Tabla);
-                if (Tabla.Rows.Count > 0)
+                                      new MySqlParameter("IdCliente_in", idEmpresa)};
+            string proceso = "BuscarFacturacionTotal";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
                 {
-                    foreach (DataRow item in Tabla.Rows)
-                    {
-                        SubCliente listaSubCliente = new SubCliente();
-                        listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
-                        listaSubCliente.NroFactura = item["NroFactura"].ToString();
-                        listaSubCliente.Fecha = item["Fecha"].ToString();
-                        listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
-                        listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
-                        listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
-                        listaSubCliente.NroFacturaNotaDeCredtio = item["NroFacturaNotaDeCredtio"].ToString();
+                    SubCliente listaSubCliente = new SubCliente();
+                    listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                    listaSubCliente.NroFactura = item["NroFactura"].ToString();
+                    listaSubCliente.Fecha = item["Fecha"].ToString();
+                    listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
+                    listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
+                    listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                    listaSubCliente.NroFacturaNotaDeCredtio = item["NroFacturaNotaDeCredtio"].ToString();
 
-                        //// Detalle de la factura
-                        listaSubCliente.Total1 = Convert.ToDecimal(item["Total1"].ToString());
-                        listaSubCliente.Total2 = Convert.ToDecimal(item["Total2"].ToString());
-                        listaSubCliente.Total3 = Convert.ToDecimal(item["Total3"].ToString());
-                        listaSubCliente.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
-                        listaSubCliente.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
-                        listaSubCliente.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
-                        listaSubCliente.Alicuota1 = item["Alicuota1"].ToString();
-                        listaSubCliente.Alicuota2 = item["Alicuota2"].ToString();
-                        listaSubCliente.Alicuota3 = item["Alicuota3"].ToString();
-                        listaSubCliente.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
-                        listaSubCliente.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
-                        listaSubCliente.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
-                        string dni = BuscarDniSubCliente(listaSubCliente.ApellidoNombre);
-                        listaSubCliente.Dni = dni;
-                        ////// Detalle Tipo Facturacion
-                        //listaSubCliente.idTipoFactura = Convert.ToInt32(item["idTipoFacturacion"].ToString());
-                        //listaSubCliente.idNotaDeCredito = Convert.ToInt32(item["idNotaDeCredito"].ToString());
+                    //// Detalle de la factura
+                    listaSubCliente.Total1 = Convert.ToDecimal(item["Total1"].ToString());
+                    listaSubCliente.Total2 = Convert.ToDecimal(item["Total2"].ToString());
+                    listaSubCliente.Total3 = Convert.ToDecimal(item["Total3"].ToString());
+                    listaSubCliente.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
+                    listaSubCliente.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
+                    listaSubCliente.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
+                    listaSubCliente.Alicuota1 = item["Alicuota1"].ToString();
+                    listaSubCliente.Alicuota2 = item["Alicuota2"].ToString();
+                    listaSubCliente.Alicuota3 = item["Alicuota3"].ToString();
+                    listaSubCliente.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
+                    listaSubCliente.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
+                    listaSubCliente.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+                    string dni = BuscarDniSubCliente(listaSubCliente.ApellidoNombre);
+                    listaSubCliente.Dni = dni;
+                    ////// Detalle Tipo Facturacion
+                    //listaSubCliente.idTipoFactura = Convert.ToInt32(item["idTipoFacturacion"].ToString());
+                    //listaSubCliente.idNotaDeCredito = Convert.ToInt32(item["idNotaDeCredito"].ToString());
 
-                        lista.Add(listaSubCliente);
-                    }
+                    lista.Add(listaSubCliente);
                 }
             }
             connection.Close();
             return lista;
         }
 
-        public static int GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, string cuit, string periodo)
+        public static int GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, int idEmpresa, string periodo)
         {
             int ContadorDeExitos = 0;
             int Exito = 0;
             int idNotaCredito = 0;
             int idUltimaFacturaSubCliente = 0;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
             foreach (var item in listaPrecargada)
             {
                 bool FacturaExistente = false;
@@ -772,7 +784,7 @@ namespace Sico.Dao
                     }
 
                     item.NroFactura = PuntoDeVenta + "-" + FacturaSegundaParte;
-                    FacturaExistente = ValidarFacturaExistente(item.NroFactura, idCliente);
+                    FacturaExistente = ValidarFacturaExistente(item.NroFactura, idEmpresa);
                     if (FacturaExistente == true)
                     {
                         continue;
@@ -795,7 +807,7 @@ namespace Sico.Dao
                         FacturaSegundaParte = FacturaSegundaParte.PadLeft(8, '0');
                     }
                     item.NroFacturaNotaDeCredtio = PuntoDeVenta + "-" + FacturaSegundaParte;
-                    FacturaExistente = ValidarFacturaExistente(item.NroFacturaNotaDeCredtio, idCliente);
+                    FacturaExistente = ValidarFacturaExistente(item.NroFacturaNotaDeCredtio, idEmpresa);
                     if (FacturaExistente == true)
                     {
                         continue;
@@ -814,7 +826,7 @@ namespace Sico.Dao
                 cmd.Parameters.AddWithValue("NroFactura_in", item.NroFactura);
                 cmd.Parameters.AddWithValue("Fecha_in", item.Fecha);
                 cmd.Parameters.AddWithValue("Monto_in", item.Monto);
-                cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
                 cmd.Parameters.AddWithValue("Dni_in", item.Dni);
                 cmd.Parameters.AddWithValue("Direccion_in", item.Direccion);
                 cmd.Parameters.AddWithValue("Observacion_in", item.Observacion);
@@ -829,7 +841,7 @@ namespace Sico.Dao
                 bool DetalleExitoso = false;
                 if (idUltimaFacturaSubCliente > 0)
                 {
-                    DetalleExitoso = RegistrarDetalleFacturaSubCliente(item, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
+                    DetalleExitoso = RegistrarDetalleFacturaSubCliente(item, idEmpresa, idUltimaFacturaSubCliente, idNotaCredito);
                 }
                 if (DetalleExitoso == true)
                 {
@@ -970,54 +982,48 @@ namespace Sico.Dao
             }
             return lista;
         }
-        public static List<SubCliente> BuscarDatosSubClientePorApellidoNombre(string apellidoNombre, string cuit)
+        public static List<SubCliente> BuscarDatosSubClientePorApellidoNombre(string apellidoNombre, int idEmpresa)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
-            if (idCliente > 0)
-            {
-                connection.Close();
-                connection.Open();
+            connection.Close();
+            connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = connection;
-                DataTable Tabla = new DataTable();
-                MySqlParameter[] oParam = {
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
                                       new MySqlParameter("ApellidoNombre_in", apellidoNombre),
-                new MySqlParameter("idCliente_in", idCliente)};
-                string proceso = "BuscarDatosSubClientePorApellidoNombre";
-                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt.SelectCommand.Parameters.AddRange(oParam);
-                dt.Fill(Tabla);
-                if (Tabla.Rows.Count > 0)
+                new MySqlParameter("idCliente_in", idEmpresa)};
+            string proceso = "BuscarDatosSubClientePorApellidoNombre";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
                 {
-                    foreach (DataRow item in Tabla.Rows)
-                    {
-                        SubCliente listaSubCliente = new SubCliente();
-                        listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
-                        listaSubCliente.NroFactura = item["NroFactura"].ToString();
-                        listaSubCliente.Fecha = item["Fecha"].ToString();
-                        listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
-                        listaSubCliente.Dni = item["Dni"].ToString();
-                        listaSubCliente.Direccion = item["Direccion"].ToString();
-                        listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
-                        listaSubCliente.Observacion = item["Observacion"].ToString();
-                        listaSubCliente.idCliente = idCliente;
-                        lista.Add(listaSubCliente);
-                    }
+                    SubCliente listaSubCliente = new SubCliente();
+                    listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                    listaSubCliente.NroFactura = item["NroFactura"].ToString();
+                    listaSubCliente.Fecha = item["Fecha"].ToString();
+                    listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
+                    listaSubCliente.Dni = item["Dni"].ToString();
+                    listaSubCliente.Direccion = item["Direccion"].ToString();
+                    listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
+                    listaSubCliente.Observacion = item["Observacion"].ToString();
+                    listaSubCliente.idCliente = idEmpresa;
+                    lista.Add(listaSubCliente);
                 }
                 connection.Close();
             }
             return lista;
         }
-        public static bool GuardarNuevoSubCliente(SubCliente _subCliente, string cuit)
+        public static bool GuardarNuevoSubCliente(SubCliente _subCliente, int idEmpresa)
         {
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
+
             ///// creo valores ficticios para campos no null.
             _subCliente.Monto = 0000;
             _subCliente.NroFactura = "0000-00000000";
@@ -1033,7 +1039,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
             cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
             cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
-            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
             cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
             cmd.Parameters.AddWithValue("Observacion_in", _subCliente.Observacion);
             cmd.ExecuteNonQuery();
@@ -1082,32 +1088,27 @@ namespace Sico.Dao
             connection.Close();
             return Factura;
         }
-        public static List<string> CargarComboPersonas(string cuit)
+        public static List<string> CargarComboPersonas(int idEmpresa)
         {
             List<string> _listaPerosnas = new List<string>();
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
-            if (idCliente > 0)
-            {
-                connection.Close();
-                connection.Open();
+            connection.Close();
+            connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = connection;
-                DataTable Tabla = new DataTable();
-                MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idCliente) };
-                string proceso = "CargarComboPersonasSubCliente";
-                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt.SelectCommand.Parameters.AddRange(oParam);
-                dt.Fill(Tabla);
-                if (Tabla.Rows.Count > 0)
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idEmpresa) };
+            string proceso = "CargarComboPersonasSubCliente";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
                 {
-                    foreach (DataRow item in Tabla.Rows)
-                    {
-                        _listaPerosnas.Add(item["ApellidoNombre"].ToString());
-                    }
+                    _listaPerosnas.Add(item["ApellidoNombre"].ToString());
                 }
             }
             connection.Close();
@@ -1163,12 +1164,10 @@ namespace Sico.Dao
             connection.Close();
             return Existe;
         }
-        public static bool GuardarFacturaSubCliente(SubCliente _subCliente, string cuit)
+        public static bool GuardarFacturaSubCliente(SubCliente _subCliente, int idEmpresa)
         {
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
-            bool FacturaExistente = ClienteDao.ValidarFacturaExistente(_subCliente.NroFactura, idCliente);
+            bool FacturaExistente = ClienteDao.ValidarFacturaExistente(_subCliente.NroFactura, idEmpresa);
             if (FacturaExistente == true)
             {
                 const string message = "El Nro.Factura ingresado ya existe en la base de datos para el cliente seleccionado.";
@@ -1200,7 +1199,7 @@ namespace Sico.Dao
                 cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
                 cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
                 cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
-                cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
                 cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
                 cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
                 cmd.Parameters.AddWithValue("Observacion_in", _subCliente.Observacion);
@@ -1213,7 +1212,7 @@ namespace Sico.Dao
                 }
                 if (idUltimaFacturaSubCliente > 0)
                 {
-                    exito = RegistrarDetalleFacturaSubCliente(_subCliente, idCliente, idUltimaFacturaSubCliente, idNotaCredito);
+                    exito = RegistrarDetalleFacturaSubCliente(_subCliente, idEmpresa, idUltimaFacturaSubCliente, idNotaCredito);
                 }
                 if (exito == true)
                 {
@@ -1405,44 +1404,40 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-        public static List<SubCliente> BuscarSubClientePorApellidoNombreCuit(string ApellidoNombre, string cuit)
+        public static List<SubCliente> BuscarSubClientePorApellidoNombreCuit(string ApellidoNombre, int idEmpresa)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
-            if (idCliente > 0)
-            {
-                connection.Close();
-                connection.Open();
 
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = connection;
-                DataTable Tabla = new DataTable();
-                MySqlParameter[] oParam = {
+            connection.Close();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
                                       new MySqlParameter("ApellidoNombre_in", ApellidoNombre),
-                new MySqlParameter("idCliente_in", idCliente)};
-                string proceso = "BuscarSubClientePorApellidoNombreCuit";
-                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt.SelectCommand.Parameters.AddRange(oParam);
-                dt.Fill(Tabla);
-                if (Tabla.Rows.Count > 0)
+                new MySqlParameter("idCliente_in", idEmpresa)};
+            string proceso = "BuscarSubClientePorApellidoNombreCuit";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
                 {
-                    foreach (DataRow item in Tabla.Rows)
-                    {
-                        SubCliente listaSubCliente = new SubCliente();
-                        listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
-                        listaSubCliente.NroFactura = item["NroFactura"].ToString();
-                        listaSubCliente.Fecha = item["Fecha"].ToString();
-                        listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
-                        listaSubCliente.Dni = item["Dni"].ToString();
-                        listaSubCliente.Direccion = item["Direccion"].ToString();
-                        listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
-                        listaSubCliente.Observacion = item["Observacion"].ToString();
-                        listaSubCliente.idCliente = idCliente;
-                        lista.Add(listaSubCliente);
-                    }
+                    SubCliente listaSubCliente = new SubCliente();
+                    listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                    listaSubCliente.NroFactura = item["NroFactura"].ToString();
+                    listaSubCliente.Fecha = item["Fecha"].ToString();
+                    listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
+                    listaSubCliente.Dni = item["Dni"].ToString();
+                    listaSubCliente.Direccion = item["Direccion"].ToString();
+                    listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
+                    listaSubCliente.Observacion = item["Observacion"].ToString();
+                    listaSubCliente.idCliente = idEmpresa;
+                    lista.Add(listaSubCliente);
                 }
                 connection.Close();
             }

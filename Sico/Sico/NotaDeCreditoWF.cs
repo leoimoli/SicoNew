@@ -14,20 +14,20 @@ namespace Sico
 {
     public partial class NotaDeCreditoWF : Form
     {
-        private string cuit;
+        private int idEmpresa;
         private string razonSocial;
-        public NotaDeCreditoWF(string razonSocial, string cuit)
+        public NotaDeCreditoWF(string razonSocial, int idEmpresa)
         {
             InitializeComponent();
             this.razonSocial = razonSocial;
-            this.cuit = cuit;
+            this.idEmpresa = idEmpresa;
         }
         private void FacturacionSubClientesWF_Load(object sender, EventArgs e)
         {
             try
             {
                 lblNombreEdit.Text = razonSocial;
-                lblCuitEdit.Text = cuit;
+                lblCuitEdit.Text = Convert.ToString(idEmpresa);
                 CargarComboPersonas();
                 Total = 0;
             }
@@ -40,7 +40,7 @@ namespace Sico
             try
             {
                 Entidades.SubCliente _subCliente = CargarEntidad();
-                bool Exito = ClienteNeg.GuardarNotaDeCredito(_subCliente, cuit);
+                bool Exito = ClienteNeg.GuardarNotaDeCredito(_subCliente, idEmpresa);
                 if (Exito == true)
                 {
                     ProgressBar();
@@ -76,9 +76,9 @@ namespace Sico
         }
         private void btnNuevoSubCliente_Click(object sender, EventArgs e)
         {
-            SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
-            _sub.Show();
-            Hide();
+            //SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
+            //_sub.Show();
+            //Hide();
         }
         #region Funciones
         public static int idTipoFactura;
@@ -252,7 +252,7 @@ namespace Sico
         private void CargarComboPersonas()
         {
             List<string> Personas = new List<string>();
-            Personas = ClienteNeg.CargarComboPersonas(cuit);
+            Personas = ClienteNeg.CargarComboPersonas(idEmpresa);
             cmbPersonas.Items.Clear();
             cmbPersonas.Text = "Seleccione";
             cmbPersonas.Items.Add("Seleccione");
@@ -267,11 +267,11 @@ namespace Sico
             try
             {
                 string persona = cmbPersonas.Text;
-                string NuevoNroFactura = ClienteNeg.BuscarNuevoNroFacturaNotaDeCredito(cuit);
+                string NuevoNroFactura = ClienteNeg.BuscarNuevoNroFacturaNotaDeCredito(idEmpresa);
                 txtFactura.Text = NuevoNroFactura;
                 dtFecha.Enabled = true;
                 string apellidoNombre = cmbPersonas.Text;
-                List<SubCliente> DatosPersonales = ClienteNeg.BuscarDatosSubClientePorApellidoNombre(apellidoNombre, cuit);
+                List<SubCliente> DatosPersonales = ClienteNeg.BuscarDatosSubClientePorApellidoNombre(apellidoNombre, idEmpresa);
                 if (DatosPersonales.Count > 0)
                 {
                     HabilitarLabels();
@@ -416,9 +416,9 @@ namespace Sico
                 idTipoFactura = 0;
                 CargarComboTipoFactura();
                 lblNombreEdit.Text = razonSocial;
-                lblCuitEdit.Text = cuit;
+                lblCuitEdit.Text = Convert.ToString(idEmpresa);
                 CargarComboPersonas();
-                CargarCombo();
+                //CargarCombo();
                 Total = 0;
                 cmbCodigoMoneda.Text = "PES - PesosArgentinos";
                 cmbCodigoOperacion.Text = "0 - NO CORRESPONDE";
@@ -463,7 +463,7 @@ namespace Sico
                 cmbCodigoMoneda.Items.Add(item);
             }
             List<string> Periodo = new List<string>();
-            Periodo = PeriodoNeg.CargarComboPeriodoVenta(cuit);
+            Periodo = PeriodoNeg.CargarComboPeriodoVenta(idEmpresa);
             cmbPeriodo.Items.Clear();
             foreach (string item in Periodo)
             {
@@ -540,9 +540,9 @@ namespace Sico
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
-            _tarea.Show();
-            Hide();
+            //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            //_tarea.Show();
+            //Hide();
         }
     }
 }

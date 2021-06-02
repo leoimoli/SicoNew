@@ -14,27 +14,27 @@ namespace Sico
 {
     public partial class SubClienteWF : Form
     {
-        private string cuit;
+        private int idEmpresa;
         private string razonSocial;
-        public SubClienteWF(string razonSocial, string cuit)
+        public SubClienteWF(string razonSocial, int idEmpresa)
         {
             InitializeComponent();
             this.razonSocial = razonSocial;
-            this.cuit = cuit;
+            this.idEmpresa = idEmpresa;
         }
         private void SubClienteWF_Load(object sender, EventArgs e)
         {
             txtApellidoNombreBuscar.Focus();
             lblNombreEdit.Text = razonSocial;
-            lblCuitEdit.Text = cuit;
-            txtApellidoNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete(cuit);
+            lblCuitEdit.Text = Convert.ToString(idEmpresa);
+            txtApellidoNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete(idEmpresa);
             txtApellidoNombreBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtApellidoNombreBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
         #region Botones        
         private void button1_Click(object sender, EventArgs e)
         {
-            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, idEmpresa);
             _tarea.Show();
             Hide();
         }
@@ -57,7 +57,7 @@ namespace Sico
         {
             List<Entidades.SubCliente> SubCliente = new List<Entidades.SubCliente>();
             var ApellidoNombre = txtApellidoNombreBuscar.Text;
-            SubCliente = ClienteNeg.BuscarSubClientePorApellidoNombre(ApellidoNombre, cuit);
+            SubCliente = ClienteNeg.BuscarSubClientePorApellidoNombre(ApellidoNombre, idEmpresa);
             if (SubCliente.Count > 0)
             {
                 groupBox1.Enabled = true;
@@ -123,7 +123,7 @@ namespace Sico
                 Entidades.SubCliente _subCliente = CargarEntidad();
                 if (txtDni.Enabled == false)
                 {
-                    bool Exito = ClienteNeg.EditarSubCliente(_subCliente, cuit);
+                    bool Exito = ClienteNeg.EditarSubCliente(_subCliente, idEmpresa);
                     if (Exito == true)
                     {
                         ProgressBar();
@@ -141,7 +141,7 @@ namespace Sico
                 }
                 else
                 {
-                    bool Exito = ClienteNeg.GuardarNuevoSubCliente(_subCliente, cuit);
+                    bool Exito = ClienteNeg.GuardarNuevoSubCliente(_subCliente, idEmpresa);
                     if (Exito == true)
                     {
                         ProgressBar();

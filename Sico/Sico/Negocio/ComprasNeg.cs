@@ -226,13 +226,13 @@ namespace Sico.Negocio
             }
             return _listaCompras;
         }
-        public static bool GuardarEdicionFacturaCompras(FacturaCompra _factura, string cuit, string idFactura)
+        public static bool GuardarEdicionFacturaCompras(FacturaCompra _factura, int idEmpresa, string idFactura)
         {
             bool exito = false;
             try
             {
                 //ValidarDatosFactura(_subCliente);
-                exito = ComprasDao.GuardarEdicionFacturaCompras(_factura, cuit, idFactura);
+                exito = ComprasDao.GuardarEdicionFacturaCompras(_factura, idEmpresa, idFactura);
             }
             catch (Exception ex)
             {

@@ -14,11 +14,11 @@ namespace Sico
     public partial class PeriodosVentasWF : Form
     {
         private string razonSocial;
-        private string cuit;
-        public PeriodosVentasWF(string cuit, string razonSocial)
+        private int idEmpresa;
+        public PeriodosVentasWF(int idEmpresa, string razonSocial)
         {
             InitializeComponent();
-            this.cuit = cuit;
+            this.idEmpresa = idEmpresa;
             this.razonSocial = razonSocial;
         }
 
@@ -42,7 +42,7 @@ namespace Sico
         {
             string Año = cmbAño.Text;
             string nombre = txtPeriodo.Text;
-            bool Exito = PeriodoNeg.GuardarPeriodoVenta(cuit, nombre, Año);
+            bool Exito = PeriodoNeg.GuardarPeriodoVenta(idEmpresa, nombre, Año);
             if (Exito == true)
             {
                 ProgressBar();
@@ -88,6 +88,11 @@ namespace Sico
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

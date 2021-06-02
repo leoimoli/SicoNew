@@ -117,23 +117,23 @@ namespace Sico
         }
         private void CargarComboPeriodos()
         {
-            List<string> Periodo = new List<string>();
-            Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
-            cmbPeriodo.Items.Clear();
-            foreach (string item in Periodo)
-            {
-                cmbPeriodo.Items.Add(item);
-            }
-            cmbPeriodo.SelectedIndex = 0;
+            //List<string> Periodo = new List<string>();
+            //Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
+            //cmbPeriodo.Items.Clear();
+            //foreach (string item in Periodo)
+            //{
+            //    cmbPeriodo.Items.Add(item);
+            //}
+            //cmbPeriodo.SelectedIndex = 0;
 
-            List<string> PeriodoTorta = new List<string>();
-            PeriodoTorta = PeriodoNeg.CargarComboPeriodo(cuit);
-            cmbPeriodoTorta.Items.Clear();
-            foreach (string item in PeriodoTorta)
-            {
-                cmbPeriodoTorta.Items.Add(item);
-            }
-            cmbPeriodoTorta.SelectedIndex = 0;
+            //List<string> PeriodoTorta = new List<string>();
+            ////PeriodoTorta = PeriodoNeg.CargarComboPeriodo(cuit);
+            //cmbPeriodoTorta.Items.Clear();
+            //foreach (string item in PeriodoTorta)
+            //{
+            //    cmbPeriodoTorta.Items.Add(item);
+            //}
+            //cmbPeriodoTorta.SelectedIndex = 0;
         }
         private void cmbPeriodo_SelectedIndexChanged(object sender, EventArgs e)
         {

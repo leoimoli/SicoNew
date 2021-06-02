@@ -23,13 +23,13 @@ namespace Sico.Negocio
             lista = Dao.ClienteDao.CargarComboLocalidades();
             return lista;
         }
-        public static bool GuardarNuevoSubCliente(SubCliente _subCliente, string cuit)
+        public static bool GuardarNuevoSubCliente(SubCliente _subCliente, int idEmpresa)
         {
             bool exito = false;
             try
             {
                 ValidarDatosSubCliente(_subCliente);
-                exito = ClienteDao.GuardarNuevoSubCliente(_subCliente, cuit);
+                exito = ClienteDao.GuardarNuevoSubCliente(_subCliente, idEmpresa);
             }
             catch (Exception ex)
             {
@@ -37,16 +37,30 @@ namespace Sico.Negocio
             }
             return exito;
         }
-        public static List<Vencimientos> BuscarTodosLosVencimientos(string cuit, DateTime fechaHoy)
+
+        public static List<SubCliente> BuscarSubClientes(int idEmpresaSeleccionado)
         {
-            List<Vencimientos> _listaVencimientos = new List<Vencimientos>();
+            List<SubCliente> _listaSubClientes = new List<SubCliente>();
             try
             {
-                _listaVencimientos = ClienteDao.BuscarTodosLosVencimientos(cuit, fechaHoy);
+                _listaSubClientes = ClienteDao.BuscarSubClientes(idEmpresaSeleccionado);
             }
             catch (Exception ex)
             {
             }
+            return _listaSubClientes;
+        }
+
+        public static List<Vencimientos> BuscarTodosLosVencimientos(string cuit, DateTime fechaHoy)
+        {
+            List<Vencimientos> _listaVencimientos = new List<Vencimientos>();
+            //try
+            //{
+            //    _listaVencimientos = ClienteDao.BuscarTodosLosVencimientos(cuit, fechaHoy);
+            //}
+            //catch (Exception ex)
+            //{
+            //}
             return _listaVencimientos;
         }
         public static bool GuardarVencimiento(string año, int idTipoVencimiento, string diaVencimiento)
@@ -79,22 +93,22 @@ namespace Sico.Negocio
         public static List<string> CargarComboPeriodosCompras(string año, string cuit)
         {
             List<string> _ListaPeriodos = new List<string>();
-            try
-            {
-                _ListaPeriodos = ClienteDao.CargarComboPeriodosCompras(año, cuit);
-            }
-            catch (Exception ex)
-            {
-            }
+            //try
+            //{
+            //    _ListaPeriodos = ClienteDao.CargarComboPeriodosCompras(año, cuit);
+            //}
+            //catch (Exception ex)
+            //{
+            //}
             return _ListaPeriodos;
         }
 
-        public static List<string> CargarComboPeriodos(string año, string cuit)
+        public static List<string> CargarComboPeriodos(string año, int idEmpresa)
         {
             List<string> _ListaPeriodos = new List<string>();
             try
             {
-                _ListaPeriodos = ClienteDao.CargarComboPeriodos(año, cuit);
+                _ListaPeriodos = ClienteDao.CargarComboPeriodos(año, idEmpresa);
             }
             catch (Exception ex)
             {
@@ -102,7 +116,7 @@ namespace Sico.Negocio
             return _ListaPeriodos;
         }
 
-        public static bool GuardarVencimientoPorCliente(string año, int idTipoVencimiento, string diasPrevios, string cuit)
+        public static bool GuardarVencimientoPorCliente(string año, int idTipoVencimiento, string diasPrevios, int idEmpresa)
         {
             bool exito = false;
             try
@@ -115,7 +129,7 @@ namespace Sico.Negocio
                     List<Vencimientos> _vencimientos = new List<Vencimientos>();
                     _vencimientos = ClienteDao.BuscarVencimiento(año, idTipoVencimiento);
                     var DatosVencimiento = _vencimientos.First();
-                    bool YaExiste = ClienteDao.ValidarVencimientoExistentePorCliente(DatosVencimiento.idVencimiento, cuit);
+                    bool YaExiste = ClienteDao.ValidarVencimientoExistentePorCliente(DatosVencimiento.idVencimiento, idEmpresa);
                     if (YaExiste == true)
                     {
                         const string message = "Ya Existe una notificación creada para el año y tipo de vencimiento ingresado.";
@@ -137,7 +151,7 @@ namespace Sico.Negocio
                         DateTime FechaVencimiento = Convert.ToDateTime(DiaVencimiento);
                         DateTime FechaDeAviso = Convert.ToDateTime(Fecha);
                         //05 / 05 / 2020 2:55:32 p.m.
-                        exito = ClienteDao.GuardarVencimientoPorCliente(FechaDeAviso, DatosVencimiento.idVencimiento, cuit, idTipoVencimiento, FechaVencimiento);
+                        exito = ClienteDao.GuardarVencimientoPorCliente(FechaDeAviso, DatosVencimiento.idVencimiento, idEmpresa, idTipoVencimiento, FechaVencimiento);
 
                     }
                 }
@@ -184,12 +198,12 @@ namespace Sico.Negocio
             }
         }
 
-        public static List<Vencimientos> BuscarTodosLosVencimientosIdVencimiento(string cuit, int idTipoDeVencimiento)
+        public static List<Vencimientos> BuscarTodosLosVencimientosIdVencimiento(int idEmpresa, int idTipoDeVencimiento)
         {
             List<Vencimientos> _listaVencimientos = new List<Vencimientos>();
             try
             {
-                _listaVencimientos = ClienteDao.BuscarTodosLosVencimientosIdVencimiento(cuit, idTipoDeVencimiento);
+                _listaVencimientos = ClienteDao.BuscarTodosLosVencimientosIdVencimiento(idEmpresa, idTipoDeVencimiento);
             }
             catch (Exception ex)
             {
@@ -203,10 +217,9 @@ namespace Sico.Negocio
             lista = Dao.ClienteDao.CargarComboTipoVencimientos();
             return lista;
         }
-        public static string BuscarNroFactura(string cuit)
+        public static string BuscarNroFactura(int idEmpresa)
         {
-            int idCliente = ClienteDao.BuscarIdClientePorCuit(cuit);
-            string NroFactura = ClienteDao.BuscarNroFactura(idCliente);
+            string NroFactura = ClienteDao.BuscarNroFactura(idEmpresa);
             return NroFactura;
         }
         public static List<SubCliente> BuscarDetalleFacturaSubCliente(string idsubCliente)
@@ -227,13 +240,13 @@ namespace Sico.Negocio
             }
             return _listaSubClientes;
         }
-        public static bool GuardarNotaDeCredito(SubCliente _subCliente, string cuit)
+        public static bool GuardarNotaDeCredito(SubCliente _subCliente, int idEmpresa)
         {
             bool exito = false;
             try
             {
                 ValidarDatosFactura(_subCliente);
-                exito = ClienteDao.GuardarNotaDeCredito(_subCliente, cuit);
+                exito = ClienteDao.GuardarNotaDeCredito(_subCliente, idEmpresa);
             }
             catch (Exception ex)
             {
@@ -241,13 +254,13 @@ namespace Sico.Negocio
             }
             return exito;
         }
-        public static bool EditarSubCliente(SubCliente _subCliente, string cuit)
+        public static bool EditarSubCliente(SubCliente _subCliente, int idEmpresa)
         {
             bool exito = false;
             try
             {
                 ValidarDatosSubCliente(_subCliente);
-                exito = ClienteDao.EditarSubCliente(_subCliente, cuit);
+                exito = ClienteDao.EditarSubCliente(_subCliente, idEmpresa);
             }
             catch (Exception ex)
             {
@@ -286,12 +299,12 @@ namespace Sico.Negocio
                 throw new Exception();
             }
         }
-        public static List<SubCliente> BuscarFacturacionTotalVentas(string cuit, string Periodo)
+        public static List<SubCliente> BuscarFacturacionTotalVentas(int idEmpresa, string Periodo)
         {
             List<SubCliente> _listaFacturasSubCliente = new List<SubCliente>();
             try
             {
-                _listaFacturasSubCliente = ClienteDao.BuscarFacturacionTotalVentas(cuit, Periodo);
+                _listaFacturasSubCliente = ClienteDao.BuscarFacturacionTotalVentas(idEmpresa, Periodo);
             }
             catch (Exception ex)
             {
@@ -328,10 +341,10 @@ namespace Sico.Negocio
             }
             return _listaFacturasSubCliente;
         }
-        public static string BuscarNuevoNroFacturaNotaDeCredito(string cuit)
+        public static string BuscarNuevoNroFacturaNotaDeCredito(int idEmpresa)
         {
             string Factura;
-            int idCliente = ClienteDao.BuscarIdClientePorCuit(cuit);
+            int idCliente = ClienteDao.BuscarIdClientePorCuit(idEmpresa);
             Factura = Dao.ClienteDao.BuscarNuevoNroFacturaNotaDeCredito(idCliente);
             if (Factura == "0" || Factura == "")
             {
@@ -346,10 +359,10 @@ namespace Sico.Negocio
             return Factura;
         }
 
-        public static List<string> CargarComboPersonas(string cuit)
+        public static List<string> CargarComboPersonas(int idEmpresa)
         {
             List<string> lista = new List<string>();
-            lista = Dao.ClienteDao.CargarComboPersonas(cuit);
+            lista = Dao.ClienteDao.CargarComboPersonas(idEmpresa);
             return lista;
         }
 
@@ -435,12 +448,12 @@ namespace Sico.Negocio
             }
         }
 
-        public static List<SubCliente> BuscarDatosSubClientePorApellidoNombre(string apellidoNombre, string cuit)
+        public static List<SubCliente> BuscarDatosSubClientePorApellidoNombre(string apellidoNombre, int idEmpresa)
         {
             List<SubCliente> _listaSubClientes = new List<SubCliente>();
             try
             {
-                _listaSubClientes = ClienteDao.BuscarDatosSubClientePorApellidoNombre(apellidoNombre, cuit);
+                _listaSubClientes = ClienteDao.BuscarDatosSubClientePorApellidoNombre(apellidoNombre, idEmpresa);
             }
             catch (Exception ex)
             {
@@ -486,12 +499,12 @@ namespace Sico.Negocio
             }
             return _listaClientes;
         }
-        public static List<SubCliente> BuscarSubClientePorApellidoNombre(string apellidoNombre, string cuit)
+        public static List<SubCliente> BuscarSubClientePorApellidoNombre(string apellidoNombre, int idEmpresa)
         {
             List<SubCliente> _listaSubClientes = new List<SubCliente>();
             try
             {
-                _listaSubClientes = ClienteDao.BuscarSubClientePorApellidoNombreCuit(apellidoNombre, cuit);
+                _listaSubClientes = ClienteDao.BuscarSubClientePorApellidoNombreCuit(apellidoNombre, idEmpresa);
             }
             catch (Exception ex)
             {
@@ -505,26 +518,13 @@ namespace Sico.Negocio
             return _listaSubClientes;
         }
 
-        public static bool GuardarFacturaSubCliente(SubCliente _subCliente, string cuit)
+        public static bool GuardarFacturaSubCliente(SubCliente _subCliente, int idEmpresa)
         {
             bool exito = false;
             try
             {
                 ValidarDatosFactura(_subCliente);
-                //bool FacturaExistente = ClienteDao.ValidarFacturaExistente(_subCliente.NroFactura);
-                //if (FacturaExistente == true)
-                //{
-                //    const string message = "El Nro.Factura ingresado ya existe en la base de datos.";
-                //    const string caption = "Error";
-                //    var result = MessageBox.Show(message, caption,
-                //                                 MessageBoxButtons.OK,
-                //                               MessageBoxIcon.Exclamation);
-                //    throw new Exception();
-                //}
-                //else
-                //{
-                exito = ClienteDao.GuardarFacturaSubCliente(_subCliente, cuit);
-                //}
+                exito = ClienteDao.GuardarFacturaSubCliente(_subCliente, idEmpresa);
             }
             catch (Exception ex)
             {
@@ -533,12 +533,12 @@ namespace Sico.Negocio
             return exito;
         }
 
-        public static int GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, string cuit, string periodo)
+        public static int GuardarCargaMasivaVentas(List<SubCliente> listaPrecargada, int idEmpresa, string periodo)
         {
             int exito = 0;
             try
             {
-                exito = ClienteDao.GuardarCargaMasivaVentas(listaPrecargada, cuit, periodo);
+                exito = ClienteDao.GuardarCargaMasivaVentas(listaPrecargada, idEmpresa, periodo);
             }
             catch (Exception ex)
             {

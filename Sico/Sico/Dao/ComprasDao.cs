@@ -305,7 +305,7 @@ namespace Sico.Dao
             connection.Close();
             return Existe;
         }
-        public static bool GuardarEdicionFacturaCompras(FacturaCompra _factura, string cuit, string idFactura)
+        public static bool GuardarEdicionFacturaCompras(FacturaCompra _factura, int idEmpresa, string idFactura)
         {
             int Idsub = Convert.ToInt32(idFactura);
             bool exito = false;

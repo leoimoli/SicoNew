@@ -60,7 +60,7 @@ namespace Sico
             split1 = split1.Trim();
             int idTipoVencimiento = Convert.ToInt32(split1);
             string DiasPrevios = txtDia.Text;
-            bool Exito = ClienteNeg.GuardarVencimientoPorCliente(Año, idTipoVencimiento, DiasPrevios, cuit);
+            bool Exito = true;// ClienteNeg.GuardarVencimientoPorCliente(Año, idTipoVencimiento, DiasPrevios, idEmpresa);
             if (Exito == true)
             {
                 ProgressBar();

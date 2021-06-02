@@ -55,10 +55,10 @@ namespace Sico
 
                     if (_Factura.Count <= 0)
                     {
-                        MessageBox.Show("La factura seleccionada no tiene un detalle cargado.");
-                        TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
-                        _tarea.Show();
-                        Close();
+                        //MessageBox.Show("La factura seleccionada no tiene un detalle cargado.");
+                        //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+                        //_tarea.Show();
+                        //Close();
                     }
                     HabilitarCamposConDatosEditar(_Factura);
                 }
@@ -85,8 +85,8 @@ namespace Sico
                     if (_Factura.Count <= 0)
                     {
                         MessageBox.Show("La factura seleccionada no tiene un detalle cargado.");
-                        TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
-                        _tarea.Show();
+                        //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+                        //_tarea.Show();
                         Close();
                     }
                     HabilitarCamposConDatos(_Factura);
@@ -244,8 +244,8 @@ namespace Sico
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
-            _tarea.Show();
+            //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            //_tarea.Show();
             Hide();
         }
         private void ProgressBar()

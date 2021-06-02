@@ -181,5 +181,10 @@ namespace Sico
             MenuSupHonorarios.Visible = true;
             AbrirFormEnPanel(new PlanDeHonorariosWF());
         }
+
+        private void comprobantesDeVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new FacturacionSubClientesWF(null, null));
+        }
     }
 }

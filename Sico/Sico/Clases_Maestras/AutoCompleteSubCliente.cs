@@ -26,9 +26,9 @@ namespace Sico.Clases_Maestras
             conexion.Close();
             return dt;
         }
-        public static AutoCompleteStringCollection Autocomplete(string cuit)
+        public static AutoCompleteStringCollection Autocomplete(int idEmpresa)
         {
-            int idCliente = ClienteDao.BuscarIdClientePorCuit(cuit);
+            int idCliente = ClienteDao.BuscarIdClientePorCuit(idEmpresa);
             DataTable DT = Datos(idCliente);
             AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
             foreach (DataRow row in DT.Rows)

@@ -15,21 +15,21 @@ namespace Sico
 {
     public partial class VentasImportarFacturasWF : Form
     {
-        private string cuit;
+        private int idEmpresa;
         private string razonSocial;
-        public VentasImportarFacturasWF(string razonSocial, string cuit)
+        public VentasImportarFacturasWF(string razonSocial, int idEmpresa)
         {
             InitializeComponent();
             this.razonSocial = razonSocial;
-            this.cuit = cuit;
+            this.idEmpresa = idEmpresa;
             RazonSocial = razonSocial;
-            Cuit = cuit;
+            Cuit = idEmpresa;
         }
         private void VentasImportarFacturasWF_Load(object sender, EventArgs e)
         {
             try
             {
-                lblCuitEdit.Text = cuit;
+                lblCuitEdit.Text =Convert.ToString(idEmpresa);
                 lblNombreEdit.Text = razonSocial;
                 CargarCombo();
             }
@@ -46,7 +46,7 @@ namespace Sico
         private void CargarCombo()
         {
             List<string> Periodo = new List<string>();
-            Periodo = PeriodoNeg.CargarComboPeriodoVenta(cuit);
+            Periodo = PeriodoNeg.CargarComboPeriodoVenta(idEmpresa);
             cmbPeriodo.Items.Clear();
             foreach (string item in Periodo)
             {
@@ -637,7 +637,7 @@ namespace Sico
             {
                 ProgressBar();
                 string Periodo = cmbPeriodo.Text;
-                int Exito = ClienteNeg.GuardarCargaMasivaVentas(ListaPrecargada, cuit, Periodo);
+                int Exito = ClienteNeg.GuardarCargaMasivaVentas(ListaPrecargada, idEmpresa, Periodo);
                 if (Exito > 0)
                 {
                     string Numero = Convert.ToString(Exito);
@@ -672,7 +672,7 @@ namespace Sico
         }
         private void btnCrearPeriodo_Click(object sender, EventArgs e)
         {
-            PeriodosVentasWF _periodo = new PeriodosVentasWF(cuit, razonSocial);
+            PeriodosVentasWF _periodo = new PeriodosVentasWF(idEmpresa, razonSocial);
             _periodo.Show();
         }
         private void btnActualizarCombo_Click(object sender, EventArgs e)
@@ -680,12 +680,12 @@ namespace Sico
             CargarCombo();
         }
         public static string RazonSocial;
-        public static string Cuit;
+        public static int Cuit;
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
-            _tarea.Show();
-            Hide();
+            //TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
+            //_tarea.Show();
+            //Hide();
         }
         private void chcTipaAyB_CheckedChanged(object sender, EventArgs e)
         {

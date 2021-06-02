@@ -60,9 +60,9 @@ namespace Sico
         public static string Cuit;
         private void btnVentas_Click(object sender, EventArgs e)
         {
-            TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
-            _tarea.Show();
-            Hide();
+            //TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
+            //_tarea.Show();
+            //Hide();
         }
         #endregion
         private void btnCompras_Click(object sender, EventArgs e)
@@ -90,20 +90,20 @@ namespace Sico
         }
         private void cmbAñoVentas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string año = cmbAñoVentas.Text;
-            List<string> Periodos = new List<string>();
-            Periodos = ClienteNeg.CargarComboPeriodos(año, cuit);
-            if (Periodos.Count > 0)
-            {
-                cmbPeriodosVentas.Enabled = true;
-                cmbPeriodosVentas.Items.Add("Seleccione");
-                cmbPeriodosVentas.Items.Clear();
-                foreach (string item in Periodos)
-                {
-                    cmbPeriodosVentas.Text = "Seleccione";
-                    cmbPeriodosVentas.Items.Add(item);
-                }
-            }
+            //string año = cmbAñoVentas.Text;
+            //List<string> Periodos = new List<string>();
+            //Periodos = ClienteNeg.CargarComboPeriodos(año, cuit);
+            //if (Periodos.Count > 0)
+            //{
+            //    cmbPeriodosVentas.Enabled = true;
+            //    cmbPeriodosVentas.Items.Add("Seleccione");
+            //    cmbPeriodosVentas.Items.Clear();
+            //    foreach (string item in Periodos)
+            //    {
+            //        cmbPeriodosVentas.Text = "Seleccione";
+            //        cmbPeriodosVentas.Items.Add(item);
+            //    }
+            //}
 
         }
         public List<Entidades.FacturaCompraAnual> ListaTotalFacturacion

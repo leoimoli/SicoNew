@@ -56,13 +56,13 @@ namespace Sico.Negocio
             lista = PeriodoDao.CargarComboPeriodoCompras(cuit);
             return lista;
         }
-        public static bool GuardarPeriodoVenta(string cuit, string nombre, string año)
+        public static bool GuardarPeriodoVenta(int idEmpresa, string nombre, string año)
         {
             bool exito = false;
             try
             {
                 ValidarDatos(nombre);
-                exito = PeriodoDao.GuardarPeriodoVenta(cuit, nombre, año);
+                exito = PeriodoDao.GuardarPeriodoVenta(idEmpresa, nombre, año);
             }
             catch (Exception ex)
             {
@@ -71,17 +71,17 @@ namespace Sico.Negocio
             return exito;
         }
 
-        public static List<string> CargarComboPeriodo(string cuit)
+        public static List<string> CargarComboPeriodo(int idEmpresa)
         {
             List<string> lista = new List<string>();
-            lista = PeriodoDao.CargarComboPeriodo(cuit);
+            lista = PeriodoDao.CargarComboPeriodo(idEmpresa);
             return lista;
         }
 
-        public static List<string> CargarComboPeriodoVenta(string cuit)
+        public static List<string> CargarComboPeriodoVenta(int idEmpresa)
         {
             List<string> lista = new List<string>();
-            lista = PeriodoDao.CargarComboPeriodoVenta(cuit);
+            lista = PeriodoDao.CargarComboPeriodoVenta(idEmpresa);
             return lista;
         }
     }

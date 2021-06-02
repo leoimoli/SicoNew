@@ -327,11 +327,14 @@ namespace Sico
                 string RazonSocial = this.dgvTodosLosClientes.CurrentRow.Cells[1].Value.ToString();
                 Sesion.UsuarioLogueado.idEmpresaSeleccionado = idEmpresa;
                 Sesion.UsuarioLogueado.EmpresaSeleccionada = RazonSocial;
-                MasterNuevaWF frm2 = new MasterNuevaWF(idEmpresa, RazonSocial);
-                frm2.idEmpresa = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
-                frm2.Empresa = Sesion.UsuarioLogueado.EmpresaSeleccionada;
-                frm2.Validar(idEmpresa, RazonSocial);
-                Hide();
+                MasterNuevaWF frm2 = Application.OpenForms.OfType<MasterNuevaWF>().SingleOrDefault();
+                if (frm2 != null)
+                {
+                    frm2.lblidEmpresa.Text = Convert.ToString(idEmpresa);
+                    frm2.lblEmpresa.Text = RazonSocial;
+                    frm2.grbEmpresaSeleccionada.Visible = true;
+                    Hide();
+                }             
             }
             if (dgvTodosLosClientes.CurrentCell.ColumnIndex == 6)
             {

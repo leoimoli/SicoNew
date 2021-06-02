@@ -48,18 +48,16 @@ namespace Sico.Dao
             }
         }
 
-        public static List<string> CargarComboPeriodoVenta(string cuit)
+        public static List<string> CargarComboPeriodoVenta(int idEmpresa)
         {
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
             connection.Close();
             connection.Open();
             List<string> _TipoMoneda = new List<string>();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idCliente) };
+            MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idEmpresa) };
             string proceso = "ListarPeriodoVenta";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -102,13 +100,11 @@ namespace Sico.Dao
             connection.Close();
             return _TipoMoneda;
         }
-        public static bool GuardarPeriodoVenta(string cuit, string nombre, string Año)
+        public static bool GuardarPeriodoVenta(int idEmpresa, string nombre, string Año)
         {
             bool exito = false;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
-            bool YaExiste = ValidadPeriodoVentaExistente(nombre, idCliente, Año);
+            bool YaExiste = ValidadPeriodoVentaExistente(nombre, idEmpresa, Año);
             string NombrePeriodo = nombre + Año;
             if (YaExiste == false)
             {
@@ -117,7 +113,7 @@ namespace Sico.Dao
                 string proceso = "GuardarPeriodoVenta";
                 MySqlCommand cmd = new MySqlCommand(proceso, connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
                 cmd.Parameters.AddWithValue("Ano_in", Año);
                 cmd.Parameters.AddWithValue("Nombre_in", NombrePeriodo);
                 cmd.ExecuteNonQuery();
@@ -192,18 +188,16 @@ namespace Sico.Dao
             return Existe;
         }
 
-        public static List<string> CargarComboPeriodo(string cuit)
+        public static List<string> CargarComboPeriodo(int idEmpresa)
         {
-            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
+            List<Entidades.Cliente> id = new List<Entidades.Cliente>();           
             connection.Close();
             connection.Open();
             List<string> _TipoMoneda = new List<string>();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idCliente) };
+            MySqlParameter[] oParam = { new MySqlParameter("idCliente_in", idEmpresa) };
             string proceso = "ListarPeriodoCompras";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;

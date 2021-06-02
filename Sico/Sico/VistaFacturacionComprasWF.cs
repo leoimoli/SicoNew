@@ -14,15 +14,15 @@ namespace Sico
 {
     public partial class VistaFacturacionComprasWF : MasterWF
     {
-        private string cuit;
+        private int idEmpresa;
         private bool EsEditar;
         private string idFactura;
         private string razonSocial;
-        public VistaFacturacionComprasWF(string idFactura, string cuit, string razonSocial, bool esEditar)
+        public VistaFacturacionComprasWF(string idFactura, int idEmpresa, string razonSocial, bool esEditar)
         {
             InitializeComponent();
             this.idFactura = idFactura;
-            this.cuit = cuit;
+            this.idEmpresa = idEmpresa;
             this.razonSocial = razonSocial;
             this.EsEditar = esEditar;
         }
@@ -33,16 +33,16 @@ namespace Sico
                 try
                 {
                     lblNombreEdit.Text = razonSocial;
-                    lblCuitEdit.Text = cuit;
+                    lblCuitEdit.Text = Convert.ToString(idEmpresa);
                     List<FacturaCompra> _Factura = new List<FacturaCompra>();
                     _Factura = ComprasNeg.BuscarDetalleFacturaFacturaCompra(idFactura);
                     Total = _Factura[0].Monto;
                     if (_Factura.Count <= 0)
                     {
-                        MessageBox.Show("La factura seleccionada no tiene un detalle cargado.");
-                        TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
-                        _tarea.Show();
-                        Close();
+                        //MessageBox.Show("La factura seleccionada no tiene un detalle cargado.");
+                        //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+                        //_tarea.Show();
+                        //Close();
                     }
                     HabilitarCamposConDatosEditar(_Factura);
                     HabilitarCampos();
@@ -58,7 +58,7 @@ namespace Sico
                     if (_Factura.Count <= 0)
                     {
                         MessageBox.Show("La factura seleccionada no tiene un detalle cargado.");
-                        TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+                        TareaClienteWF _tarea = new TareaClienteWF(razonSocial, idEmpresa);
                         _tarea.Show();
                         Close();
                     }
@@ -218,7 +218,7 @@ namespace Sico
             try
             {
                 FacturaCompra _factura = CargarEntidad();
-                bool Exito = ComprasNeg.GuardarEdicionFacturaCompras(_factura, cuit, idFactura);
+                bool Exito = ComprasNeg.GuardarEdicionFacturaCompras(_factura, idEmpresa, idFactura);
                 if (Exito == true)
                 {
                     ProgressBar();
@@ -586,15 +586,15 @@ namespace Sico
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
-            _tarea.Show();
+            //ComprasWF _tarea = new ComprasWF(razonSocial, cuit);
+            //_tarea.Show();
             Hide();
         }
 
         private void btnActualizarCombo_Click(object sender, EventArgs e)
         {
             List<string> Periodo = new List<string>();
-            Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
+            Periodo = PeriodoNeg.CargarComboPeriodo(idEmpresa);
             cmbPeriodo.Items.Clear();
             //cmbCodigoMoneda.Text = "Seleccione";
             //cmbCodigoMoneda.Items.Add("Seleccione");

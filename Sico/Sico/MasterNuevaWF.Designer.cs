@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterNuevaWF));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRestaurar = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.btnMaximizar = new System.Windows.Forms.PictureBox();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.MenuVertical = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnUsuarios = new System.Windows.Forms.Button();
@@ -44,9 +48,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnIva = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -54,26 +62,6 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnSueldos = new System.Windows.Forms.Button();
             this.MenuSupIva = new System.Windows.Forms.MenuStrip();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.grbEmpresaSeleccionada = new System.Windows.Forms.GroupBox();
-            this.lblidEmpresa = new System.Windows.Forms.Label();
-            this.lblEmpresa = new System.Windows.Forms.Label();
-            this.lblEmpresaSoleccionada = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.MenuSupHonorarios = new System.Windows.Forms.MenuStrip();
-            this.menuSupEmpresa = new System.Windows.Forms.MenuStrip();
-            this.MenuSupSueldos = new System.Windows.Forms.MenuStrip();
-            this.MenuSupContabilidad = new System.Windows.Forms.MenuStrip();
-            this.label6 = new System.Windows.Forms.Label();
-            this.PanelContenedor = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSeleccionarEmpresa = new System.Windows.Forms.Button();
-            this.PictureBoxEmpresa = new System.Windows.Forms.PictureBox();
             this.iVAComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comprobanteDeCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,49 +70,60 @@
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.liquidacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.grbEmpresaSeleccionada = new System.Windows.Forms.GroupBox();
+            this.lblidEmpresa = new System.Windows.Forms.Label();
+            this.btnSeleccionarEmpresa = new System.Windows.Forms.Button();
+            this.PictureBoxEmpresa = new System.Windows.Forms.PictureBox();
+            this.lblEmpresa = new System.Windows.Forms.Label();
+            this.lblEmpresaSoleccionada = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.MenuSupHonorarios = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSupEmpresa = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSupContabilidad = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSupSueldos = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.asistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novedadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label6 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnRestaurar = new System.Windows.Forms.PictureBox();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.btnCerrar = new System.Windows.Forms.PictureBox();
+            this.PanelContenedor = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
-            this.MenuVertical.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.MenuSupIva.SuspendLayout();
-            this.panel14.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.grbEmpresaSeleccionada.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.MenuSupHonorarios.SuspendLayout();
-            this.menuSupEmpresa.SuspendLayout();
-            this.MenuSupSueldos.SuspendLayout();
-            this.MenuSupContabilidad.SuspendLayout();
-            this.PanelContenedor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
+            this.MenuVertical.SuspendLayout();
+            this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.MenuSupIva.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.grbEmpresaSeleccionada.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).BeginInit();
+            this.panel5.SuspendLayout();
+            this.MenuSupHonorarios.SuspendLayout();
+            this.menuSupEmpresa.SuspendLayout();
+            this.MenuSupContabilidad.SuspendLayout();
+            this.MenuSupSueldos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -140,6 +139,59 @@
             this.panel1.Size = new System.Drawing.Size(1300, 35);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuCabecera_MouseDown);
+            // 
+            // btnRestaurar
+            // 
+            this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestaurar.Image = global::Sico.Properties.Resources.restaurar;
+            this.btnRestaurar.Location = new System.Drawing.Point(1170, 3);
+            this.btnRestaurar.Name = "btnRestaurar";
+            this.btnRestaurar.Size = new System.Drawing.Size(25, 25);
+            this.btnRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnRestaurar.TabIndex = 6;
+            this.btnRestaurar.TabStop = false;
+            this.btnRestaurar.Visible = false;
+            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = global::Sico.Properties.Resources.menos__2_1;
+            this.btnMinimizar.Location = new System.Drawing.Point(1201, 3);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(25, 25);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 4;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizar.Image = global::Sico.Properties.Resources.maximizar1;
+            this.btnMaximizar.Location = new System.Drawing.Point(1232, 3);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(25, 25);
+            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizar.TabIndex = 5;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Image = global::Sico.Properties.Resources.cancelar2;
+            this.btnCerrar.Location = new System.Drawing.Point(1263, 3);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrar.TabIndex = 3;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // MenuVertical
             // 
@@ -311,6 +363,24 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Desarrollado Por: JLI Code";
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(50, 20);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(140, 58);
+            this.pictureBox3.TabIndex = 21;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Sico.Properties.Resources.trabajando;
+            this.pictureBox4.Location = new System.Drawing.Point(2, 20);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(47, 58);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 20;
+            this.pictureBox4.TabStop = false;
+            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.label2);
@@ -343,6 +413,24 @@
             this.label1.Size = new System.Drawing.Size(62, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "SICO";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(50, 23);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(140, 50);
+            this.pictureBox2.TabIndex = 21;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Sico.Properties.Resources.Imagen_Sico_Login1;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(48, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
             // 
             // panel9
             // 
@@ -429,11 +517,78 @@
             this.iVAVentasToolStripMenuItem,
             this.liquidacionesToolStripMenuItem,
             this.informesToolStripMenuItem});
-            this.MenuSupIva.Location = new System.Drawing.Point(12, 49);
+            this.MenuSupIva.Location = new System.Drawing.Point(12, 0);
             this.MenuSupIva.Name = "MenuSupIva";
             this.MenuSupIva.Size = new System.Drawing.Size(494, 29);
             this.MenuSupIva.TabIndex = 1;
             this.MenuSupIva.Text = "menuStrip1";
+            // 
+            // iVAComprasToolStripMenuItem
+            // 
+            this.iVAComprasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.comprobanteDeCompraToolStripMenuItem,
+            this.proveedorToolStripMenuItem});
+            this.iVAComprasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.iVAComprasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.iVAComprasToolStripMenuItem.Image = global::Sico.Properties.Resources.carrito_de_compras__1_;
+            this.iVAComprasToolStripMenuItem.Name = "iVAComprasToolStripMenuItem";
+            this.iVAComprasToolStripMenuItem.Size = new System.Drawing.Size(135, 25);
+            this.iVAComprasToolStripMenuItem.Text = "I.V.A Compras";
+            // 
+            // comprobanteDeCompraToolStripMenuItem
+            // 
+            this.comprobanteDeCompraToolStripMenuItem.Image = global::Sico.Properties.Resources.satisfecho;
+            this.comprobanteDeCompraToolStripMenuItem.Name = "comprobanteDeCompraToolStripMenuItem";
+            this.comprobanteDeCompraToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
+            this.comprobanteDeCompraToolStripMenuItem.Text = "Comprobante de Compra";
+            // 
+            // proveedorToolStripMenuItem
+            // 
+            this.proveedorToolStripMenuItem.Image = global::Sico.Properties.Resources.garantia;
+            this.proveedorToolStripMenuItem.Name = "proveedorToolStripMenuItem";
+            this.proveedorToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
+            this.proveedorToolStripMenuItem.Text = "Proveedor";
+            // 
+            // iVAVentasToolStripMenuItem
+            // 
+            this.iVAVentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.comprobantesDeVentaToolStripMenuItem,
+            this.clientesToolStripMenuItem});
+            this.iVAVentasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.iVAVentasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.iVAVentasToolStripMenuItem.Image = global::Sico.Properties.Resources.calculadora1;
+            this.iVAVentasToolStripMenuItem.Name = "iVAVentasToolStripMenuItem";
+            this.iVAVentasToolStripMenuItem.Size = new System.Drawing.Size(118, 25);
+            this.iVAVentasToolStripMenuItem.Text = "I.V.A Ventas";
+            // 
+            // comprobantesDeVentaToolStripMenuItem
+            // 
+            this.comprobantesDeVentaToolStripMenuItem.Image = global::Sico.Properties.Resources.documento;
+            this.comprobantesDeVentaToolStripMenuItem.Name = "comprobantesDeVentaToolStripMenuItem";
+            this.comprobantesDeVentaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+            this.comprobantesDeVentaToolStripMenuItem.Text = "Comprobantes de Venta";
+            this.comprobantesDeVentaToolStripMenuItem.Click += new System.EventHandler(this.comprobantesDeVentaToolStripMenuItem_Click);
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Image = global::Sico.Properties.Resources.comunidad;
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            // 
+            // liquidacionesToolStripMenuItem
+            // 
+            this.liquidacionesToolStripMenuItem.Image = global::Sico.Properties.Resources.calendario2;
+            this.liquidacionesToolStripMenuItem.Name = "liquidacionesToolStripMenuItem";
+            this.liquidacionesToolStripMenuItem.Size = new System.Drawing.Size(133, 25);
+            this.liquidacionesToolStripMenuItem.Text = "Liquidaciones";
+            // 
+            // informesToolStripMenuItem
+            // 
+            this.informesToolStripMenuItem.Image = global::Sico.Properties.Resources.informe_seo;
+            this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
+            this.informesToolStripMenuItem.Size = new System.Drawing.Size(100, 25);
+            this.informesToolStripMenuItem.Text = "Informes";
             // 
             // panel14
             // 
@@ -495,6 +650,30 @@
             this.lblidEmpresa.Text = "id";
             this.lblidEmpresa.Visible = false;
             // 
+            // btnSeleccionarEmpresa
+            // 
+            this.btnSeleccionarEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
+            this.btnSeleccionarEmpresa.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnSeleccionarEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSeleccionarEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeleccionarEmpresa.ForeColor = System.Drawing.Color.White;
+            this.btnSeleccionarEmpresa.Image = global::Sico.Properties.Resources.seleccion__1_;
+            this.btnSeleccionarEmpresa.Location = new System.Drawing.Point(232, 17);
+            this.btnSeleccionarEmpresa.Name = "btnSeleccionarEmpresa";
+            this.btnSeleccionarEmpresa.Size = new System.Drawing.Size(27, 29);
+            this.btnSeleccionarEmpresa.TabIndex = 157;
+            this.btnSeleccionarEmpresa.UseVisualStyleBackColor = false;
+            this.btnSeleccionarEmpresa.Click += new System.EventHandler(this.btnSeleccionarEmpresa_Click);
+            // 
+            // PictureBoxEmpresa
+            // 
+            this.PictureBoxEmpresa.Image = global::Sico.Properties.Resources.usuario__1_;
+            this.PictureBoxEmpresa.Location = new System.Drawing.Point(6, 11);
+            this.PictureBoxEmpresa.Name = "PictureBoxEmpresa";
+            this.PictureBoxEmpresa.Size = new System.Drawing.Size(35, 35);
+            this.PictureBoxEmpresa.TabIndex = 8;
+            this.PictureBoxEmpresa.TabStop = false;
+            // 
             // lblEmpresa
             // 
             this.lblEmpresa.AutoSize = true;
@@ -521,8 +700,11 @@
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Control;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.MenuSupSueldos);
+            this.panel5.Controls.Add(this.MenuSupHonorarios);
+            this.panel5.Controls.Add(this.menuSupEmpresa);
             this.panel5.Controls.Add(this.MenuSupContabilidad);
+            this.panel5.Controls.Add(this.MenuSupIva);
+            this.panel5.Controls.Add(this.MenuSupSueldos);
             this.panel5.Location = new System.Drawing.Point(-1, 57);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1100, 30);
@@ -536,11 +718,21 @@
             this.MenuSupHonorarios.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.MenuSupHonorarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem10});
-            this.MenuSupHonorarios.Location = new System.Drawing.Point(6, 159);
+            this.MenuSupHonorarios.Location = new System.Drawing.Point(12, 0);
             this.MenuSupHonorarios.Name = "MenuSupHonorarios";
             this.MenuSupHonorarios.Size = new System.Drawing.Size(179, 29);
             this.MenuSupHonorarios.TabIndex = 6;
             this.MenuSupHonorarios.Text = "menuStrip4";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem10.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem10.Image = global::Sico.Properties.Resources.dia_de_pago;
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(171, 25);
+            this.toolStripMenuItem10.Text = "Plan de Honorarios";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
             // 
             // menuSupEmpresa
             // 
@@ -550,73 +742,11 @@
             this.menuSupEmpresa.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem9,
             this.toolStripMenuItem12});
-            this.menuSupEmpresa.Location = new System.Drawing.Point(6, 118);
+            this.menuSupEmpresa.Location = new System.Drawing.Point(12, 0);
             this.menuSupEmpresa.Name = "menuSupEmpresa";
             this.menuSupEmpresa.Size = new System.Drawing.Size(213, 29);
             this.menuSupEmpresa.TabIndex = 5;
             this.menuSupEmpresa.Text = "menuStrip4";
-            // 
-            // MenuSupSueldos
-            // 
-            this.MenuSupSueldos.BackColor = System.Drawing.SystemColors.Control;
-            this.MenuSupSueldos.Dock = System.Windows.Forms.DockStyle.None;
-            this.MenuSupSueldos.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.MenuSupSueldos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.asistenciaToolStripMenuItem,
-            this.novedadesToolStripMenuItem,
-            this.toolStripMenuItem4});
-            this.MenuSupSueldos.Location = new System.Drawing.Point(3, 1);
-            this.MenuSupSueldos.Name = "MenuSupSueldos";
-            this.MenuSupSueldos.Size = new System.Drawing.Size(689, 29);
-            this.MenuSupSueldos.TabIndex = 4;
-            this.MenuSupSueldos.Text = "menuStrip2";
-            // 
-            // MenuSupContabilidad
-            // 
-            this.MenuSupContabilidad.BackColor = System.Drawing.SystemColors.Control;
-            this.MenuSupContabilidad.Dock = System.Windows.Forms.DockStyle.None;
-            this.MenuSupContabilidad.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.MenuSupContabilidad.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8});
-            this.MenuSupContabilidad.Location = new System.Drawing.Point(3, 1);
-            this.MenuSupContabilidad.Name = "MenuSupContabilidad";
-            this.MenuSupContabilidad.Size = new System.Drawing.Size(401, 29);
-            this.MenuSupContabilidad.TabIndex = 4;
-            this.MenuSupContabilidad.Text = "menuStrip3";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(964, 17);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 17);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Usuario Logueado";
-            // 
-            // PanelContenedor
-            // 
-            this.PanelContenedor.BackColor = System.Drawing.Color.SteelBlue;
-            this.PanelContenedor.Controls.Add(this.MenuSupIva);
-            this.PanelContenedor.Controls.Add(this.menuSupEmpresa);
-            this.PanelContenedor.Controls.Add(this.MenuSupHonorarios);
-            this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelContenedor.ForeColor = System.Drawing.Color.White;
-            this.PanelContenedor.Location = new System.Drawing.Point(201, 122);
-            this.PanelContenedor.Name = "PanelContenedor";
-            this.PanelContenedor.Size = new System.Drawing.Size(1099, 482);
-            this.PanelContenedor.TabIndex = 11;
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.ToolTipTitle = "Seleccionar Empresa";
             // 
             // toolStripMenuItem9
             // 
@@ -635,105 +765,71 @@
             this.toolStripMenuItem12.Size = new System.Drawing.Size(100, 25);
             this.toolStripMenuItem12.Text = "Informes";
             // 
-            // toolStripMenuItem10
+            // MenuSupContabilidad
             // 
-            this.toolStripMenuItem10.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem10.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem10.Image = global::Sico.Properties.Resources.dia_de_pago;
-            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(171, 25);
-            this.toolStripMenuItem10.Text = "Plan de Honorarios";
-            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+            this.MenuSupContabilidad.BackColor = System.Drawing.SystemColors.Control;
+            this.MenuSupContabilidad.Dock = System.Windows.Forms.DockStyle.None;
+            this.MenuSupContabilidad.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.MenuSupContabilidad.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8});
+            this.MenuSupContabilidad.Location = new System.Drawing.Point(12, 0);
+            this.MenuSupContabilidad.Name = "MenuSupContabilidad";
+            this.MenuSupContabilidad.Size = new System.Drawing.Size(401, 29);
+            this.MenuSupContabilidad.TabIndex = 4;
+            this.MenuSupContabilidad.Text = "menuStrip3";
             // 
-            // btnSeleccionarEmpresa
+            // toolStripMenuItem5
             // 
-            this.btnSeleccionarEmpresa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(95)))));
-            this.btnSeleccionarEmpresa.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnSeleccionarEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSeleccionarEmpresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeleccionarEmpresa.ForeColor = System.Drawing.Color.White;
-            this.btnSeleccionarEmpresa.Image = global::Sico.Properties.Resources.seleccion__1_;
-            this.btnSeleccionarEmpresa.Location = new System.Drawing.Point(232, 17);
-            this.btnSeleccionarEmpresa.Name = "btnSeleccionarEmpresa";
-            this.btnSeleccionarEmpresa.Size = new System.Drawing.Size(27, 29);
-            this.btnSeleccionarEmpresa.TabIndex = 157;
-            this.btnSeleccionarEmpresa.UseVisualStyleBackColor = false;
-            this.btnSeleccionarEmpresa.Click += new System.EventHandler(this.btnSeleccionarEmpresa_Click);
+            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem5.Image = global::Sico.Properties.Resources.presupuesto;
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(94, 25);
+            this.toolStripMenuItem5.Text = "Cuentas";
             // 
-            // PictureBoxEmpresa
+            // toolStripMenuItem6
             // 
-            this.PictureBoxEmpresa.Image = global::Sico.Properties.Resources.usuario__1_;
-            this.PictureBoxEmpresa.Location = new System.Drawing.Point(6, 11);
-            this.PictureBoxEmpresa.Name = "PictureBoxEmpresa";
-            this.PictureBoxEmpresa.Size = new System.Drawing.Size(35, 35);
-            this.PictureBoxEmpresa.TabIndex = 8;
-            this.PictureBoxEmpresa.TabStop = false;
+            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem6.Image = global::Sico.Properties.Resources.calendario__1_;
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(102, 25);
+            this.toolStripMenuItem6.Text = "Ejercicios";
             // 
-            // iVAComprasToolStripMenuItem
+            // toolStripMenuItem7
             // 
-            this.iVAComprasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.comprobanteDeCompraToolStripMenuItem,
-            this.proveedorToolStripMenuItem});
-            this.iVAComprasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.iVAComprasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.iVAComprasToolStripMenuItem.Image = global::Sico.Properties.Resources.carrito_de_compras__1_;
-            this.iVAComprasToolStripMenuItem.Name = "iVAComprasToolStripMenuItem";
-            this.iVAComprasToolStripMenuItem.Size = new System.Drawing.Size(135, 25);
-            this.iVAComprasToolStripMenuItem.Text = "I.V.A Compras";
+            this.toolStripMenuItem7.Image = global::Sico.Properties.Resources.notas;
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(97, 25);
+            this.toolStripMenuItem7.Text = "Asientos";
             // 
-            // comprobanteDeCompraToolStripMenuItem
+            // toolStripMenuItem8
             // 
-            this.comprobanteDeCompraToolStripMenuItem.Image = global::Sico.Properties.Resources.satisfecho;
-            this.comprobanteDeCompraToolStripMenuItem.Name = "comprobanteDeCompraToolStripMenuItem";
-            this.comprobanteDeCompraToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
-            this.comprobanteDeCompraToolStripMenuItem.Text = "Comprobante de Compra";
+            this.toolStripMenuItem8.Image = global::Sico.Properties.Resources.informe_seo;
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(100, 25);
+            this.toolStripMenuItem8.Text = "Informes";
             // 
-            // proveedorToolStripMenuItem
+            // MenuSupSueldos
             // 
-            this.proveedorToolStripMenuItem.Image = global::Sico.Properties.Resources.garantia;
-            this.proveedorToolStripMenuItem.Name = "proveedorToolStripMenuItem";
-            this.proveedorToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
-            this.proveedorToolStripMenuItem.Text = "Proveedor";
-            // 
-            // iVAVentasToolStripMenuItem
-            // 
-            this.iVAVentasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.comprobantesDeVentaToolStripMenuItem,
-            this.clientesToolStripMenuItem});
-            this.iVAVentasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.iVAVentasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.iVAVentasToolStripMenuItem.Image = global::Sico.Properties.Resources.calculadora1;
-            this.iVAVentasToolStripMenuItem.Name = "iVAVentasToolStripMenuItem";
-            this.iVAVentasToolStripMenuItem.Size = new System.Drawing.Size(118, 25);
-            this.iVAVentasToolStripMenuItem.Text = "I.V.A Ventas";
-            // 
-            // comprobantesDeVentaToolStripMenuItem
-            // 
-            this.comprobantesDeVentaToolStripMenuItem.Image = global::Sico.Properties.Resources.documento;
-            this.comprobantesDeVentaToolStripMenuItem.Name = "comprobantesDeVentaToolStripMenuItem";
-            this.comprobantesDeVentaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
-            this.comprobantesDeVentaToolStripMenuItem.Text = "Comprobantes de Venta";
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.Image = global::Sico.Properties.Resources.comunidad;
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            // 
-            // liquidacionesToolStripMenuItem
-            // 
-            this.liquidacionesToolStripMenuItem.Image = global::Sico.Properties.Resources.calendario2;
-            this.liquidacionesToolStripMenuItem.Name = "liquidacionesToolStripMenuItem";
-            this.liquidacionesToolStripMenuItem.Size = new System.Drawing.Size(133, 25);
-            this.liquidacionesToolStripMenuItem.Text = "Liquidaciones";
-            // 
-            // informesToolStripMenuItem
-            // 
-            this.informesToolStripMenuItem.Image = global::Sico.Properties.Resources.informe_seo;
-            this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
-            this.informesToolStripMenuItem.Size = new System.Drawing.Size(100, 25);
-            this.informesToolStripMenuItem.Text = "Informes";
+            this.MenuSupSueldos.BackColor = System.Drawing.SystemColors.Control;
+            this.MenuSupSueldos.Dock = System.Windows.Forms.DockStyle.None;
+            this.MenuSupSueldos.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.MenuSupSueldos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.asistenciaToolStripMenuItem,
+            this.novedadesToolStripMenuItem,
+            this.toolStripMenuItem4});
+            this.MenuSupSueldos.Location = new System.Drawing.Point(6, 0);
+            this.MenuSupSueldos.Name = "MenuSupSueldos";
+            this.MenuSupSueldos.Size = new System.Drawing.Size(689, 29);
+            this.MenuSupSueldos.TabIndex = 4;
+            this.MenuSupSueldos.Text = "menuStrip2";
             // 
             // toolStripMenuItem1
             // 
@@ -781,37 +877,16 @@
             this.toolStripMenuItem4.Size = new System.Drawing.Size(100, 25);
             this.toolStripMenuItem4.Text = "Informes";
             // 
-            // toolStripMenuItem5
+            // label6
             // 
-            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem5.Image = global::Sico.Properties.Resources.presupuesto;
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(94, 25);
-            this.toolStripMenuItem5.Text = "Cuentas";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem6.Image = global::Sico.Properties.Resources.calendario__1_;
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(102, 25);
-            this.toolStripMenuItem6.Text = "Ejercicios";
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Image = global::Sico.Properties.Resources.notas;
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(97, 25);
-            this.toolStripMenuItem7.Text = "Asientos";
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Image = global::Sico.Properties.Resources.informe_seo;
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(100, 25);
-            this.toolStripMenuItem8.Text = "Informes";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label6.Location = new System.Drawing.Point(964, 17);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(125, 17);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Usuario Logueado";
             // 
             // pictureBox6
             // 
@@ -823,94 +898,19 @@
             this.pictureBox6.TabIndex = 2;
             this.pictureBox6.TabStop = false;
             // 
-            // pictureBox3
+            // PanelContenedor
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(50, 20);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(140, 58);
-            this.pictureBox3.TabIndex = 21;
-            this.pictureBox3.TabStop = false;
+            this.PanelContenedor.BackColor = System.Drawing.Color.SteelBlue;
+            this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelContenedor.ForeColor = System.Drawing.Color.White;
+            this.PanelContenedor.Location = new System.Drawing.Point(201, 122);
+            this.PanelContenedor.Name = "PanelContenedor";
+            this.PanelContenedor.Size = new System.Drawing.Size(1099, 482);
+            this.PanelContenedor.TabIndex = 11;
             // 
-            // pictureBox4
+            // toolTip1
             // 
-            this.pictureBox4.Image = global::Sico.Properties.Resources.trabajando;
-            this.pictureBox4.Location = new System.Drawing.Point(2, 20);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(47, 58);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 20;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(50, 23);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(140, 50);
-            this.pictureBox2.TabIndex = 21;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Sico.Properties.Resources.Imagen_Sico_Login1;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnRestaurar
-            // 
-            this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRestaurar.Image = global::Sico.Properties.Resources.restaurar;
-            this.btnRestaurar.Location = new System.Drawing.Point(1170, 3);
-            this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(25, 25);
-            this.btnRestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnRestaurar.TabIndex = 6;
-            this.btnRestaurar.TabStop = false;
-            this.btnRestaurar.Visible = false;
-            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimizar.Image = global::Sico.Properties.Resources.menos__2_1;
-            this.btnMinimizar.Location = new System.Drawing.Point(1201, 3);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(25, 25);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimizar.TabIndex = 4;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximizar.Image = global::Sico.Properties.Resources.maximizar1;
-            this.btnMaximizar.Location = new System.Drawing.Point(1232, 3);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(25, 25);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMaximizar.TabIndex = 5;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Image = global::Sico.Properties.Resources.cancelar2;
-            this.btnCerrar.Location = new System.Drawing.Point(1263, 3);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
-            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCerrar.TabIndex = 3;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.toolTip1.ToolTipTitle = "Seleccionar Empresa";
             // 
             // MasterNuevaWF
             // 
@@ -929,11 +929,19 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MasterNuevaWF_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.MenuVertical.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MenuSupIva.ResumeLayout(false);
             this.MenuSupIva.PerformLayout();
             this.panel14.ResumeLayout(false);
@@ -942,28 +950,18 @@
             this.panel4.PerformLayout();
             this.grbEmpresaSeleccionada.ResumeLayout(false);
             this.grbEmpresaSeleccionada.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.MenuSupHonorarios.ResumeLayout(false);
             this.MenuSupHonorarios.PerformLayout();
             this.menuSupEmpresa.ResumeLayout(false);
             this.menuSupEmpresa.PerformLayout();
-            this.MenuSupSueldos.ResumeLayout(false);
-            this.MenuSupSueldos.PerformLayout();
             this.MenuSupContabilidad.ResumeLayout(false);
             this.MenuSupContabilidad.PerformLayout();
-            this.PanelContenedor.ResumeLayout(false);
-            this.PanelContenedor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).EndInit();
+            this.MenuSupSueldos.ResumeLayout(false);
+            this.MenuSupSueldos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1027,12 +1025,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label lblEmpresaSoleccionada;
-        private System.Windows.Forms.Label lblEmpresa;
         private System.Windows.Forms.PictureBox PictureBoxEmpresa;
-        private System.Windows.Forms.Button btnSeleccionarEmpresa;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.GroupBox grbEmpresaSeleccionada;
-        private System.Windows.Forms.Label lblidEmpresa;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.MenuStrip MenuSupHonorarios;
@@ -1041,5 +1035,9 @@
         private System.Windows.Forms.ToolStripMenuItem proveedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comprobantesDeVentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        public System.Windows.Forms.Label lblEmpresa;
+        public System.Windows.Forms.Label lblidEmpresa;
+        public System.Windows.Forms.Button btnSeleccionarEmpresa;
+        public System.Windows.Forms.GroupBox grbEmpresaSeleccionada;
     }
 }

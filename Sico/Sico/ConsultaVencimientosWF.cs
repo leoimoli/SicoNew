@@ -131,7 +131,7 @@ namespace Sico
                     var split1 = Filtro.Split('-')[0];
                     split1 = split1.Trim();
                     int idTipoDeVencimiento = Convert.ToInt32(split1);
-                    ListaVencimientos = ClienteNeg.BuscarTodosLosVencimientosIdVencimiento(cuit, idTipoDeVencimiento);
+                    //ListaVencimientos = ClienteNeg.BuscarTodosLosVencimientosIdVencimiento(cuit, idTipoDeVencimiento);
                     var split2 = Filtro.Split('-')[1];
                     split2 = split2.Trim();
                     lblProximosVencimientos.Text = "Próximos Vencimientos del impuesto '" + split2 + "'";

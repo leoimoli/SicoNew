@@ -452,9 +452,9 @@ namespace Sico
         }
         private void btnHistorial_Click(object sender, EventArgs e)
         {
-            TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
-            _tarea.Show();
-            Hide();
+            //TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
+            //_tarea.Show();
+            //Hide();
         }
         #endregion
 

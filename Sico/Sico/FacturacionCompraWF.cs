@@ -57,13 +57,13 @@ namespace Sico
             {
                 cmbCodigoMoneda.Items.Add(item);
             }
-            List<string> Periodo = new List<string>();
-            Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
-            cmbPeriodo.Items.Clear();
-            foreach (string item in Periodo)
-            {
-                cmbPeriodo.Items.Add(item);
-            }
+            //List<string> Periodo = new List<string>();
+            //Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
+            //cmbPeriodo.Items.Clear();
+            //foreach (string item in Periodo)
+            //{
+            //    cmbPeriodo.Items.Add(item);
+            //}
         }
         public static decimal Total;
         private decimal CalcularValorNeto1(double total1)

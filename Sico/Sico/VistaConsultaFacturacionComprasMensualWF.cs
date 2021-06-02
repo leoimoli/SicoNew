@@ -44,13 +44,13 @@ namespace Sico
         }
         private void CargarCombo()
         {
-            List<string> Periodo = new List<string>();
-            Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
-            cmbPeriodo.Items.Clear();
-            foreach (string item in Periodo)
-            {
-                cmbPeriodo.Items.Add(item);
-            }
+            //List<string> Periodo = new List<string>();
+            //Periodo = PeriodoNeg.CargarComboPeriodo(idEmpresa);
+            //cmbPeriodo.Items.Clear();
+            //foreach (string item in Periodo)
+            //{
+            //    cmbPeriodo.Items.Add(item);
+            //}
         }
         private int ValidarMesSeleccionado(string mesSeleccionado)
         {

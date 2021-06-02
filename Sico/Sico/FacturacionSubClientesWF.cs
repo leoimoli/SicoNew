@@ -16,40 +16,30 @@ namespace Sico
 {
     public partial class FacturacionSubClientesWF : Form
     {
-        private string cuit;
-        private string razonSocial;
-        public FacturacionSubClientesWF(string razonSocial, string cuit)
+        public string dni;
+        public string razonSocial;
+        //public FacturacionSubClientesWF(string razonSocial, string cuit)
+        public FacturacionSubClientesWF(string razonSocial, string dni)
         {
             InitializeComponent();
             this.razonSocial = razonSocial;
-            this.cuit = cuit;
+            this.dni = dni;
         }
         private void FacturacionSubClientesWF_Load(object sender, EventArgs e)
         {
-            try
-            {
-                lblNombreEdit.Text = razonSocial;
-                lblCuitEdit.Text = cuit;
-                CargarComboPersonas();
-                CargarCombo();
-                string NroFactura = ClienteNeg.BuscarNroFactura(cuit);
-                txtFactura.Text = NroFactura;
-                Total = 0;
-                cmbCodigoMoneda.Text = "PES - PesosArgentinos";
-                cmbCodigoOperacion.Text = "0 - NO CORRESPONDE";
-                cmbTipoComprobante.Text = "006 - FACTURAS B";
-                txtTipoCambio.Text = "1,000000";
-            }
-            catch (Exception ex)
-            { }
-
+            txtTipoCambio.Text = "1,000000";
+        }
+        public void IniciarPantalla()
+        {
+            CargarCombo();
+            BuscarFacturaParaClienteSeleccionado();
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
                 Entidades.SubCliente _subCliente = CargarEntidad();
-                bool Exito = ClienteNeg.GuardarFacturaSubCliente(_subCliente, cuit);
+                bool Exito = ClienteNeg.GuardarFacturaSubCliente(_subCliente, Sesion.UsuarioLogueado.idEmpresaSeleccionado);
                 if (Exito == true)
                 {
                     ProgressBar();
@@ -97,9 +87,9 @@ namespace Sico
         }
         private void btnNuevoSubCliente_Click(object sender, EventArgs e)
         {
-            SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
-            _sub.Show();
-            Hide();
+            //SubClienteWF _sub = new SubClienteWF(razonSocial, cuit);
+            //_sub.Show();
+            //Hide();
         }
         private void btnAdjuntarFacturaElectronica_Click(object sender, EventArgs e)
         {
@@ -115,8 +105,19 @@ namespace Sico
         }
         private void btnCrearPeriodo_Click(object sender, EventArgs e)
         {
-            PeriodosVentasWF _periodo = new PeriodosVentasWF(cuit, razonSocial);
-            _periodo.Show();
+            if (Sesion.UsuarioLogueado.idEmpresaSeleccionado > 0)
+            {
+                PeriodosVentasWF _periodo = new PeriodosVentasWF(Sesion.UsuarioLogueado.idEmpresaSeleccionado, razonSocial);
+                _periodo.Show();
+            }
+            else
+            {
+                const string message2 = "Atención: Usted debe seleccionar una empresa previamente.";
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Asterisk);
+            }
         }
         private void btnActualizarCombo_Click(object sender, EventArgs e)
         {
@@ -159,12 +160,17 @@ namespace Sico
                 cmbCodigoMoneda.Items.Add(item);
             }
             List<string> Periodo = new List<string>();
-            Periodo = PeriodoNeg.CargarComboPeriodoVenta(cuit);
+            Periodo = PeriodoNeg.CargarComboPeriodoVenta(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
             cmbPeriodo.Items.Clear();
             foreach (string item in Periodo)
             {
                 cmbPeriodo.Items.Add(item);
             }
+        }
+        private void BuscarFacturaParaClienteSeleccionado()
+        {
+            string NuevoNroFactura = ClienteNeg.BuscarNroFactura(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
+            txtFactura.Text = NuevoNroFactura;
         }
         private void txtTotal1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -299,62 +305,61 @@ namespace Sico
             decimal resultado = Convert.ToDecimal(res);
             return resultado;
         }
-        private void CargarComboPersonas()
-        {
-            List<string> Personas = new List<string>();
-            Personas = ClienteNeg.CargarComboPersonas(cuit);
-            cmbPersonas.Items.Clear();
-            cmbPersonas.Text = "Seleccione";
-            cmbPersonas.Items.Add("Seleccione");
-            foreach (string item in Personas)
-            {
-                cmbPersonas.Text = "Seleccione";
-                cmbPersonas.Items.Add(item);
-            }
-        }
-        private void cmbPersonas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                string persona = cmbPersonas.Text;
-                string NuevoNroFactura = ClienteNeg.BuscarNroFactura(cuit);
-                txtFactura.Text = NuevoNroFactura;
-                dtFecha.Enabled = true;
-                string apellidoNombre = cmbPersonas.Text;
-                List<SubCliente> DatosPersonales = ClienteNeg.BuscarDatosSubClientePorApellidoNombre(apellidoNombre, cuit);
-                if (DatosPersonales.Count > 0)
-                {
-                    HabilitarLabels();
-                    var datos = DatosPersonales.First();
-                    if (String.IsNullOrEmpty(datos.Dni))
-                    { lblDniEdit.Text = "No informa"; }
-                    else { lblDniEdit.Text = datos.Dni; }
+        //private void CargarComboPersonas()
+        //{
+        //    List<string> Personas = new List<string>();
+        //    Personas = ClienteNeg.CargarComboPersonas(cuit);
+        //    cmbPersonas.Items.Clear();
+        //    cmbPersonas.Text = "Seleccione";
+        //    cmbPersonas.Items.Add("Seleccione");
+        //    foreach (string item in Personas)
+        //    {
+        //        cmbPersonas.Text = "Seleccione";
+        //        cmbPersonas.Items.Add(item);
+        //    }
+        //}
+        //private void cmbPersonas_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        string persona = cmbPersonas.Text;
+        //       
+        //        dtFecha.Enabled = true;
+        //        string apellidoNombre = cmbPersonas.Text;
+        //        List<SubCliente> DatosPersonales = ClienteNeg.BuscarDatosSubClientePorApellidoNombre(apellidoNombre, cuit);
+        //        if (DatosPersonales.Count > 0)
+        //        {
+        //            HabilitarLabels();
+        //            var datos = DatosPersonales.First();
+        //            if (String.IsNullOrEmpty(datos.Dni))
+        //            { lblDniEdit.Text = "No informa"; }
+        //            else { lblDniEdit.Text = datos.Dni; }
 
-                    if (String.IsNullOrEmpty(datos.Direccion))
-                    { lblDireccionEdit.Text = "No informa"; }
-                    else { lblDireccionEdit.Text = datos.Direccion; }
+        //            if (String.IsNullOrEmpty(datos.Direccion))
+        //            { lblDireccionEdit.Text = "No informa"; }
+        //            else { lblDireccionEdit.Text = datos.Direccion; }
 
-                    if (String.IsNullOrEmpty(datos.Observacion))
-                    { lblObservacionsEdit.Text = "No informa"; }
-                    else { lblObservacionsEdit.Text = datos.Observacion; }
-                }
-            }
-            catch (Exception ex)
-            { }
-        }
-        private void HabilitarLabels()
-        {
-            lblDni.Visible = true;
-            lblDniEdit.Visible = true;
-            lblObservaciones.Visible = true;
-            lblObservacionsEdit.Visible = true;
-            lblDireccion.Visible = true;
-            lblDireccionEdit.Visible = true;
-        }
+        //            if (String.IsNullOrEmpty(datos.Observacion))
+        //            { lblObservacionsEdit.Text = "No informa"; }
+        //            else { lblObservacionsEdit.Text = datos.Observacion; }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    { }
+        //}
+        //private void HabilitarLabels()
+        //{
+        //    lblDni.Visible = true;
+        //    lblDniEdit.Visible = true;
+        //    lblObservaciones.Visible = true;
+        //    lblObservacionsEdit.Visible = true;
+        //    lblDireccion.Visible = true;
+        //    lblDireccionEdit.Visible = true;
+        //}
         private SubCliente CargarEntidad()
         {
             SubCliente _subCliente = new SubCliente();
-            _subCliente.ApellidoNombre = cmbPersonas.Text;
+            _subCliente.ApellidoNombre = txtRazonSocial.Text;
             string factura = txtFactura.Text;
             ///// Primera parte del numero
             var split1 = factura.Split('-')[0];
@@ -480,19 +485,19 @@ namespace Sico
             txtIva3.Clear();
             DateTime fecha = DateTime.Now;
             dtFecha.Value = fecha;
-            CargarComboPersonas();
+            //CargarComboPersonas();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             lblTotalEdit.Text = "-";
             Total = 0;
-            lblDireccionEdit.Clear();
-            lblDniEdit.Clear();
-            lblObservacionsEdit.Text = "";
-            lblDni.Visible = false;
-            lblDireccion.Visible = false;
-            lblObservaciones.Visible = false;
-            lblDireccionEdit.Visible = false;
-            lblDniEdit.Visible = false;
+            //lblDireccionEdit.Clear();
+            //lblDniEdit.Clear();
+            //lblObservacionsEdit.Text = "";
+            //lblDni.Visible = false;
+            //lblDireccion.Visible = false;
+            //lblObservaciones.Visible = false;
+            //lblDireccionEdit.Visible = false;
+            //lblDniEdit.Visible = false;
         }
         public void RecalcularTotal1()
         {
@@ -531,11 +536,10 @@ namespace Sico
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
-            _tarea.Show();
-            Hide();
+            //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
+            //_tarea.Show();
+            //Hide();
         }
-
         private void cmbTipoComprobante_SelectedIndexChanged(object sender, EventArgs e)
         {
             string Dato = cmbTipoComprobante.Text;
@@ -566,6 +570,23 @@ namespace Sico
                 txtNeto2.Enabled = true;
                 txtNeto3.Enabled = true;
                 label6.Text = "Total";
+            }
+        }
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            if (Sesion.UsuarioLogueado.idEmpresaSeleccionado > 0)
+            {
+                SubClientesNuevoWF _subLcientes = new SubClientesNuevoWF();
+                _subLcientes.Show();
+            }
+            else
+            {
+                const string message2 = "Atención: Usted debe seleccionar una empresa previamente.";
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Asterisk);
+
             }
         }
     }
