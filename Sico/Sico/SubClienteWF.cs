@@ -20,13 +20,11 @@ namespace Sico
         {
             InitializeComponent();
             this.razonSocial = razonSocial;
-            this.idEmpresa = idEmpresa;
+            this.idEmpresa = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
         }
         private void SubClienteWF_Load(object sender, EventArgs e)
         {
             txtApellidoNombreBuscar.Focus();
-            lblNombreEdit.Text = razonSocial;
-            lblCuitEdit.Text = Convert.ToString(idEmpresa);
             txtApellidoNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete(idEmpresa);
             txtApellidoNombreBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtApellidoNombreBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -55,9 +53,23 @@ namespace Sico
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            BuscarSubcliente();
+        }
+
+        private void BuscarSubcliente()
+        {
             List<Entidades.SubCliente> SubCliente = new List<Entidades.SubCliente>();
             var ApellidoNombre = txtApellidoNombreBuscar.Text;
-            SubCliente = ClienteNeg.BuscarSubClientePorApellidoNombre(ApellidoNombre, idEmpresa);
+            var DNI = txtDniBuscar.Text;
+            if (ApellidoNombre != "")
+            {
+                SubCliente = ClienteNeg.BuscarSubClientePorApellidoNombre(ApellidoNombre, idEmpresa);
+            }
+            if (DNI != "")
+            {
+                SubCliente = ClienteNeg.BuscarSubClientePorDni(DNI, idEmpresa);
+
+            }
             if (SubCliente.Count > 0)
             {
                 groupBox1.Enabled = true;
@@ -65,34 +77,9 @@ namespace Sico
                 var subcliente = SubCliente.First();
                 txtDni.Text = subcliente.Dni;
                 txtApellidoNombre.Text = subcliente.ApellidoNombre;
-
-                //string per = subcliente.ApellidoNombre;
-                //var split1 = per.Split(' ')[0];
-
-                //split1 = split1.Trim();
-                //string per2 = subcliente.ApellidoNombre;
-                //int cantidad1 = per2.Split().Count();
-                //string valor1 = "";
-                //string valorFinal1 = "";
-                //for (int i = 0; i < cantidad1; i++)
-                //{
-                //    var split4 = per2.Split(' ')[i];
-                //    string split = split4.Trim();
-                //    valorFinal1 = valor1 + " " + split4;
-                //    valor1 = split;
-                //}
-                //var split2 = per.Split(' ')[1];
-                //split2 = split2.Trim();
-
-
-                //txtApellido.Text = split1;
-                //txtNombre.Text = split2;
-
-
                 string dir = subcliente.Direccion;
                 var split3 = dir.Split(' ')[0];
                 split3 = split3.Trim();
-
                 string dir2 = subcliente.Direccion;
                 int cantidad2 = dir2.Split().Count();
                 string valor2 = "";
@@ -100,9 +87,7 @@ namespace Sico
                 for (int i = 1; i < cantidad2; i++)
                 {
                     var split4 = dir2.Split(' ')[i];
-
                     string split = split4.Trim();
-
                     valorFinal2 = valor2 + " " + split4;
                     valor2 = split;
                 }
@@ -113,9 +98,10 @@ namespace Sico
             else
             {
                 txtApellidoNombreBuscar.Clear();
-                MessageBox.Show("No se encontraron datos para el sub-cliente ingresado.");
+                MessageBox.Show("No se encontraron datos para el cliente ingresado.");
             }
         }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
@@ -201,6 +187,78 @@ namespace Sico
             double pow = Math.Pow(i, i);
         }
         #endregion
+        private void btnCrearSubCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtApellidoNombreBuscar.Clear();
+                txtDniBuscar.Clear();
+                groupBox1.Enabled = true;
+                txtDni.Focus();
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Entidades.SubCliente _subCliente = CargarEntidad();
+                if (txtDni.Enabled == false)
+                {
+                    bool Exito = ClienteNeg.EditarSubCliente(_subCliente, idEmpresa);
+                    if (Exito == true)
+                    {
+                        ProgressBar();
+                        const string message2 = "El sub-cliente se edito exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
+                        LimpiarCampos();
+                    }
+                    else
+                    {
 
+                    }
+                }
+                else
+                {
+                    bool Exito = ClienteNeg.GuardarNuevoSubCliente(_subCliente, idEmpresa);
+                    if (Exito == true)
+                    {
+                        ProgressBar();
+                        const string message2 = "Se registro el sub-cliente exitosamente.";
+                        const string caption2 = "Éxito";
+                        var result2 = MessageBox.Show(message2, caption2,
+                                                     MessageBoxButtons.OK,
+                                                     MessageBoxIcon.Asterisk);
+                        LimpiarCampos();
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void btnHabilitarBusqueda_Click(object sender, EventArgs e)
+        {
+            grbFiltros.Visible = true;
+            txtApellidoNombreBuscar.Focus();
+            txtApellidoNombreBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete(idEmpresa);
+            txtApellidoNombreBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtApellidoNombreBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        }
     }
 }

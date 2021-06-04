@@ -78,9 +78,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCargaMasiva = new System.Windows.Forms.Button();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.btnCrearPeriodo = new System.Windows.Forms.Button();
             this.btnActualizarCombo = new System.Windows.Forms.Button();
+            this.btnAltaSubCliente = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
@@ -582,12 +584,26 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Persona(*):";
             // 
+            // btnCargaMasiva
+            // 
+            this.btnCargaMasiva.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargaMasiva.Image = global::Sico.Properties.Resources.carga__2_;
+            this.btnCargaMasiva.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCargaMasiva.Location = new System.Drawing.Point(3, 1);
+            this.btnCargaMasiva.Name = "btnCargaMasiva";
+            this.btnCargaMasiva.Size = new System.Drawing.Size(40, 32);
+            this.btnCargaMasiva.TabIndex = 100;
+            this.btnCargaMasiva.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnCargaMasiva, "Carga Masiva");
+            this.btnCargaMasiva.UseVisualStyleBackColor = true;
+            this.btnCargaMasiva.Click += new System.EventHandler(this.btnCargaMasiva_Click);
+            // 
             // btnBuscarCliente
             // 
             this.btnBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarCliente.Image = global::Sico.Properties.Resources.lupa__1_;
             this.btnBuscarCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(108, 1);
+            this.btnBuscarCliente.Location = new System.Drawing.Point(95, 1);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
             this.btnBuscarCliente.Size = new System.Drawing.Size(40, 32);
             this.btnBuscarCliente.TabIndex = 99;
@@ -602,7 +618,7 @@
             this.btnCrearPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCrearPeriodo.Image = global::Sico.Properties.Resources.mas__2_;
             this.btnCrearPeriodo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCrearPeriodo.Location = new System.Drawing.Point(152, 1);
+            this.btnCrearPeriodo.Location = new System.Drawing.Point(139, 1);
             this.btnCrearPeriodo.Name = "btnCrearPeriodo";
             this.btnCrearPeriodo.Size = new System.Drawing.Size(40, 32);
             this.btnCrearPeriodo.TabIndex = 93;
@@ -616,7 +632,7 @@
             this.btnActualizarCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizarCombo.Image = global::Sico.Properties.Resources.actualizado;
             this.btnActualizarCombo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnActualizarCombo.Location = new System.Drawing.Point(198, 1);
+            this.btnActualizarCombo.Location = new System.Drawing.Point(185, 1);
             this.btnActualizarCombo.Name = "btnActualizarCombo";
             this.btnActualizarCombo.Size = new System.Drawing.Size(40, 32);
             this.btnActualizarCombo.TabIndex = 94;
@@ -625,6 +641,20 @@
             this.btnActualizarCombo.UseVisualStyleBackColor = true;
             this.btnActualizarCombo.Click += new System.EventHandler(this.btnActualizarCombo_Click);
             // 
+            // btnAltaSubCliente
+            // 
+            this.btnAltaSubCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAltaSubCliente.Image = global::Sico.Properties.Resources.cuenta;
+            this.btnAltaSubCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAltaSubCliente.Location = new System.Drawing.Point(49, 1);
+            this.btnAltaSubCliente.Name = "btnAltaSubCliente";
+            this.btnAltaSubCliente.Size = new System.Drawing.Size(40, 32);
+            this.btnAltaSubCliente.TabIndex = 163;
+            this.btnAltaSubCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnAltaSubCliente, "Alta Cliente");
+            this.btnAltaSubCliente.UseVisualStyleBackColor = true;
+            this.btnAltaSubCliente.Click += new System.EventHandler(this.btnAltaSubCliente_Click);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -632,6 +662,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.btnAltaSubCliente);
+            this.panel1.Controls.Add(this.btnCargaMasiva);
             this.panel1.Controls.Add(this.btnBuscarCliente);
             this.panel1.Controls.Add(this.btnCrearPeriodo);
             this.panel1.Controls.Add(this.btnActualizarCombo);
@@ -718,5 +750,7 @@
         public System.Windows.Forms.MaskedTextBox txtCuit;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnCargaMasiva;
+        private System.Windows.Forms.Button btnAltaSubCliente;
     }
 }

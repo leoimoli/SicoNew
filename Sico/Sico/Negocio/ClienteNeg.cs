@@ -90,6 +90,18 @@ namespace Sico.Negocio
             }
             return exito;
         }
+        public static List<SubCliente> BuscarSubClientePorDni(string dNI, int idEmpresa)
+        {
+            List<SubCliente> _listaSubClientes = new List<SubCliente>();
+            try
+            {
+                _listaSubClientes = ClienteDao.BuscarSubClientePorDni(dNI, idEmpresa);
+            }
+            catch (Exception ex)
+            {
+            }
+            return _listaSubClientes;
+        }
         public static List<string> CargarComboPeriodosCompras(string año, string cuit)
         {
             List<string> _ListaPeriodos = new List<string>();
@@ -102,7 +114,6 @@ namespace Sico.Negocio
             //}
             return _ListaPeriodos;
         }
-
         public static List<string> CargarComboPeriodos(string año, int idEmpresa)
         {
             List<string> _ListaPeriodos = new List<string>();
@@ -115,7 +126,6 @@ namespace Sico.Negocio
             }
             return _ListaPeriodos;
         }
-
         public static bool GuardarVencimientoPorCliente(string año, int idTipoVencimiento, string diasPrevios, int idEmpresa)
         {
             bool exito = false;

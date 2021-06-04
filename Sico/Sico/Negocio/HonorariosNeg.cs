@@ -55,6 +55,19 @@ namespace Sico.Negocio
                 throw new Exception();
             }
         }
+        public static List<PlanHonorarios> BuscarDetalleMensualDePagosHonorarios(int anio, string mes)
+        {
+            List<PlanHonorarios> _lista = new List<PlanHonorarios>();
+            try
+            {
+                _lista = HonorariosDao.BuscarDetalleMensualDePagosHonorarios(anio, mes);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return _lista;
+        }
         public static List<PlanHonorarios> BuscarHistoricoDePagos(int idPlan)
         {
             List<PlanHonorarios> _listaHistorico = new List<PlanHonorarios>();

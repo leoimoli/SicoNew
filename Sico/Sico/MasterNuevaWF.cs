@@ -186,5 +186,16 @@ namespace Sico
         {
             AbrirFormEnPanel(new FacturacionSubClientesWF(null, null));
         }
+
+        private void clientesToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            SubClienteWF _subcliente = new SubClienteWF(null, 0);
+            _subcliente.Show();
+        }
+
+        private void informesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new InformesEmpresaWF());
+        }
     }
 }

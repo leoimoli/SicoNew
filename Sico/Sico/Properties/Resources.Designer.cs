@@ -333,6 +333,36 @@ namespace Sico.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap carga {
+            get {
+                object obj = ResourceManager.GetObject("carga", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap carga__1_ {
+            get {
+                object obj = ResourceManager.GetObject("carga (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap carga__2_ {
+            get {
+                object obj = ResourceManager.GetObject("carga (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap carpeta__1_ {
             get {
                 object obj = ResourceManager.GetObject("carpeta (1)", resourceCulture);
@@ -476,6 +506,16 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap copia_de_seguridad {
             get {
                 object obj = ResourceManager.GetObject("copia-de-seguridad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cuenta {
+            get {
+                object obj = ResourceManager.GetObject("cuenta", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -856,6 +896,16 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap lupa__1_ {
             get {
                 object obj = ResourceManager.GetObject("lupa (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lupa__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("lupa (1)1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

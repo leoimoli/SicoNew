@@ -130,33 +130,33 @@ namespace Sico
             List<string> TipoComprobante = new List<string>();
             TipoComprobante = ComprasNeg.CargarComboTipoComprobante();
             cmbTipoComprobante.Items.Clear();
-            //cmbTipoComprobante.Text = "Seleccione";
-            //cmbTipoComprobante.Items.Add("Seleccione");
+            cmbTipoComprobante.Text = "Seleccione";
+            cmbTipoComprobante.Items.Add("Seleccione");
             foreach (string item in TipoComprobante)
             {
-                //cmbTipoComprobante.Text = "Seleccione";
+                cmbTipoComprobante.Text = "Seleccione";
                 cmbTipoComprobante.Items.Add(item);
             }
 
             List<string> CodigoOperacion = new List<string>();
             CodigoOperacion = ComprasNeg.CargarComboCodigoOperacion();
             cmbCodigoOperacion.Items.Clear();
-            //cmbCodigoOperacion.Text = "Seleccione";
-            //cmbCodigoOperacion.Items.Add("Seleccione");
+            cmbCodigoOperacion.Text = "Seleccione";
+            cmbCodigoOperacion.Items.Add("Seleccione");
             foreach (string item in CodigoOperacion)
             {
-                //cmbCodigoOperacion.Text = "Seleccione";
+                cmbCodigoOperacion.Text = "Seleccione";
                 cmbCodigoOperacion.Items.Add(item);
             }
 
             List<string> TipoMoneda = new List<string>();
             TipoMoneda = ComprasNeg.CargarComboTipoMoneda();
             cmbCodigoMoneda.Items.Clear();
-            //cmbCodigoMoneda.Text = "Seleccione";
-            //cmbCodigoMoneda.Items.Add("Seleccione");
+            cmbCodigoMoneda.Text = "Seleccione";
+            cmbCodigoMoneda.Items.Add("Seleccione");
             foreach (string item in TipoMoneda)
             {
-                //cmbCodigoMoneda.Text = "Seleccione";
+                cmbCodigoMoneda.Text = "Seleccione";
                 cmbCodigoMoneda.Items.Add(item);
             }
             List<string> Periodo = new List<string>();
@@ -169,6 +169,7 @@ namespace Sico
         }
         private void BuscarFacturaParaClienteSeleccionado()
         {
+            txtFactura.Clear();
             string NuevoNroFactura = ClienteNeg.BuscarNroFactura(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
             txtFactura.Text = NuevoNroFactura;
         }
@@ -588,6 +589,17 @@ namespace Sico
                                              MessageBoxIcon.Asterisk);
 
             }
+        }
+        private void btnCargaMasiva_Click(object sender, EventArgs e)
+        {
+            VentasImportarFacturasWF _importar = new VentasImportarFacturasWF(null, 0);
+            _importar.Show();
+        }
+
+        private void btnAltaSubCliente_Click(object sender, EventArgs e)
+        {
+            SubClienteWF _sub = new SubClienteWF(null, 0);
+            _sub.Show();
         }
     }
 }

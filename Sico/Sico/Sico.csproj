@@ -251,11 +251,18 @@
     <Compile Include="Dao\PericiaDao.cs" />
     <Compile Include="Dao\PeriodoDao.cs" />
     <Compile Include="Dao\ProveedorDao.cs" />
+    <Compile Include="Dao\ReportesDao.cs" />
     <Compile Include="DetalleDePagosWF.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DetalleDePagosWF.Designer.cs">
       <DependentUpon>DetalleDePagosWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleHonariosMensualesWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetalleHonariosMensualesWF.Designer.cs">
+      <DependentUpon>DetalleHonariosMensualesWF.cs</DependentUpon>
     </Compile>
     <Compile Include="Entidades\CuentaEmailPorUsuario.cs" />
     <Compile Include="Entidades\EstadisticaCompra.cs" />
@@ -267,6 +274,7 @@
     <Compile Include="Entidades\Periodo.cs" />
     <Compile Include="Entidades\PlanHonorarios.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
+    <Compile Include="Entidades\Reporte_Pagos.cs" />
     <Compile Include="Entidades\Vencimientos.cs" />
     <Compile Include="Entidades\VencimientosPorMesAnio.cs" />
     <Compile Include="FacturacionCompraWF.cs">
@@ -280,6 +288,12 @@
     </Compile>
     <Compile Include="FirmaEmailWF.Designer.cs">
       <DependentUpon>FirmaEmailWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InformesEmpresaWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformesEmpresaWF.Designer.cs">
+      <DependentUpon>InformesEmpresaWF.cs</DependentUpon>
     </Compile>
     <Compile Include="InicioNuevoWF.cs">
       <SubType>Form</SubType>
@@ -493,11 +507,17 @@
     <EmbeddedResource Include="DetalleDePagosWF.resx">
       <DependentUpon>DetalleDePagosWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetalleHonariosMensualesWF.resx">
+      <DependentUpon>DetalleHonariosMensualesWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FacturacionCompraWF.resx">
       <DependentUpon>FacturacionCompraWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FirmaEmailWF.resx">
       <DependentUpon>FirmaEmailWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformesEmpresaWF.resx">
+      <DependentUpon>InformesEmpresaWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InicioNuevoWF.resx">
       <DependentUpon>InicioNuevoWF.cs</DependentUpon>
@@ -690,6 +710,10 @@
     <None Include="Resources\mas %282%29.png" />
     <None Include="Resources\actualizado.png" />
     <None Include="Resources\lupa %281%29.png" />
+    <None Include="Resources\carga.png" />
+    <None Include="Resources\carga %281%29.png" />
+    <None Include="Resources\carga %282%29.png" />
+    <None Include="Resources\cuenta.png" />
     <Content Include="wepik-202151-104656.ico" />
     <None Include="Resources\historial-medico %281%29.png" />
     <None Include="Resources\juicio.png" />

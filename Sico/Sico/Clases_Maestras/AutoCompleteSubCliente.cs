@@ -19,7 +19,7 @@ namespace Sico.Clases_Maestras
             MySqlConnection conexion = new MySqlConnection(Properties.Settings.Default.db);
             conexion.Open();
             int id = idCliente;
-            string consulta = "Select ApellidoNombre from subcliente where idCliente = '"+ id +"'";
+            string consulta = "Select ApellidoNombre from subcliente where idCliente = '" + id + "'";
             MySqlCommand cmd = new MySqlCommand(consulta, conexion);
             MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
             adap.Fill(dt);
@@ -28,8 +28,7 @@ namespace Sico.Clases_Maestras
         }
         public static AutoCompleteStringCollection Autocomplete(int idEmpresa)
         {
-            int idCliente = ClienteDao.BuscarIdClientePorCuit(idEmpresa);
-            DataTable DT = Datos(idCliente);
+            DataTable DT = Datos(idEmpresa);
             AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
             foreach (DataRow row in DT.Rows)
             {

@@ -21,7 +21,7 @@ namespace Sico
         {
             InitializeComponent();
             this.razonSocial = razonSocial;
-            this.idEmpresa = idEmpresa;
+            this.idEmpresa = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
             RazonSocial = razonSocial;
             Cuit = idEmpresa;
         }
@@ -29,8 +29,6 @@ namespace Sico
         {
             try
             {
-                lblCuitEdit.Text =Convert.ToString(idEmpresa);
-                lblNombreEdit.Text = razonSocial;
                 CargarCombo();
             }
             catch (Exception ex)
@@ -78,6 +76,7 @@ namespace Sico
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             btnVolver.Enabled = true;
+            dataGridView1.Rows.Clear();
         }
         private void Datos()
         {
@@ -683,9 +682,7 @@ namespace Sico
         public static int Cuit;
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            //TareaClienteWF _tarea = new TareaClienteWF(RazonSocial, Cuit);
-            //_tarea.Show();
-            //Hide();
+            Close();
         }
         private void chcTipaAyB_CheckedChanged(object sender, EventArgs e)
         {
@@ -696,6 +693,11 @@ namespace Sico
         {
             if (chcTipoC.Checked == true)
             { chcTipaAyB.Checked = false; }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -19,5 +19,6 @@ namespace Sico.Entidades
         public int idCliente { get; set; }
         public double MontoPago { get; set; }
         public DateTime FechaPago { get; set; }
+        public string NombreEmpresa { get; set; }
     }
 }

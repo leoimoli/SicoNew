@@ -60,6 +60,98 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
+        public static List<PlanHonorarios> BuscarDetalleMensualDePagosHonorarios(int anio, string mes)
+        {
+            string mesObtenido = ValidarMes(mes);
+            String Año = Convert.ToString(anio);
+            String Mes = mesObtenido;            
+            string FechaArmadaDesde = "01/" + Mes + "/" + Año;
+            DateTime FechaDesde = Convert.ToDateTime(FechaArmadaDesde);
+            string FechaArmadaHasta = "31/" + Mes + "/" + Año;
+            DateTime FechaHasta = Convert.ToDateTime(FechaArmadaHasta);
+            connection.Close();
+            connection.Open();
+            List<PlanHonorarios> _lista = new List<PlanHonorarios>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("FechaDesde_in", FechaDesde),
+            new MySqlParameter("FechaHasta_in", FechaHasta) };
+            string proceso = "BuscarDetalleMensualDePagosHonorarios";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Entidades.PlanHonorarios listaPlanes = new Entidades.PlanHonorarios();
+                    listaPlanes.NombreEmpresa = item["Empresa"].ToString();
+                    listaPlanes.MontoTotal = Convert.ToDouble(item["MontoTotal"].ToString());
+                    listaPlanes.FechaPago = Convert.ToDateTime(item["Fecha"].ToString());
+                    listaPlanes.Observaciones = item["Observaciones"].ToString();
+                    _lista.Add(listaPlanes);
+                }
+            }
+            connection.Close();
+            return _lista;
+        }
+
+        private static string ValidarMes(string mes)
+        {
+            string mesDevuelto = "";
+            if (mes == "Enero")
+            {
+                mesDevuelto = "1";
+            }
+            if (mes == "Febrero")
+            {
+                mesDevuelto = "2";
+            }
+            if (mes == "Marzo")
+            {
+                mesDevuelto = "3";
+            }
+            if (mes == "Abril")
+            {
+                mesDevuelto = "4";
+            }
+            if (mes == "Mayo")
+            {
+                mesDevuelto = "5";
+            }
+            if (mes == "Junio")
+            {
+                mesDevuelto = "6";
+            }
+            if (mes == "julio")
+            {
+                mesDevuelto = "7";
+            }
+            if (mes == "Agosto")
+            {
+                mesDevuelto = "8";
+            }
+            if (mes == "Septiembre")
+            {
+                mesDevuelto = "9";
+            }
+            if (mes == "Octubre")
+            {
+                mesDevuelto = "10";
+            }
+            if (mes == "Noviembre")
+            {
+                mesDevuelto = "11";
+            }
+            if (mes == "Diciembre")
+            {
+                mesDevuelto = "12";
+            }
+            return mesDevuelto;
+        }
+
         public static List<PlanHonorarios> BuscarHistoricoDePagos(int idPlan)
         {
             connection.Close();

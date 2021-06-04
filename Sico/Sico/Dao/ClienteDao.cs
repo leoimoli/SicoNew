@@ -100,7 +100,43 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
+        public static List<SubCliente> BuscarSubClientePorDni(string dNI, int idEmpresa)
+        {
+            List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
+            connection.Close();
+            connection.Open();
 
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("dNI_in", dNI),
+                new MySqlParameter("idCliente_in", idEmpresa)};
+            string proceso = "BuscarSubClientePorDni";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    SubCliente listaSubCliente = new SubCliente();
+                    listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                    listaSubCliente.NroFactura = item["NroFactura"].ToString();
+                    listaSubCliente.Fecha = item["Fecha"].ToString();
+                    listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
+                    listaSubCliente.Dni = item["Dni"].ToString();
+                    listaSubCliente.Direccion = item["Direccion"].ToString();
+                    listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
+                    listaSubCliente.Observacion = item["Observacion"].ToString();
+                    listaSubCliente.idCliente = idEmpresa;
+                    lista.Add(listaSubCliente);
+                }
+                connection.Close();
+            }
+            return lista;
+        }
         public static List<Vencimientos> BuscarTodosLosVencimientos(int idEmpresa, DateTime fechaHoy)
         {
             connection.Close();
@@ -1205,6 +1241,8 @@ namespace Sico.Dao
                 cmd.Parameters.AddWithValue("Observacion_in", _subCliente.Observacion);
                 cmd.Parameters.AddWithValue("Periodo_in", _subCliente.Periodo);
                 cmd.Parameters.AddWithValue("TipoDNI_in", _subCliente.TipoDNI);
+                cmd.Parameters.AddWithValue("NroFacturaNotaDeCredtio_in", _subCliente.NroFacturaNotaDeCredtio);
+
                 MySqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
