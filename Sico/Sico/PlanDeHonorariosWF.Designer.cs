@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvPlanesHonorarios = new System.Windows.Forms.DataGridView();
             this.idPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +57,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblRegistroPlan = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbllistado = new System.Windows.Forms.Label();
             this.btnEditar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanesHonorarios)).BeginInit();
             this.PanelRegistroPlan.SuspendLayout();
@@ -66,14 +66,14 @@
             // dgvPlanesHonorarios
             // 
             this.dgvPlanesHonorarios.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPlanesHonorarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPlanesHonorarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPlanesHonorarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlanesHonorarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idPlan,
@@ -85,14 +85,14 @@
             this.Observaciones,
             this.RegistroPago,
             this.Ver});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPlanesHonorarios.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPlanesHonorarios.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPlanesHonorarios.EnableHeadersVisualStyles = false;
             this.dgvPlanesHonorarios.Location = new System.Drawing.Point(8, 71);
             this.dgvPlanesHonorarios.Name = "dgvPlanesHonorarios";
@@ -180,6 +180,7 @@
             this.btnNuevo.TabIndex = 64;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Visible = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // PanelRegistroPlan
@@ -359,16 +360,17 @@
             this.txtDescripcion.Size = new System.Drawing.Size(172, 46);
             this.txtDescripcion.TabIndex = 0;
             // 
-            // label2
+            // lbllistado
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(4, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(238, 20);
-            this.label2.TabIndex = 62;
-            this.label2.Text = "Listado de planes de Honorarios";
+            this.lbllistado.AutoSize = true;
+            this.lbllistado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbllistado.ForeColor = System.Drawing.Color.Black;
+            this.lbllistado.Location = new System.Drawing.Point(4, 33);
+            this.lbllistado.Name = "lbllistado";
+            this.lbllistado.Size = new System.Drawing.Size(238, 20);
+            this.lbllistado.TabIndex = 62;
+            this.lbllistado.Text = "Listado de planes de Honorarios";
+            this.lbllistado.Visible = false;
             // 
             // btnEditar
             // 
@@ -383,6 +385,7 @@
             this.btnEditar.TabIndex = 66;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Visible = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // PlanDeHonorariosWF
@@ -394,7 +397,7 @@
             this.Controls.Add(this.dgvPlanesHonorarios);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.PanelRegistroPlan);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbllistado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PlanDeHonorariosWF";
             this.Text = "PlanDeHonorariosWF";
@@ -419,7 +422,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblRegistroPlan;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbllistado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtFechaHasta;
         private System.Windows.Forms.Label label15;

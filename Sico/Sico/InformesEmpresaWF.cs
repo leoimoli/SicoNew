@@ -46,7 +46,8 @@ namespace Sico
                 dgvVencimientos.Visible = true;
                 foreach (var item in ListaPlanes)
                 {
-                    dgvVencimientos.Rows.Add(item.NombreEmpresa, item.Descripcion, item.FechaHasta);
+                    string fecha = item.FechaHasta.ToShortDateString();
+                    dgvVencimientos.Rows.Add(item.NombreEmpresa, item.Descripcion, fecha);
                 }
                 dgvVencimientos.AllowUserToAddRows = false;
             }

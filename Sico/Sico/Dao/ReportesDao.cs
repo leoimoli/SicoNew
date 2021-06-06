@@ -71,18 +71,17 @@ namespace Sico.Dao
         public static List<Reporte_Pagos> PlanesAbiertos()
         {
             String Año = DateTime.Now.Year.ToString();
-            string FechaArmadaDesde = "01/01/" + Año;
-            DateTime FechaDesde = Convert.ToDateTime(FechaArmadaDesde);
-            string FechaArmadaHasta = "31/12/" + Año;
-            DateTime FechaHasta = Convert.ToDateTime(FechaArmadaHasta);
+            String MesDesde = "1";
+            String MesHasta = "12";
             connection.Close();
             connection.Open();
             List<Reporte_Pagos> _lista = new List<Reporte_Pagos>();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { new MySqlParameter("FechaDesde_in", FechaDesde),
-            new MySqlParameter("FechaHasta_in", FechaHasta) };
+            MySqlParameter[] oParam = { new MySqlParameter("Anio_in", Año),
+            new MySqlParameter("MesDesde_in", MesDesde),
+             new MySqlParameter("MesHasta_in", MesHasta)};
             string proceso = "TotalPlanesAbiertos";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -103,18 +102,17 @@ namespace Sico.Dao
         public static List<Reporte_Pagos> PlanesCerrados()
         {
             String Año = DateTime.Now.Year.ToString();
-            string FechaArmadaDesde = "01/01/" + Año;
-            DateTime FechaDesde = Convert.ToDateTime(FechaArmadaDesde);
-            string FechaArmadaHasta = "31/12/" + Año;
-            DateTime FechaHasta = Convert.ToDateTime(FechaArmadaHasta);
+            String MesDesde = "1";
+            String MesHasta = "12";
             connection.Close();
             connection.Open();
             List<Reporte_Pagos> _lista = new List<Reporte_Pagos>();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { new MySqlParameter("FechaDesde_in", FechaDesde),
-            new MySqlParameter("FechaHasta_in", FechaHasta) };
+            MySqlParameter[] oParam = { new MySqlParameter("Anio_in", Año),
+            new MySqlParameter("MesDesde_in", MesDesde),
+             new MySqlParameter("MesHasta_in", MesHasta)};
             string proceso = "TotalPlanesCerrados";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -167,18 +165,17 @@ namespace Sico.Dao
         public static List<Reporte_Pagos> PlanesGenerados()
         {
             String Año = DateTime.Now.Year.ToString();
-            string FechaArmadaDesde = "01/01/" + Año;
-            DateTime FechaDesde = Convert.ToDateTime(FechaArmadaDesde);
-            string FechaArmadaHasta = "31/12/" + Año;
-            DateTime FechaHasta = Convert.ToDateTime(FechaArmadaHasta);
+            String MesDesde = "1";
+            String MesHasta = "12";            
             connection.Close();
             connection.Open();
             List<Reporte_Pagos> _lista = new List<Reporte_Pagos>();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { new MySqlParameter("FechaDesde_in", FechaDesde),
-            new MySqlParameter("FechaHasta_in", FechaHasta) };
+            MySqlParameter[] oParam = { new MySqlParameter("Anio_in", Año),
+            new MySqlParameter("MesDesde_in", MesDesde),
+             new MySqlParameter("MesHasta_in", MesHasta)};
             string proceso = "TotalPlanesGenerados";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;

@@ -37,18 +37,14 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.dgvVencimientos = new System.Windows.Forms.DataGridView();
-            this.idEmpresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPagosRecibidos = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chartPagosRecibidos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ver = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chartPagosRecibidos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label3 = new System.Windows.Forms.Label();
             this.btnPlanesCerrados = new System.Windows.Forms.Button();
             this.btnPlanesAbiertos = new System.Windows.Forms.Button();
@@ -59,6 +55,9 @@
             this.lblCajaVentas = new System.Windows.Forms.Label();
             this.lblTotalCompras = new System.Windows.Forms.Label();
             this.lblPagosProveedores = new System.Windows.Forms.Label();
+            this.Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVencimientos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagosRecibidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPagosRecibidos)).BeginInit();
@@ -77,7 +76,6 @@
             this.dgvVencimientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVencimientos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVencimientos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idEmpresa,
             this.Empresa,
             this.Descripcion,
             this.FechaVencimiento});
@@ -96,29 +94,6 @@
             this.dgvVencimientos.Size = new System.Drawing.Size(476, 200);
             this.dgvVencimientos.TabIndex = 62;
             this.dgvVencimientos.Visible = false;
-            // 
-            // idEmpresa
-            // 
-            this.idEmpresa.HeaderText = "id Empresa";
-            this.idEmpresa.Name = "idEmpresa";
-            this.idEmpresa.Width = 70;
-            // 
-            // Empresa
-            // 
-            this.Empresa.HeaderText = "Empresa";
-            this.Empresa.Name = "Empresa";
-            this.Empresa.Width = 190;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // FechaVencimiento
-            // 
-            this.FechaVencimiento.HeaderText = "Fecha Vencimiento";
-            this.FechaVencimiento.Name = "FechaVencimiento";
-            this.FechaVencimiento.Width = 110;
             // 
             // dgvPagosRecibidos
             // 
@@ -155,6 +130,30 @@
             this.dgvPagosRecibidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPagosRecibidos_CellClick);
             this.dgvPagosRecibidos.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvPagosRecibidos_CellPainting);
             // 
+            // Año
+            // 
+            this.Año.HeaderText = "Año";
+            this.Año.Name = "Año";
+            // 
+            // Mes
+            // 
+            this.Mes.HeaderText = "Mes";
+            this.Mes.Name = "Mes";
+            this.Mes.Width = 190;
+            // 
+            // MontoTotal
+            // 
+            this.MontoTotal.HeaderText = "Monto Total";
+            this.MontoTotal.Name = "MontoTotal";
+            // 
+            // Ver
+            // 
+            this.Ver.HeaderText = "Ver";
+            this.Ver.Name = "Ver";
+            this.Ver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ver.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Ver.Width = 80;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -179,7 +178,7 @@
             // 
             // chartPagosRecibidos
             // 
-            this.chartPagosRecibidos.BackColor = System.Drawing.SystemColors.Control;
+            this.chartPagosRecibidos.BackColor = System.Drawing.Color.LightGray;
             chartArea1.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.chartPagosRecibidos.ChartAreas.Add(chartArea1);
@@ -205,30 +204,6 @@
             title1.Name = "Title1";
             title1.Text = "Pagos Recibidos";
             this.chartPagosRecibidos.Titles.Add(title1);
-            // 
-            // Año
-            // 
-            this.Año.HeaderText = "Año";
-            this.Año.Name = "Año";
-            // 
-            // Mes
-            // 
-            this.Mes.HeaderText = "Mes";
-            this.Mes.Name = "Mes";
-            this.Mes.Width = 190;
-            // 
-            // MontoTotal
-            // 
-            this.MontoTotal.HeaderText = "Monto Total";
-            this.MontoTotal.Name = "MontoTotal";
-            // 
-            // Ver
-            // 
-            this.Ver.HeaderText = "Ver";
-            this.Ver.Name = "Ver";
-            this.Ver.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ver.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Ver.Width = 80;
             // 
             // label3
             // 
@@ -365,6 +340,24 @@
             this.lblPagosProveedores.TabIndex = 76;
             this.lblPagosProveedores.Text = "@";
             // 
+            // Empresa
+            // 
+            this.Empresa.HeaderText = "Empresa";
+            this.Empresa.Name = "Empresa";
+            this.Empresa.Width = 190;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 200;
+            // 
+            // FechaVencimiento
+            // 
+            this.FechaVencimiento.HeaderText = "Fecha Vencimiento";
+            this.FechaVencimiento.Name = "FechaVencimiento";
+            this.FechaVencimiento.Width = 80;
+            // 
             // InformesEmpresaWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,10 +393,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvVencimientos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idEmpresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Empresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
         private System.Windows.Forms.DataGridView dgvPagosRecibidos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -422,5 +411,8 @@
         private System.Windows.Forms.Label lblCajaVentas;
         private System.Windows.Forms.Label lblTotalCompras;
         private System.Windows.Forms.Label lblPagosProveedores;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Empresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
     }
 }

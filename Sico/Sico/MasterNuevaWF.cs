@@ -168,6 +168,14 @@ namespace Sico
         }
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
+            if (Sesion.UsuarioLogueado.idEmpresaSeleccionado == 0)
+            {
+                const string message2 = "Atención: Usted debe seleccionar una empresa previamente.";
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                              MessageBoxButtons.OK,
+                                              MessageBoxIcon.Asterisk);
+            }
             AbrirFormEnPanel(new PlanDeHonorariosWF());
         }
         private void btnHonorarios_Click(object sender, EventArgs e)

@@ -64,19 +64,15 @@ namespace Sico.Dao
         {
             string mesObtenido = ValidarMes(mes);
             String Año = Convert.ToString(anio);
-            String Mes = mesObtenido;            
-            string FechaArmadaDesde = "01/" + Mes + "/" + Año;
-            DateTime FechaDesde = Convert.ToDateTime(FechaArmadaDesde);
-            string FechaArmadaHasta = "31/" + Mes + "/" + Año;
-            DateTime FechaHasta = Convert.ToDateTime(FechaArmadaHasta);
+            String Mes = mesObtenido;
             connection.Close();
             connection.Open();
             List<PlanHonorarios> _lista = new List<PlanHonorarios>();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
-            MySqlParameter[] oParam = { new MySqlParameter("FechaDesde_in", FechaDesde),
-            new MySqlParameter("FechaHasta_in", FechaHasta) };
+            MySqlParameter[] oParam = { new MySqlParameter("Anio_in", Año),
+            new MySqlParameter("Mes_in", Mes) };
             string proceso = "BuscarDetalleMensualDePagosHonorarios";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -88,7 +84,7 @@ namespace Sico.Dao
                 {
                     Entidades.PlanHonorarios listaPlanes = new Entidades.PlanHonorarios();
                     listaPlanes.NombreEmpresa = item["Empresa"].ToString();
-                    listaPlanes.MontoTotal = Convert.ToDouble(item["MontoTotal"].ToString());
+                    listaPlanes.MontoTotal = Convert.ToDouble(item["Monto"].ToString());
                     listaPlanes.FechaPago = Convert.ToDateTime(item["Fecha"].ToString());
                     listaPlanes.Observaciones = item["Observaciones"].ToString();
                     _lista.Add(listaPlanes);

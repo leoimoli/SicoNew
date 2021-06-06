@@ -27,15 +27,15 @@ namespace Sico
                 {
                     BuscarTodasLosPlanesParaElCliente(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
                 }
-                else
-                {
-                    const string message2 = "Atención: Usted debe seleccionar una empresa previamente.";
-                    const string caption2 = "Atención";
-                    var result2 = MessageBox.Show(message2, caption2,
-                                                 MessageBoxButtons.OK,
-                                                 MessageBoxIcon.Asterisk);
-                    throw new Exception();
-                }
+                //else
+                //{
+                //    const string message2 = "Atención: Usted debe seleccionar una empresa previamente.";
+                //    const string caption2 = "Atención";
+                //    var result2 = MessageBox.Show(message2, caption2,
+                //                                 MessageBoxButtons.OK,
+                //                                 MessageBoxIcon.Asterisk);
+                //    throw new Exception();
+                //}
             }
             catch (Exception ex)
             { }
@@ -122,7 +122,9 @@ namespace Sico
             {           
                 DiseñoGrilla();
                 dgvPlanesHonorarios.Visible = true;
+                btnNuevo.Visible = true;
                 btnEditar.Visible = true;
+                lbllistado.Visible = true;
                 foreach (var item in ListarClientes)
                 {
                     string FechaDesde = item.FechaDesde.ToShortDateString();
@@ -134,7 +136,9 @@ namespace Sico
             else
             {              
                 dgvPlanesHonorarios.Visible = false;
+                btnNuevo.Visible = false;
                 btnEditar.Visible = false;
+                lbllistado.Visible = false;
             }
         }
         private void LimpiarCampos()
