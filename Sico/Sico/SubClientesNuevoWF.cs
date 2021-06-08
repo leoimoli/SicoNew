@@ -36,7 +36,7 @@ namespace Sico
                 dgvSubClientes.Visible = true;
                 foreach (var item in ListaSubCliente)
                 {
-                    dgvSubClientes.Rows.Add(item.Dni, item.ApellidoNombre);
+                    dgvSubClientes.Rows.Add(item.idSubCliente, item.Dni, item.ApellidoNombre);
                 }
                 dgvSubClientes.AllowUserToAddRows = false;
             }
@@ -51,15 +51,18 @@ namespace Sico
         }
         private void dgvSubClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvSubClientes.CurrentCell.ColumnIndex == 2)
+            if (dgvSubClientes.CurrentCell.ColumnIndex == 3)
             {
-                string Dni = dgvSubClientes.CurrentRow.Cells[0].Value.ToString();
-                string RazonSocial = dgvSubClientes.CurrentRow.Cells[1].Value.ToString();
+                string idSub = dgvSubClientes.CurrentRow.Cells[0].Value.ToString();
+                string Dni = dgvSubClientes.CurrentRow.Cells[1].Value.ToString();
+                string RazonSocial = dgvSubClientes.CurrentRow.Cells[2].Value.ToString();
+
                 FacturacionSubClientesWF frm2 = Application.OpenForms.OfType<FacturacionSubClientesWF>().SingleOrDefault();
                 if (frm2 != null)
                 {
                     frm2.txtRazonSocial.Text = RazonSocial;
                     frm2.txtCuit.Text = Dni;
+                    frm2.lblidSubCliente.Text = idSub;
                     frm2.IniciarPantalla();
                     Close();
                 }

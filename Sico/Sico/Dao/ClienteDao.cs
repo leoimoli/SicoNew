@@ -1073,10 +1073,9 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
             cmd.Parameters.AddWithValue("ApellidoNombre_in", _subCliente.ApellidoNombre);
             cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
-            cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
-            cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
+            cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);         
             cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
-            cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
+            cmd.Parameters.AddWithValue("CodigoTipoDocumento_in", _subCliente.TipoDNI);
             cmd.Parameters.AddWithValue("Observacion_in", _subCliente.Observacion);
             cmd.ExecuteNonQuery();
             exito = true;
@@ -1220,27 +1219,20 @@ namespace Sico.Dao
                 {
                     exitoGuardarImagenes = GuardarImagenesEnCarpeta(_subCliente);
                 }
-
                 int idNotaCredito = 0;
                 int idUltimaFacturaSubCliente = 0;
-
-
                 bool exito = false;
                 connection.Close();
                 connection.Open();
                 string proceso = "GuardarFacturaSubCliente";
                 MySqlCommand cmd = new MySqlCommand(proceso, connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("ApellidoNombre_in", _subCliente.ApellidoNombre);
                 cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
                 cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
                 cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
                 cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
-                cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
-                cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
-                cmd.Parameters.AddWithValue("Observacion_in", _subCliente.Observacion);
+                cmd.Parameters.AddWithValue("idSubCliente_in", _subCliente.idSubCliente);
                 cmd.Parameters.AddWithValue("Periodo_in", _subCliente.Periodo);
-                cmd.Parameters.AddWithValue("TipoDNI_in", _subCliente.TipoDNI);
                 cmd.Parameters.AddWithValue("NroFacturaNotaDeCredtio_in", _subCliente.NroFacturaNotaDeCredtio);
 
                 MySqlDataReader r = cmd.ExecuteReader();

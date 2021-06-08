@@ -76,7 +76,7 @@ namespace Sico
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
             btnVolver.Enabled = true;
-            dataGridView1.Rows.Clear();
+            //dataGridView1.Rows.Clear();
         }
         private void Datos()
         {
@@ -646,6 +646,7 @@ namespace Sico
                                                  MessageBoxButtons.OK,
                                                  MessageBoxIcon.Asterisk);
                     LimpiarCampos();
+                    //dataGridView1.Rows.Clear();
                 }
                 if (Exito == 0)
                 {

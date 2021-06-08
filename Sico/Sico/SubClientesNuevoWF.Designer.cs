@@ -42,6 +42,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnActualizarCombo = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.idSub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -89,6 +90,7 @@
             // 
             this.dgvSubClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSubClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idSub,
             this.Dni,
             this.RazonSocial,
             this.Seleccionar});
@@ -185,6 +187,12 @@
             this.toolTip1.SetToolTip(this.btnActualizarCombo, "Actualizar Grilla");
             this.btnActualizarCombo.UseVisualStyleBackColor = true;
             // 
+            // idSub
+            // 
+            this.idSub.HeaderText = "idSub";
+            this.idSub.Name = "idSub";
+            this.idSub.Visible = false;
+            // 
             // Dni
             // 
             this.Dni.HeaderText = "Dni";
@@ -248,6 +256,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnActualizarCombo;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idSub;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn RazonSocial;
         private System.Windows.Forms.DataGridViewButtonColumn Seleccionar;

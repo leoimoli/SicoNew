@@ -162,8 +162,11 @@ namespace Sico
             List<string> Periodo = new List<string>();
             Periodo = PeriodoNeg.CargarComboPeriodoVenta(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
             cmbPeriodo.Items.Clear();
+            cmbCodigoMoneda.Text = "Seleccione";
+            cmbCodigoMoneda.Items.Add("Seleccione");
             foreach (string item in Periodo)
             {
+                cmbCodigoMoneda.Text = "Seleccione";
                 cmbPeriodo.Items.Add(item);
             }
         }
@@ -411,6 +414,7 @@ namespace Sico
             _subCliente.CodigoTipoOperacion = cmbCodigoOperacion.Text;
             _subCliente.Adjunto = txtAdjunto.Text;
             _subCliente.Periodo = cmbPeriodo.Text;
+            _subCliente.idSubCliente = Convert.ToInt32(lblidSubCliente.Text);
             return _subCliente;
         }
         private void ProgressBar()
@@ -600,6 +604,10 @@ namespace Sico
         {
             SubClienteWF _sub = new SubClienteWF(null, 0);
             _sub.Show();
+        }
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
