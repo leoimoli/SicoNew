@@ -94,6 +94,13 @@ namespace Sico
                 txtCalle.Text = split3;
                 txtAltura.Text = valorFinal2;
                 txtObservacion.Text = subcliente.Observacion;
+                if (subcliente.TipoDNI != "")
+                {
+                    CargarCombo();
+                    cmbTipoDoc.Text = subcliente.TipoDNI;
+                }
+                else { CargarCombo(); }
+               
             }
             else
             {
@@ -168,6 +175,7 @@ namespace Sico
             //_subCliente.ApellidoNombre = txtApellidoNombre.Text + " " + txtNombre.Text;
             _subCliente.Direccion = txtCalle.Text + " " + txtAltura.Text;
             _subCliente.Observacion = txtObservacion.Text;
+            _subCliente.TipoDNI = cmbTipoDoc.Text;
             return _subCliente;
         }
         private void ProgressBar()
@@ -195,9 +203,22 @@ namespace Sico
                 txtDniBuscar.Clear();
                 groupBox1.Enabled = true;
                 txtDni.Focus();
+                CargarCombo();
             }
             catch (Exception ex)
             { }
+        }
+        private void CargarCombo()
+        {
+            string[] TipoDoc = Clases_Maestras.ValoresConstantes.TipoDocumento;
+            cmbTipoDoc.Items.Clear();
+            cmbTipoDoc.Text = "Seleccione";
+            cmbTipoDoc.Items.Add("Seleccione");
+            foreach (string item in TipoDoc)
+            {
+                cmbTipoDoc.Text = "Seleccione";
+                cmbTipoDoc.Items.Add(item);
+            }
         }
         private void button2_Click(object sender, EventArgs e)
         {

@@ -187,6 +187,12 @@
     <Compile Include="CalendarioWF.Designer.cs">
       <DependentUpon>CalendarioWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="CargaMasivaSubClientesWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargaMasivaSubClientesWF.Designer.cs">
+      <DependentUpon>CargaMasivaSubClientesWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clases_Maestras\AutoCompleClass.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteCausa.cs" />
     <Compile Include="Clases_Maestras\AutoCompleteClassEmailPericia.cs" />
@@ -480,6 +486,9 @@
     <EmbeddedResource Include="CalendarioWF.resx">
       <DependentUpon>CalendarioWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CargaMasivaSubClientesWF.resx">
+      <DependentUpon>CargaMasivaSubClientesWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientesNuevoWFcs.resx">
       <DependentUpon>ClientesNuevoWFcs.cs</DependentUpon>
     </EmbeddedResource>
@@ -714,6 +723,7 @@
     <None Include="Resources\carga %281%29.png" />
     <None Include="Resources\carga %282%29.png" />
     <None Include="Resources\cuenta.png" />
+    <None Include="Resources\simbolo-de-archivo-txt.png" />
     <Content Include="wepik-202151-104656.ico" />
     <None Include="Resources\historial-medico %281%29.png" />
     <None Include="Resources\juicio.png" />

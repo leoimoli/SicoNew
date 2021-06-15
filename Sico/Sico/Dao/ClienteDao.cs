@@ -123,19 +123,74 @@ namespace Sico.Dao
                 {
                     SubCliente listaSubCliente = new SubCliente();
                     listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
-                    listaSubCliente.NroFactura = item["NroFactura"].ToString();
-                    listaSubCliente.Fecha = item["Fecha"].ToString();
                     listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
                     listaSubCliente.Dni = item["Dni"].ToString();
                     listaSubCliente.Direccion = item["Direccion"].ToString();
-                    listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
                     listaSubCliente.Observacion = item["Observacion"].ToString();
+                    listaSubCliente.TipoDNI = item["CodigoTipoDocumento"].ToString();
                     listaSubCliente.idCliente = idEmpresa;
                     lista.Add(listaSubCliente);
                 }
                 connection.Close();
             }
             return lista;
+        }
+        public static int CargaMasivaSublCiente(List<SubCliente> listaSublCliente)
+        {
+            int exito = 0;
+            bool existe = false;
+            foreach (var item in listaSublCliente)
+            {
+                existe = ValidarsubClienteExistente(item.Dni, item.ApellidoNombre, item.idCliente);
+                if (existe == false)
+                {
+                    connection.Close();
+                    connection.Open();
+                    string proceso = "GuardarNuevoSubCliente";
+                    MySqlCommand cmd = new MySqlCommand(proceso, connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("Dni_in", item.Dni);
+                    cmd.Parameters.AddWithValue("ApellidoNombre_in", item.ApellidoNombre);
+                    cmd.Parameters.AddWithValue("Direccion_in", item.Direccion);
+                    cmd.Parameters.AddWithValue("idCliente_in", item.idCliente);
+                    cmd.Parameters.AddWithValue("CodigoTipoDocumento_in", item.TipoDNI);
+                    cmd.Parameters.AddWithValue("Observacion_in", item.Observacion);
+                    cmd.ExecuteNonQuery();
+                    exito = 1;
+                }
+
+            }
+            connection.Close();
+            return exito;
+        }
+
+        private static bool ValidarsubClienteExistente(string dni, string apellidoNombre, int idCliente)
+        {
+            bool Existe = false;
+            if (dni != "")
+            {
+                connection.Close();
+                connection.Open();
+                List<SubCliente> lista = new List<SubCliente>();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = connection;
+                DataTable Tabla = new DataTable();
+                MySqlParameter[] oParam = {
+                                      new MySqlParameter("dni_in", dni),
+            new MySqlParameter("idCliente_in", idCliente)};
+                string proceso = "ValidarSubClienteExistentePorDni";
+                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dt.SelectCommand.Parameters.AddRange(oParam);
+                dt.Fill(Tabla);
+                DataSet ds = new DataSet();
+                if (Tabla.Rows.Count > 0)
+                {
+                    Existe = true;
+                }
+            }
+            connection.Close();
+            return Existe;
         }
         public static List<Vencimientos> BuscarTodosLosVencimientos(int idEmpresa, DateTime fechaHoy)
         {
@@ -849,27 +904,33 @@ namespace Sico.Dao
                         continue;
                     }
                 }
+
                 if (item.ApellidoNombre == "" || item.ApellidoNombre == null && item.Dni == null || item.Dni == "")
                 {
                     item.ApellidoNombre = "Consumidor Final";
                 }
+
+                int idSubCliente = BuscarIdSubClientePorDni(item.Dni, idEmpresa);
+                if (idSubCliente == 0)
+                {
+                    idSubCliente = GuardarSubClienteCargaMasiva(item.Dni, item.ApellidoNombre, item.TipoDNI, idEmpresa);
+                }
+                item.idSubCliente = idSubCliente;
                 connection.Close();
                 connection.Open();
                 string proceso = "GuardarFacturaSubCliente";
                 MySqlCommand cmd = new MySqlCommand(proceso, connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("ApellidoNombre_in", item.ApellidoNombre);
                 cmd.Parameters.AddWithValue("NroFactura_in", item.NroFactura);
-                cmd.Parameters.AddWithValue("Fecha_in", item.Fecha);
+                DateTime fecha = Convert.ToDateTime(item.Fecha);
+                cmd.Parameters.AddWithValue("Fecha_in", fecha);
                 cmd.Parameters.AddWithValue("Monto_in", item.Monto);
                 cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
-                cmd.Parameters.AddWithValue("Dni_in", item.Dni);
-                cmd.Parameters.AddWithValue("Direccion_in", item.Direccion);
-                cmd.Parameters.AddWithValue("Observacion_in", item.Observacion);
+                cmd.Parameters.AddWithValue("idSubCliente_in", item.idSubCliente);
                 cmd.Parameters.AddWithValue("Periodo_in", periodo);
-                cmd.Parameters.AddWithValue("TipoDNI_in", item.TipoDNI);
                 cmd.Parameters.AddWithValue("NroFacturaNotaDeCredtio_in", item.NroFacturaNotaDeCredtio);
                 MySqlDataReader r = cmd.ExecuteReader();
+
                 while (r.Read())
                 {
                     idUltimaFacturaSubCliente = Convert.ToInt32(r["ID"].ToString());
@@ -886,6 +947,55 @@ namespace Sico.Dao
             }
             connection.Close();
             return ContadorDeExitos;
+        }
+
+        private static int GuardarSubClienteCargaMasiva(string dni, string apellidoNombre, string tipoDNI, int idCliente)
+        {
+            int idSub = 0;
+            connection.Close();
+            connection.Open();
+            string proceso = "GuardarSubClienteCargaMasiva";
+            MySqlCommand cmd = new MySqlCommand(proceso, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("dni_in", dni);
+            cmd.Parameters.AddWithValue("ApellidoNombre_in", apellidoNombre);
+            cmd.Parameters.AddWithValue("CodigoTipoDocumento_in", tipoDNI);
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+            MySqlDataReader r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                idSub = Convert.ToInt32(r["ID"].ToString());
+            }
+            connection.Close();
+            return idSub;
+        }
+
+        private static int BuscarIdSubClientePorDni(string dni, int idCliente)
+        {
+            int idSubCliente = 0;
+            connection.Close();
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("dni_in", dni),
+             new MySqlParameter("idCliente_in", idCliente)};
+            string proceso = "BuscarIdSubClientePorDni";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
+                }
+                connection.Close();
+            }
+            return idSubCliente;
         }
 
         public static List<Cliente> ListarTodosLosClientes()
@@ -1060,10 +1170,9 @@ namespace Sico.Dao
         {
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
 
-            ///// creo valores ficticios para campos no null.
-            _subCliente.Monto = 0000;
-            _subCliente.NroFactura = "0000-00000000";
-
+            /////// creo valores ficticios para campos no null.
+            //_subCliente.Monto = 0000;
+            //_subCliente.NroFactura = "0000-00000000";
             bool exito = false;
             connection.Close();
             connection.Open();
@@ -1073,7 +1182,6 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Dni_in", _subCliente.Dni);
             cmd.Parameters.AddWithValue("ApellidoNombre_in", _subCliente.ApellidoNombre);
             cmd.Parameters.AddWithValue("Direccion_in", _subCliente.Direccion);
-            cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);         
             cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
             cmd.Parameters.AddWithValue("CodigoTipoDocumento_in", _subCliente.TipoDNI);
             cmd.Parameters.AddWithValue("Observacion_in", _subCliente.Observacion);
@@ -1228,7 +1336,8 @@ namespace Sico.Dao
                 MySqlCommand cmd = new MySqlCommand(proceso, connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("NroFactura_in", _subCliente.NroFactura);
-                cmd.Parameters.AddWithValue("Fecha_in", _subCliente.Fecha);
+                DateTime fecha = Convert.ToDateTime(_subCliente.Fecha);
+                cmd.Parameters.AddWithValue("Fecha_in", fecha);
                 cmd.Parameters.AddWithValue("Monto_in", _subCliente.Monto);
                 cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
                 cmd.Parameters.AddWithValue("idSubCliente_in", _subCliente.idSubCliente);
@@ -1397,12 +1506,13 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Iva1_in", _subCliente.Iva1);
             cmd.Parameters.AddWithValue("Iva2_in", _subCliente.Iva2);
             cmd.Parameters.AddWithValue("Iva3_in", _subCliente.Iva3);
-            cmd.Parameters.AddWithValue("idSubCliente_in", idUltimaFacturaSubCliente);
+            cmd.Parameters.AddWithValue("idSubCliente_in", _subCliente.idSubCliente);
             cmd.Parameters.AddWithValue("idCliente_in", idCliente);
             cmd.Parameters.AddWithValue("TipoComprobante_in", _subCliente.TipoComprobante);
             cmd.Parameters.AddWithValue("CodigoMoneda_in", _subCliente.CodigoMoneda);
             cmd.Parameters.AddWithValue("TipoDeCambio_in", _subCliente.TipoDeCambio);
             cmd.Parameters.AddWithValue("CodigoTipoOperacion_in", _subCliente.CodigoTipoOperacion);
+            cmd.Parameters.AddWithValue("idFacturaVenta_in", idUltimaFacturaSubCliente);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();
@@ -1459,13 +1569,11 @@ namespace Sico.Dao
                 {
                     SubCliente listaSubCliente = new SubCliente();
                     listaSubCliente.idSubCliente = Convert.ToInt32(item["idSubCliente"].ToString());
-                    listaSubCliente.NroFactura = item["NroFactura"].ToString();
-                    listaSubCliente.Fecha = item["Fecha"].ToString();
                     listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
                     listaSubCliente.Dni = item["Dni"].ToString();
                     listaSubCliente.Direccion = item["Direccion"].ToString();
-                    listaSubCliente.Monto = Convert.ToDecimal(item["Monto"].ToString());
                     listaSubCliente.Observacion = item["Observacion"].ToString();
+                    listaSubCliente.TipoDNI = item["CodigoTipoDocumento"].ToString();
                     listaSubCliente.idCliente = idEmpresa;
                     lista.Add(listaSubCliente);
                 }

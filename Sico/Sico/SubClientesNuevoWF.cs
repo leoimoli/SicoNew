@@ -24,6 +24,7 @@ namespace Sico
         }
         private void SubClientesNuevoWF_Load(object sender, EventArgs e)
         {
+            this.Refresh();
             ListarSubClientes();
         }
         private void ListarSubClientes()
@@ -51,22 +52,44 @@ namespace Sico
         }
         private void dgvSubClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvSubClientes.CurrentCell.ColumnIndex == 3)
+            try
             {
-                string idSub = dgvSubClientes.CurrentRow.Cells[0].Value.ToString();
-                string Dni = dgvSubClientes.CurrentRow.Cells[1].Value.ToString();
-                string RazonSocial = dgvSubClientes.CurrentRow.Cells[2].Value.ToString();
-
-                FacturacionSubClientesWF frm2 = Application.OpenForms.OfType<FacturacionSubClientesWF>().SingleOrDefault();
-                if (frm2 != null)
+                if (dgvSubClientes.CurrentCell.ColumnIndex == 3)
                 {
-                    frm2.txtRazonSocial.Text = RazonSocial;
-                    frm2.txtCuit.Text = Dni;
-                    frm2.lblidSubCliente.Text = idSub;
-                    frm2.IniciarPantalla();
-                    Close();
+                    string idSub = dgvSubClientes.CurrentRow.Cells[0].Value.ToString();
+                    string Dni = dgvSubClientes.CurrentRow.Cells[1].Value.ToString();
+                    string RazonSocial = dgvSubClientes.CurrentRow.Cells[2].Value.ToString();
+
+                    //CODIGO SOLO PERMITE 2 INSTANCIAS DEL FORMULARIO CLIENTES
+                    //---------------------------------------------
+                    int existe = Application.OpenForms.OfType<FacturacionSubClientesWF>().Count();
+                    if (existe <= 2)
+                    {
+                        FacturacionSubClientesWF frm2 = Application.OpenForms.OfType<FacturacionSubClientesWF>().SingleOrDefault();
+                        if (frm2 != null)
+                        {
+                            frm2.txtRazonSocial.Text = RazonSocial;
+                            frm2.txtCuit.Text = Dni;
+                            frm2.lblidSubCliente.Text = idSub;
+                            frm2.IniciarPantalla();
+                            Close();
+                        }
+                        //FacturacionSubClientesWF frm = new FacturacionSubClientesWF(null, null);
+                        //frm.Show();
+                    }
+                    else
+                    {
+                        foreach (var item in Application.OpenForms.OfType<FacturacionSubClientesWF>())
+                        {
+                            item.BringToFront();
+                        }
+                    }
+
+                   
                 }
             }
+            catch (Exception ex)
+            { }
         }
         private void dgvSubClientes_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {

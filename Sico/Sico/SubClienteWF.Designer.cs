@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubClienteWF));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbTipoDoc = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtObservacion = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -66,6 +68,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbTipoDoc);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtObservacion);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.progressBar1);
@@ -84,10 +88,28 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // cmbTipoDoc
+            // 
+            this.cmbTipoDoc.FormattingEnabled = true;
+            this.cmbTipoDoc.Location = new System.Drawing.Point(72, 29);
+            this.cmbTipoDoc.Name = "cmbTipoDoc";
+            this.cmbTipoDoc.Size = new System.Drawing.Size(211, 21);
+            this.cmbTipoDoc.TabIndex = 46;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(69, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 17);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "Tipo Doc(*):";
+            // 
             // txtObservacion
             // 
             this.txtObservacion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtObservacion.Location = new System.Drawing.Point(104, 161);
+            this.txtObservacion.Location = new System.Drawing.Point(104, 180);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(503, 67);
@@ -97,7 +119,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 184);
+            this.label7.Location = new System.Drawing.Point(6, 203);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 17);
             this.label7.TabIndex = 15;
@@ -105,7 +127,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(153, 234);
+            this.progressBar1.Location = new System.Drawing.Point(153, 253);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 43;
@@ -116,7 +138,7 @@
             // 
             this.lblAltura.AutoSize = true;
             this.lblAltura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAltura.Location = new System.Drawing.Point(319, 98);
+            this.lblAltura.Location = new System.Drawing.Point(319, 128);
             this.lblAltura.Name = "lblAltura";
             this.lblAltura.Size = new System.Drawing.Size(64, 17);
             this.lblAltura.TabIndex = 14;
@@ -125,7 +147,7 @@
             // txtAltura
             // 
             this.txtAltura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtAltura.Location = new System.Drawing.Point(322, 118);
+            this.txtAltura.Location = new System.Drawing.Point(322, 148);
             this.txtAltura.Name = "txtAltura";
             this.txtAltura.Size = new System.Drawing.Size(260, 20);
             this.txtAltura.TabIndex = 13;
@@ -134,7 +156,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(69, 98);
+            this.label5.Location = new System.Drawing.Point(69, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 17);
             this.label5.TabIndex = 12;
@@ -143,7 +165,7 @@
             // txtCalle
             // 
             this.txtCalle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCalle.Location = new System.Drawing.Point(72, 118);
+            this.txtCalle.Location = new System.Drawing.Point(72, 148);
             this.txtCalle.Name = "txtCalle";
             this.txtCalle.Size = new System.Drawing.Size(211, 20);
             this.txtCalle.TabIndex = 11;
@@ -152,7 +174,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(319, 33);
+            this.label2.Location = new System.Drawing.Point(319, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 17);
             this.label2.TabIndex = 8;
@@ -162,23 +184,23 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(69, 33);
+            this.label1.Location = new System.Drawing.Point(69, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 17);
+            this.label1.Size = new System.Drawing.Size(76, 17);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Dni(*):";
+            this.label1.Text = "Dni/Cuit(*):";
             // 
             // txtApellidoNombre
             // 
             this.txtApellidoNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApellidoNombre.Location = new System.Drawing.Point(322, 53);
+            this.txtApellidoNombre.Location = new System.Drawing.Point(322, 83);
             this.txtApellidoNombre.Name = "txtApellidoNombre";
             this.txtApellidoNombre.Size = new System.Drawing.Size(260, 20);
             this.txtApellidoNombre.TabIndex = 3;
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(72, 53);
+            this.txtDni.Location = new System.Drawing.Point(72, 83);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(211, 20);
             this.txtDni.TabIndex = 2;
@@ -209,11 +231,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(57, 20);
+            this.label4.Location = new System.Drawing.Point(29, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 17);
+            this.label4.Size = new System.Drawing.Size(61, 17);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Dni:";
+            this.label4.Text = "Dni/Cuit:";
             // 
             // btnBuscar
             // 
@@ -404,5 +426,7 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ComboBox cmbTipoDoc;
+        private System.Windows.Forms.Label label6;
     }
 }

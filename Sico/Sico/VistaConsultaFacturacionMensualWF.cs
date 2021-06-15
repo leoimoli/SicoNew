@@ -29,7 +29,7 @@ namespace Sico
         {
             try
             {
-                lblCuitEdit.Text =Convert.ToString(idEmpresa);
+                lblCuitEdit.Text = Convert.ToString(idEmpresa);
                 lblNombreEdit.Text = razonSocial;
                 CargarCombo();
             }
@@ -280,7 +280,7 @@ namespace Sico
                     dataGridView1.Columns[28].Visible = false;
 
                     dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.Red;
-
+                    DiseñoGrilla();
                 }
                 else
                 {
@@ -288,6 +288,14 @@ namespace Sico
                     MessageBox.Show("No se encontraron datos con los parametros ingresados.");
                 }
             }
+        }
+        private void DiseñoGrilla()
+        {
+            this.dataGridView1.DefaultCellStyle.Font = new Font("Tahoma", 9);
+            this.dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+            this.dataGridView1.DefaultCellStyle.BackColor = Color.White;
+            this.dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+            this.dataGridView1.DefaultCellStyle.SelectionBackColor = Color.White;
         }
         private void ProgressBar()
         {
@@ -472,24 +480,24 @@ namespace Sico
         {
             try
             {
-                groupBox1.Enabled = false;
-                groupBox2.Enabled = false;
-                string Periodo = cmbPeriodo.Text;
-                ProgressBar();
-                ListaTotalFacturacion = ClienteNeg.BuscarFacturacionTotalVentas(idEmpresa, Periodo);
-                groupBox1.Enabled = true;
-                groupBox2.Enabled = true;
-                progressBar1.Value = Convert.ToInt32(null);
-                progressBar1.Visible = false;
+                BuscarInformacion();               
             }
             catch (Exception ex)
             { }
         }
+        private void BuscarInformacion()
+        {
+            groupBox2.Enabled = false;
+            string Periodo = cmbPeriodo.Text;
+            ProgressBar();
+            ListaTotalFacturacion = ClienteNeg.BuscarFacturacionTotalVentas(idEmpresa, Periodo);
+            groupBox2.Enabled = true;
+            progressBar1.Value = Convert.ToInt32(null);
+            progressBar1.Visible = false;
+        }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
-            //_tarea.Show();
-            //Close();
+           
         }
         private void btnExcel_Click(object sender, EventArgs e)
         {
@@ -908,6 +916,6 @@ namespace Sico
             //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
             //_tarea.Show();
             //Close();
-        }
+        }       
     }
 }

@@ -33,6 +33,7 @@ namespace Sico
         {
             CargarCombo();
             BuscarFacturaParaClienteSeleccionado();
+            dtFecha.Enabled = true;
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -444,8 +445,8 @@ namespace Sico
             txtIva1.Clear();
             txtIva2.Clear();
             txtIva3.Clear();
-            //DateTime fecha = DateTime.Now;
-            //dtFecha.Value = fecha;
+            DateTime fecha = DateTime.Now;
+            dtFecha.Value = fecha;
             //CargarComboPersonas();
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;

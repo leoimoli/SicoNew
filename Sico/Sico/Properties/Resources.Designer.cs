@@ -1223,6 +1223,16 @@ namespace Sico.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap simbolo_de_archivo_txt {
+            get {
+                object obj = ResourceManager.GetObject("simbolo-de-archivo-txt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SistemaContable {
             get {
                 object obj = ResourceManager.GetObject("SistemaContable", resourceCulture);
