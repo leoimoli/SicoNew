@@ -23,14 +23,18 @@ namespace Sico
         {
             InitializeComponent();
             this.razonSocial = razonSocial;
-            this.idEmpresa = idEmpresa;
+            this.idEmpresa = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
         }
         private void VistaConsultaFacturacionMensualWF_Load(object sender, EventArgs e)
         {
             try
             {
-                lblCuitEdit.Text = Convert.ToString(idEmpresa);
-                lblNombreEdit.Text = razonSocial;
+                 ListaTotalFacturacion = ClienteNeg.BuscarFacturacionTotalVentas(idEmpresa, Periodo);
+            groupBox2.Enabled = true;
+            progressBar1.Value = Convert.ToInt32(null);
+            progressBar1.Visible = false;
+                //lblCuitEdit.Text = Convert.ToString(idEmpresa);
+                //lblNombreEdit.Text = razonSocial;
                 CargarCombo();
             }
             catch (Exception ex)
@@ -98,7 +102,7 @@ namespace Sico
                         dataGridView1.Refresh();
                     }
                     btnExcel.Visible = true;
-                    btnVolver.Visible = true;
+                    //btnVolver.Visible = true;
                     btnVolver2.Visible = false;
                     btnCitiVentas.Visible = true;
                     dataGridView1.Visible = true;
@@ -525,7 +529,7 @@ namespace Sico
             ProgressBar();
             VentasTXTSiap ruta = new VentasTXTSiap();
             DateTime FechaArchivo = DateTime.Now;
-            string NombreTxt = lblNombreEdit.Text;
+            string NombreTxt = Sesion.UsuarioLogueado.EmpresaSeleccionada;
             string FechaFormato = FechaArchivo.ToString("yyyyMMdd");
             var GuardarFichero = NombreTxt + FechaFormato;
             string path = ruta.Carpeta + "\\" + GuardarFichero + ".txt";
@@ -765,7 +769,7 @@ namespace Sico
         {
             VentasTXTAlicuota ruta = new VentasTXTAlicuota();
             DateTime FechaArchivo = DateTime.Now;
-            string NombreTxt = lblNombreEdit.Text;
+            string NombreTxt = Sesion.UsuarioLogueado.EmpresaSeleccionada;
             string FechaFormato = FechaArchivo.ToString("yyyyMMdd");
             var GuardarFichero = "Alicuotas -" + NombreTxt + FechaFormato;
             string path = ruta.Carpeta + "\\" + GuardarFichero + ".txt";
@@ -916,6 +920,6 @@ namespace Sico
             //TareaClienteWF _tarea = new TareaClienteWF(razonSocial, cuit);
             //_tarea.Show();
             //Close();
-        }       
+        }
     }
 }

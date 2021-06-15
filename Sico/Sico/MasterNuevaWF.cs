@@ -205,5 +205,10 @@ namespace Sico
         {
             AbrirFormEnPanel(new InformesEmpresaWF());
         }
+
+        private void iVAVentasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new VistaConsultaFacturacionMensualWF(null, 0));
+        }
     }
 }
