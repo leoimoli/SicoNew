@@ -29,26 +29,32 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VistaConsultaFacturacionMensualWF));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnVolver2 = new System.Windows.Forms.Button();
             this.cmbPeriodo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Neto1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Neto2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Neto3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Iva1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Iva2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Iva3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NotaCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnPdf = new System.Windows.Forms.Button();
             this.btnCitiVentas = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.aaa = new System.Windows.Forms.Button();
-            this.btnClientesFacturados = new System.Windows.Forms.Button();
-            this.btnCajaFacturarEmitidas = new System.Windows.Forms.Button();
-            this.btnTotalFacturas = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblCajaVentas = new System.Windows.Forms.Label();
-            this.lblTotalFacturasEmitidas = new System.Windows.Forms.Label();
-            this.lblClientesFacturados = new System.Windows.Forms.Label();
+            this.btnVolver2 = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -61,31 +67,17 @@
             this.groupBox2.Controls.Add(this.progressBar1);
             this.groupBox2.Controls.Add(this.btnBuscar);
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 21);
+            this.groupBox2.Location = new System.Drawing.Point(12, 55);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(589, 404);
+            this.groupBox2.Size = new System.Drawing.Size(1075, 370);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            // 
-            // btnVolver2
-            // 
-            this.btnVolver2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver2.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
-            this.btnVolver2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVolver2.Location = new System.Drawing.Point(530, 11);
-            this.btnVolver2.Name = "btnVolver2";
-            this.btnVolver2.Size = new System.Drawing.Size(49, 39);
-            this.btnVolver2.TabIndex = 49;
-            this.btnVolver2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnVolver2.UseVisualStyleBackColor = true;
-            this.btnVolver2.Visible = false;
-            this.btnVolver2.Click += new System.EventHandler(this.btnVolver2_Click);
             // 
             // cmbPeriodo
             // 
             this.cmbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPeriodo.FormattingEnabled = true;
-            this.cmbPeriodo.Location = new System.Drawing.Point(203, 20);
+            this.cmbPeriodo.Location = new System.Drawing.Point(441, 19);
             this.cmbPeriodo.Name = "cmbPeriodo";
             this.cmbPeriodo.Size = new System.Drawing.Size(214, 21);
             this.cmbPeriodo.TabIndex = 47;
@@ -96,7 +88,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(136, 21);
+            this.label2.Location = new System.Drawing.Point(374, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 46;
@@ -104,32 +96,50 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(142, 249);
+            this.progressBar1.Location = new System.Drawing.Point(249, 212);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 42;
             this.progressBar1.Value = 50;
             this.progressBar1.Visible = false;
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
-            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscar.Location = new System.Drawing.Point(471, 11);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
-            this.btnBuscar.TabIndex = 45;
-            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Visible = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NroFactura,
+            this.Fecha,
+            this.Cliente,
+            this.Monto,
+            this.Neto1,
+            this.Neto2,
+            this.Neto3,
+            this.Iva1,
+            this.Iva2,
+            this.Iva3,
+            this.NotaCredito});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(9, 54);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(570, 344);
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(1066, 305);
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.Visible = false;
             // 
@@ -137,15 +147,96 @@
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label3.Location = new System.Drawing.Point(483, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(302, 20);
+            this.label3.TabIndex = 76;
+            this.label3.Text = "I.V.A. Ventas Facturación de los periodos";
+            // 
+            // NroFactura
+            // 
+            this.NroFactura.HeaderText = "NroFactura";
+            this.NroFactura.Name = "NroFactura";
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            // 
+            // Monto
+            // 
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
+            // 
+            // Neto1
+            // 
+            this.Neto1.HeaderText = "Neto 10,5";
+            this.Neto1.Name = "Neto1";
+            // 
+            // Neto2
+            // 
+            this.Neto2.HeaderText = "Neto 21";
+            this.Neto2.Name = "Neto2";
+            // 
+            // Neto3
+            // 
+            this.Neto3.HeaderText = "Neto 27";
+            this.Neto3.Name = "Neto3";
+            // 
+            // Iva1
+            // 
+            this.Iva1.HeaderText = "Iva 10,5";
+            this.Iva1.Name = "Iva1";
+            // 
+            // Iva2
+            // 
+            this.Iva2.HeaderText = "Iva 21";
+            this.Iva2.Name = "Iva2";
+            // 
+            // Iva3
+            // 
+            this.Iva3.HeaderText = "Iva 27";
+            this.Iva3.Name = "Iva3";
+            // 
+            // NotaCredito
+            // 
+            this.NotaCredito.HeaderText = "Nota de Crédito";
+            this.NotaCredito.Name = "NotaCredito";
+            // 
+            // btnPdf
+            // 
+            this.btnPdf.BackColor = System.Drawing.SystemColors.Control;
+            this.btnPdf.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnPdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPdf.ForeColor = System.Drawing.Color.White;
+            this.btnPdf.Image = global::Sico.Properties.Resources.pdf1;
+            this.btnPdf.Location = new System.Drawing.Point(439, 442);
+            this.btnPdf.Name = "btnPdf";
+            this.btnPdf.Size = new System.Drawing.Size(36, 28);
+            this.btnPdf.TabIndex = 162;
+            this.btnPdf.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.toolTip1.SetToolTip(this.btnPdf, "Exportar a Excel");
+            this.btnPdf.UseVisualStyleBackColor = false;
+            this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
+            // 
             // btnCitiVentas
             // 
-            this.btnCitiVentas.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnCitiVentas.BackColor = System.Drawing.SystemColors.Control;
             this.btnCitiVentas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnCitiVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCitiVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCitiVentas.ForeColor = System.Drawing.Color.White;
-            this.btnCitiVentas.Image = global::Sico.Properties.Resources.simbolo_de_archivo_txt;
-            this.btnCitiVentas.Location = new System.Drawing.Point(555, 431);
+            this.btnCitiVentas.Image = global::Sico.Properties.Resources.txt1;
+            this.btnCitiVentas.Location = new System.Drawing.Point(555, 442);
             this.btnCitiVentas.Name = "btnCitiVentas";
             this.btnCitiVentas.Size = new System.Drawing.Size(36, 28);
             this.btnCitiVentas.TabIndex = 161;
@@ -156,13 +247,12 @@
             // 
             // btnExcel
             // 
-            this.btnExcel.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnExcel.BackColor = System.Drawing.SystemColors.Control;
             this.btnExcel.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExcel.Image = global::Sico.Properties.Resources.sobresalir;
-            this.btnExcel.Location = new System.Drawing.Point(497, 431);
+            this.btnExcel.Image = global::Sico.Properties.Resources.excel;
+            this.btnExcel.Location = new System.Drawing.Point(500, 442);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(36, 28);
             this.btnExcel.TabIndex = 160;
@@ -171,146 +261,43 @@
             this.btnExcel.UseVisualStyleBackColor = false;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
-            // label3
+            // btnVolver2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(718, 32);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(290, 20);
-            this.label3.TabIndex = 76;
-            this.label3.Text = "Estadisticas generales del año en curso";
+            this.btnVolver2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver2.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
+            this.btnVolver2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVolver2.Location = new System.Drawing.Point(768, 10);
+            this.btnVolver2.Name = "btnVolver2";
+            this.btnVolver2.Size = new System.Drawing.Size(49, 39);
+            this.btnVolver2.TabIndex = 49;
+            this.btnVolver2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVolver2.UseVisualStyleBackColor = true;
+            this.btnVolver2.Visible = false;
+            this.btnVolver2.Click += new System.EventHandler(this.btnVolver2_Click);
             // 
-            // aaa
+            // btnBuscar
             // 
-            this.aaa.BackColor = System.Drawing.Color.SteelBlue;
-            this.aaa.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.aaa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.aaa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aaa.ForeColor = System.Drawing.Color.White;
-            this.aaa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.aaa.Location = new System.Drawing.Point(877, 182);
-            this.aaa.Name = "aaa";
-            this.aaa.Size = new System.Drawing.Size(181, 53);
-            this.aaa.TabIndex = 75;
-            this.aaa.Text = "Planes Cerrados";
-            this.aaa.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.aaa.UseVisualStyleBackColor = false;
-            // 
-            // btnClientesFacturados
-            // 
-            this.btnClientesFacturados.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnClientesFacturados.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnClientesFacturados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientesFacturados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientesFacturados.ForeColor = System.Drawing.Color.White;
-            this.btnClientesFacturados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientesFacturados.Location = new System.Drawing.Point(660, 182);
-            this.btnClientesFacturados.Name = "btnClientesFacturados";
-            this.btnClientesFacturados.Size = new System.Drawing.Size(181, 53);
-            this.btnClientesFacturados.TabIndex = 74;
-            this.btnClientesFacturados.Text = "Total Clientes Facturados";
-            this.btnClientesFacturados.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnClientesFacturados.UseVisualStyleBackColor = false;
-            // 
-            // btnCajaFacturarEmitidas
-            // 
-            this.btnCajaFacturarEmitidas.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnCajaFacturarEmitidas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnCajaFacturarEmitidas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCajaFacturarEmitidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCajaFacturarEmitidas.ForeColor = System.Drawing.Color.White;
-            this.btnCajaFacturarEmitidas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCajaFacturarEmitidas.Location = new System.Drawing.Point(877, 75);
-            this.btnCajaFacturarEmitidas.Name = "btnCajaFacturarEmitidas";
-            this.btnCajaFacturarEmitidas.Size = new System.Drawing.Size(181, 53);
-            this.btnCajaFacturarEmitidas.TabIndex = 73;
-            this.btnCajaFacturarEmitidas.Text = "Caja de Facturacion";
-            this.btnCajaFacturarEmitidas.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnCajaFacturarEmitidas.UseVisualStyleBackColor = false;
-            // 
-            // btnTotalFacturas
-            // 
-            this.btnTotalFacturas.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnTotalFacturas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnTotalFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTotalFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTotalFacturas.ForeColor = System.Drawing.Color.White;
-            this.btnTotalFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTotalFacturas.Location = new System.Drawing.Point(660, 75);
-            this.btnTotalFacturas.Name = "btnTotalFacturas";
-            this.btnTotalFacturas.Size = new System.Drawing.Size(181, 53);
-            this.btnTotalFacturas.TabIndex = 72;
-            this.btnTotalFacturas.Text = "Facturas Emitidas";
-            this.btnTotalFacturas.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnTotalFacturas.UseVisualStyleBackColor = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.SteelBlue;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(953, 103);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 17);
-            this.label4.TabIndex = 164;
-            this.label4.Text = "$";
-            // 
-            // lblCajaVentas
-            // 
-            this.lblCajaVentas.AutoSize = true;
-            this.lblCajaVentas.BackColor = System.Drawing.Color.SteelBlue;
-            this.lblCajaVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCajaVentas.ForeColor = System.Drawing.Color.White;
-            this.lblCajaVentas.Location = new System.Drawing.Point(975, 102);
-            this.lblCajaVentas.Name = "lblCajaVentas";
-            this.lblCajaVentas.Size = new System.Drawing.Size(22, 17);
-            this.lblCajaVentas.TabIndex = 163;
-            this.lblCajaVentas.Text = "@";
-            // 
-            // lblTotalFacturasEmitidas
-            // 
-            this.lblTotalFacturasEmitidas.AutoSize = true;
-            this.lblTotalFacturasEmitidas.BackColor = System.Drawing.Color.SteelBlue;
-            this.lblTotalFacturasEmitidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalFacturasEmitidas.ForeColor = System.Drawing.Color.White;
-            this.lblTotalFacturasEmitidas.Location = new System.Drawing.Point(740, 102);
-            this.lblTotalFacturasEmitidas.Name = "lblTotalFacturasEmitidas";
-            this.lblTotalFacturasEmitidas.Size = new System.Drawing.Size(22, 17);
-            this.lblTotalFacturasEmitidas.TabIndex = 162;
-            this.lblTotalFacturasEmitidas.Text = "@";
-            // 
-            // lblClientesFacturados
-            // 
-            this.lblClientesFacturados.AutoSize = true;
-            this.lblClientesFacturados.BackColor = System.Drawing.Color.SteelBlue;
-            this.lblClientesFacturados.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientesFacturados.ForeColor = System.Drawing.Color.White;
-            this.lblClientesFacturados.Location = new System.Drawing.Point(740, 208);
-            this.lblClientesFacturados.Name = "lblClientesFacturados";
-            this.lblClientesFacturados.Size = new System.Drawing.Size(22, 17);
-            this.lblClientesFacturados.TabIndex = 165;
-            this.lblClientesFacturados.Text = "@";
+            this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBuscar.Location = new System.Drawing.Point(709, 10);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
+            this.btnBuscar.TabIndex = 45;
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Visible = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // VistaConsultaFacturacionMensualWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 482);
-            this.Controls.Add(this.lblClientesFacturados);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.lblCajaVentas);
-            this.Controls.Add(this.lblTotalFacturasEmitidas);
+            this.Controls.Add(this.btnPdf);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.aaa);
             this.Controls.Add(this.btnCitiVentas);
-            this.Controls.Add(this.btnClientesFacturados);
             this.Controls.Add(this.btnExcel);
-            this.Controls.Add(this.btnCajaFacturarEmitidas);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnTotalFacturas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VistaConsultaFacturacionMensualWF";
@@ -336,13 +323,17 @@
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Button btnCitiVentas;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button aaa;
-        private System.Windows.Forms.Button btnClientesFacturados;
-        private System.Windows.Forms.Button btnCajaFacturarEmitidas;
-        private System.Windows.Forms.Button btnTotalFacturas;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblCajaVentas;
-        private System.Windows.Forms.Label lblTotalFacturasEmitidas;
-        private System.Windows.Forms.Label lblClientesFacturados;
+        private System.Windows.Forms.Button btnPdf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NroFactura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Neto1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Neto2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Neto3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Iva1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Iva2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Iva3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NotaCredito;
     }
 }

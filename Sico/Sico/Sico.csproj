@@ -379,6 +379,7 @@
     </Compile>
     <Compile Include="Negocio\ClienteNeg.cs" />
     <Compile Include="Negocio\UsuarioNeg.cs" />
+    <Compile Include="PDF.cs" />
     <Compile Include="PericiaHistoriaWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -724,6 +725,10 @@
     <None Include="Resources\carga %282%29.png" />
     <None Include="Resources\cuenta.png" />
     <None Include="Resources\simbolo-de-archivo-txt.png" />
+    <None Include="Resources\file.png" />
+    <None Include="Resources\txt1.png" />
+    <None Include="Resources\excel.png" />
+    <None Include="Resources\pdf1.png" />
     <Content Include="wepik-202151-104656.ico" />
     <None Include="Resources\historial-medico %281%29.png" />
     <None Include="Resources\juicio.png" />
