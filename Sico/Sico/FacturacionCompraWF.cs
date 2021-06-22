@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Sico
 {
-    public partial class FacturacionCompraWF : MasterWF
+    public partial class FacturacionCompraWF : Form
     {
         private string cuitCliente;
         private string RazonSocial;
@@ -24,8 +24,8 @@ namespace Sico
             this.cuitCliente = cuitCliente;
             this.razonSocial = razonSocial;
             this.cuit = cuit;
-            lblNombreEdit.Text = razonSocial;
-            lblCuitEdit.Text = cuit;
+            //lblNombreEdit.Text = razonSocial;
+            //lblCuitEdit.Text = cuit;
         }
 
         private void FacturacionCompraWF_Load(object sender, EventArgs e)
