@@ -33,6 +33,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.dgvSubClientes = new System.Windows.Forms.DataGridView();
+            this.idSub = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.txtDni = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -42,10 +46,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnActualizarCombo = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.idSub = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubClientes)).BeginInit();
@@ -101,6 +101,32 @@
             this.dgvSubClientes.TabIndex = 1;
             this.dgvSubClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSubClientes_CellClick);
             this.dgvSubClientes.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSubClientes_CellPainting);
+            // 
+            // idSub
+            // 
+            this.idSub.HeaderText = "idSub";
+            this.idSub.Name = "idSub";
+            this.idSub.Visible = false;
+            // 
+            // Dni
+            // 
+            this.Dni.HeaderText = "Dni";
+            this.Dni.Name = "Dni";
+            this.Dni.Width = 110;
+            // 
+            // RazonSocial
+            // 
+            this.RazonSocial.HeaderText = "Razón Social";
+            this.RazonSocial.Name = "RazonSocial";
+            this.RazonSocial.Width = 180;
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Seleccionar.Width = 70;
             // 
             // button1
             // 
@@ -186,32 +212,7 @@
             this.btnActualizarCombo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnActualizarCombo, "Actualizar Grilla");
             this.btnActualizarCombo.UseVisualStyleBackColor = true;
-            // 
-            // idSub
-            // 
-            this.idSub.HeaderText = "idSub";
-            this.idSub.Name = "idSub";
-            this.idSub.Visible = false;
-            // 
-            // Dni
-            // 
-            this.Dni.HeaderText = "Dni";
-            this.Dni.Name = "Dni";
-            this.Dni.Width = 110;
-            // 
-            // RazonSocial
-            // 
-            this.RazonSocial.HeaderText = "Razón Social";
-            this.RazonSocial.Name = "RazonSocial";
-            this.RazonSocial.Width = 180;
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "Seleccionar";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Seleccionar.Width = 70;
+            this.btnActualizarCombo.Click += new System.EventHandler(this.btnActualizarCombo_Click);
             // 
             // SubClientesNuevoWF
             // 

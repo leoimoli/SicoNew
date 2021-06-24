@@ -53,6 +53,7 @@
             this.lbl105 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblidSubCliente = new System.Windows.Forms.Label();
             this.txtCuit = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
@@ -85,7 +86,6 @@
             this.btnAltaSubCliente = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblidSubCliente = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -351,6 +351,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(865, 31);
             this.panel2.TabIndex = 96;
+            // 
+            // lblidSubCliente
+            // 
+            this.lblidSubCliente.AutoSize = true;
+            this.lblidSubCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblidSubCliente.ForeColor = System.Drawing.Color.Black;
+            this.lblidSubCliente.Location = new System.Drawing.Point(309, 8);
+            this.lblidSubCliente.Name = "lblidSubCliente";
+            this.lblidSubCliente.Size = new System.Drawing.Size(77, 15);
+            this.lblidSubCliente.TabIndex = 97;
+            this.lblidSubCliente.Text = "idSubCliente";
+            this.lblidSubCliente.Visible = false;
             // 
             // txtCuit
             // 
@@ -674,18 +686,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1080, 35);
             this.panel1.TabIndex = 96;
-            // 
-            // lblidSubCliente
-            // 
-            this.lblidSubCliente.AutoSize = true;
-            this.lblidSubCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblidSubCliente.ForeColor = System.Drawing.Color.Black;
-            this.lblidSubCliente.Location = new System.Drawing.Point(309, 8);
-            this.lblidSubCliente.Name = "lblidSubCliente";
-            this.lblidSubCliente.Size = new System.Drawing.Size(77, 15);
-            this.lblidSubCliente.TabIndex = 97;
-            this.lblidSubCliente.Text = "idSubCliente";
-            this.lblidSubCliente.Visible = false;
             // 
             // FacturacionSubClientesWF
             // 

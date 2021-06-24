@@ -30,12 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnAltaSubCliente = new System.Windows.Forms.Button();
+            this.btnAltaProveedor = new System.Windows.Forms.Button();
             this.btnCargaMasiva = new System.Windows.Forms.Button();
-            this.btnBuscarCliente = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnBuscarProveedor = new System.Windows.Forms.Button();
             this.btnCrearPeriodo = new System.Windows.Forms.Button();
             this.btnActualizarCombo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,7 +67,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtCodigoDocumento = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblidSubCliente = new System.Windows.Forms.Label();
+            this.lblidProveedor = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtNeto1 = new System.Windows.Forms.TextBox();
             this.txtTotal1 = new System.Windows.Forms.TextBox();
@@ -102,18 +99,19 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnAltaSubCliente
+            // btnAltaProveedor
             // 
-            this.btnAltaSubCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAltaSubCliente.Image = global::Sico.Properties.Resources.cuenta;
-            this.btnAltaSubCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAltaSubCliente.Location = new System.Drawing.Point(49, 1);
-            this.btnAltaSubCliente.Name = "btnAltaSubCliente";
-            this.btnAltaSubCliente.Size = new System.Drawing.Size(40, 32);
-            this.btnAltaSubCliente.TabIndex = 163;
-            this.btnAltaSubCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnAltaSubCliente, "Alta Cliente");
-            this.btnAltaSubCliente.UseVisualStyleBackColor = true;
+            this.btnAltaProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAltaProveedor.Image = global::Sico.Properties.Resources.cuenta;
+            this.btnAltaProveedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAltaProveedor.Location = new System.Drawing.Point(49, 1);
+            this.btnAltaProveedor.Name = "btnAltaProveedor";
+            this.btnAltaProveedor.Size = new System.Drawing.Size(40, 32);
+            this.btnAltaProveedor.TabIndex = 163;
+            this.btnAltaProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnAltaProveedor, "Alta Proveedor");
+            this.btnAltaProveedor.UseVisualStyleBackColor = true;
+            this.btnAltaProveedor.Click += new System.EventHandler(this.btnAltaProveedor_Click);
             // 
             // btnCargaMasiva
             // 
@@ -127,86 +125,46 @@
             this.btnCargaMasiva.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnCargaMasiva, "Carga Masiva");
             this.btnCargaMasiva.UseVisualStyleBackColor = true;
+            this.btnCargaMasiva.Click += new System.EventHandler(this.btnCargaMasiva_Click);
             // 
-            // btnBuscarCliente
+            // btnBuscarProveedor
             // 
-            this.btnBuscarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarCliente.Image = global::Sico.Properties.Resources.lupa__1_;
-            this.btnBuscarCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(95, 1);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(40, 32);
-            this.btnBuscarCliente.TabIndex = 99;
-            this.btnBuscarCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnBuscarCliente, "Buscar Cliente");
-            this.btnBuscarCliente.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::Sico.Properties.Resources.mas__2_;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(139, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 32);
-            this.button1.TabIndex = 93;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.button1, "Crear Período");
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::Sico.Properties.Resources.actualizado;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(185, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 32);
-            this.button2.TabIndex = 94;
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.button2, "Actualizar Combo Periodo");
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizar.Image = global::Sico.Properties.Resources.refrescar;
-            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnActualizar.Location = new System.Drawing.Point(479, 79);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(47, 35);
-            this.btnActualizar.TabIndex = 84;
-            this.btnActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btnActualizar, "Buscar Nuevo Cuit");
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Visible = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            this.btnBuscarProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarProveedor.Image = global::Sico.Properties.Resources.lupa__1_;
+            this.btnBuscarProveedor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBuscarProveedor.Location = new System.Drawing.Point(95, 1);
+            this.btnBuscarProveedor.Name = "btnBuscarProveedor";
+            this.btnBuscarProveedor.Size = new System.Drawing.Size(40, 32);
+            this.btnBuscarProveedor.TabIndex = 99;
+            this.btnBuscarProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnBuscarProveedor, "Buscar Proveedor");
+            this.btnBuscarProveedor.UseVisualStyleBackColor = true;
+            this.btnBuscarProveedor.Click += new System.EventHandler(this.btnBuscarProveedor_Click);
             // 
             // btnCrearPeriodo
             // 
+            this.btnCrearPeriodo.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnCrearPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearPeriodo.Image = global::Sico.Properties.Resources.ciclo_del_agua__2_;
+            this.btnCrearPeriodo.Image = global::Sico.Properties.Resources.mas__2_;
             this.btnCrearPeriodo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCrearPeriodo.Location = new System.Drawing.Point(426, 79);
+            this.btnCrearPeriodo.Location = new System.Drawing.Point(139, 1);
             this.btnCrearPeriodo.Name = "btnCrearPeriodo";
-            this.btnCrearPeriodo.Size = new System.Drawing.Size(47, 35);
-            this.btnCrearPeriodo.TabIndex = 89;
+            this.btnCrearPeriodo.Size = new System.Drawing.Size(40, 32);
+            this.btnCrearPeriodo.TabIndex = 93;
             this.btnCrearPeriodo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnCrearPeriodo, "Crear Período");
-            this.btnCrearPeriodo.UseVisualStyleBackColor = true;
-            this.btnCrearPeriodo.Visible = false;
+            this.btnCrearPeriodo.UseVisualStyleBackColor = false;
             this.btnCrearPeriodo.Click += new System.EventHandler(this.btnCrearPeriodo_Click);
             // 
             // btnActualizarCombo
             // 
             this.btnActualizarCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizarCombo.Image = global::Sico.Properties.Resources.refrescar;
+            this.btnActualizarCombo.Image = global::Sico.Properties.Resources.actualizado;
             this.btnActualizarCombo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnActualizarCombo.Location = new System.Drawing.Point(373, 79);
+            this.btnActualizarCombo.Location = new System.Drawing.Point(185, 1);
             this.btnActualizarCombo.Name = "btnActualizarCombo";
-            this.btnActualizarCombo.Size = new System.Drawing.Size(47, 35);
-            this.btnActualizarCombo.TabIndex = 90;
+            this.btnActualizarCombo.Size = new System.Drawing.Size(40, 32);
+            this.btnActualizarCombo.TabIndex = 94;
             this.btnActualizarCombo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnActualizarCombo, "Actualizar Combo Periodo");
             this.btnActualizarCombo.UseVisualStyleBackColor = true;
@@ -215,11 +173,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.btnAltaSubCliente);
+            this.panel1.Controls.Add(this.btnAltaProveedor);
             this.panel1.Controls.Add(this.btnCargaMasiva);
-            this.panel1.Controls.Add(this.btnBuscarCliente);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnBuscarProveedor);
+            this.panel1.Controls.Add(this.btnCrearPeriodo);
+            this.panel1.Controls.Add(this.btnActualizarCombo);
             this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1080, 35);
@@ -227,7 +185,6 @@
             // 
             // dtFecha
             // 
-            this.dtFecha.Enabled = false;
             this.dtFecha.Location = new System.Drawing.Point(92, 89);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Size = new System.Drawing.Size(233, 21);
@@ -237,6 +194,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(29, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 15);
@@ -247,6 +205,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(654, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(140, 15);
@@ -255,7 +214,6 @@
             // 
             // cmbTipoComprobante
             // 
-            this.cmbTipoComprobante.Enabled = false;
             this.cmbTipoComprobante.FormattingEnabled = true;
             this.cmbTipoComprobante.Location = new System.Drawing.Point(807, 91);
             this.cmbTipoComprobante.Name = "cmbTipoComprobante";
@@ -266,7 +224,6 @@
             // 
             // txtFactura
             // 
-            this.txtFactura.Enabled = false;
             this.txtFactura.Location = new System.Drawing.Point(807, 51);
             this.txtFactura.Mask = "00000-00000000";
             this.txtFactura.Name = "txtFactura";
@@ -277,6 +234,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(707, 54);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 15);
@@ -287,6 +245,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(6, 321);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(111, 15);
@@ -297,6 +256,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(348, 321);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(110, 15);
@@ -305,7 +265,6 @@
             // 
             // txtTipoCambio
             // 
-            this.txtTipoCambio.Enabled = false;
             this.txtTipoCambio.Location = new System.Drawing.Point(464, 315);
             this.txtTipoCambio.Name = "txtTipoCambio";
             this.txtTipoCambio.Size = new System.Drawing.Size(165, 21);
@@ -315,6 +274,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Black;
             this.label15.Location = new System.Drawing.Point(672, 318);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(122, 15);
@@ -323,7 +283,6 @@
             // 
             // cmbCodigoMoneda
             // 
-            this.cmbCodigoMoneda.Enabled = false;
             this.cmbCodigoMoneda.FormattingEnabled = true;
             this.cmbCodigoMoneda.Location = new System.Drawing.Point(121, 315);
             this.cmbCodigoMoneda.Name = "cmbCodigoMoneda";
@@ -332,7 +291,6 @@
             // 
             // cmbCodigoOperacion
             // 
-            this.cmbCodigoOperacion.Enabled = false;
             this.cmbCodigoOperacion.FormattingEnabled = true;
             this.cmbCodigoOperacion.Location = new System.Drawing.Point(800, 315);
             this.cmbCodigoOperacion.Name = "cmbCodigoOperacion";
@@ -343,6 +301,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Black;
             this.label20.Location = new System.Drawing.Point(5, 283);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(110, 15);
@@ -353,6 +312,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
             this.label19.Location = new System.Drawing.Point(348, 283);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(72, 15);
@@ -361,7 +321,6 @@
             // 
             // txtPercepIVA
             // 
-            this.txtPercepIVA.Enabled = false;
             this.txtPercepIVA.Location = new System.Drawing.Point(418, 280);
             this.txtPercepIVA.Name = "txtPercepIVA";
             this.txtPercepIVA.Size = new System.Drawing.Size(211, 21);
@@ -373,6 +332,7 @@
             // 
             this.labelNoGravado.AutoSize = true;
             this.labelNoGravado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNoGravado.ForeColor = System.Drawing.Color.Black;
             this.labelNoGravado.Location = new System.Drawing.Point(680, 283);
             this.labelNoGravado.Name = "labelNoGravado";
             this.labelNoGravado.Size = new System.Drawing.Size(114, 15);
@@ -381,7 +341,6 @@
             // 
             // txtPercepIngBrutos
             // 
-            this.txtPercepIngBrutos.Enabled = false;
             this.txtPercepIngBrutos.Location = new System.Drawing.Point(121, 280);
             this.txtPercepIngBrutos.Name = "txtPercepIngBrutos";
             this.txtPercepIngBrutos.Size = new System.Drawing.Size(211, 21);
@@ -391,7 +350,6 @@
             // 
             // txtNoGravado
             // 
-            this.txtNoGravado.Enabled = false;
             this.txtNoGravado.Location = new System.Drawing.Point(800, 280);
             this.txtNoGravado.Name = "txtNoGravado";
             this.txtNoGravado.Size = new System.Drawing.Size(211, 21);
@@ -403,6 +361,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Black;
             this.label21.Location = new System.Drawing.Point(77, 351);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(34, 15);
@@ -423,6 +382,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.Black;
             this.label28.Location = new System.Drawing.Point(20, 54);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(66, 15);
@@ -432,7 +392,6 @@
             // cmbPeriodo
             // 
             this.cmbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPeriodo.Enabled = false;
             this.cmbPeriodo.FormattingEnabled = true;
             this.cmbPeriodo.Location = new System.Drawing.Point(92, 51);
             this.cmbPeriodo.Name = "cmbPeriodo";
@@ -477,6 +436,7 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtCodigoDocumento);
             this.panel2.Controls.Add(this.label7);
+            this.panel2.Enabled = false;
             this.panel2.Location = new System.Drawing.Point(16, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1040, 31);
@@ -526,6 +486,7 @@
             this.txtCodigoDocumento.Name = "txtCodigoDocumento";
             this.txtCodigoDocumento.Size = new System.Drawing.Size(143, 21);
             this.txtCodigoDocumento.TabIndex = 27;
+            this.txtCodigoDocumento.Visible = false;
             // 
             // label7
             // 
@@ -536,18 +497,19 @@
             this.label7.Size = new System.Drawing.Size(129, 15);
             this.label7.TabIndex = 26;
             this.label7.Text = "Código Documento(*):";
+            this.label7.Visible = false;
             // 
-            // lblidSubCliente
+            // lblidProveedor
             // 
-            this.lblidSubCliente.AutoSize = true;
-            this.lblidSubCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblidSubCliente.ForeColor = System.Drawing.Color.Black;
-            this.lblidSubCliente.Location = new System.Drawing.Point(407, 54);
-            this.lblidSubCliente.Name = "lblidSubCliente";
-            this.lblidSubCliente.Size = new System.Drawing.Size(77, 15);
-            this.lblidSubCliente.TabIndex = 97;
-            this.lblidSubCliente.Text = "idSubCliente";
-            this.lblidSubCliente.Visible = false;
+            this.lblidProveedor.AutoSize = true;
+            this.lblidProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblidProveedor.ForeColor = System.Drawing.Color.Black;
+            this.lblidProveedor.Location = new System.Drawing.Point(407, 54);
+            this.lblidProveedor.Name = "lblidProveedor";
+            this.lblidProveedor.Size = new System.Drawing.Size(77, 15);
+            this.lblidProveedor.TabIndex = 97;
+            this.lblidProveedor.Text = "idSubCliente";
+            this.lblidProveedor.Visible = false;
             // 
             // panel3
             // 
@@ -581,7 +543,6 @@
             // 
             // txtNeto1
             // 
-            this.txtNeto1.Enabled = false;
             this.txtNeto1.Location = new System.Drawing.Point(350, 21);
             this.txtNeto1.Name = "txtNeto1";
             this.txtNeto1.Size = new System.Drawing.Size(149, 21);
@@ -591,7 +552,6 @@
             // 
             // txtTotal1
             // 
-            this.txtTotal1.Enabled = false;
             this.txtTotal1.Location = new System.Drawing.Point(84, 21);
             this.txtTotal1.Name = "txtTotal1";
             this.txtTotal1.Size = new System.Drawing.Size(149, 21);
@@ -610,7 +570,6 @@
             // 
             // txtTotal2
             // 
-            this.txtTotal2.Enabled = false;
             this.txtTotal2.Location = new System.Drawing.Point(84, 70);
             this.txtTotal2.Name = "txtTotal2";
             this.txtTotal2.Size = new System.Drawing.Size(149, 21);
@@ -621,7 +580,6 @@
             // 
             // txtTotal3
             // 
-            this.txtTotal3.Enabled = false;
             this.txtTotal3.Location = new System.Drawing.Point(84, 122);
             this.txtTotal3.Name = "txtTotal3";
             this.txtTotal3.Size = new System.Drawing.Size(149, 21);
@@ -631,7 +589,6 @@
             // 
             // txtNeto2
             // 
-            this.txtNeto2.Enabled = false;
             this.txtNeto2.Location = new System.Drawing.Point(350, 72);
             this.txtNeto2.Name = "txtNeto2";
             this.txtNeto2.Size = new System.Drawing.Size(149, 21);
@@ -641,7 +598,6 @@
             // 
             // txtNeto3
             // 
-            this.txtNeto3.Enabled = false;
             this.txtNeto3.Location = new System.Drawing.Point(350, 122);
             this.txtNeto3.Name = "txtNeto3";
             this.txtNeto3.Size = new System.Drawing.Size(149, 21);
@@ -653,6 +609,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(21, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 15);
@@ -663,6 +620,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(21, 70);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 15);
@@ -673,6 +631,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(21, 120);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(37, 15);
@@ -683,6 +642,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.Location = new System.Drawing.Point(249, 24);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 15);
@@ -693,6 +653,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
             this.label13.Location = new System.Drawing.Point(249, 75);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(83, 15);
@@ -703,6 +664,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
             this.label25.Location = new System.Drawing.Point(619, 125);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(22, 15);
@@ -713,6 +675,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.Location = new System.Drawing.Point(249, 125);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(83, 15);
@@ -723,6 +686,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Black;
             this.label24.Location = new System.Drawing.Point(619, 75);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(22, 15);
@@ -733,6 +697,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Black;
             this.label22.Location = new System.Drawing.Point(533, 5);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(50, 15);
@@ -743,6 +708,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.Black;
             this.label23.Location = new System.Drawing.Point(619, 24);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(22, 15);
@@ -753,6 +719,7 @@
             // 
             this.lbl27.AutoSize = true;
             this.lbl27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl27.ForeColor = System.Drawing.Color.Black;
             this.lbl27.Location = new System.Drawing.Point(548, 125);
             this.lbl27.Name = "lbl27";
             this.lbl27.Size = new System.Drawing.Size(32, 15);
@@ -763,6 +730,7 @@
             // 
             this.lbl21.AutoSize = true;
             this.lbl21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl21.ForeColor = System.Drawing.Color.Black;
             this.lbl21.Location = new System.Drawing.Point(548, 75);
             this.lbl21.Name = "lbl21";
             this.lbl21.Size = new System.Drawing.Size(32, 15);
@@ -773,6 +741,7 @@
             // 
             this.lbl105.AutoSize = true;
             this.lbl105.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl105.ForeColor = System.Drawing.Color.Black;
             this.lbl105.Location = new System.Drawing.Point(541, 24);
             this.lbl105.Name = "lbl105";
             this.lbl105.Size = new System.Drawing.Size(42, 15);
@@ -781,7 +750,6 @@
             // 
             // txtIva1
             // 
-            this.txtIva1.Enabled = false;
             this.txtIva1.Location = new System.Drawing.Point(647, 21);
             this.txtIva1.Name = "txtIva1";
             this.txtIva1.Size = new System.Drawing.Size(149, 21);
@@ -789,7 +757,6 @@
             // 
             // txtIva2
             // 
-            this.txtIva2.Enabled = false;
             this.txtIva2.Location = new System.Drawing.Point(647, 72);
             this.txtIva2.Name = "txtIva2";
             this.txtIva2.Size = new System.Drawing.Size(149, 21);
@@ -797,7 +764,6 @@
             // 
             // txtIva3
             // 
-            this.txtIva3.Enabled = false;
             this.txtIva3.Location = new System.Drawing.Point(647, 122);
             this.txtIva3.Name = "txtIva3";
             this.txtIva3.Size = new System.Drawing.Size(149, 21);
@@ -806,15 +772,12 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.panel3);
-            this.groupBox1.Controls.Add(this.lblidSubCliente);
+            this.groupBox1.Controls.Add(this.lblidProveedor);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Controls.Add(this.btnCancelar);
-            this.groupBox1.Controls.Add(this.btnActualizarCombo);
-            this.groupBox1.Controls.Add(this.btnCrearPeriodo);
             this.groupBox1.Controls.Add(this.cmbPeriodo);
             this.groupBox1.Controls.Add(this.label28);
-            this.groupBox1.Controls.Add(this.btnActualizar);
             this.groupBox1.Controls.Add(this.lblTotalEdit);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.txtNoGravado);
@@ -867,11 +830,11 @@
         #endregion
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnAltaSubCliente;
+        private System.Windows.Forms.Button btnAltaProveedor;
         private System.Windows.Forms.Button btnCargaMasiva;
-        private System.Windows.Forms.Button btnBuscarCliente;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBuscarProveedor;
+        private System.Windows.Forms.Button btnCrearPeriodo;
+        private System.Windows.Forms.Button btnActualizarCombo;
         private System.Windows.Forms.DateTimePicker dtFecha;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
@@ -892,21 +855,15 @@
         private System.Windows.Forms.TextBox txtNoGravado;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label lblTotalEdit;
-        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ComboBox cmbPeriodo;
-        private System.Windows.Forms.Button btnCrearPeriodo;
-        private System.Windows.Forms.Button btnActualizarCombo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtApellidoNombre;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.MaskedTextBox txtCuit;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtCodigoDocumento;
         private System.Windows.Forms.Label label7;
-        public System.Windows.Forms.Label lblidSubCliente;
+        public System.Windows.Forms.Label lblidProveedor;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtNeto1;
         private System.Windows.Forms.TextBox txtTotal1;
@@ -932,5 +889,8 @@
         private System.Windows.Forms.TextBox txtIva2;
         private System.Windows.Forms.TextBox txtIva3;
         private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.TextBox txtApellidoNombre;
+        public System.Windows.Forms.MaskedTextBox txtCuit;
+        public System.Windows.Forms.TextBox txtCodigoDocumento;
     }
 }

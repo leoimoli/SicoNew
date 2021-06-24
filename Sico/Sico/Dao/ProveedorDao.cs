@@ -32,6 +32,7 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Altura_in", _proveedor.Altura);
             cmd.Parameters.AddWithValue("CodigoPostal_in", _proveedor.CodigoPostal);
             cmd.Parameters.AddWithValue("idUsuario_in", _proveedor.idUsuario);
+            cmd.Parameters.AddWithValue("idCliente_in", Sesion.UsuarioLogueado.idEmpresaSeleccionado);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();
@@ -58,11 +59,51 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Altura_in", _proveedor.Altura);
             cmd.Parameters.AddWithValue("CodigoPostal_in", _proveedor.CodigoPostal);
             cmd.Parameters.AddWithValue("idUsuario_in", _proveedor.idUsuario);
+            cmd.Parameters.AddWithValue("idCliente_in",Sesion.UsuarioLogueado.idEmpresaSeleccionado);
             cmd.ExecuteNonQuery();
             exito = true;
             connection.Close();
             return exito;
         }
+        public static List<Proveedor> BuscarProveedor(int idEmpresaSeleccionado)
+        {
+            connection.Close();
+            connection.Open();
+            List<Entidades.Proveedor> lista = new List<Entidades.Proveedor>();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
+                                      new MySqlParameter("idEmpresaSeleccionado_in", idEmpresaSeleccionado)};
+            string proceso = "BuscarProveedor";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    Proveedor listaProveedor = new Proveedor();
+                    listaProveedor.IdProveedor = Convert.ToInt32(item["idProveedor"].ToString());
+                    listaProveedor.NombreRazonSocial = item["NombreRazonSocial"].ToString();
+                    listaProveedor.Cuit = item["Cuit"].ToString();
+                    listaProveedor.Factura = item["TipoFactura"].ToString();
+                    listaProveedor.CondicionAntiAfip = item["CondicionAntiAfip"].ToString();
+                    listaProveedor.Telefono = item["Telefono"].ToString();
+                    listaProveedor.Email = item["Email"].ToString();
+                    listaProveedor.Provincia = item["Provincia"].ToString();
+                    listaProveedor.Localidad = item["Localidad"].ToString();
+                    listaProveedor.Calle = item["Calle"].ToString();
+                    listaProveedor.Altura = item["Altura"].ToString();
+                    listaProveedor.CodigoPostal = item["CodigoPostal"].ToString();
+                    lista.Add(listaProveedor);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static bool ValidarProveedorExistente(string nombreRazonSocial, string cuit)
         {
             connection.Close();
@@ -166,7 +207,7 @@ namespace Sico.Dao
             connection.Close();
             return lista;
         }
-        public static int GuardarProveedorMasivos(string nombreProveedor, string cuit, string TipoFactura)
+        public static int GuardarProveedorMasivos(string nombreProveedor, string cuit, string TipoFactura, int idCliente)
         {
             int idProveedor = 0;
             string condicionAntiAfip = "";
@@ -197,13 +238,15 @@ namespace Sico.Dao
             cmd.Parameters.AddWithValue("Calle_in", "");
             cmd.Parameters.AddWithValue("Altura_in", "");
             cmd.Parameters.AddWithValue("CodigoPostal_in", "");
-            int idUsuario = 1;
+            int idUsuario = Sesion.UsuarioLogueado.IdUsuario;
+            cmd.Parameters.AddWithValue("idCliente_in", idCliente);
             cmd.Parameters.AddWithValue("idUsuario_in", idUsuario);
             MySqlDataReader r = cmd.ExecuteReader();
             while (r.Read())
             {
                 idProveedor = Convert.ToInt32(r["ID"].ToString());
             }
+           
             connection.Close();
             return idProveedor;
         }

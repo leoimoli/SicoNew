@@ -22,7 +22,6 @@ namespace Sico.Clases_Maestras
             conexion.Close();
             return dt;
         }
-
         public static AutoCompleteStringCollection Autocomplete()
         {
             DataTable DT = Datos();
@@ -33,6 +32,5 @@ namespace Sico.Clases_Maestras
             }
             return coleccion;
         }
-
     }
 }

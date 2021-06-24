@@ -205,10 +205,22 @@ namespace Sico
         {
             AbrirFormEnPanel(new InformesEmpresaWF());
         }
-
         private void iVAVentasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new VistaConsultaFacturacionMensualWF(null, 0));
+        }
+        private void MenuSupContabilidad_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+        private void comprobanteDeCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new FacturacionCompraWF(null, null, null));
+        }
+        private void proveedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProveedoresWF _proveedor = new ProveedoresWF();
+            _proveedor.Show();
         }
     }
 }

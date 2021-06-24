@@ -54,6 +54,18 @@ namespace Sico.Negocio
             return exito;
         }
 
+        public static List<Proveedor> BuscarProveedor(int idEmpresaSeleccionado)
+        {
+            List<Proveedor> _listaProveedores = new List<Proveedor>();
+            try
+            {
+                _listaProveedores = ProveedorDao.BuscarProveedor(idEmpresaSeleccionado);
+            }
+            catch (Exception ex)
+            {                
+            }
+            return _listaProveedores;
+        }
         private static bool ValidarProveedorExistente(string nombreRazonSocial, string cuit)
         {
             bool existe = ProveedorDao.ValidarProveedorExistente(nombreRazonSocial, cuit);

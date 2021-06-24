@@ -15,10 +15,8 @@ namespace Sico.Dao
         public static bool GuardarPeriodo(string cuit, string nombre, string Año)
         {
             bool exito = false;
-            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
-            bool YaExiste = ValidadPeriodoExistente(nombre, idCliente, Año);
+            int inCliente = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
+            bool YaExiste = ValidadPeriodoExistente(nombre, inCliente, Año);
             string NombrePeriodo = nombre + Año;
             if (YaExiste == false)
             {
@@ -27,7 +25,7 @@ namespace Sico.Dao
                 string proceso = "GuardarPeriodo";
                 MySqlCommand cmd = new MySqlCommand(proceso, connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("idCliente_in", idCliente);
+                cmd.Parameters.AddWithValue("idCliente_in", inCliente);
                 cmd.Parameters.AddWithValue("Ano_in", Año);
                 cmd.Parameters.AddWithValue("Nombre_in", NombrePeriodo);
                 cmd.ExecuteNonQuery();

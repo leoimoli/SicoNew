@@ -31,39 +31,57 @@ namespace Sico
         private void FacturacionCompraWF_Load(object sender, EventArgs e)
         {
             CargarCombos();
+            txtTipoCambio.Text = "1,000000";
         }
         #region Funciones
+        public void IniciarPantalla()
+        {
+            CargarCombos();
+            //BuscarFacturaParaClienteSeleccionado();
+            dtFecha.Enabled = true;
+        }
         private void CargarCombos()
         {
             List<string> TipoComprobante = new List<string>();
             TipoComprobante = ComprasNeg.CargarComboTipoComprobante();
             cmbTipoComprobante.Items.Clear();
+            cmbTipoComprobante.Text = "Seleccione";
+            cmbTipoComprobante.Items.Add("Seleccione");
             foreach (string item in TipoComprobante)
             {
+                cmbTipoComprobante.Text = "Seleccione";
                 cmbTipoComprobante.Items.Add(item);
             }
-
             List<string> CodigoOperacion = new List<string>();
             CodigoOperacion = ComprasNeg.CargarComboCodigoOperacion();
             cmbCodigoOperacion.Items.Clear();
+            cmbCodigoOperacion.Text = "Seleccione";
+            cmbCodigoOperacion.Items.Add("Seleccione");
             foreach (string item in CodigoOperacion)
             {
+                cmbCodigoOperacion.Text = "Seleccione";
                 cmbCodigoOperacion.Items.Add(item);
             }
             List<string> TipoMoneda = new List<string>();
             TipoMoneda = ComprasNeg.CargarComboTipoMoneda();
             cmbCodigoMoneda.Items.Clear();
+            cmbCodigoMoneda.Text = "Seleccione";
+            cmbCodigoMoneda.Items.Add("Seleccione");
             foreach (string item in TipoMoneda)
             {
+                cmbCodigoMoneda.Text = "Seleccione";               
                 cmbCodigoMoneda.Items.Add(item);
             }
-            //List<string> Periodo = new List<string>();
-            //Periodo = PeriodoNeg.CargarComboPeriodo(cuit);
-            //cmbPeriodo.Items.Clear();
-            //foreach (string item in Periodo)
-            //{
-            //    cmbPeriodo.Items.Add(item);
-            //}
+            List<string> Periodo = new List<string>();
+            Periodo = PeriodoNeg.CargarComboPeriodo(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
+            cmbPeriodo.Items.Clear();
+            cmbPeriodo.Text = "Seleccione";
+            cmbPeriodo.Items.Add("Seleccione");
+            foreach (string item in Periodo)
+            {
+                cmbPeriodo.Text = "Seleccione";
+                cmbPeriodo.Items.Add(item);
+            }
         }
         public static decimal Total;
         private decimal CalcularValorNeto1(double total1)
@@ -128,7 +146,7 @@ namespace Sico
             btnCancelar.Enabled = true;
             btnGuardar.Enabled = true;
             txtNoGravado.Enabled = true;
-            btnActualizar.Visible = true;
+            //btnActualizar.Visible = true;
             cmbPeriodo.Enabled = true;
             btnCrearPeriodo.Visible = true;
         }
@@ -201,7 +219,7 @@ namespace Sico
             btnCancelar.Enabled = false;
             btnGuardar.Enabled = false;
             labelNoGravado.Enabled = false;
-            btnActualizar.Visible = false;
+            //btnActualizar.Visible = false;
             txtApellidoNombre.Clear();
             txtCodigoDocumento.Clear();
             txtCuit.Clear();
@@ -547,7 +565,7 @@ namespace Sico
         private FacturaCompra CargarEntidad()
         {
             FacturaCompra _factura = new FacturaCompra();
-            _factura.idProveedor = idProveedorSeleccionado;
+            _factura.idProveedor = Convert.ToInt32(lblidProveedor.Text);
             _factura.CodigoDocumento = txtCodigoDocumento.Text;
             _factura.ApellidoNombre = txtApellidoNombre.Text;
             DateTime fecha = dtFecha.Value;
@@ -608,6 +626,7 @@ namespace Sico
             _factura.CodigoTipoOperacion = cmbCodigoOperacion.Text;
             _factura.Monto = Convert.ToDecimal(lblTotalEdit.Text);
             _factura.Periodo = cmbPeriodo.Text;
+
             return _factura;
         }
         #endregion
@@ -682,12 +701,10 @@ namespace Sico
             PeriodosWF _periodo = new PeriodosWF(cuit, razonSocial);
             _periodo.Show();
         }
-
         private void btnActualizarCombo_Click(object sender, EventArgs e)
         {
             CargarCombos();
         }
-
         private void txtTotal1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -781,6 +798,22 @@ namespace Sico
                     lblTotalEdit.Text = Convert.ToString(Total);
                 }
             }
+        }
+
+        private void btnAltaProveedor_Click(object sender, EventArgs e)
+        {
+            ProveedoresWF _proveedor = new ProveedoresWF();
+            _proveedor.Show();
+        }
+        private void btnBuscarProveedor_Click(object sender, EventArgs e)
+        {
+            ProveedorNuevoWF _proveedor = new ProveedorNuevoWF();
+            _proveedor.Show();
+        }
+        private void btnCargaMasiva_Click(object sender, EventArgs e)
+        {
+            ComprasImportarComprasWF _compras = new ComprasImportarComprasWF(null, null);
+            _compras.Show();
         }
     }
 }

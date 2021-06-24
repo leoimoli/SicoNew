@@ -22,5 +22,7 @@ namespace Sico.Entidades
         public string CodigoPostal { get; set; }
         public int idUsuario { get; set; }
         public string Factura { get; set; }
+
+        public int idCliente { get; set; }
     }
 }

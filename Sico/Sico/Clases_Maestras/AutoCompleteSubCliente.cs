@@ -19,7 +19,7 @@ namespace Sico.Clases_Maestras
             MySqlConnection conexion = new MySqlConnection(Properties.Settings.Default.db);
             conexion.Open();
             int id = idCliente;
-            string consulta = "Select ApellidoNombre from subcliente where idCliente = '" + id + "'";
+            string consulta = "Select ApellidoNombre from subclienteempresa where idCliente = '" + id + "'";
             MySqlCommand cmd = new MySqlCommand(consulta, conexion);
             MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
             adap.Fill(dt);

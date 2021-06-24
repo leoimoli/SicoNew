@@ -26,6 +26,13 @@ namespace Sico
         {
             this.Refresh();
             ListarSubClientes();
+            BuscarTexto();
+        }
+        private void BuscarTexto()
+        {
+            txtRazonSocial.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteSubCliente.Autocomplete(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
+            txtRazonSocial.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtRazonSocial.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
         private void ListarSubClientes()
         {
@@ -121,6 +128,11 @@ namespace Sico
             string cadena = txtDni.Text.Trim().Replace("*", "");
             string filtro = string.Format("convert([{0}], System.String) LIKE '{1}%'", nombre_columna, cadena);
             (datagrid.DataSource as DataTable).DefaultView.RowFilter = filtro;
+        }
+
+        private void btnActualizarCombo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -52,7 +52,7 @@ namespace Sico
                 dgvCompras.ReadOnly = true;
                 dgvCompras.RowHeadersVisible = false;
                 //dgvCompras.Rows.Add(Lista.Fecha, list.TipoComprobante, list.NroFactura, list.TipoComprobante, list.Cuit, list.NombreProveedor, list.TipoDeCambio, list.CodigoMoneda, VARImpNetoGravado, VARImpNetoNoGravado, VARImpOpExentas, list.PercepIva, list.PercepIngBrutos, Iva, list.Monto);
-                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassProveedores.Autocomplete();
+                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassProveedores.Autocomplete(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
                 txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 ValidarDiseñoGrilla();
@@ -428,7 +428,7 @@ namespace Sico
                 dgvCompras.Visible = true;
                 dgvCompras.ReadOnly = true;
                 dgvCompras.RowHeadersVisible = false;
-                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassProveedores.Autocomplete();
+                txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassProveedores.Autocomplete(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
                 txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 ValidarDiseñoGrilla();
@@ -475,7 +475,7 @@ namespace Sico
             dgvCompras.Visible = true;
             dgvCompras.ReadOnly = true;
             dgvCompras.RowHeadersVisible = false;
-            txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassProveedores.Autocomplete();
+            txtBuscar.AutoCompleteCustomSource = Clases_Maestras.AutoCompleteClassProveedores.Autocomplete(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
             txtBuscar.AutoCompleteMode = AutoCompleteMode.Suggest;
             txtBuscar.AutoCompleteSource = AutoCompleteSource.CustomSource;
             ValidarDiseñoGrilla();

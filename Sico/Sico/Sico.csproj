@@ -418,6 +418,12 @@
     <Compile Include="ProveedoresWF.Designer.cs">
       <DependentUpon>ProveedoresWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProveedorNuevoWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProveedorNuevoWF.Designer.cs">
+      <DependentUpon>ProveedorNuevoWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarPagoWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -586,6 +592,9 @@
     </Compile>
     <EmbeddedResource Include="ProveedoresWF.resx">
       <DependentUpon>ProveedoresWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProveedorNuevoWF.resx">
+      <DependentUpon>ProveedorNuevoWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrarPagoWF.resx">
       <DependentUpon>RegistrarPagoWF.cs</DependentUpon>

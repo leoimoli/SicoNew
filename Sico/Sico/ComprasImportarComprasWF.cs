@@ -34,8 +34,8 @@ namespace Sico
         {
             try
             {
-                lblCuitEdit.Text = cuit;
-                lblNombreEdit.Text = razonSocial;
+                //lblCuitEdit.Text = cuit;
+                //lblNombreEdit.Text = razonSocial;
                 CargarCombo();
             }
             catch (Exception ex)
@@ -51,11 +51,12 @@ namespace Sico
         private void CargarCombo()
         {
             List<string> Periodo = new List<string>();
-            Periodo = PeriodoNeg.CargarComboPeriodoCompras(cuit);
+            Periodo = PeriodoNeg.CargarComboPeriodo(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
             cmbPeriodo.Items.Clear();
+            cmbPeriodo.Items.Add("Seleccione");
             foreach (string item in Periodo)
             {
-
+                cmbPeriodo.Text = "Seleccione";
                 cmbPeriodo.Items.Add(item);
             }
         }
@@ -595,6 +596,11 @@ namespace Sico
             }
             catch (Exception ex)
             { }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

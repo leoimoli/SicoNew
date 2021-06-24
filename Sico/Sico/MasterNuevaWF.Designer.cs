@@ -544,6 +544,7 @@
             this.comprobanteDeCompraToolStripMenuItem.Name = "comprobanteDeCompraToolStripMenuItem";
             this.comprobanteDeCompraToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
             this.comprobanteDeCompraToolStripMenuItem.Text = "Comprobante de Compra";
+            this.comprobanteDeCompraToolStripMenuItem.Click += new System.EventHandler(this.comprobanteDeCompraToolStripMenuItem_Click);
             // 
             // proveedorToolStripMenuItem
             // 
@@ -551,6 +552,7 @@
             this.proveedorToolStripMenuItem.Name = "proveedorToolStripMenuItem";
             this.proveedorToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
             this.proveedorToolStripMenuItem.Text = "Proveedor";
+            this.proveedorToolStripMenuItem.Click += new System.EventHandler(this.proveedorToolStripMenuItem_Click);
             // 
             // iVAVentasToolStripMenuItem
             // 
@@ -601,14 +603,14 @@
             // 
             this.iVAComprasToolStripMenuItem1.Image = global::Sico.Properties.Resources.carrito_de_compras__1_;
             this.iVAComprasToolStripMenuItem1.Name = "iVAComprasToolStripMenuItem1";
-            this.iVAComprasToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.iVAComprasToolStripMenuItem1.Size = new System.Drawing.Size(177, 26);
             this.iVAComprasToolStripMenuItem1.Text = "I.V.A Compras";
             // 
             // iVAVentasToolStripMenuItem1
             // 
             this.iVAVentasToolStripMenuItem1.Image = global::Sico.Properties.Resources.calculadora1;
             this.iVAVentasToolStripMenuItem1.Name = "iVAVentasToolStripMenuItem1";
-            this.iVAVentasToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.iVAVentasToolStripMenuItem1.Size = new System.Drawing.Size(177, 26);
             this.iVAVentasToolStripMenuItem1.Text = "I.V.A Ventas";
             this.iVAVentasToolStripMenuItem1.Click += new System.EventHandler(this.iVAVentasToolStripMenuItem1_Click);
             // 
@@ -826,7 +828,7 @@
             this.MenuSupHonorarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem10,
             this.informesToolStripMenuItem1});
-            this.MenuSupHonorarios.Location = new System.Drawing.Point(6, 0);
+            this.MenuSupHonorarios.Location = new System.Drawing.Point(12, 0);
             this.MenuSupHonorarios.Name = "MenuSupHonorarios";
             this.MenuSupHonorarios.Size = new System.Drawing.Size(279, 29);
             this.MenuSupHonorarios.TabIndex = 6;
@@ -858,7 +860,7 @@
             this.menuSupEmpresa.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem9,
             this.toolStripMenuItem12});
-            this.menuSupEmpresa.Location = new System.Drawing.Point(6, 2);
+            this.menuSupEmpresa.Location = new System.Drawing.Point(12, 0);
             this.menuSupEmpresa.Name = "menuSupEmpresa";
             this.menuSupEmpresa.Size = new System.Drawing.Size(213, 29);
             this.menuSupEmpresa.TabIndex = 5;
@@ -891,11 +893,12 @@
             this.toolStripMenuItem6,
             this.toolStripMenuItem7,
             this.toolStripMenuItem8});
-            this.MenuSupContabilidad.Location = new System.Drawing.Point(6, 2);
+            this.MenuSupContabilidad.Location = new System.Drawing.Point(6, 0);
             this.MenuSupContabilidad.Name = "MenuSupContabilidad";
             this.MenuSupContabilidad.Size = new System.Drawing.Size(401, 29);
             this.MenuSupContabilidad.TabIndex = 4;
             this.MenuSupContabilidad.Text = "menuStrip3";
+            this.MenuSupContabilidad.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuSupContabilidad_ItemClicked);
             // 
             // toolStripMenuItem5
             // 

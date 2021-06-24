@@ -91,5 +91,9 @@ namespace Sico
                 cmbAño.Items.Add(item);
             }
         }
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

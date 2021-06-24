@@ -521,15 +521,15 @@ namespace Sico.Dao
             bool exito = false;
             int idNotaCredito = 0;
             int idUltimaFacturaCompra = 0;
-            List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuit);
-            int idCliente = id[0].IdCliente;
+            //List<Entidades.Cliente> id = new List<Entidades.Cliente>();
+            //id = ClienteDao.BuscarClientePorCuit(cuit);
+            int idCliente = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
             foreach (var item in listaStatic)
             {
-                item.idProveedor = BuscarProveedor(item.NombreProveedor);
+                item.idProveedor = BuscarProveedor(item.NombreProveedor, idCliente);
                 if (item.idProveedor == 0)
                 {
-                    item.idProveedor = ProveedorDao.GuardarProveedorMasivos(item.NombreProveedor, item.Cuit, item.TipoComprobante);
+                    item.idProveedor = ProveedorDao.GuardarProveedorMasivos(item.NombreProveedor, item.Cuit, item.TipoComprobante, idCliente);
                 }
                 string var = "";
                 if (item.NroFactura != null)
@@ -632,7 +632,7 @@ namespace Sico.Dao
             connection.Close();
             return exito;
         }
-        private static int BuscarProveedor(string nombreProveedor)
+        private static int BuscarProveedor(string nombreProveedor, int idCliente)
         {
             connection.Open();
             int idProveedor = 0;
@@ -640,7 +640,8 @@ namespace Sico.Dao
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
-                                      new MySqlParameter("NombreRazonSocial_in", nombreProveedor)};
+                                      new MySqlParameter("NombreRazonSocial_in", nombreProveedor),
+            new MySqlParameter("idCliente_in", idCliente)};
             string proceso = "BuscarProveedorPorNombreRazonSocial";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
             dt.SelectCommand.CommandType = CommandType.StoredProcedure;

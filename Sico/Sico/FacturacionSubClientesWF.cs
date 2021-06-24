@@ -160,14 +160,15 @@ namespace Sico
                 cmbCodigoMoneda.Text = "Seleccione";
                 cmbCodigoMoneda.Items.Add(item);
             }
+
             List<string> Periodo = new List<string>();
             Periodo = PeriodoNeg.CargarComboPeriodoVenta(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
             cmbPeriodo.Items.Clear();
-            cmbCodigoMoneda.Text = "Seleccione";
-            cmbCodigoMoneda.Items.Add("Seleccione");
+            cmbPeriodo.Text = "Seleccione";
+            cmbPeriodo.Items.Add("Seleccione");
             foreach (string item in Periodo)
             {
-                cmbCodigoMoneda.Text = "Seleccione";
+                cmbPeriodo.Text = "Seleccione";
                 cmbPeriodo.Items.Add(item);
             }
         }
