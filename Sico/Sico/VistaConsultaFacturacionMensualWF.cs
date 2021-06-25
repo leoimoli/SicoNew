@@ -977,7 +977,13 @@ namespace Sico
             Document doc = new Document(PageSize.LETTER);
             //PdfWriter writer = PdfWriter.GetInstance(doc, m);
 
-            string ruta = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            string folderPath = "C:\\SICO-Archivos\\PDFs\\"; ;
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            string ruta = folderPath;
             // Creamos el documento con el tamaño de página tradicional
             //Document doc = new Document(PageSize.LETTER);
             string Periodo = "- Periodo -" + " " + cmbPeriodo.Text;
@@ -1223,7 +1229,8 @@ namespace Sico
             doc.Add(tblPrueba);
             doc.Close();
             writer.Close();
-            const string message2 = "Se generó el PDF exitosamente.";
+            string mensaje = "Se generó el PDF exitosamente en la carpeta" + " " + folderPath;
+            string message2 = mensaje;
             const string caption2 = "Éxito";
             var result2 = MessageBox.Show(message2, caption2,
                                          MessageBoxButtons.OK,

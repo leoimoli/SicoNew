@@ -71,7 +71,7 @@ namespace Sico
             MenuSupIva.Visible = false;
             MenuSupSueldos.Visible = false;
             MenuSupHonorarios.Visible = false;
-            AbrirFormEnPanel(new InicioNuevoWF());
+            AbrirFormEnPanel(new ClientesNuevoWFcs());
         }
         private void btnIva_Click(object sender, EventArgs e)
         {
@@ -221,6 +221,11 @@ namespace Sico
         {
             ProveedoresWF _proveedor = new ProveedoresWF();
             _proveedor.Show();
+        }
+
+        private void iVAComprasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new VistaConsultaFacturacionComprasMensualWF(null, null));
         }
     }
 }

@@ -33,12 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VistaConsultaFacturacionMensualWF));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnVolver2 = new System.Windows.Forms.Button();
             this.cmbPeriodo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,11 +50,11 @@
             this.Iva2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Iva3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NotaCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnPdf = new System.Windows.Forms.Button();
             this.btnCitiVentas = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
-            this.btnVolver2 = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +72,20 @@
             this.groupBox2.Size = new System.Drawing.Size(1075, 370);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
+            // 
+            // btnVolver2
+            // 
+            this.btnVolver2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver2.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
+            this.btnVolver2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnVolver2.Location = new System.Drawing.Point(768, 10);
+            this.btnVolver2.Name = "btnVolver2";
+            this.btnVolver2.Size = new System.Drawing.Size(49, 39);
+            this.btnVolver2.TabIndex = 49;
+            this.btnVolver2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVolver2.UseVisualStyleBackColor = true;
+            this.btnVolver2.Visible = false;
+            this.btnVolver2.Click += new System.EventHandler(this.btnVolver2_Click);
             // 
             // cmbPeriodo
             // 
@@ -96,12 +110,25 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(249, 212);
+            this.progressBar1.Location = new System.Drawing.Point(462, 209);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 42;
             this.progressBar1.Value = 50;
             this.progressBar1.Visible = false;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBuscar.Location = new System.Drawing.Point(709, 10);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
+            this.btnBuscar.TabIndex = 45;
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Visible = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dataGridView1
             // 
@@ -142,21 +169,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1066, 305);
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.Visible = false;
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(483, 32);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(302, 20);
-            this.label3.TabIndex = 76;
-            this.label3.Text = "I.V.A. Ventas Facturación de los periodos";
             // 
             // NroFactura
             // 
@@ -213,6 +225,10 @@
             this.NotaCredito.HeaderText = "Nota de Crédito";
             this.NotaCredito.Name = "NotaCredito";
             // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
             // btnPdf
             // 
             this.btnPdf.BackColor = System.Drawing.SystemColors.Control;
@@ -261,32 +277,16 @@
             this.btnExcel.UseVisualStyleBackColor = false;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
-            // btnVolver2
+            // label3
             // 
-            this.btnVolver2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver2.Image = global::Sico.Properties.Resources.flecha_curva_hacia_atras_a_la_izquierda;
-            this.btnVolver2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnVolver2.Location = new System.Drawing.Point(768, 10);
-            this.btnVolver2.Name = "btnVolver2";
-            this.btnVolver2.Size = new System.Drawing.Size(49, 39);
-            this.btnVolver2.TabIndex = 49;
-            this.btnVolver2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnVolver2.UseVisualStyleBackColor = true;
-            this.btnVolver2.Visible = false;
-            this.btnVolver2.Click += new System.EventHandler(this.btnVolver2_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Image = global::Sico.Properties.Resources.buscar_con_herramienta_en_esquema;
-            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBuscar.Location = new System.Drawing.Point(709, 10);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(49, 39);
-            this.btnBuscar.TabIndex = 45;
-            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Visible = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label3.Location = new System.Drawing.Point(412, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(302, 20);
+            this.label3.TabIndex = 76;
+            this.label3.Text = "I.V.A. Ventas Facturación de los periodos";
             // 
             // VistaConsultaFacturacionMensualWF
             // 

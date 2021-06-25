@@ -82,15 +82,6 @@
             this.lblEmpresa = new System.Windows.Forms.Label();
             this.lblEmpresaSoleccionada = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.MenuSupSueldos = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.asistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.novedadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.MenuSupHonorarios = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.informesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +93,15 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSupSueldos = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.asistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novedadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.PanelContenedor = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
@@ -122,11 +122,11 @@
             this.grbEmpresaSeleccionada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).BeginInit();
             this.panel5.SuspendLayout();
-            this.MenuSupSueldos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.MenuSupHonorarios.SuspendLayout();
             this.menuSupEmpresa.SuspendLayout();
             this.MenuSupContabilidad.SuspendLayout();
+            this.MenuSupSueldos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -605,6 +605,7 @@
             this.iVAComprasToolStripMenuItem1.Name = "iVAComprasToolStripMenuItem1";
             this.iVAComprasToolStripMenuItem1.Size = new System.Drawing.Size(177, 26);
             this.iVAComprasToolStripMenuItem1.Text = "I.V.A Compras";
+            this.iVAComprasToolStripMenuItem1.Click += new System.EventHandler(this.iVAComprasToolStripMenuItem1_Click);
             // 
             // iVAVentasToolStripMenuItem1
             // 
@@ -735,6 +736,118 @@
             this.panel5.TabIndex = 5;
             this.panel5.Visible = false;
             // 
+            // MenuSupHonorarios
+            // 
+            this.MenuSupHonorarios.BackColor = System.Drawing.SystemColors.Control;
+            this.MenuSupHonorarios.Dock = System.Windows.Forms.DockStyle.None;
+            this.MenuSupHonorarios.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.MenuSupHonorarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem10,
+            this.informesToolStripMenuItem1});
+            this.MenuSupHonorarios.Location = new System.Drawing.Point(6, 0);
+            this.MenuSupHonorarios.Name = "MenuSupHonorarios";
+            this.MenuSupHonorarios.Size = new System.Drawing.Size(279, 29);
+            this.MenuSupHonorarios.TabIndex = 6;
+            this.MenuSupHonorarios.Text = "menuStrip4";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem10.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem10.Image = global::Sico.Properties.Resources.dia_de_pago;
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(171, 25);
+            this.toolStripMenuItem10.Text = "Plan de Honorarios";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+            // 
+            // informesToolStripMenuItem1
+            // 
+            this.informesToolStripMenuItem1.Image = global::Sico.Properties.Resources.informe_seo;
+            this.informesToolStripMenuItem1.Name = "informesToolStripMenuItem1";
+            this.informesToolStripMenuItem1.Size = new System.Drawing.Size(100, 25);
+            this.informesToolStripMenuItem1.Text = "Informes";
+            this.informesToolStripMenuItem1.Click += new System.EventHandler(this.informesToolStripMenuItem1_Click);
+            // 
+            // menuSupEmpresa
+            // 
+            this.menuSupEmpresa.BackColor = System.Drawing.SystemColors.Control;
+            this.menuSupEmpresa.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuSupEmpresa.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.menuSupEmpresa.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem9,
+            this.toolStripMenuItem12});
+            this.menuSupEmpresa.Location = new System.Drawing.Point(6, 0);
+            this.menuSupEmpresa.Name = "menuSupEmpresa";
+            this.menuSupEmpresa.Size = new System.Drawing.Size(213, 29);
+            this.menuSupEmpresa.TabIndex = 5;
+            this.menuSupEmpresa.Text = "menuStrip4";
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem9.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem9.Image = global::Sico.Properties.Resources.fabrica;
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(105, 25);
+            this.toolStripMenuItem9.Text = "Empresas";
+            this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
+            // 
+            // toolStripMenuItem12
+            // 
+            this.toolStripMenuItem12.Image = global::Sico.Properties.Resources.informe_seo;
+            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(100, 25);
+            this.toolStripMenuItem12.Text = "Informes";
+            // 
+            // MenuSupContabilidad
+            // 
+            this.MenuSupContabilidad.BackColor = System.Drawing.SystemColors.Control;
+            this.MenuSupContabilidad.Dock = System.Windows.Forms.DockStyle.None;
+            this.MenuSupContabilidad.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.MenuSupContabilidad.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8});
+            this.MenuSupContabilidad.Location = new System.Drawing.Point(6, 0);
+            this.MenuSupContabilidad.Name = "MenuSupContabilidad";
+            this.MenuSupContabilidad.Size = new System.Drawing.Size(401, 29);
+            this.MenuSupContabilidad.TabIndex = 4;
+            this.MenuSupContabilidad.Text = "menuStrip3";
+            this.MenuSupContabilidad.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuSupContabilidad_ItemClicked);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem5.Image = global::Sico.Properties.Resources.presupuesto;
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(94, 25);
+            this.toolStripMenuItem5.Text = "Cuentas";
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem6.Image = global::Sico.Properties.Resources.calendario__1_;
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(102, 25);
+            this.toolStripMenuItem6.Text = "Ejercicios";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Image = global::Sico.Properties.Resources.notas;
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(97, 25);
+            this.toolStripMenuItem7.Text = "Asientos";
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Image = global::Sico.Properties.Resources.informe_seo;
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(100, 25);
+            this.toolStripMenuItem8.Text = "Informes";
+            // 
             // MenuSupSueldos
             // 
             this.MenuSupSueldos.BackColor = System.Drawing.SystemColors.Control;
@@ -820,118 +933,6 @@
             this.pictureBox6.TabIndex = 2;
             this.pictureBox6.TabStop = false;
             // 
-            // MenuSupHonorarios
-            // 
-            this.MenuSupHonorarios.BackColor = System.Drawing.SystemColors.Control;
-            this.MenuSupHonorarios.Dock = System.Windows.Forms.DockStyle.None;
-            this.MenuSupHonorarios.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.MenuSupHonorarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem10,
-            this.informesToolStripMenuItem1});
-            this.MenuSupHonorarios.Location = new System.Drawing.Point(12, 0);
-            this.MenuSupHonorarios.Name = "MenuSupHonorarios";
-            this.MenuSupHonorarios.Size = new System.Drawing.Size(279, 29);
-            this.MenuSupHonorarios.TabIndex = 6;
-            this.MenuSupHonorarios.Text = "menuStrip4";
-            // 
-            // toolStripMenuItem10
-            // 
-            this.toolStripMenuItem10.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem10.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem10.Image = global::Sico.Properties.Resources.dia_de_pago;
-            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(171, 25);
-            this.toolStripMenuItem10.Text = "Plan de Honorarios";
-            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
-            // 
-            // informesToolStripMenuItem1
-            // 
-            this.informesToolStripMenuItem1.Image = global::Sico.Properties.Resources.informe_seo;
-            this.informesToolStripMenuItem1.Name = "informesToolStripMenuItem1";
-            this.informesToolStripMenuItem1.Size = new System.Drawing.Size(100, 25);
-            this.informesToolStripMenuItem1.Text = "Informes";
-            this.informesToolStripMenuItem1.Click += new System.EventHandler(this.informesToolStripMenuItem1_Click);
-            // 
-            // menuSupEmpresa
-            // 
-            this.menuSupEmpresa.BackColor = System.Drawing.SystemColors.Control;
-            this.menuSupEmpresa.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuSupEmpresa.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.menuSupEmpresa.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem9,
-            this.toolStripMenuItem12});
-            this.menuSupEmpresa.Location = new System.Drawing.Point(12, 0);
-            this.menuSupEmpresa.Name = "menuSupEmpresa";
-            this.menuSupEmpresa.Size = new System.Drawing.Size(213, 29);
-            this.menuSupEmpresa.TabIndex = 5;
-            this.menuSupEmpresa.Text = "menuStrip4";
-            // 
-            // toolStripMenuItem9
-            // 
-            this.toolStripMenuItem9.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem9.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem9.Image = global::Sico.Properties.Resources.fabrica;
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(105, 25);
-            this.toolStripMenuItem9.Text = "Empresas";
-            this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
-            // 
-            // toolStripMenuItem12
-            // 
-            this.toolStripMenuItem12.Image = global::Sico.Properties.Resources.informe_seo;
-            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(100, 25);
-            this.toolStripMenuItem12.Text = "Informes";
-            // 
-            // MenuSupContabilidad
-            // 
-            this.MenuSupContabilidad.BackColor = System.Drawing.SystemColors.Control;
-            this.MenuSupContabilidad.Dock = System.Windows.Forms.DockStyle.None;
-            this.MenuSupContabilidad.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.MenuSupContabilidad.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8});
-            this.MenuSupContabilidad.Location = new System.Drawing.Point(6, 0);
-            this.MenuSupContabilidad.Name = "MenuSupContabilidad";
-            this.MenuSupContabilidad.Size = new System.Drawing.Size(401, 29);
-            this.MenuSupContabilidad.TabIndex = 4;
-            this.MenuSupContabilidad.Text = "menuStrip3";
-            this.MenuSupContabilidad.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuSupContabilidad_ItemClicked);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem5.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem5.Image = global::Sico.Properties.Resources.presupuesto;
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(94, 25);
-            this.toolStripMenuItem5.Text = "Cuentas";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem6.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem6.Image = global::Sico.Properties.Resources.calendario__1_;
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(102, 25);
-            this.toolStripMenuItem6.Text = "Ejercicios";
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Image = global::Sico.Properties.Resources.notas;
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(97, 25);
-            this.toolStripMenuItem7.Text = "Asientos";
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Image = global::Sico.Properties.Resources.informe_seo;
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(100, 25);
-            this.toolStripMenuItem8.Text = "Informes";
-            // 
             // PanelContenedor
             // 
             this.PanelContenedor.BackColor = System.Drawing.Color.SteelBlue;
@@ -987,15 +988,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.MenuSupSueldos.ResumeLayout(false);
-            this.MenuSupSueldos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.MenuSupHonorarios.ResumeLayout(false);
             this.MenuSupHonorarios.PerformLayout();
             this.menuSupEmpresa.ResumeLayout(false);
             this.menuSupEmpresa.PerformLayout();
             this.MenuSupContabilidad.ResumeLayout(false);
             this.MenuSupContabilidad.PerformLayout();
+            this.MenuSupSueldos.ResumeLayout(false);
+            this.MenuSupSueldos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
