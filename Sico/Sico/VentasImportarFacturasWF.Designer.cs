@@ -289,9 +289,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.Size = new System.Drawing.Size(160, 20);
             this.label1.TabIndex = 75;
-            this.label1.Text = "Carga Masiva";
+            this.label1.Text = "Ventas Carga Masiva";
             // 
             // btnCerrar
             // 

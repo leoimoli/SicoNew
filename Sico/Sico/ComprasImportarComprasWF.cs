@@ -106,9 +106,7 @@ namespace Sico
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            ComprasWF _compras = new ComprasWF(razonSocial, cuit);
-            _compras.Show();
-            Hide();
+            Close();
         }
         private void btnCargarDatos_Click(object sender, EventArgs e)
         {
@@ -127,22 +125,22 @@ namespace Sico
             //Hoja desde donde obtendremos los datos
             string hoja = "Sheet1";
             //Cadena de conexión
+            // Modifico la version para computadora de Arbi. Sino va 12.0
             string conexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +
                            RutaCargada +
                             ";Extended Properties='Excel 12.0;HDR=YES;';";
-
             OleDbConnection con = new OleDbConnection(conexion);
             //Consulta contra la hoja de Excel
             OleDbCommand cmd = new OleDbCommand("Select * From [" + hoja + "$]", con);
-            //Conectarse al archivo de Excel
-            con.Open();
-            OleDbDataAdapter sda = new OleDbDataAdapter(cmd);
-            DataTable data = new DataTable();
-            //Cargar los datos
-            sda.Fill(data);
-            List<Entidades.FacturaCompra> listaSubCliente = new List<Entidades.FacturaCompra>();
             try
             {
+                //Conectarse al archivo de Excel
+                con.Open();
+                OleDbDataAdapter sda = new OleDbDataAdapter(cmd);
+                DataTable data = new DataTable();
+                //Cargar los datos
+                sda.Fill(data);
+                List<Entidades.FacturaCompra> listaSubCliente = new List<Entidades.FacturaCompra>();
                 if (data.Rows.Count > 0)
                 {
                     foreach (DataRow item in data.Rows)
@@ -317,7 +315,14 @@ namespace Sico
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                string message2 = ex.Message;
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Exclamation);
+                // MessageBox.Show(ex.Message);
+            }
         }
         public static List<Entidades.FacturaCompra> ListaStatic;
         private void Calculos(List<FacturaCompra> listaSubCliente)

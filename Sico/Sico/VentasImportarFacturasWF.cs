@@ -87,6 +87,7 @@ namespace Sico
             //Hoja desde donde obtendremos los datos
             string hoja = "Sheet1";
             //Cadena de conexión
+            // Modifico la version para computadora de Arbi. Sino va 12.0
             string conexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +
                            RutaCargada +
                             ";Extended Properties='Excel 12.0;HDR=YES;';";
@@ -268,7 +269,12 @@ namespace Sico
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error en la lectura del archivo");
+                string message2 = ex.Message;
+                const string caption2 = "Atención";
+                var result2 = MessageBox.Show(message2, caption2,
+                                             MessageBoxButtons.OK,
+                                             MessageBoxIcon.Exclamation);
+               // MessageBox.Show(ex.Message);
             }
             finally
             {
