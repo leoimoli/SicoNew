@@ -118,11 +118,11 @@ namespace Sico
         {
             dgvPlanesHonorarios.Rows.Clear();
             List<Entidades.PlanHonorarios> ListarClientes = HonorariosNeg.ListarTodosPlanesParaCliente(idEmpresaSeleccionado);
+            btnNuevo.Visible = true;
             if (ListarClientes.Count > 0)
-            {           
+            {
                 DiseñoGrilla();
                 dgvPlanesHonorarios.Visible = true;
-                btnNuevo.Visible = true;
                 btnEditar.Visible = true;
                 lbllistado.Visible = true;
                 foreach (var item in ListarClientes)
@@ -134,9 +134,8 @@ namespace Sico
                 dgvPlanesHonorarios.AllowUserToAddRows = false;
             }
             else
-            {              
+            {
                 dgvPlanesHonorarios.Visible = false;
-                btnNuevo.Visible = false;
                 btnEditar.Visible = false;
                 lbllistado.Visible = false;
             }
@@ -280,18 +279,19 @@ namespace Sico
             if (this.dgvPlanesHonorarios.RowCount > 0)
             {
                 string Estado = dgvPlanesHonorarios.CurrentRow.Cells[5].Value.ToString();
-                if (Estado != "Cerrado")
+                PanelRegistroPlan.Enabled = true;
+                Funcion = 2;
+                List<Entidades.PlanHonorarios> _plan = new List<Entidades.PlanHonorarios>();
+                idPlanSeleccionado = Convert.ToInt32(this.dgvPlanesHonorarios.CurrentRow.Cells[0].Value);
+                txtDescripcion.Text = dgvPlanesHonorarios.CurrentRow.Cells[1].Value.ToString();
+                dtFechaDesde.Value = Convert.ToDateTime(dgvPlanesHonorarios.CurrentRow.Cells[2].Value.ToString());
+                dtFechaHasta.Value = Convert.ToDateTime(dgvPlanesHonorarios.CurrentRow.Cells[3].Value.ToString());
+                txtMontoTotal.Text = dgvPlanesHonorarios.CurrentRow.Cells[4].Value.ToString();
+                CalculoSinTenerMontoMensual(dtFechaDesde.Value, dtFechaHasta.Value, txtMontoTotal.Text);
+                txtObservaciones.Text = dgvPlanesHonorarios.CurrentRow.Cells[6].Value.ToString();
+                if (Estado == "Cerrado")
                 {
-                    PanelRegistroPlan.Enabled = true;
-                    Funcion = 2;
-                    List<Entidades.PlanHonorarios> _plan = new List<Entidades.PlanHonorarios>();
-                    idPlanSeleccionado = Convert.ToInt32(this.dgvPlanesHonorarios.CurrentRow.Cells[0].Value);
-                    txtDescripcion.Text = dgvPlanesHonorarios.CurrentRow.Cells[1].Value.ToString();
-                    dtFechaDesde.Value = Convert.ToDateTime(dgvPlanesHonorarios.CurrentRow.Cells[2].Value.ToString());
-                    dtFechaHasta.Value = Convert.ToDateTime(dgvPlanesHonorarios.CurrentRow.Cells[3].Value.ToString());
-                    txtMontoTotal.Text = dgvPlanesHonorarios.CurrentRow.Cells[4].Value.ToString();
-                    CalculoSinTenerMontoMensual(dtFechaDesde.Value, dtFechaHasta.Value, txtMontoTotal.Text);
-                    txtObservaciones.Text = dgvPlanesHonorarios.CurrentRow.Cells[6].Value.ToString();
+                    InhabilitarCampos();
                 }
             }
             else
@@ -303,7 +303,10 @@ namespace Sico
                                              MessageBoxIcon.Asterisk);
             }
         }
-
+        private void InhabilitarCampos()
+        {
+            PanelRegistroPlan.Enabled = false;          
+        }
         private void CalculoSinTenerMontoMensual(DateTime valueDesde1, DateTime valueHasta2, string MontoTotalObtenido)
         {
             DateTime FechaDesde = valueDesde1;
