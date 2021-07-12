@@ -69,12 +69,12 @@ namespace Sico.Negocio
             }
             return _listaFacturasSubCliente;
         }
-        public static List<FacturaCompra> BuscarFacturacionTotalCompras(string cuit, string Periodo)
+        public static List<FacturaCompra> BuscarFacturacionTotalCompras(int idEmpresa, string Periodo)
         {
             List<FacturaCompra> _listaFacturasSubCliente = new List<FacturaCompra>();
             try
             {
-                _listaFacturasSubCliente = ComprasDao.BuscarFacturacionTotalCompras(cuit, Periodo);
+                _listaFacturasSubCliente = ComprasDao.BuscarFacturacionTotalCompras(idEmpresa, Periodo);
             }
             catch (Exception ex)
             {

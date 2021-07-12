@@ -416,62 +416,57 @@ namespace Sico.Dao
             }
             return lista;
         }
-        public static List<FacturaCompra> BuscarFacturacionTotalCompras(string cuit, string Periodo)
+        public static List<FacturaCompra> BuscarFacturacionTotalCompras(int idEmpresa, string Periodo)
         {
             List<FacturaCompra> lista = new List<FacturaCompra>();
-            List<Entidades.Cliente> id = new List<Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuit);
-            int IdCliente = id[0].IdCliente;
-            if (IdCliente > 0)
-            {
-                connection.Close();
-                connection.Open();
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = connection;
-                DataTable Tabla = new DataTable();
-                MySqlParameter[] oParam = {
+
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = {
                             new MySqlParameter("Periodo_in", Periodo),
-                                      new MySqlParameter("IdCliente_in", IdCliente)};
-                string proceso = "BuscarFacturacionTotalCompras";
-                MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
-                dt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt.SelectCommand.Parameters.AddRange(oParam);
-                dt.Fill(Tabla);
-                if (Tabla.Rows.Count > 0)
+                                      new MySqlParameter("IdCliente_in", idEmpresa)};
+            string proceso = "BuscarFacturacionTotalCompras";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
                 {
-                    foreach (DataRow item in Tabla.Rows)
-                    {
-                        FacturaCompra listaFacturaCompra = new FacturaCompra();
-                        listaFacturaCompra.idProveedor = Convert.ToInt32(item["idProveedor"].ToString());
-                        listaFacturaCompra.NroFactura = item["NroFactura"].ToString();
-                        listaFacturaCompra.Fecha = item["Fecha"].ToString();
-                        listaFacturaCompra.ApellidoNombre = item["NombreRazonSocial"].ToString();
-                        listaFacturaCompra.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
-                        listaFacturaCompra.Cuit = item["Cuit"].ToString();
-                        // Detalle de la factura
-                        listaFacturaCompra.TipoComprobante = item["TipoComprobante"].ToString();
-                        listaFacturaCompra.Total1 = Convert.ToDecimal(item["Total1"].ToString());
-                        listaFacturaCompra.Total2 = Convert.ToDecimal(item["Total2"].ToString());
-                        listaFacturaCompra.Total3 = Convert.ToDecimal(item["Total3"].ToString());
-                        listaFacturaCompra.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
-                        listaFacturaCompra.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
-                        listaFacturaCompra.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
-                        listaFacturaCompra.Alicuota1 = item["Alicuota1"].ToString();
-                        listaFacturaCompra.Alicuota2 = item["Alicuota2"].ToString();
-                        listaFacturaCompra.Alicuota3 = item["Alicuota3"].ToString();
-                        listaFacturaCompra.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
-                        listaFacturaCompra.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
-                        listaFacturaCompra.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
+                    FacturaCompra listaFacturaCompra = new FacturaCompra();
+                    listaFacturaCompra.idProveedor = Convert.ToInt32(item["idProveedor"].ToString());
+                    listaFacturaCompra.NroFactura = item["NroFactura"].ToString();
+                    listaFacturaCompra.Fecha = item["Fecha"].ToString();
+                    listaFacturaCompra.ApellidoNombre = item["NombreRazonSocial"].ToString();
+                    listaFacturaCompra.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    listaFacturaCompra.Cuit = item["Cuit"].ToString();
+                    // Detalle de la factura
+                    listaFacturaCompra.TipoComprobante = item["TipoComprobante"].ToString();
+                    listaFacturaCompra.Total1 = Convert.ToDecimal(item["Total1"].ToString());
+                    listaFacturaCompra.Total2 = Convert.ToDecimal(item["Total2"].ToString());
+                    listaFacturaCompra.Total3 = Convert.ToDecimal(item["Total3"].ToString());
+                    listaFacturaCompra.Neto1 = Convert.ToDecimal(item["Neto1"].ToString());
+                    listaFacturaCompra.Neto2 = Convert.ToDecimal(item["Neto2"].ToString());
+                    listaFacturaCompra.Neto3 = Convert.ToDecimal(item["Neto3"].ToString());
+                    listaFacturaCompra.Alicuota1 = item["Alicuota1"].ToString();
+                    listaFacturaCompra.Alicuota2 = item["Alicuota2"].ToString();
+                    listaFacturaCompra.Alicuota3 = item["Alicuota3"].ToString();
+                    listaFacturaCompra.Iva1 = Convert.ToDecimal(item["Iva1"].ToString());
+                    listaFacturaCompra.Iva2 = Convert.ToDecimal(item["Iva2"].ToString());
+                    listaFacturaCompra.Iva3 = Convert.ToDecimal(item["Iva3"].ToString());
 
-                        listaFacturaCompra.PercepIngBrutos = Convert.ToDecimal(item["PercepcionIngresosBrutos"].ToString());
-                        listaFacturaCompra.PercepIva = Convert.ToDecimal(item["PercepcionIva"].ToString());
-                        listaFacturaCompra.NoGravado = Convert.ToDecimal(item["NoGravado"].ToString());
+                    listaFacturaCompra.PercepIngBrutos = Convert.ToDecimal(item["PercepcionIngresosBrutos"].ToString());
+                    listaFacturaCompra.PercepIva = Convert.ToDecimal(item["PercepcionIva"].ToString());
+                    listaFacturaCompra.NoGravado = Convert.ToDecimal(item["NoGravado"].ToString());
 
-                        listaFacturaCompra.CodigoMoneda = item["CodigoMoneda"].ToString();
-                        listaFacturaCompra.TipoDeCambio = item["TipoDeCambio"].ToString();
-                        listaFacturaCompra.CodigoTipoOperacion = item["CodigoOperacion"].ToString();
-                        lista.Add(listaFacturaCompra);
-                    }
+                    listaFacturaCompra.CodigoMoneda = item["CodigoMoneda"].ToString();
+                    listaFacturaCompra.TipoDeCambio = item["TipoDeCambio"].ToString();
+                    listaFacturaCompra.CodigoTipoOperacion = item["CodigoOperacion"].ToString();
+                    lista.Add(listaFacturaCompra);
                 }
             }
             connection.Close();

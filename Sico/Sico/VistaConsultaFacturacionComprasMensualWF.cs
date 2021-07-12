@@ -112,7 +112,7 @@ namespace Sico
                 string Periodo = cmbPeriodo.Text;
                 List<Entidades.FacturaCompra> ListaTotalFacturacion2 = new List<FacturaCompra>();
                 ProgressBar();
-                ListaTotalFacturacion2 = ComprasNeg.BuscarFacturacionTotalCompras(cuit, Periodo);
+                ListaTotalFacturacion2 = ComprasNeg.BuscarFacturacionTotalCompras(Sesion.UsuarioLogueado.idEmpresaSeleccionado, Periodo);
                 if (ListaTotalFacturacion2.Count > 0)
                 {
                     DiseñoGrilla();
