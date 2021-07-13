@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCuitBuscar = new System.Windows.Forms.MaskedTextBox();
             this.txtBuscarRazonSocial = new System.Windows.Forms.TextBox();
             this.lblDniOApellidoNombre = new System.Windows.Forms.Label();
@@ -77,8 +77,12 @@
             this.CondicionNuevo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SeleccionarNuevo = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EditarNuevo = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblClientes = new System.Windows.Forms.Label();
+            this.lblClientesEdit = new System.Windows.Forms.Label();
+            this.PanelTotales = new System.Windows.Forms.Panel();
             this.PanelRegistroPlan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodosLosClientes)).BeginInit();
+            this.PanelTotales.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCuitBuscar
@@ -490,14 +494,14 @@
             // dgvTodosLosClientes
             // 
             this.dgvTodosLosClientes.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTodosLosClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTodosLosClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTodosLosClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTodosLosClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idEmpresa,
@@ -507,14 +511,14 @@
             this.CondicionNuevo,
             this.SeleccionarNuevo,
             this.EditarNuevo});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTodosLosClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTodosLosClientes.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTodosLosClientes.EnableHeadersVisualStyles = false;
             this.dgvTodosLosClientes.Location = new System.Drawing.Point(12, 70);
             this.dgvTodosLosClientes.Name = "dgvTodosLosClientes";
@@ -566,12 +570,45 @@
             this.EditarNuevo.Name = "EditarNuevo";
             this.EditarNuevo.Width = 50;
             // 
+            // lblClientes
+            // 
+            this.lblClientes.AutoSize = true;
+            this.lblClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientes.ForeColor = System.Drawing.Color.Black;
+            this.lblClientes.Location = new System.Drawing.Point(3, 5);
+            this.lblClientes.Name = "lblClientes";
+            this.lblClientes.Size = new System.Drawing.Size(101, 15);
+            this.lblClientes.TabIndex = 62;
+            this.lblClientes.Text = "Total de Clientes:";
+            // 
+            // lblClientesEdit
+            // 
+            this.lblClientesEdit.AutoSize = true;
+            this.lblClientesEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClientesEdit.ForeColor = System.Drawing.Color.Black;
+            this.lblClientesEdit.Location = new System.Drawing.Point(107, 5);
+            this.lblClientesEdit.Name = "lblClientesEdit";
+            this.lblClientesEdit.Size = new System.Drawing.Size(19, 15);
+            this.lblClientesEdit.TabIndex = 63;
+            this.lblClientesEdit.Text = "@";
+            // 
+            // PanelTotales
+            // 
+            this.PanelTotales.Controls.Add(this.lblClientes);
+            this.PanelTotales.Controls.Add(this.lblClientesEdit);
+            this.PanelTotales.Location = new System.Drawing.Point(561, 445);
+            this.PanelTotales.Name = "PanelTotales";
+            this.PanelTotales.Size = new System.Drawing.Size(179, 27);
+            this.PanelTotales.TabIndex = 64;
+            this.PanelTotales.Visible = false;
+            // 
             // ClientesNuevoWFcs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1099, 482);
+            this.Controls.Add(this.PanelTotales);
             this.Controls.Add(this.dgvTodosLosClientes);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnNuevo);
@@ -588,6 +625,8 @@
             this.PanelRegistroPlan.ResumeLayout(false);
             this.PanelRegistroPlan.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodosLosClientes)).EndInit();
+            this.PanelTotales.ResumeLayout(false);
+            this.PanelTotales.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -640,5 +679,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CondicionNuevo;
         private System.Windows.Forms.DataGridViewButtonColumn SeleccionarNuevo;
         private System.Windows.Forms.DataGridViewButtonColumn EditarNuevo;
+        private System.Windows.Forms.Label lblClientes;
+        private System.Windows.Forms.Label lblClientesEdit;
+        private System.Windows.Forms.Panel PanelTotales;
     }
 }

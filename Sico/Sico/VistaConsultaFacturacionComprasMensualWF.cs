@@ -115,6 +115,7 @@ namespace Sico
                 ListaTotalFacturacion2 = ComprasNeg.BuscarFacturacionTotalCompras(Sesion.UsuarioLogueado.idEmpresaSeleccionado, Periodo);
                 if (ListaTotalFacturacion2.Count > 0)
                 {
+                    PanelBotones.Visible = true;
                     DiseñoGrilla();
                     btnExcel.Visible = true;
                     btnVolver2.Visible = false;
@@ -159,11 +160,12 @@ namespace Sico
                     ListaStatica = ListaTotalFacturacion2;
                     foreach (var item in ListaTotalFacturacion2)
                     {
-                        dataGridView1.Rows.Add(item.NroFactura, item.Fecha, item.Monto, item.Neto1, item.Neto2, item.Neto3, item.Iva1, item.Iva2, item.Iva3, item.PercepIngBrutos, item.NoGravado, item.PercepIva);
+                        dataGridView1.Rows.Add(item.NroFactura, item.Cuit, item.ApellidoNombre, item.Fecha, item.Monto, item.Neto1, item.Neto2, item.Neto3, item.Iva1, item.Iva2, item.Iva3, item.PercepIngBrutos, item.NoGravado, item.PercepIva);
                     }
                     //dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.SteelBlue;
                     dataGridView1.AllowUserToAddRows = false;
                 }
+                else { PanelBotones.Visible = false; }
 
                 //groupBox1.Enabled = true;
                 groupBox2.Enabled = true;
@@ -1153,7 +1155,7 @@ namespace Sico
 
             // Creamos una tabla que contendrá el nombre, apellido y país
             // de nuestros visitante.
-            PdfPTable tblPrueba = new PdfPTable(12);
+            PdfPTable tblPrueba = new PdfPTable(14);
             tblPrueba.WidthPercentage = 110;
 
             // Configuramos el título de las columnas de la tabla
@@ -1163,6 +1165,21 @@ namespace Sico
             clNroFactua.BorderWidthLeft = 0.50f;
             clNroFactua.BorderWidthRight = 0.50f;
             clNroFactua.BorderWidthTop = 0.50f;
+
+            PdfPCell clCuit = new PdfPCell(new Phrase("Cuit", _standardFont));
+            clCuit.BorderWidth = 0;
+            clCuit.BorderWidthBottom = 0.50f;
+            clCuit.BorderWidthLeft = 0.50f;
+            clCuit.BorderWidthRight = 0.50f;
+            clCuit.BorderWidthTop = 0.50f;
+
+            PdfPCell clRazonSocial = new PdfPCell(new Phrase("Razón Social", _standardFont));
+            clRazonSocial.BorderWidth = 0;
+            clRazonSocial.BorderWidthBottom = 0.50f;
+            clRazonSocial.BorderWidthLeft = 0.50f;
+            clRazonSocial.BorderWidthRight = 0.50f;
+            clRazonSocial.BorderWidthTop = 0.50f;
+
 
             PdfPCell clFecha = new PdfPCell(new Phrase("Fecha", _standardFont));
             clFecha.BorderWidth = 0;
@@ -1243,6 +1260,8 @@ namespace Sico
 
             // Añadimos las celdas a la tabla
             tblPrueba.AddCell(clNroFactua);
+            tblPrueba.AddCell(clCuit);
+            tblPrueba.AddCell(clRazonSocial);
             tblPrueba.AddCell(clFecha);
             tblPrueba.AddCell(clMonto);
             tblPrueba.AddCell(clNeto10);
@@ -1267,6 +1286,12 @@ namespace Sico
 
                     clNroFactua = new PdfPCell(new Phrase(item.NroFactura, UltimoRegistro));
                     clNroFactua.BorderWidth = 0;
+
+                    clCuit = new PdfPCell(new Phrase(item.Cuit, UltimoRegistro));
+                    clCuit.BorderWidth = 0;
+
+                    clRazonSocial = new PdfPCell(new Phrase(item.ApellidoNombre, UltimoRegistro));
+                    clRazonSocial.BorderWidth = 0;
 
                     clFecha = new PdfPCell(new Phrase(item.Fecha, UltimoRegistro));
                     clFecha.BorderWidth = 0;
@@ -1312,6 +1337,8 @@ namespace Sico
                     clPercepcionIva.BorderWidth = 0;
 
                     tblPrueba.AddCell(clNroFactua);
+                    tblPrueba.AddCell(clCuit);
+                    tblPrueba.AddCell(clRazonSocial);
                     tblPrueba.AddCell(clFecha);
                     tblPrueba.AddCell(clMonto);
                     tblPrueba.AddCell(clNeto10);
@@ -1331,6 +1358,12 @@ namespace Sico
 
                     clNroFactua = new PdfPCell(new Phrase(item.NroFactura, letraContenido));
                     clNroFactua.BorderWidth = 0;
+
+                    clCuit = new PdfPCell(new Phrase(item.Cuit, letraContenido));
+                    clCuit.BorderWidth = 0;
+
+                    clRazonSocial = new PdfPCell(new Phrase(item.ApellidoNombre, letraContenido));
+                    clRazonSocial.BorderWidth = 0;
 
                     clFecha = new PdfPCell(new Phrase(item.Fecha, letraContenido));
                     clFecha.BorderWidth = 0;
@@ -1376,6 +1409,8 @@ namespace Sico
                     clPercepcionIva.BorderWidth = 0;
 
                     tblPrueba.AddCell(clNroFactua);
+                    tblPrueba.AddCell(clCuit);
+                    tblPrueba.AddCell(clRazonSocial);
                     tblPrueba.AddCell(clFecha);
                     tblPrueba.AddCell(clMonto);
                     tblPrueba.AddCell(clNeto10);
@@ -1392,7 +1427,7 @@ namespace Sico
             doc.Add(tblPrueba);
             doc.Close();
             writer.Close();
-            string mensaje = "Se generó el PDF exitosamente en la carpeta" + " " + folderPath ;
+            string mensaje = "Se generó el PDF exitosamente en la carpeta" + " " + folderPath;
             string message2 = mensaje;
             const string caption2 = "Éxito";
             var result2 = MessageBox.Show(message2, caption2,

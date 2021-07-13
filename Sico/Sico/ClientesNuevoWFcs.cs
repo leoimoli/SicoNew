@@ -111,6 +111,8 @@ namespace Sico
             List<Entidades.Cliente> ListarClientes = ClienteNeg.ListarTodosLosClientes();
             if (ListarClientes.Count > 0)
             {
+                PanelTotales.Visible = true;
+                lblClientesEdit.Text = Convert.ToString(ListarClientes.Count);
                 DiseñoGrilla();
                 dgvTodosLosClientes.Visible = true;
                 foreach (var item in ListarClientes)
@@ -118,6 +120,10 @@ namespace Sico
                     dgvTodosLosClientes.Rows.Add(item.IdCliente, item.NombreRazonSocial, item.Cuit, item.Actividad, item.CondicionAntiAfip);
                 }
                 dgvTodosLosClientes.AllowUserToAddRows = false;
+            }
+            else
+            {
+                PanelTotales.Visible = false;
             }
         }
         private void DiseñoGrilla()
@@ -334,7 +340,7 @@ namespace Sico
                     frm2.lblEmpresa.Text = RazonSocial;
                     frm2.grbEmpresaSeleccionada.Visible = true;
                     Hide();
-                }             
+                }
             }
             if (dgvTodosLosClientes.CurrentCell.ColumnIndex == 6)
             {

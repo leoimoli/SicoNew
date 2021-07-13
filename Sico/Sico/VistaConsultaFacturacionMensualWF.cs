@@ -497,6 +497,7 @@ namespace Sico
             ListaFacturacion = ClienteNeg.BuscarFacturacionTotalVentas(idEmpresa, Periodo);
             if (ListaFacturacion.Count > 0)
             {
+                PanelBotones.Visible = true;
                 DiseñoGrilla();
                 btnExcel.Visible = true;
                 btnVolver2.Visible = false;
@@ -542,6 +543,10 @@ namespace Sico
                 }
                 //dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.SteelBlue;
                 dataGridView1.AllowUserToAddRows = false;
+            }
+            else
+            {
+                PanelBotones.Visible = false;
             }
             groupBox2.Enabled = true;
             progressBar1.Value = Convert.ToInt32(null);

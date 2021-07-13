@@ -55,8 +55,10 @@
             this.btnCitiVentas = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.PanelBotones = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.PanelBotones.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -236,7 +238,7 @@
             this.btnPdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPdf.ForeColor = System.Drawing.Color.White;
             this.btnPdf.Image = global::Sico.Properties.Resources.pdf1;
-            this.btnPdf.Location = new System.Drawing.Point(439, 442);
+            this.btnPdf.Location = new System.Drawing.Point(9, 3);
             this.btnPdf.Name = "btnPdf";
             this.btnPdf.Size = new System.Drawing.Size(36, 28);
             this.btnPdf.TabIndex = 162;
@@ -252,7 +254,7 @@
             this.btnCitiVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCitiVentas.ForeColor = System.Drawing.Color.White;
             this.btnCitiVentas.Image = global::Sico.Properties.Resources.txt1;
-            this.btnCitiVentas.Location = new System.Drawing.Point(555, 442);
+            this.btnCitiVentas.Location = new System.Drawing.Point(125, 3);
             this.btnCitiVentas.Name = "btnCitiVentas";
             this.btnCitiVentas.Size = new System.Drawing.Size(36, 28);
             this.btnCitiVentas.TabIndex = 161;
@@ -268,7 +270,7 @@
             this.btnExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcel.ForeColor = System.Drawing.Color.White;
             this.btnExcel.Image = global::Sico.Properties.Resources.excel;
-            this.btnExcel.Location = new System.Drawing.Point(500, 442);
+            this.btnExcel.Location = new System.Drawing.Point(70, 3);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(36, 28);
             this.btnExcel.TabIndex = 160;
@@ -288,15 +290,24 @@
             this.label3.TabIndex = 76;
             this.label3.Text = "I.V.A. Ventas Facturación de los periodos";
             // 
+            // PanelBotones
+            // 
+            this.PanelBotones.Controls.Add(this.btnPdf);
+            this.PanelBotones.Controls.Add(this.btnCitiVentas);
+            this.PanelBotones.Controls.Add(this.btnExcel);
+            this.PanelBotones.Location = new System.Drawing.Point(485, 431);
+            this.PanelBotones.Name = "PanelBotones";
+            this.PanelBotones.Size = new System.Drawing.Size(165, 39);
+            this.PanelBotones.TabIndex = 163;
+            this.PanelBotones.Visible = false;
+            // 
             // VistaConsultaFacturacionMensualWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 482);
-            this.Controls.Add(this.btnPdf);
+            this.Controls.Add(this.PanelBotones);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnCitiVentas);
-            this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -306,6 +317,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.PanelBotones.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,5 +347,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Iva2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Iva3;
         private System.Windows.Forms.DataGridViewTextBoxColumn NotaCredito;
+        private System.Windows.Forms.Panel PanelBotones;
     }
 }
