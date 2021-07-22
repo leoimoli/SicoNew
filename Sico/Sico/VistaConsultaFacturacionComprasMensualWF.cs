@@ -108,6 +108,7 @@ namespace Sico
             try
             {
                 //groupBox1.Enabled = false;
+                dataGridView1.Rows.Clear();
                 groupBox2.Enabled = false;
                 string Periodo = cmbPeriodo.Text;
                 List<Entidades.FacturaCompra> ListaTotalFacturacion2 = new List<FacturaCompra>();

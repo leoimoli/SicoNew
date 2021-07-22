@@ -35,7 +35,7 @@ namespace Sico
             ///// Hago una busqueda Inicial De Ventas.
             string Año = "2020";
             ListaTotalFacturacionVentas = ComprasNeg.FacturacionAnualVentasPorAño(cuit, Año);
-            ListaTotalFacturacion = ComprasNeg.FacturacionAnualPorAño(cuit, Año);
+            //ListaTotalFacturacion = ComprasNeg.FacturacionAnualPorAño(cuit, Año);
         }
         private void CargarCombo()
         {
@@ -1009,7 +1009,7 @@ namespace Sico
                 }
                 if (Año != "Seleccione" && Periodo == "Seleccione")
                 {
-                    ListaTotalFacturacion = ComprasNeg.FacturacionAnualPorAño(cuit, Año);
+                    //ListaTotalFacturacion = ComprasNeg.FacturacionAnualPorAño(cuit, Año);
                 }
             }
             catch (Exception ex)

@@ -288,7 +288,7 @@ namespace Sico
             Document doc = new Document(PageSize.LETTER);
             //PdfWriter writer = PdfWriter.GetInstance(doc, m);
 
-            string folderPath = "C:\\SICO-Archivos\\PDFs\\Reporte-Anual\\";
+            string folderPath = "C:\\SICO-Archivos\\PDFs\\Reporte Anual Ventas\\";
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);

@@ -36,15 +36,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cmbPeriodo = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblCantidadEdit = new System.Windows.Forms.Label();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnPdf = new System.Windows.Forms.Button();
-            this.btnCitiVentas = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CuitProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RazonSocialProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +50,15 @@
             this.PercepIngBru = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoGravado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PercepIva = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbPeriodo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblCantidadEdit = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnPdf = new System.Windows.Forms.Button();
+            this.btnCitiVentas = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.PanelBotones = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,9 +73,9 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.cmbPeriodo);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 61);
+            this.groupBox2.Location = new System.Drawing.Point(12, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1075, 370);
+            this.groupBox2.Size = new System.Drawing.Size(1075, 391);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             // 
@@ -153,108 +153,9 @@
             this.dataGridView1.Location = new System.Drawing.Point(9, 64);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1066, 305);
+            this.dataGridView1.Size = new System.Drawing.Size(1066, 321);
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.Visible = false;
-            // 
-            // cmbPeriodo
-            // 
-            this.cmbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPeriodo.FormattingEnabled = true;
-            this.cmbPeriodo.Location = new System.Drawing.Point(455, 30);
-            this.cmbPeriodo.Name = "cmbPeriodo";
-            this.cmbPeriodo.Size = new System.Drawing.Size(214, 21);
-            this.cmbPeriodo.TabIndex = 41;
-            this.cmbPeriodo.SelectedIndexChanged += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(388, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
-            this.label2.TabIndex = 40;
-            this.label2.Text = "Período:";
-            // 
-            // lblCantidadEdit
-            // 
-            this.lblCantidadEdit.AutoSize = true;
-            this.lblCantidadEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidadEdit.Location = new System.Drawing.Point(1054, 443);
-            this.lblCantidadEdit.Name = "lblCantidadEdit";
-            this.lblCantidadEdit.Size = new System.Drawing.Size(33, 20);
-            this.lblCantidadEdit.TabIndex = 54;
-            this.lblCantidadEdit.Text = "****";
-            this.lblCantidadEdit.Visible = false;
-            // 
-            // lblCantidad
-            // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(1000, 443);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(48, 20);
-            this.lblCantidad.TabIndex = 53;
-            this.lblCantidad.Text = "Total:";
-            this.lblCantidad.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(420, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(315, 20);
-            this.label3.TabIndex = 77;
-            this.label3.Text = "I.V.A. Compras Facturación de los periodos";
-            // 
-            // btnPdf
-            // 
-            this.btnPdf.BackColor = System.Drawing.SystemColors.Control;
-            this.btnPdf.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnPdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPdf.ForeColor = System.Drawing.Color.White;
-            this.btnPdf.Image = global::Sico.Properties.Resources.pdf1;
-            this.btnPdf.Location = new System.Drawing.Point(2, 7);
-            this.btnPdf.Name = "btnPdf";
-            this.btnPdf.Size = new System.Drawing.Size(36, 28);
-            this.btnPdf.TabIndex = 165;
-            this.btnPdf.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnPdf.UseVisualStyleBackColor = false;
-            this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
-            // 
-            // btnCitiVentas
-            // 
-            this.btnCitiVentas.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCitiVentas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnCitiVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCitiVentas.ForeColor = System.Drawing.Color.White;
-            this.btnCitiVentas.Image = global::Sico.Properties.Resources.txt1;
-            this.btnCitiVentas.Location = new System.Drawing.Point(118, 7);
-            this.btnCitiVentas.Name = "btnCitiVentas";
-            this.btnCitiVentas.Size = new System.Drawing.Size(36, 28);
-            this.btnCitiVentas.TabIndex = 164;
-            this.btnCitiVentas.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnCitiVentas.UseVisualStyleBackColor = false;
-            this.btnCitiVentas.Click += new System.EventHandler(this.btnCitiVentas_Click);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.BackColor = System.Drawing.SystemColors.Control;
-            this.btnExcel.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
-            this.btnExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExcel.Image = global::Sico.Properties.Resources.excel;
-            this.btnExcel.Location = new System.Drawing.Point(63, 7);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(36, 28);
-            this.btnExcel.TabIndex = 163;
-            this.btnExcel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnExcel.UseVisualStyleBackColor = false;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // NroFactura
             // 
@@ -336,6 +237,105 @@
             this.PercepIva.HeaderText = "Percepción Iva";
             this.PercepIva.Name = "PercepIva";
             this.PercepIva.Width = 90;
+            // 
+            // cmbPeriodo
+            // 
+            this.cmbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPeriodo.FormattingEnabled = true;
+            this.cmbPeriodo.Location = new System.Drawing.Point(455, 30);
+            this.cmbPeriodo.Name = "cmbPeriodo";
+            this.cmbPeriodo.Size = new System.Drawing.Size(214, 21);
+            this.cmbPeriodo.TabIndex = 41;
+            this.cmbPeriodo.SelectedIndexChanged += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(388, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Período:";
+            // 
+            // lblCantidadEdit
+            // 
+            this.lblCantidadEdit.AutoSize = true;
+            this.lblCantidadEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadEdit.Location = new System.Drawing.Point(1054, 443);
+            this.lblCantidadEdit.Name = "lblCantidadEdit";
+            this.lblCantidadEdit.Size = new System.Drawing.Size(33, 20);
+            this.lblCantidadEdit.TabIndex = 54;
+            this.lblCantidadEdit.Text = "****";
+            this.lblCantidadEdit.Visible = false;
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(1000, 443);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(48, 20);
+            this.lblCantidad.TabIndex = 53;
+            this.lblCantidad.Text = "Total:";
+            this.lblCantidad.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label3.Location = new System.Drawing.Point(420, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(268, 20);
+            this.label3.TabIndex = 77;
+            this.label3.Text = "I.V.A. Compras Facturación Mensual";
+            // 
+            // btnPdf
+            // 
+            this.btnPdf.BackColor = System.Drawing.SystemColors.Control;
+            this.btnPdf.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnPdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPdf.ForeColor = System.Drawing.Color.White;
+            this.btnPdf.Image = global::Sico.Properties.Resources.pdf1;
+            this.btnPdf.Location = new System.Drawing.Point(2, 7);
+            this.btnPdf.Name = "btnPdf";
+            this.btnPdf.Size = new System.Drawing.Size(36, 28);
+            this.btnPdf.TabIndex = 165;
+            this.btnPdf.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnPdf.UseVisualStyleBackColor = false;
+            this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
+            // 
+            // btnCitiVentas
+            // 
+            this.btnCitiVentas.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCitiVentas.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnCitiVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCitiVentas.ForeColor = System.Drawing.Color.White;
+            this.btnCitiVentas.Image = global::Sico.Properties.Resources.txt1;
+            this.btnCitiVentas.Location = new System.Drawing.Point(118, 7);
+            this.btnCitiVentas.Name = "btnCitiVentas";
+            this.btnCitiVentas.Size = new System.Drawing.Size(36, 28);
+            this.btnCitiVentas.TabIndex = 164;
+            this.btnCitiVentas.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnCitiVentas.UseVisualStyleBackColor = false;
+            this.btnCitiVentas.Click += new System.EventHandler(this.btnCitiVentas_Click);
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnExcel.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExcel.Image = global::Sico.Properties.Resources.excel;
+            this.btnExcel.Location = new System.Drawing.Point(63, 7);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(36, 28);
+            this.btnExcel.TabIndex = 163;
+            this.btnExcel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // PanelBotones
             // 

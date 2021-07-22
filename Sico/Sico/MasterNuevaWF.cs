@@ -241,5 +241,10 @@ namespace Sico
         {
             AbrirFormEnPanel(new FacturacionAnualVentasWF());
         }
+
+        private void reporteAnualToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new FacturacionAnualComprasWF());
+        }
     }
 }
