@@ -286,9 +286,9 @@
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
             this.label3.Location = new System.Drawing.Point(412, 32);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(302, 20);
+            this.label3.Size = new System.Drawing.Size(255, 20);
             this.label3.TabIndex = 76;
-            this.label3.Text = "I.V.A. Ventas Facturación de los periodos";
+            this.label3.Text = "I.V.A. Ventas Facturación Mensual";
             // 
             // PanelBotones
             // 

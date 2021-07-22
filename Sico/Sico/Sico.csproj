@@ -283,6 +283,12 @@
     <Compile Include="Entidades\Reporte_Pagos.cs" />
     <Compile Include="Entidades\Vencimientos.cs" />
     <Compile Include="Entidades\VencimientosPorMesAnio.cs" />
+    <Compile Include="FacturacionAnualVentasWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturacionAnualVentasWF.Designer.cs">
+      <DependentUpon>FacturacionAnualVentasWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="FacturacionCompraWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -526,6 +532,9 @@
     <EmbeddedResource Include="DetalleHonariosMensualesWF.resx">
       <DependentUpon>DetalleHonariosMensualesWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FacturacionAnualVentasWF.resx">
+      <DependentUpon>FacturacionAnualVentasWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FacturacionCompraWF.resx">
       <DependentUpon>FacturacionCompraWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -738,6 +747,8 @@
     <None Include="Resources\txt1.png" />
     <None Include="Resources\excel.png" />
     <None Include="Resources\pdf1.png" />
+    <None Include="Resources\analisis-de-datos.png" />
+    <None Include="Resources\grafico.png" />
     <Content Include="wepik-202151-104656.ico" />
     <None Include="Resources\historial-medico %281%29.png" />
     <None Include="Resources\juicio.png" />

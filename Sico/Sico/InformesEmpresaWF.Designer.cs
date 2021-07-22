@@ -37,6 +37,9 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.dgvVencimientos = new System.Windows.Forms.DataGridView();
+            this.Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPagosRecibidos = new System.Windows.Forms.DataGridView();
             this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,9 +58,6 @@
             this.lblCajaVentas = new System.Windows.Forms.Label();
             this.lblTotalCompras = new System.Windows.Forms.Label();
             this.lblPagosProveedores = new System.Windows.Forms.Label();
-            this.Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVencimientos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagosRecibidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPagosRecibidos)).BeginInit();
@@ -94,6 +94,24 @@
             this.dgvVencimientos.Size = new System.Drawing.Size(476, 200);
             this.dgvVencimientos.TabIndex = 62;
             this.dgvVencimientos.Visible = false;
+            // 
+            // Empresa
+            // 
+            this.Empresa.HeaderText = "Empresa";
+            this.Empresa.Name = "Empresa";
+            this.Empresa.Width = 190;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 200;
+            // 
+            // FechaVencimiento
+            // 
+            this.FechaVencimiento.HeaderText = "Fecha Vencimiento";
+            this.FechaVencimiento.Name = "FechaVencimiento";
+            this.FechaVencimiento.Width = 80;
             // 
             // dgvPagosRecibidos
             // 
@@ -339,24 +357,6 @@
             this.lblPagosProveedores.Size = new System.Drawing.Size(22, 17);
             this.lblPagosProveedores.TabIndex = 76;
             this.lblPagosProveedores.Text = "@";
-            // 
-            // Empresa
-            // 
-            this.Empresa.HeaderText = "Empresa";
-            this.Empresa.Name = "Empresa";
-            this.Empresa.Width = 190;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 200;
-            // 
-            // FechaVencimiento
-            // 
-            this.FechaVencimiento.HeaderText = "Fecha Vencimiento";
-            this.FechaVencimiento.Name = "FechaVencimiento";
-            this.FechaVencimiento.Width = 80;
             // 
             // InformesEmpresaWF
             // 

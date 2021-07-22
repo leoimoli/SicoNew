@@ -207,7 +207,7 @@ namespace Sico
         }
         private void iVAVentasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new VistaConsultaFacturacionMensualWF(null, 0));
+
         }
         private void MenuSupContabilidad_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -225,7 +225,21 @@ namespace Sico
 
         private void iVAComprasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void reporteMensualToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             AbrirFormEnPanel(new VistaConsultaFacturacionComprasMensualWF(null, null));
+        }
+        private void reporteMensualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new VistaConsultaFacturacionMensualWF(null, 0));
+        }
+
+        private void reporteAnualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new FacturacionAnualVentasWF());
         }
     }
 }

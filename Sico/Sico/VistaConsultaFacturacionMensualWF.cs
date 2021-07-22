@@ -556,9 +556,10 @@ namespace Sico
         private void btnVolver_Click(object sender, EventArgs e)
         {
 
-        }
+        }        
         private void btnExcel_Click(object sender, EventArgs e)
         {
+            ProgressBar();
             dataGridView1.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridView1.MultiSelect = true;
             dataGridView1.SelectAll();
@@ -577,6 +578,8 @@ namespace Sico
             Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
             CR.Select();
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            progressBar1.Value = Convert.ToInt32(null);
+            progressBar1.Visible = false;
         }
         private void btnCitiVentas_Click(object sender, EventArgs e)
         {

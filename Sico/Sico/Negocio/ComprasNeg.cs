@@ -254,6 +254,20 @@ namespace Sico.Negocio
             return _listaFacturacionVentaAnual;
         }
 
+        public static List<FacturaVentaAnual> FacturacionAnualVentas(int idEmpresa)
+        {
+            List<FacturaVentaAnual> _listaFacturacionVentaAnual = new List<FacturaVentaAnual>();
+            try
+            {
+                _listaFacturacionVentaAnual = ComprasDao.FacturacionAnualVentas(idEmpresa);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+            return _listaFacturacionVentaAnual;
+        }
+
         public static List<FacturaCompraAnual> FacturacionAnualPorAño(string cuit, string año)
         {
             List<FacturaCompraAnual> _listaFacturacionComprasAnual = new List<FacturaCompraAnual>();

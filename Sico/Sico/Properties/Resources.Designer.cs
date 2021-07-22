@@ -103,6 +103,16 @@ namespace Sico.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap analisis_de_datos {
+            get {
+                object obj = ResourceManager.GetObject("analisis-de-datos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Anses_2 {
             get {
                 object obj = ResourceManager.GetObject("Anses 2", resourceCulture);
@@ -736,6 +746,16 @@ namespace Sico.Properties {
         internal static System.Drawing.Bitmap garantia {
             get {
                 object obj = ResourceManager.GetObject("garantia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap grafico {
+            get {
+                object obj = ResourceManager.GetObject("grafico", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
