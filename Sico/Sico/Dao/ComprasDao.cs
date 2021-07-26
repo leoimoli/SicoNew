@@ -171,6 +171,8 @@ namespace Sico.Dao
         private static List<string> BuscarPeriodosComprasPorAñoIdCliente(int idEmpresa, string anioDesde, string anioHasta)
         {
             List<string> listaPeriodos = new List<string>();
+            List<string> listaPeriodosDesde = new List<string>();
+            List<string> listaPeriodosHasta = new List<string>();
             connection.Close();
             connection.Open();
             MySqlCommand cmd = new MySqlCommand();
@@ -188,7 +190,7 @@ namespace Sico.Dao
             {
                 foreach (DataRow item in Tabla.Rows)
                 {
-                    listaPeriodos.Add(item["Nombre"].ToString());
+                    listaPeriodosDesde.Add(item["Nombre"].ToString());
                 }
             }
             if (anioHasta != "")
@@ -210,13 +212,15 @@ namespace Sico.Dao
                 {
                     foreach (DataRow item in Tabla2.Rows)
                     {
-                        listaPeriodos.Add(item["Nombre"].ToString());
+                        listaPeriodosHasta.Add(item["Nombre"].ToString());
                     }
                 }
             }
-
-
             connection.Close();
+            if (listaPeriodosDesde.Count + listaPeriodosHasta.Count > 12)
+            {
+
+            }
             return listaPeriodos;
         }
 
