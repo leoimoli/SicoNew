@@ -168,18 +168,19 @@ namespace Sico.Dao
             }
             return lista;
         }
-        private static List<string> BuscarPeriodosComprasPorAñoIdCliente(int idEmpresa, string anioDesde, string anioHasta)
+        private static List<string> BuscarPeriodosComprasPorAñoIdCliente(int idEmpresa, DateTime FechaDesde, DateTime FechaHasta)
         {
             List<string> listaPeriodos = new List<string>();
-            List<string> listaPeriodosDesde = new List<string>();
-            List<string> listaPeriodosHasta = new List<string>();
+            //List<string> listaPeriodosDesde = new List<string>();
+            //List<string> listaPeriodosHasta = new List<string>();
             connection.Close();
             connection.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
-                            new MySqlParameter("Anio_in", anioDesde),
+                            new MySqlParameter("FechaDesde_in", FechaDesde),
+                            new MySqlParameter("FechaHasta_in", FechaHasta),
                                       new MySqlParameter("idCliente_in", idEmpresa)};
             string proceso = "BuscarPeriodosComprasPorAñoIdCliente";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
@@ -190,42 +191,42 @@ namespace Sico.Dao
             {
                 foreach (DataRow item in Tabla.Rows)
                 {
-                    listaPeriodosDesde.Add(item["Nombre"].ToString());
+                    listaPeriodos.Add(item["Nombre"].ToString());
                 }
             }
-            if (anioHasta != "")
-            {
-                connection.Close();
-                connection.Open();
-                MySqlCommand cmd2 = new MySqlCommand();
-                cmd2.Connection = connection;
-                DataTable Tabla2 = new DataTable();
-                MySqlParameter[] oParam2 = {
-                            new MySqlParameter("Anio_in", anioHasta),
-                                      new MySqlParameter("idCliente_in", idEmpresa)};
-                string proceso2 = "BuscarPeriodosComprasPorAñoIdCliente";
-                MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
-                dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt2.SelectCommand.Parameters.AddRange(oParam2);
-                dt2.Fill(Tabla2);
-                if (Tabla2.Rows.Count > 0)
-                {
-                    foreach (DataRow item in Tabla2.Rows)
-                    {
-                        listaPeriodosHasta.Add(item["Nombre"].ToString());
-                    }
-                }
-            }
-            connection.Close();
-            if (listaPeriodosDesde.Count + listaPeriodosHasta.Count > 12)
-            {
+            //if (anioHasta != "")
+            //{
+            //    connection.Close();
+            //    connection.Open();
+            //    MySqlCommand cmd2 = new MySqlCommand();
+            //    cmd2.Connection = connection;
+            //    DataTable Tabla2 = new DataTable();
+            //    MySqlParameter[] oParam2 = {
+            //                new MySqlParameter("Anio_in", anioHasta),
+            //                          new MySqlParameter("idCliente_in", idEmpresa)};
+            //    string proceso2 = "BuscarPeriodosComprasPorAñoIdCliente";
+            //    MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+            //    dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+            //    dt2.SelectCommand.Parameters.AddRange(oParam2);
+            //    dt2.Fill(Tabla2);
+            //    if (Tabla2.Rows.Count > 0)
+            //    {
+            //        foreach (DataRow item in Tabla2.Rows)
+            //        {
+            //            listaPeriodosHasta.Add(item["Nombre"].ToString());
+            //        }
+            //    }
+            //}
+            //connection.Close();
+            //if (listaPeriodosDesde.Count + listaPeriodosHasta.Count > 12)
+            //{
 
-            }
+            //}
             return listaPeriodos;
         }
 
         public static List<string> listaPeriodosStatic;
-        private static List<string> BuscarPeriodosPorAñoIdCliente(int id, string anioDesde, string anioHasta)
+        private static List<string> BuscarPeriodosPorAñoIdCliente(int id, DateTime FechaDesde)
         {
             List<string> listaPeriodos = new List<string>();
             connection.Close();
@@ -234,7 +235,7 @@ namespace Sico.Dao
             cmd.Connection = connection;
             DataTable Tabla = new DataTable();
             MySqlParameter[] oParam = {
-                            new MySqlParameter("Ano_in", anioDesde),
+                            new MySqlParameter("FechaDesde_in", FechaDesde),
                                       new MySqlParameter("idCliente_in", id)};
             string proceso = "BuscarPeriodosPorAñoIdCliente";
             MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
@@ -249,29 +250,29 @@ namespace Sico.Dao
                 }
             }
 
-            if (anioHasta != "")
-            {
-                connection.Close();
-                connection.Open();
-                MySqlCommand cmd2 = new MySqlCommand();
-                cmd2.Connection = connection;
-                DataTable Tabla2 = new DataTable();
-                MySqlParameter[] oParam2 = {
-                            new MySqlParameter("Ano_in", anioHasta),
-                                      new MySqlParameter("idCliente_in", id)};
-                string proceso2 = "BuscarPeriodosPorAñoIdCliente";
-                MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
-                dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dt2.SelectCommand.Parameters.AddRange(oParam2);
-                dt2.Fill(Tabla2);
-                if (Tabla2.Rows.Count > 0)
-                {
-                    foreach (DataRow item in Tabla2.Rows)
-                    {
-                        listaPeriodos.Add(item["Nombre"].ToString());
-                    }
-                }
-            }
+            //if (anioHasta != "")
+            //{
+            //    connection.Close();
+            //    connection.Open();
+            //    MySqlCommand cmd2 = new MySqlCommand();
+            //    cmd2.Connection = connection;
+            //    DataTable Tabla2 = new DataTable();
+            //    MySqlParameter[] oParam2 = {
+            //                new MySqlParameter("Ano_in", anioHasta),
+            //                          new MySqlParameter("idCliente_in", id)};
+            //    string proceso2 = "BuscarPeriodosPorAñoIdCliente";
+            //    MySqlDataAdapter dt2 = new MySqlDataAdapter(proceso2, connection);
+            //    dt2.SelectCommand.CommandType = CommandType.StoredProcedure;
+            //    dt2.SelectCommand.Parameters.AddRange(oParam2);
+            //    dt2.Fill(Tabla2);
+            //    if (Tabla2.Rows.Count > 0)
+            //    {
+            //        foreach (DataRow item in Tabla2.Rows)
+            //        {
+            //            listaPeriodos.Add(item["Nombre"].ToString());
+            //        }
+            //    }
+            //}
             connection.Close();
             return listaPeriodos;
         }
@@ -988,7 +989,7 @@ namespace Sico.Dao
             int IdCliente = id[0].IdCliente;
             if (IdCliente > 0)
             {
-                listaPeriodos = BuscarPeriodosPorAñoIdCliente(IdCliente, año, "");
+                listaPeriodos = BuscarPeriodosPorAñoIdCliente(IdCliente, DateTime.Now);
                 foreach (var item in listaPeriodos)
                 {
                     /////Facturas
@@ -1148,10 +1149,14 @@ namespace Sico.Dao
 
             DateTime FechaHasta = DateTime.Now;
             DateTime FechaDesde = FechaHasta.AddDays(-365);
-            String AnioHasta = DateTime.Now.Year.ToString();
-            String AnioDesde = FechaDesde.Year.ToString();
 
-            listaPeriodos = BuscarPeriodosComprasPorAñoIdCliente(idEmpresa, AnioDesde, AnioHasta);
+            //String MesHasta = DateTime.Now.Month.ToString();
+            //String MesDesde = FechaDesde.Month.ToString();
+
+            //String AnioHasta = DateTime.Now.Year.ToString();
+            //String AnioDesde = FechaDesde.Year.ToString();
+
+            listaPeriodos = BuscarPeriodosComprasPorAñoIdCliente(idEmpresa, FechaDesde, FechaHasta);
             foreach (var item in listaPeriodos)
             {
                 ///// Facturas
@@ -1513,10 +1518,10 @@ namespace Sico.Dao
 
             DateTime FechaHasta = DateTime.Now;
             DateTime FechaDesde = FechaHasta.AddDays(-365);
-            String AnioHasta = DateTime.Now.Year.ToString();
-            String AnioDesde = FechaDesde.Year.ToString();
+            //String AnioHasta = DateTime.Now.Year.ToString();
+            //String AnioDesde = FechaDesde.Year.ToString();
 
-            listaPeriodos = BuscarPeriodosPorAñoIdCliente(idEmpresa, AnioDesde, AnioHasta);
+            listaPeriodos = BuscarPeriodosPorAñoIdCliente(idEmpresa, FechaDesde);
             foreach (var item in listaPeriodos)
             {
                 /////Facturas

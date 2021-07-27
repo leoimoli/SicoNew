@@ -17,16 +17,19 @@ namespace Sico
         private string cuit;
         public PeriodosWF(string cuit, string razonSocial)
         {
-            this.cuit= cuit;
+            this.cuit = cuit;
             this.razonSocial = razonSocial;
             InitializeComponent();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string Año = cmbAño.Text;
+            DateTime fechaDesde = dtFechaDesde.Value;
+            DateTime fechaHasta = dtFechaHasta.Value;
+            String Anio = fechaDesde.Year.ToString();
+            string Año = Anio;
             string nombre = txtPeriodo.Text;
-            bool Exito = PeriodoNeg.GuardarPeriodo(cuit, nombre, Año);
+            bool Exito = PeriodoNeg.GuardarPeriodo(cuit, nombre, Año, fechaDesde, fechaHasta);
             if (Exito == true)
             {
                 ProgressBar();
@@ -77,19 +80,18 @@ namespace Sico
 
         private void PeriodosWF_Load(object sender, EventArgs e)
         {
-            CargarCombo();
         }
 
         private void CargarCombo()
         {
-            string[] Años = Clases_Maestras.ValoresConstantes.Años;
-            cmbAño.Items.Add("Seleccione");
-            cmbAño.Items.Clear();
-            foreach (string item in Años)
-            {
-                cmbAño.Text = "Seleccione";
-                cmbAño.Items.Add(item);
-            }
+            //string[] Años = Clases_Maestras.ValoresConstantes.Años;
+            //cmbAño.Items.Add("Seleccione");
+            //cmbAño.Items.Clear();
+            //foreach (string item in Años)
+            //{
+            //    cmbAño.Text = "Seleccione";
+            //    cmbAño.Items.Add(item);
+            //}
         }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -103,7 +105,10 @@ namespace Sico
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-
+            DateTime fechaSeleccionada = dtFechaDesde.Value;
+            dtFechaHasta.Value = dtFechaDesde.Value;
+            dtFechaHasta.MinDate = fechaSeleccionada.AddMonths(0);
+            dtFechaHasta.MaxDate = fechaSeleccionada.AddMonths(+1);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Sico.Dao
     public class PeriodoDao
     {
         private static MySql.Data.MySqlClient.MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.db);
-        public static bool GuardarPeriodo(string cuit, string nombre, string Año)
+        public static bool GuardarPeriodo(string cuit, string nombre, string Año, DateTime fechaDesde, DateTime fechaHasta)
         {
             bool exito = false;
             int inCliente = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
@@ -28,6 +28,8 @@ namespace Sico.Dao
                 cmd.Parameters.AddWithValue("idCliente_in", inCliente);
                 cmd.Parameters.AddWithValue("Ano_in", Año);
                 cmd.Parameters.AddWithValue("Nombre_in", NombrePeriodo);
+                cmd.Parameters.AddWithValue("FechaDesde_in", fechaDesde);
+                cmd.Parameters.AddWithValue("FechaHasta_in", fechaHasta);
                 cmd.ExecuteNonQuery();
                 exito = true;
                 connection.Close();
