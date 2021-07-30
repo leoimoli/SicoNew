@@ -126,5 +126,10 @@ namespace Sico
             planDeHonorarios.BuscarTodasLosPlanesParaElCliente(Sesion.UsuarioLogueado.idEmpresaSeleccionado);
             Hide();
         }
+
+        private void txtObservaciones_TextChanged(object sender, EventArgs e)
+        {
+            lblContador.Text = Convert.ToString(txtObservaciones.Text.Length);
+        }
     }
 }

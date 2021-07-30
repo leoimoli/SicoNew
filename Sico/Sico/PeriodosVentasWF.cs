@@ -28,21 +28,25 @@ namespace Sico
         }
         private void CargarCombo()
         {
-            string[] Años = Clases_Maestras.ValoresConstantes.Años;
-            cmbAño.Items.Add("Seleccione");
-            cmbAño.Items.Clear();
-            foreach (string item in Años)
-            {
-                cmbAño.Text = "Seleccione";
-                cmbAño.Items.Add(item);
-            }
+            //string[] Años = Clases_Maestras.ValoresConstantes.Años;
+            //cmbAño.Items.Add("Seleccione");
+            //cmbAño.Items.Clear();
+            //foreach (string item in Años)
+            //{
+            //    cmbAño.Text = "Seleccione";
+            //    cmbAño.Items.Add(item);
+            //}
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string Año = cmbAño.Text;
+            //string Año = cmbAño.Text;
+            DateTime fechaDesde = dtFechaDesde.Value;
+            DateTime fechaHasta = dtFechaHasta.Value;
+            String Anio = fechaDesde.Year.ToString();
+            string Año = Anio;
             string nombre = txtPeriodo.Text;
-            bool Exito = PeriodoNeg.GuardarPeriodoVenta(idEmpresa, nombre, Año);
+            bool Exito = PeriodoNeg.GuardarPeriodoVenta(idEmpresa, nombre, Año, fechaDesde, fechaHasta);
             if (Exito == true)
             {
                 ProgressBar();
@@ -93,6 +97,15 @@ namespace Sico
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dtFechaDesde_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaSeleccionada = dtFechaDesde.Value;
+            var PrimerDia = new DateTime(fechaSeleccionada.Year, fechaSeleccionada.Month, 1);
+            var UltimoDia = PrimerDia.AddMonths(1).AddDays(-1);
+            dtFechaDesde.Value = PrimerDia;
+            dtFechaHasta.Value = UltimoDia;
         }
     }
 }

@@ -1123,7 +1123,7 @@ namespace Sico
             Document doc = new Document(PageSize.LETTER);
             //PdfWriter writer = PdfWriter.GetInstance(doc, m);
 
-            string folderPath = "C:\\SICO-Archivos\\PDFs\\";
+            string folderPath = "C:\\SICO-Archivos\\PDFs\\Reporte Mensual Compras\\";
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);

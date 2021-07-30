@@ -97,18 +97,13 @@ namespace Sico
         {
             Close();
         }
-
-        private void txtPeriodo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime fechaSeleccionada = dtFechaDesde.Value;
-            dtFechaHasta.Value = dtFechaDesde.Value;
-            dtFechaHasta.MinDate = fechaSeleccionada.AddMonths(0);
-            dtFechaHasta.MaxDate = fechaSeleccionada.AddMonths(+1);
+            var PrimerDia = new DateTime(fechaSeleccionada.Year, fechaSeleccionada.Month, 1);
+            var UltimoDia = PrimerDia.AddMonths(1).AddDays(-1);
+            dtFechaDesde.Value = PrimerDia;
+            dtFechaHasta.Value = UltimoDia;
         }
     }
 }

@@ -85,9 +85,6 @@
             this.lblEmpresa = new System.Windows.Forms.Label();
             this.lblEmpresaSoleccionada = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.MenuSupHonorarios = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.informesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSupEmpresa = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,6 +93,9 @@
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSupHonorarios = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.informesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuSupSueldos = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,9 +125,9 @@
             this.grbEmpresaSeleccionada.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).BeginInit();
             this.panel5.SuspendLayout();
-            this.MenuSupHonorarios.SuspendLayout();
             this.menuSupEmpresa.SuspendLayout();
             this.MenuSupContabilidad.SuspendLayout();
+            this.MenuSupHonorarios.SuspendLayout();
             this.MenuSupSueldos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
@@ -221,7 +221,7 @@
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuVertical.Location = new System.Drawing.Point(0, 35);
             this.MenuVertical.Name = "MenuVertical";
-            this.MenuVertical.Size = new System.Drawing.Size(201, 615);
+            this.MenuVertical.Size = new System.Drawing.Size(222, 615);
             this.MenuVertical.TabIndex = 1;
             // 
             // panel6
@@ -333,26 +333,26 @@
             this.panel11.Controls.Add(this.pictureBox4);
             this.panel11.Location = new System.Drawing.Point(5, 522);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(193, 93);
+            this.panel11.Size = new System.Drawing.Size(217, 93);
             this.panel11.TabIndex = 20;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(54, 60);
+            this.label5.Location = new System.Drawing.Point(50, 60);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 13);
+            this.label5.Size = new System.Drawing.Size(166, 13);
             this.label5.TabIndex = 23;
-            this.label5.Text = "Email: leoimoli@gmail.com";
+            this.label5.Text = "Email: jlicodesoftware@gmail.com";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(53, 44);
+            this.label3.Location = new System.Drawing.Point(49, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 22;
@@ -363,7 +363,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(54, 26);
+            this.label4.Location = new System.Drawing.Point(50, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 13);
             this.label4.TabIndex = 1;
@@ -373,7 +373,7 @@
             // 
             this.pictureBox3.Location = new System.Drawing.Point(50, 20);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(140, 58);
+            this.pictureBox3.Size = new System.Drawing.Size(164, 58);
             this.pictureBox3.TabIndex = 21;
             this.pictureBox3.TabStop = false;
             // 
@@ -395,7 +395,7 @@
             this.panel10.Controls.Add(this.pictureBox1);
             this.panel10.Location = new System.Drawing.Point(2, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(193, 93);
+            this.panel10.Size = new System.Drawing.Size(213, 93);
             this.panel10.TabIndex = 0;
             // 
             // label2
@@ -403,7 +403,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(51, 51);
+            this.label2.Location = new System.Drawing.Point(74, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 22;
@@ -414,7 +414,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(54, 26);
+            this.label1.Location = new System.Drawing.Point(71, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 25);
             this.label1.TabIndex = 1;
@@ -422,18 +422,18 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(50, 23);
+            this.pictureBox2.Location = new System.Drawing.Point(68, 6);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(140, 50);
+            this.pictureBox2.Size = new System.Drawing.Size(140, 81);
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Sico.Properties.Resources.Imagen_Sico_Login1;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(4, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(64, 81);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
@@ -601,7 +601,7 @@
             this.reporteAnualToolStripMenuItem1});
             this.iVAComprasToolStripMenuItem1.Image = global::Sico.Properties.Resources.carrito_de_compras__1_;
             this.iVAComprasToolStripMenuItem1.Name = "iVAComprasToolStripMenuItem1";
-            this.iVAComprasToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.iVAComprasToolStripMenuItem1.Size = new System.Drawing.Size(177, 26);
             this.iVAComprasToolStripMenuItem1.Text = "I.V.A Compras";
             this.iVAComprasToolStripMenuItem1.Click += new System.EventHandler(this.iVAComprasToolStripMenuItem1_Click);
             // 
@@ -628,7 +628,7 @@
             this.reporteAnualToolStripMenuItem});
             this.iVAVentasToolStripMenuItem1.Image = global::Sico.Properties.Resources.calculadora1;
             this.iVAVentasToolStripMenuItem1.Name = "iVAVentasToolStripMenuItem1";
-            this.iVAVentasToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.iVAVentasToolStripMenuItem1.Size = new System.Drawing.Size(177, 26);
             this.iVAVentasToolStripMenuItem1.Text = "I.V.A Ventas";
             this.iVAVentasToolStripMenuItem1.Click += new System.EventHandler(this.iVAVentasToolStripMenuItem1_Click);
             // 
@@ -653,9 +653,9 @@
             this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.panel14.Controls.Add(this.label7);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel14.Location = new System.Drawing.Point(201, 604);
+            this.panel14.Location = new System.Drawing.Point(222, 604);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(1099, 46);
+            this.panel14.Size = new System.Drawing.Size(1078, 46);
             this.panel14.TabIndex = 9;
             // 
             // label7
@@ -677,9 +677,9 @@
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.pictureBox6);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(201, 35);
+            this.panel4.Location = new System.Drawing.Point(222, 35);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1099, 87);
+            this.panel4.Size = new System.Drawing.Size(1078, 87);
             this.panel4.TabIndex = 10;
             // 
             // grbEmpresaSeleccionada
@@ -769,38 +769,6 @@
             this.panel5.TabIndex = 5;
             this.panel5.Visible = false;
             // 
-            // MenuSupHonorarios
-            // 
-            this.MenuSupHonorarios.BackColor = System.Drawing.SystemColors.Control;
-            this.MenuSupHonorarios.Dock = System.Windows.Forms.DockStyle.None;
-            this.MenuSupHonorarios.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.MenuSupHonorarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem10,
-            this.informesToolStripMenuItem1});
-            this.MenuSupHonorarios.Location = new System.Drawing.Point(14, 0);
-            this.MenuSupHonorarios.Name = "MenuSupHonorarios";
-            this.MenuSupHonorarios.Size = new System.Drawing.Size(279, 29);
-            this.MenuSupHonorarios.TabIndex = 6;
-            this.MenuSupHonorarios.Text = "menuStrip4";
-            // 
-            // toolStripMenuItem10
-            // 
-            this.toolStripMenuItem10.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.toolStripMenuItem10.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem10.Image = global::Sico.Properties.Resources.dia_de_pago;
-            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(171, 25);
-            this.toolStripMenuItem10.Text = "Plan de Honorarios";
-            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
-            // 
-            // informesToolStripMenuItem1
-            // 
-            this.informesToolStripMenuItem1.Image = global::Sico.Properties.Resources.informe_seo;
-            this.informesToolStripMenuItem1.Name = "informesToolStripMenuItem1";
-            this.informesToolStripMenuItem1.Size = new System.Drawing.Size(100, 25);
-            this.informesToolStripMenuItem1.Text = "Informes";
-            this.informesToolStripMenuItem1.Click += new System.EventHandler(this.informesToolStripMenuItem1_Click);
-            // 
             // menuSupEmpresa
             // 
             this.menuSupEmpresa.BackColor = System.Drawing.SystemColors.Control;
@@ -880,6 +848,38 @@
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
             this.toolStripMenuItem8.Size = new System.Drawing.Size(100, 25);
             this.toolStripMenuItem8.Text = "Informes";
+            // 
+            // MenuSupHonorarios
+            // 
+            this.MenuSupHonorarios.BackColor = System.Drawing.SystemColors.Control;
+            this.MenuSupHonorarios.Dock = System.Windows.Forms.DockStyle.None;
+            this.MenuSupHonorarios.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.MenuSupHonorarios.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem10,
+            this.informesToolStripMenuItem1});
+            this.MenuSupHonorarios.Location = new System.Drawing.Point(14, 0);
+            this.MenuSupHonorarios.Name = "MenuSupHonorarios";
+            this.MenuSupHonorarios.Size = new System.Drawing.Size(279, 29);
+            this.MenuSupHonorarios.TabIndex = 6;
+            this.MenuSupHonorarios.Text = "menuStrip4";
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolStripMenuItem10.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem10.Image = global::Sico.Properties.Resources.dia_de_pago;
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(171, 25);
+            this.toolStripMenuItem10.Text = "Plan de Honorarios";
+            this.toolStripMenuItem10.Click += new System.EventHandler(this.toolStripMenuItem10_Click);
+            // 
+            // informesToolStripMenuItem1
+            // 
+            this.informesToolStripMenuItem1.Image = global::Sico.Properties.Resources.informe_seo;
+            this.informesToolStripMenuItem1.Name = "informesToolStripMenuItem1";
+            this.informesToolStripMenuItem1.Size = new System.Drawing.Size(100, 25);
+            this.informesToolStripMenuItem1.Text = "Informes";
+            this.informesToolStripMenuItem1.Click += new System.EventHandler(this.informesToolStripMenuItem1_Click);
             // 
             // MenuSupSueldos
             // 
@@ -971,9 +971,9 @@
             this.PanelContenedor.BackColor = System.Drawing.Color.SteelBlue;
             this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContenedor.ForeColor = System.Drawing.Color.White;
-            this.PanelContenedor.Location = new System.Drawing.Point(201, 122);
+            this.PanelContenedor.Location = new System.Drawing.Point(222, 122);
             this.PanelContenedor.Name = "PanelContenedor";
-            this.PanelContenedor.Size = new System.Drawing.Size(1099, 482);
+            this.PanelContenedor.Size = new System.Drawing.Size(1078, 482);
             this.PanelContenedor.TabIndex = 11;
             // 
             // toolTip1
@@ -1021,12 +1021,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxEmpresa)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.MenuSupHonorarios.ResumeLayout(false);
-            this.MenuSupHonorarios.PerformLayout();
             this.menuSupEmpresa.ResumeLayout(false);
             this.menuSupEmpresa.PerformLayout();
             this.MenuSupContabilidad.ResumeLayout(false);
             this.MenuSupContabilidad.PerformLayout();
+            this.MenuSupHonorarios.ResumeLayout(false);
+            this.MenuSupHonorarios.PerformLayout();
             this.MenuSupSueldos.ResumeLayout(false);
             this.MenuSupSueldos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();

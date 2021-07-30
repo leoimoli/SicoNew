@@ -52,7 +52,6 @@
             this.txtPeriodo.Name = "txtPeriodo";
             this.txtPeriodo.Size = new System.Drawing.Size(239, 20);
             this.txtPeriodo.TabIndex = 29;
-            this.txtPeriodo.TextChanged += new System.EventHandler(this.txtPeriodo_TextChanged);
             // 
             // label7
             // 
@@ -167,6 +166,7 @@
             // 
             // dtFechaHasta
             // 
+            this.dtFechaHasta.Enabled = false;
             this.dtFechaHasta.Location = new System.Drawing.Point(107, 135);
             this.dtFechaHasta.Name = "dtFechaHasta";
             this.dtFechaHasta.Size = new System.Drawing.Size(239, 20);

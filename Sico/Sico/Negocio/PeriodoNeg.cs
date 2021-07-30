@@ -56,13 +56,13 @@ namespace Sico.Negocio
             lista = PeriodoDao.CargarComboPeriodoCompras(cuit);
             return lista;
         }
-        public static bool GuardarPeriodoVenta(int idEmpresa, string nombre, string año)
+        public static bool GuardarPeriodoVenta(int idEmpresa, string nombre, string año, DateTime fechaDesde, DateTime fechaHasta)
         {
             bool exito = false;
             try
             {
                 ValidarDatos(nombre);
-                exito = PeriodoDao.GuardarPeriodoVenta(idEmpresa, nombre, año);
+                exito = PeriodoDao.GuardarPeriodoVenta(idEmpresa, nombre, año, fechaDesde, fechaHasta);
             }
             catch (Exception ex)
             {

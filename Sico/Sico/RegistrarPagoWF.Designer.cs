@@ -41,13 +41,15 @@
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSaldoDeudor = new System.Windows.Forms.TextBox();
+            this.lblContador = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(68, 218);
+            this.progressBar1.Location = new System.Drawing.Point(67, 231);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(235, 23);
             this.progressBar1.TabIndex = 70;
@@ -59,7 +61,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(29, 183);
+            this.label5.Location = new System.Drawing.Point(29, 171);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 15);
             this.label5.TabIndex = 72;
@@ -68,18 +70,20 @@
             // txtObservaciones
             // 
             this.txtObservaciones.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtObservaciones.Location = new System.Drawing.Point(122, 166);
+            this.txtObservaciones.Location = new System.Drawing.Point(122, 154);
+            this.txtObservaciones.MaxLength = 200;
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(207, 46);
             this.txtObservaciones.TabIndex = 67;
+            this.txtObservaciones.TextChanged += new System.EventHandler(this.txtObservaciones_TextChanged);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(8, 131);
+            this.label15.Location = new System.Drawing.Point(8, 119);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(109, 15);
             this.label15.TabIndex = 71;
@@ -88,7 +92,7 @@
             // txtMonto
             // 
             this.txtMonto.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMonto.Location = new System.Drawing.Point(122, 130);
+            this.txtMonto.Location = new System.Drawing.Point(122, 118);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(207, 20);
             this.txtMonto.TabIndex = 66;
@@ -114,7 +118,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(34, 59);
+            this.label14.Location = new System.Drawing.Point(34, 47);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(83, 15);
             this.label14.TabIndex = 69;
@@ -122,7 +126,7 @@
             // 
             // dtFecha
             // 
-            this.dtFecha.Location = new System.Drawing.Point(122, 55);
+            this.dtFecha.Location = new System.Drawing.Point(122, 43);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Size = new System.Drawing.Size(207, 20);
             this.dtFecha.TabIndex = 65;
@@ -166,7 +170,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(8, 92);
+            this.label1.Location = new System.Drawing.Point(8, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 15);
             this.label1.TabIndex = 75;
@@ -176,16 +180,40 @@
             // 
             this.txtSaldoDeudor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSaldoDeudor.Enabled = false;
-            this.txtSaldoDeudor.Location = new System.Drawing.Point(122, 91);
+            this.txtSaldoDeudor.Location = new System.Drawing.Point(122, 79);
             this.txtSaldoDeudor.Name = "txtSaldoDeudor";
             this.txtSaldoDeudor.Size = new System.Drawing.Size(207, 20);
             this.txtSaldoDeudor.TabIndex = 74;
+            // 
+            // lblContador
+            // 
+            this.lblContador.AutoSize = true;
+            this.lblContador.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContador.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblContador.Location = new System.Drawing.Point(258, 202);
+            this.lblContador.Name = "lblContador";
+            this.lblContador.Size = new System.Drawing.Size(32, 18);
+            this.lblContador.TabIndex = 160;
+            this.lblContador.Text = "200";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblTotal.Location = new System.Drawing.Point(286, 202);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(39, 18);
+            this.lblTotal.TabIndex = 159;
+            this.lblTotal.Text = "/200";
             // 
             // RegistrarPagoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 300);
+            this.Controls.Add(this.lblContador);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSaldoDeudor);
             this.Controls.Add(this.panel1);
@@ -225,5 +253,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSaldoDeudor;
+        private System.Windows.Forms.Label lblContador;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

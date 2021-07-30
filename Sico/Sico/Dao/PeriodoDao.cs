@@ -100,7 +100,7 @@ namespace Sico.Dao
             connection.Close();
             return _TipoMoneda;
         }
-        public static bool GuardarPeriodoVenta(int idEmpresa, string nombre, string Año)
+        public static bool GuardarPeriodoVenta(int idEmpresa, string nombre, string Año, DateTime fechaDesde, DateTime fechaHasta)
         {
             bool exito = false;
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
@@ -116,6 +116,8 @@ namespace Sico.Dao
                 cmd.Parameters.AddWithValue("idCliente_in", idEmpresa);
                 cmd.Parameters.AddWithValue("Ano_in", Año);
                 cmd.Parameters.AddWithValue("Nombre_in", NombrePeriodo);
+                cmd.Parameters.AddWithValue("FechaDesde_in", fechaDesde);
+                cmd.Parameters.AddWithValue("FechaHasta_in", fechaHasta);
                 cmd.ExecuteNonQuery();
                 exito = true;
                 connection.Close();

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PeriodosVentasWF));
-            this.cmbAño = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.txtPeriodo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -39,31 +37,17 @@
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.dtFechaHasta = new System.Windows.Forms.DateTimePicker();
+            this.dtFechaDesde = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
-            // cmbAño
-            // 
-            this.cmbAño.FormattingEnabled = true;
-            this.cmbAño.Location = new System.Drawing.Point(88, 89);
-            this.cmbAño.Name = "cmbAño";
-            this.cmbAño.Size = new System.Drawing.Size(250, 21);
-            this.cmbAño.TabIndex = 100;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(34, 90);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 15);
-            this.label4.TabIndex = 99;
-            this.label4.Text = "Año(*):";
-            // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 189);
+            this.progressBar1.Location = new System.Drawing.Point(10, 191);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(330, 23);
             this.progressBar1.TabIndex = 98;
@@ -72,16 +56,17 @@
             // 
             // txtPeriodo
             // 
-            this.txtPeriodo.Location = new System.Drawing.Point(88, 143);
+            this.txtPeriodo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPeriodo.Location = new System.Drawing.Point(105, 58);
             this.txtPeriodo.Name = "txtPeriodo";
-            this.txtPeriodo.Size = new System.Drawing.Size(250, 20);
+            this.txtPeriodo.Size = new System.Drawing.Size(239, 20);
             this.txtPeriodo.TabIndex = 94;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 144);
+            this.label7.Location = new System.Drawing.Point(33, 59);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 15);
             this.label7.TabIndex = 93;
@@ -128,7 +113,7 @@
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.ForeColor = System.Drawing.Color.White;
-            this.btnVolver.Location = new System.Drawing.Point(62, 235);
+            this.btnVolver.Location = new System.Drawing.Point(79, 235);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 40);
             this.btnVolver.TabIndex = 159;
@@ -143,7 +128,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(181, 235);
+            this.btnGuardar.Location = new System.Drawing.Point(198, 235);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 40);
             this.btnGuardar.TabIndex = 160;
@@ -151,16 +136,54 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // dtFechaHasta
+            // 
+            this.dtFechaHasta.Enabled = false;
+            this.dtFechaHasta.Location = new System.Drawing.Point(105, 137);
+            this.dtFechaHasta.Name = "dtFechaHasta";
+            this.dtFechaHasta.Size = new System.Drawing.Size(239, 20);
+            this.dtFechaHasta.TabIndex = 171;
+            // 
+            // dtFechaDesde
+            // 
+            this.dtFechaDesde.Location = new System.Drawing.Point(105, 96);
+            this.dtFechaDesde.Name = "dtFechaDesde";
+            this.dtFechaDesde.Size = new System.Drawing.Size(239, 20);
+            this.dtFechaDesde.TabIndex = 170;
+            this.dtFechaDesde.ValueChanged += new System.EventHandler(this.dtFechaDesde_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(10, 141);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 15);
+            this.label3.TabIndex = 169;
+            this.label3.Text = "FechaHasta(*):";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 100);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 15);
+            this.label1.TabIndex = 168;
+            this.label1.Text = "Fecha Desde(*):";
+            // 
             // PeriodosVentasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(350, 300);
+            this.Controls.Add(this.dtFechaHasta);
+            this.Controls.Add(this.dtFechaDesde);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.cmbAño);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.txtPeriodo);
             this.Controls.Add(this.label7);
@@ -179,9 +202,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cmbAño;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TextBox txtPeriodo;
         private System.Windows.Forms.Label label7;
@@ -190,5 +210,9 @@
         private System.Windows.Forms.PictureBox btnCerrar;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.DateTimePicker dtFechaHasta;
+        private System.Windows.Forms.DateTimePicker dtFechaDesde;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
     }
 }
