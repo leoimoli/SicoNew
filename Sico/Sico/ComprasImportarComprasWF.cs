@@ -566,9 +566,18 @@ namespace Sico
         {
             try
             {
+                string Periodo = cmbPeriodo.Text;
+                if (Periodo == "" || Periodo == null)
+                {
+                    string message2 = "Debe seleccionar un periodo";
+                    const string caption2 = "Atención:";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
                 Calculos(ListaStatic);
                 ProgressBar();
-                string Periodo = cmbPeriodo.Text;
                 int Exito = ComprasNeg.GuardarCargaMasivaCompras(ListaStatic, cuit, Periodo);
                 if (Exito > 0)
                 {

@@ -606,10 +606,6 @@ namespace Sico
         {
             SubClienteWF _sub = new SubClienteWF(null, 0);
             _sub.Show();
-        }
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
+        }       
     }
 }

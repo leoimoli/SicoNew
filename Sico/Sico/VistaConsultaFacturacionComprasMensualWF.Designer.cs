@@ -36,6 +36,16 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cmbPeriodo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblCantidadEdit = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnPdf = new System.Windows.Forms.Button();
+            this.btnCitiVentas = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.PanelBotones = new System.Windows.Forms.Panel();
             this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CuitProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RazonSocialProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,16 +60,7 @@
             this.PercepIngBru = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoGravado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PercepIva = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbPeriodo = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblCantidadEdit = new System.Windows.Forms.Label();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnPdf = new System.Windows.Forms.Button();
-            this.btnCitiVentas = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.PanelBotones = new System.Windows.Forms.Panel();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.PanelBotones.SuspendLayout();
@@ -140,7 +141,8 @@
             this.Iva3,
             this.PercepIngBru,
             this.NoGravado,
-            this.PercepIva});
+            this.PercepIva,
+            this.Eliminar});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -156,87 +158,8 @@
             this.dataGridView1.Size = new System.Drawing.Size(1066, 321);
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.Visible = false;
-            // 
-            // NroFactura
-            // 
-            this.NroFactura.HeaderText = "Nro.Factura";
-            this.NroFactura.Name = "NroFactura";
-            // 
-            // CuitProveedor
-            // 
-            this.CuitProveedor.HeaderText = "Cuit";
-            this.CuitProveedor.Name = "CuitProveedor";
-            // 
-            // RazonSocialProveedor
-            // 
-            this.RazonSocialProveedor.HeaderText = "Razón Social";
-            this.RazonSocialProveedor.Name = "RazonSocialProveedor";
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.Width = 80;
-            // 
-            // Monto
-            // 
-            this.Monto.HeaderText = "Monto";
-            this.Monto.Name = "Monto";
-            this.Monto.Width = 90;
-            // 
-            // Neto1
-            // 
-            this.Neto1.HeaderText = "Neto 10,5";
-            this.Neto1.Name = "Neto1";
-            this.Neto1.Width = 90;
-            // 
-            // Neto2
-            // 
-            this.Neto2.HeaderText = "Neto 21";
-            this.Neto2.Name = "Neto2";
-            this.Neto2.Width = 90;
-            // 
-            // Neto3
-            // 
-            this.Neto3.HeaderText = "Neto 27";
-            this.Neto3.Name = "Neto3";
-            this.Neto3.Width = 90;
-            // 
-            // Iva1
-            // 
-            this.Iva1.HeaderText = "Iva 10,5";
-            this.Iva1.Name = "Iva1";
-            this.Iva1.Width = 90;
-            // 
-            // Iva2
-            // 
-            this.Iva2.HeaderText = "Iva 21";
-            this.Iva2.Name = "Iva2";
-            this.Iva2.Width = 90;
-            // 
-            // Iva3
-            // 
-            this.Iva3.HeaderText = "Iva 27";
-            this.Iva3.Name = "Iva3";
-            this.Iva3.Width = 90;
-            // 
-            // PercepIngBru
-            // 
-            this.PercepIngBru.HeaderText = "Percepción Ing.Brutos";
-            this.PercepIngBru.Name = "PercepIngBru";
-            this.PercepIngBru.Width = 95;
-            // 
-            // NoGravado
-            // 
-            this.NoGravado.HeaderText = "No Gravado";
-            this.NoGravado.Name = "NoGravado";
-            this.NoGravado.Width = 90;
-            // 
-            // PercepIva
-            // 
-            this.PercepIva.HeaderText = "Percepción Iva";
-            this.PercepIva.Name = "PercepIva";
-            this.PercepIva.Width = 90;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
             // cmbPeriodo
             // 
@@ -348,6 +271,94 @@
             this.PanelBotones.TabIndex = 166;
             this.PanelBotones.Visible = false;
             // 
+            // NroFactura
+            // 
+            this.NroFactura.HeaderText = "Nro.Factura";
+            this.NroFactura.Name = "NroFactura";
+            // 
+            // CuitProveedor
+            // 
+            this.CuitProveedor.HeaderText = "Cuit";
+            this.CuitProveedor.Name = "CuitProveedor";
+            // 
+            // RazonSocialProveedor
+            // 
+            this.RazonSocialProveedor.HeaderText = "Razón Social";
+            this.RazonSocialProveedor.Name = "RazonSocialProveedor";
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Width = 80;
+            // 
+            // Monto
+            // 
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
+            this.Monto.Width = 90;
+            // 
+            // Neto1
+            // 
+            this.Neto1.HeaderText = "Neto 10,5";
+            this.Neto1.Name = "Neto1";
+            this.Neto1.Width = 90;
+            // 
+            // Neto2
+            // 
+            this.Neto2.HeaderText = "Neto 21";
+            this.Neto2.Name = "Neto2";
+            this.Neto2.Width = 90;
+            // 
+            // Neto3
+            // 
+            this.Neto3.HeaderText = "Neto 27";
+            this.Neto3.Name = "Neto3";
+            this.Neto3.Width = 90;
+            // 
+            // Iva1
+            // 
+            this.Iva1.HeaderText = "Iva 10,5";
+            this.Iva1.Name = "Iva1";
+            this.Iva1.Width = 90;
+            // 
+            // Iva2
+            // 
+            this.Iva2.HeaderText = "Iva 21";
+            this.Iva2.Name = "Iva2";
+            this.Iva2.Width = 90;
+            // 
+            // Iva3
+            // 
+            this.Iva3.HeaderText = "Iva 27";
+            this.Iva3.Name = "Iva3";
+            this.Iva3.Width = 90;
+            // 
+            // PercepIngBru
+            // 
+            this.PercepIngBru.HeaderText = "Percepción Ing.Brutos";
+            this.PercepIngBru.Name = "PercepIngBru";
+            this.PercepIngBru.Width = 95;
+            // 
+            // NoGravado
+            // 
+            this.NoGravado.HeaderText = "No Gravado";
+            this.NoGravado.Name = "NoGravado";
+            this.NoGravado.Width = 90;
+            // 
+            // PercepIva
+            // 
+            this.PercepIva.HeaderText = "Percepción Iva";
+            this.PercepIva.Name = "PercepIva";
+            this.PercepIva.Width = 90;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // VistaConsultaFacturacionComprasMensualWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,6 +398,7 @@
         private System.Windows.Forms.Button btnCitiVentas;
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Panel PanelBotones;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn CuitProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn RazonSocialProveedor;
@@ -401,6 +413,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PercepIngBru;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoGravado;
         private System.Windows.Forms.DataGridViewTextBoxColumn PercepIva;
-        private System.Windows.Forms.Panel PanelBotones;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

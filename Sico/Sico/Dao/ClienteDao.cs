@@ -539,6 +539,23 @@ namespace Sico.Dao
             connection.Close();
             return _listaTipoVencimiento;
         }
+        public static bool AnularFacturaVenta(int idEmpresa, string nroFactura)
+        {
+            bool exito = false;
+            connection.Close();
+            connection.Open();
+            string Actualizar = "AnularFacturaVenta";
+            MySqlCommand cmd = new MySqlCommand(Actualizar, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("idEmpresa_in", idEmpresa);
+            cmd.Parameters.AddWithValue("nroFactura_in", nroFactura);                
+            cmd.ExecuteNonQuery();
+            exito = true;
+            connection.Close();
+            return exito;
+        }
+
         public static string BuscarNroFactura(int idCliente)
         {
             string Factura = "";

@@ -38,6 +38,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InicioNuevoWF";
             this.Text = "InicioNuevoWF";
+            this.Load += new System.EventHandler(this.InicioNuevoWF_Load);
             this.ResumeLayout(false);
 
         }

@@ -234,6 +234,12 @@
     <Compile Include="ComprasWF.Designer.cs">
       <DependentUpon>ComprasWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfiguracionesWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfiguracionesWF.Designer.cs">
+      <DependentUpon>ConfiguracionesWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfigurarVencimientosWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -523,6 +529,9 @@
     <EmbeddedResource Include="ComprasWF.resx">
       <DependentUpon>ComprasWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConfiguracionesWF.resx">
+      <DependentUpon>ConfiguracionesWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfigurarVencimientosWF.resx">
       <DependentUpon>ConfigurarVencimientosWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -758,6 +767,15 @@
     <None Include="Resources\pdf1.png" />
     <None Include="Resources\analisis-de-datos.png" />
     <None Include="Resources\grafico.png" />
+    <None Include="Resources\honorarios.png" />
+    <None Include="Resources\empresa.png" />
+    <None Include="Resources\impuesto.png" />
+    <None Include="Resources\contabilidad.png" />
+    <None Include="Resources\nomina_de_sueldos.png" />
+    <None Include="Resources\usuarios%282%29.png" />
+    <None Include="Resources\pagina_de_inicio.png" />
+    <None Include="Resources\pagina_de_inicio1.png" />
+    <None Include="Resources\boton_de_configuracion_negro.png" />
     <Content Include="wepik-202151-104656.ico" />
     <None Include="Resources\historial-medico %281%29.png" />
     <None Include="Resources\juicio.png" />

@@ -56,6 +56,7 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.PanelBotones = new System.Windows.Forms.Panel();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.PanelBotones.SuspendLayout();
@@ -155,7 +156,8 @@
             this.Iva1,
             this.Iva2,
             this.Iva3,
-            this.NotaCredito});
+            this.NotaCredito,
+            this.Eliminar});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,12 +167,14 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 54);
+            this.dataGridView1.Location = new System.Drawing.Point(5, 54);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(1066, 305);
             this.dataGridView1.TabIndex = 42;
             this.dataGridView1.Visible = false;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
             // NroFactura
             // 
@@ -301,6 +305,11 @@
             this.PanelBotones.TabIndex = 163;
             this.PanelBotones.Visible = false;
             // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            // 
             // VistaConsultaFacturacionMensualWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,5 +357,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Iva3;
         private System.Windows.Forms.DataGridViewTextBoxColumn NotaCredito;
         private System.Windows.Forms.Panel PanelBotones;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

@@ -295,5 +295,16 @@ namespace Sico.Negocio
             }
             return exito;
         }
+        public static bool AnularFacturaCompra(int idEmpresa, string nroFactura)
+        {
+            bool exito = false;
+            try
+            {
+                exito = ComprasDao.AnularFacturaCompra(idEmpresa, nroFactura);
+            }
+            catch (Exception ex)
+            { }
+            return exito;
+        }
     }
 }

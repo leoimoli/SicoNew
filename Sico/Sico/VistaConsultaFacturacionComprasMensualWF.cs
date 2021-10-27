@@ -107,75 +107,82 @@ namespace Sico
         {
             try
             {
-                //groupBox1.Enabled = false;
-                dataGridView1.Rows.Clear();
-                groupBox2.Enabled = false;
-                string Periodo = cmbPeriodo.Text;
-                List<Entidades.FacturaCompra> ListaTotalFacturacion2 = new List<FacturaCompra>();
-                ProgressBar();
-                ListaTotalFacturacion2 = ComprasNeg.BuscarFacturacionTotalCompras(Sesion.UsuarioLogueado.idEmpresaSeleccionado, Periodo);
-                if (ListaTotalFacturacion2.Count > 0)
-                {
-                    PanelBotones.Visible = true;
-                    DiseñoGrilla();
-                    btnExcel.Visible = true;
-                    btnVolver2.Visible = false;
-                    btnCitiVentas.Visible = true;
-                    dataGridView1.Visible = true;
-                    dataGridView1.ReadOnly = true;
-                    dataGridView1.RowHeadersVisible = false;
+                BuscarInformacion();
 
-                    double TotalMonto = CalcularTotalMonto(ListaTotalFacturacion2);
-                    double TotalImporte1 = CalcularTotalImporte1(ListaTotalFacturacion2);
-                    double TotalImporte2 = CalcularTotalImporte2(ListaTotalFacturacion2);
-                    double TotalImporte3 = CalcularTotalImporte3(ListaTotalFacturacion2);
-
-                    double TotalNeto10 = CalcularTotalNeto10(ListaTotalFacturacion2);
-                    double TotalNeto21 = CalcularTotalNeto21(ListaTotalFacturacion2);
-                    double TotalNeto27 = CalcularTotalNeto27(ListaTotalFacturacion2);
-
-                    double TotalIva10 = CalcularTotalIva10(ListaTotalFacturacion2);
-                    double TotalIva21 = CalcularTotalIva21(ListaTotalFacturacion2);
-                    double TotalIva27 = CalcularTotalIva27(ListaTotalFacturacion2);
-                    double NoGravado = CalcularTotalNoGravado(ListaTotalFacturacion2);
-                    double PercepIngBrutos = CalcularTotalPercepIngBrutos(ListaTotalFacturacion2);
-                    double PercepIva = CalcularTotalPercepIva(ListaTotalFacturacion2);
-                    FacturaCompra ultimo = new FacturaCompra();
-                    ultimo.NroFactura = "TOTAL";
-                    ultimo.Total1 = Convert.ToDecimal(TotalImporte1);
-                    ultimo.Total2 = Convert.ToDecimal(TotalImporte2);
-                    ultimo.Total3 = Convert.ToDecimal(TotalImporte3);
-
-                    ultimo.Neto1 = Convert.ToDecimal(TotalNeto10);
-                    ultimo.Neto2 = Convert.ToDecimal(TotalNeto21);
-                    ultimo.Neto3 = Convert.ToDecimal(TotalNeto27);
-
-                    ultimo.Iva1 = Convert.ToDecimal(TotalIva10);
-                    ultimo.Iva2 = Convert.ToDecimal(TotalIva21);
-                    ultimo.Iva3 = Convert.ToDecimal(TotalIva27);
-                    ultimo.Monto = Convert.ToDecimal(TotalMonto);
-                    ultimo.NoGravado = Convert.ToDecimal(NoGravado);
-                    ultimo.PercepIngBrutos = Convert.ToDecimal(PercepIngBrutos);
-                    ultimo.PercepIva = Convert.ToDecimal(PercepIva);
-                    ListaTotalFacturacion2.Add(ultimo);
-                    ListaStatica = ListaTotalFacturacion2;
-                    foreach (var item in ListaTotalFacturacion2)
-                    {
-                        dataGridView1.Rows.Add(item.NroFactura, item.Cuit, item.ApellidoNombre, item.Fecha, item.Monto, item.Neto1, item.Neto2, item.Neto3, item.Iva1, item.Iva2, item.Iva3, item.PercepIngBrutos, item.NoGravado, item.PercepIva);
-                    }
-                    //dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.SteelBlue;
-                    dataGridView1.AllowUserToAddRows = false;
-                }
-                else { PanelBotones.Visible = false; }
-
-                //groupBox1.Enabled = true;
-                groupBox2.Enabled = true;
-                progressBar1.Value = Convert.ToInt32(null);
-                progressBar1.Visible = false;
             }
             catch (Exception ex)
             { }
         }
+
+        private void BuscarInformacion()
+        {
+            //groupBox1.Enabled = false;
+            dataGridView1.Rows.Clear();
+            groupBox2.Enabled = false;
+            string Periodo = cmbPeriodo.Text;
+            List<Entidades.FacturaCompra> ListaTotalFacturacion2 = new List<FacturaCompra>();
+            ProgressBar();
+            ListaTotalFacturacion2 = ComprasNeg.BuscarFacturacionTotalCompras(Sesion.UsuarioLogueado.idEmpresaSeleccionado, Periodo);
+            if (ListaTotalFacturacion2.Count > 0)
+            {
+                PanelBotones.Visible = true;
+                DiseñoGrilla();
+                btnExcel.Visible = true;
+                btnVolver2.Visible = false;
+                btnCitiVentas.Visible = true;
+                dataGridView1.Visible = true;
+                dataGridView1.ReadOnly = true;
+                dataGridView1.RowHeadersVisible = false;
+
+                double TotalMonto = CalcularTotalMonto(ListaTotalFacturacion2);
+                double TotalImporte1 = CalcularTotalImporte1(ListaTotalFacturacion2);
+                double TotalImporte2 = CalcularTotalImporte2(ListaTotalFacturacion2);
+                double TotalImporte3 = CalcularTotalImporte3(ListaTotalFacturacion2);
+
+                double TotalNeto10 = CalcularTotalNeto10(ListaTotalFacturacion2);
+                double TotalNeto21 = CalcularTotalNeto21(ListaTotalFacturacion2);
+                double TotalNeto27 = CalcularTotalNeto27(ListaTotalFacturacion2);
+
+                double TotalIva10 = CalcularTotalIva10(ListaTotalFacturacion2);
+                double TotalIva21 = CalcularTotalIva21(ListaTotalFacturacion2);
+                double TotalIva27 = CalcularTotalIva27(ListaTotalFacturacion2);
+                double NoGravado = CalcularTotalNoGravado(ListaTotalFacturacion2);
+                double PercepIngBrutos = CalcularTotalPercepIngBrutos(ListaTotalFacturacion2);
+                double PercepIva = CalcularTotalPercepIva(ListaTotalFacturacion2);
+                FacturaCompra ultimo = new FacturaCompra();
+                ultimo.NroFactura = "TOTAL";
+                ultimo.Total1 = Convert.ToDecimal(TotalImporte1);
+                ultimo.Total2 = Convert.ToDecimal(TotalImporte2);
+                ultimo.Total3 = Convert.ToDecimal(TotalImporte3);
+
+                ultimo.Neto1 = Convert.ToDecimal(TotalNeto10);
+                ultimo.Neto2 = Convert.ToDecimal(TotalNeto21);
+                ultimo.Neto3 = Convert.ToDecimal(TotalNeto27);
+
+                ultimo.Iva1 = Convert.ToDecimal(TotalIva10);
+                ultimo.Iva2 = Convert.ToDecimal(TotalIva21);
+                ultimo.Iva3 = Convert.ToDecimal(TotalIva27);
+                ultimo.Monto = Convert.ToDecimal(TotalMonto);
+                ultimo.NoGravado = Convert.ToDecimal(NoGravado);
+                ultimo.PercepIngBrutos = Convert.ToDecimal(PercepIngBrutos);
+                ultimo.PercepIva = Convert.ToDecimal(PercepIva);
+                ListaTotalFacturacion2.Add(ultimo);
+                ListaStatica = ListaTotalFacturacion2;
+                foreach (var item in ListaTotalFacturacion2)
+                {
+                    dataGridView1.Rows.Add(item.NroFactura, item.Cuit, item.ApellidoNombre, item.Fecha, item.Monto, item.Neto1, item.Neto2, item.Neto3, item.Iva1, item.Iva2, item.Iva3, item.PercepIngBrutos, item.NoGravado, item.PercepIva);
+                }
+                //dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.SteelBlue;
+                dataGridView1.AllowUserToAddRows = false;
+            }
+            else { PanelBotones.Visible = false; }
+
+            //groupBox1.Enabled = true;
+            groupBox2.Enabled = true;
+            progressBar1.Value = Convert.ToInt32(null);
+            progressBar1.Visible = false;
+        }
+
         private void DiseñoGrilla()
         {
             this.dataGridView1.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 9);
@@ -1437,6 +1444,70 @@ namespace Sico
             var result2 = MessageBox.Show(message2, caption2,
                                          MessageBoxButtons.OK,
                                          MessageBoxIcon.Asterisk);
+        }
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && this.dataGridView1.Columns[e.ColumnIndex].Name == "Eliminar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell BotonVer = this.dataGridView1.Rows[e.RowIndex].Cells["Eliminar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"eliminarFac.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 20, e.CellBounds.Top + 4);
+                this.dataGridView1.Rows[e.RowIndex].Height = icoAtomico.Height + 8;
+                this.dataGridView1.Columns[e.ColumnIndex].Width = icoAtomico.Width + 40;
+                e.Handled = true;
+            }
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentCell.ColumnIndex == 14)
+            {
+                const string message = "¿Usted desea eliminar la factura seleccionada?";
+                const string caption = "Consulta";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        int idEmpresa = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
+                        string NroFactura = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        if (NroFactura == "TOTAL")
+                        {
+                            const string message2 = "Atención: No se puede eliminar la factura seleccionada.";
+                            const string caption2 = "Atención";
+                            var result2 = MessageBox.Show(message2, caption2,
+                                                         MessageBoxButtons.OK,
+                                                         MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            bool Exito = ComprasNeg.AnularFacturaCompra(idEmpresa, NroFactura);
+                            if (Exito == true)
+                            {
+                                const string message2 = "Se elimino la factura seleccionada exitosamente.";
+                                const string caption2 = "Éxito";
+                                var result2 = MessageBox.Show(message2, caption2,
+                                                             MessageBoxButtons.OK,
+                                                             MessageBoxIcon.Asterisk);
+                                BuscarInformacion();
+                            }
+                            else
+                            {
+                                const string message2 = "Atención: No se pudo eliminar la factura seleccionada.";
+                                const string caption2 = "Atención";
+                                var result2 = MessageBox.Show(message2, caption2,
+                                                             MessageBoxButtons.OK,
+                                                             MessageBoxIcon.Exclamation);
+                            }
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
         }
     }
 }

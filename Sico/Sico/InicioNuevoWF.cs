@@ -16,5 +16,10 @@ namespace Sico
         {
             InitializeComponent();
         }
+
+        private void InicioNuevoWF_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

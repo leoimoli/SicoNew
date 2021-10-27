@@ -274,7 +274,7 @@ namespace Sico
                 var result2 = MessageBox.Show(message2, caption2,
                                              MessageBoxButtons.OK,
                                              MessageBoxIcon.Exclamation);
-               // MessageBox.Show(ex.Message);
+                // MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -642,6 +642,15 @@ namespace Sico
             {
                 ProgressBar();
                 string Periodo = cmbPeriodo.Text;
+                if (Periodo == "" || Periodo == null)
+                {
+                    string message2 = "Debe seleccionar un periodo";
+                    const string caption2 = "Atención:";
+                    var result2 = MessageBox.Show(message2, caption2,
+                                                 MessageBoxButtons.OK,
+                                                 MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
                 int Exito = ClienteNeg.GuardarCargaMasivaVentas(ListaPrecargada, idEmpresa, Periodo);
                 if (Exito > 0)
                 {

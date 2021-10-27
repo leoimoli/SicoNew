@@ -4,10 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.IO;
+using Sico.Properties;
 
 namespace Sico
 {
@@ -15,11 +18,31 @@ namespace Sico
     {
         public int idEmpresa;
         public string Empresa;
+
+        //perfil 1 = SuperAdmin
+        //perfil 2 = administrador
+        //perfil 3 = Operador
         public MasterNuevaWF(int idEmpresa, string empresa)
         {
+            InitializeComponent();
+            AbrirFormEnPanel(new InicioWF());
+            var imagen = new Bitmap(Sico.Properties.Resources.pagina_de_inicio);
+            ImagenPagina.Image = imagen;
+            lblPantalla.Text = "Inicio";
+            if (Sesion.UsuarioLogueado.Perfil == "1")
+            {
+                panelConfiguracion.Visible = true;
+                btnConfiguracion.Visible = true;
+            }
+            else
+            {
+                panelConfiguracion.Visible = false;
+                btnConfiguracion.Visible = false;
+            }
+
             if (idEmpresa > 0 && empresa != null)
             {
-                InitializeComponent();
+                //InitializeComponent();
                 grbEmpresaSeleccionada.Visible = true;
                 lblEmpresa.Text = empresa;
                 lblidEmpresa.Text = Convert.ToString(idEmpresa);
@@ -31,7 +54,7 @@ namespace Sico
             }
             else
             {
-                InitializeComponent();
+                //InitializeComponent();
                 AbrirFormEnPanel(new InicioNuevoWF());
                 menuSupEmpresa.Visible = false;
                 MenuSupContabilidad.Visible = false;
@@ -72,6 +95,9 @@ namespace Sico
             MenuSupSueldos.Visible = false;
             MenuSupHonorarios.Visible = false;
             AbrirFormEnPanel(new ClientesNuevoWFcs());
+            var imagen = new Bitmap(Sico.Properties.Resources.empresa);
+            ImagenPagina.Image = imagen;
+            lblPantalla.Text = "Empresas";
         }
         private void btnIva_Click(object sender, EventArgs e)
         {
@@ -83,6 +109,10 @@ namespace Sico
             MenuSupSueldos.Visible = false;
             MenuSupHonorarios.Visible = false;
             AbrirFormEnPanel(new InicioNuevoWF());
+            var imagen = new Bitmap(Sico.Properties.Resources.impuesto);
+            ImagenPagina.Image = imagen;
+            lblPantalla.Text = "Iva";
+
         }
         private void btnContabilidad_Click(object sender, EventArgs e)
         {
@@ -94,6 +124,9 @@ namespace Sico
             MenuSupSueldos.Visible = false;
             MenuSupHonorarios.Visible = false;
             AbrirFormEnPanel(new InicioNuevoWF());
+            var imagen = new Bitmap(Sico.Properties.Resources.contabilidad);
+            ImagenPagina.Image = imagen;
+            lblPantalla.Text = "Contabilidad";
         }
         private void btnSueldos_Click(object sender, EventArgs e)
         {
@@ -105,6 +138,9 @@ namespace Sico
             MenuSupSueldos.Visible = true;
             MenuSupHonorarios.Visible = false;
             AbrirFormEnPanel(new InicioNuevoWF());
+            var imagen = new Bitmap(Sico.Properties.Resources.nomina_de_sueldos);
+            ImagenPagina.Image = imagen;
+            lblPantalla.Text = "Sueldos";
 
         }
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -188,6 +224,9 @@ namespace Sico
             MenuSupSueldos.Visible = false;
             MenuSupHonorarios.Visible = true;
             AbrirFormEnPanel(new PlanDeHonorariosWF());
+            var imagen = new Bitmap(Sico.Properties.Resources.honorarios);
+            ImagenPagina.Image = imagen;
+            lblPantalla.Text = "Honorarios";
         }
 
         private void comprobantesDeVentaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -245,6 +284,37 @@ namespace Sico
         private void reporteAnualToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel(new FacturacionAnualComprasWF());
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new InicioWF());
+            var imagen = new Bitmap(Sico.Properties.Resources.usuarios_2_);
+            ImagenPagina.Image = imagen;
+            lblPantalla.Text = "Usuarios";
+        }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new InicioWF());
+            var imagen = new Bitmap(Sico.Properties.Resources.pagina_de_inicio);
+            ImagenPagina.Image = imagen;
+            lblPantalla.Text = "Inicio";
+        }
+
+        private void btnConfiguracion_Click(object sender, EventArgs e)
+        {
+            //panel5.Visible = true;
+            //MenuSupSueldos.Dock = DockStyle.Top;
+            //menuSupEmpresa.Visible = false;
+            //MenuSupContabilidad.Visible = false;
+            //MenuSupIva.Visible = false;
+            //MenuSupSueldos.Visible = true;
+            //MenuSupHonorarios.Visible = false;
+            AbrirFormEnPanel(new InicioNuevoWF());
+            var imagen = new Bitmap(Sico.Properties.Resources.boton_de_configuracion_negro);
+            ImagenPagina.Image = imagen;
+            lblPantalla.Text = "Configuración";
         }
     }
 }

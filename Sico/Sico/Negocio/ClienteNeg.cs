@@ -625,5 +625,17 @@ namespace Sico.Negocio
             }
             return _listaClientes;
         }
+
+        public static bool AnularFacturaVenta(int idEmpresa, string nroFactura)
+        {
+            bool exito = false;
+            try
+            {
+                exito = ClienteDao.AnularFacturaVenta(idEmpresa, nroFactura);
+            }
+            catch (Exception ex)
+            { }
+            return exito;
+        }
     }
 }

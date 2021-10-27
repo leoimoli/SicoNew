@@ -556,7 +556,7 @@ namespace Sico
         private void btnVolver_Click(object sender, EventArgs e)
         {
 
-        }        
+        }
         private void btnExcel_Click(object sender, EventArgs e)
         {
             ProgressBar();
@@ -1243,6 +1243,70 @@ namespace Sico
             var result2 = MessageBox.Show(message2, caption2,
                                          MessageBoxButtons.OK,
                                          MessageBoxIcon.Asterisk);
+        }
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && this.dataGridView1.Columns[e.ColumnIndex].Name == "Eliminar" && e.RowIndex >= 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                DataGridViewButtonCell BotonVer = this.dataGridView1.Rows[e.RowIndex].Cells["Eliminar"] as DataGridViewButtonCell;
+                Icon icoAtomico = new Icon(Environment.CurrentDirectory + "\\" + @"eliminarFac.ico");
+                e.Graphics.DrawIcon(icoAtomico, e.CellBounds.Left + 20, e.CellBounds.Top + 4);
+                this.dataGridView1.Rows[e.RowIndex].Height = icoAtomico.Height + 8;
+                this.dataGridView1.Columns[e.ColumnIndex].Width = icoAtomico.Width + 40;
+                e.Handled = true;
+            }
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentCell.ColumnIndex == 11)
+            {
+                const string message = "¿Usted desea eliminar la factura seleccionada?";
+                const string caption = "Consulta";
+                var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+                {
+                    if (result == DialogResult.Yes)
+                    {
+                        int idEmpresa = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
+                        string NroFactura = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                        if (NroFactura == "TOTAL")
+                        {
+                            const string message2 = "Atención: No se puede eliminar la factura seleccionada.";
+                            const string caption2 = "Atención";
+                            var result2 = MessageBox.Show(message2, caption2,
+                                                         MessageBoxButtons.OK,
+                                                         MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            bool Exito = ClienteNeg.AnularFacturaVenta(idEmpresa, NroFactura);
+                            if (Exito == true)
+                            {
+                                const string message2 = "Se elimino la factura seleccionada exitosamente.";
+                                const string caption2 = "Éxito";
+                                var result2 = MessageBox.Show(message2, caption2,
+                                                             MessageBoxButtons.OK,
+                                                             MessageBoxIcon.Asterisk);
+                                BuscarInformacion();
+                            }
+                            else
+                            {
+                                const string message2 = "Atención: No se pudo eliminar la factura seleccionada.";
+                                const string caption2 = "Atención";
+                                var result2 = MessageBox.Show(message2, caption2,
+                                                             MessageBoxButtons.OK,
+                                                             MessageBoxIcon.Exclamation);
+                            }
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
         }
     }
 }
