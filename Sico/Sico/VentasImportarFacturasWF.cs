@@ -640,7 +640,6 @@ namespace Sico
         {
             try
             {
-                ProgressBar();
                 string Periodo = cmbPeriodo.Text;
                 if (Periodo == "" || Periodo == null)
                 {
@@ -651,6 +650,7 @@ namespace Sico
                                                  MessageBoxIcon.Exclamation);
                     throw new Exception();
                 }
+                ProgressBar();
                 int Exito = ClienteNeg.GuardarCargaMasivaVentas(ListaPrecargada, idEmpresa, Periodo);
                 if (Exito > 0)
                 {

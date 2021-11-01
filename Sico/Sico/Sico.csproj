@@ -181,6 +181,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgendaWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgendaWF.Designer.cs">
+      <DependentUpon>AgendaWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="CalendarioWF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,7 +264,9 @@
     <Compile Include="ConsultaVencimientosWF.Designer.cs">
       <DependentUpon>ConsultaVencimientosWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dao\AgendaDao.cs" />
     <Compile Include="Dao\ComprasDao.cs" />
+    <Compile Include="Dao\DaoConsultasGenerales.cs" />
     <Compile Include="Dao\HonorariosDao.cs" />
     <Compile Include="Dao\PericiaDao.cs" />
     <Compile Include="Dao\PeriodoDao.cs" />
@@ -276,6 +284,7 @@
     <Compile Include="DetalleHonariosMensualesWF.Designer.cs">
       <DependentUpon>DetalleHonariosMensualesWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Agenda.cs" />
     <Compile Include="Entidades\CuentaEmailPorUsuario.cs" />
     <Compile Include="Entidades\EstadisticaCompra.cs" />
     <Compile Include="Entidades\EstadisticaCompraTorta.cs" />
@@ -349,6 +358,7 @@
     <Compile Include="MenuClienteWF.Designer.cs">
       <DependentUpon>MenuClienteWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="Negocio\AgendaNeg.cs" />
     <Compile Include="Negocio\ComprasNeg.cs" />
     <Compile Include="Negocio\HonorariosNeg.cs" />
     <Compile Include="Negocio\PericiaNeg.cs" />
@@ -508,6 +518,9 @@
     <Compile Include="VistaFacturacionSubClienteWF.Designer.cs">
       <DependentUpon>VistaFacturacionSubClienteWF.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AgendaWF.resx">
+      <DependentUpon>AgendaWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CalendarioWF.resx">
       <DependentUpon>CalendarioWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -776,6 +789,12 @@
     <None Include="Resources\pagina_de_inicio.png" />
     <None Include="Resources\pagina_de_inicio1.png" />
     <None Include="Resources\boton_de_configuracion_negro.png" />
+    <None Include="Resources\marcador_en_la_agenda.png" />
+    <None Include="Resources\valor.png" />
+    <None Include="Resources\valor %281%29.png" />
+    <None Include="Resources\lista-de-tareas.png" />
+    <None Include="Resources\pendiente.png" />
+    <None Include="Resources\grupo.png" />
     <Content Include="wepik-202151-104656.ico" />
     <None Include="Resources\historial-medico %281%29.png" />
     <None Include="Resources\juicio.png" />

@@ -28,21 +28,436 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.lblDia = new System.Windows.Forms.Label();
+            this.lblMaster_FechaHoraReal = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblContadorUsuarios = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.lblContadorPendientes = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblContadorProdcutos = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblContadorClientes = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dgvAgenda = new System.Windows.Forms.DataGridView();
+            this.idPlan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaDesde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Finalizar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblAgenda = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // lblDia
+            // 
+            this.lblDia.AutoSize = true;
+            this.lblDia.BackColor = System.Drawing.SystemColors.Control;
+            this.lblDia.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDia.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblDia.Location = new System.Drawing.Point(660, 372);
+            this.lblDia.Name = "lblDia";
+            this.lblDia.Size = new System.Drawing.Size(96, 33);
+            this.lblDia.TabIndex = 10;
+            this.lblDia.Text = "label9";
+            // 
+            // lblMaster_FechaHoraReal
+            // 
+            this.lblMaster_FechaHoraReal.AutoSize = true;
+            this.lblMaster_FechaHoraReal.BackColor = System.Drawing.SystemColors.Control;
+            this.lblMaster_FechaHoraReal.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaster_FechaHoraReal.ForeColor = System.Drawing.Color.SteelBlue;
+            this.lblMaster_FechaHoraReal.Location = new System.Drawing.Point(683, 294);
+            this.lblMaster_FechaHoraReal.Name = "lblMaster_FechaHoraReal";
+            this.lblMaster_FechaHoraReal.Size = new System.Drawing.Size(226, 78);
+            this.lblMaster_FechaHoraReal.TabIndex = 9;
+            this.lblMaster_FechaHoraReal.Text = "label9";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label1.Location = new System.Drawing.Point(34, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(207, 24);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Información del sistema";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel7);
+            this.panel1.Controls.Add(this.panel6);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Location = new System.Drawing.Point(29, 33);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(628, 144);
+            this.panel1.TabIndex = 14;
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.lblContadorUsuarios);
+            this.panel7.Controls.Add(this.button6);
+            this.panel7.Controls.Add(this.pictureBox6);
+            this.panel7.Location = new System.Drawing.Point(505, 13);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(110, 128);
+            this.panel7.TabIndex = 5;
+            // 
+            // lblContadorUsuarios
+            // 
+            this.lblContadorUsuarios.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblContadorUsuarios.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblContadorUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblContadorUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorUsuarios.ForeColor = System.Drawing.Color.White;
+            this.lblContadorUsuarios.Location = new System.Drawing.Point(24, 89);
+            this.lblContadorUsuarios.Name = "lblContadorUsuarios";
+            this.lblContadorUsuarios.Size = new System.Drawing.Size(57, 34);
+            this.lblContadorUsuarios.TabIndex = 50;
+            this.lblContadorUsuarios.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(3, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(103, 26);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "Usuarios";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.lblContadorPendientes);
+            this.panel6.Controls.Add(this.button5);
+            this.panel6.Controls.Add(this.pictureBox5);
+            this.panel6.Location = new System.Drawing.Point(345, 13);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(110, 128);
+            this.panel6.TabIndex = 5;
+            // 
+            // lblContadorPendientes
+            // 
+            this.lblContadorPendientes.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblContadorPendientes.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblContadorPendientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblContadorPendientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorPendientes.ForeColor = System.Drawing.Color.White;
+            this.lblContadorPendientes.Location = new System.Drawing.Point(24, 89);
+            this.lblContadorPendientes.Name = "lblContadorPendientes";
+            this.lblContadorPendientes.Size = new System.Drawing.Size(57, 34);
+            this.lblContadorPendientes.TabIndex = 53;
+            this.lblContadorPendientes.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(3, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(103, 26);
+            this.button5.TabIndex = 1;
+            this.button5.Text = "Pendientes";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.lblContadorProdcutos);
+            this.panel4.Controls.Add(this.button3);
+            this.panel4.Controls.Add(this.pictureBox3);
+            this.panel4.Location = new System.Drawing.Point(169, 13);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(110, 128);
+            this.panel4.TabIndex = 5;
+            // 
+            // lblContadorProdcutos
+            // 
+            this.lblContadorProdcutos.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblContadorProdcutos.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblContadorProdcutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblContadorProdcutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorProdcutos.ForeColor = System.Drawing.Color.White;
+            this.lblContadorProdcutos.Location = new System.Drawing.Point(24, 89);
+            this.lblContadorProdcutos.Name = "lblContadorProdcutos";
+            this.lblContadorProdcutos.Size = new System.Drawing.Size(57, 34);
+            this.lblContadorProdcutos.TabIndex = 51;
+            this.lblContadorProdcutos.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(3, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(103, 26);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Tareas";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.lblContadorClientes);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Location = new System.Drawing.Point(9, 13);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(110, 128);
+            this.panel2.TabIndex = 5;
+            // 
+            // lblContadorClientes
+            // 
+            this.lblContadorClientes.BackColor = System.Drawing.Color.SteelBlue;
+            this.lblContadorClientes.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.lblContadorClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblContadorClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContadorClientes.ForeColor = System.Drawing.Color.White;
+            this.lblContadorClientes.Location = new System.Drawing.Point(24, 89);
+            this.lblContadorClientes.Name = "lblContadorClientes";
+            this.lblContadorClientes.Size = new System.Drawing.Size(57, 34);
+            this.lblContadorClientes.TabIndex = 49;
+            this.lblContadorClientes.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(103, 26);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Clientes";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // dgvAgenda
+            // 
+            this.dgvAgenda.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAgenda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvAgenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAgenda.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idPlan,
+            this.FechaDesde,
+            this.Descripcion,
+            this.Finalizar});
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAgenda.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvAgenda.EnableHeadersVisualStyles = false;
+            this.dgvAgenda.Location = new System.Drawing.Point(28, 213);
+            this.dgvAgenda.Name = "dgvAgenda";
+            this.dgvAgenda.ReadOnly = true;
+            this.dgvAgenda.RowHeadersVisible = false;
+            this.dgvAgenda.Size = new System.Drawing.Size(629, 261);
+            this.dgvAgenda.TabIndex = 71;
+            this.dgvAgenda.Visible = false;
+            this.dgvAgenda.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgenda_CellClick);
+            this.dgvAgenda.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvAgenda_CellPainting);
+            // 
+            // idPlan
+            // 
+            this.idPlan.HeaderText = "id Agenda";
+            this.idPlan.Name = "idPlan";
+            this.idPlan.ReadOnly = true;
+            // 
+            // FechaDesde
+            // 
+            this.FechaDesde.HeaderText = "Fecha";
+            this.FechaDesde.Name = "FechaDesde";
+            this.FechaDesde.ReadOnly = true;
+            this.FechaDesde.Width = 150;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Recordatorio";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 300;
+            // 
+            // Finalizar
+            // 
+            this.Finalizar.HeaderText = "Finalizar";
+            this.Finalizar.Name = "Finalizar";
+            this.Finalizar.ReadOnly = true;
+            this.Finalizar.Width = 70;
+            // 
+            // lblAgenda
+            // 
+            this.lblAgenda.AutoSize = true;
+            this.lblAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgenda.ForeColor = System.Drawing.Color.Black;
+            this.lblAgenda.Location = new System.Drawing.Point(25, 190);
+            this.lblAgenda.Name = "lblAgenda";
+            this.lblAgenda.Size = new System.Drawing.Size(170, 20);
+            this.lblAgenda.TabIndex = 72;
+            this.lblAgenda.Text = "Agenda de pendientes";
+            this.lblAgenda.Visible = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox6.Image = global::Sico.Properties.Resources.grupo;
+            this.pictureBox6.Location = new System.Drawing.Point(24, 33);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(58, 50);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox5.Image = global::Sico.Properties.Resources.pendiente;
+            this.pictureBox5.Location = new System.Drawing.Point(24, 33);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(58, 50);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox3.Image = global::Sico.Properties.Resources.lista_de_tareas;
+            this.pictureBox3.Location = new System.Drawing.Point(24, 33);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(58, 50);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.SteelBlue;
+            this.pictureBox2.Image = global::Sico.Properties.Resources.valor__1_;
+            this.pictureBox2.Location = new System.Drawing.Point(24, 33);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(58, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(666, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(431, 87);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
             // 
             // InicioNuevoWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 482);
+            this.Controls.Add(this.lblAgenda);
+            this.Controls.Add(this.dgvAgenda);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lblDia);
+            this.Controls.Add(this.lblMaster_FechaHoraReal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InicioNuevoWF";
-            this.Text = "InicioNuevoWF";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.InicioNuevoWF_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAgenda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label lblDia;
+        private System.Windows.Forms.Label lblMaster_FechaHoraReal;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button lblContadorUsuarios;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button lblContadorPendientes;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button lblContadorProdcutos;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button lblContadorClientes;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataGridView dgvAgenda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idPlan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaDesde;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewButtonColumn Finalizar;
+        private System.Windows.Forms.Label lblAgenda;
     }
 }

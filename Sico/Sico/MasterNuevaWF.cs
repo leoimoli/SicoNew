@@ -296,7 +296,7 @@ namespace Sico
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanel(new InicioWF());
+            AbrirFormEnPanel(new InicioNuevoWF());
             var imagen = new Bitmap(Sico.Properties.Resources.pagina_de_inicio);
             ImagenPagina.Image = imagen;
             lblPantalla.Text = "Inicio";
@@ -304,17 +304,18 @@ namespace Sico
 
         private void btnConfiguracion_Click(object sender, EventArgs e)
         {
-            //panel5.Visible = true;
-            //MenuSupSueldos.Dock = DockStyle.Top;
-            //menuSupEmpresa.Visible = false;
-            //MenuSupContabilidad.Visible = false;
-            //MenuSupIva.Visible = false;
-            //MenuSupSueldos.Visible = true;
-            //MenuSupHonorarios.Visible = false;
-            AbrirFormEnPanel(new InicioNuevoWF());
+            AbrirFormEnPanel(new ConfiguracionesWF());
             var imagen = new Bitmap(Sico.Properties.Resources.boton_de_configuracion_negro);
             ImagenPagina.Image = imagen;
             lblPantalla.Text = "Configuración";
+        }
+
+        private void btnAgenda_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel(new AgendaWF());
+            var imagen = new Bitmap(Sico.Properties.Resources.marcador_en_la_agenda);
+            ImagenPagina.Image = imagen;
+            lblPantalla.Text = "Agenda";           
         }
     }
 }

@@ -33,6 +33,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPantalla = new System.Windows.Forms.Label();
             this.MenuVertical = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.btnAgenda = new System.Windows.Forms.Button();
             this.panelConfiguracion = new System.Windows.Forms.Panel();
             this.btnConfiguracion = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -167,6 +169,8 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.MenuVertical.Controls.Add(this.panel7);
+            this.MenuVertical.Controls.Add(this.btnAgenda);
             this.MenuVertical.Controls.Add(this.panelConfiguracion);
             this.MenuVertical.Controls.Add(this.btnConfiguracion);
             this.MenuVertical.Controls.Add(this.panel6);
@@ -191,10 +195,35 @@
             this.MenuVertical.Size = new System.Drawing.Size(222, 615);
             this.MenuVertical.TabIndex = 1;
             // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.panel7.Location = new System.Drawing.Point(3, 404);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(5, 32);
+            this.panel7.TabIndex = 32;
+            // 
+            // btnAgenda
+            // 
+            this.btnAgenda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgenda.FlatAppearance.BorderSize = 0;
+            this.btnAgenda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.btnAgenda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgenda.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgenda.ForeColor = System.Drawing.Color.White;
+            this.btnAgenda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgenda.Location = new System.Drawing.Point(6, 404);
+            this.btnAgenda.Name = "btnAgenda";
+            this.btnAgenda.Size = new System.Drawing.Size(195, 32);
+            this.btnAgenda.TabIndex = 31;
+            this.btnAgenda.Text = "Agenda";
+            this.btnAgenda.UseVisualStyleBackColor = true;
+            this.btnAgenda.Click += new System.EventHandler(this.btnAgenda_Click);
+            // 
             // panelConfiguracion
             // 
             this.panelConfiguracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.panelConfiguracion.Location = new System.Drawing.Point(2, 484);
+            this.panelConfiguracion.Location = new System.Drawing.Point(2, 487);
             this.panelConfiguracion.Name = "panelConfiguracion";
             this.panelConfiguracion.Size = new System.Drawing.Size(5, 32);
             this.panelConfiguracion.TabIndex = 30;
@@ -209,7 +238,7 @@
             this.btnConfiguracion.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfiguracion.ForeColor = System.Drawing.Color.White;
             this.btnConfiguracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConfiguracion.Location = new System.Drawing.Point(5, 484);
+            this.btnConfiguracion.Location = new System.Drawing.Point(5, 487);
             this.btnConfiguracion.Name = "btnConfiguracion";
             this.btnConfiguracion.Size = new System.Drawing.Size(195, 32);
             this.btnConfiguracion.TabIndex = 29;
@@ -221,7 +250,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.panel6.Location = new System.Drawing.Point(3, 442);
+            this.panel6.Location = new System.Drawing.Point(3, 448);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(5, 32);
             this.panel6.TabIndex = 28;
@@ -236,7 +265,7 @@
             this.btnUsuarios.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuarios.ForeColor = System.Drawing.Color.White;
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(6, 442);
+            this.btnUsuarios.Location = new System.Drawing.Point(6, 448);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(195, 32);
             this.btnUsuarios.TabIndex = 27;
@@ -248,7 +277,7 @@
             // PanelUsuarios
             // 
             this.PanelUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.PanelUsuarios.Location = new System.Drawing.Point(3, 390);
+            this.PanelUsuarios.Location = new System.Drawing.Point(3, 359);
             this.PanelUsuarios.Name = "PanelUsuarios";
             this.PanelUsuarios.Size = new System.Drawing.Size(5, 32);
             this.PanelUsuarios.TabIndex = 26;
@@ -262,7 +291,7 @@
             this.btnHonorarios.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHonorarios.ForeColor = System.Drawing.Color.White;
             this.btnHonorarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHonorarios.Location = new System.Drawing.Point(6, 390);
+            this.btnHonorarios.Location = new System.Drawing.Point(6, 359);
             this.btnHonorarios.Name = "btnHonorarios";
             this.btnHonorarios.Size = new System.Drawing.Size(195, 32);
             this.btnHonorarios.TabIndex = 25;
@@ -273,7 +302,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.panel3.Location = new System.Drawing.Point(3, 335);
+            this.panel3.Location = new System.Drawing.Point(3, 312);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(5, 32);
             this.panel3.TabIndex = 24;
@@ -287,7 +316,7 @@
             this.btnRazonSocial.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRazonSocial.ForeColor = System.Drawing.Color.White;
             this.btnRazonSocial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRazonSocial.Location = new System.Drawing.Point(6, 335);
+            this.btnRazonSocial.Location = new System.Drawing.Point(6, 312);
             this.btnRazonSocial.Name = "btnRazonSocial";
             this.btnRazonSocial.Size = new System.Drawing.Size(195, 32);
             this.btnRazonSocial.TabIndex = 23;
@@ -298,7 +327,7 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.panel12.Location = new System.Drawing.Point(3, 122);
+            this.panel12.Location = new System.Drawing.Point(3, 99);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(5, 32);
             this.panel12.TabIndex = 22;
@@ -312,7 +341,7 @@
             this.btnInicio.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInicio.ForeColor = System.Drawing.Color.White;
             this.btnInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInicio.Location = new System.Drawing.Point(6, 122);
+            this.btnInicio.Location = new System.Drawing.Point(6, 99);
             this.btnInicio.Name = "btnInicio";
             this.btnInicio.Size = new System.Drawing.Size(195, 32);
             this.btnInicio.TabIndex = 21;
@@ -401,7 +430,7 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.panel9.Location = new System.Drawing.Point(3, 283);
+            this.panel9.Location = new System.Drawing.Point(3, 260);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(5, 32);
             this.panel9.TabIndex = 19;
@@ -415,7 +444,7 @@
             this.btnIva.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIva.ForeColor = System.Drawing.Color.White;
             this.btnIva.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIva.Location = new System.Drawing.Point(6, 283);
+            this.btnIva.Location = new System.Drawing.Point(6, 260);
             this.btnIva.Name = "btnIva";
             this.btnIva.Size = new System.Drawing.Size(195, 32);
             this.btnIva.TabIndex = 18;
@@ -426,7 +455,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.panel2.Location = new System.Drawing.Point(3, 228);
+            this.panel2.Location = new System.Drawing.Point(3, 205);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(5, 32);
             this.panel2.TabIndex = 7;
@@ -440,7 +469,7 @@
             this.btnContabilidad.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnContabilidad.ForeColor = System.Drawing.Color.White;
             this.btnContabilidad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnContabilidad.Location = new System.Drawing.Point(6, 228);
+            this.btnContabilidad.Location = new System.Drawing.Point(6, 205);
             this.btnContabilidad.Name = "btnContabilidad";
             this.btnContabilidad.Size = new System.Drawing.Size(195, 32);
             this.btnContabilidad.TabIndex = 6;
@@ -451,7 +480,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
-            this.panel8.Location = new System.Drawing.Point(3, 175);
+            this.panel8.Location = new System.Drawing.Point(3, 152);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(5, 32);
             this.panel8.TabIndex = 5;
@@ -465,7 +494,7 @@
             this.btnSueldos.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSueldos.ForeColor = System.Drawing.Color.White;
             this.btnSueldos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSueldos.Location = new System.Drawing.Point(6, 175);
+            this.btnSueldos.Location = new System.Drawing.Point(6, 152);
             this.btnSueldos.Name = "btnSueldos";
             this.btnSueldos.Size = new System.Drawing.Size(195, 32);
             this.btnSueldos.TabIndex = 4;
@@ -653,7 +682,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(964, 17);
+            this.label6.Location = new System.Drawing.Point(944, 17);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 17);
             this.label6.TabIndex = 3;
@@ -934,7 +963,7 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.SteelBlue;
             this.pictureBox6.Image = global::Sico.Properties.Resources.usuario1;
-            this.pictureBox6.Location = new System.Drawing.Point(923, 6);
+            this.pictureBox6.Location = new System.Drawing.Point(903, 6);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(35, 35);
             this.pictureBox6.TabIndex = 2;
@@ -1178,5 +1207,7 @@
         private System.Windows.Forms.Label lblPantalla;
         private System.Windows.Forms.Panel panelConfiguracion;
         private System.Windows.Forms.Button btnConfiguracion;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button btnAgenda;
     }
 }
