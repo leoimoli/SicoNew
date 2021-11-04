@@ -140,8 +140,6 @@
             this.dgvSubClientes.Size = new System.Drawing.Size(830, 305);
             this.dgvSubClientes.TabIndex = 17;
             this.dgvSubClientes.Visible = false;
-            //this.dgvSubClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickBoton);
-            //this.dgvSubClientes.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvSubClientes_CellPainting);
             // 
             // groupBox2
             // 
@@ -168,7 +166,6 @@
             this.btnInportarVentas.Text = "Importar Ventas";
             this.btnInportarVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnInportarVentas.UseVisualStyleBackColor = true;
-            //this.btnInportarVentas.Click += new System.EventHandler(this.btnInportarVentas_Click);
             // 
             // btnCompras
             // 
@@ -181,7 +178,6 @@
             this.btnCompras.Text = "Compras";
             this.btnCompras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCompras.UseVisualStyleBackColor = true;
-            //this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
             // 
             // btnCuentaCorriente
             // 
@@ -194,7 +190,6 @@
             this.btnCuentaCorriente.Text = "Nota de crédito";
             this.btnCuentaCorriente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCuentaCorriente.UseVisualStyleBackColor = true;
-            //this.btnCuentaCorriente.Click += new System.EventHandler(this.btnCuentaCorriente_Click);
             // 
             // btnNuevaFactura
             // 
@@ -207,7 +202,6 @@
             this.btnNuevaFactura.Text = "Facturar";
             this.btnNuevaFactura.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevaFactura.UseVisualStyleBackColor = true;
-            //this.btnNuevaFactura.Click += new System.EventHandler(this.btnNuevaFactura_Click);
             // 
             // btnNuevoSubCliente
             // 
@@ -220,7 +214,6 @@
             this.btnNuevoSubCliente.Text = "Sub-Cliente";
             this.btnNuevoSubCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNuevoSubCliente.UseVisualStyleBackColor = true;
-           // this.btnNuevoSubCliente.Click += new System.EventHandler(this.btnNuevoSubCliente_Click_1);
             // 
             // label2
             // 
@@ -288,7 +281,6 @@
             this.toolTip1.SetToolTip(this.btnConsultarTotales, "Facturación Mensual");
             this.btnConsultarTotales.UseVisualStyleBackColor = true;
             this.btnConsultarTotales.Visible = false;
-           // this.btnConsultarTotales.Click += new System.EventHandler(this.btnConsultarTotales_Click);
             // 
             // btnBuscar
             // 
@@ -302,7 +294,6 @@
             this.toolTip1.SetToolTip(this.btnBuscar, "Buscar Sub-Cliente");
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Visible = false;
-           // this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnActualizar
             // 
@@ -316,7 +307,6 @@
             this.btnActualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnActualizar, "Actualizar grilla");
             this.btnActualizar.UseVisualStyleBackColor = true;
-           // this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // imgArba
             // 
@@ -327,7 +317,6 @@
             this.imgArba.TabIndex = 86;
             this.imgArba.TabStop = false;
             this.toolTip1.SetToolTip(this.imgArba, "Arba");
-            //this.imgArba.Click += new System.EventHandler(this.imgArba_Click);
             // 
             // imgAnses
             // 
@@ -338,7 +327,6 @@
             this.imgAnses.TabIndex = 88;
             this.imgAnses.TabStop = false;
             this.toolTip1.SetToolTip(this.imgAnses, "Anses");
-            //this.imgAnses.Click += new System.EventHandler(this.imgAnses_Click);
             // 
             // imgAfip
             // 
@@ -349,7 +337,6 @@
             this.imgAfip.TabIndex = 87;
             this.imgAfip.TabStop = false;
             this.toolTip1.SetToolTip(this.imgAfip, "Afip");
-            //this.imgAfip.Click += new System.EventHandler(this.imgAfip_Click);
             // 
             // imgApr
             // 
@@ -360,7 +347,6 @@
             this.imgApr.TabIndex = 89;
             this.imgApr.TabStop = false;
             this.toolTip1.SetToolTip(this.imgApr, "Agencia Platense de racaudación");
-            //this.imgApr.Click += new System.EventHandler(this.imgApr_Click);
             // 
             // imgAutoGestion
             // 
@@ -371,7 +357,6 @@
             this.imgAutoGestion.TabIndex = 90;
             this.imgAutoGestion.TabStop = false;
             this.toolTip1.SetToolTip(this.imgAutoGestion, "AutoGestión");
-            //this.imgAutoGestion.Click += new System.EventHandler(this.imgAutoGestion_Click);
             // 
             // label18
             // 
@@ -420,7 +405,7 @@
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "TareaClienteWF";
             this.Text = "Tarea Cliente";
-            //this.Load += new System.EventHandler(this.TareaClienteWF_Load);
+            this.Load += new System.EventHandler(this.TareaClienteWF_Load);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.Controls.SetChildIndex(this.dgvSubClientes, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);

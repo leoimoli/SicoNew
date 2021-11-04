@@ -26,6 +26,11 @@ namespace Sico
             this.razonSocial = razonSocial;
             this.idEmpresa = idEmpresa;
         }
+
+        private void TareaClienteWF_Load(object sender, EventArgs e)
+        {
+
+        }
         //private void TareaClienteWF_Load(object sender, EventArgs e)
         //{
         //    //lblNombreEdit.Text = razonSocial;

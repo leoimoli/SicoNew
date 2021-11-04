@@ -234,6 +234,7 @@ namespace Sico
             dgvAgenda.Rows.Clear();
             List<Entidades.Agenda> ListarClientes = AgendaNeg.ListarRecordatoriosUsuario(idUsuario);
             btnNuevo.Visible = true;
+            int contadorFilas = 0;
             if (ListarClientes.Count > 0)
             {
                 DiseñoGrilla();
@@ -243,7 +244,18 @@ namespace Sico
                 foreach (var item in ListarClientes)
                 {
                     string fecha = Convert.ToString(item.Fecha.ToShortDateString());
-                    dgvAgenda.Rows.Add(item.idAgenda, fecha, item.Descripcion);
+                    if (item.Fecha < DateTime.Now)
+                    {
+                        dgvAgenda.Rows.Add(item.idAgenda, fecha, item.Descripcion);
+                        dgvAgenda.Rows[contadorFilas].DefaultCellStyle.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        dgvAgenda.Rows.Add(item.idAgenda, fecha, item.Descripcion);
+                        dgvAgenda.Rows[contadorFilas].DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    //dgvAgenda.Rows.Add(item.idAgenda, fecha, item.Descripcion);
+                    contadorFilas = contadorFilas + 1;
                 }
                 dgvAgenda.AllowUserToAddRows = false;
             }

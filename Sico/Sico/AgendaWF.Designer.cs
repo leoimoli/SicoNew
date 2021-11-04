@@ -95,7 +95,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAgenda.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAgenda.EnableHeadersVisualStyles = false;
-            this.dgvAgenda.Location = new System.Drawing.Point(10, 59);
+            this.dgvAgenda.Location = new System.Drawing.Point(4, 59);
             this.dgvAgenda.Name = "dgvAgenda";
             this.dgvAgenda.ReadOnly = true;
             this.dgvAgenda.RowHeadersVisible = false;
@@ -161,7 +161,7 @@
             this.PanelRegistroPlan.Controls.Add(this.lblRegistroAgenda);
             this.PanelRegistroPlan.Controls.Add(this.txtDescripcion);
             this.PanelRegistroPlan.Enabled = false;
-            this.PanelRegistroPlan.Location = new System.Drawing.Point(743, 59);
+            this.PanelRegistroPlan.Location = new System.Drawing.Point(736, 59);
             this.PanelRegistroPlan.Name = "PanelRegistroPlan";
             this.PanelRegistroPlan.Size = new System.Drawing.Size(339, 400);
             this.PanelRegistroPlan.TabIndex = 68;
