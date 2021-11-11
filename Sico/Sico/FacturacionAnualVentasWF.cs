@@ -43,6 +43,21 @@ namespace Sico
                 double TotalIva10 = CalcularTotalIva10Ventas(ListaTotalFacturacionVentas);
                 double TotalIva21 = CalcularTotalIva21Ventas(ListaTotalFacturacionVentas);
                 double TotalIva27 = CalcularTotalIva27Ventas(ListaTotalFacturacionVentas);
+
+
+                foreach (var item in ListaTotalFacturacionVentas)
+                {
+                    if (item.Iva1 == 0 && item.Iva2 == 0 && item.Iva3 == 0)
+                    {
+                        item.ExentoIva = item.Monto;
+                    }
+                    else
+                    {
+                        item.ExentoIva = item.Monto - item.Total1 - item.Total2 - item.Total3;
+                    }
+                }
+                double TotalExentoIva = CalcularTotalExentoIva(ListaTotalFacturacionVentas);
+
                 Entidades.FacturaVentaAnual ultimo = new Entidades.FacturaVentaAnual();
                 ultimo.Periodo = "TOTALES";
                 ultimo.Monto = Convert.ToDecimal(TotalMonto);
@@ -57,20 +72,20 @@ namespace Sico
                 ultimo.Iva1 = Convert.ToDecimal(TotalIva10);
                 ultimo.Iva2 = Convert.ToDecimal(TotalIva21);
                 ultimo.Iva3 = Convert.ToDecimal(TotalIva27);
+                ultimo.ExentoIva = Convert.ToDecimal(TotalExentoIva);
+
                 ListaTotalFacturacionVentas.Add(ultimo);
                 ListaStatica = ListaTotalFacturacionVentas;
                 dgvVentasAnuales.Visible = true;
                 foreach (var item in ListaTotalFacturacionVentas)
                 {
-
                     if (item.Periodo != "")
                     {
-                        dgvVentasAnuales.Rows.Add(item.Periodo, item.Monto, item.Neto1, item.Neto2, item.Neto3, item.Iva1, item.Iva2, item.Iva3);
+                        dgvVentasAnuales.Rows.Add(item.Periodo, item.Monto, item.ExentoIva, item.Total1, item.Total2, item.Total3, item.Neto1, item.Neto2, item.Neto3, item.Iva1, item.Iva2, item.Iva3);
                     }
                 }
                 dgvVentasAnuales.AllowUserToAddRows = false;
                 PanelBotones.Visible = true;
-                             
             }
             else
             {
@@ -155,10 +170,7 @@ namespace Sico
             decimal MontoNegativo27 = 0;
             foreach (var item in value)
             {
-
                 totalNeto27 += item.Neto3;
-
-
             }
             double valor = Convert.ToDouble(totalNeto27 - MontoNegativo27);
             return valor;
@@ -237,6 +249,18 @@ namespace Sico
 
             }
             double valor = Convert.ToDouble(totalMonto - MontoNegativo);
+            return valor;
+        }
+
+        private double CalcularTotalExentoIva(List<FacturaVentaAnual> listaTotalFacturacionVentas)
+        {
+            decimal totalExento = 0;
+            decimal TotalExentoNegativo = 0;
+            foreach (var item in listaTotalFacturacionVentas)
+            {
+                totalExento += item.ExentoIva;
+            }
+            double valor = Convert.ToDouble(totalExento - TotalExentoNegativo);
             return valor;
         }
         #endregion
@@ -425,7 +449,7 @@ namespace Sico
             {
                 Contador = Contador + 1;
                 if (item.Periodo != "")
-                {                    
+                {
                     if (TotalDeElementos == Contador)
                     {
                         clPeriodo = new PdfPCell(new Phrase(item.Periodo, UltimoRegistro));

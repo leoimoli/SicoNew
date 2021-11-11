@@ -24,7 +24,9 @@ namespace Sico.Dao
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("idUsuario_in", agenda.idUsuario);
             cmd.Parameters.AddWithValue("UsuariosSistema_in", agenda.UsuariosSistema);
-            cmd.Parameters.AddWithValue("Fecha_in", agenda.Fecha);
+            string fecha = agenda.Fecha.ToShortDateString();
+            DateTime fechaFinal = Convert.ToDateTime(fecha);
+            cmd.Parameters.AddWithValue("Fecha_in", fechaFinal);
             cmd.Parameters.AddWithValue("Descripcion_in", agenda.Descripcion);
             cmd.Parameters.AddWithValue("Email_in", agenda.Email);
             cmd.Parameters.AddWithValue("FechaDelRegistro_in", agenda.FechaDelRegistro);

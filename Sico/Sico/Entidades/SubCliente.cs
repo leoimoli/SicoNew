@@ -16,6 +16,7 @@ namespace Sico.Entidades
         public string Direccion { get; set; }
         public Decimal Monto { get; set; }
         public int idCliente { get; set; }
+        public string  NombreCliente { get; set; }
         public decimal Total1 { get; set; }
         public decimal Total2 { get; set; }
         public decimal Total3 { get; set; }
@@ -37,5 +38,6 @@ namespace Sico.Entidades
         public string TipoDeCambio { get; set; }
         public string Periodo { get; set; }
         public string TipoDNI { get; set; }
+        public decimal ExentoIva { get; set; }
     }
 }

@@ -36,6 +36,71 @@ namespace Sico.Dao
             connection.Close();
             return _listaProvincia;
         }
+
+        public static List<FacturaCompra> BuscarUltimasFacturasIngresadas()
+        {
+            List<FacturaCompra> lista = new List<FacturaCompra>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "BuscarUltimasFacturasIngresadas";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    FacturaCompra listaFacturasCompras = new FacturaCompra();
+                 
+                    listaFacturasCompras.NroFactura = item["NroFactura"].ToString();
+                    listaFacturasCompras.Fecha = item["Fecha"].ToString();
+                    listaFacturasCompras.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    listaFacturasCompras.NombreCliente = item["Cliente"].ToString();
+                    listaFacturasCompras.NombreProveedor = item["Proveedor"].ToString();
+                    lista.Add(listaFacturasCompras);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<FacturaCompra> BuscarUltimasFacturasComprasIngresadaPorEmpresa(int idEmpresaSeleccionado)
+        {
+            List<FacturaCompra> lista = new List<FacturaCompra>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idEmpresa_in", idEmpresaSeleccionado) };
+            string proceso = "BuscarUltimasFacturasComprasIngresadaPorEmpresa";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    FacturaCompra listaFacturasCompras = new FacturaCompra();
+
+                    listaFacturasCompras.NroFactura = item["NroFactura"].ToString();
+                    listaFacturasCompras.Fecha = item["Fecha"].ToString();
+                    listaFacturasCompras.Monto = Convert.ToDecimal(item["MontoTotal"].ToString());
+                    listaFacturasCompras.NombreCliente = item["Cliente"].ToString();
+                    listaFacturasCompras.NombreProveedor = item["Proveedor"].ToString();
+                    lista.Add(listaFacturasCompras);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<EstadisticaCompra> BuscarComprasEstadisticasPorProveedor(string cuit, string periodo)
         {
             List<EstadisticaCompra> lista = new List<EstadisticaCompra>();

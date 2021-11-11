@@ -20,5 +20,6 @@ namespace Sico.Entidades
         public decimal Iva2 { get; set; }
         public decimal Iva3 { get; set; }
         public int idCliente { get; set; }
+        public decimal ExentoIva { get; set; }
     }
 }

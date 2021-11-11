@@ -476,6 +476,23 @@ namespace Sico
             double valor = Convert.ToDouble(totalMonto - MontoNegativo);
             return valor;
         }
+
+        private double CalcularExentoIva(List<SubCliente> listaFacturacion)
+        {
+            decimal exentoIva = 0;
+            decimal MontoNegativoExento = 0;
+            foreach (var item in listaFacturacion)
+            {
+                if (item.NroFacturaNotaDeCredtio != "")
+                {
+                    MontoNegativoExento += item.ExentoIva;
+                }
+                else { exentoIva += item.ExentoIva; }
+
+            }
+            double valor = Convert.ToDouble(exentoIva - MontoNegativoExento);
+            return valor;
+        }
         #endregion
         public static List<SubCliente> Lista;
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -519,6 +536,20 @@ namespace Sico
                 double TotalIva21 = CalcularTotalIva21(ListaFacturacion);
                 double TotalIva27 = CalcularTotalIva27(ListaFacturacion);
 
+                foreach (var item in ListaFacturacion)
+                {
+                    if (item.Iva1 == 0 && item.Iva2 == 0 && item.Iva3 == 0)
+                    {
+                        item.ExentoIva = item.Monto;                       
+                    }
+                    else
+                    {
+                        item.ExentoIva = 0;
+                    }
+                }
+                double TotalExentoIva = CalcularExentoIva(ListaFacturacion);
+
+                ////// Calculo los totales de las columnas
                 SubCliente ultimo = new SubCliente();
                 ultimo.NroFactura = "TOTAL";
                 ultimo.Total1 = Convert.ToDecimal(TotalImporte1);
@@ -533,13 +564,14 @@ namespace Sico
                 ultimo.Iva2 = Convert.ToDecimal(TotalIva21);
                 ultimo.Iva3 = Convert.ToDecimal(TotalIva27);
                 ultimo.Monto = Convert.ToDecimal(TotalMonto);
+                ultimo.ExentoIva = Convert.ToDecimal(TotalExentoIva);
                 ListaFacturacion.Add(ultimo);
                 //dataGridView1.DataSource = ListaFacturacion;
                 //ListaStatica = value;
-                ListaStatica = ListaFacturacion;
+                ListaStatica = ListaFacturacion;                
                 foreach (var item in ListaFacturacion)
-                {
-                    dataGridView1.Rows.Add(item.NroFactura, item.Fecha, item.ApellidoNombre, item.Monto, item.Neto1, item.Neto2, item.Neto3, item.Iva1, item.Iva2, item.Iva3, item.NroFacturaNotaDeCredtio);
+                {                    
+                    dataGridView1.Rows.Add(item.NroFactura, item.Fecha, item.ApellidoNombre, item.Monto, item.ExentoIva, item.Neto1, item.Neto2, item.Neto3, item.Iva1, item.Iva2, item.Iva3, item.NroFacturaNotaDeCredtio);
                 }
                 //dataGridView1.Rows[dataGridView1.Rows.Count - 1].DefaultCellStyle.BackColor = Color.SteelBlue;
                 dataGridView1.AllowUserToAddRows = false;
@@ -552,7 +584,8 @@ namespace Sico
             progressBar1.Value = Convert.ToInt32(null);
             progressBar1.Visible = false;
 
-        }
+        }       
+
         private void btnVolver_Click(object sender, EventArgs e)
         {
 

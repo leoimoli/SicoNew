@@ -13,6 +13,7 @@ namespace Sico.Entidades
         public string Fecha { get; set; }
         public Decimal Monto { get; set; }
         public int idCliente { get; set; }
+        public string NombreCliente { get; set; }
         public int idProveedor { get; set; }
         public string NombreProveedor { get; set; }
         public string CodigoDocumento { get; set; }

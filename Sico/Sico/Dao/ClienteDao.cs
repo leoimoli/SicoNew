@@ -38,6 +38,39 @@ namespace Sico.Dao
             connection.Close();
             return _listaProvincia;
         }
+
+        public static List<SubCliente> BuscarUltimasFacturasVentasIngresadas()
+        {
+            List<SubCliente> lista = new List<SubCliente>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { };
+            string proceso = "BuscarUltimasFacturasVentasIngresadas";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    SubCliente listaFacturasVentas = new SubCliente();
+
+                    listaFacturasVentas.NroFactura = item["NroFactura"].ToString();
+                    listaFacturasVentas.Fecha = item["Fecha"].ToString();
+                    listaFacturasVentas.Monto = Convert.ToDecimal(item["Monto"].ToString());
+                    listaFacturasVentas.NombreCliente = item["Cliente"].ToString();
+                    listaFacturasVentas.ApellidoNombre = item["Proveedor"].ToString();
+                    lista.Add(listaFacturasVentas);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
         public static List<SubCliente> BuscarSubClientes(int idEmpresaSeleccionado)
         {
             List<Entidades.SubCliente> lista = new List<Entidades.SubCliente>();
@@ -62,6 +95,37 @@ namespace Sico.Dao
                     listaSubCliente.ApellidoNombre = item["ApellidoNombre"].ToString();
                     listaSubCliente.Dni = item["Dni"].ToString();
                     lista.Add(listaSubCliente);
+                }
+            }
+            connection.Close();
+            return lista;
+        }
+
+        public static List<SubCliente> BuscarUltimasFacturasVentasIngresadasPorEmpresa(int idEmpresaSeleccionado)
+        {
+            List<SubCliente> lista = new List<SubCliente>();
+            connection.Close();
+            connection.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = connection;
+            DataTable Tabla = new DataTable();
+            MySqlParameter[] oParam = { new MySqlParameter("idEmpresa_in", idEmpresaSeleccionado) };
+            string proceso = "BuscarUltimasFacturasVentasIngresadasPorEmpresa";
+            MySqlDataAdapter dt = new MySqlDataAdapter(proceso, connection);
+            dt.SelectCommand.CommandType = CommandType.StoredProcedure;
+            dt.SelectCommand.Parameters.AddRange(oParam);
+            dt.Fill(Tabla);
+            if (Tabla.Rows.Count > 0)
+            {
+                foreach (DataRow item in Tabla.Rows)
+                {
+                    SubCliente listaFacturasVentas = new SubCliente();
+                    listaFacturasVentas.NroFactura = item["NroFactura"].ToString();
+                    listaFacturasVentas.Fecha = item["Fecha"].ToString();
+                    listaFacturasVentas.Monto = Convert.ToDecimal(item["Monto"].ToString());
+                    listaFacturasVentas.NombreCliente = item["Cliente"].ToString();
+                    listaFacturasVentas.ApellidoNombre = item["Proveedor"].ToString();
+                    lista.Add(listaFacturasVentas);
                 }
             }
             connection.Close();

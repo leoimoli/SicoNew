@@ -34,8 +34,14 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvVentasAnuales = new System.Windows.Forms.DataGridView();
+            this.PanelBotones = new System.Windows.Forms.Panel();
+            this.btnPdf = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.Periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExentoIva = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,11 +51,6 @@
             this.Iva10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Iva21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Iva27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PanelBotones = new System.Windows.Forms.Panel();
-            this.btnPdf = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentasAnuales)).BeginInit();
             this.PanelBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -80,6 +81,7 @@
             this.dgvVentasAnuales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Periodo,
             this.Monto,
+            this.ExentoIva,
             this.Total1,
             this.Total2,
             this.Total3,
@@ -104,62 +106,6 @@
             this.dgvVentasAnuales.Size = new System.Drawing.Size(523, 385);
             this.dgvVentasAnuales.TabIndex = 78;
             this.dgvVentasAnuales.Visible = false;
-            // 
-            // Periodo
-            // 
-            this.Periodo.HeaderText = "Periodo";
-            this.Periodo.Name = "Periodo";
-            this.Periodo.Width = 120;
-            // 
-            // Monto
-            // 
-            this.Monto.HeaderText = "Monto Total";
-            this.Monto.Name = "Monto";
-            // 
-            // Total1
-            // 
-            this.Total1.HeaderText = "Total1";
-            this.Total1.Name = "Total1";
-            // 
-            // Total2
-            // 
-            this.Total2.HeaderText = "Total2";
-            this.Total2.Name = "Total2";
-            // 
-            // Total3
-            // 
-            this.Total3.HeaderText = "Total3";
-            this.Total3.Name = "Total3";
-            // 
-            // Neto10
-            // 
-            this.Neto10.HeaderText = "Neto10";
-            this.Neto10.Name = "Neto10";
-            // 
-            // Neto21
-            // 
-            this.Neto21.HeaderText = "Neto21";
-            this.Neto21.Name = "Neto21";
-            // 
-            // Neto27
-            // 
-            this.Neto27.HeaderText = "Neto27";
-            this.Neto27.Name = "Neto27";
-            // 
-            // Iva10
-            // 
-            this.Iva10.HeaderText = "Iva10";
-            this.Iva10.Name = "Iva10";
-            // 
-            // Iva21
-            // 
-            this.Iva21.HeaderText = "Iva21";
-            this.Iva21.Name = "Iva21";
-            // 
-            // Iva27
-            // 
-            this.Iva27.HeaderText = "Iva27";
-            this.Iva27.Name = "Iva27";
             // 
             // PanelBotones
             // 
@@ -223,6 +169,67 @@
             this.progressBar1.Value = 50;
             this.progressBar1.Visible = false;
             // 
+            // Periodo
+            // 
+            this.Periodo.HeaderText = "Periodo";
+            this.Periodo.Name = "Periodo";
+            this.Periodo.Width = 120;
+            // 
+            // Monto
+            // 
+            this.Monto.HeaderText = "Monto Total";
+            this.Monto.Name = "Monto";
+            // 
+            // ExentoIva
+            // 
+            this.ExentoIva.HeaderText = "Exento Iva";
+            this.ExentoIva.Name = "ExentoIva";
+            // 
+            // Total1
+            // 
+            this.Total1.HeaderText = "Total1";
+            this.Total1.Name = "Total1";
+            // 
+            // Total2
+            // 
+            this.Total2.HeaderText = "Total2";
+            this.Total2.Name = "Total2";
+            // 
+            // Total3
+            // 
+            this.Total3.HeaderText = "Total3";
+            this.Total3.Name = "Total3";
+            // 
+            // Neto10
+            // 
+            this.Neto10.HeaderText = "Neto10";
+            this.Neto10.Name = "Neto10";
+            // 
+            // Neto21
+            // 
+            this.Neto21.HeaderText = "Neto21";
+            this.Neto21.Name = "Neto21";
+            // 
+            // Neto27
+            // 
+            this.Neto27.HeaderText = "Neto27";
+            this.Neto27.Name = "Neto27";
+            // 
+            // Iva10
+            // 
+            this.Iva10.HeaderText = "Iva10";
+            this.Iva10.Name = "Iva10";
+            // 
+            // Iva21
+            // 
+            this.Iva21.HeaderText = "Iva21";
+            this.Iva21.Name = "Iva21";
+            // 
+            // Iva27
+            // 
+            this.Iva27.HeaderText = "Iva27";
+            this.Iva27.Name = "Iva27";
+            // 
             // FacturacionAnualVentasWF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,8 +256,14 @@
 
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgvVentasAnuales;
+        private System.Windows.Forms.Panel PanelBotones;
+        private System.Windows.Forms.Button btnPdf;
+        private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Periodo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExentoIva;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total3;
@@ -260,10 +273,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Iva10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Iva21;
         private System.Windows.Forms.DataGridViewTextBoxColumn Iva27;
-        private System.Windows.Forms.Panel PanelBotones;
-        private System.Windows.Forms.Button btnPdf;
-        private System.Windows.Forms.Button btnExcel;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

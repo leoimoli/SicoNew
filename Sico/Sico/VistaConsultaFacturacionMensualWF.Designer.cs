@@ -39,10 +39,17 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnPdf = new System.Windows.Forms.Button();
+            this.btnCitiVentas = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.PanelBotones = new System.Windows.Forms.Panel();
             this.NroFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExentoIva = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Neto1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Neto2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Neto3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,12 +57,6 @@
             this.Iva2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Iva3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NotaCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnPdf = new System.Windows.Forms.Button();
-            this.btnCitiVentas = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.PanelBotones = new System.Windows.Forms.Panel();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -150,6 +151,7 @@
             this.Fecha,
             this.Cliente,
             this.Monto,
+            this.ExentoIva,
             this.Neto1,
             this.Neto2,
             this.Neto3,
@@ -175,61 +177,6 @@
             this.dataGridView1.Visible = false;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
-            // 
-            // NroFactura
-            // 
-            this.NroFactura.HeaderText = "NroFactura";
-            this.NroFactura.Name = "NroFactura";
-            // 
-            // Fecha
-            // 
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            // 
-            // Cliente
-            // 
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            // 
-            // Monto
-            // 
-            this.Monto.HeaderText = "Monto";
-            this.Monto.Name = "Monto";
-            // 
-            // Neto1
-            // 
-            this.Neto1.HeaderText = "Neto 10,5";
-            this.Neto1.Name = "Neto1";
-            // 
-            // Neto2
-            // 
-            this.Neto2.HeaderText = "Neto 21";
-            this.Neto2.Name = "Neto2";
-            // 
-            // Neto3
-            // 
-            this.Neto3.HeaderText = "Neto 27";
-            this.Neto3.Name = "Neto3";
-            // 
-            // Iva1
-            // 
-            this.Iva1.HeaderText = "Iva 10,5";
-            this.Iva1.Name = "Iva1";
-            // 
-            // Iva2
-            // 
-            this.Iva2.HeaderText = "Iva 21";
-            this.Iva2.Name = "Iva2";
-            // 
-            // Iva3
-            // 
-            this.Iva3.HeaderText = "Iva 27";
-            this.Iva3.Name = "Iva3";
-            // 
-            // NotaCredito
-            // 
-            this.NotaCredito.HeaderText = "Nota de Crédito";
-            this.NotaCredito.Name = "NotaCredito";
             // 
             // toolTip1
             // 
@@ -305,6 +252,66 @@
             this.PanelBotones.TabIndex = 163;
             this.PanelBotones.Visible = false;
             // 
+            // NroFactura
+            // 
+            this.NroFactura.HeaderText = "NroFactura";
+            this.NroFactura.Name = "NroFactura";
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            // 
+            // Monto
+            // 
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
+            // 
+            // ExentoIva
+            // 
+            this.ExentoIva.HeaderText = "Exento Iva";
+            this.ExentoIva.Name = "ExentoIva";
+            // 
+            // Neto1
+            // 
+            this.Neto1.HeaderText = "Neto 10,5";
+            this.Neto1.Name = "Neto1";
+            // 
+            // Neto2
+            // 
+            this.Neto2.HeaderText = "Neto 21";
+            this.Neto2.Name = "Neto2";
+            // 
+            // Neto3
+            // 
+            this.Neto3.HeaderText = "Neto 27";
+            this.Neto3.Name = "Neto3";
+            // 
+            // Iva1
+            // 
+            this.Iva1.HeaderText = "Iva 10,5";
+            this.Iva1.Name = "Iva1";
+            // 
+            // Iva2
+            // 
+            this.Iva2.HeaderText = "Iva 21";
+            this.Iva2.Name = "Iva2";
+            // 
+            // Iva3
+            // 
+            this.Iva3.HeaderText = "Iva 27";
+            this.Iva3.Name = "Iva3";
+            // 
+            // NotaCredito
+            // 
+            this.NotaCredito.HeaderText = "Nota de Crédito";
+            this.NotaCredito.Name = "NotaCredito";
+            // 
             // Eliminar
             // 
             this.Eliminar.HeaderText = "Eliminar";
@@ -345,10 +352,12 @@
         private System.Windows.Forms.Button btnCitiVentas;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnPdf;
+        private System.Windows.Forms.Panel PanelBotones;
         private System.Windows.Forms.DataGridViewTextBoxColumn NroFactura;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExentoIva;
         private System.Windows.Forms.DataGridViewTextBoxColumn Neto1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Neto2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Neto3;
@@ -356,7 +365,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Iva2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Iva3;
         private System.Windows.Forms.DataGridViewTextBoxColumn NotaCredito;
-        private System.Windows.Forms.Panel PanelBotones;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

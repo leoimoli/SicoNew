@@ -108,7 +108,7 @@ namespace Sico
             MenuSupIva.Visible = true;
             MenuSupSueldos.Visible = false;
             MenuSupHonorarios.Visible = false;
-            AbrirFormEnPanel(new InicioNuevoWF());
+            AbrirFormEnPanel(new IvaWF());
             var imagen = new Bitmap(Sico.Properties.Resources.impuesto);
             ImagenPagina.Image = imagen;
             lblPantalla.Text = "Iva";

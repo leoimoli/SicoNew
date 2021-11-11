@@ -264,6 +264,12 @@
     <Compile Include="ConsultaVencimientosWF.Designer.cs">
       <DependentUpon>ConsultaVencimientosWF.cs</DependentUpon>
     </Compile>
+    <Compile Include="ContabilidadWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContabilidadWF.Designer.cs">
+      <DependentUpon>ContabilidadWF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dao\AgendaDao.cs" />
     <Compile Include="Dao\ComprasDao.cs" />
     <Compile Include="Dao\DaoConsultasGenerales.cs" />
@@ -333,6 +339,12 @@
     </Compile>
     <Compile Include="InicioNuevoWF.Designer.cs">
       <DependentUpon>InicioNuevoWF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IvaWF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IvaWF.Designer.cs">
+      <DependentUpon>IvaWF.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginNuevoWF.cs">
       <SubType>Form</SubType>
@@ -554,6 +566,9 @@
     <EmbeddedResource Include="ConsultaVencimientosWF.resx">
       <DependentUpon>ConsultaVencimientosWF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ContabilidadWF.resx">
+      <DependentUpon>ContabilidadWF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DetalleDePagosWF.resx">
       <DependentUpon>DetalleDePagosWF.cs</DependentUpon>
     </EmbeddedResource>
@@ -577,6 +592,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InicioNuevoWF.resx">
       <DependentUpon>InicioNuevoWF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IvaWF.resx">
+      <DependentUpon>IvaWF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginNuevoWF.resx">
       <DependentUpon>LoginNuevoWF.cs</DependentUpon>
