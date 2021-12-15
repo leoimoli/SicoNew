@@ -372,6 +372,7 @@
             // 
             this.lblTotalEdit.AutoSize = true;
             this.lblTotalEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalEdit.ForeColor = System.Drawing.Color.Black;
             this.lblTotalEdit.Location = new System.Drawing.Point(130, 351);
             this.lblTotalEdit.Name = "lblTotalEdit";
             this.lblTotalEdit.Size = new System.Drawing.Size(11, 15);

@@ -119,5 +119,10 @@ namespace Sico
                 e.Handled = true;
             }
         }
+
+        private void btnCrearProveedor_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

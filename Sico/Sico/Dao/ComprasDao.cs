@@ -799,8 +799,8 @@ namespace Sico.Dao
             int idUltimaFacturaCompra = 0;
 
             List<Entidades.Cliente> id = new List<Entidades.Cliente>();
-            id = ClienteDao.BuscarClientePorCuit(cuitCliente);
-            int idCliente = id[0].IdCliente;
+            //id = ClienteDao.BuscarClientePorCuit(cuitCliente);
+            int idCliente = Sesion.UsuarioLogueado.idEmpresaSeleccionado;
 
             connection.Close();
             connection.Open();

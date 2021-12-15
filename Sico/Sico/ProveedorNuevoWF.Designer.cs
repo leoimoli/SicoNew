@@ -118,6 +118,7 @@
             this.btnCrearProveedor.TabIndex = 165;
             this.btnCrearProveedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCrearProveedor.UseVisualStyleBackColor = false;
+            this.btnCrearProveedor.Click += new System.EventHandler(this.btnCrearProveedor_Click);
             // 
             // label11
             // 

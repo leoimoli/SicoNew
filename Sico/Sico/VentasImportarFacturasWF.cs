@@ -230,7 +230,9 @@ namespace Sico
                                 {
                                     ///// Calculo al %10,5
                                     var trncateCalculo1 = ImpNetoGravado * 0.105;
-                                    trncateCalculo1 = Math.Truncate(trncateCalculo1 * 100) / 100;
+                                    trncateCalculo1 = Math.Ceiling(trncateCalculo1 * 100) / 100; // 87.13
+                                    ///// Comento esta linea xq redondeo siempre para arriba con la linea de arriba
+                                    //trncateCalculo1 = Math.Truncate(trncateCalculo1 * 100) / 100;
                                     decimal TruncateResultado1 = Convert.ToDecimal(trncateCalculo1);
                                     if (TruncateResultado1 == Iva)
                                     {
@@ -238,9 +240,11 @@ namespace Sico
                                         list.Iva1 = Convert.ToDecimal(Iva);
                                         list.Neto1 = Convert.ToDecimal(ImpNetoGravado);
                                     }
-                                    ///// Calculo al %21
+                                    ///// Calculo al %21                                
                                     var trncateCalculo2 = ImpNetoGravado * 0.21;
-                                    trncateCalculo2 = Math.Truncate(trncateCalculo2 * 100) / 100;
+                                    trncateCalculo2 = Math.Ceiling(trncateCalculo2 * 100) / 100; // 87.13
+                                     ///// Comento esta linea xq redondeo siempre para arriba con la linea de arriba
+                                    //trncateCalculo2 = Math.Truncate(trncateCalculo2 * 100) / 100;
                                     decimal TruncateResultado2 = Convert.ToDecimal(trncateCalculo2);
                                     if (TruncateResultado2 == Iva)
                                     {
@@ -250,7 +254,9 @@ namespace Sico
                                     }
                                     ///// Calculo al %27
                                     var trncateCalculo3 = ImpNetoGravado * 0.27;
-                                    trncateCalculo3 = Math.Truncate(trncateCalculo3);
+                                    trncateCalculo3 = Math.Ceiling(trncateCalculo3 * 100) / 100; // 87.13
+                                     ///// Comento esta linea xq redondeo siempre para arriba con la linea de arriba
+                                    //trncateCalculo3 = Math.Truncate(trncateCalculo3);
                                     decimal TruncateResultado3 = Convert.ToDecimal(trncateCalculo3);
                                     if (TruncateResultado3 == Iva)
                                     {

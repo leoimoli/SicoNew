@@ -601,7 +601,7 @@ namespace Sico
             decimal MontoNegativo = 0;
             foreach (var item in value)
             {
-                if (item.TipoComprobante == " - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
+                if (item.TipoComprobante == "3 - Nota de Crédito A" || item.TipoComprobante == "8 - Nota de Crédito B" || item.TipoComprobante == "13 - Nota de Crédito C")
                 {
                     MontoNegativo += item.Monto;
                 }
