@@ -111,6 +111,12 @@ namespace Sico
         private void txtIP_KeyDown(object sender, KeyEventArgs e)
         {
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            ConexionWF _cone = new ConexionWF();
+            _cone.Show();
+        }
     }
 }
 
